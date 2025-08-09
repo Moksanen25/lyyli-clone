@@ -1,14 +1,5 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "framework": "nextjs",
-  "functions": {
-    "app/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "regions": ["iad1"],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "framework": "nextjs"
 }
