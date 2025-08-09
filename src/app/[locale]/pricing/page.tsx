@@ -1,8 +1,10 @@
 import { getTranslations } from '../../../lib/i18n';
 import { Metadata } from 'next';
+import PricingHeader from '../../../components/pricing/PricingHeader';
 import PricingTiers from '../../../components/pricing/PricingTiers';
-import BenefitsSection from '../../../components/pricing/BenefitsSection';
-import ROIAssumptions from '../../../components/pricing/ROIAssumptions';
+import ComparisonTable from '../../../components/pricing/ComparisonTable';
+import ROICalculator from '../../../components/pricing/ROICalculator';
+import ComplianceBadges from '../../../components/pricing/ComplianceBadges';
 import PricingFAQ from '../../../components/pricing/PricingFAQ';
 
 interface PricingPageProps {
@@ -11,11 +13,36 @@ interface PricingPageProps {
 
 export async function generateMetadata({ params }: PricingPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const supportedLocales = ['en', 'fi'];
+  const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
+  const t = getTranslations(currentLocale);
+  
+  const title = currentLocale === 'en' ? 'Pricing - Lyyli.ai' : 'Hinnoittelu - Lyyli.ai';
+  const description = currentLocale === 'en' 
+    ? 'Clear pricing for Lyyli.ai\'s AI communication platform. Try our ROI calculator and see how much you can save with AI-assisted communication.'
+    : 'Lyyli.ai:n selkeä hinnoittelu yrityksesi tarpeisiin. Kokeile ROI-laskuriamme ja näe kuinka paljon voit säästää tekoälyavusteisella viestinnällä.';
   
   return {
-    title: t['pricing.page.title'],
-    description: t['pricing.page.description'],
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      siteName: 'Lyyli.ai',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+    alternates: {
+      canonical: currentLocale === 'en' ? '/pricing' : '/fi/pricing',
+      languages: {
+        'en': '/pricing',
+        'fi': '/fi/pricing',
+      },
+    },
   };
 }
 
@@ -23,77 +50,171 @@ export default async function PricingPage({ params }: PricingPageProps) {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
-  
   const t = getTranslations(currentLocale);
 
+  // JSON-LD structured data for pricing
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Lyyli.ai",
+    "description": "AI Communication Assistant for Professional Service Organizations",
+    "brand": {
+      "@type": "Brand",
+      "name": "Lyyli.ai"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": `https://lyyli.ai${currentLocale === 'en' ? '/pricing' : '/fi/pricing'}`
+      },
+      {
+        "@type": "Offer", 
+        "name": "Starter",
+        "price": "29",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": `https://lyyli.ai${currentLocale === 'en' ? '/pricing' : '/fi/pricing'}`
+      },
+      {
+        "@type": "Offer",
+        "name": "Growth", 
+        "price": "199",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": `https://lyyli.ai${currentLocale === 'en' ? '/pricing' : '/fi/pricing'}`
+      },
+      {
+        "@type": "Offer",
+        "name": "Professional",
+        "price": "599", 
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": `https://lyyli.ai${currentLocale === 'en' ? '/pricing' : '/fi/pricing'}`
+      }
+    ]
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": t['pricing.faq.question1'],
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t['pricing.faq.answer1']
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": t['pricing.faq.question2'],
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t['pricing.faq.answer2']
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t['pricing.faq.question3'], 
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t['pricing.faq.answer3']
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t['pricing.faq.question4'],
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t['pricing.faq.answer4']
+        }
+      }
+    ]
+  };
+
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="heading-1 mb-6">
-            {t['pricing.hero.title']}
-          </h1>
-          <p className="body-large mb-12 text-medium-gray max-w-3xl mx-auto">
-            {t['pricing.hero.subtitle']}
-          </p>
-        </div>
-      </section>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      
+      <main className="bg-white">
+        {/* Header Section */}
+        <PricingHeader locale={currentLocale} />
 
-      {/* Pricing Tiers */}
-      <section className="max-w-7xl mx-auto px-6 pb-16">
-        <PricingTiers locale={currentLocale} />
-      </section>
+        {/* Pricing Tiers */}
+        <section className="max-w-7xl mx-auto px-6 pb-16">
+          <PricingTiers locale={currentLocale} />
+        </section>
 
-      {/* Benefits Section */}
-      <section className="bg-light-gray py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <BenefitsSection locale={currentLocale} />
-        </div>
-      </section>
-
-      {/* ROI Assumptions */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <ROIAssumptions locale={currentLocale} />
-      </section>
-
-      {/* FAQ Section */}
-      <section className="bg-soft-rose py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-6">
-          <PricingFAQ locale={currentLocale} />
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-forest-green text-white py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="heading-2 mb-4 text-white">
-            {t['cta.title']}
-          </h2>
-          <p className="body-large mb-8 text-white opacity-90">
-            {t['cta.description']}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/demo" 
-              className="bg-white text-forest-green px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center justify-center gap-2"
-              aria-label="Book a demo of Lyyli.ai"
-            >
-              {t['cta.button']}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </a>
-            <a 
-              href="/contact" 
-              className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest-green transition-colors font-medium inline-flex items-center justify-center"
-              aria-label="Contact Lyyli.ai sales team"
-            >
-              Contact Sales
-            </a>
+        {/* Feature Comparison */}
+        <section className="bg-light-gray py-16 lg:py-24">
+          <div className="max-w-7xl mx-auto px-6">
+            <ComparisonTable locale={currentLocale} />
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* ROI Calculator */}
+        <section id="roi-calculator" className="max-w-7xl mx-auto px-6 py-16 lg:py-24" style={{ scrollMargin: '2rem' }}>
+          <ROICalculator locale={currentLocale} />
+        </section>
+
+        {/* Compliance Badges */}
+        <section className="bg-soft-rose py-12">
+          <div className="max-w-7xl mx-auto px-6">
+            <ComplianceBadges locale={currentLocale} />
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="max-w-4xl mx-auto px-6 py-16 lg:py-24">
+          <PricingFAQ locale={currentLocale} />
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-forest-green text-white py-16 lg:py-24">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="heading-2 mb-4 text-white">
+              Ready to Get Started?
+            </h2>
+            <p className="body-large mb-8 text-white opacity-90">
+              {currentLocale === 'en' 
+                ? 'Choose your plan and start transforming your team\'s communication today.'
+                : 'Valitse pakettisi ja aloita tiimisi viestinnän muuttaminen tänään.'
+              }
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href={`/${currentLocale}/contact`} 
+                className="bg-white text-forest-green px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center justify-center gap-2"
+                aria-label="Book a demo of Lyyli.ai"
+              >
+                {currentLocale === 'en' ? 'Book a Demo' : 'Varaa demo'}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </a>
+              <a 
+                href={`/${currentLocale}/contact`} 
+                className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest-green transition-colors font-medium inline-flex items-center justify-center"
+                aria-label="Contact Lyyli.ai sales team"
+              >
+                {currentLocale === 'en' ? 'Contact Sales' : 'Ota yhteyttä myyntiin'}
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
