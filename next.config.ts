@@ -1,22 +1,22 @@
 import type { NextConfig } from "next";
+import createMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
 
 const nextConfig: NextConfig = {
-  // Ensure SSR is enabled by default (Next.js default behavior)
-  output: undefined, // This ensures SSR mode (default)
-  
-  // Enable React Strict Mode for better development experience
-  reactStrictMode: true,
-  
-  // Performance optimizations
+  /* config options here */
+  trailingSlash: false,
+  poweredByHeader: false,
   experimental: {
-    // App Router is enabled by default in Next.js 15
-    optimizePackageImports: ['lucide-react', '@next/font'],
+    optimizePackageImports: ['next-intl']
   },
-  
-  // Image optimization
-  images: {
-    formats: ['image/webp', 'image/avif'],
-  },
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx']
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDX(nextConfig);
