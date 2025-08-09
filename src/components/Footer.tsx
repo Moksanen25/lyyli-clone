@@ -22,11 +22,11 @@ export default function Footer({ locale, canonicalUrl }: FooterProps) {
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/lyyli-logo.svg"
+                src="/images/logos/vaakalogo_lyyli_1500x500_px.png"
                 alt="Lyyli.ai logo - AI Communication Assistant"
-                width={32}
+                width={96}
                 height={32}
-                className="w-8 h-8 brightness-0 invert"
+                className="h-8 w-auto brightness-0 invert"
               />
               <span className="heading-4 text-white">Lyyli</span>
             </div>

@@ -17,14 +17,13 @@ export default function Header({ locale }: HeaderProps) {
           <div className="flex items-center">
             <a href="/" className="flex items-center gap-3" aria-label="Lyyli.ai homepage">
               <Image
-                src="/lyyli-logo.svg"
+                src="/images/logos/vaakalogo_lyyli_1500x500_px.png"
                 alt="Lyyli.ai logo - AI Communication Assistant for Professional Service Organizations"
-                width={40}
+                width={120}
                 height={40}
                 priority
-                className="w-10 h-10"
+                className="h-10 w-auto"
               />
-              <span className="heading-4 text-forest-green font-bold">Lyyli</span>
             </a>
           </div>
 
