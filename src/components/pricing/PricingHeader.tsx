@@ -19,7 +19,7 @@ export default function PricingHeader({ locale }: PricingHeaderProps) {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/50 border border-forest-green/20 mb-6">
             <span className="text-sm font-medium text-forest-green">
-              {t['pricing']['tagline']}
+              {t['pricing.tagline']}
             </span>
           </div>
           
@@ -30,7 +30,7 @@ export default function PricingHeader({ locale }: PricingHeaderProps) {
           
           {/* Subtitle */}
           <p className="body-large mb-12 text-medium-gray max-w-3xl mx-auto">
-            {t['pricing']['pricingHeader']['subtitle']}
+            {t['pricing.pricingHeader.subtitle']}
           </p>
         </div>
       </section>

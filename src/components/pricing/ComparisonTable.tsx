@@ -22,55 +22,55 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
 
   const comparisonData: ComparisonRow[] = [
     {
-      feature: t['pricing']['features']['price'],
+      feature: t['pricing.features.price'],
       free: '€0',
       starter: '€29',
       growth: '€199',
       professional: '€599',
-      enterprise: t['pricing']['custom']
+      enterprise: t['pricing.custom']
     },
     {
-      feature: t['pricing']['features']['users'],
+      feature: t['pricing.features.users'],
       free: '1',
       starter: '1',
       growth: '3',
       professional: '10',
-      enterprise: t['pricing']['custom']
+      enterprise: t['pricing.custom']
     },
     {
-      feature: t['pricing']['features']['conversations'],
+      feature: t['pricing.features.conversations'],
       free: '20/week',
       starter: '50/week',
       growth: '100/week',
-      professional: t['pricing']['features']['unlimited'],
-      enterprise: t['pricing']['features']['unlimited']
+      professional: t['pricing.features.unlimited'],
+      enterprise: t['pricing.features.unlimited']
     },
     {
-      feature: t['pricing']['features']['posts'],
+      feature: t['pricing.features.posts'],
       free: '5/week',
       starter: '10/week',
-      growth: t['pricing']['features']['unlimited'],
-      professional: t['pricing']['features']['unlimited'],
-      enterprise: t['pricing']['features']['unlimited']
+      growth: t['pricing.features.unlimited'],
+      professional: t['pricing.features.unlimited'],
+      enterprise: t['pricing.features.unlimited']
     },
     {
-      feature: t['pricing']['features']['integrations'],
+      feature: t['pricing.features.integrations'],
       free: '2',
       starter: '3',
-      growth: t['pricing']['features']['unlimited'],
-      professional: t['pricing']['features']['unlimited'],
-      enterprise: t['pricing']['features']['unlimited']
+      growth: t['pricing.features.unlimited'],
+      professional: t['pricing.features.unlimited'],
+      enterprise: t['pricing.features.unlimited']
     },
     {
-      feature: t['pricing']['features']['agents'],
+      feature: t['pricing.features.agents'],
       free: '1',
       starter: '1',
       growth: '1',
       professional: '3',
-      enterprise: t['pricing']['custom']
+      enterprise: t['pricing.custom']
     },
     {
-      feature: t['pricing']['features']['webApp'],
+      feature: t['pricing.features.webApp'],
       free: true,
       starter: true,
       growth: true,
@@ -78,7 +78,7 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
       enterprise: true
     },
     {
-      feature: t['pricing']['features']['slack'],
+      feature: t['pricing.features.slack'],
       free: false,
       starter: false,
       growth: false,
@@ -86,7 +86,7 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
       enterprise: true
     },
     {
-      feature: t['pricing']['features']['teams'],
+      feature: t['pricing.features.teams'],
       free: false,
       starter: false,
       growth: true,
@@ -94,7 +94,7 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
       enterprise: true
     },
     {
-      feature: t['pricing']['features']['customization'],
+      feature: t['pricing.features.customization'],
       free: false,
       starter: true,
       growth: true,
@@ -102,31 +102,31 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
       enterprise: true
     },
     {
-      feature: t['pricing']['features']['communicationSuggestions'],
+      feature: t['pricing.features.communicationSuggestions'],
       free: '3x/week',
       starter: '1x/day',
-      growth: t['pricing']['custom'],
-      professional: t['pricing']['custom'],
-      enterprise: t['pricing']['custom']
+      growth: t['pricing.custom'],
+      professional: t['pricing.custom'],
+      enterprise: t['pricing.custom']
     },
     {
-      feature: t['pricing']['features']['onboarding'],
+      feature: t['pricing.features.onboarding'],
       free: '€199',
       starter: '€199',
       growth: '€199 (free with annual)',
-      professional: t['pricing']['features']['included'],
-      enterprise: t['pricing']['custom']
+      professional: t['pricing.features.included'],
+      enterprise: t['pricing.custom']
     },
     {
-      feature: t['pricing']['features']['support'],
+      feature: t['pricing.features.support'],
       free: false,
       starter: false,
       growth: 'Chat 8-20',
       professional: 'Chat 8-20',
-      enterprise: t['pricing']['custom']
+      enterprise: t['pricing.custom']
     },
     {
-      feature: t['pricing']['features']['phoneSupport'],
+      feature: t['pricing.features.phoneSupport'],
       free: false,
       starter: false,
       growth: false,
@@ -134,7 +134,7 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
       enterprise: true
     },
     {
-      feature: t['pricing']['features']['apiAccess'],
+      feature: t['pricing.features.apiAccess'],
       free: false,
       starter: false,
       growth: false,
@@ -163,10 +163,10 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
       {/* Section Header */}
       <div className="text-center">
         <h2 className="heading-2 mb-4 text-forest-green">
-          {t['pricing']['comparison']['title']}
+          {t['pricing.comparison.title']}
         </h2>
         <p className="body-large text-medium-gray mb-8">
-          {t['pricing']['comparison']['subtitle']}
+          {t['pricing.comparison.subtitle']}
         </p>
         
         {/* Toggle Button */}
@@ -175,7 +175,7 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
           className="inline-flex items-center gap-2 px-6 py-3 bg-forest-green text-white rounded-lg hover:bg-opacity-90 transition-colors font-medium"
           aria-expanded={showComparison}
         >
-          {showComparison ? t['pricing']['hideComparison'] : t['pricing']['showComparison']}
+          {showComparison ? t['pricing.hideComparison'] : t['pricing.showComparison']}
           <svg 
             className={`w-4 h-4 transition-transform ${showComparison ? 'rotate-180' : ''}`} 
             fill="none" 
@@ -194,29 +194,29 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
           <div className="overflow-x-auto">
             <table className="w-full min-w-[800px]" role="table">
               <caption className="sr-only">
-                {t['pricing']['comparisonCaption']}
+                {t['pricing.comparisonCaption']}
               </caption>
               
               {/* Sticky Header */}
               <thead className="bg-soft-rose sticky top-0">
                 <tr>
                   <th scope="col" className="px-6 py-4 text-left font-medium text-forest-green">
-                    {t['pricing']['features']['feature']}
+                    {t['pricing.features.feature']}
                   </th>
                   <th scope="col" className="px-6 py-4 text-center font-medium text-forest-green">
-                    {t['pricing']['free']['name']}
+                    {t['pricing.free.name']}
                   </th>
                   <th scope="col" className="px-6 py-4 text-center font-medium text-forest-green">
-                    {t['pricing']['starter']['name']}
+                    {t['pricing.starter.name']}
                   </th>
                   <th scope="col" className="px-6 py-4 text-center font-medium text-forest-green bg-forest-green/10">
-                    {t['pricing']['growth']['name']}
+                    {t['pricing.growth.name']}
                   </th>
                   <th scope="col" className="px-6 py-4 text-center font-medium text-forest-green">
-                    {t['pricing']['professional']['name']}
+                    {t['pricing.professional.name']}
                   </th>
                   <th scope="col" className="px-6 py-4 text-center font-medium text-forest-green">
-                    {t['pricing']['enterprise']['name']}
+                    {t['pricing.enterprise.name']}
                   </th>
                 </tr>
               </thead>

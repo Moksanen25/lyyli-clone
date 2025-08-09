@@ -31,7 +31,7 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
       {/* Section Header */}
       <div className="text-center">
         <h2 className="heading-2 mb-4 text-forest-green">
-          {t['pricing']['assumptions']['title']}
+          {t['pricing.assumptions.title']}
         </h2>
         <p className="body-large text-medium-gray mb-8">
           Calculate your potential savings with Lyyli's AI communication assistant
@@ -146,19 +146,19 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
             <ul className="space-y-2 text-sm text-medium-gray">
               <li className="flex items-start gap-2">
                 <span className="text-forest-green">•</span>
-                {t['pricing']['assumptions']['efficiency']}
+                {t['pricing.assumptions.efficiency']}
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-forest-green">•</span>
-                {t['pricing']['assumptions']['time']}
+                {t['pricing.assumptions.time']}
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-forest-green">•</span>
-                {t['pricing']['assumptions']['cost']}
+                {t['pricing.assumptions.cost']}
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-forest-green">•</span>
-                {t['pricing']['assumptions']['overhead']}
+                {t['pricing.assumptions.overhead']}
               </li>
             </ul>
           </div>

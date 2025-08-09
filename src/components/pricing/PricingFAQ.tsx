@@ -18,20 +18,20 @@ export default function PricingFAQ({ locale }: PricingFAQProps) {
 
   const faqItems: FAQItem[] = [
     {
-      question: t['pricing']['faq']['question1'],
-      answer: t['pricing']['faq']['answer1']
+      question: t['pricing.faq.question1'],
+      answer: t['pricing.faq.answer1']
     },
     {
-      question: t['pricing']['faq']['question2'],
-      answer: t['pricing']['faq']['answer2']
+      question: t['pricing.faq.question2'],
+      answer: t['pricing.faq.answer2']
     },
     {
-      question: t['pricing']['faq']['question3'],
-      answer: t['pricing']['faq']['answer3']
+      question: t['pricing.faq.question3'],
+      answer: t['pricing.faq.answer3']
     },
     {
-      question: t['pricing']['faq']['question4'],
-      answer: t['pricing']['faq']['answer4']
+      question: t['pricing.faq.question4'],
+      answer: t['pricing.faq.answer4']
     }
   ];
 
@@ -44,10 +44,10 @@ export default function PricingFAQ({ locale }: PricingFAQProps) {
       {/* Section Header */}
       <div className="text-center">
         <h2 className="heading-2 mb-4 text-forest-green">
-          {t['pricing']['faq']['title']}
+          {t['pricing.faq.title']}
         </h2>
         <p className="body-large text-medium-gray">
-          {t['pricing']['faq']['subtitle']}
+          {t['pricing.faq.subtitle']}
         </p>
       </div>
 
@@ -99,23 +99,23 @@ export default function PricingFAQ({ locale }: PricingFAQProps) {
       {/* CTA Section */}
       <div className="text-center pt-8 border-t border-light-gray">
         <h3 className="heading-4 mb-4 text-forest-green">
-          {t['pricing']['faqTitle']}
+          {t['pricing.faqTitle']}
         </h3>
         <p className="body-text text-medium-gray mb-6">
-          {t['pricing']['faqText']}
+          {t['pricing.faqText']}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/faq"
             className="inline-flex items-center justify-center px-6 py-3 border border-forest-green text-forest-green rounded-lg hover:bg-forest-green hover:text-white transition-colors font-medium"
           >
-            {t['pricing']['faqButton']}
+            {t['pricing.faqButton']}
           </a>
           <a
             href={`/${locale}/contact`}
             className="inline-flex items-center justify-center px-6 py-3 bg-forest-green text-white rounded-lg hover:bg-opacity-90 transition-colors font-medium"
           >
-            {t['pricing']['contactButton']}
+            {t['pricing.contactButton']}
           </a>
         </div>
       </div>
