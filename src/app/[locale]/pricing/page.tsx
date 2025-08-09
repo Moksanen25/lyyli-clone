@@ -15,7 +15,6 @@ export async function generateMetadata({ params }: PricingPageProps): Promise<Me
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
-  const t = getTranslations(currentLocale);
   
   const title = currentLocale === 'en' ? 'Pricing - Lyyli.ai' : 'Hinnoittelu - Lyyli.ai';
   const description = currentLocale === 'en' 
@@ -104,34 +103,34 @@ export default async function PricingPage({ params }: PricingPageProps) {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": t['pricing.faq.question1'],
+        "name": t['pricing']['faq']['question1'],
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": t['pricing.faq.answer1']
+          "text": t['pricing']['faq']['answer1']
         }
       },
       {
         "@type": "Question", 
-        "name": t['pricing.faq.question2'],
+        "name": t['pricing']['faq']['question2'],
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": t['pricing.faq.answer2']
+          "text": t['pricing']['faq']['answer2']
         }
       },
       {
         "@type": "Question",
-        "name": t['pricing.faq.question3'], 
+        "name": t['pricing']['faq']['question3'], 
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": t['pricing.faq.answer3']
+          "text": t['pricing']['faq']['answer3']
         }
       },
       {
         "@type": "Question",
-        "name": t['pricing.faq.question4'],
+        "name": t['pricing']['faq']['question4'],
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": t['pricing.faq.answer4']
+          "text": t['pricing']['faq']['answer4']
         }
       }
     ]

@@ -94,7 +94,7 @@
   font-size: var(--font-size-4xl);
   line-height: var(--line-height-tight);
   color: var(--forest-green);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .heading-2 {
@@ -102,7 +102,7 @@
   font-size: var(--font-size-3xl);
   line-height: var(--line-height-snug);
   color: var(--forest-green);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .heading-3 {
@@ -110,7 +110,7 @@
   font-size: var(--font-size-2xl);
   line-height: var(--line-height-normal);
   color: var(--forest-green);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .heading-4 {
@@ -118,7 +118,7 @@
   font-size: var(--font-size-xl);
   line-height: var(--line-height-normal);
   color: var(--forest-green);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .body-text {

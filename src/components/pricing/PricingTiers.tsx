@@ -27,94 +27,94 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
   const tiers: PricingTier[] = [
     {
       id: 'free',
-      name: t['pricing.free.name'],
+      name: t['pricing']['free']['name'],
       monthlyPrice: 0,
       yearlyPrice: 0,
-      description: t['pricing.free.description'],
-      cta: t['pricing.free.cta'],
+      description: t['pricing']['free']['description'],
+      cta: t['pricing']['free']['cta'],
       ctaHref: '/trial',
       illustration: 'seedling',
       features: [
-        t['pricing.features.maxOneUser'],
-        t['pricing.features.maxTwentyConversations'],
-        t['pricing.features.maxFivePosts'],
-        t['pricing.features.webInterface'],
-        t['pricing.features.maxTwoIntegrations']
+        t['pricing']['features']['maxOneUser'],
+        t['pricing']['features']['maxTwentyConversations'],
+        t['pricing']['features']['maxFivePosts'],
+        t['pricing']['features']['webInterface'],
+        t['pricing']['features']['maxTwoIntegrations']
       ]
     },
     {
       id: 'starter',
-      name: t['pricing.starter.name'],
+      name: t['pricing']['starter']['name'],
       monthlyPrice: 29,
       yearlyPrice: 23, // 20% discount
-      description: t['pricing.starter.description'],
-      cta: t['pricing.starter.cta'],
+      description: t['pricing']['starter']['description'],
+      cta: t['pricing']['starter']['cta'],
       ctaHref: '/trial',
       illustration: 'rocket',
       features: [
-        t['pricing.features.maxOneUser'],
-        t['pricing.features.maxFiftyConversations'],
-        t['pricing.features.maxTenPosts'],
-        t['pricing.features.maxThreeIntegrations'],
-        t['pricing.features.extensiveCustomization']
+        t['pricing']['features']['maxOneUser'],
+        t['pricing']['features']['maxFiftyConversations'],
+        t['pricing']['features']['maxTenPosts'],
+        t['pricing']['features']['maxThreeIntegrations'],
+        t['pricing']['features']['extensiveCustomization']
       ]
     },
     {
       id: 'growth',
-      name: t['pricing.growth.name'],
+      name: t['pricing']['growth']['name'],
       monthlyPrice: 199,
       yearlyPrice: 159, // 20% discount
-      description: t['pricing.growth.description'],
-      cta: t['pricing.growth.cta'],
+      description: t['pricing']['growth']['description'],
+      cta: t['pricing']['growth']['cta'],
       ctaHref: '/trial',
       popular: true,
       illustration: 'trend',
       features: [
-        t['pricing.features.userManagement3'],
-        t['pricing.features.maxHundredConversations'],
-        t['pricing.features.unlimitedPosts'],
-        t['pricing.features.allIntegrations'],
-        t['pricing.features.chatSupport8to20']
+        t['pricing']['features']['userManagement3'],
+        t['pricing']['features']['maxHundredConversations'],
+        t['pricing']['features']['unlimitedPosts'],
+        t['pricing']['features']['allIntegrations'],
+        t['pricing']['features']['chatSupport8to20']
       ]
     },
     {
       id: 'professional',
-      name: t['pricing.professional.name'],
+      name: t['pricing']['professional']['name'],
       monthlyPrice: 599,
       yearlyPrice: 479, // 20% discount
-      description: t['pricing.professional.description'],
-      cta: t['pricing.professional.cta'],
+      description: t['pricing']['professional']['description'],
+      cta: t['pricing']['professional']['cta'],
       ctaHref: '/trial',
       illustration: 'clipboard',
       features: [
-        t['pricing.features.userManagement10'],
-        t['pricing.features.unlimitedConversations'],
-        t['pricing.features.webSlackTeamsApps'],
-        t['pricing.features.maxThreeAgents'],
-        t['pricing.features.phoneSupport9to15']
+        t['pricing']['features']['userManagement10'],
+        t['pricing']['features']['unlimitedConversations'],
+        t['pricing']['features']['webSlackTeamsApps'],
+        t['pricing']['features']['maxThreeAgents'],
+        t['pricing']['features']['phoneSupport9to15']
       ]
     },
     {
       id: 'enterprise',
-      name: t['pricing.enterprise.name'],
+      name: t['pricing']['enterprise']['name'],
       monthlyPrice: 0, // Custom pricing
       yearlyPrice: 0,
-      description: t['pricing.enterprise.description'],
-      cta: t['pricing.enterprise.cta'],
+      description: t['pricing']['enterprise']['description'],
+      cta: t['pricing']['enterprise']['cta'],
       ctaHref: '/contact',
       illustration: 'handshake',
       features: [
-        t['pricing.features.customInstallation'],
-        t['pricing.features.allIntegrationsWithAPI'],
-        t['pricing.features.customFeatures'],
-        t['pricing.features.dedicatedSupport'],
-        t['pricing.features.customOnboarding']
+        t['pricing']['features']['customInstallation'],
+        t['pricing']['features']['allIntegrationsWithAPI'],
+        t['pricing']['features']['customFeatures'],
+        t['pricing']['features']['dedicatedSupport'],
+        t['pricing']['features']['customOnboarding']
       ]
     }
   ];
 
   const getPrice = (tier: PricingTier) => {
-    if (tier.id === 'enterprise') return t['pricing.custom'];
+    if (tier.id === 'enterprise') return t['pricing']['custom'];
     if (tier.monthlyPrice === 0) return '€0';
     
     const price = billingPeriod === 'monthly' ? tier.monthlyPrice : tier.yearlyPrice;
@@ -182,7 +182,7 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
             }`}
             aria-pressed={billingPeriod === 'monthly'}
           >
-            {t['pricing.monthly']}
+            {t['pricing']['monthly']}
           </button>
           <button
             onClick={() => setBillingPeriod('yearly')}
@@ -193,12 +193,12 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
             }`}
             aria-pressed={billingPeriod === 'yearly'}
           >
-            {t['pricing.yearly']}
+            {t['pricing']['yearly']}
           </button>
         </div>
         {billingPeriod === 'yearly' && (
           <div className="ml-4 px-3 py-1 bg-forest-green text-white text-sm rounded-full">
-            {t['pricing.save']} 20%
+            {t['pricing']['save']} 20%
           </div>
         )}
       </div>
@@ -239,13 +239,13 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
                 </span>
                 {tier.id !== 'enterprise' && tier.monthlyPrice > 0 && (
                   <span className="text-medium-gray ml-1">
-                    {billingPeriod === 'monthly' ? t['pricing.perMonth'] : t['pricing.perYear']}
+                    {billingPeriod === 'monthly' ? t['pricing']['perMonth'] : t['pricing']['perYear']}
                   </span>
                 )}
               </div>
               {billingPeriod === 'yearly' && getSavings(tier) && (
                 <p className="text-sm text-forest-green font-medium mb-2">
-                  {t['pricing.savePerYear'].replace('{amount}', getSavings(tier)!.toString())}
+                  {t['pricing']['savePerYear'].replace('{amount}', getSavings(tier)!.toString())}
                 </p>
               )}
               <p className="body-text text-medium-gray">
