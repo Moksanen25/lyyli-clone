@@ -2,7 +2,7 @@ import { getTranslations } from '../../lib/i18n';
 import { 
   HeroBackground, 
   SectionBackground, 
-  GeometricPattern as AnimatedGeometricPattern 
+  BackgroundGeometricPattern 
 } from '../../components/AnimatedBackground';
 import { 
   FloatingElements, 
@@ -34,7 +34,7 @@ export default async function Home({ params }: HomeProps) {
       <section className="relative max-w-7xl mx-auto px-6 py-16 lg:py-32" role="banner">
         {/* Enhanced Background Visuals */}
         <HeroBackground />
-        <AnimatedGeometricPattern className="opacity-20" />
+        <BackgroundGeometricPattern className="opacity-20" />
         <FloatingElements />
         
         {/* Content */}

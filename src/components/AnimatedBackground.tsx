@@ -385,7 +385,7 @@ export function GradientMeshBackground({ className = "", children }: { className
   );
 }
 
-export function GeometricPattern({ className = "" }: { className?: string }) {
+export function BackgroundGeometricPattern({ className = "" }: { className?: string }) {
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
       <svg
