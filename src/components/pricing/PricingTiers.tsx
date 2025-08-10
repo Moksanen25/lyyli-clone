@@ -27,11 +27,11 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
   const tiers: PricingTier[] = [
     {
       id: 'free',
-      name: t['pricing.free.name'],
+      name: t['pricing.free'].name,
       monthlyPrice: 0,
       yearlyPrice: 0,
-      description: t['pricing.free.description'],
-      cta: t['pricing.free.cta'],
+      description: t['pricing.free'].description,
+      cta: t['pricing.free'].cta,
       ctaHref: '/trial',
       illustration: 'seedling',
       features: [
@@ -44,11 +44,11 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
     },
     {
       id: 'starter',
-      name: t['pricing.starter.name'],
+      name: t['pricing.starter'].name,
       monthlyPrice: 29,
       yearlyPrice: 23, // 20% discount
-      description: t['pricing.starter.description'],
-      cta: t['pricing.starter.cta'],
+      description: t['pricing.starter'].description,
+      cta: t['pricing.starter'].cta,
       ctaHref: '/trial',
       illustration: 'rocket',
       features: [
@@ -61,11 +61,11 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
     },
     {
       id: 'growth',
-      name: t['pricing.growth.name'],
+      name: t['pricing.growth'].name,
       monthlyPrice: 199,
       yearlyPrice: 159, // 20% discount
-      description: t['pricing.growth.description'],
-      cta: t['pricing.growth.cta'],
+      description: t['pricing.growth'].description,
+      cta: t['pricing.growth'].cta,
       ctaHref: '/trial',
       popular: true,
       illustration: 'trend',
@@ -79,11 +79,11 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
     },
     {
       id: 'professional',
-      name: t['pricing.professional.name'],
+      name: t['pricing.professional'].name,
       monthlyPrice: 599,
       yearlyPrice: 479, // 20% discount
-      description: t['pricing.professional.description'],
-      cta: t['pricing.professional.cta'],
+      description: t['pricing.professional'].description,
+      cta: t['pricing.professional'].cta,
       ctaHref: '/trial',
       illustration: 'clipboard',
       features: [
@@ -96,11 +96,11 @@ export default function PricingTiers({ locale }: PricingTiersProps) {
     },
     {
       id: 'enterprise',
-      name: t['pricing.enterprise.name'],
+      name: t['pricing.enterprise'].name,
       monthlyPrice: 0, // Custom pricing
       yearlyPrice: 0,
-      description: t['pricing.enterprise.description'],
-      cta: t['pricing.enterprise.cta'],
+      description: t['pricing.enterprise'].description,
+      cta: t['pricing.enterprise'].cta,
       ctaHref: '/contact',
       illustration: 'handshake',
       features: [
