@@ -307,8 +307,8 @@ export function AICommunicationVisual() {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
           }`}
           style={{
-            left: `calc(50% + ${Math.cos((node.angle * Math.PI) / 180) * 80}px)`,
-            top: `calc(50% + ${Math.sin((node.angle * Math.PI) / 180) * 80}px)`,
+            left: `${50 + Math.cos((node.angle * Math.PI) / 180) * 80}%`,
+            top: `${50 + Math.sin((node.angle * Math.PI) / 180) * 80}%`,
             animationDelay: `${node.delay}ms`,
             transitionDelay: `${node.delay}ms`,
           }}
