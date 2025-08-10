@@ -8,6 +8,12 @@ export function EnhancedGeometricPattern({ className = "" }: { className?: strin
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -120,6 +126,12 @@ export function FloatingElements() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -246,6 +258,12 @@ export function AICommunicationVisual() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -353,6 +371,12 @@ export function GradientBackground({ className = "" }: { className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -406,6 +430,12 @@ export function AnimatedWave({ className = "" }: { className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -517,6 +547,12 @@ export function StatsVisual({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -587,6 +623,12 @@ export function ProgressBar({
   const percentage = (value / max) * 100;
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -649,6 +691,12 @@ export function AnimatedCounter({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -714,6 +762,12 @@ export function FeatureHighlightCard({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -774,6 +828,12 @@ export function AnimatedTimeline({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -838,6 +898,12 @@ export function DataVisualization({
   const maxValue = Math.max(...data.map(d => d.value));
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -905,6 +971,12 @@ export function TestimonialCard({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -972,6 +1044,12 @@ export function VisualAnimatedBackgroundPattern({ className = "" }: { className?
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

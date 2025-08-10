@@ -20,6 +20,12 @@ export function AnimatedBackground({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -230,6 +236,12 @@ export function ParticleBackground({ className = "", children }: { className?: s
   const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -317,6 +329,12 @@ export function GradientMeshBackground({ className = "", children }: { className
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if IntersectionObserver is available (client-side only)
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
