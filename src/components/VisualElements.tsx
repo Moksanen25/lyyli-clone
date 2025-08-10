@@ -33,7 +33,8 @@ function useIntersectionObserver(options: IntersectionObserverInit = {}) {
     return () => observer.disconnect();
   }, [isClient, options]);
 
-  return { ref, isVisible: isClient && isVisible, isClient };
+  // Return consistent initial state for server and client
+  return { ref, isVisible: isClient ? isVisible : false, isClient };
 }
 
 // Enhanced Geometric Pattern Component with brand colors and advanced animations
@@ -43,7 +44,7 @@ export function EnhancedGeometricPattern({ className = "" }: { className?: strin
   return (
     <div ref={ref} className={`absolute inset-0 overflow-hidden ${className}`}>
       <svg
-        className={`w-full h-full transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`w-full h-full transition-all duration-1000 ${isClient && isVisible ? 'opacity-100' : 'opacity-0'}`}
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         fill="none"
@@ -73,7 +74,7 @@ export function EnhancedGeometricPattern({ className = "" }: { className?: strin
           d="M0 0 L30 20 L50 0 L80 20 L100 0 L100 100 L70 80 L50 100 L20 80 L0 100 Z"
           fill="url(#brandGradient)"
           opacity="0.08"
-          className={`transition-all duration-2000 ${isVisible ? 'animate-pulse' : ''}`}
+          className={`transition-all duration-2000 ${isClient && isVisible ? 'animate-pulse' : ''}`}
         />
         
         {/* Floating geometric elements with enhanced animations */}
@@ -81,48 +82,38 @@ export function EnhancedGeometricPattern({ className = "" }: { className?: strin
           cx="20" cy="30" r="8" 
           fill="var(--muted-turquoise)" 
           opacity="0.2" 
-          className={`transition-all duration-3000 ${isVisible ? 'animate-bounce' : ''}`}
+          className={`transition-all duration-3000 ${isClient && isVisible ? 'animate-bounce' : ''}`}
         />
         <circle 
           cx="80" cy="70" r="12" 
           fill="var(--soft-rose)" 
           opacity="0.15" 
-          className={`transition-all duration-2500 ${isVisible ? 'animate-ping' : ''}`}
+          className={`transition-all duration-2500 ${isClient && isVisible ? 'animate-ping' : ''}`}
         />
         <rect 
           x="60" y="10" width="15" height="15" 
           fill="var(--forest-green)" 
           opacity="0.12" 
-          className={`transition-all duration-4000 ${isVisible ? 'animate-spin' : ''}`}
+          className={`transition-all duration-4000 ${isClient && isVisible ? 'animate-spin' : ''}`}
         />
         
         {/* Additional geometric elements with staggered animations */}
         <polygon 
-          points="10,60 25,45 40,60 25,75" 
+          points="40,60 50,50 60,60 50,70" 
           fill="var(--muted-turquoise)" 
           opacity="0.18" 
-          className={`transition-all duration-3500 ${isVisible ? 'animate-pulse' : ''}`}
-        />
-        <ellipse 
-          cx="85" cy="25" rx="8" ry="4" 
-          fill="var(--soft-rose)" 
-          opacity="0.2" 
-          className={`transition-all duration-3000 ${isVisible ? 'animate-bounce' : ''}`}
+          className={`transition-all duration-3500 ${isClient && isVisible ? 'animate-pulse' : ''}`}
         />
         
-        {/* Subtle grid pattern with animation */}
-        <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
-          <path d="M 8 0 L 0 0 0 8" fill="none" stroke="var(--forest-green)" strokeWidth="0.3" opacity="0.1"/>
-        </pattern>
-        <rect width="100" height="100" fill="url(#grid)" />
-        
-        {/* Glowing accent elements */}
+        {/* Enhanced glow effects */}
         <circle 
-          cx="50" cy="50" r="2" 
-          fill="var(--muted-turquoise)" 
-          opacity="0.6"
+          cx="50" cy="50" r="25" 
+          fill="none" 
+          stroke="url(#radialGradient)" 
+          strokeWidth="0.5" 
+          opacity="0.3"
           filter="url(#glow)"
-          className={`transition-all duration-2000 ${isVisible ? 'animate-pulse' : ''}`}
+          className={`transition-all duration-5000 ${isClient && isVisible ? 'animate-ping' : ''}`}
         />
       </svg>
     </div>
@@ -156,8 +147,11 @@ export function FloatingElements() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isClient]);
 
+  // Ensure consistent initial render between server and client
+  const baseClasses = "absolute inset-0 overflow-hidden pointer-events-none";
+  
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div ref={containerRef} className={baseClasses}>
       {/* Enhanced floating elements with parallax effect and staggered animations */}
       <div 
         className={`absolute w-4 h-4 rounded-full bg-muted-turquoise opacity-25 transition-all duration-1000 ${
@@ -166,7 +160,7 @@ export function FloatingElements() {
         style={{
           left: '20%',
           top: '30%',
-          transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`,
+          transform: isClient ? `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)` : 'translate(0px, 0px)',
           animationDelay: '0ms',
         }}
       />
@@ -177,7 +171,7 @@ export function FloatingElements() {
         style={{
           left: '80%',
           top: '60%',
-          transform: `translate(${-mousePosition.x * 0.015}px, ${-mousePosition.y * 0.015}px)`,
+          transform: isClient ? `translate(${-mousePosition.x * 0.015}px, ${-mousePosition.y * 0.015}px)` : 'translate(0px, 0px)',
           animationDelay: '200ms',
         }}
       />
@@ -188,7 +182,7 @@ export function FloatingElements() {
         style={{
           left: '60%',
           top: '20%',
-          transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+          transform: isClient ? `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)` : 'translate(0px, 0px)',
           animationDelay: '400ms',
         }}
       />
@@ -201,7 +195,7 @@ export function FloatingElements() {
         style={{
           left: '40%',
           top: '80%',
-          transform: `translate(${-mousePosition.x * 0.008}px, ${-mousePosition.y * 0.008}px)`,
+          transform: isClient ? `translate(${-mousePosition.x * 0.008}px, ${-mousePosition.y * 0.008}px)` : 'translate(0px, 0px)',
           animationDelay: '600ms',
         }}
       />
@@ -212,7 +206,7 @@ export function FloatingElements() {
         style={{
           left: '90%',
           top: '15%',
-          transform: `translate(${mousePosition.x * 0.012}px, ${mousePosition.y * 0.012}px)`,
+          transform: isClient ? `translate(${mousePosition.x * 0.012}px, ${mousePosition.y * 0.012}px)` : 'translate(0px, 0px)',
           animationDelay: '800ms',
         }}
       />
@@ -225,18 +219,18 @@ export function FloatingElements() {
         style={{
           left: '10%',
           top: '50%',
-          transform: `translate(${mousePosition.x * 0.005}px, ${mousePosition.y * 0.005}px) rotate(45deg)`,
+          transform: isClient ? `translate(${mousePosition.x * 0.005}px, ${mousePosition.y * 0.005}px) rotate(45deg)` : 'translate(0px, 0px) rotate(45deg)',
           animationDelay: '1000ms',
         }}
       />
       <div 
-        className={`absolute w-3 h-3 bg-muted-turquoise opacity-30 transition-all duration-1000 ${
+        className={`absolute w-3 h-3 bg-muted-turquoise opacity-35 transition-all duration-1000 ${
           isClient ? 'animate-pulse' : 'opacity-0'
         }`}
         style={{
           left: '70%',
-          top: '90%',
-          transform: `translate(${-mousePosition.x * 0.018}px, ${-mousePosition.y * 0.018}px)`,
+          top: '85%',
+          transform: isClient ? `translate(${-mousePosition.x * 0.018}px, ${-mousePosition.y * 0.018}px)` : 'translate(0px, 0px)',
           animationDelay: '1200ms',
         }}
       />
@@ -567,10 +561,15 @@ export function AnimatedCounter({
   className?: string;
 }) {
   const [count, setCount] = useState(0);
+  const [isClient, setIsClient] = useState(false);
   const { ref, isVisible } = useIntersectionObserver();
 
   useEffect(() => {
-    if (!isVisible) return;
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || !isClient) return;
 
     let startTime: number;
     let animationFrame: number;
@@ -589,13 +588,16 @@ export function AnimatedCounter({
 
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
-  }, [value, duration, isVisible]);
+  }, [value, duration, isVisible, isClient]);
+
+  // Ensure consistent initial render between server and client
+  const displayCount = isClient ? count : 0;
 
   return (
     <div ref={ref} className={`text-4xl font-bold text-forest-green transition-all duration-1000 ${
-      isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+      isClient && isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
     } ${className}`}>
-      {count.toLocaleString()}
+      {displayCount.toLocaleString()}
     </div>
   );
 }
@@ -614,18 +616,18 @@ export function FeatureHighlightCard({
   gradient?: string;
   className?: string;
 }) {
-  const { ref, isVisible } = useIntersectionObserver();
+  const { ref, isVisible, isClient } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`group relative bg-white rounded-2xl shadow-soft p-6 transition-all duration-1000 hover:shadow-xl hover:-translate-y-2 ${
-      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      isClient && isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
     } ${className}`}>
       {/* Background gradient on hover with brand colors */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient} rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-5`} />
       
       {/* Icon container with enhanced styling */}
       <div className={`relative z-10 w-16 h-16 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg ${
-        isVisible ? 'animate-pulse' : ''
+        isClient && isVisible ? 'animate-pulse' : ''
       }`}>
         <div className="text-2xl text-forest-green">
           {icon}
@@ -656,35 +658,31 @@ export function AnimatedTimeline({
   steps: Array<{ title: string; description: string; icon?: React.ReactNode }>;
   className?: string;
 }) {
-  const { ref, isVisible } = useIntersectionObserver();
+  const { ref, isVisible, isClient } = useIntersectionObserver();
 
   return (
-    <div ref={ref} className={`relative transition-all duration-1000 ${
-      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-    } ${className}`}>
+    <div ref={ref} className={`relative ${className}`}>
+      {/* Timeline line */}
+      <div className={`absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-muted-turquoise to-soft-rose transition-all duration-1000 ${
+        isClient && isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
+      }`} />
+      
       {steps.map((step, index) => (
-        <div key={index} className="flex items-start gap-4 mb-8 last:mb-0">
-          {/* Step number/icon with enhanced styling */}
-          <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br from-forest-green to-muted-turquoise rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md transition-all duration-500 ${
-            isVisible ? 'animate-pulse' : ''
-          }`} style={{ transitionDelay: `${index * 200}ms` }}>
+        <div key={index} className={`relative flex items-start mb-8 transition-all duration-1000 ${
+          isClient && isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+        }`} style={{ transitionDelay: `${index * 200}ms` }}>
+          {/* Timeline dot */}
+          <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-muted-turquoise to-soft-rose flex items-center justify-center text-white font-bold text-lg z-10 transition-all duration-500 ${
+            isClient && isVisible ? 'scale-100' : 'scale-75'
+          }`}>
             {step.icon || (index + 1)}
           </div>
           
-          {/* Content with staggered entrance */}
-          <div className={`flex-1 pt-2 transition-all duration-500 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-          }`} style={{ transitionDelay: `${index * 200 + 100}ms` }}>
-            <h3 className="heading-4 mb-2 text-forest-green">{step.title}</h3>
+          {/* Content */}
+          <div className="ml-6 flex-1">
+            <h3 className="heading-4 text-forest-green mb-2">{step.title}</h3>
             <p className="body-text text-medium-gray">{step.description}</p>
           </div>
-          
-          {/* Connecting line with brand colors (except for last item) */}
-          {index < steps.length - 1 && (
-            <div className={`absolute left-6 top-12 w-0.5 h-8 bg-gradient-to-b from-muted-turquoise to-transparent transition-all duration-500 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`} style={{ transitionDelay: `${index * 200 + 200}ms` }} />
-          )}
         </div>
       ))}
     </div>
