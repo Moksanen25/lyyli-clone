@@ -1,15 +1,14 @@
-import { getTranslations } from '../lib/i18n';
+import { TranslationKeys } from '../lib/i18n';
 import Link from 'next/link';
 import Image from 'next/image';
 
 interface FooterProps {
   locale: string;
+  translations: TranslationKeys;
   canonicalUrl?: string;
 }
 
-export default function Footer({ locale, canonicalUrl }: FooterProps) {
-  const t = getTranslations(locale);
-
+export default function Footer({ locale, translations: t, canonicalUrl }: FooterProps) {
   const baseUrl = 'https://lyyli.ai';
   const canonical = canonicalUrl || baseUrl;
 

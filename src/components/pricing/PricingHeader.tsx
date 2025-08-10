@@ -1,11 +1,11 @@
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface PricingHeaderProps {
-  locale: string;
+  translations: TranslationKeys;
 }
 
-export default function PricingHeader({ locale }: PricingHeaderProps) {
-  const t = getTranslations(locale);
+export default function PricingHeader({ translations }: PricingHeaderProps) {
+  const t = translations;
 
   return (
     <header className="relative overflow-hidden bg-gradient-to-br from-white via-soft-rose to-light-gray">
@@ -25,7 +25,7 @@ export default function PricingHeader({ locale }: PricingHeaderProps) {
           
           {/* Main heading - single H1 for SEO */}
           <h1 className="heading-1 mb-6 text-forest-green">
-            {locale === 'en' ? 'Pricing' : 'Hinnoittelu'}
+            {t['pricing.pricingHeader.title']}
           </h1>
           
           {/* Subtitle */}

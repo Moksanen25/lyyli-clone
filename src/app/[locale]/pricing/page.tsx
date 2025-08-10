@@ -49,7 +49,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
-  const t = getTranslations(currentLocale);
+  const t = await getTranslations(currentLocale);
 
   // JSON-LD structured data for pricing
   const jsonLd = {
@@ -103,34 +103,34 @@ export default async function PricingPage({ params }: PricingPageProps) {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": t['pricing.faq.question1'],
+        "name": t['pricing.faq.trial.question'],
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": t['pricing.faq.answer1']
+          "text": t['pricing.faq.trial.answer']
         }
       },
       {
         "@type": "Question", 
-        "name": t['pricing.faq.question2'],
+        "name": t['pricing.faq.billing.question'],
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": t['pricing.faq.answer2']
+          "text": t['pricing.faq.billing.answer']
         }
       },
       {
         "@type": "Question",
-        "name": t['pricing.faq.question3'], 
+        "name": t['pricing.faq.enterprise.question'], 
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": t['pricing.faq.answer3']
+          "text": t['pricing.faq.enterprise.answer']
         }
       },
       {
         "@type": "Question",
-        "name": t['pricing.faq.question4'],
+        "name": t['pricing.faq.support.question'],
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": t['pricing.faq.answer4']
+          "text": t['pricing.faq.support.answer']
         }
       }
     ]
@@ -149,23 +149,23 @@ export default async function PricingPage({ params }: PricingPageProps) {
       
       <main className="bg-white">
         {/* Header Section */}
-        <PricingHeader locale={currentLocale} />
+        <PricingHeader translations={t} />
 
         {/* Pricing Tiers */}
         <section className="max-w-7xl mx-auto px-6 pb-16">
-          <PricingTiers locale={currentLocale} />
+          <PricingTiers translations={t} />
         </section>
 
         {/* Feature Comparison */}
         <section className="bg-light-gray py-16 lg:py-24">
           <div className="max-w-7xl mx-auto px-6">
-            <ComparisonTable locale={currentLocale} />
+            <ComparisonTable translations={t} />
           </div>
         </section>
 
         {/* ROI Calculator */}
         <section id="roi-calculator" className="max-w-7xl mx-auto px-6 py-16 lg:py-24" style={{ scrollMargin: '2rem' }}>
-          <ROICalculator locale={currentLocale} />
+          <ROICalculator translations={t} />
         </section>
 
         {/* Compliance Badges */}
@@ -177,7 +177,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
 
         {/* FAQ Section */}
         <section className="max-w-4xl mx-auto px-6 py-16 lg:py-24">
-          <PricingFAQ locale={currentLocale} />
+          <PricingFAQ locale={currentLocale} translations={t} />
         </section>
 
         {/* CTA Section */}

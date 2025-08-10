@@ -1,12 +1,10 @@
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '@/lib/i18n';
 
 interface MissionVisionValuesProps {
-  locale: string;
+  translations: TranslationKeys;
 }
 
-export default function MissionVisionValues({ locale }: MissionVisionValuesProps) {
-  const t = getTranslations(locale);
-
+export default function MissionVisionValues({ translations: t }: MissionVisionValuesProps) {
   const values = [
     {
       title: t['about.values.transparency.title'],

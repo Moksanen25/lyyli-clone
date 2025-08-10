@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface ComparisonTableProps {
-  locale: string;
+  translations: TranslationKeys;
 }
 
 interface ComparisonRow {
@@ -16,8 +16,8 @@ interface ComparisonRow {
   enterprise: string | boolean;
 }
 
-export default function ComparisonTable({ locale }: ComparisonTableProps) {
-  const t = getTranslations(locale);
+export default function ComparisonTable({ translations }: ComparisonTableProps) {
+  const t = translations;
   const [showComparison, setShowComparison] = useState(false);
 
   const comparisonData: ComparisonRow[] = [
@@ -70,7 +70,7 @@ export default function ComparisonTable({ locale }: ComparisonTableProps) {
       enterprise: t['pricing.custom']
     },
     {
-      feature: t['pricing.features.webApp'],
+              feature: t['pricing.features.webInterface'],
       free: true,
       starter: true,
       growth: true,

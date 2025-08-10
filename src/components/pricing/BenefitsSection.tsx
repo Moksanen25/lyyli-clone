@@ -1,11 +1,11 @@
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface BenefitsSectionProps {
   locale: string;
+  translations: TranslationKeys;
 }
 
-export default function BenefitsSection({ locale }: BenefitsSectionProps) {
-  const t = getTranslations(locale);
+export default function BenefitsSection({ locale, translations: t }: BenefitsSectionProps) {
 
   const benefits = [
     {

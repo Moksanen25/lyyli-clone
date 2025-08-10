@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface FeaturesAccordionLayoutProps {
   locale: string;
+  translations: TranslationKeys;
 }
 
-export default function FeaturesAccordionLayout({ locale }: FeaturesAccordionLayoutProps) {
-  const t = getTranslations(locale);
+export default function FeaturesAccordionLayout({ locale, translations: t }: FeaturesAccordionLayoutProps) {
   const [openSection, setOpenSection] = useState<string>('efficiency');
 
   const toggleSection = (section: string) => {

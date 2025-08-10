@@ -7,7 +7,7 @@ interface CookiesPageProps {
 
 export async function generateMetadata({ params }: CookiesPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const t = await getTranslations(locale);
   
   return {
     title: t['cookies.page.title'],
@@ -20,7 +20,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
   
-  const t = getTranslations(currentLocale);
+  const t = await getTranslations(currentLocale);
 
   return (
     <div className="bg-white">

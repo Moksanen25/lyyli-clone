@@ -10,7 +10,7 @@ interface AboutPageProps {
 
 export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const t = await getTranslations(locale);
   
   return {
     title: t['about.page.title'],
@@ -23,7 +23,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
   
-  const t = getTranslations(currentLocale);
+  const t = await getTranslations(currentLocale);
 
   return (
     <div className="bg-white">
@@ -42,19 +42,19 @@ export default async function AboutPage({ params }: AboutPageProps) {
       {/* Origin Story - Why Lyyli Exists */}
       <section className="bg-light-gray py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <OriginStory locale={currentLocale} />
+          <OriginStory translations={t} />
         </div>
       </section>
 
       {/* Mission, Vision & Values */}
       <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        <MissionVisionValues locale={currentLocale} />
+        <MissionVisionValues translations={t} />
       </section>
 
       {/* Team Section */}
       <section className="bg-soft-rose py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <TeamSection locale={currentLocale} />
+          <TeamSection translations={t} />
         </div>
       </section>
 

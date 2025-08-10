@@ -1,11 +1,11 @@
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface ROIAssumptionsProps {
-  locale: string;
+  translations: TranslationKeys;
 }
 
-export default function ROIAssumptions({ locale }: ROIAssumptionsProps) {
-  const t = getTranslations(locale);
+export default function ROIAssumptions({ translations }: ROIAssumptionsProps) {
+  const t = translations;
 
   const assumptions = [
     t['pricing.assumptions.efficiency'],

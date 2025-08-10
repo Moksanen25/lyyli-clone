@@ -1,13 +1,13 @@
-import { getTranslations } from '../lib/i18n';
+import { TranslationKeys } from '../lib/i18n';
 import ClientLocaleSwitcher from './ClientLocaleSwitcher';
 import Image from 'next/image';
 
 interface HeaderProps {
   locale: string;
+  translations: TranslationKeys;
 }
 
-export default function Header({ locale }: HeaderProps) {
-  const t = getTranslations(locale);
+export default function Header({ locale, translations: t }: HeaderProps) {
 
   return (
     <header className="bg-white border-b border-light-gray sticky top-0 z-50">

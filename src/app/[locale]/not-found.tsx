@@ -1,9 +1,9 @@
 import { getTranslations } from '../../lib/i18n';
 import Link from 'next/link';
 
-export default function NotFound() {
+export default async function NotFound() {
   // Default to English for 404 pages since we can't access params here
-  const t = getTranslations('en');
+  const t = await getTranslations('en');
 
   return (
     <div className="bg-white min-h-screen flex items-center justify-center">

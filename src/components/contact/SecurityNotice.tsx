@@ -1,12 +1,11 @@
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface SecurityNoticeProps {
   locale: string;
+  translations: TranslationKeys;
 }
 
-export default function SecurityNotice({ locale }: SecurityNoticeProps) {
-  const t = getTranslations(locale);
-
+export default function SecurityNotice({ locale, translations: t }: SecurityNoticeProps) {
   const securityFeatures = [
     {
       title: t['contact.security.encryption'],

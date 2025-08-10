@@ -9,7 +9,7 @@ interface BlogPageProps {
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const t = await getTranslations(locale);
   
   const baseUrl = 'https://lyyli.ai';
   const canonicalUrl = `${baseUrl}/${locale}/blog`;
@@ -60,7 +60,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
   
-  const t = getTranslations(currentLocale);
+  const t = await getTranslations(currentLocale);
   const posts = getAllBlogPosts(currentLocale);
 
   return (
@@ -82,7 +82,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         {posts.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
-              <BlogPostCard key={post.slug} post={post} locale={currentLocale} />
+              <BlogPostCard key={post.slug} post={post} locale={currentLocale} translations={t} />
             ))}
           </div>
         ) : (

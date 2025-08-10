@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface PricingFAQProps {
   locale: string;
+  translations: TranslationKeys;
 }
 
 interface FAQItem {
@@ -12,26 +13,25 @@ interface FAQItem {
   answer: string;
 }
 
-export default function PricingFAQ({ locale }: PricingFAQProps) {
-  const t = getTranslations(locale);
+export default function PricingFAQ({ locale, translations: t }: PricingFAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqItems: FAQItem[] = [
     {
-      question: t['pricing.faq.question1'],
-      answer: t['pricing.faq.answer1']
+      question: t['pricing.faq.trial.question'],
+      answer: t['pricing.faq.trial.answer']
     },
     {
-      question: t['pricing.faq.question2'],
-      answer: t['pricing.faq.answer2']
+      question: t['pricing.faq.billing.question'],
+      answer: t['pricing.faq.billing.answer']
     },
     {
-      question: t['pricing.faq.question3'],
-      answer: t['pricing.faq.answer3']
+      question: t['pricing.faq.enterprise.question'],
+      answer: t['pricing.faq.enterprise.answer']
     },
     {
-      question: t['pricing.faq.question4'],
-      answer: t['pricing.faq.answer4']
+      question: t['pricing.faq.support.question'],
+      answer: t['pricing.faq.support.answer']
     }
   ];
 

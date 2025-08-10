@@ -43,7 +43,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const t = getTranslations(currentLocale);
+  const t = await getTranslations(currentLocale);
   
   // Format date
   const publishedDate = new Date(post.date).toLocaleDateString(
@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         
         <div className="mb-8">
           <span className="inline-block bg-forest-green text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
-            {t[`blog.categories.${post.category.toLowerCase()}` as keyof typeof t] || post.category}
+            {(t[`blog.categories.${post.category.toLowerCase()}` as keyof typeof t] as string) || post.category}
           </span>
           <h1 className="heading-1 mb-4">
             {post.title}

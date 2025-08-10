@@ -11,7 +11,7 @@ interface FeaturesPageProps {
 
 export async function generateMetadata({ params }: FeaturesPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const t = await getTranslations(locale);
   
   return {
     title: t['features.page.title'],
@@ -25,7 +25,7 @@ export default async function FeaturesPage({ params, searchParams }: FeaturesPag
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
   
-  const t = getTranslations(currentLocale);
+  const t = await getTranslations(currentLocale);
 
   return (
     <div className="bg-white">
@@ -40,16 +40,16 @@ export default async function FeaturesPage({ params, searchParams }: FeaturesPag
           </p>
           
           {/* Layout Toggle */}
-          <LayoutToggle currentLayout={layout} locale={currentLocale} />
+          <LayoutToggle currentLayout={layout} locale={currentLocale} translations={t} />
         </div>
       </section>
 
       {/* Features Content */}
       <section className="max-w-7xl mx-auto px-6 pb-16 lg:pb-24">
         {layout === 'accordion' ? (
-          <FeaturesAccordionLayout locale={currentLocale} />
+          <FeaturesAccordionLayout locale={currentLocale} translations={t} />
         ) : (
-          <FeaturesCardLayout locale={currentLocale} />
+          <FeaturesCardLayout locale={currentLocale} translations={t} />
         )}
       </section>
 

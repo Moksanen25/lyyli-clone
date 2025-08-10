@@ -1,11 +1,11 @@
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface FeaturesCardLayoutProps {
   locale: string;
+  translations: TranslationKeys;
 }
 
-export default function FeaturesCardLayout({ locale }: FeaturesCardLayoutProps) {
-  const t = getTranslations(locale);
+export default function FeaturesCardLayout({ locale, translations: t }: FeaturesCardLayoutProps) {
 
   const features = [
     // Automatic Content Creation

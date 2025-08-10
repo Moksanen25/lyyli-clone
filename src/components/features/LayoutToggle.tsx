@@ -1,15 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface LayoutToggleProps {
   currentLayout: string;
   locale: string;
+  translations: TranslationKeys;
 }
 
-export default function LayoutToggle({ currentLayout, locale }: LayoutToggleProps) {
-  const t = getTranslations(locale);
+export default function LayoutToggle({ currentLayout, locale, translations: t }: LayoutToggleProps) {
 
   return (
     <div className="flex items-center justify-center gap-4 mb-8">

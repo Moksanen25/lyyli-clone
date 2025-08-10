@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface ContactFormProps {
   locale: string;
+  translations: TranslationKeys;
 }
 
-export default function ContactForm({ locale }: ContactFormProps) {
-  const t = getTranslations(locale);
+export default function ContactForm({ locale, translations: t }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',

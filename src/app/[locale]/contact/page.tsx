@@ -10,7 +10,7 @@ interface ContactPageProps {
 
 export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const t = await getTranslations(locale);
   
   const baseUrl = 'https://lyyli.ai';
   const canonicalUrl = `${baseUrl}/${locale}/contact`;
@@ -46,7 +46,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
   
-  const t = getTranslations(currentLocale);
+  const t = await getTranslations(currentLocale);
 
   return (
     <div className="bg-white">
@@ -65,19 +65,19 @@ export default async function ContactPage({ params }: ContactPageProps) {
       {/* Contact Form Section */}
       <section className="bg-light-gray py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6">
-          <ContactForm locale={currentLocale} />
+          <ContactForm locale={currentLocale} translations={t} />
         </div>
       </section>
 
       {/* Security Notice */}
       <section className="max-w-7xl mx-auto px-6 py-12">
-        <SecurityNotice locale={currentLocale} />
+        <SecurityNotice locale={currentLocale} translations={t} />
       </section>
 
       {/* Team Contacts */}
       <section className="bg-soft-rose py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <TeamContacts locale={currentLocale} />
+          <TeamContacts locale={currentLocale} translations={t} />
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import { headers } from 'next/headers';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { getTranslations } from '../../lib/i18n';
 import "../globals.css";
 
 // Inter font for body text - clarity and readability
@@ -112,6 +113,9 @@ export default async function LocaleLayout({
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
 
+  // Get translations
+  const t = await getTranslations(currentLocale);
+
   // Get canonical URL
   const headersList = await headers();
   const host = headersList.get('host') || 'lyyli.ai';
@@ -138,11 +142,11 @@ export default async function LocaleLayout({
         suppressHydrationWarning={true}
       >
         <div className="flex flex-col min-h-screen">
-          <Header locale={currentLocale} />
+          <Header locale={currentLocale} translations={t} />
           <main className="flex-1">
             {children}
           </main>
-          <Footer locale={currentLocale} canonicalUrl={canonicalUrl} />
+          <Footer locale={currentLocale} translations={t} canonicalUrl={canonicalUrl} />
         </div>
         
         {/* Schema.org structured data */}

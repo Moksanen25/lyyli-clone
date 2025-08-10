@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface ROICalculatorProps {
-  locale: string;
+  translations: TranslationKeys;
 }
 
-export default function ROICalculator({ locale }: ROICalculatorProps) {
-  const t = getTranslations(locale);
+export default function ROICalculator({ translations }: ROICalculatorProps) {
+  const t = translations;
   const [teamSize, setTeamSize] = useState(50);
   const [hourlyRate, setHourlyRate] = useState(60);
 

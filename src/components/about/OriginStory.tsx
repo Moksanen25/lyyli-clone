@@ -1,12 +1,10 @@
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface OriginStoryProps {
-  locale: string;
+  translations: TranslationKeys;
 }
 
-export default function OriginStory({ locale }: OriginStoryProps) {
-  const t = getTranslations(locale);
-
+export default function OriginStory({ translations: t }: OriginStoryProps) {
   const problems = [
     {
       title: t['about.origin.problem1.title'],

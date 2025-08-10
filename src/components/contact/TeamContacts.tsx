@@ -1,11 +1,11 @@
-import { getTranslations } from '../../lib/i18n';
+import { TranslationKeys } from '../../lib/i18n';
 
 interface TeamContactsProps {
   locale: string;
+  translations: TranslationKeys;
 }
 
-export default function TeamContacts({ locale }: TeamContactsProps) {
-  const t = getTranslations(locale);
+export default function TeamContacts({ locale, translations: t }: TeamContactsProps) {
 
   const contacts = [
     {

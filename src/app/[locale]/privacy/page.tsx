@@ -7,7 +7,7 @@ interface PrivacyPageProps {
 
 export async function generateMetadata({ params }: PrivacyPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const t = await getTranslations(locale);
   
   return {
     title: t['privacy.page.title'],
@@ -20,7 +20,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
   
-  const t = getTranslations(currentLocale);
+  const t = await getTranslations(currentLocale);
 
   return (
     <div className="bg-white">
