@@ -2,6 +2,40 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+// Custom hook to handle IntersectionObserver with hydration-safe state management
+function useIntersectionObserver(options: IntersectionObserverInit = {}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient || typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1, ...options }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isClient, options]);
+
+  return { ref, isVisible: isClient && isVisible, isClient };
+}
+
 interface AnimatedBackgroundProps {
   variant?: 'hero' | 'section' | 'card' | 'minimal';
   intensity?: 'subtle' | 'medium' | 'intense';
@@ -15,34 +49,13 @@ export function AnimatedBackground({
   className = "",
   children 
 }: AnimatedBackgroundProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const { ref, isVisible, isClient } = useIntersectionObserver();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
+    if (!isClient) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
@@ -55,7 +68,7 @@ export function AnimatedBackground({
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isClient]);
 
   const getIntensityClasses = () => {
     switch (intensity) {
@@ -87,7 +100,7 @@ export function AnimatedBackground({
 
   return (
     <div 
-      ref={containerRef}
+      ref={ref}
       className={`relative overflow-hidden ${getVariantClasses()} ${className}`}
     >
       {/* Primary gradient background */}
@@ -230,33 +243,9 @@ export function MinimalBackground({ className = "", children }: { className?: st
 
 // Interactive particle background
 export function ParticleBackground({ className = "", children }: { className?: string; children?: React.ReactNode }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const { ref, isVisible } = useIntersectionObserver();
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; speed: number; color: string }>>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     if (!isVisible) return;
@@ -291,7 +280,7 @@ export function ParticleBackground({ className = "", children }: { className?: s
   }, [isVisible]);
 
   return (
-    <div ref={containerRef} className={`relative overflow-hidden min-h-screen ${className}`}>
+    <div ref={ref} className={`relative overflow-hidden min-h-screen ${className}`}>
       {/* Base gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-soft-rose via-white to-muted-turquoise opacity-20" />
       
@@ -325,31 +314,7 @@ export function ParticleBackground({ className = "", children }: { className?: s
 
 // Gradient mesh background
 export function GradientMeshBackground({ className = "", children }: { className?: string; children?: React.ReactNode }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`relative overflow-hidden min-h-screen ${className}`}>

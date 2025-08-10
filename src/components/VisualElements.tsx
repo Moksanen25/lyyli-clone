@@ -2,15 +2,18 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-// Enhanced Geometric Pattern Component with brand colors and advanced animations
-export function EnhancedGeometricPattern({ className = "" }: { className?: string }) {
+// Custom hook to handle IntersectionObserver with hydration-safe state management
+function useIntersectionObserver(options: IntersectionObserverInit = {}) {
   const [isVisible, setIsVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient || typeof window === 'undefined' || !('IntersectionObserver' in window)) {
       return;
     }
 
@@ -20,7 +23,7 @@ export function EnhancedGeometricPattern({ className = "" }: { className?: strin
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, ...options }
     );
 
     if (ref.current) {
@@ -28,7 +31,14 @@ export function EnhancedGeometricPattern({ className = "" }: { className?: strin
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [isClient, options]);
+
+  return { ref, isVisible: isClient && isVisible, isClient };
+}
+
+// Enhanced Geometric Pattern Component with brand colors and advanced animations
+export function EnhancedGeometricPattern({ className = "" }: { className?: string }) {
+  const { ref, isVisible, isClient } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`absolute inset-0 overflow-hidden ${className}`}>
@@ -122,33 +132,16 @@ export function EnhancedGeometricPattern({ className = "" }: { className?: strin
 // Enhanced Floating Elements with parallax, brand colors, and advanced interactions
 export function FloatingElements() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
+    setIsClient(true);
   }, []);
 
   useEffect(() => {
+    if (!isClient) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
@@ -161,14 +154,14 @@ export function FloatingElements() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isClient]);
 
   return (
     <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Enhanced floating elements with parallax effect and staggered animations */}
       <div 
         className={`absolute w-4 h-4 rounded-full bg-muted-turquoise opacity-25 transition-all duration-1000 ${
-          isVisible ? 'animate-pulse' : 'opacity-0'
+          isClient ? 'animate-pulse' : 'opacity-0'
         }`}
         style={{
           left: '20%',
@@ -179,7 +172,7 @@ export function FloatingElements() {
       />
       <div 
         className={`absolute w-6 h-6 rounded-full bg-soft-rose opacity-20 transition-all duration-1000 ${
-          isVisible ? 'animate-bounce' : 'opacity-0'
+          isClient ? 'animate-bounce' : 'opacity-0'
         }`}
         style={{
           left: '80%',
@@ -190,7 +183,7 @@ export function FloatingElements() {
       />
       <div 
         className={`absolute w-3 h-3 rounded-full bg-forest-green opacity-30 transition-all duration-1000 ${
-          isVisible ? 'animate-ping' : 'opacity-0'
+          isClient ? 'animate-ping' : 'opacity-0'
         }`}
         style={{
           left: '60%',
@@ -203,7 +196,7 @@ export function FloatingElements() {
       {/* Additional floating elements with staggered animations */}
       <div 
         className={`absolute w-2 h-2 rounded-full bg-muted-turquoise opacity-40 transition-all duration-1000 ${
-          isVisible ? 'animate-pulse' : 'opacity-0'
+          isClient ? 'animate-pulse' : 'opacity-0'
         }`}
         style={{
           left: '40%',
@@ -214,7 +207,7 @@ export function FloatingElements() {
       />
       <div 
         className={`absolute w-5 h-5 rounded-full bg-soft-rose opacity-25 transition-all duration-1000 ${
-          isVisible ? 'animate-bounce' : 'opacity-0'
+          isClient ? 'animate-bounce' : 'opacity-0'
         }`}
         style={{
           left: '90%',
@@ -227,7 +220,7 @@ export function FloatingElements() {
       {/* New: Geometric floating shapes */}
       <div 
         className={`absolute w-4 h-4 bg-forest-green opacity-20 transition-all duration-1000 ${
-          isVisible ? 'animate-spin' : 'opacity-0'
+          isClient ? 'animate-spin' : 'opacity-0'
         }`}
         style={{
           left: '10%',
@@ -238,7 +231,7 @@ export function FloatingElements() {
       />
       <div 
         className={`absolute w-3 h-3 bg-muted-turquoise opacity-30 transition-all duration-1000 ${
-          isVisible ? 'animate-pulse' : 'opacity-0'
+          isClient ? 'animate-pulse' : 'opacity-0'
         }`}
         style={{
           left: '70%',
@@ -254,39 +247,22 @@ export function FloatingElements() {
 // Enhanced AI Communication Visualization with brand colors and advanced animations
 export function AICommunicationVisual() {
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [isClient, setIsClient] = useState(false);
+  const { ref, isVisible } = useIntersectionObserver();
 
   useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
+    setIsClient(true);
   }, []);
 
   useEffect(() => {
+    if (!isClient) return;
+
     const timer = setInterval(() => {
       setIsAnimating(true);
       setTimeout(() => setIsAnimating(false), 1000);
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isClient]);
 
   return (
     <div ref={ref} className="relative w-full h-64">
@@ -367,31 +343,7 @@ export function AICommunicationVisual() {
 
 // Enhanced Gradient Background with sophisticated overlays and animations
 export function GradientBackground({ className = "" }: { className?: string }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible, isClient } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`absolute inset-0 ${className}`}>
@@ -426,31 +378,7 @@ export function GradientBackground({ className = "" }: { className?: string }) {
 
 // Enhanced Animated Wave with brand colors, better curves, and advanced animations
 export function AnimatedWave({ className = "" }: { className?: string }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible, isClient } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`absolute bottom-0 left-0 w-full overflow-hidden ${className}`}>
@@ -543,31 +471,7 @@ export function StatsVisual({
   trend?: 'up' | 'down' | 'neutral';
   className?: string;
 }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible } = useIntersectionObserver();
 
   const trendColors = {
     up: 'text-green-600',
@@ -617,33 +521,9 @@ export function ProgressBar({
   showPercentage?: boolean;
   className?: string;
 }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const { ref, isVisible } = useIntersectionObserver();
   const [animatedValue, setAnimatedValue] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
   const percentage = (value / max) * 100;
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     if (isVisible) {
@@ -687,31 +567,7 @@ export function AnimatedCounter({
   className?: string;
 }) {
   const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible } = useIntersectionObserver();
 
   useEffect(() => {
     if (!isVisible) return;
@@ -758,31 +614,7 @@ export function FeatureHighlightCard({
   gradient?: string;
   className?: string;
 }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`group relative bg-white rounded-2xl shadow-soft p-6 transition-all duration-1000 hover:shadow-xl hover:-translate-y-2 ${
@@ -824,31 +656,7 @@ export function AnimatedTimeline({
   steps: Array<{ title: string; description: string; icon?: React.ReactNode }>;
   className?: string;
 }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`relative transition-all duration-1000 ${
@@ -893,32 +701,8 @@ export function DataVisualization({
   type?: 'bar' | 'pie' | 'line';
   className?: string;
 }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const { ref, isVisible } = useIntersectionObserver();
   const maxValue = Math.max(...data.map(d => d.value));
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   if (type === 'bar') {
     return (
@@ -967,31 +751,7 @@ export function TestimonialCard({
   rating?: number;
   className?: string;
 }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`group relative bg-white rounded-2xl shadow-soft p-6 transition-all duration-1000 hover:shadow-xl hover:-translate-y-2 ${
@@ -1040,31 +800,7 @@ export function TestimonialCard({
 
 // New: Animated Background Pattern with brand colors
 export function VisualAnimatedBackgroundPattern({ className = "" }: { className?: string }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if IntersectionObserver is available (client-side only)
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible, isClient } = useIntersectionObserver();
 
   return (
     <div ref={ref} className={`absolute inset-0 overflow-hidden ${className}`}>
