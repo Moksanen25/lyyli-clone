@@ -13,7 +13,7 @@ import {
   FeatureHighlightCard,
   DataVisualization,
   TestimonialCard,
-  AnimatedBackgroundPattern
+  VisualAnimatedBackgroundPattern
 } from '../../components/VisualElements';
 import { IconSet } from '../../components/IconSet';
 
@@ -101,7 +101,7 @@ export default async function Home({ params }: HomeProps) {
       <section className="relative bg-soft-rose py-20 lg:py-28" id="problems" aria-labelledby="problems-heading">
         {/* Enhanced Background Pattern */}
         <SectionBackground />
-        <AnimatedBackgroundPattern />
+        <VisualAnimatedBackgroundPattern />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
@@ -252,7 +252,7 @@ export default async function Home({ params }: HomeProps) {
       <section id="benefits" className="relative py-20 lg:py-28" aria-labelledby="benefits-heading">
         {/* Enhanced Background Pattern */}
         <SectionBackground />
-        <AnimatedBackgroundPattern />
+        <VisualAnimatedBackgroundPattern />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
@@ -307,7 +307,7 @@ export default async function Home({ params }: HomeProps) {
       <section className="relative py-20 lg:py-28 overflow-hidden" id="features" aria-labelledby="features-heading">
         {/* Enhanced Background Elements */}
         <SectionBackground />
-        <AnimatedBackgroundPattern />
+        <VisualAnimatedBackgroundPattern />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">

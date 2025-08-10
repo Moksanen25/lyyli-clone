@@ -967,7 +967,7 @@ export function TestimonialCard({
 }
 
 // New: Animated Background Pattern with brand colors
-export function AnimatedBackgroundPattern({ className = "" }: { className?: string }) {
+export function VisualAnimatedBackgroundPattern({ className = "" }: { className?: string }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
