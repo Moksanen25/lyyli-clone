@@ -143,7 +143,7 @@ export function FloatingElements() {
     if (!isClient || typeof window === 'undefined') return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
+      if (containerRef.current && typeof window !== 'undefined') {
         const rect = containerRef.current.getBoundingClientRect();
         setMousePosition({
           x: e.clientX - rect.left,
