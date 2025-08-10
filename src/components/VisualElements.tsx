@@ -323,21 +323,25 @@ export function AICommunicationVisual() {
       ))}
 
       {/* Enhanced connection lines with animation and glow effect */}
-      <svg className="absolute inset-0 w-full h-full">
-        {[0, 72, 144, 216, 288].map((angle, index) => (
-          <line
-            key={index}
-            x1="50%"
-            y1="50%"
-            x2={`calc(50% + ${Math.cos((angle * Math.PI) / 180) * 80}px)`}
-            y2={`calc(50% + ${Math.sin((angle * Math.PI) / 180) * 80}px)`}
-            stroke="var(--muted-turquoise)"
-            strokeWidth="1.5"
-            opacity="0.4"
-            className={`transition-all duration-1000 ${isVisible ? 'animate-pulse' : 'opacity-0'}`}
-            style={{ transitionDelay: `${index * 100}ms` }}
-          />
-        ))}
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="none">
+        {[0, 72, 144, 216, 288].map((angle, index) => {
+          const x2 = 100 + Math.cos((angle * Math.PI) / 180) * 80;
+          const y2 = 100 + Math.sin((angle * Math.PI) / 180) * 80;
+          return (
+            <line
+              key={index}
+              x1="100"
+              y1="100"
+              x2={x2}
+              y2={y2}
+              stroke="var(--muted-turquoise)"
+              strokeWidth="1.5"
+              opacity="0.4"
+              className={`transition-all duration-1000 ${isVisible ? 'animate-pulse' : 'opacity-0'}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            />
+          );
+        })}
       </svg>
     </div>
   );
