@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 // Enhanced Geometric Pattern Component with brand colors and advanced animations
-export function GeometricPattern({ className = "" }: { className?: string }) {
+export function EnhancedGeometricPattern({ className = "" }: { className?: string }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
