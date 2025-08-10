@@ -54,7 +54,7 @@ export function AnimatedBackground({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient || typeof window === 'undefined') return;
 
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
