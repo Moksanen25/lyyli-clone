@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         <div className="mb-8">
-          <span className="inline-block bg-forest-green text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
+          <span className="inline-block bg-forest text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
             {(t[
               `blog.categories.${post.category.toLowerCase()}` as keyof typeof t
             ] as string) || post.category}
@@ -144,7 +144,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/demo"
-              className="bg-forest-green text-white px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center justify-center gap-2"
+              className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-colors font-medium inline-flex items-center justify-center gap-2"
               aria-label="Book a demo of Lyyli.ai"
             >
               {t["cta.button"]}
@@ -165,7 +165,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </a>
             <a
               href="/contact"
-              className="border border-forest-green text-forest-green px-8 py-4 rounded-lg hover:bg-forest-green hover:text-white transition-colors font-medium inline-flex items-center justify-center"
+              className="border border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-colors font-medium inline-flex items-center justify-center"
               aria-label="Contact Lyyli.ai sales team"
             >
               Contact Sales
