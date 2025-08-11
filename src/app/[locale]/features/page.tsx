@@ -109,7 +109,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       <section className="container mx-auto px-4 py-16 bg-grayLight/30">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            Core benefits for expert teams
+            Core benefits for professional service organizations
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
             Discover how Lyyli transforms communication workflows with intelligent automation and enterprise-grade security.

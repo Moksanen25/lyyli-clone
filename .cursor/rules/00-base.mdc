@@ -7,5 +7,5 @@
 - Kun luot "uuden sivun/komponentin", käytä @templates-tiedostoja.
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

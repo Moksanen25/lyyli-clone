@@ -3,13 +3,13 @@
 :root {
   /* Brand Colors - EXACT VALUES FROM BRAND BOOK */
   --forest: #2f5d50; /* Primary brand color - reliability and calm */
-  --rose: #f7ebeb; /* Gentle warmth and empathy */
+  --rose: #F7EBEB; /* Gentle warmth and empathy - UPDATED BRAND COLOR */
   --grayLight: #f5f5f4; /* Minimalism and clarity */
-  --turquoise: #a7d6d1; /* Subtle technological accent */
+  --turquoise: #00B4D8; /* Subtle technological accent - CORRECTED VALUE */
 
   /* Supporting Colors */
-  --darkGray: #333333;
-  --mediumGray: #666666;
+  --darkGray: #343A40; /* CORRECTED VALUE */
+  --mediumGray: #6C757D; /* CORRECTED VALUE */
   --white: #ffffff;
 
   /* Semantic Colors */
@@ -17,12 +17,12 @@
   --foreground: #2f5d50;
   --primary: #2f5d50;
   --primary-foreground: #ffffff;
-  --secondary: #f7ebeb;
+  --secondary: #F7EBEB; /* Updated to match rose */
   --secondary-foreground: #2f5d50;
-  --accent: #a7d6d1;
+  --accent: #00B4D8; /* Updated to match turquoise */
   --accent-foreground: #2f5d50;
-  --muted: #f5f5f4;
-  --muted-foreground: #666666;
+  --muted: #F8F9FA; /* Updated to match grayLight */
+  --muted-foreground: #6C757D; /* Updated to match mediumGray */
 }
 
 @theme inline {

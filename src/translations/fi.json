@@ -399,11 +399,11 @@
   "contact.page.title": "Yhteystiedot - Lyyli.ai",
   "contact.page.description": "Ota yhteyttä Lyylin tiimiin. Turvalliset viestintäkanavat toiminnanjohtajille ja viestintäpäälliköille.",
 
-  "contact.hero.title": "Valmis muuttamaan tiimisi viestintää?",
+  "contact.hero.title": "Valmis muuttamaan organisaatiosi viestintää?",
   "contact.hero.subtitle": "Varaa kartoituskeskustelu tiimimme kanssa oppiaksesi, miten Lyyli voi virtaviivaistaa asiantuntijaorganisaatiosi sisäistä koordinaatiota.",
 
   "contact.form.title": "Varaa kartoituskeskustelu",
-  "contact.form.subtitle": "Toiminnanjohtajat ja viestintäpäälliköt: Keskustellaan tiimisi erityisistä viestintähaasteista.",
+  "contact.form.subtitle": "Toiminnanjohtajat ja viestintäpäälliköt: Keskustellaan organisaatiosi erityisistä viestintähaasteista.",
   "contact.form.name.label": "Koko nimi",
   "contact.form.name.placeholder": "Koko nimesi",
   "contact.form.email.label": "Yrityssähköposti",
@@ -419,7 +419,7 @@
   "contact.form.teamsize.option4": "500+ henkeä",
   "contact.form.message.label": "Kerro viestintähaasteistanne",
   "contact.form.message.placeholder": "Mitä viestinnän kipupisteitä asiantuntijaorganisaatiollanne on tällä hetkellä? (Valinnainen)",
-  "contact.form.security.notice": "🔒 Kaikki lomakkeen lähetykset salataan ja siirretään turvallisesti",
+  "contact.form.security.notice": "Kaikki lomakkeen lähetykset salataan ja siirretään turvallisesti",
   "contact.form.submit": "Varaa kartoituskeskustelu",
   "contact.form.processing": "Varataan...",
 
@@ -450,7 +450,7 @@
   "contact.response.title": "Mitä odottaa",
   "contact.response.timing": "Vastaus 24 tunnin sisällä",
   "contact.response.discovery": "30 minuutin kartoituskeskustelu sovittuna sinulle sopivaan aikaan",
-  "contact.response.followup": "Räätälöity ehdotus tiimisi tarpeiden perusteella",
+  "contact.response.followup": "Räätälöity ehdotus organisaatiosi tarpeiden perusteella",
 
   "404.title": "Sivua ei löydy - Lyyli.ai",
   "404.heading": "Sivua ei löydy",

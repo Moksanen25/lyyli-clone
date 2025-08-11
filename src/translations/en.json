@@ -396,11 +396,11 @@
   "contact.page.title": "Contact - Lyyli.ai",
   "contact.page.description": "Get in touch with Lyyli's team. Secure communication channels for operations leaders and communications managers.",
 
-  "contact.hero.title": "Ready to transform your team's communication?",
+  "contact.hero.title": "Ready to transform your organization's communication?",
   "contact.hero.subtitle": "Schedule a discovery call with our team to learn how Lyyli can streamline your professional service organization's internal coordination.",
 
   "contact.form.title": "Schedule a discovery call",
-  "contact.form.subtitle": "Operations leaders and communications managers: Let's discuss your team's specific communication challenges.",
+  "contact.form.subtitle": "Operations leaders and communications managers: Let's discuss your organization's specific communication challenges.",
   "contact.form.name.label": "Full name",
   "contact.form.name.placeholder": "Your full name",
   "contact.form.email.label": "Business email",
@@ -416,7 +416,7 @@
   "contact.form.teamsize.option4": "500+ people",
   "contact.form.message.label": "Tell us about your communication challenges",
   "contact.form.message.placeholder": "What communication pain points is your professional service organization currently facing? (Optional)",
-  "contact.form.security.notice": "🔒 All form submissions are encrypted and transmitted securely",
+  "contact.form.security.notice": "All form submissions are encrypted and transmitted securely",
   "contact.form.submit": "Schedule discovery call",
   "contact.form.processing": "Scheduling...",
 
@@ -447,7 +447,7 @@
   "contact.response.title": "What to expect",
   "contact.response.timing": "Response within 24 hours",
   "contact.response.discovery": "30-minute discovery call scheduled at your convenience",
-  "contact.response.followup": "Customized proposal based on your team's needs",
+  "contact.response.followup": "Customized proposal based on your organization's needs",
 
   "404.title": "Page not found - Lyyli.ai",
   "404.heading": "Page not found",

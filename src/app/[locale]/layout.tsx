@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ConsentBanner from "../../components/ConsentBanner";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import { getTranslations } from "../../lib/i18n";
 import { fontVars } from "../../lib/fonts";
 import "../globals.css";
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Lyyli.ai",
     images: [
       {
-        url: "/og-image.png",
+        url: "/api/og?title=Lyyli.ai - AI Communication Assistant&description=Transform your internal communications with enterprise-grade AI",
         width: 1200,
         height: 630,
         alt: "Lyyli.ai - AI Communication Assistant",
@@ -104,7 +106,7 @@ export default async function LocaleLayout({
   // Get translations
   const t = await getTranslations(currentLocale);
 
-  // Get canonical URL
+  // Get canonical URL and pathname
   const headersList = await headers();
   const host = headersList.get("host") || "lyyli.ai";
   const protocol = headersList.get("x-forwarded-proto") || "https";
@@ -132,12 +134,14 @@ export default async function LocaleLayout({
       <body className="antialiased font-sans" suppressHydrationWarning={true}>
         <div className="flex flex-col min-h-screen">
           <Header locale={currentLocale} translations={t} />
+          <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />
           <main className="flex-1">{children}</main>
           <Footer
             locale={currentLocale}
             translations={t}
             canonicalUrl={canonicalUrl}
           />
+          <ConsentBanner locale={currentLocale} translations={t} />
         </div>
 
         {/* Schema.org structured data */}

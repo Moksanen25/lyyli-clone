@@ -10,12 +10,12 @@ export default function OriginStory({ translations: t }: OriginStoryProps) {
       title: t["about.origin.problem1.title"],
       description: t["about.origin.problem1.description"],
       icon: (
-        <svg className="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.88V14m0 0v4m0-4h6m-6 0H9m3-9a3 3 0 100 6 3 3 0 000-6z" />
         </svg>
       ),
       color: "bg-rose",
-      iconColor: "text-rose-600",
+      iconColor: "text-forest",
     },
     {
       title: t["about.origin.problem2.title"],

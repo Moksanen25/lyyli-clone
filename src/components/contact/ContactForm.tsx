@@ -13,6 +13,7 @@ export default function ContactForm({
   translations: t,
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,28 +27,39 @@ export default function ContactForm({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Send data to backend API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+          source: 'contact-form'
+        }),
+      });
 
-    // In a real implementation, this would send the data securely
-    console.log("Form submitted securely:", formData);
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      role: "",
-      teamSize: "",
-      message: "",
-    });
-
-    setIsSubmitting(false);
-    alert(
-      locale === "fi"
-        ? "Kiitos! Otamme yhteyttä pian."
-        : "Thank you! We'll be in touch soon.",
-    );
+      const result = await response.json();
+      console.log('Form submitted successfully:', result);
+      
+      setSubmitted(true);
+      setIsSubmitting(false);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      // Show error state
+      alert(
+        locale === "fi"
+          ? "Lomakkeen lähetys epäonnistui. Yritä uudelleen tai ota yhteyttä suoraan."
+          : "Failed to submit form. Please try again or contact us directly."
+      );
+    }
   };
 
   const handleChange = (
@@ -60,6 +72,35 @@ export default function ContactForm({
       [e.target.name]: e.target.value,
     }));
   };
+
+  if (submitted) {
+    return (
+      <div className="max-w-2xl mx-auto">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 className="text-xl font-playfair font-bold text-forest mb-2">
+            {locale === "fi" ? "Kiitos yhteydenotostasi!" : "Thank you for your message!"}
+          </h3>
+          <p className="text-mediumGray mb-4">
+            {locale === "fi" 
+              ? "Otamme yhteyttä pian ja varaamme sinulle kartoituskeskustelun."
+              : "We'll be in touch soon and schedule a discovery call for you."
+            }
+          </p>
+          <button 
+            onClick={() => setSubmitted(false)}
+            className="bg-forest text-white px-6 py-2 rounded-lg hover:bg-forest/90 transition-colors"
+          >
+            {locale === "fi" ? "Lähetä toinen viesti" : "Send Another Message"}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-soft p-8">
@@ -199,7 +240,7 @@ export default function ContactForm({
         </div>
 
         {/* Security Notice */}
-        <div className="bg-rose p-4 rounded-lg">
+        <div className="bg-forest/5 border border-forest/20 p-4 rounded-lg">
           <p className="text-sm text-forest font-medium font-sans">
             {t["contact.form.security.notice"]}
           </p>

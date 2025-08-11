@@ -85,7 +85,7 @@ export const IconSet = {
     size?: number;
   }) => (
     <svg
-      className={`text-soft-rose transition-all duration-300 hover:text-muted-turquoise ${className}`}
+      className={`text-rose transition-all duration-300 hover:text-muted-turquoise ${className}`}
       width={size}
       height={size}
       viewBox="0 0 24 24"
@@ -182,7 +182,7 @@ export const IconSet = {
     size?: number;
   }) => (
     <svg
-      className={`text-soft-rose transition-all duration-300 hover:text-muted-turquoise ${className}`}
+      className={`text-rose transition-all duration-300 hover:text-muted-turquoise ${className}`}
       width={size}
       height={size}
       viewBox="0 0 24 24"
@@ -261,7 +261,7 @@ export const IconSet = {
     size?: number;
   }) => (
     <svg
-      className={`text-soft-rose transition-all duration-300 hover:text-muted-turquoise ${className}`}
+      className={`text-rose transition-all duration-300 hover:text-muted-turquoise ${className}`}
       width={size}
       height={size}
       viewBox="0 0 24 24"
@@ -334,7 +334,7 @@ export const IconSet = {
     size?: number;
   }) => (
     <svg
-      className={`text-soft-rose transition-all duration-300 hover:text-muted-turquoise ${className}`}
+      className={`text-rose transition-all duration-300 hover:text-muted-turquoise ${className}`}
       width={size}
       height={size}
       viewBox="0 0 24 24"
@@ -491,7 +491,7 @@ export const IconSet = {
     icon,
     className = "",
     size = 24,
-    backgroundClass = "bg-gradient-to-br from-soft-rose to-muted-turquoise",
+    backgroundClass = "bg-gradient-to-br from-rose to-muted-turquoise",
   }: {
     icon: ReactNode;
     className?: string;

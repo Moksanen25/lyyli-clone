@@ -185,7 +185,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
             </p>
 
             <div className="space-y-4">
-              <div className="bg-soft-rose p-4 rounded-lg">
+              <div className="bg-rose p-4 rounded-lg">
                 <h4 className="font-medium text-forest-green mb-2">
                   Browser Settings
                 </h4>
@@ -248,7 +248,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
             <p className="body-text text-medium-gray mb-4">
               For questions about our use of cookies or this policy, contact:
             </p>
-            <div className="bg-soft-rose p-6 rounded-lg">
+            <div className="bg-rose p-6 rounded-lg">
               <p className="body-text text-forest-green">
                 <strong>Privacy Team</strong>
                 <br />
