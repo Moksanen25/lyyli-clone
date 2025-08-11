@@ -1,5 +1,6 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
+import WaitlistForm from "@/components/waitlist/WaitlistForm";
 
 interface WaitlistPageProps {
   params: Promise<{ locale: string }>;
@@ -91,8 +92,8 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-amber rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
@@ -117,10 +118,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
               </div>
 
               {/* HubSpot Form */}
-              <div className="max-w-2xl mx-auto">
-                <script src="https://js-eu1.hsforms.net/forms/embed/146205702.js" defer></script>
-                <div className="hs-form-frame" data-region="eu1" data-form-id="f337eade-e814-4038-b2aa-908dcf612cce" data-portal-id="146205702"></div>
-              </div>
+              <WaitlistForm />
             </div>
 
             {/* Additional Info */}
