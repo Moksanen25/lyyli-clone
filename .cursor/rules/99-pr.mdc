@@ -1,0 +1,8 @@
+- Kuvaus mitä/miksi, riskit, testausohjeet, ennen/jälkeen-kuvat UI-muutoksista.
+- i18n: kaikki tekstit avaimilla; ei kovakoodauksia.
+- Brändi: värit, typot, kuvitus linjassa ohjeiden kanssa.
+- Suorituskyky & a11y läpäisty; eventit lisätty (page_view, CTA, form_submit).
+description:
+globs:
+alwaysApply: false
+---

@@ -20,19 +20,23 @@ public/images/
 ## Image Guidelines
 
 ### File Formats
+
 - **Logos**: SVG (preferred) or PNG with transparent background
 - **Photos**: JPG or WebP for best compression
 - **Icons**: SVG (preferred) or PNG
 - **Illustrations**: SVG or PNG
 
 ### Naming Convention
+
 Use descriptive, kebab-case filenames:
+
 - `lyyli-logo-primary.svg`
 - `hero-background-gradient.jpg`
 - `feature-dashboard-screenshot.png`
 - `team-mikko-oksanen.jpg`
 
 ### Recommended Sizes
+
 - **Logos**: Vector (SVG) or 200x200px minimum
 - **Hero images**: 1920x1080px or larger
 - **Feature screenshots**: 800x600px minimum
@@ -41,6 +45,7 @@ Use descriptive, kebab-case filenames:
 - **Icons**: 24x24px, 32x32px, 48x48px
 
 ### Optimization
+
 - Compress images before adding to the project
 - Use WebP format when possible for better performance
 - Provide multiple sizes for responsive images when needed
@@ -54,17 +59,17 @@ import Image from 'next/image';
 import logoSvg from '/public/images/logos/lyyli-logo-primary.svg';
 
 // For static imports
-<Image 
-  src={logoSvg} 
-  alt="Lyyli.ai logo" 
-  width={200} 
+<Image
+  src={logoSvg}
+  alt="Lyyli.ai logo"
+  width={200}
   height={50}
 />
 
 // For dynamic imports
-<Image 
-  src="/images/hero/hero-background.jpg" 
-  alt="Hero background" 
+<Image
+  src="/images/hero/hero-background.jpg"
+  alt="Hero background"
   fill
   className="object-cover"
 />

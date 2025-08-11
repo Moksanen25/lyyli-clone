@@ -1,0 +1,11 @@
+- Sivupolut:
+  1) / (Home) 2) /features 2.1) /features/security 3) /pricing 4) /about 5) /blog 6) /contact
+- Header: logo vasen, nav oikea, ensisijainen CTA "Get started" tai "Book a demo".
+- Footer: lyhyt esittely, pikamenut, some, kielivalitsin.
+- Hero: arvolupaus + 1–2 CTA:ta, kuvitus/kuva; ei karuselleja.
+- Korttigrid: pehmeät varjot, md–lg pyöristys.
+- Breadcrumbit syvyydellä > 2 (esim. features/security).
+description:
+globs:
+alwaysApply: false
+---

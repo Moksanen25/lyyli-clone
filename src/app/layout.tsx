@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fontVars } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Lyyli.ai - AI Communication Assistant",
@@ -11,10 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>
-        {children}
-      </body>
+    <html className={fontVars}>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }

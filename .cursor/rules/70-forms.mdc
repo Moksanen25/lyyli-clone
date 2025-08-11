@@ -1,0 +1,8 @@
+- Lähetys server-toiminnolla tai API-reitillä; ei avaimia clienttiin.
+- Validointi: client + server; honeypot + rate limit. reCAPTCHA vain tarpeeseen.
+- HubSpot: lähetä lead (source=website), kieli & reitti mukaan.
+- Kiitos-sivu + event "form_submit" analytiikkaan.
+description:
+globs:
+alwaysApply: false
+---

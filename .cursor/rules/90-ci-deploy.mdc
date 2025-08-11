@@ -1,0 +1,8 @@
+- Branch-nimet: feat/…, fix/…, chore/…
+- Conventional Commits vaaditaan.
+- Vercel Preview jokaiselle PR:lle; tarkista Lighthouse, a11y, linkit, 404/500.
+- Prod-deploy vain kun tarkistuslista vihreä (SEO/metat, sitemap, analytiikka).
+description:
+globs:
+alwaysApply: false
+---

@@ -1,6 +1,6 @@
-import { TranslationKeys } from '../lib/i18n';
-import ClientLocaleSwitcher from './ClientLocaleSwitcher';
-import Image from 'next/image';
+import { TranslationKeys } from "../lib/i18n";
+import ClientLocaleSwitcher from "./ClientLocaleSwitcher";
+import Image from "next/image";
 
 interface HeaderProps {
   locale: string;
@@ -8,14 +8,21 @@ interface HeaderProps {
 }
 
 export default function Header({ locale, translations: t }: HeaderProps) {
-
   return (
-    <header className="bg-white border-b border-light-gray sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto px-6 py-4" role="navigation" aria-label="Main navigation">
+    <header className="bg-white border-b border-grayLight sticky top-0 z-50 shadow-soft">
+      <nav
+        className="max-w-7xl mx-auto px-6 py-4"
+        role="navigation"
+        aria-label="Main navigation"
+      >
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/" className="flex items-center gap-3" aria-label="Lyyli.ai homepage">
+            <a
+              href="/"
+              className="flex items-center gap-3"
+              aria-label="Lyyli.ai homepage"
+            >
               <Image
                 src="/images/logos/vaakalogo_lyyli_1500x500_px.png"
                 alt="Lyyli.ai logo - AI Communication Assistant for Professional Service Organizations"
@@ -31,43 +38,53 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           <div className="hidden lg:flex items-center gap-8">
             <ul className="flex items-center gap-8" role="menubar">
               <li role="none">
-                <a 
+                <a
                   href={`/${locale}/features`}
-                  className="body-text text-dark-gray hover:text-forest-green transition-colors"
+                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="View features page"
                 >
-                  {t['nav.features']}
+                  {t["nav.features"]}
                 </a>
               </li>
               <li role="none">
-                <a 
-                  href="#roles" 
-                  className="body-text text-dark-gray hover:text-forest-green transition-colors"
-                  role="menuitem"
-                  aria-label="View target roles section"
-                >
-                  For Teams
-                </a>
-              </li>
-              <li role="none">
-                <a 
+                <a
                   href={`/${locale}/pricing`}
-                  className="body-text text-dark-gray hover:text-forest-green transition-colors"
+                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="View pricing page"
                 >
-                  {t['nav.pricing']}
+                  {t["nav.pricing"]}
                 </a>
               </li>
               <li role="none">
-                <a 
+                <a
+                  href={`/${locale}/about`}
+                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  role="menuitem"
+                  aria-label="About us page"
+                >
+                  {locale === "fi" ? "Tietoja meistä" : "About"}
+                </a>
+              </li>
+              <li role="none">
+                <a
+                  href={`/${locale}/blog`}
+                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  role="menuitem"
+                  aria-label="Blog page"
+                >
+                  Blog
+                </a>
+              </li>
+              <li role="none">
+                <a
                   href={`/${locale}/contact`}
-                  className="body-text text-dark-gray hover:text-forest-green transition-colors"
+                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="Contact page"
                 >
-                  {t['nav.contact']}
+                  {t["nav.contact"]}
                 </a>
               </li>
             </ul>
@@ -75,93 +92,122 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             {/* Locale Switcher */}
             <ClientLocaleSwitcher currentLocale={locale} />
 
-            {/* CTA Button */}
+            {/* CTA Button - Following 10-layout rule: ensisijainen CTA "Get started" tai "Book a demo" */}
             <a
-              href="#cta"
-              className="bg-forest-green text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center gap-2"
-              aria-label="Start your free trial of Lyyli.ai"
+              href={`/${locale}/contact`}
+              className="bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest/90 hover:shadow-medium transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans"
+              aria-label="Book a demo of Lyyli.ai"
             >
-              {locale === 'fi' ? 'Aloita maksuton kokeilu' : 'Start Free Trial'}
-              <svg 
-                className="w-4 h-4" 
-                fill="none" 
-                stroke="currentColor" 
+              {locale === "fi" ? "Varaa demo" : "Book a Demo"}
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
               </svg>
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-light-gray transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-grayLight transition-colors duration-200"
             aria-label="Open mobile navigation menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
             type="button"
           >
-            <svg 
-              className="w-6 h-6 text-dark-gray" 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              className="w-6 h-6 text-foreground"
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
         </div>
 
         {/* Mobile Menu (Hidden by default - would need client-side JS to toggle) */}
-        <div id="mobile-menu" className="lg:hidden hidden mt-4 pb-4 border-t border-light-gray">
-          <nav className="flex flex-col gap-4 pt-4" role="navigation" aria-label="Mobile navigation">
-            <a 
+        <div
+          id="mobile-menu"
+          className="lg:hidden hidden mt-4 pb-4 border-t border-grayLight"
+        >
+          <nav
+            className="flex flex-col gap-4 pt-4"
+            role="navigation"
+            aria-label="Mobile navigation"
+          >
+            <a
               href={`/${locale}/features`}
-              className="body-text text-dark-gray hover:text-forest-green transition-colors"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
               aria-label="View features page"
             >
-              {t['nav.features']}
+              {t["nav.features"]}
             </a>
-            <a 
-              href="#roles" 
-              className="body-text text-dark-gray hover:text-forest-green transition-colors"
-              aria-label="View target roles section"
-            >
-              For Teams
-            </a>
-            <a 
+            <a
               href={`/${locale}/pricing`}
-              className="body-text text-dark-gray hover:text-forest-green transition-colors"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
               aria-label="View pricing page"
             >
-              {t['nav.pricing']}
+              {t["nav.pricing"]}
             </a>
-            <a 
+            <a
+              href={`/${locale}/about`}
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              aria-label="About us page"
+            >
+              {locale === "fi" ? "Tietoja meistä" : "About"}
+            </a>
+            <a
+              href={`/${locale}/blog`}
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              aria-label="Blog page"
+            >
+              Blog
+            </a>
+            <a
               href={`/${locale}/contact`}
-              className="body-text text-dark-gray hover:text-forest-green transition-colors"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
               aria-label="Contact page"
             >
-              {t['nav.contact']}
+              {t["nav.contact"]}
             </a>
-            
+
             <div className="flex items-center gap-4 pt-2">
               <ClientLocaleSwitcher currentLocale={locale} />
               <a
-                href="#cta"
-                className="bg-forest-green text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center gap-2"
-                aria-label="Start your free trial of Lyyli.ai"
+                href={`/${locale}/contact`}
+                className="bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest/90 hover:shadow-medium transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans"
+                aria-label="Book a demo of Lyyli.ai"
               >
-                {locale === 'fi' ? 'Aloita maksuton kokeilu' : 'Start Free Trial'}
-                <svg 
-                  className="w-4 h-4" 
-                  fill="none" 
-                  stroke="currentColor" 
+                {locale === "fi" ? "Varaa demo" : "Book a Demo"}
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
                 </svg>
               </a>
             </div>

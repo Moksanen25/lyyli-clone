@@ -1,300 +1,320 @@
-import { getTranslations } from '../../lib/i18n';
+import { getTranslations } from "../../lib/i18n";
+import { IconSet } from "../../components/IconSet";
 import {
-  HeroBackground,
-  SectionBackground,
-  BackgroundGeometricPattern
-} from '../../components/AnimatedBackground';
-import {
-  FloatingElements,
-  AnimatedWave
-} from '../../components/VisualElements';
-import {
-  AICommunicationVisual,
   InteractiveCard,
   StatsVisual,
   FeatureHighlightCard,
-  DataVisualization,
   TestimonialCard,
-  VisualAnimatedBackgroundPattern
-} from '../../components/VisualElements';
-import { IconSet } from '../../components/IconSet';
+  AnimatedTimeline,
+} from "../../components/VisualElements";
+import HeroVisual from "../../components/HeroVisual";
 
 interface HomeProps {
   params: Promise<{ locale: string }>;
 }
 
 export default async function Home({ params }: HomeProps) {
-  const { locale } = await params;
-  const supportedLocales = ['en', 'fi'];
-  const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
+  const { locale: resolvedLocale } = await params;
+  const supportedLocales = ["en", "fi"];
+  const currentLocale = supportedLocales.includes(resolvedLocale)
+    ? resolvedLocale
+    : "en";
+
   const t = await getTranslations(currentLocale);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <HeroBackground />
-      <SectionBackground />
-      <BackgroundGeometricPattern className="opacity-20" />
-      <FloatingElements />
-      <AnimatedWave />
-      <AICommunicationVisual />
-      <DataVisualization 
-        data={[
-          { label: 'AI Communication', value: 85, color: 'muted-turquoise' },
-          { label: 'Team Efficiency', value: 92, color: 'forest-green' },
-          { label: 'Customer Satisfaction', value: 78, color: 'soft-rose' }
-        ]}
-      />
-      <InteractiveCard>
-        <div className="p-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">Interactive Feature</h3>
-          <p className="text-gray-600">This card demonstrates interactive hover effects and smooth animations.</p>
-        </div>
-      </InteractiveCard>
+    <main className="min-h-screen bg-white">
       <div className="relative z-10">
-        <section className="container mx-auto px-4 py-20">
-          <h1 className="heading-1 text-white text-center mb-8">
-            {t['hero.headline']}
+        <section className="container mx-auto px-4 py-20 relative">
+          {/* Animated Hero Visual */}
+          <HeroVisual />
+          
+          <h1 className="text-4xl md:text-5xl text-forest text-center mb-8 font-playfair font-bold leading-tight relative z-10">
+            {t["hero.headline"]}
           </h1>
-          <p className="body-large text-light-gray text-center max-w-3xl mx-auto mb-12">
-            {t['hero.description']}
+          <p className="text-lg text-foreground text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
+            {t["hero.description"]}
           </p>
-          <div className="flex justify-center gap-4 mb-12">
+          <div className="flex justify-center gap-4 mb-12 relative z-10">
             <a href="#cta" className="btn-primary">
-              {t['hero.ctaPrimary']}
+              {t["hero.ctaPrimary"]}
             </a>
             <a href="#how-it-works" className="btn-secondary">
-              {t['hero.ctaSecondary']}
+              {t["hero.ctaSecondary"]}
             </a>
           </div>
-          <div className="text-center text-medium-gray body-small">
-            {t['hero.trustBadge']}
+          <div className="text-center text-muted-foreground text-sm font-sans relative z-10 mb-8">
+            {t["hero.trustBadge"]}
           </div>
+          
+          {/* Mobile UI Showcase - Removed, now in Stats Section */}
         </section>
       </div>
-      <SectionBackground />
-      <section id="problems" className="container mx-auto px-4 py-20">
-        <h2 className="heading-2 text-white text-center mb-12">
-          {t['problems.title']}
+
+      {/* Problems Section */}
+      <section className="container mx-auto px-4 py-20">
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+          {t["problems.title"]}
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Email className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['problems.missedCommunications.title']}</h3>
-              <p className="text-light-gray">{t['problems.missedCommunications.description']}</p>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{t["problems.missedCommunications.title"]}</h3>
+              <p className="text-muted-foreground">{t["problems.missedCommunications.description"]}</p>
             </div>
           </InteractiveCard>
           <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Communication className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['problems.channelOverload.title']}</h3>
-              <p className="text-light-gray">{t['problems.channelOverload.description']}</p>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-turquoise-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-turquoise-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{t["problems.channelOverload.title"]}</h3>
+              <p className="text-muted-foreground">{t["problems.channelOverload.description"]}</p>
             </div>
           </InteractiveCard>
           <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Check className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['problems.accountability.title']}</h3>
-              <p className="text-light-gray">{t['problems.accountability.description']}</p>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-forest-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{t["problems.accountability.title"]}</h3>
+              <p className="text-muted-foreground">{t["problems.accountability.description"]}</p>
             </div>
           </InteractiveCard>
           <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Compliance className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['problems.regulatory.title']}</h3>
-              <p className="text-light-gray">{t['problems.regulatory.description']}</p>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{t["problems.regulatory.title"]}</h3>
+              <p className="text-muted-foreground">{t["problems.regulatory.description"]}</p>
             </div>
           </InteractiveCard>
         </div>
       </section>
-      <section id="features" className="container mx-auto px-4 py-20">
-        <h2 className="heading-2 text-white text-center mb-12">
-          {t['features.title']}
+
+      {/* Stats Section */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl text-forest font-playfair font-bold leading-snug mb-4">
+            Performance that speaks for itself
+          </h2>
+          <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+            Experience lightning-fast AI communication with our optimized platform
+          </p>
+        </div>
+        
+        <div className="grid lg:grid-cols-3 gap-8 items-center">
+          {/* Left: Enhanced Stats Visual */}
+          <div className="flex justify-center">
+            <div className="text-center group transition-all duration-1000">
+              <div className="flex items-center justify-center w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-rose to-turquoise rounded-full shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div className="text-4xl font-bold text-forest mb-3 transition-all duration-300 group-hover:text-turquoise">
+                75%
+              </div>
+              <div className="text-lg text-muted-foreground mb-3 font-medium">Faster response time</div>
+              <div className="text-sm font-medium text-green-600 transition-all duration-300">
+                ↗ Growing
+              </div>
+            </div>
+          </div>
+          
+          {/* Center: Mobile UI Showcase */}
+          <div className="flex justify-center">
+            <div className="relative group">
+              <div className="relative">
+                <img 
+                  src="/images/general/Mobile_UI_for_web.jpeg" 
+                  alt="Lyyli.ai Mobile Interface - AI Communication Assistant" 
+                  className="w-full max-w-[280px] rounded-2xl shadow-soft border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-medium"
+                />
+                {/* Enhanced glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-turquoise/20 to-rose/20 rounded-2xl blur-xl -z-10 group-hover:blur-2xl group-hover:from-turquoise/30 group-hover:to-rose/30 transition-all duration-300" />
+              </div>
+              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-turquoise to-rose text-white px-6 py-3 rounded-full text-sm font-semibold shadow-soft">
+                Mobile experience
+              </div>
+            </div>
+          </div>
+          
+          {/* Right: Additional Performance Metric */}
+          <div className="flex justify-center">
+            <div className="text-center group transition-all duration-1000">
+              <div className="flex items-center justify-center w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-forest to-green rounded-full shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div className="text-4xl font-bold text-forest mb-3 transition-all duration-300 group-hover:text-green-600">
+                99.9%
+              </div>
+              <div className="text-lg text-muted-foreground mb-3 font-medium">Uptime reliability</div>
+              <div className="text-sm font-medium text-green-600 transition-all duration-300">
+                ↗ Stable
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="container mx-auto px-4 py-20">
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+          {t["features.title"]}
         </h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureHighlightCard
-            icon={<IconSet.Automation className="w-8 h-8 text-forest-green" />}
-            title={t['features.speed.title']}
-            description={t['features.speed.description']}
+            title={t["features.speed.title"]}
+            description={t["features.speed.description"]}
+            icon={<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
+            gradient="from-amber to-orange"
           />
           <FeatureHighlightCard
-            icon={<IconSet.AI className="w-8 h-8 text-forest-green" />}
-            title={t['features.clarity.title']}
-            description={t['features.clarity.description']}
+            title={t["features.clarity.title"]}
+            description={t["features.clarity.description"]}
+            icon={<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>}
+            gradient="from-forest to-green"
           />
         </div>
       </section>
-      <AnimatedWave />
-      <section id="benefits" className="container mx-auto px-4 py-20">
-        <h2 className="heading-2 text-white text-center mb-12">
-          {t['benefits.title']}
+
+      {/* Desktop UI Showcase */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl text-forest font-playfair font-bold leading-snug mb-4">
+            Experience Lyyli on desktop
+          </h2>
+          <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+            Powerful desktop interface designed for productivity and seamless team collaboration.
+          </p>
+        </div>
+        <div className="flex justify-center">
+          <div className="relative group">
+            <div className="relative">
+              <img 
+                src="/images/general/Desktop_UI_for_web.png" 
+                alt="Lyyli.ai Desktop Interface - AI Communication Assistant" 
+                className="w-full max-w-4xl rounded-lg shadow-soft border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-medium"
+              />
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-lg blur-xl -z-10 group-hover:blur-2xl transition-all duration-300" />
+            </div>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-forest text-white px-4 py-2 rounded-full text-sm font-medium shadow-soft">
+              Desktop Experience
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="container mx-auto px-4 py-20 bg-gray-50">
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+          {t["benefits.title"]}
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureHighlightCard
-            icon={<IconSet.Communication className="w-8 h-8 text-forest-green" />}
-            title={t['benefits.speed.title']}
-            description={t['benefits.speed.description']}
+            title={t["benefits.speed.title"]}
+            description={t["benefits.speed.description"]}
+            icon={<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+            gradient="from-turquoise to-blue"
           />
           <FeatureHighlightCard
-            icon={<IconSet.Security className="w-8 h-8 text-forest-green" />}
-            title={t['benefits.governance.title']}
-            description={t['benefits.governance.description']}
+            title={t["benefits.governance.title"]}
+            description={t["benefits.governance.description"]}
+            icon={<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>}
+            gradient="from-forest to-green"
           />
           <FeatureHighlightCard
-            icon={<IconSet.Integration className="w-8 h-8 text-forest-green" />}
-            title={t['benefits.multilingual.title']}
-            description={t['benefits.multilingual.description']}
-          />
-          <FeatureHighlightCard
-            icon={<IconSet.Integration className="w-8 h-8 text-forest-green" />}
-            title={t['benefits.integration.title']}
-            description={t['benefits.integration.description']}
-          />
-          <FeatureHighlightCard
-            icon={<IconSet.Analytics className="w-8 h-8 text-forest-green" />}
-            title={t['benefits.analytics.title']}
-            description={t['benefits.analytics.description']}
+            title={t["benefits.multilingual.title"]}
+            description={t["benefits.multilingual.description"]}
+            icon={<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+            gradient="from-rose to-pink"
           />
         </div>
       </section>
-      <AICommunicationVisual />
-      <section id="roles" className="container mx-auto px-4 py-20">
-        <h2 className="heading-2 text-white text-center mb-12">
-          {t['roles.title']}
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Automation className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['roles.operations.title']}</h3>
-              <p className="text-light-gray">{t['roles.operations.description']}</p>
-            </div>
-          </InteractiveCard>
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Communication className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['roles.communications.title']}</h3>
-              <p className="text-light-gray">{t['roles.communications.description']}</p>
-            </div>
-          </InteractiveCard>
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Enterprise className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['roles.pmo.title']}</h3>
-              <p className="text-light-gray">{t['roles.pmo.description']}</p>
-            </div>
-          </InteractiveCard>
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Team className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['roles.hr.title']}</h3>
-              <p className="text-light-gray">{t['roles.hr.description']}</p>
-            </div>
-          </InteractiveCard>
-        </div>
-      </section>
-      <StatsVisual 
-        value="95%"
-        label="Customer Satisfaction"
-        icon={<IconSet.Check className="w-6 h-6 text-forest-green" />}
-        trend="up"
-      />
+
+      {/* How It Works Section */}
       <section id="how-it-works" className="container mx-auto px-4 py-20">
-        <h2 className="heading-2 text-white text-center mb-12">
-          {t['howItWorks.title']}
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+          {t["howItWorks.title"]}
         </h2>
         <AnimatedTimeline
           steps={[
             {
-              title: t['howItWorks.step1.title'],
-              description: t['howItWorks.step1.description'],
-              icon: <IconSet.Integration className="w-6 h-6 text-forest-green" />,
+              title: t["howItWorks.step1.title"],
+              description: t["howItWorks.step1.description"],
             },
             {
-              title: t['howItWorks.step2.title'],
-              description: t['howItWorks.step2.description'],
-              icon: <IconSet.AI className="w-6 h-6 text-forest-green" />,
+              title: t["howItWorks.step2.title"],
+              description: t["howItWorks.step2.description"],
             },
             {
-              title: t['howItWorks.step3.title'],
-              description: t['howItWorks.step3.description'],
-              icon: <IconSet.Automation className="w-6 h-6 text-forest-green" />,
+              title: t["howItWorks.step3.title"],
+              description: t["howItWorks.step3.description"],
             },
             {
-              title: t['howItWorks.step4.title'],
-              description: t['howItWorks.step4.description'],
-              icon: <IconSet.Analytics className="w-6 h-6 text-forest-green" />,
+              title: t["howItWorks.step4.title"],
+              description: t["howItWorks.step4.description"],
             },
           ]}
         />
-        <div className="mt-16 text-center">
-          <h3 className="heading-3 text-white mb-4">
-            {t['howItWorks.overview.title']}
-          </h3>
-          <p className="body-text text-light-gray max-w-2xl mx-auto">
-            {t['howItWorks.overview.description']}
-          </p>
-        </div>
       </section>
-      <section id="industries" className="container mx-auto px-4 py-20">
-        <h2 className="heading-2 text-white text-center mb-12">
-          {t['industries.title']}
+
+      {/* Testimonials Section */}
+      <section className="container mx-auto px-4 py-20 bg-gray-50">
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+          {t["testimonials.title"]}
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Enterprise className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['industries.consulting.title']}</h3>
-              <p className="text-light-gray">{t['industries.consulting.description']}</p>
-            </div>
-          </InteractiveCard>
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.AI className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['industries.technology.title']}</h3>
-              <p className="text-light-gray">{t['industries.technology.description']}</p>
-            </div>
-          </InteractiveCard>
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Scalability className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['industries.engineering.title']}</h3>
-              <p className="text-light-gray">{t['industries.engineering.description']}</p>
-            </div>
-          </InteractiveCard>
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Security className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['industries.healthcare.title']}</h3>
-              <p className="text-light-gray">{t['industries.healthcare.description']}</p>
-            </div>
-          </InteractiveCard>
-          <InteractiveCard>
-            <div className="text-center">
-              <IconSet.Enterprise className="w-8 h-8 text-forest-green mx-auto mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">{t['industries.municipal.title']}</h3>
-              <p className="text-light-gray">{t['industries.municipal.description']}</p>
-            </div>
-          </InteractiveCard>
+        <div className="grid md:grid-cols-3 gap-8">
+          <TestimonialCard
+            quote={t["testimonials.quote1.text"]}
+            author={t["testimonials.quote1.author"]}
+            role="Operations Manager"
+            company="TechFlow"
+          />
+          <TestimonialCard
+            quote={t["testimonials.quote2.text"]}
+            author={t["testimonials.quote2.author"]}
+            role="PMO Director"
+            company="Consulting Firm"
+          />
+          <TestimonialCard
+            quote={t["testimonials.quote3.text"]}
+            author={t["testimonials.quote3.author"]}
+            role="HR Director"
+            company="Healthcare Organization"
+          />
         </div>
+        <p className="text-center text-sm text-muted-foreground mt-8 font-sans">
+          {t["testimonials.disclaimer"]}
+        </p>
       </section>
-      <TestimonialCard 
-        quote="This platform has revolutionized how we handle internal communications. The AI suggestions are incredibly accurate and save us hours every week."
-        author="Sarah Johnson"
-        role="Head of Operations"
-        company="TechCorp Solutions"
-        rating={5}
-      />
-      <VisualAnimatedBackgroundPattern />
+
       <section id="cta" className="container mx-auto px-4 py-20 text-center">
-        <h2 className="heading-2 text-white mb-4">
-          {t['cta.title']}
+        <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
+          {t["cta.title"]}
         </h2>
-        <p className="body-large text-light-gray max-w-3xl mx-auto mb-8">
-          {t['cta.description']}
+        <p className="text-lg text-foreground max-w-3xl mx-auto mb-8 font-sans leading-relaxed">
+          {t["cta.description"]}
         </p>
         <a href="/en/contact" className="btn-primary">
-          {t['cta.button']}
+          {t["cta.button"]}
         </a>
       </section>
     </main>

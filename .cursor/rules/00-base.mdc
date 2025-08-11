@@ -1,0 +1,11 @@
+- Stack: Next.js (App Router) + React + TypeScript (strict) + Tailwind + MDX (blog).
+- Älä lisää kirjastoja omin päin. Jos ehdotat lisäystä, tarjoa perustelu, vaihtoehto ja poistosuunnitelma.
+- ESLint + Prettier: noudata repo-konfigeja. Korjaa linter-valitukset ennen PR:ää.
+- Fontit: käytä next/font/google ja aseta Playfair Display (headings) & Inter (body) root-layouteissa.
+- Server Components oletuksena; client-komponentit vain kun pakko (interaktio).
+- UI = Tailwind; ei inline-tyylejä. Vakioluokat: kontti, spacing, typohierarkia @styles.
+- Kun luot "uuden sivun/komponentin", käytä @templates-tiedostoja.
+description:
+globs:
+alwaysApply: false
+---

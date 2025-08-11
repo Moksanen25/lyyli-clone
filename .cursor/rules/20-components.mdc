@@ -1,0 +1,9 @@
+- Kaikki komponentit: Props-tyyppi, nimetty export, TS-tyypit (ei PropTypes).
+- A11y: semanttiset tagit, näkyvät focus-tilat, tarkoituksenmukaiset aria-attribuutit.
+- Button-variantit: primary=forest, secondary=outline, subtle=ghost.
+- Linkit: Next <Link>; ulkoiset rel="noopener".
+- Kuvat: next/image; lisää alt; width/height/aspect-ratio → ei CLS:ää.
+description:
+globs:
+alwaysApply: false
+---

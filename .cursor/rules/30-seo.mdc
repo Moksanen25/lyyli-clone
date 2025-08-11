@@ -1,0 +1,9 @@
+- Jokaiselle sivulle metadata: title, description, openGraph, alternates.canonical.
+- Luo OG-kuva reitillä /api/og (brändin värit + typot).
+- robots.txt + sitemap.xml pidetään ajan tasalla (uudet reitit -> päivitys).
+- Heading-hierarkia: 1 × H1 / sivu; looginen H2–H3.
+- Ei loremia; copy = arvoa kohderyhmälle (C-level / viestintäjohto).
+description:
+globs:
+alwaysApply: false
+---

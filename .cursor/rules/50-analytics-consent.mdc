@@ -1,0 +1,9 @@
+- Toteuta consent-banneri; lataa skriptit vasta consentin jälkeen.
+- GA4, Hotjar, HubSpot, Datafast lisätään <Script> strategy="afterInteractive".
+- Tunnukset .envissä: GA_ID, HOTJAR_ID, HUBSPOT_PORTAL_ID, DATAFAST_KEY.
+- Lähetä page_view & CTA-click eventit (kentät: language, route, cta_variant).
+- HubSpot-lomakkeet: GDPR-suostumus & tietosuojalinkit mukaan.
+description:
+globs:
+alwaysApply: false
+---

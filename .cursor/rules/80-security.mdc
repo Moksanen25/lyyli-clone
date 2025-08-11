@@ -1,0 +1,8 @@
+- Ei salaisuuksia clienttiin. ENV vain server-käyttöön (edge/server actions).
+- Ei dangerouslySetInnerHTML ilman pakottavaa syytä ja sanitointia.
+- Lisää security headers next.configissa (CSP, Permissions-Policy, Referrer-Policy).
+- Kolmansien osapuolien skriptit vain sallituista lähteistä (CSP script-src).
+description:
+globs:
+alwaysApply: false
+---

@@ -1,0 +1,8 @@
+- Budjetit: LCP < 2.5s, CLS < 0.1. Jos raja ylittyy, ehdota korjauksia.
+- Fontit: next/font; vain tarvittavat painot. Font-display: swap/optional.
+- Kuvat: määritä sizes; lazy oletuksena, priority vain above-the-fold.
+- Data: vältä turhaa client-fetchiä; suosi RSC + revalidate.
+description:
+globs:
+alwaysApply: false
+---

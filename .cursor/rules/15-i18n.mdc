@@ -1,0 +1,9 @@
+- EN = oletus, FI = /fi. Älä kovakoodaa tekstejä.
+- Sijoita tekstit locale-tiedostoihin: /locales/en/*.ts ja /locales/fi/*.ts (key–value).
+- Reititys: säilytä reitti kieltä vaihtaessa (/pricing ↔ /fi/pricing).
+- SEO: lisää hreflang (en, fi), alternates ja canonical jokaiselle sivulle.
+- Alt-tekstit, placeholderit ja metat käännetään samalla avainmallilla.
+description:
+globs:
+alwaysApply: false
+---

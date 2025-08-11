@@ -6,11 +6,11 @@
   "nav.getStarted": "Aloita",
 
   "hero.tagline": "Tekoälyavusteinen viestintäassistentti asiantuntijatiimeille",
-  "hero.headline": "Tehosta sisäistä viestintää 50–1000 hengen asiantuntijatiimeissä",
-  "hero.description": "Lyyli auttaa operatiivisia johtajia, PMO-päälliköitä ja HR-johtajia tehostamaan viestintäprosesseja Slackissa, Teamsissa ja sähköpostissa. Vähennä tietotulvaa säilyttäen yritystason turvallisuus ja compliance.",
+  "hero.headline": "Tehosta sisäistä viestintää 50–1000 hengen asiantuntijapalveluorganisaatioissa",
+  "hero.description": "Lyyli auttaa viestintä- ja HR-johtajia, -päälliköitä ja johtoryhmiä tehostamaan viestintäprosesseja Slackissa, Teamsissa, sähköpostissa ja muissa viestintätyökaluissa ja kanavissa. Vähennä tietotulvaa säilyttäen yritystason turvallisuus ja compliance.",
   "hero.ctaPrimary": "Varaa demo",
   "hero.ctaSecondary": "Lue lisää",
-  "hero.trustBadge": "Operatiivisten johtajien luottamus konsultointi-, teknologia- ja terveydenhuoltoorganisaatioissa",
+  "hero.trustBadge": "Konsultointi-, teknologia- ja asiantuntijaorganisaatioille",
 
   "problems.title": "Viestintähaasteet, jotka hidastavat organisaatiotasi",
   "problems.missedCommunications.title": "Kriittiset viestit katoavat",
@@ -65,7 +65,7 @@
   "howItWorks.step3.description": "Saa älykkäitä suosituksia viestin ajoituksesta, kanavista ja vastaanottajista kiireellisyyden ja kontekstin perusteella.",
   "howItWorks.step4.title": "4. Mittaa ja optimoi",
   "howItWorks.step4.description": "Seuraa viestinnän tehokkuutta yksityiskohtaisilla analyyseilla ja jatkuvilla parannusehdotuksilla.",
-  
+
   "howItWorks.overview.title": "Ratkaisun yleiskatsaus",
   "howItWorks.overview.description": "Lyylin tekoälyassistentti oppii tiimisi viestintämalleja, tarjoaa älykkäitä ehdotuksia viestien optimointiin, helpottaa tiimien välistä yhteistyötä ja julkaisee oivalluksia auttaaksesi parantamaan viestinnän tehokkuutta jatkuvasti.",
 
@@ -85,13 +85,13 @@
   "testimonials.quote1.text": "Vähensi sisällönluomisaikaa 50% samalla parantaen viestien selkeyttä hajautetun tiimin välillä.",
   "testimonials.quote1.author": "Operaatiopäällikkö, TechFlow",
   "testimonials.quote2.text": "Vähensi myöhästyneitä projektipäivityksiä 75% ja paransi asiakasviestinnän johdonmukaisuutta.",
-  "testimonials.quote2.author": "PMO-johtaja, Konsulttiyritys",
+  "testimonials.quote2.author": "PMO-johtaja, konsulttiyritys",
   "testimonials.quote3.text": "Tehosti compliance-raportointia ja vähensi auditointivalmistelun viikoista päiviin.",
-  "testimonials.quote3.author": "HR-johtaja, Terveydenhuoltoorganisaatio",
+  "testimonials.quote3.author": "HR-johtaja, terveydenhuoltoorganisaatio",
   "testimonials.disclaimer": "Suositukset ovat havainnollistavia esimerkkejä tyypillisten asiakastulosten perusteella.",
 
   "cta.title": "Valmis tehostamaan tiimisi viestintää?",
-  "cta.description": "Varaa henkilökohtainen demo nähdäksesi, miten Lyyli voi vähentää tietotulvaa ja parantaa viestinnän tehokkuutta asiantuntijatiimissäsi.",
+  "cta.description": "Varaa henkilökohtainen demo nähdäksesi, miten Lyyli voi vähentää tietotulvaa ja parantaa viestinnän tehokkuutta asiantuntijaorganisaatiossasi.",
   "cta.button": "Varaa demo",
   "cta.demo": "Ajoita demo",
 
@@ -99,11 +99,11 @@
   "footer.rights": "© 2024 Lyyli. Kaikki oikeudet pidätetään.",
 
   "features.page.title": "Ominaisuudet - Lyyli.ai",
-  "features.page.description": "Tutustu Lyylin tekoälykäyttöisiin ominaisuuksiin, jotka tehostavat asiantuntijatiimien viestintäprosesseja automaattisella sisällönluonnilla, hallinnolla ja yritysturvallisuudella.",
-  
+  "features.page.description": "Tutustu Lyylin tekoälykäyttöisiin ominaisuuksiin, jotka tehostavat asiantuntijaorganisaatioiden viestintäprosesseja automaattisella sisällönluonnilla, hallinnolla ja yritysturvallisuudella.",
+
   "features.hero.title": "Tehokkaat ominaisuudet asiantuntijatiimeille",
   "features.hero.subtitle": "Tehosta viestintäprosesseja tekoälypohjaisella automaatiolla, yritystason turvallisuudella ja saumattomilla integraatioilla.",
-  
+
   "features.automatic.title": "Automaattinen sisällönluonti",
   "features.automatic.description": "Tekoälypohjainen sisällöntuotanto Slack-kanaville, Teams-viesteille ja sähköpostiviestinnälle. Ylläpidä johdonmukaista sävyä ja viestintää kaikilla alustoilla.",
   "features.automatic.slack.title": "Älykkäät Slack-viestit",
@@ -112,7 +112,7 @@
   "features.automatic.teams.description": "Luo jäsenneltyjä Teams-viestejä rikkaalla muotoilulla, tiedostoliitteillä ja kokousyhteenvedoilla.",
   "features.automatic.email.title": "Sähköpostin automaatio",
   "features.automatic.email.description": "Laadi ammattimaisia sähköposteja oikeilla aiheotsikoilla, muotoilulla ja seurantasekvensseillä.",
-  
+
   "features.governance.title": "Hallinto ja compliance",
   "features.governance.description": "Täydelliset auditointijäljet, versiohistoria ja roolipohjaiset käyttöoikeudet sääntelyvaatimusten ja sisäisten käytäntöjen täyttämiseksi.",
   "features.governance.audit.title": "Täydelliset auditointijäljet",
@@ -121,7 +121,7 @@
   "features.governance.version.description": "Ylläpidä täydellistä versionhallintaa kaikesta viestinnästä palautusmahdollisuuksilla ja muutosten seurannalla.",
   "features.governance.access.title": "Roolipohjainen käyttöoikeuksien hallinta",
   "features.governance.access.description": "Yksityiskohtainen käyttöoikeusjärjestelmä varmistaa, että vain valtuutettu henkilöstö voi käyttää, muokata tai hyväksyä viestintää.",
-  
+
   "features.security.title": "Yritysturvallisuus",
   "features.security.description": "Pankkitasoinen salaus, ISO-sertifioinnit ja kattavat turvatoimet organisaatiosi viestinnän suojaamiseksi.",
   "features.security.encryption.title": "Päästä päähän -salaus",
@@ -130,7 +130,7 @@
   "features.security.iso.description": "Tietoturvanhallintajärjestelmä sertifioitu kansainvälisiin tietosuojastandardeihin.",
   "features.security.gdpr.title": "GDPR-yhteensopiva",
   "features.security.gdpr.description": "Täysi yhteensopivuus eurooppalaisten tietosuojamääräysten kanssa, mukaan lukien tietojen siirrettävyys ja poisto-oikeus.",
-  
+
   "features.multilingual.title": "Monikielinen tuki",
   "features.multilingual.description": "Natiivi tuki useille kielille reaaliaikaisella käännöksellä ja kulttuurisella mukautuksella globaaleille asiantuntijatiimeille.",
   "features.multilingual.translation.title": "Reaaliaikainen käännös",
@@ -139,7 +139,7 @@
   "features.multilingual.locales.description": "Täydellinen käyttöliittymän ja sisällön lokalisointi englannille, suomelle ja laajenevan kielituen myötä.",
   "features.multilingual.cultural.title": "Kulttuurinen mukautus",
   "features.multilingual.cultural.description": "Mukautetaan viestinnän sävy ja muoto vastaamaan kulttuurisia viestintämieltymyksiä ja liiketoimintakäytäntöjä.",
-  
+
   "features.integrations.title": "Järjestelmäintegraatiot",
   "features.integrations.description": "Saumaton integraatio olemassa olevien viestintätyökalujen ja työnkulkujärjestelmien kanssa.",
   "features.integrations.slack.title": "Slack-integraatio",
@@ -148,18 +148,18 @@
   "features.integrations.teams.description": "Täydellinen Microsoft Teams -integraatio kokouksen transkriptiolla ja yhteistyöominaisuuksilla.",
   "features.integrations.email.title": "Sähköpostijärjestelmät",
   "features.integrations.email.description": "Yhdistä tärkeimpiin sähköpostipalveluntarjoajiin, mukaan lukien Outlook, Gmail ja yrityssähköpostijärjestelmät.",
-  
+
   "features.categories.efficiency": "Tehokkuus",
   "features.categories.governance": "Hallinto ja turvallisuus",
   "features.categories.collaboration": "Yhteistyö",
-  
+
   "features.layout.toggle": "Vaihda asettelua",
   "features.layout.cards": "Korttinäkymä",
   "features.layout.accordion": "Harmonikkanäkymä",
 
   "pricing.page.title": "Hinnoittelu - Lyyli.ai",
   "pricing.page.description": "Lyyli.ai:n selkeä hinnoittelu yrityksesi tarpeisiin. Kokeile ROI-laskuriamme ja näe kuinka paljon voit säästää tekoälyavusteisella viestinnällä.",
-  
+
   "pricing.tagline": "Hinnoittelupaketit",
   "pricing.title": "Selkeä, läpinäkyvä hinnoittelu",
   "pricing.subtitle": "Valitse yrityksesi tarpeisiin sopiva paketti. Kaikki paketit sisältävät keskeisen tekoälytoiminnallisuuden.",
@@ -170,7 +170,7 @@
   "pricing.perMonth": "/kuukausi",
   "pricing.perYear": "/vuosi",
   "pricing.custom": "Räätälöity",
-  
+
   "pricing.free.name": "Ilmainen",
   "pricing.free.description": "Täydellinen kokeilukäyttöön, yksinyrittäjille ja pienille yhdistyksille.",
   "pricing.free.cta": "Aloita ilmaiseksi",
@@ -258,7 +258,6 @@
   "pricing.comparison.title": "Ominaisuusvertailu",
   "pricing.comparison.subtitle": "Vertaa ominaisuuksia kaikissa paketeissa löytääksesi yrityksellesi sopivan paketin",
 
-  
   "pricing.benefits.title": "Mitattava liiketoimintavaikutus",
   "pricing.benefits.efficiency.title": "Viestinnän tehokkuus",
   "pricing.benefits.efficiency.value": "80% nopeampi",
@@ -269,20 +268,20 @@
   "pricing.benefits.roi.title": "Sijoitetun pääoman tuotto",
   "pricing.benefits.roi.value": "340%",
   "pricing.benefits.roi.description": "Keskimääräinen ROI 12 kuukaudessa tehokkuushyötyjen ja kustannussäästöjen perusteella",
-  
+
   "pricing.assumptions.title": "ROI-laskelman oletukset",
   "pricing.assumptions.efficiency": "80% tehokkuuden parannus rutiiniviestinnän automatisoinnista",
   "pricing.assumptions.time": "Keskimäärin 2 tuntia viikossa säästetty per tietotyöläinen",
   "pricing.assumptions.cost": "Perustuu 60€/tunti keskimääräisiin asiantuntijapalvelukustannuksiin",
   "pricing.assumptions.overhead": "Sisältää vähentyneen kokousajan ja nopeamman päätöksenteon",
-  
+
   "pricing.tooltip.conversations": "Tekoälykeskustelut sisältävät viestien luonnin, käännöksen ja optimointipyynnöt",
   "pricing.tooltip.users": "Aktiiviset käyttäjät, jotka voivat käyttää Lyylin ominaisuuksia organisaatiossasi",
   "pricing.tooltip.integrations": "Natiivisovellukset ja API-yhteydet olemassa oleviin viestintätyökaluihisi",
   "pricing.tooltip.analytics": "Yksityiskohtaiset raportit viestinnän tehokkuudesta, vastausajoista ja tiimin sitoutumisesta",
   "pricing.tooltip.audit": "Täydellinen kaiken viestinnän lokitus versionhallinnalla ja hyväksymistyönkuluilla",
   "pricing.tooltip.sla": "Taattu käyttöaika taloudellisilla hyvityksillä palvelukatkoksista",
-  
+
   "pricing.faq.title": "Usein kysytyt kysymykset",
   "pricing.faq.trial.question": "Kuinka pitkä maksuton kokeilu on?",
   "pricing.faq.trial.answer": "Kaikki paketit sisältävät 14 päivän maksuttoman kokeilun täydellä pääsyllä ominaisuuksiin. Luottokorttia ei tarvita.",
@@ -295,10 +294,10 @@
 
   "about.page.title": "Tietoja meistä - Lyyli.ai",
   "about.page.description": "Tutustu Lyylin missioon muuttaa sisäistä viestintää asiantuntijaorganisaatioissa. Tapaa tiimimme ja opi miksi rakensimme Lyylin.",
-  
+
   "about.hero.title": "Muuttamassa viestintää asiantuntijatiimeille",
   "about.hero.subtitle": "Uskomme, että jokainen asiantuntijaorganisaatio ansaitsee saumattoman, auditoitavan ja monikielisen sisäisen viestinnän.",
-  
+
   "about.origin.title": "Miksi Lyyli on olemassa",
   "about.origin.subtitle": "Syntynyt todellisista kipupisteistä asiantuntijaorganisaatioissa",
   "about.origin.problem1.title": "Menetetyt kriittiset viestit",
@@ -306,15 +305,15 @@
   "about.origin.problem2.title": "Auditoitavuuden puute",
   "about.origin.problem2.description": "Ei selvää jälkeä siitä, kuka hyväksyi mitä, milloin päätökset tehtiin tai miksi muutoksia tapahtui.",
   "about.origin.problem3.title": "Monikieliset esteet",
-  "about.origin.problem3.description": "Globaalit asiantuntijatiimit kamppailivat kielimuurien kanssa, jotka hidastavat yhteistyötä ja päätöksentekoa.",
-  "about.origin.solution": "Lyyli rakennettiin erityisesti ratkaisemaan nämä haasteet 50-1000 hengen asiantuntijatiimien palveluorganisaatioille.",
-  
+  "about.origin.problem3.description": "Globaalit asiantuntijaorganisaatiot kamppailevat kielimuurien kanssa, jotka hidastavat yhteistyötä ja päätöksentekoa.",
+  "about.origin.solution": "Lyyli rakennettiin erityisesti ratkaisemaan nämä haasteet 50-1000 hengen asiantuntijaorganisaatioille.",
+
   "about.mission.title": "Missiomme",
   "about.mission.description": "Eliminoida viestintäkitka asiantuntijaorganisaatioissa tarjoamalla tekoälypohjaisia työkaluja, jotka varmistavat selkeyden, vastuullisuuden ja saumattoman monikielisen yhteistyön.",
-  
+
   "about.vision.title": "Visiomme",
-  "about.vision.description": "Maailma, jossa jokainen asiantuntijatiimi voi keskittyä ydinosaamiseen ilman viestinnän tehottomuuksien, kielimuurien tai compliance-huolien hidastamista.",
-  
+  "about.vision.description": "Maailma, jossa jokainen asiantuntijaorganisaatio voi keskittyä ydinosaamiseen ilman viestinnän tehottomuuksien, kielimuurien tai compliance-huolien hidastamista.",
+
   "about.values.title": "Arvomme",
   "about.values.transparency.title": "Läpinäkyvyys",
   "about.values.transparency.description": "Selkeä viestintä alkaa selkeistä aikomuksista. Rakennamme työkaluja, jotka tekevät jokaisesta vuorovaikutuksesta auditoitavan ja vastuullisen.",
@@ -324,28 +323,28 @@
   "about.values.security.description": "Asiantuntijapalveluorganisaatiot luottavat meille arkaluonteisen viestinnän kanssa. Turvallisuus ei ole valinnainen.",
   "about.values.inclusion.title": "Globaali osallisuus",
   "about.values.inclusion.description": "Kielen ei pitäisi koskaan olla este yhteistyölle. Rakennamme todella globaaleille asiantuntijatiimeille.",
-  
+
   "about.team.title": "Johtotiimi",
-  "about.team.subtitle": "Kokeneet johtajat rakentamassa asiantuntijatiimien viestinnän tulevaisuutta",
-  
+  "about.team.subtitle": "Kokeneet johtajat rakentamassa asiantuntijaorganisaatioiden viestinnän tulevaisuutta",
+
   "about.team.mikko.name": "Mikko Oksanen",
   "about.team.mikko.title": "Toimitusjohtaja, perustaja ja hallituksen jäsen",
   "about.team.mikko.description": "Johtaa Lyylin visiota muuttaa viestintää asiantuntijaorganisaatioissa.",
-  
+
   "about.team.veikko.name": "Veikko Laitinen",
   "about.team.veikko.title": "Teknologiajohtaja, perustaja ja hallituksen puheenjohtaja",
-  "about.team.veikko.description": "Suunnittelee teknisen perustan, joka mahdollistaa saumattoman asiantuntijatiimien viestinnän.",
-  
+  "about.team.veikko.description": "Suunnittelee teknisen perustan, joka mahdollistaa saumattoman asiantuntijaorganisaatioiden viestinnän.",
+
   "about.board.title": "Hallitus ja neuvonantajat",
   "about.board.sannamari.name": "Sannamari Nykänen",
   "about.board.sannamari.title": "Hallituksen jäsen",
-  
+
   "about.board.perttu.name": "Perttu Ahvenainen",
   "about.board.perttu.title": "Hallituksen neuvonantaja",
-  
+
   "about.board.teemu.name": "Teemu Laitinen",
   "about.board.teemu.title": "Hallituksen neuvonantaja",
-  
+
   "about.cta.title": "Valmis muuttamaan tiimisi viestintää?",
   "about.cta.description": "Liity asiantuntijaorganisaatioihin, jotka ovat jo parantaneet viestintätehokkuuttaan Lyylin avulla.",
   "about.cta.demo": "Varaa demo",
@@ -367,11 +366,11 @@
   "blog.empty.description": "Työskentelemme tuodaksemme sinulle arvokkaita näkemyksiä tekoälyviestinnästä ja yritysturvallisuudesta.",
 
   "contact.page.title": "Yhteystiedot - Lyyli.ai",
-  "contact.page.description": "Ota yhteyttä Lyylin asiantuntijatiimiin. Turvalliset viestintäkanavat toiminnanjohtajille ja viestintäpäälliköille.",
-  
+  "contact.page.description": "Ota yhteyttä Lyylin tiimiin. Turvalliset viestintäkanavat toiminnanjohtajille ja viestintäpäälliköille.",
+
   "contact.hero.title": "Valmis muuttamaan tiimisi viestintää?",
-  "contact.hero.subtitle": "Varaa kartoituskeskustelu tiimimme kanssa oppiaksesi, miten Lyyli voi virtaviivaistaa asiantuntijatiimisi sisäistä koordinaatiota.",
-  
+  "contact.hero.subtitle": "Varaa kartoituskeskustelu tiimimme kanssa oppiaksesi, miten Lyyli voi virtaviivaistaa asiantuntijaorganisaatiosi sisäistä koordinaatiota.",
+
   "contact.form.title": "Varaa kartoituskeskustelu",
   "contact.form.subtitle": "Toiminnanjohtajat ja viestintäpäälliköt: Keskustellaan tiimisi erityisistä viestintähaasteista.",
   "contact.form.name.label": "Koko nimi",
@@ -388,35 +387,35 @@
   "contact.form.teamsize.option3": "100-500 henkeä",
   "contact.form.teamsize.option4": "500+ henkeä",
   "contact.form.message.label": "Kerro viestintähaasteistanne",
-  "contact.form.message.placeholder": "Mitä viestinnän kipupisteitä asiantuntijatiimillänne on tällä hetkellä? (Valinnainen)",
+  "contact.form.message.placeholder": "Mitä viestinnän kipupisteitä asiantuntijaorganisaatiollanne on tällä hetkellä? (Valinnainen)",
   "contact.form.security.notice": "🔒 Kaikki lomakkeen lähetykset salataan ja siirretään turvallisesti",
   "contact.form.submit": "Varaa kartoituskeskustelu",
   "contact.form.processing": "Varataan...",
-  
+
   "contact.team.title": "Ota yhteyttä suoraan",
   "contact.team.subtitle": "Ota yhteyttä tiimimme jäseniin suoraan tiettyjen kyselyjen osalta",
-  
+
   "contact.team.general.title": "Yleiset kyselyt",
   "contact.team.general.email": "hello@lyyli.ai",
   "contact.team.general.description": "Yleiset kyselyt ja palaute",
-  
+
   "contact.team.mikko.name": "Mikko Oksanen",
   "contact.team.mikko.role": "Toimitusjohtaja ja perustaja",
   "contact.team.mikko.email": "mikko@lyyli.ai",
   "contact.team.mikko.phone": "+358 40 961 9224",
   "contact.team.mikko.whatsapp": "WhatsApp ja puhelin käytettävissä",
   "contact.team.mikko.focus": "Myynti, kumppanuudet ja johtaminen",
-  
+
   "contact.team.veikko.name": "Veikko Laitinen",
   "contact.team.veikko.role": "Teknologiajohtaja ja perustaja",
   "contact.team.veikko.email": "veikko@lyyli.ai",
   "contact.team.veikko.focus": "Tekniset ratkaisut ja kyberturvallisuus",
-  
+
   "contact.security.title": "Turvallinen viestintä",
   "contact.security.encryption": "Päästä päähän -salattu viestintä",
   "contact.security.privacy": "GDPR-yhteensopiva tietojenkäsittely",
   "contact.security.confidential": "Luottamukselliset liiketoimintakeskustelut suojattu",
-  
+
   "contact.response.title": "Mitä odottaa",
   "contact.response.timing": "Vastaus 24 tunnin sisällä",
   "contact.response.discovery": "30 minuutin kartoituskeskustelu sovittuna sinulle sopivaan aikaan",
@@ -436,7 +435,7 @@
 
   "cookies.page.title": "Evästekäytäntö - Lyyli.ai",
   "cookies.page.description": "Ymmärrä, miten Lyyli käyttää evästeitä ja seurantatekniikoita säilyttäen yritystason turvallisuuden ja GDPR-vaatimustenmukaisuuden.",
-  "cookies.title": "Evästekäytäntö", 
+  "cookies.title": "Evästekäytäntö",
   "cookies.updated": "Viimeksi päivitetty",
   "cookies.intro": "Tämä evästekäytäntö selittää, miten Lyyli käyttää evästeitä ja vastaavia tekniikoita palvelujemme tarjoamiseen ja parantamiseen säilyttäen yritystason turvallisuusstandardit."
 }

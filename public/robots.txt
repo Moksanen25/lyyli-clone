@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lyyli.ai/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /_next/
+Disallow: /api/
+Disallow: /admin/
+
+# Allow important pages
+Allow: /
+Allow: /en/
+Allow: /fi/
+Allow: /features/
+Allow: /pricing/
+Allow: /about/
+Allow: /blog/
+Allow: /contact/

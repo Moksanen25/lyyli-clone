@@ -1,0 +1,9 @@
+- Frontmatter vaaditaan: title, description, date (ISO), author, tags[], locale, heroImage.
+- Slugit = tiedostonimi (pienet kirjaimet, ei välilyöntejä).
+- Kuville alt + kuvateksti; typohierarkia noudattaa brändiä.
+- EN ensisijainen; FI-versio peilaa sisällön (ei suora konekäännös).
+- Related-posts tagien perusteella; OG-kuva artikkelille.
+description:
+globs:
+alwaysApply: false
+---

@@ -15,9 +15,9 @@ const eslintConfig = [
     rules: {
       "@next/next/no-html-link-for-pages": "off",
       "react/no-unescaped-entities": "off",
-      "@next/next/no-img-element": "warn"
-    }
-  }
+      "@next/next/no-img-element": "warn",
+    },
+  },
 ];
 
 export default eslintConfig;
