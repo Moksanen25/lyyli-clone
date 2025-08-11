@@ -8,7 +8,8 @@ export default function WaitlistForm() {
 
   useEffect(() => {
     // Check if HubSpot is already loaded
-    if (window.hbspt) {
+    if (window.hbspt && window.hbspt.forms) {
+      console.log('HubSpot already available, creating form');
       createForm();
       return;
     }
@@ -28,10 +29,16 @@ export default function WaitlistForm() {
     
     script.onload = () => {
       console.log('HubSpot script loaded successfully');
-      // Wait a bit for the script to initialize
+      // Wait longer for the script to fully initialize
       setTimeout(() => {
-        createForm();
-      }, 100);
+        if (window.hbspt && window.hbspt.forms) {
+          console.log('HubSpot initialized, creating form');
+          createForm();
+        } else {
+          console.log('HubSpot not properly initialized, using fallback');
+          fallbackToIframe();
+        }
+      }, 500);
     };
 
     script.onerror = () => {
@@ -53,7 +60,7 @@ export default function WaitlistForm() {
 
   const createForm = () => {
     try {
-      if (window.hbspt && window.hbspt.forms) {
+      if (window.hbspt && window.hbspt.forms && typeof window.hbspt.forms.create === 'function') {
         console.log('Creating HubSpot form...');
         window.hbspt.forms.create({
           region: 'eu1',
@@ -63,7 +70,11 @@ export default function WaitlistForm() {
         });
         setLoading(false);
       } else {
-        console.error('HubSpot not available');
+        console.error('HubSpot not available or forms.create not a function');
+        console.log('HubSpot object:', window.hbspt);
+        if (window.hbspt) {
+          console.log('HubSpot forms object:', window.hbspt.forms);
+        }
         // Fallback to iframe approach
         fallbackToIframe();
       }
