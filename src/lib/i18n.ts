@@ -262,6 +262,11 @@ export interface TranslationKeys {
   "pricing.roi.people": string;
   "pricing.roi.commVolume": string;
   "pricing.roi.messages": string;
+  "pricing.roi.assumptions": string;
+  "pricing.roi.assumption1": string;
+  "pricing.roi.assumption2": string;
+  "pricing.roi.assumption3": string;
+  "pricing.roi.assumption4": string;
   "pricing.faq.trial.question": string;
   "pricing.faq.trial.answer": string;
   "pricing.faq.billing.question": string;

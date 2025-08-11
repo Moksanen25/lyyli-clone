@@ -265,6 +265,11 @@
   "pricing.roi.people": "henkilöä",
   "pricing.roi.commVolume": "Viestintämäärä",
   "pricing.roi.messages": "viestiä/kk",
+  "pricing.roi.assumptions": "Avainolettamukset",
+  "pricing.roi.assumption1": "Keskimääräinen tuntipalkka: 60€/henkilö",
+  "pricing.roi.assumption2": "Säästetty aika: 2 tuntia/henkilö/viikko",
+  "pricing.roi.assumption3": "Professional-paketin hinta: 599€/kk",
+  "pricing.roi.assumption4": "Säästöt perustuvat nykyisiin viestintäongelmiin",
 
   "pricing.benefits.title": "Mitattava liiketoimintavaikutus",
   "pricing.benefits.efficiency.title": "Viestinnän tehokkuus",

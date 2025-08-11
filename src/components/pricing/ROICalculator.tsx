@@ -11,6 +11,7 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
   const t = translations;
   const [teamSize, setTeamSize] = useState(50);
   const [hourlyRate, setHourlyRate] = useState(60);
+  const [commVolume, setCommVolume] = useState(1000);
 
   // ROI Calculations based on assumptions
   const hoursPerWeekSaved = 2; // per person
@@ -20,12 +21,16 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
   const totalHoursSavedPerYear = teamSize * hoursPerWeekSaved * weeksPerYear;
   const totalSavingsPerYear = totalHoursSavedPerYear * hourlyRate;
   const monthlySavings = totalSavingsPerYear / 12;
+  const annualSavings = totalSavingsPerYear;
 
   // Assuming Professional plan for calculation
   const professionalPlanCost = 599 * 12; // yearly
   const netROI =
     ((totalSavingsPerYear - professionalPlanCost) / professionalPlanCost) * 100;
   const paybackMonths = Math.ceil(professionalPlanCost / monthlySavings);
+  
+  // Calculate cost savings percentage
+  const costSavingsPercentage = Math.round((totalSavingsPerYear / (totalSavingsPerYear + professionalPlanCost)) * 100);
 
   return (
     <div className="space-y-8">
@@ -113,7 +118,7 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
               <div className="flex justify-between items-center">
                 <span className="font-medium text-forest">Net ROI</span>
                 <span className="text-xl font-bold text-forest">
-                  {roiPercentage}%
+                  {netROI.toFixed(2)}%
                 </span>
               </div>
             </div>
