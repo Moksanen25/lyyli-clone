@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
+import Image from "next/image";
 import remarkGfm from "remark-gfm";
 
 interface BlogPostPageProps {
@@ -100,11 +101,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {post.image && (
           <div className="mb-8">
-            <img
-              src={post.image}
-              alt={post.imageAlt || post.title}
-              className="w-full h-64 md:h-96 object-cover rounded-lg"
-            />
+            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden">
+              <Image
+                src={post.image}
+                alt={post.imageAlt || post.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
             {post.imageAlt && (
               <p className="text-sm text-mediumGray mt-2 text-center">
                 {post.imageAlt}
