@@ -10,6 +10,13 @@
 - Headings = Playfair Display, body = Inter (16px min)
 - Kaikki otsikot: vain ensimmäisen sanan ensimmäinen kirjain isolla, muut pienellä
 
+## Blog Post Formatting
+- H2 headings (##) must use Playfair Display font for visual prominence
+- Use double line breaks between major chapters/sections for better readability
+- H3 subheadings (###) should be bold (**Subheading**) for clear hierarchy
+- Remove horizontal lines (---) - use spacing instead
+- Maintain consistent spacing and visual hierarchy throughout
+
 ## ICP Terminology
 - English: Use "professional service company" or "professional service organization" instead of "expert team"
 - Finnish: Use "asiantuntijaorganisaatio" instead of "asiantuntijatiimi"
