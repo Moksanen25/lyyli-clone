@@ -2,13 +2,13 @@ import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 
 interface CookiesPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: CookiesPageProps): Promise<Metadata> {
-  const { locale } = params;
+  const { locale } = await params;
   const t = await getTranslations(locale);
 
   return {
@@ -18,7 +18,7 @@ export async function generateMetadata({
 }
 
 export default async function CookiesPage({ params }: CookiesPageProps) {
-  const { locale } = params;
+  const { locale } = await params;
   const supportedLocales = ["en", "fi"];
   const currentLocale = supportedLocales.includes(locale) ? locale : "en";
 
