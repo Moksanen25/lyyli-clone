@@ -256,6 +256,12 @@ export interface TranslationKeys {
   "pricing.comparison.subtitle": string;
   "pricing.faq.title": string;
   "pricing.faq.subtitle": string;
+  "pricing.roi.title": string;
+  "pricing.roi.subtitle": string;
+  "pricing.roi.teamSize": string;
+  "pricing.roi.people": string;
+  "pricing.roi.commVolume": string;
+  "pricing.roi.messages": string;
   "pricing.faq.trial.question": string;
   "pricing.faq.trial.answer": string;
   "pricing.faq.billing.question": string;
