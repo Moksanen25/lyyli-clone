@@ -97,7 +97,7 @@ export default function WaitlistForm() {
             required
             value={formData.email}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
+            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm"
             placeholder="your.email@company.com"
           />
         </div>
@@ -113,7 +113,7 @@ export default function WaitlistForm() {
             required
             value={formData.company}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
+            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm"
             placeholder="Your Organization"
           />
         </div>
@@ -129,7 +129,7 @@ export default function WaitlistForm() {
                    required
                    value={formData.role}
                    onChange={handleInputChange}
-                   className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
+                   className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm"
                    placeholder="e.g., Operations Manager, Communications Director"
                  />
                </div>
@@ -138,59 +138,73 @@ export default function WaitlistForm() {
                  <label htmlFor="phone" className="block text-sm font-medium text-forest mb-2">
                    Phone Number
                  </label>
-                 <div className="flex gap-2">
-                   <select
-                     name="countryCode"
-                     value={formData.countryCode}
-                     onChange={handleInputChange}
-                     className="px-3 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors bg-white"
-                   >
-                     <option value="+358">🇫🇮 +358</option>
-                     <option value="+46">🇸🇪 +46</option>
-                     <option value="+47">🇳🇴 +47</option>
-                     <option value="+45">🇩🇰 +45</option>
-                     <option value="+31">🇳🇱 +31</option>
-                     <option value="+49">🇩🇪 +49</option>
-                     <option value="+33">🇫🇷 +33</option>
-                     <option value="+44">🇬🇧 +44</option>
-                     <option value="+1">🇺🇸 +1</option>
-                     <option value="+86">🇨🇳 +86</option>
-                     <option value="+81">🇯🇵 +81</option>
-                     <option value="+91">🇮🇳 +91</option>
-                     <option value="+61">🇦🇺 +61</option>
-                     <option value="+64">🇳🇿 +64</option>
-                   </select>
+                 <div className="flex gap-3">
+                   <div className="relative">
+                     <select
+                       name="countryCode"
+                       value={formData.countryCode}
+                       onChange={handleInputChange}
+                       className="appearance-none px-4 py-3 pr-10 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 bg-white hover:border-forest/50 cursor-pointer shadow-sm"
+                     >
+                       <option value="+358">🇫🇮 +358</option>
+                       <option value="+46">🇸🇪 +46</option>
+                       <option value="+47">🇳🇴 +47</option>
+                       <option value="+45">🇩🇰 +45</option>
+                       <option value="+31">🇳🇱 +31</option>
+                       <option value="+49">🇩🇪 +49</option>
+                       <option value="+33">🇫🇷 +33</option>
+                       <option value="+44">🇬🇧 +44</option>
+                       <option value="+1">🇺🇸 +1</option>
+                       <option value="+86">🇨🇳 +86</option>
+                       <option value="+81">🇯🇵 +81</option>
+                       <option value="+91">🇮🇳 +91</option>
+                       <option value="+61">🇦🇺 +61</option>
+                       <option value="+64">🇳🇿 +64</option>
+                     </select>
+                     <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                       <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                       </svg>
+                     </div>
+                   </div>
                    <input
                      type="tel"
                      id="phone"
                      name="phone"
                      value={formData.phone}
                      onChange={handleInputChange}
-                     className="flex-1 px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
+                     className="flex-1 px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm"
                      placeholder="Phone number"
                    />
                  </div>
                </div>
 
-                 <div>
+                          <div>
            <label htmlFor="organizationSize" className="block text-sm font-medium text-forest mb-2">
              Organization Size *
            </label>
-           <select
-             id="organizationSize"
-             name="organizationSize"
-             required
-             value={formData.organizationSize}
-             onChange={handleInputChange}
-             className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
-           >
-             <option value="1-10">1-10 people</option>
-             <option value="10-50">10-50 people</option>
-             <option value="50-100">50-100 people</option>
-             <option value="100-500">100-500 people</option>
-             <option value="500+">500+ people</option>
-           </select>
-                  </div>
+           <div className="relative">
+             <select
+               id="organizationSize"
+               name="organizationSize"
+               required
+               value={formData.organizationSize}
+               onChange={handleInputChange}
+               className="appearance-none w-full px-4 py-3 pr-10 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 bg-white hover:border-forest/50 cursor-pointer shadow-sm"
+             >
+               <option value="1-10">1-10 people</option>
+               <option value="10-50">10-50 people</option>
+               <option value="50-100">50-100 people</option>
+               <option value="100-500">100-500 people</option>
+               <option value="500+">500+ people</option>
+             </select>
+             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+               <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+               </svg>
+             </div>
+           </div>
+         </div>
 
          <div className="space-y-4">
            <div className="flex items-start gap-3">
