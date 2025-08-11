@@ -5,8 +5,16 @@ import { useEffect, useState } from "react";
 export default function WaitlistForm() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
     // Check if HubSpot is already loaded
     if (window.hbspt && window.hbspt.forms) {
       console.log('HubSpot already available, creating form');
@@ -59,6 +67,8 @@ export default function WaitlistForm() {
   }, [loading]);
 
   const createForm = () => {
+    if (!isMounted) return;
+    
     try {
       if (window.hbspt && window.hbspt.forms && typeof window.hbspt.forms.create === 'function') {
         console.log('Creating HubSpot form...');
@@ -87,19 +97,27 @@ export default function WaitlistForm() {
 
   const fallbackToIframe = () => {
     console.log('Using iframe fallback for HubSpot form');
-    const container = document.getElementById('hubspot-form-container');
-    if (container) {
-      container.innerHTML = `
-        <iframe 
-          src="https://forms.hsforms.com/146205702/f337eade-e814-4038-b2aa-908dcf612cce?region=eu1" 
-          width="100%" 
-          height="600" 
-          frameborder="0" 
-          style="border: none;"
-          title="Join Waitlist Form"
-        ></iframe>
-      `;
-      setLoading(false);
+    try {
+      const container = document.getElementById('hubspot-form-container');
+      if (container) {
+        container.innerHTML = `
+          <iframe 
+            src="https://forms.hsforms.com/146205702/f337eade-e814-4038-b2aa-908dcf612cce?region=eu1" 
+            width="100%" 
+            height="600" 
+            frameborder="0" 
+            style="border: none;"
+            title="Join Waitlist Form"
+          ></iframe>
+        `;
+        setLoading(false);
+      } else {
+        console.error('HubSpot form container not found');
+        setError('Form container not found');
+      }
+    } catch (error) {
+      console.error('Error in fallback to iframe:', error);
+      setError('Failed to load form fallback');
     }
   };
 
