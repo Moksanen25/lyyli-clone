@@ -6,6 +6,7 @@ export default function WaitlistForm() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     setIsMounted(true);
@@ -17,76 +18,44 @@ export default function WaitlistForm() {
     
     console.log('WaitlistForm useEffect running, checking HubSpot availability...');
     
-    // Check if HubSpot is already loaded
+    // Simple approach: try to create form immediately if HubSpot is available
     if (window.hbspt && window.hbspt.forms) {
       console.log('HubSpot already available, creating form');
       createForm();
       return;
     }
 
-    // Check if script is already being loaded
-    if (document.querySelector('script[src*="js-eu1.hsforms.net"]')) {
-      console.log('HubSpot script already loading, waiting...');
-      // Wait for existing script to load
-      const checkInterval = setInterval(() => {
-        if (window.hbspt && window.hbspt.forms) {
-          clearInterval(checkInterval);
-          console.log('HubSpot script loaded by another instance, creating form');
-          createForm();
-        }
-      }, 100);
-      
-      // Set a timeout to prevent infinite waiting
-      setTimeout(() => {
-        clearInterval(checkInterval);
-        if (!window.hbspt || !window.hbspt.forms) {
-          console.log('Timeout waiting for existing script, using fallback');
-          fallbackToIframe();
-        }
-      }, 10000);
-      
-      return;
-    }
-
-    // Set a timeout to prevent infinite loading
-    const timeout = setTimeout(() => {
-      console.log('Form loading timeout, using fallback');
-      fallbackToIframe();
-    }, 10000); // 10 seconds timeout
-
-    // Load HubSpot script
+    // Load HubSpot script with simpler logic
+    console.log('Loading HubSpot script...');
     const script = document.createElement('script');
     script.src = 'https://js-eu1.hsforms.net/forms/embed/146205702.js';
-    script.defer = true;
+    script.async = true;
     
     script.onload = () => {
       console.log('HubSpot script loaded successfully');
-      // Wait longer for the script to fully initialize
+      // Try to create form after a short delay
       setTimeout(() => {
-        if (window.hbspt && window.hbspt.forms) {
-          console.log('HubSpot initialized, creating form');
-          createForm();
-        } else {
-          console.log('HubSpot not properly initialized, using fallback');
-          fallbackToIframe();
-        }
-      }, 500);
+        createForm();
+      }, 1000);
     };
 
     script.onerror = () => {
       console.error('Failed to load HubSpot script');
-      console.log('Using iframe fallback due to script error');
       fallbackToIframe();
     };
 
     document.head.appendChild(script);
 
+    // Fallback timeout
+    const timeout = setTimeout(() => {
+      console.log('Form loading timeout, using fallback');
+      fallbackToIframe();
+    }, 15000); // 15 seconds timeout
+
     return () => {
-      // Cleanup
       clearTimeout(timeout);
-      // Don't remove script on unmount as it might be used by other components
     };
-  }, [isMounted]); // Changed from [loading] to [isMounted]
+  }, [isMounted]);
 
   const createForm = () => {
     if (!isMounted) return;
@@ -107,19 +76,31 @@ export default function WaitlistForm() {
         console.log('HubSpot form creation initiated');
         setLoading(false);
       } else {
-        console.error('HubSpot not available or forms.create not a function');
-        console.log('HubSpot object:', window.hbspt);
-        if (window.hbspt) {
-          console.log('HubSpot forms object:', window.hbspt.forms);
+        console.log('HubSpot not ready, waiting a bit more...');
+        // Try again after a short delay if we haven't exceeded retry limit
+        if (retryCount < 3) {
+          setTimeout(() => {
+            if (window.hbspt && window.hbspt.forms && typeof window.hbspt.forms.create === 'function') {
+              console.log('HubSpot now ready, creating form...');
+              window.hbspt.forms.create({
+                region: 'eu1',
+                portalId: '146205702',
+                formId: 'f337eade-e814-4038-b2aa-908dcf612cce',
+                target: '#hubspot-form-container'
+              });
+              setLoading(false);
+            } else {
+              console.log('HubSpot still not ready, using fallback');
+              fallbackToIframe();
+            }
+          }, 2000);
+        } else {
+          console.log('Max retries reached, using fallback');
+          fallbackToIframe();
         }
-        // Fallback to iframe approach
-        console.log('Falling back to iframe...');
-        fallbackToIframe();
       }
     } catch (error) {
       console.error('Error creating form:', error);
-      // Fallback to iframe approach
-      console.log('Falling back to iframe due to error...');
       fallbackToIframe();
     }
   };
@@ -160,6 +141,31 @@ export default function WaitlistForm() {
             <div className="text-center text-mediumGray">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-forest mx-auto mb-4"></div>
               <p>Loading form...</p>
+              <button 
+                onClick={() => {
+                  console.log('Manual test button clicked');
+                  console.log('Current state:', { loading, error, isMounted, retryCount });
+                  console.log('HubSpot available:', !!window.hbspt);
+                  if (window.hbspt) {
+                    console.log('HubSpot forms available:', !!window.hbspt.forms);
+                    console.log('HubSpot forms.create available:', typeof window.hbspt.forms?.create);
+                  }
+                  setRetryCount(prev => prev + 1);
+                  createForm();
+                }}
+                className="mt-4 bg-forest text-white px-4 py-2 rounded-lg hover:bg-forest/90 transition-colors text-sm"
+              >
+                Test Form Loading ({retryCount} attempts)
+              </button>
+              <button 
+                onClick={() => {
+                  console.log('Force fallback button clicked');
+                  fallbackToIframe();
+                }}
+                className="mt-2 bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors text-sm"
+              >
+                Force Iframe Fallback
+              </button>
             </div>
           </div>
         )}
@@ -172,6 +178,22 @@ export default function WaitlistForm() {
               </svg>
               <p className="text-lg font-medium mb-2">Form Error</p>
               <p className="text-sm mb-4">{error}</p>
+              <button 
+                onClick={() => {
+                  setError(null);
+                  setLoading(true);
+                  setRetryCount(0);
+                  // Retry loading
+                  setTimeout(() => {
+                    if (isMounted) {
+                      createForm();
+                    }
+                  }, 1000);
+                }} 
+                className="bg-forest text-white px-4 py-2 rounded-lg hover:bg-forest/90 transition-colors mr-2"
+              >
+                Retry
+              </button>
               <button 
                 onClick={() => window.location.reload()} 
                 className="bg-rose text-white px-4 py-2 rounded-lg hover:bg-rose/90 transition-colors"
