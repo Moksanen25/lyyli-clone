@@ -13,13 +13,13 @@ import {
 import SubPageVisual from "@/components/SubPageVisual";
 
 interface FeaturesPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: FeaturesPageProps): Promise<Metadata> {
-  const { locale } = params;
+  const { locale } = await params;
   const t = await getTranslations(locale);
 
   return {
@@ -29,7 +29,7 @@ export async function generateMetadata({
 }
 
 export default async function FeaturesPage({ params }: FeaturesPageProps) {
-  const { locale } = params;
+  const { locale } = await params;
   const supportedLocales = ["en", "fi"];
   const currentLocale = supportedLocales.includes(locale) ? locale : "en";
 
