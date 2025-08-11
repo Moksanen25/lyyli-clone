@@ -7,7 +7,11 @@ interface WaitlistSubmission {
   email: string;
   company: string;
   role: string;
-  teamSize: string;
+  phone?: string;
+  countryCode?: string;
+  organizationSize: string;
+  gdprConsent: boolean;
+  securityConsent: boolean;
   timestamp: string;
   source: string;
 }
@@ -66,13 +70,17 @@ export default function AdminWaitlistPage() {
     }
 
     const csvContent = [
-      ['ID', 'Email', 'Company', 'Role', 'Team Size', 'Timestamp', 'Source'],
+      ['ID', 'Email', 'Company', 'Role', 'Phone', 'Country Code', 'Organization Size', 'GDPR Consent', 'Security Consent', 'Timestamp', 'Source'],
       ...submissions.map(sub => [
         sub.id,
         sub.email,
         sub.company,
         sub.role,
-        sub.teamSize,
+        sub.phone || '',
+        sub.countryCode || '',
+        sub.organizationSize,
+        sub.gdprConsent ? 'Yes' : 'No',
+        sub.securityConsent ? 'Yes' : 'No',
         new Date(sub.timestamp).toLocaleString(),
         sub.source
       ])
@@ -202,7 +210,16 @@ export default function AdminWaitlistPage() {
                       Role
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
-                      Team Size
+                      Phone
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      Org Size
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      GDPR
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                      Security
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
                       Timestamp
@@ -228,7 +245,28 @@ export default function AdminWaitlistPage() {
                         {submission.role}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b">
-                        {submission.teamSize}
+                        {submission.phone ? `${submission.countryCode} ${submission.phone}` : '-'}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b">
+                        {submission.organizationSize}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b">
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          submission.gdprConsent 
+                            ? 'bg-green-100 text-green-800' 
+                            : 'bg-red-100 text-red-800'
+                        }`}>
+                          {submission.gdprConsent ? 'Yes' : 'No'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b">
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          submission.securityConsent 
+                            ? 'bg-green-100 text-green-800' 
+                            : 'bg-red-100 text-red-800'
+                        }`}>
+                          {submission.securityConsent ? 'Yes' : 'No'}
+                        </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b">
                         {new Date(submission.timestamp).toLocaleString()}

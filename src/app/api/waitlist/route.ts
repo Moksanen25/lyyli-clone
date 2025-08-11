@@ -5,10 +5,13 @@ interface WaitlistSubmission {
   email: string;
   company: string;
   role: string;
-  teamSize: string;
+  phone?: string;
+  countryCode?: string;
+  organizationSize: string;
+  gdprConsent: boolean;
+  securityConsent: boolean;
   timestamp: string;
   source: string;
-  consent: boolean;
   ipAddress?: string;
   userAgent?: string;
 }
@@ -31,9 +34,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate required fields
-    const { email, company, role, teamSize, timestamp, source } = body;
+    const { email, company, role, organizationSize, gdprConsent, securityConsent, timestamp, source } = body;
     
-    if (!email || !company || !role || !teamSize) {
+    if (!email || !company || !role || !organizationSize || !gdprConsent || !securityConsent) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -54,10 +57,13 @@ export async function POST(request: NextRequest) {
       email: email.toLowerCase().trim(),
       company: company.trim(),
       role: role.trim(),
-      teamSize,
+      phone: body.phone?.trim(),
+      countryCode: body.countryCode,
+      organizationSize,
+      gdprConsent,
+      securityConsent,
       timestamp,
       source,
-      consent: true, // User consents by submitting the form
       ipAddress: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown',
       userAgent: request.headers.get('user-agent') || 'unknown'
     };
@@ -96,21 +102,25 @@ export async function GET(request: NextRequest) {
     //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     // }
 
-    // For development, allow viewing submissions
-    // In production, this should be protected and only accessible to admins
-    return NextResponse.json({
-      submissions: submissions.map(sub => ({
-        id: submissions.indexOf(sub),
-        email: sub.email,
-        company: sub.company,
-        role: sub.role,
-        teamSize: sub.teamSize,
-        timestamp: sub.timestamp,
-        source: sub.source
-        // Note: Not returning IP or User-Agent for privacy
-      })),
-      total: submissions.length
-    });
+          // For development, allow viewing submissions
+      // In production, this should be protected and only accessible to admins
+      return NextResponse.json({
+        submissions: submissions.map(sub => ({
+          id: submissions.indexOf(sub),
+          email: sub.email,
+          company: sub.company,
+          role: sub.role,
+          phone: sub.phone,
+          countryCode: sub.countryCode,
+          organizationSize: sub.organizationSize,
+          gdprConsent: sub.gdprConsent,
+          securityConsent: sub.securityConsent,
+          timestamp: sub.timestamp,
+          source: sub.source
+          // Note: Not returning IP or User-Agent for privacy
+        })),
+        total: submissions.length
+      });
 
   } catch (error) {
     console.error('Error retrieving waitlist submissions:', error);

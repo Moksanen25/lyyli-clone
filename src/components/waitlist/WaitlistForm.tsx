@@ -9,7 +9,11 @@ export default function WaitlistForm() {
     email: '',
     company: '',
     role: '',
-    teamSize: '50-100'
+    phone: '',
+    countryCode: '+358',
+    organizationSize: '50-100',
+    gdprConsent: false,
+    securityConsent: false
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,9 +54,10 @@ export default function WaitlistForm() {
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     }));
   };
 
@@ -113,42 +118,121 @@ export default function WaitlistForm() {
           />
         </div>
 
-        <div>
-          <label htmlFor="role" className="block text-sm font-medium text-forest mb-2">
-            Your Role *
-          </label>
-          <input
-            type="text"
-            id="role"
-            name="role"
-            required
-            value={formData.role}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
-            placeholder="e.g., Operations Manager, Communications Director"
-          />
-        </div>
+                       <div>
+                 <label htmlFor="role" className="block text-sm font-medium text-forest mb-2">
+                   Your Role *
+                 </label>
+                 <input
+                   type="text"
+                   id="role"
+                   name="role"
+                   required
+                   value={formData.role}
+                   onChange={handleInputChange}
+                   className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
+                   placeholder="e.g., Operations Manager, Communications Director"
+                 />
+               </div>
 
-        <div>
-          <label htmlFor="teamSize" className="block text-sm font-medium text-forest mb-2">
-            Team Size *
-          </label>
-          <select
-            id="teamSize"
-            name="teamSize"
-            required
-            value={formData.teamSize}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
-          >
-            <option value="10-50">10-50 people</option>
-            <option value="50-100">50-100 people</option>
-            <option value="100-500">100-500 people</option>
-            <option value="500+">500+ people</option>
-          </select>
-        </div>
+               <div>
+                 <label htmlFor="phone" className="block text-sm font-medium text-forest mb-2">
+                   Phone Number
+                 </label>
+                 <div className="flex gap-2">
+                   <select
+                     name="countryCode"
+                     value={formData.countryCode}
+                     onChange={handleInputChange}
+                     className="px-3 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors bg-white"
+                   >
+                     <option value="+358">🇫🇮 +358</option>
+                     <option value="+46">🇸🇪 +46</option>
+                     <option value="+47">🇳🇴 +47</option>
+                     <option value="+45">🇩🇰 +45</option>
+                     <option value="+31">🇳🇱 +31</option>
+                     <option value="+49">🇩🇪 +49</option>
+                     <option value="+33">🇫🇷 +33</option>
+                     <option value="+44">🇬🇧 +44</option>
+                     <option value="+1">🇺🇸 +1</option>
+                     <option value="+86">🇨🇳 +86</option>
+                     <option value="+81">🇯🇵 +81</option>
+                     <option value="+91">🇮🇳 +91</option>
+                     <option value="+61">🇦🇺 +61</option>
+                     <option value="+64">🇳🇿 +64</option>
+                   </select>
+                   <input
+                     type="tel"
+                     id="phone"
+                     name="phone"
+                     value={formData.phone}
+                     onChange={handleInputChange}
+                     className="flex-1 px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
+                     placeholder="Phone number"
+                   />
+                 </div>
+               </div>
 
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                 <div>
+           <label htmlFor="organizationSize" className="block text-sm font-medium text-forest mb-2">
+             Organization Size *
+           </label>
+           <select
+             id="organizationSize"
+             name="organizationSize"
+             required
+             value={formData.organizationSize}
+             onChange={handleInputChange}
+             className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-colors"
+           >
+             <option value="1-10">1-10 people</option>
+             <option value="10-50">10-50 people</option>
+             <option value="50-100">50-100 people</option>
+             <option value="100-500">100-500 people</option>
+             <option value="500+">500+ people</option>
+           </select>
+                  </div>
+
+         <div className="space-y-4">
+           <div className="flex items-start gap-3">
+             <input
+               type="checkbox"
+               id="gdpr-consent"
+               name="gdprConsent"
+               required
+               className="mt-1 h-4 w-4 text-forest focus:ring-forest border-grayLight rounded"
+             />
+             <label htmlFor="gdpr-consent" className="text-sm text-forest">
+               I consent to Lyyli.ai processing my personal data for the purpose of joining the waitlist. 
+               I understand that my data will be handled in accordance with our{' '}
+               <a 
+                 href="/en/privacy" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-turquoise hover:text-turquoise/80 underline"
+               >
+                 Privacy Policy
+               </a>
+               . I can withdraw my consent at any time by contacting us.
+             </label>
+           </div>
+
+           <div className="flex items-start gap-3">
+             <input
+               type="checkbox"
+               id="security-consent"
+               name="securityConsent"
+               required
+               className="mt-1 h-4 w-4 text-forest focus:ring-forest border-grayLight rounded"
+             />
+             <label htmlFor="security-consent" className="text-sm text-forest">
+               I acknowledge that Lyyli.ai implements appropriate technical and organizational measures 
+               to ensure the security of my personal data, including protection against unauthorized 
+               access, alteration, disclosure, or destruction.
+             </label>
+           </div>
+         </div>
+
+         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
           <div className="flex items-start gap-3">
             <svg className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
