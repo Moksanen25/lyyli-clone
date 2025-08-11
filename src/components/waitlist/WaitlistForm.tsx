@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function WaitlistForm() {
   const [loading, setLoading] = useState(false);
@@ -16,12 +16,88 @@ export default function WaitlistForm() {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // Save to local storage
+      const existingSubmissions = JSON.parse(localStorage.getItem('lyyli-waitlist') || '[]');
+      const newSubmission = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        id: Date.now()
+      };
+      existingSubmissions.push(newSubmission);
+      localStorage.setItem('lyyli-waitlist', JSON.stringify(existingSubmissions));
+      
+      // Log to console
+      console.log('Form submitted:', newSubmission);
+      console.log('All submissions:', existingSubmissions);
+      
+      // Send email notification (optional)
+      await sendEmailNotification(newSubmission);
+      
+      setSubmitted(true);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setLoading(false);
+      // Still show success even if email fails
+      setSubmitted(true);
+    }
+  };
+
+  const sendEmailNotification = async (submission: any) => {
+    // Simple email notification using mailto link
+    const subject = encodeURIComponent('New Waitlist Signup - Lyyli.ai');
+    const body = encodeURIComponent(`
+New waitlist signup:
+
+Email: ${submission.email}
+Company: ${submission.company}
+Role: ${submission.role}
+Team Size: ${submission.teamSize}
+Timestamp: ${new Date(submission.timestamp).toLocaleString()}
+
+---
+This was submitted via the Lyyli.ai waitlist form.
+    `);
     
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setLoading(false);
+    // Open email client
+    window.open(`mailto:hello@lyyli.ai?subject=${subject}&body=${body}`);
+  };
+
+  const downloadSubmissions = () => {
+    try {
+      const submissions = JSON.parse(localStorage.getItem('lyyli-waitlist') || '[]');
+      if (submissions.length === 0) {
+        alert('No submissions found yet.');
+        return;
+      }
+      
+      // Convert to CSV format
+      const csvContent = [
+        ['Email', 'Company', 'Role', 'Team Size', 'Timestamp'],
+        ...submissions.map((sub: any) => [
+          sub.email,
+          sub.company,
+          sub.role,
+          sub.teamSize,
+          new Date(sub.timestamp).toLocaleString()
+        ])
+      ].map(row => row.map(field => `"${field}"`).join(',')).join('\n');
+      
+      // Create and download file
+      const blob = new Blob([csvContent], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `lyyli-waitlist-${new Date().toISOString().split('T')[0]}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading submissions:', error);
+      alert('Error downloading submissions. Check console for details.');
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -42,12 +118,20 @@ export default function WaitlistForm() {
           </div>
           <h3 className="text-xl font-playfair font-bold text-forest mb-2">Thank you for joining our waitlist!</h3>
           <p className="text-mediumGray mb-4">We'll notify you as soon as Lyyli is available for your organization.</p>
-          <button 
-            onClick={() => setSubmitted(false)}
-            className="bg-forest text-white px-6 py-2 rounded-lg hover:bg-forest/90 transition-colors"
-          >
-            Join Another Person
-          </button>
+          <div className="flex gap-3 justify-center">
+            <button 
+              onClick={() => setSubmitted(false)}
+              className="bg-forest text-white px-6 py-2 rounded-lg hover:bg-forest/90 transition-colors"
+            >
+              Join Another Person
+            </button>
+            <button 
+              onClick={() => downloadSubmissions()}
+              className="bg-turquoise text-white px-6 py-2 rounded-lg hover:bg-turquoise/90 transition-colors"
+            >
+              Download All Submissions
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -149,6 +233,16 @@ export default function WaitlistForm() {
             'Join Waitlist'
           )}
         </button>
+        
+        <div className="text-center pt-4">
+          <button
+            type="button"
+            onClick={() => downloadSubmissions()}
+            className="text-sm text-mediumGray hover:text-forest transition-colors underline"
+          >
+            View/Download All Submissions
+          </button>
+        </div>
       </form>
     </div>
   );
