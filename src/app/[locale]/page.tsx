@@ -313,7 +313,7 @@ export default async function Home({ params }: HomeProps) {
         <p className="text-lg text-foreground max-w-3xl mx-auto mb-8 font-sans leading-relaxed">
           {t["cta.description"]}
         </p>
-        <a href="/en/contact" className="btn-primary">
+        <a href={`/${currentLocale}/waitlist`} className="btn-primary">
           {t["cta.button"]}
         </a>
       </section>

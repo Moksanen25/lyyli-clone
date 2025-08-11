@@ -95,21 +95,21 @@ export default async function PricingPage({ params }: PricingPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/demo" 
+              href={`/${currentLocale}/waitlist`}
               className="bg-white text-forest px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center justify-center gap-2"
-              aria-label="Book a demo of Lyyli.ai"
+              aria-label="Join the waitlist for Lyyli.ai"
             >
-              {t['cta.button']}
+              {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </a>
             <a 
-              href="/contact" 
+              href={`/${currentLocale}/waitlist`}
               className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-colors font-medium inline-flex items-center justify-center"
-              aria-label="Contact Lyyli.ai sales team"
+              aria-label="Join the waitlist for Lyyli.ai"
             >
-              Contact Sales
+              {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
             </a>
           </div>
         </div>

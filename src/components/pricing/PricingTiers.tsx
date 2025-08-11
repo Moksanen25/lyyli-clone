@@ -34,7 +34,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: 0,
       description: t["pricing.free.description"],
       cta: t["pricing.free.cta"],
-      ctaHref: "/trial",
+      ctaHref: "/waitlist",
       illustration: "seedling",
       features: [
         t["pricing.features.maxOneUser"],
@@ -51,7 +51,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: Math.round(29 * 12 * 0.8), // 12 months - 20% discount
       description: t["pricing.starter.description"],
       cta: t["pricing.starter.cta"],
-      ctaHref: "/trial",
+      ctaHref: "/waitlist",
       illustration: "rocket",
       features: [
         t["pricing.features.maxOneUser"],
@@ -68,7 +68,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: Math.round(199 * 12 * 0.8), // 12 months - 20% discount
       description: t["pricing.growth.description"],
       cta: t["pricing.growth.cta"],
-      ctaHref: "/trial",
+      ctaHref: "/waitlist",
       illustration: "trend",
       features: [
         t["pricing.features.userManagement3"],
@@ -85,7 +85,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: Math.round(599 * 12 * 0.8), // 12 months - 20% discount
       description: t["pricing.professional.description"],
       cta: t["pricing.professional.cta"],
-      ctaHref: "/trial",
+      ctaHref: "/waitlist",
       popular: true,
       illustration: "clipboard",
       features: [
@@ -103,7 +103,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: 0,
       description: t["pricing.enterprise.description"],
       cta: t["pricing.enterprise.cta"],
-      ctaHref: "/contact",
+      ctaHref: "/waitlist",
       illustration: "handshake",
       features: [
         t["pricing.features.customInstallation"],

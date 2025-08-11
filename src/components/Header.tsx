@@ -94,11 +94,11 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
             {/* CTA Button - Following 10-layout rule: ensisijainen CTA "Get started" tai "Book a demo" */}
             <a
-              href={`/${locale}/contact`}
+              href={`/${locale}/waitlist`}
               className="bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest/90 hover:shadow-medium transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans"
-              aria-label="Book a demo of Lyyli.ai"
+              aria-label="Join the waitlist for Lyyli.ai"
             >
-              {locale === "fi" ? "Varaa demo" : "Book a Demo"}
+              {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -190,11 +190,11 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             <div className="flex items-center gap-4 pt-2">
               <ClientLocaleSwitcher currentLocale={locale} />
               <a
-                href={`/${locale}/contact`}
+                href={`/${locale}/waitlist`}
                 className="bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest/90 hover:shadow-medium transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans"
-                aria-label="Book a demo of Lyyli.ai"
+                aria-label="Join the waitlist for Lyyli.ai"
               >
-                {locale === "fi" ? "Varaa demo" : "Book a Demo"}
+                {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
                 <svg
                   className="w-4 h-4"
                   fill="none"
