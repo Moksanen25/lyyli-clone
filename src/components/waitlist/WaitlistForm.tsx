@@ -44,7 +44,7 @@ export default function WaitlistForm() {
     }
   };
 
-  const sendEmailNotification = async (submission: any) => {
+  const sendEmailNotification = async (submission: typeof formData & { timestamp: string; id: number }) => {
     // Simple email notification using mailto link
     const subject = encodeURIComponent('New Waitlist Signup - Lyyli.ai');
     const body = encodeURIComponent(`
@@ -75,14 +75,14 @@ This was submitted via the Lyyli.ai waitlist form.
       // Convert to CSV format
       const csvContent = [
         ['Email', 'Company', 'Role', 'Team Size', 'Timestamp'],
-        ...submissions.map((sub: any) => [
+        ...submissions.map((sub: typeof formData & { timestamp: string; id: number }) => [
           sub.email,
           sub.company,
           sub.role,
           sub.teamSize,
           new Date(sub.timestamp).toLocaleString()
         ])
-      ].map(row => row.map(field => `"${field}"`).join(',')).join('\n');
+      ].map(row => row.map((field: string) => `"${field}"`).join(',')).join('\n');
       
       // Create and download file
       const blob = new Blob([csvContent], { type: 'text/csv' });
