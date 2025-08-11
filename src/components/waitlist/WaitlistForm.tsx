@@ -15,6 +15,8 @@ export default function WaitlistForm() {
   useEffect(() => {
     if (!isMounted) return;
     
+    console.log('WaitlistForm useEffect running, checking HubSpot availability...');
+    
     // Check if HubSpot is already loaded
     if (window.hbspt && window.hbspt.forms) {
       console.log('HubSpot already available, creating form');
@@ -48,10 +50,8 @@ export default function WaitlistForm() {
 
     // Set a timeout to prevent infinite loading
     const timeout = setTimeout(() => {
-      if (loading) {
-        console.log('Form loading timeout, using fallback');
-        fallbackToIframe();
-      }
+      console.log('Form loading timeout, using fallback');
+      fallbackToIframe();
     }, 10000); // 10 seconds timeout
 
     // Load HubSpot script
@@ -86,10 +86,14 @@ export default function WaitlistForm() {
       clearTimeout(timeout);
       // Don't remove script on unmount as it might be used by other components
     };
-  }, [loading]);
+  }, [isMounted]); // Changed from [loading] to [isMounted]
 
   const createForm = () => {
     if (!isMounted) return;
+    
+    console.log('createForm called, checking HubSpot availability...');
+    console.log('window.hbspt:', window.hbspt);
+    console.log('window.hbspt?.forms:', window.hbspt?.forms);
     
     try {
       if (window.hbspt && window.hbspt.forms && typeof window.hbspt.forms.create === 'function') {
@@ -100,6 +104,7 @@ export default function WaitlistForm() {
           formId: 'f337eade-e814-4038-b2aa-908dcf612cce',
           target: '#hubspot-form-container'
         });
+        console.log('HubSpot form creation initiated');
         setLoading(false);
       } else {
         console.error('HubSpot not available or forms.create not a function');
@@ -108,11 +113,13 @@ export default function WaitlistForm() {
           console.log('HubSpot forms object:', window.hbspt.forms);
         }
         // Fallback to iframe approach
+        console.log('Falling back to iframe...');
         fallbackToIframe();
       }
     } catch (error) {
       console.error('Error creating form:', error);
       // Fallback to iframe approach
+      console.log('Falling back to iframe due to error...');
       fallbackToIframe();
     }
   };
@@ -122,6 +129,7 @@ export default function WaitlistForm() {
     try {
       const container = document.getElementById('hubspot-form-container');
       if (container) {
+        console.log('Container found, injecting iframe...');
         container.innerHTML = `
           <iframe 
             src="https://forms.hsforms.com/146205702/f337eade-e814-4038-b2aa-908dcf612cce?region=eu1" 
@@ -132,6 +140,7 @@ export default function WaitlistForm() {
             title="Join Waitlist Form"
           ></iframe>
         `;
+        console.log('Iframe injected successfully');
         setLoading(false);
       } else {
         console.error('HubSpot form container not found');
