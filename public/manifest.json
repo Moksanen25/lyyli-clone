@@ -1,0 +1,25 @@
+{
+  "name": "Lyyli.ai - AI Communication Assistant",
+  "short_name": "Lyyli.ai",
+  "description": "AI communication assistant for professional service organizations",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2F5D50",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "500x500",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["business", "productivity", "communication"],
+  "lang": "en",
+  "dir": "ltr"
+}

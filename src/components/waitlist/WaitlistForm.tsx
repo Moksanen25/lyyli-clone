@@ -22,6 +22,30 @@ export default function WaitlistForm() {
       return;
     }
 
+    // Check if script is already being loaded
+    if (document.querySelector('script[src*="js-eu1.hsforms.net"]')) {
+      console.log('HubSpot script already loading, waiting...');
+      // Wait for existing script to load
+      const checkInterval = setInterval(() => {
+        if (window.hbspt && window.hbspt.forms) {
+          clearInterval(checkInterval);
+          console.log('HubSpot script loaded by another instance, creating form');
+          createForm();
+        }
+      }, 100);
+      
+      // Set a timeout to prevent infinite waiting
+      setTimeout(() => {
+        clearInterval(checkInterval);
+        if (!window.hbspt || !window.hbspt.forms) {
+          console.log('Timeout waiting for existing script, using fallback');
+          fallbackToIframe();
+        }
+      }, 10000);
+      
+      return;
+    }
+
     // Set a timeout to prevent infinite loading
     const timeout = setTimeout(() => {
       if (loading) {
@@ -60,9 +84,7 @@ export default function WaitlistForm() {
     return () => {
       // Cleanup
       clearTimeout(timeout);
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
+      // Don't remove script on unmount as it might be used by other components
     };
   }, [loading]);
 
