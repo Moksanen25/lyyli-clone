@@ -11,7 +11,7 @@ import Link from "next/link";
 import remarkGfm from "remark-gfm";
 
 interface BlogPostPageProps {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -26,11 +26,14 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getBlogPost(slug, locale);
+  const supportedLocales = ["en", "fi"];
+  const currentLocale = supportedLocales.includes(locale) ? locale : "en";
+
+  const post = getBlogPost(slug, currentLocale);
 
   if (!post) {
     return {
-      title: "Post Not Found - Lyyli.ai",
+      title: "Blog Post Not Found",
       description: "The requested blog post could not be found.",
     };
   }
@@ -39,7 +42,7 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { locale, slug } = params;
+  const { locale, slug } = await params;
   const supportedLocales = ["en", "fi"];
   const currentLocale = supportedLocales.includes(locale) ? locale : "en";
 
@@ -80,9 +83,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               `blog.categories.${post.category.toLowerCase()}` as keyof typeof t
             ] as string) || post.category}
           </span>
-          <h1 className="heading-1 mb-4">{post.title}</h1>
-          <p className="body-large text-medium-gray mb-6">{post.description}</p>
-          <div className="flex items-center gap-4 text-sm text-medium-gray">
+          <h1 className="text-4xl lg:text-5xl font-playfair font-bold text-forest mb-4">{post.title}</h1>
+          <p className="text-lg text-mediumGray mb-6">{post.description}</p>
+          <div className="flex items-center gap-4 text-sm text-mediumGray">
             <span>{post.author}</span>
             <span>•</span>
             <time dateTime={post.date}>
@@ -103,7 +106,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               className="w-full h-64 md:h-96 object-cover rounded-lg"
             />
             {post.imageAlt && (
-              <p className="text-sm text-medium-gray mt-2 text-center">
+              <p className="text-sm text-mediumGray mt-2 text-center">
                 {post.imageAlt}
               </p>
             )}
@@ -113,7 +116,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 pb-16 lg:pb-24">
-        <div className="prose prose-lg max-w-none prose-headings:text-forest-green prose-a:text-forest-green prose-a:no-underline hover:prose-a:text-muted-turquoise">
+        <div className="prose prose-lg max-w-none prose-headings:text-forest prose-a:text-forest prose-a:no-underline hover:prose-a:text-turquoise">
           <MDXRemote
             source={post.content}
             options={{
@@ -127,10 +130,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </div>
 
       {/* Related CTA */}
-      <section className="bg-light-gray py-16">
+      <section className="bg-grayLight py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="heading-2 mb-4 text-forest-green">{t["cta.title"]}</h2>
-          <p className="body-large mb-8 text-medium-gray">
+          <h2 className="text-3xl font-playfair font-bold mb-4 text-forest">{t["cta.title"]}</h2>
+          <p className="text-lg mb-8 text-mediumGray">
             {t["cta.description"]}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
