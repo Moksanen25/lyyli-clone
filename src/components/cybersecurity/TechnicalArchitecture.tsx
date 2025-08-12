@@ -9,8 +9,8 @@ export default async function TechnicalArchitecture({ locale }: TechnicalArchite
 
   const technicalFeatures = [
     {
-      title: t['cybersecurity.technicalArchitecture.sections.encryption.aes256.title'],
-      description: t['cybersecurity.technicalArchitecture.sections.encryption.aes256.description'],
+      title: t['cybersecurity.technicalArchitecture.encryption.aes256.title'],
+      description: t['cybersecurity.technicalArchitecture.encryption.aes256.description'],
       icon: (
         <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -18,8 +18,8 @@ export default async function TechnicalArchitecture({ locale }: TechnicalArchite
       ),
     },
     {
-      title: t['cybersecurity.technicalArchitecture.sections.encryption.secureTransmission.title'],
-      description: t['cybersecurity.technicalArchitecture.sections.encryption.secureTransmission.description'],
+      title: t['cybersecurity.technicalArchitecture.encryption.secureTransmission.title'],
+      description: t['cybersecurity.technicalArchitecture.encryption.secureTransmission.description'],
       icon: (
         <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -27,8 +27,8 @@ export default async function TechnicalArchitecture({ locale }: TechnicalArchite
       ),
     },
     {
-      title: t['cybersecurity.technicalArchitecture.sections.encryption.euCloudServices.title'],
-      description: t['cybersecurity.technicalArchitecture.sections.encryption.euCloudServices.description'],
+      title: t['cybersecurity.technicalArchitecture.encryption.euCloudServices.title'],
+      description: t['cybersecurity.technicalArchitecture.encryption.euCloudServices.description'],
       icon: (
         <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -36,8 +36,8 @@ export default async function TechnicalArchitecture({ locale }: TechnicalArchite
       ),
     },
     {
-      title: t['cybersecurity.technicalArchitecture.sections.encryption.infrastructureStandards.title'],
-      description: t['cybersecurity.technicalArchitecture.sections.encryption.infrastructureStandards.description'],
+      title: t['cybersecurity.technicalArchitecture.encryption.infrastructureStandards.title'],
+      description: t['cybersecurity.technicalArchitecture.encryption.infrastructureStandards.description'],
       icon: (
         <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -61,7 +61,7 @@ export default async function TechnicalArchitecture({ locale }: TechnicalArchite
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <h3 className="text-2xl font-playfair font-bold text-forest mb-6">
-              {t['cybersecurity.technicalArchitecture.sections.encryption.title']}
+              {t['cybersecurity.technicalArchitecture.encryption.title']}
             </h3>
             <div className="space-y-6">
               {technicalFeatures.map((feature, index) => (
@@ -84,10 +84,10 @@ export default async function TechnicalArchitecture({ locale }: TechnicalArchite
           
           <div className="bg-forest/5 p-8 rounded-lg border border-forest/20">
             <h4 className="text-xl font-playfair font-bold text-forest mb-4">
-              {t['cybersecurity.technicalArchitecture.sections.encryption.dataIsolation.title']}
+              {t['cybersecurity.technicalArchitecture.encryption.dataIsolation.title']}
             </h4>
             <p className="text-mediumGray font-sans leading-relaxed">
-              {t['cybersecurity.technicalArchitecture.sections.encryption.dataIsolation.description']}
+              {t['cybersecurity.technicalArchitecture.encryption.dataIsolation.description']}
             </p>
           </div>
         </div>
