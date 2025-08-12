@@ -1,6 +1,7 @@
 {
   "nav.home": "Home",
   "nav.features": "Features",
+  "nav.security": "Security",
   "nav.pricing": "Pricing",
   "nav.contact": "Contact",
   "nav.getStarted": "Get Started",
@@ -87,6 +88,7 @@
   "cta.description": "Book a personalized demo to see how Lyyli can reduce information overload and improve communication efficiency for your professional service organization.",
   "cta.button": "Book a demo",
   "cta.demo": "Schedule demo",
+  "cta.contactSales": "Contact Sales",
 
   "footer.tagline": "AI communication assistant for professional service organizations",
   "footer.rights": "© 2024 Lyyli. All rights reserved.",
@@ -465,5 +467,216 @@
   "cookies.page.description": "Understand how Lyyli uses cookies and tracking technologies while maintaining enterprise-grade security and GDPR compliance.",
   "cookies.title": "Cookie policy",
   "cookies.updated": "Last updated",
-  "cookies.intro": "This Cookie Policy explains how Lyyli uses cookies and similar technologies to provide and improve our services while maintaining enterprise-grade security standards."
+  "cookies.intro": "This Cookie Policy explains how Lyyli uses cookies and similar technologies to provide and improve our services while maintaining enterprise-grade security standards.",
+
+  "cybersecurity": {
+    "meta": {
+      "title": "Security & Privacy Protection at Lyyli - Enterprise-Grade Cybersecurity",
+      "description": "Discover Lyyli's world-class security measures including AES-256 encryption, EU data centers, GDPR compliance, and comprehensive data protection for professional service organizations.",
+      "keywords": "cybersecurity, data protection, GDPR compliance, AES-256 encryption, EU data centers, privacy, security, data isolation, access control"
+    },
+    "hero": {
+      "title": "Security & Privacy Protection at Lyyli",
+      "subtitle": "When building AI tools for communication, we fully understand our responsibility in protecting our customers' data. Security is not just a technical requirement for us, but the cornerstone of our business.",
+      "contactButton": "Contact Us",
+      "featuresButton": "View Features",
+      "imageAlt": "Cybersecurity and data protection illustration showing security measures and privacy protection"
+    },
+    "highlights": {
+      "gdpr": {
+        "title": "GDPR Compliant",
+        "description": "Full GDPR compliance from the ground up"
+      },
+      "euServers": {
+        "title": "EU Servers",
+        "description": "All data stays within EU borders"
+      },
+      "encryption": {
+        "title": "AES-256 Encryption",
+        "description": "Military-grade encryption for all data"
+      }
+    },
+    "securityFeatures": {
+      "title": "Comprehensive Security Solutions",
+      "subtitle": "Lyyli processes sensitive messages and confidential documents daily. That's why we've built world-class security.",
+      "features": {
+        "encryption": {
+          "title": "End-to-End Encryption",
+          "description": "AES-256 encryption for all data in transit and at rest"
+        },
+        "euDataCenters": {
+          "title": "EU Data Centers",
+          "description": "Our servers are located in the EU, your data never leaves the union"
+        },
+        "isolatedEnvironment": {
+          "title": "Isolated Environment",
+          "description": "Your company data is completely isolated and not used for training language models"
+        },
+        "noThirdParties": {
+          "title": "No Third Parties",
+          "description": "Your data is never shared, sold, or rented to third parties"
+        },
+        "regularAudits": {
+          "title": "Regular Audits",
+          "description": "We conduct regular security audits with external specialists"
+        },
+        "accessManagement": {
+          "title": "Access Management",
+          "description": "Precise access control and comprehensive activity logging"
+        }
+      }
+    },
+    "technicalArchitecture": {
+      "title": "Technical Architecture and Data Processing",
+      "subtitle": "Lyyli operates as a fully cloud-based solution where all data flows encrypted.",
+      "sections": {
+        "encryption": {
+          "title": "Encryption and Security",
+          "aes256": {
+            "title": "AES-256 Encryption",
+            "description": "We use AES-256 encryption for both data transmission and storage"
+          },
+          "secureTransmission": {
+            "title": "Secure Transmission",
+            "description": "All data transmission is protected with TLS 1.3 protocol"
+          },
+          "euCloudServices": {
+            "title": "EU Cloud Services",
+            "description": "Our services run on servers located within the EU"
+          },
+          "infrastructureStandards": {
+            "title": "Infrastructure Standards",
+            "description": "We follow industry-standard practices. We approach security according to the ISO27001 framework and will certify the service."
+          },
+          "dataIsolation": {
+            "title": "Data Isolation",
+            "description": "Each customer's data is stored completely isolated in its own environment. Your data is never used to train AI models except within your organization's own environment. This means that your competitors cannot benefit from your data, and you do not benefit from their data - each organization is completely independent."
+          }
+        }
+      }
+    },
+    "gdprCompliance": {
+      "title": "GDPR Compliance in Practice",
+      "subtitle": "We have built Lyyli according to GDPR requirements from the ground up.",
+      "features": {
+        "dataMinimization": {
+          "title": "Data Minimization",
+          "description": "We only process data that is necessary for service operation"
+        },
+        "purposeLimitation": {
+          "title": "Purpose Limitation",
+          "description": "Your data is used only for improving communication and service delivery"
+        },
+        "rightToDeletion": {
+          "title": "Right to Deletion",
+          "description": "You can request data deletion within 30 days"
+        },
+        "dataPortability": {
+          "title": "Data Portability",
+          "description": "All your data can be delivered in machine-readable format"
+        },
+        "dedicatedDPO": {
+          "title": "Dedicated Data Protection Officer",
+          "description": "We have a dedicated Data Protection Officer who responds to all data protection related questions quickly and comprehensively. We believe that transparency is the best way to build trust."
+        }
+      },
+      "benefits": {
+        "quickResponse": "Quick Response Time",
+        "expertSupport": "Expert Support",
+        "fullTransparency": "Full Transparency"
+      }
+    },
+    "accessControl": {
+      "title": "Access Rights and Access Control",
+      "subtitle": "Lyyli implements precise access control and comprehensive activity monitoring.",
+      "sections": {
+        "control": {
+          "title": "Control and Monitoring",
+          "roleBasedAccess": {
+            "title": "Role-based Access",
+            "description": "Organization members see only the data they have rights to access"
+          },
+          "administratorControl": {
+            "title": "Administrator Control",
+            "description": "Administrators can manage access rights in detail"
+          },
+          "activityLogging": {
+            "title": "Activity Logging",
+            "description": "All system logins and activities are securely logged"
+          },
+          "automaticMonitoring": {
+            "title": "Automatic Monitoring",
+            "description": "Suspicious activity is automatically detected and immediately reported"
+          }
+        }
+      }
+    },
+    "continuousDevelopment": {
+      "title": "Continuous Development",
+      "subtitle": "Security is not a one-time project for us, but a continuous process.",
+      "features": {
+        "regularUpdates": {
+          "title": "Regular Updates",
+          "description": "We regularly update our systems and actively monitor security threats"
+        },
+        "externalAudits": {
+          "title": "External Audits",
+          "description": "We conduct regular security audits and test our systems with external specialists"
+        },
+        "staffTraining": {
+          "title": "Staff Training",
+          "description": "Our staff is continuously trained in security matters, as security depends on the weakest link in the chain"
+        },
+        "threatMonitoring": {
+          "title": "Threat Monitoring",
+          "description": "We continuously improve our protections and respond quickly to new threats"
+        }
+      },
+      "commitment": {
+        "title": "Our Commitment to Security",
+        "description": "Ultimately, security is a matter of trust. We trust you by sharing our best practices, and we hope you trust us by letting Lyyli help with your communication. We are committed to maintaining the highest possible level of security and continuously developing it."
+      }
+    },
+    "support": {
+      "title": "Cooperation and Support",
+      "subtitle": "If you have questions about security or privacy protection, don't hesitate to contact us.",
+      "channels": {
+        "email": {
+          "title": "Email",
+          "description": "Quick response to security questions",
+          "address": "hello@lyyli.ai"
+        },
+        "chat": {
+          "title": "Chat Support",
+          "description": "Immediate help with security questions",
+          "button": "Start Chat"
+        },
+        "phone": {
+          "title": "Phone Support",
+          "description": "Personal support for enterprise customers",
+          "button": "Book a Call"
+        }
+      },
+      "dpo": {
+        "title": "Data Protection Officer",
+        "description": "We have a dedicated Data Protection Officer who responds to all GDPR and data protection related questions. You will receive an expert response within 24 hours.",
+        "button": "Contact Data Protection Officer"
+      }
+    }
+  },
+
+  "stats": {
+    "title": "Performance that speaks for itself",
+    "subtitle": "Experience lightning-fast AI communication with our optimized platform",
+    "fasterResponse": "Faster response time",
+    "uptimeReliability": "Uptime reliability",
+    "growing": "Growing",
+    "stable": "Stable"
+  },
+
+  "desktop": {
+    "title": "Experience Lyyli on desktop",
+    "subtitle": "Powerful desktop interface designed for productivity and seamless team collaboration.",
+    "experience": "Desktop Experience"
+  }
 }

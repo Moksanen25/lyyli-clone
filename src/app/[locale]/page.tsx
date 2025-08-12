@@ -109,10 +109,10 @@ export default async function Home({ params }: HomeProps) {
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl text-forest font-playfair font-bold leading-snug mb-4">
-            Performance that speaks for itself
+            {t["stats.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            Experience lightning-fast AI communication with our optimized platform
+            {t["stats.subtitle"]}
           </p>
         </div>
         
@@ -128,9 +128,9 @@ export default async function Home({ params }: HomeProps) {
               <div className="text-4xl font-bold text-forest mb-3 transition-all duration-300 group-hover:text-turquoise">
                 75%
               </div>
-              <div className="text-lg text-muted-foreground mb-3 font-medium">Faster response time</div>
+              <div className="text-lg text-muted-foreground mb-3 font-medium">{t["stats.fasterResponse"]}</div>
               <div className="text-sm font-medium text-green-600 transition-all duration-300">
-                ↗ Growing
+                ↗ {t["stats.growing"]}
               </div>
             </div>
           </div>
@@ -164,9 +164,9 @@ export default async function Home({ params }: HomeProps) {
               <div className="text-4xl font-bold text-forest mb-3 transition-all duration-300 group-hover:text-green-600">
                 99.9%
               </div>
-              <div className="text-lg text-muted-foreground mb-3 font-medium">Uptime reliability</div>
+              <div className="text-lg text-muted-foreground mb-3 font-medium">{t["stats.uptimeReliability"]}</div>
               <div className="text-sm font-medium text-green-600 transition-all duration-300">
-                ↗ Stable
+                ↗ {t["stats.stable"]}
               </div>
             </div>
           </div>
@@ -198,10 +198,10 @@ export default async function Home({ params }: HomeProps) {
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl text-forest font-playfair font-bold leading-snug mb-4">
-            Experience Lyyli on desktop
+            {t["desktop.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            Powerful desktop interface designed for productivity and seamless team collaboration.
+            {t["desktop.subtitle"]}
           </p>
         </div>
         <div className="flex justify-center">
@@ -216,7 +216,7 @@ export default async function Home({ params }: HomeProps) {
               <div className="absolute inset-0 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-lg blur-xl -z-10 group-hover:blur-2xl transition-all duration-300" />
             </div>
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-forest text-white px-4 py-2 rounded-full text-sm font-medium shadow-soft">
-              Desktop Experience
+              {t["desktop.experience"]}
             </div>
           </div>
         </div>

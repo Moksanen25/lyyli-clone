@@ -49,6 +49,16 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </li>
               <li role="none">
                 <a
+                  href={`/${locale}/cybersecurity`}
+                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  role="menuitem"
+                  aria-label="View cybersecurity page"
+                >
+                  {t["nav.security"]}
+                </a>
+              </li>
+              <li role="none">
+                <a
                   href={`/${locale}/pricing`}
                   className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
                   role="menuitem"
@@ -157,6 +167,13 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               aria-label="View features page"
             >
               {t["nav.features"]}
+            </a>
+            <a
+              href={`/${locale}/cybersecurity`}
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              aria-label="View cybersecurity page"
+            >
+              {t["nav.security"]}
             </a>
             <a
               href={`/${locale}/pricing`}

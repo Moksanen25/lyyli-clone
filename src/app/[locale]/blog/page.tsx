@@ -147,7 +147,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-colors font-medium inline-flex items-center justify-center font-sans"
               aria-label="Contact Lyyli.ai sales team"
             >
-              Contact Sales
+              {t["cta.contactSales"]}
             </a>
           </div>
         </div>

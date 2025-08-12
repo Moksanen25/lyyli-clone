@@ -91,6 +91,14 @@ export default function Footer({
                 </li>
                 <li>
                   <a
+                    href={`/${locale}/cybersecurity`}
+                    className="text-base text-white opacity-80 hover:opacity-100 transition-opacity font-sans leading-relaxed"
+                  >
+                    {t["nav.security"]}
+                  </a>
+                </li>
+                <li>
+                  <a
                     href={`/${locale}/pricing`}
                     className="text-base text-white opacity-80 hover:opacity-100 transition-opacity font-sans leading-relaxed"
                   >

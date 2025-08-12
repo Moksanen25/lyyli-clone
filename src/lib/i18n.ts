@@ -3,6 +3,7 @@ export interface TranslationKeys {
   // Navigation
   "nav.home": string;
   "nav.features": string;
+  "nav.security": string;
   "nav.pricing": string;
   "nav.contact": string;
   "nav.getStarted": string;
@@ -98,6 +99,7 @@ export interface TranslationKeys {
   "cta.description": string;
   "cta.button": string;
   "cta.demo": string;
+  "cta.contactSales": string;
 
   // Footer
   "footer.tagline": string;
@@ -267,6 +269,29 @@ export interface TranslationKeys {
   "pricing.roi.assumption2": string;
   "pricing.roi.assumption3": string;
   "pricing.roi.assumption4": string;
+  "pricing.benefits.title": string;
+  "pricing.benefits.efficiency.title": string;
+  "pricing.benefits.efficiency.value": string;
+  "pricing.benefits.efficiency.description": string;
+  "pricing.benefits.cost.title": string;
+  "pricing.benefits.cost.value": string;
+  "pricing.benefits.cost.description": string;
+  "pricing.benefits.roi.title": string;
+  "pricing.benefits.roi.value": string;
+  "pricing.benefits.roi.description": string;
+  "pricing.assumptions.title": string;
+  "pricing.assumptions.efficiency": string;
+  "pricing.assumptions.time": string;
+  "pricing.assumptions.cost": string;
+  "pricing.assumptions.overhead": string;
+  "pricing.tooltip.conversations": string;
+  "pricing.tooltip.users": string;
+  "pricing.tooltip.integrations": string;
+  "pricing.tooltip.analytics": string;
+  "pricing.tooltip.audit": string;
+  "pricing.tooltip.sla": string;
+
+  // Waitlist Page
   "waitlist.page.title": string;
   "waitlist.page.description": string;
   "waitlist.hero.title": string;
@@ -292,27 +317,6 @@ export interface TranslationKeys {
   "pricing.faq.enterprise.answer": string;
   "pricing.faq.support.question": string;
   "pricing.faq.support.answer": string;
-  "pricing.benefits.title": string;
-  "pricing.benefits.efficiency.title": string;
-  "pricing.benefits.efficiency.value": string;
-  "pricing.benefits.efficiency.description": string;
-  "pricing.benefits.cost.title": string;
-  "pricing.benefits.cost.value": string;
-  "pricing.benefits.cost.description": string;
-  "pricing.benefits.roi.title": string;
-  "pricing.benefits.roi.value": string;
-  "pricing.benefits.roi.description": string;
-  "pricing.assumptions.title": string;
-  "pricing.assumptions.efficiency": string;
-  "pricing.assumptions.time": string;
-  "pricing.assumptions.cost": string;
-  "pricing.assumptions.overhead": string;
-  "pricing.tooltip.conversations": string;
-  "pricing.tooltip.users": string;
-  "pricing.tooltip.integrations": string;
-  "pricing.tooltip.analytics": string;
-  "pricing.tooltip.audit": string;
-  "pricing.tooltip.sla": string;
 
   // About Page
   "about.page.title": string;
@@ -374,6 +378,7 @@ export interface TranslationKeys {
   "blog.categories.security": string;
   "blog.categories.productivity": string;
   "blog.categories.compliance": string;
+  "blog.categories.company-news": string;
   "blog.empty.title": string;
   "blog.empty.description": string;
 
@@ -446,6 +451,114 @@ export interface TranslationKeys {
   "cookies.title": string;
   "cookies.updated": string;
   "cookies.intro": string;
+
+  // Stats Section
+  "stats.title": string;
+  "stats.subtitle": string;
+  "stats.fasterResponse": string;
+  "stats.uptimeReliability": string;
+  "stats.growing": string;
+  "stats.stable": string;
+
+  // Desktop Section
+  "desktop.title": string;
+  "desktop.subtitle": string;
+  "desktop.experience": string;
+
+  // Cybersecurity Page - Flat structure to match component usage
+  "cybersecurity.meta.title": string;
+  "cybersecurity.meta.description": string;
+  "cybersecurity.meta.keywords": string;
+  "cybersecurity.hero.title": string;
+  "cybersecurity.hero.subtitle": string;
+  "cybersecurity.hero.contactButton": string;
+  "cybersecurity.hero.featuresButton": string;
+  "cybersecurity.hero.imageAlt": string;
+  "cybersecurity.highlights.gdpr.title": string;
+  "cybersecurity.highlights.gdpr.description": string;
+  "cybersecurity.highlights.euServers.title": string;
+  "cybersecurity.highlights.euServers.description": string;
+  "cybersecurity.highlights.encryption.title": string;
+  "cybersecurity.highlights.encryption.description": string;
+  "cybersecurity.securityFeatures.title": string;
+  "cybersecurity.securityFeatures.subtitle": string;
+  "cybersecurity.securityFeatures.features.encryption.title": string;
+  "cybersecurity.securityFeatures.features.encryption.description": string;
+  "cybersecurity.securityFeatures.features.euDataCenters.title": string;
+  "cybersecurity.securityFeatures.features.euDataCenters.description": string;
+  "cybersecurity.securityFeatures.features.isolatedEnvironment.title": string;
+  "cybersecurity.securityFeatures.features.isolatedEnvironment.description": string;
+  "cybersecurity.securityFeatures.features.noThirdParties.title": string;
+  "cybersecurity.securityFeatures.features.noThirdParties.description": string;
+  "cybersecurity.securityFeatures.features.regularAudits.title": string;
+  "cybersecurity.securityFeatures.features.regularAudits.description": string;
+  "cybersecurity.securityFeatures.features.accessManagement.title": string;
+  "cybersecurity.securityFeatures.features.accessManagement.description": string;
+  "cybersecurity.technicalArchitecture.title": string;
+  "cybersecurity.technicalArchitecture.subtitle": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.title": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.aes256.title": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.aes256.description": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.secureTransmission.title": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.secureTransmission.description": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.euCloudServices.title": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.euCloudServices.description": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.infrastructureStandards.title": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.infrastructureStandards.description": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.dataIsolation.title": string;
+  "cybersecurity.technicalArchitecture.sections.encryption.dataIsolation.description": string;
+  "cybersecurity.gdprCompliance.title": string;
+  "cybersecurity.gdprCompliance.subtitle": string;
+  "cybersecurity.gdprCompliance.features.dataMinimization.title": string;
+  "cybersecurity.gdprCompliance.features.dataMinimization.description": string;
+  "cybersecurity.gdprCompliance.features.purposeLimitation.title": string;
+  "cybersecurity.gdprCompliance.features.purposeLimitation.description": string;
+  "cybersecurity.gdprCompliance.features.rightToDeletion.title": string;
+  "cybersecurity.gdprCompliance.features.rightToDeletion.description": string;
+  "cybersecurity.gdprCompliance.features.dataPortability.title": string;
+  "cybersecurity.gdprCompliance.features.dataPortability.description": string;
+  "cybersecurity.gdprCompliance.features.dedicatedDPO.title": string;
+  "cybersecurity.gdprCompliance.features.dedicatedDPO.description": string;
+  "cybersecurity.gdprCompliance.benefits.quickResponse": string;
+  "cybersecurity.gdprCompliance.benefits.expertSupport": string;
+  "cybersecurity.gdprCompliance.benefits.fullTransparency": string;
+  "cybersecurity.accessControl.title": string;
+  "cybersecurity.accessControl.subtitle": string;
+  "cybersecurity.accessControl.sections.control.title": string;
+  "cybersecurity.accessControl.sections.control.roleBasedAccess.title": string;
+  "cybersecurity.accessControl.sections.control.roleBasedAccess.description": string;
+  "cybersecurity.accessControl.sections.control.administratorControl.title": string;
+  "cybersecurity.accessControl.sections.control.administratorControl.description": string;
+  "cybersecurity.accessControl.sections.control.activityLogging.title": string;
+  "cybersecurity.accessControl.sections.control.activityLogging.description": string;
+  "cybersecurity.accessControl.sections.control.automaticMonitoring.title": string;
+  "cybersecurity.accessControl.sections.control.automaticMonitoring.description": string;
+  "cybersecurity.continuousDevelopment.title": string;
+  "cybersecurity.continuousDevelopment.subtitle": string;
+  "cybersecurity.continuousDevelopment.features.regularUpdates.title": string;
+  "cybersecurity.continuousDevelopment.features.regularUpdates.description": string;
+  "cybersecurity.continuousDevelopment.features.externalAudits.title": string;
+  "cybersecurity.continuousDevelopment.features.externalAudits.description": string;
+  "cybersecurity.continuousDevelopment.features.staffTraining.title": string;
+  "cybersecurity.continuousDevelopment.features.staffTraining.description": string;
+  "cybersecurity.continuousDevelopment.features.threatMonitoring.title": string;
+  "cybersecurity.continuousDevelopment.features.threatMonitoring.description": string;
+  "cybersecurity.continuousDevelopment.commitment.title": string;
+  "cybersecurity.continuousDevelopment.commitment.description": string;
+  "cybersecurity.support.title": string;
+  "cybersecurity.support.subtitle": string;
+  "cybersecurity.support.channels.email.title": string;
+  "cybersecurity.support.channels.email.description": string;
+  "cybersecurity.support.channels.email.address": string;
+  "cybersecurity.support.channels.chat.title": string;
+  "cybersecurity.support.channels.chat.description": string;
+  "cybersecurity.support.channels.chat.button": string;
+  "cybersecurity.support.channels.phone.title": string;
+  "cybersecurity.support.channels.phone.description": string;
+  "cybersecurity.support.channels.phone.button": string;
+  "cybersecurity.support.dpo.title": string;
+  "cybersecurity.support.dpo.description": string;
+  "cybersecurity.support.dpo.button": string;
 }
 
 // Utility function for server-side translations
