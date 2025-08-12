@@ -180,7 +180,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           id="mobile-menu"
           className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
             isMobileMenuOpen 
-              ? "max-h-96 opacity-100 mt-4 pb-4 border-t border-grayLight" 
+              ? "max-h-[500px] opacity-100 mt-4 pb-4 border-t border-grayLight" 
               : "max-h-0 opacity-0 mt-0 pb-0 border-t-0"
           }`}
         >
@@ -189,66 +189,78 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             role="navigation"
             aria-label="Mobile navigation"
           >
-            <a
-              href={`/${locale}/features`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
-              aria-label="View features page"
-              onClick={closeMobileMenu}
-            >
-              {t["nav.features"]}
-            </a>
-            <a
-              href={`/${locale}/cybersecurity`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
-              aria-label="View cybersecurity page"
-              onClick={closeMobileMenu}
-            >
-              {t["nav.security"]}
-            </a>
-            <a
-              href={`/${locale}/pricing`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
-              aria-label="View pricing page"
-              onClick={closeMobileMenu}
-            >
-              {t["nav.pricing"]}
-            </a>
-            <a
-              href={`/${locale}/about`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
-              aria-label="About us page"
-              onClick={closeMobileMenu}
-            >
-              {locale === "fi" ? "Tietoja meistä" : "About"}
-            </a>
-            <a
-              href={`/${locale}/blog`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
-              aria-label="Blog page"
-              onClick={closeMobileMenu}
-            >
-              Blog
-            </a>
-            <a
-              href={`/${locale}/contact`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
-              aria-label="Contact page"
-              onClick={closeMobileMenu}
-            >
-              {t["nav.contact"]}
-            </a>
+            {/* Main Navigation Links */}
+            <div className="space-y-2">
+              <a
+                href={`/${locale}/features`}
+                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                aria-label="View features page"
+                onClick={closeMobileMenu}
+              >
+                {t["nav.features"]}
+              </a>
+              <a
+                href={`/${locale}/cybersecurity`}
+                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                aria-label="View cybersecurity page"
+                onClick={closeMobileMenu}
+              >
+                {t["nav.security"]}
+              </a>
+              <a
+                href={`/${locale}/pricing`}
+                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                aria-label="View pricing page"
+                onClick={closeMobileMenu}
+              >
+                {t["nav.pricing"]}
+              </a>
+              <a
+                href={`/${locale}/about`}
+                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                aria-label="About us page"
+                onClick={closeMobileMenu}
+              >
+                {locale === "fi" ? "Tietoja meistä" : "About"}
+              </a>
+              <a
+                href={`/${locale}/blog`}
+                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                aria-label="Blog page"
+                onClick={closeMobileMenu}
+              >
+                Blog
+              </a>
+              <a
+                href={`/${locale}/contact`}
+                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                aria-label="Contact page"
+                onClick={closeMobileMenu}
+              >
+                {t["nav.contact"]}
+              </a>
+            </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-              <ClientLocaleSwitcher currentLocale={locale} />
+            {/* Prominent Waitlist CTA Section */}
+            <div className="border-t border-grayLight pt-4 mt-2">
+              <div className="text-center mb-4">
+                <h3 className="text-lg font-semibold text-forest mb-2">
+                  {locale === "fi" ? "Oletko valmis aloittamaan?" : "Ready to get started?"}
+                </h3>
+                <p className="text-sm text-mediumGray mb-4">
+                  {locale === "fi" ? "Liity odotuslistalle ja ole ensimmäisten joukossa" : "Join the waitlist and be among the first"}
+                </p>
+              </div>
+              
+              {/* Primary Waitlist Button */}
               <a
                 href={`/${locale}/waitlist`}
-                className="bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest/90 hover:shadow-medium transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans w-full sm:w-auto justify-center"
+                className="block w-full bg-forest text-white px-6 py-4 rounded-lg hover:bg-forest/90 hover:shadow-medium transition-all duration-200 font-semibold text-base inline-flex items-center justify-center gap-3 font-sans mb-3"
                 aria-label="Join the waitlist for Lyyli.ai"
                 onClick={closeMobileMenu}
               >
-                {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -261,7 +273,25 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
+                {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
               </a>
+              
+              {/* Secondary Waitlist Link */}
+              <a
+                href={`/${locale}/waitlist`}
+                className="block w-full text-center text-forest hover:text-forest/80 transition-colors duration-200 font-medium text-sm py-2"
+                aria-label="Learn more about joining the waitlist"
+                onClick={closeMobileMenu}
+              >
+                {locale === "fi" ? "Lue lisää →" : "Learn more →"}
+              </a>
+            </div>
+
+            {/* Locale Switcher */}
+            <div className="border-t border-grayLight pt-4 mt-2">
+              <div className="flex justify-center">
+                <ClientLocaleSwitcher currentLocale={locale} />
+              </div>
             </div>
           </nav>
         </div>
