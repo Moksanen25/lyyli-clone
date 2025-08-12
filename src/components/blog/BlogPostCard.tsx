@@ -57,7 +57,7 @@ export default function BlogPostCard({
 
         <div className="mb-4">
           <Link href={`/${locale}/blog/${post.slug}`} className="block group">
-            <h2 className="text-xl font-semibold text-darkGray mb-2 group-hover:text-forest transition-colors font-playfair font-bold leading-normal cursor-pointer">
+            <h2 className="text-xl font-playfair font-bold text-darkGray mb-2 group-hover:text-forest transition-colors leading-normal cursor-pointer">
               {post.title}
             </h2>
           </Link>

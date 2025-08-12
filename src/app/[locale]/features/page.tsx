@@ -193,23 +193,23 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-soft text-center">
-            <h3 className="text-xl font-semibold text-forest mb-2 font-playfair">ISO 27001 certified</h3>
-            <p className="text-foreground text-base font-sans">International standard for information security management systems.</p>
+            <h3 className="text-xl font-playfair font-bold text-forest mb-2">ISO 27001 certified</h3>
+            <p className="text-sm text-mediumGray">International security standard</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-soft text-center">
-            <h3 className="text-xl font-semibold text-forest mb-2 font-playfair">GDPR compliant</h3>
-            <p className="text-foreground text-base font-sans">Full compliance with European data protection regulations.</p>
+            <h3 className="text-xl font-playfair font-bold text-forest mb-2">GDPR compliant</h3>
+            <p className="text-sm text-mediumGray">Full data protection</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-soft text-center">
-            <h3 className="text-xl font-semibold text-forest mb-2 font-playfair">SOC 2 type II</h3>
-            <p className="text-foreground text-base font-sans">Service Organization Control 2 compliance for enterprise customers.</p>
+            <h3 className="text-xl font-playfair font-bold text-forest mb-2">SOC 2 type II</h3>
+            <p className="text-sm text-mediumGray">Service organization control</p>
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-soft text-center">
-            <h3 className="text-xl font-semibold text-forest mb-2 font-playfair">Regular audits</h3>
-            <p className="text-foreground text-base font-sans">Continuous security monitoring and third-party security assessments.</p>
+            <h3 className="text-xl font-playfair font-bold text-forest mb-2">Regular audits</h3>
+            <p className="text-sm text-mediumGray">Continuous security monitoring and third-party security assessments.</p>
           </div>
         </div>
       </section>

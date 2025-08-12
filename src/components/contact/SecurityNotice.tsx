@@ -70,7 +70,7 @@ export default function SecurityNotice({
                 {feature.icon}
               </div>
             </div>
-            <h3 className="text-lg font-semibold text-forest mb-3 font-playfair">
+            <h3 className="text-lg font-playfair font-bold text-forest mb-3">
               {feature.title}
             </h3>
             <p className="text-sm text-muted-foreground font-sans leading-relaxed">

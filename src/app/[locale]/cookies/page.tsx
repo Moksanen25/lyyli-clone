@@ -62,12 +62,11 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
 
             <div className="space-y-6">
               <div className="bg-rose p-6 rounded-lg">
-                <h3 className="text-xl text-forest mb-3 font-playfair font-semibold leading-normal">
+                <h3 className="text-xl text-forest mb-3 font-playfair font-bold leading-normal">
                   Essential cookies
                 </h3>
-                <p className="text-base text-muted-foreground mb-3 font-sans leading-relaxed">
-                  These cookies are necessary for the website to function and
-                  cannot be switched off in our systems:
+                <p className="text-mediumGray font-sans leading-relaxed">
+                  These cookies are necessary for the website to function properly. They enable basic functions like page navigation and access to secure areas of the website.
                 </p>
                 <ul className="list-disc pl-6 space-y-1 text-base text-muted-foreground font-sans leading-relaxed">
                   <li>Authentication and session management</li>
@@ -93,12 +92,11 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
               </div>
 
               <div className="bg-white border-2 border-grayLight p-6 rounded-lg">
-                <h3 className="text-xl text-forest mb-3 font-playfair font-semibold leading-normal">
+                <h3 className="text-xl text-forest mb-3 font-playfair font-bold leading-normal">
                   Analytics cookies
                 </h3>
-                <p className="text-base text-muted-foreground mb-3 font-sans leading-relaxed">
-                  These cookies help us understand how visitors interact with
-                  our website:
+                <p className="text-mediumGray font-sans leading-relaxed">
+                  These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.
                 </p>
                 <ul className="list-disc pl-6 space-y-1 text-base text-muted-foreground font-sans leading-relaxed">
                   <li>Usage statistics and performance metrics</li>

@@ -187,7 +187,7 @@ export default function FeaturesAccordionLayout({
                 {feature.icon}
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-forest">
+                <h3 className="text-lg font-playfair font-bold text-forest">
                   {feature.title}
                 </h3>
                 <p className="text-sm text-mediumGray mt-1">
