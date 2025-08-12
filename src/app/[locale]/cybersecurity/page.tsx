@@ -20,12 +20,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = await getTranslations(locale);
   
   return {
-    title: t['cybersecurity.meta.title'],
-    description: t['cybersecurity.meta.description'],
-    keywords: t['cybersecurity.meta.keywords'],
+    title: t['cybersecurity.page.title'],
+    description: t['cybersecurity.page.description'],
+    keywords: t['cybersecurity.page.keywords'],
     openGraph: {
-      title: t['cybersecurity.meta.title'],
-      description: t['cybersecurity.meta.description'],
+      title: t['cybersecurity.page.title'],
+      description: t['cybersecurity.page.description'],
       type: 'website',
     },
   };
@@ -43,42 +43,41 @@ export default async function CybersecurityPage({ params }: PageProps) {
   const t = await getTranslations(locale);
 
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-forest to-forest/90 py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20" />
-        
+    <div className="bg-white">
+      {/* Hero Section - Following 10-layout rule: arvolupaus + 1–2 CTA:ta, kuvitus/kuva */}
+      <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24 relative">
         {/* Animated Sub-Page Visual */}
         <SubPageVisual />
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-normal leading-tight mb-6 text-white">
-              Security & Privacy Protection at Lyyli
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 font-sans leading-relaxed mb-8">
-              When building AI tools for communication, we fully understand our responsibility in protecting our customers' data. Security is not just a technical requirement for us, but the cornerstone of our business.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={`/${locale}/contact`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-turquoise text-white font-bold rounded-lg hover:bg-turquoise/90 transition-colors duration-200"
-              >
-                Contact Us
-              </a>
-              <a
-                href={`/${locale}/features`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-colors duration-200 border border-white/20"
-              >
-                View Features
-              </a>
-            </div>
+        <div className="text-center max-w-4xl mx-auto relative z-10">
+          <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-tight">
+            {t['cybersecurity.hero.title']}
+          </h1>
+          <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+            {t['cybersecurity.hero.subtitle']}
+          </p>
+          {/* Hero CTA buttons following layout rule */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`/${locale}/contact`}
+              className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans"
+              aria-label="Contact Lyyli.ai about cybersecurity"
+            >
+              {t['cybersecurity.hero.contactButton']}
+            </a>
+            <a
+              href={`/${locale}/features`}
+              className="border border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-colors font-medium inline-flex items-center justify-center font-sans"
+              aria-label="View Lyyli.ai features"
+            >
+              {t['cybersecurity.hero.featuresButton']}
+            </a>
           </div>
         </div>
       </section>
 
       {/* Security Highlights */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="bg-grayLight py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-forest/5 rounded-lg border border-forest/20">
@@ -88,10 +87,10 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                GDPR Compliant
+                {t['cybersecurity.highlights.gdpr.title']}
               </h3>
               <p className="text-mediumGray font-sans">
-                Full GDPR compliance from the ground up
+                {t['cybersecurity.highlights.gdpr.description']}
               </p>
             </div>
             
@@ -102,10 +101,10 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                EU Servers
+                {t['cybersecurity.highlights.euServers.title']}
               </h3>
               <p className="text-mediumGray font-sans">
-                All data stays within EU borders
+                {t['cybersecurity.highlights.euServers.description']}
               </p>
             </div>
             
@@ -116,10 +115,10 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                AES-256 Encryption
+                {t['cybersecurity.highlights.encryption.title']}
               </h3>
               <p className="text-mediumGray font-sans">
-                Military-grade encryption for all data
+                {t['cybersecurity.highlights.encryption.description']}
               </p>
             </div>
           </div>
@@ -143,6 +142,6 @@ export default async function CybersecurityPage({ params }: PageProps) {
 
       {/* Support Section */}
       <SecuritySupport locale={locale} />
-    </main>
+    </div>
   );
 }

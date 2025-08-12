@@ -9,8 +9,8 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
 
   const gdprFeatures = [
     {
-      title: t['cybersecurity.gdprCompliance.features.dataMinimization.title'],
-      description: t['cybersecurity.gdprCompliance.features.dataMinimization.description'],
+      title: t['cybersecurity.gdprCompliance.dataMinimization.title'],
+      description: t['cybersecurity.gdprCompliance.dataMinimization.description'],
       icon: (
         <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -18,8 +18,8 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
       ),
     },
     {
-      title: t['cybersecurity.gdprCompliance.features.purposeLimitation.title'],
-      description: t['cybersecurity.gdprCompliance.features.purposeLimitation.description'],
+      title: t['cybersecurity.gdprCompliance.purposeLimitation.title'],
+      description: t['cybersecurity.gdprCompliance.purposeLimitation.description'],
       icon: (
         <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -27,8 +27,8 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
       ),
     },
     {
-      title: t['cybersecurity.gdprCompliance.features.rightToDeletion.title'],
-      description: t['cybersecurity.gdprCompliance.features.rightToDeletion.description'],
+      title: t['cybersecurity.gdprCompliance.rightToDeletion.title'],
+      description: t['cybersecurity.gdprCompliance.rightToDeletion.description'],
       icon: (
         <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -36,8 +36,8 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
       ),
     },
     {
-      title: t['cybersecurity.gdprCompliance.features.dataPortability.title'],
-      description: t['cybersecurity.gdprCompliance.features.dataPortability.description'],
+      title: t['cybersecurity.gdprCompliance.dataPortability.title'],
+      description: t['cybersecurity.gdprCompliance.dataPortability.description'],
       icon: (
         <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
@@ -85,10 +85,10 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
           
           <div className="bg-white p-8 rounded-lg shadow-lg">
             <h4 className="text-xl font-playfair font-bold text-forest mb-6">
-              {t['cybersecurity.gdprCompliance.features.dedicatedDPO.title']}
+              {t['cybersecurity.gdprCompliance.dedicatedDPO.title']}
             </h4>
             <p className="text-mediumGray font-sans leading-relaxed mb-6">
-              {t['cybersecurity.gdprCompliance.features.dedicatedDPO.description']}
+              {t['cybersecurity.gdprCompliance.dedicatedDPO.description']}
             </p>
             <div className="space-y-3">
               {benefits.map((benefit, index) => (
@@ -98,7 +98,7 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-forest font-bold font-sans">{benefit}</span>
+                  <span className="text-mediumGray font-sans">{benefit}</span>
                 </div>
               ))}
             </div>

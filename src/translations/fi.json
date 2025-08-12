@@ -472,214 +472,105 @@
   "cookies.updated": "Viimeksi päivitetty",
   "cookies.intro": "Tämä evästekäytäntö selittää, miten Lyyli käyttää evästeitä ja vastaavia tekniikoita palvelujemme tarjoamiseen ja parantamiseen säilyttäen yritystason turvallisuusstandardit.",
 
-  "cybersecurity": {
-    "meta": {
-      "title": "Tietoturva ja yksityisyydensuoja Lyylissä - Yritystason kyberturvallisuus",
-      "description": "Tutustu Lyylin maailmanluokan tietoturvatoimiin, mukaan lukien AES-256 salaus, EU-palvelimet, GDPR-vaatimustenmukaisuus ja kattava tietosuoja asiantuntijaorganisaatioille.",
-      "keywords": "kyberturvallisuus, tietosuoja, GDPR-vaatimustenmukaisuus, AES-256 salaus, EU-palvelimet, yksityisyys, tietoturva, tietojen eristäminen, pääsynhallinta"
-    },
-    "hero": {
-      "title": "Tietoturva ja yksityisyydensuoja Lyylissä",
-      "subtitle": "Kun rakennamme AI-työkalua viestinnän tueksi, ymmärrämme täysin vastuumme asiakkaidemme tietojen suojaamisessa. Tietoturva ei ole meille pelkkä tekninen vaatimus, vaan liiketoimintamme kulmakivi.",
-      "contactButton": "Ota yhteyttä",
-      "featuresButton": "Katso ominaisuudet",
-      "imageAlt": "Kyberturvallisuus- ja tietosuoja-kuvitus, joka näyttää tietoturvatoimet ja yksityisyydensuojan"
-    },
-    "highlights": {
-      "gdpr": {
-        "title": "GDPR-yhteensopiva",
-        "description": "Täysi GDPR-yhteensopivuus alusta asti"
-      },
-      "euServers": {
-        "title": "EU-palvelimet",
-        "description": "Kaikki data pysyy EU:n alueella"
-      },
-      "encryption": {
-        "title": "AES-256 salaus",
-        "description": "Korkean tason salaus kaikelle datalle"
-      }
-    },
-    "securityFeatures": {
-      "title": "Kattavat tietoturvaratkaisut",
-      "subtitle": "Lyyli käsittelee päivittäin arkaluontoisia viestejä ja luottamuksellisia asiakirjoja. Siksi olemme rakentaneet maailmanluokan tietoturvan.",
-      "features": {
-        "encryption": {
-          "title": "End-to-End salaus",
-          "description": "AES-256 salaus kaikelle datalle sekä siirrossa että tallennuksessa"
-        },
-        "euDataCenters": {
-          "title": "EU-datacenterit",
-          "description": "Palvelimemme sijaitsevat EU:ssa, tietosi eivät poistu unionin alueelta"
-        },
-        "isolatedEnvironment": {
-          "title": "Eristetty ympäristö",
-          "description": "Yritysdatasi on täysin eristetty eikä sitä käytetä kielimallien kouluttamiseen"
-        },
-        "noThirdParties": {
-          "title": "Ei kolmansia osapuolia",
-          "description": "Tietojasi ei jaeta, myydä tai vuokrata kolmansille osapuolille"
-        },
-        "regularAudits": {
-          "title": "Säännölliset auditoinnit",
-          "description": "Suoritamme säännöllisiä tietoturva-auditointeja ulkopuolisten asiantuntijoiden kanssa"
-        },
-        "accessManagement": {
-          "title": "Käyttöoikeuksien hallinta",
-          "description": "Tarkka käyttöoikeuksien hallinta ja toimintojen lokitus"
-        }
-      }
-    },
-    "technicalArchitecture": {
-      "title": "Tekninen arkkitehtuuri ja tietojen käsittely",
-      "subtitle": "Lyyli toimii täysin pilvipohjaisena ratkaisuna, jossa kaikki data kulkee salattuna.",
-      "sections": {
-        "encryption": {
-          "title": "Salaus ja tietoturva",
-          "aes256": {
-            "title": "AES-256 salaus",
-            "description": "Käytämme AES-256 salausta sekä tietojen siirtoon että tallennukseen"
-          },
-          "secureTransmission": {
-            "title": "Turvallinen siirto",
-            "description": "Kaikki tiedonsiirto tapahtuu TLS 1.3 -protokollalla suojattuna"
-          },
-          "euCloudServices": {
-            "title": "EU-pilvipalvelut",
-            "description": "Palvelumme pyörii EU:n alueella sijaitsevilla palvelimilla"
-          },
-          "infrastructureStandards": {
-            "title": "Infrastruktuurin standardit",
-            "description": "Noudatamme alalla yleisiä standardeja. Lähestymme tietoturvaa ISO27001-viitekehyksen mukaisesti ja tulemme sertifioimaan palvelun."
-          },
-          "dataIsolation": {
-            "title": "Tietojen eristäminen",
-            "description": "Jokaisen asiakkaan data säilytetään täysin eristettynä omassa ympäristössään. Tietojasi ei koskaan käytetä tekoälymallien kouluttamiseen lukuun ottamatta organisaatiosi omaa ympäristöä. Tämä tarkoittaa, että kilpailijasi eivät voi hyötyä teidän datastanne, ja te ette hyödy heidän datastaan - jokainen organisaatio on täysin itsenäinen."
-          }
-        }
-      }
-    },
-    "gdprCompliance": {
-      "title": "GDPR-yhteensopivuus käytännössä",
-      "subtitle": "Olemme rakentaneet Lyylin GDPR:n vaatimusten mukaisesti alusta asti.",
-      "features": {
-        "dataMinimization": {
-          "title": "Tietojen minimointi",
-          "description": "Käsittelemme vain välttämättömiä tietoja palvelun toiminnalle"
-        },
-        "purposeLimitation": {
-          "title": "Käyttötarkoituksen rajaus",
-          "description": "Tietojasi käytetään vain viestinnän parantamiseen ja palvelun toimittamiseen"
-        },
-        "rightToDeletion": {
-          "title": "Oikeus poistamiseen",
-          "description": "Voit pyytää tietojesi poistamista 30 päivän kuluessa"
-        },
-        "dataPortability": {
-          "title": "Tietojen siirrettävyys",
-          "description": "Kaikki datasi toimitetaan koneluettavassa muodossa"
-        },
-        "dedicatedDPO": {
-          "title": "Nimetty tietosuojavastaava",
-          "description": "Meillä on nimetty tietosuojavastaava, joka vastaa kaikkiin tietosuojaan liittyviin kysymyksiin nopeasti ja kattavasti. Uskomme, että avoimuus on paras tapa rakentaa luottamusta."
-        }
-      },
-      "benefits": {
-        "quickResponse": "Nopea vastausaika",
-        "expertSupport": "Asiantunteva tuki",
-        "fullTransparency": "Täysi avoimuus"
-      }
-    },
-    "accessControl": {
-      "title": "Käyttöoikeudet ja pääsynhallinta",
-      "subtitle": "Lyylissä on toteutettu tarkka käyttöoikeuksien hallinta ja kattava toimintojen seuranta.",
-      "sections": {
-        "control": {
-          "title": "Hallittavuus ja valvonta",
-          "roleBasedAccess": {
-            "title": "Roolipohjainen pääsy",
-            "description": "Organisaatiosi jäsenet näkevät vain ne tiedot, joihin heillä on oikeus"
-          },
-          "administratorControl": {
-            "title": "Järjestelmänvalvojan hallinta",
-            "description": "Järjestelmänvalvojat voivat hallita käyttöoikeuksia yksityiskohtaisesti"
-          },
-          "activityLogging": {
-            "title": "Toimintojen lokitus",
-            "description": "Kaikki järjestelmään kirjautumiset ja toiminnot lokitetaan turvallisesti"
-          },
-          "automaticMonitoring": {
-            "title": "Automaattinen valvonta",
-            "description": "Epäilyttävä toiminta havaitaan automaattisesti ja siitä ilmoitetaan välittömästi"
-          }
-        }
-      }
-    },
-    "continuousDevelopment": {
-      "title": "Jatkuva kehitystyö",
-      "subtitle": "Tietoturva ei ole meille kertaluontoinen projekti, vaan jatkuva prosessi.",
-      "features": {
-        "regularUpdates": {
-          "title": "Säännölliset päivitykset",
-          "description": "Päivitämme järjestelmiämme säännöllisesti ja seuraamme tietoturvauhkia aktiivisesti"
-        },
-        "externalAudits": {
-          "title": "Ulkopuoliset auditoinnit",
-          "description": "Teemme säännöllisiä tietoturva-auditointeja ja testaamme järjestelmiämme ulkopuolisten asiantuntijoiden kanssa"
-        },
-        "staffTraining": {
-          "title": "Henkilöstön koulutus",
-          "description": "Henkilökuntamme koulutetaan jatkuvasti tietoturva-asioissa, koska turvallisuus on ketjun heikoimman lenkin varassa"
-        },
-        "threatMonitoring": {
-          "title": "Uhkien seuranta",
-          "description": "Kehitämme suojauksiamme aina vain paremmiksi ja reagoimme nopeasti uusiin uhkiin"
-        }
-      },
-      "commitment": {
-        "title": "Sitoutumisemme tietoturvaan",
-        "description": "Loppujen lopuksi tietoturva on luottamuskysymys. Me luotamme sinuun jakamalla parhaat käytäntömme, ja toivomme, että sinä luotat meihin antamalla Lyylin auttaa viestinnässäsi. Olemme sitoutuneet ylläpitämään korkeinta mahdollista tietoturvan tasoa ja kehittämään sitä jatkuvasti."
-      }
-    },
-    "support": {
-      "title": "Yhteistyö ja tuki",
-      "subtitle": "Jos sinulla on kysymyksiä tietoturvasta tai yksityisyydensuojasta, älä epäröi ottaa yhteyttä.",
-      "channels": {
-        "email": {
-          "title": "Sähköposti",
-          "description": "Nopea vastaus tietoturvakysymyksiin",
-          "address": "hello@lyyli.ai"
-        },
-        "chat": {
-          "title": "Chat-tuki",
-          "description": "Välitön apu tietoturvakysymyksiin",
-          "button": "Aloita chat"
-        },
-        "phone": {
-          "title": "Puhelintuki",
-          "description": "Henkilökohtainen tuki suurille asiakkaille",
-          "button": "Varaa aika"
-        }
-      },
-      "dpo": {
-        "title": "Tietosuojavastaava",
-        "description": "Meillä on nimetty tietosuojavastaava, joka vastaa kaikkiin GDPR ja tietosuojaan liittyviin kysymyksiin. Saat asiantuntevan vastauksen aina 24 tunnin kuluessa.",
-        "button": "Ota yhteyttä tietosuojavastaavaan"
-      }
-    }
-  },
-
-  "stats": {
-    "title": "Suorituskyky puhuu puolestaan",
-    "subtitle": "Koe salamannopea tekoälyviestintä optimoidulla alustallamme",
-    "fasterResponse": "Nopeampi vastausaika",
-    "uptimeReliability": "Käyttöajan luotettavuus",
-    "growing": "Kasvava",
-    "stable": "Vakaa"
-  },
-
-  "desktop": {
-    "title": "Koe Lyyli työpöydällä",
-    "subtitle": "Tehokas työpöytäliittymä suunniteltu tuottavuutta ja saumatonta tiimiyhteistyötä varten.",
-    "experience": "Työpöytäkokemus"
-  }
+  "cybersecurity.page.title": "Tietoturva ja yksityisyydensuoja Lyylissä - Yritystason kyberturvallisuus",
+  "cybersecurity.page.description": "Tutustu Lyylin maailmanluokan tietoturvatoimiin, mukaan lukien AES-256 salaus, EU-palvelimet, GDPR-vaatimustenmukaisuus ja kattava tietosuoja asiantuntijaorganisaatioille.",
+  "cybersecurity.page.keywords": "kyberturvallisuus, tietosuoja, GDPR-vaatimustenmukaisuus, AES-256 salaus, EU-palvelimet, yksityisyys, tietoturva, tietojen eristäminen, pääsynhallinta",
+  
+  "cybersecurity.hero.title": "Tietoturva ja yksityisyydensuoja Lyylissä",
+  "cybersecurity.hero.subtitle": "Kun rakennamme AI-työkalua viestinnän tueksi, ymmärrämme täysin vastuumme asiakkaidemme tietojen suojaamisessa. Tietoturva ei ole meille pelkkä tekninen vaatimus, vaan liiketoimintamme kulmakivi.",
+  "cybersecurity.hero.contactButton": "Ota yhteyttä",
+  "cybersecurity.hero.featuresButton": "Katso ominaisuudet",
+  "cybersecurity.hero.imageAlt": "Kyberturvallisuus- ja tietosuoja-kuvitus, joka näyttää tietoturvatoimet ja yksityisyydensuojan",
+  
+  "cybersecurity.highlights.gdpr.title": "GDPR-yhteensopiva",
+  "cybersecurity.highlights.gdpr.description": "Täysi GDPR-yhteensopivuus alusta asti",
+  "cybersecurity.highlights.euServers.title": "EU-palvelimet",
+  "cybersecurity.highlights.euServers.description": "Kaikki data pysyy EU:n alueella",
+  "cybersecurity.highlights.encryption.title": "AES-256 salaus",
+  "cybersecurity.highlights.encryption.description": "Korkean tason salaus kaikelle datalle",
+  
+  "cybersecurity.securityFeatures.title": "Kattavat tietoturvaratkaisut",
+  "cybersecurity.securityFeatures.subtitle": "Lyyli käsittelee päivittäin arkaluontoisia viestejä ja luottamuksellisia asiakirjoja. Siksi olemme rakentaneet maailmanluokan tietoturvan.",
+  "cybersecurity.securityFeatures.encryption.title": "End-to-End salaus",
+  "cybersecurity.securityFeatures.encryption.description": "AES-256 salaus kaikelle datalle sekä siirrossa että tallennuksessa",
+  "cybersecurity.securityFeatures.euDataCenters.title": "EU-datacenterit",
+  "cybersecurity.securityFeatures.euDataCenters.description": "Palvelimemme sijaitsevat EU:ssa, tietosi eivät poistu unionin alueelta",
+  "cybersecurity.securityFeatures.isolatedEnvironment.title": "Eristetty ympäristö",
+  "cybersecurity.securityFeatures.isolatedEnvironment.description": "Yritysdatasi on täysin eristetty eikä sitä käytetä kielimallien kouluttamiseen",
+  "cybersecurity.securityFeatures.noThirdParties.title": "Ei kolmansia osapuolia",
+  "cybersecurity.securityFeatures.noThirdParties.description": "Tietojasi ei jaeta, myydä tai vuokrata kolmansille osapuolille",
+  "cybersecurity.securityFeatures.regularAudits.title": "Säännölliset auditoinnit",
+  "cybersecurity.securityFeatures.regularAudits.description": "Suoritamme säännöllisiä tietoturva-auditointeja ulkopuolisten asiantuntijoiden kanssa",
+  "cybersecurity.securityFeatures.accessManagement.title": "Käyttöoikeuksien hallinta",
+  "cybersecurity.securityFeatures.accessManagement.description": "Tarkka käyttöoikeuksien hallinta ja toimintojen lokitus",
+  
+  "cybersecurity.technicalArchitecture.title": "Tekninen arkkitehtuuri ja tietojen käsittely",
+  "cybersecurity.technicalArchitecture.subtitle": "Lyyli toimii täysin pilvipohjaisena ratkaisuna, jossa kaikki data kulkee salattuna.",
+  "cybersecurity.technicalArchitecture.encryption.title": "Salaus ja tietoturva",
+  "cybersecurity.technicalArchitecture.encryption.aes256.title": "AES-256 salaus",
+  "cybersecurity.technicalArchitecture.encryption.aes256.description": "Käytämme AES-256 salausta sekä tietojen siirtoon että tallennukseen",
+  "cybersecurity.technicalArchitecture.encryption.secureTransmission.title": "Turvallinen siirto",
+  "cybersecurity.technicalArchitecture.encryption.secureTransmission.description": "Kaikki tiedonsiirto tapahtuu TLS 1.3 -protokollalla suojattuna",
+  "cybersecurity.technicalArchitecture.encryption.euCloudServices.title": "EU-pilvipalvelut",
+  "cybersecurity.technicalArchitecture.encryption.euCloudServices.description": "Palvelumme pyörii EU:n alueella sijaitsevilla palvelimilla",
+  "cybersecurity.technicalArchitecture.encryption.infrastructureStandards.title": "Infrastruktuurin standardit",
+  "cybersecurity.technicalArchitecture.encryption.infrastructureStandards.description": "Noudatamme alalla yleisiä standardeja. Lähestymme tietoturvaa ISO27001-viitekehyksen mukaisesti ja tulemme sertifioimaan palvelun.",
+  "cybersecurity.technicalArchitecture.encryption.dataIsolation.title": "Tietojen eristäminen",
+  "cybersecurity.technicalArchitecture.encryption.dataIsolation.description": "Jokaisen asiakkaan data säilytetään täysin eristettynä omassa ympäristössään. Tietojasi ei koskaan käytetä tekoälymallien kouluttamiseen lukuun ottamatta organisaatiosi omaa ympäristöä. Tämä tarkoittaa, että kilpailijasi eivät voi hyötyä teidän datastanne, ja te ette hyödy heidän datastaan - jokainen organisaatio on täysin itsenäinen.",
+  
+  "cybersecurity.gdprCompliance.title": "GDPR-yhteensopivuus käytännössä",
+  "cybersecurity.gdprCompliance.subtitle": "Olemme rakentaneet Lyylin GDPR:n vaatimusten mukaisesti alusta asti.",
+  "cybersecurity.gdprCompliance.dataMinimization.title": "Tietojen minimointi",
+  "cybersecurity.gdprCompliance.dataMinimization.description": "Käsittelemme vain välttämättömiä tietoja palvelun toiminnalle",
+  "cybersecurity.gdprCompliance.purposeLimitation.title": "Tarkoituksen rajoittaminen",
+  "cybersecurity.gdprCompliance.purposeLimitation.description": "Tietojasi käytetään vain viestinnän parantamiseen ja palvelun tarjoamiseen",
+  "cybersecurity.gdprCompliance.rightToDeletion.title": "Poistamisoikeus",
+  "cybersecurity.gdprCompliance.rightToDeletion.description": "Voit pyytää tietojen poistamista 30 päivän sisällä",
+  "cybersecurity.gdprCompliance.dataPortability.title": "Tietojen siirto",
+  "cybersecurity.gdprCompliance.dataPortability.description": "Kaikki tietosi voidaan toimittaa koneellisesti luettavassa muodossa",
+  "cybersecurity.gdprCompliance.dedicatedDPO.title": "Dedikoidtu tietosuojavastaava",
+  "cybersecurity.gdprCompliance.dedicatedDPO.description": "Meillä on dedikoidtu tietosuojavastaava, joka vastaa kaikkiin tietosuojaan liittyviin kysymyksiin nopeasti ja kattavasti. Uskomme, että läpinäkyvyys on paras tapa rakentaa luottamusta.",
+  "cybersecurity.gdprCompliance.benefits.quickResponse": "Nopea vastausaika",
+  "cybersecurity.gdprCompliance.benefits.expertSupport": "Asiantunteva tuki",
+  "cybersecurity.gdprCompliance.benefits.fullTransparency": "Täysi läpinäkyvyys",
+  
+  "cybersecurity.accessControl.title": "Käyttöoikeudet ja pääsynhallinta",
+  "cybersecurity.accessControl.subtitle": "Lyyli toteuttaa tarkan pääsynhallinnan ja kattavan toimintojen seurannan.",
+  "cybersecurity.accessControl.control.title": "Hallinta ja seuranta",
+  "cybersecurity.accessControl.control.roleBasedAccess.title": "Roolipohjainen pääsy",
+  "cybersecurity.accessControl.control.roleBasedAccess.description": "Organisaation jäsenet näkevät vain ne tiedot, joihin heillä on pääsy",
+  "cybersecurity.accessControl.control.administratorControl.title": "Ylläpitäjän hallinta",
+  "cybersecurity.accessControl.control.administratorControl.description": "Ylläpitäjät voivat hallita pääsyjä yksityiskohtaisesti",
+  "cybersecurity.accessControl.control.activityLogging.title": "Toimintojen lokitus",
+  "cybersecurity.accessControl.control.activityLogging.description": "Kaikki järjestelmään kirjautumiset ja toiminnot lokitetaan turvallisesti",
+  "cybersecurity.accessControl.control.automaticMonitoring.title": "Automaattinen seuranta",
+  "cybersecurity.accessControl.control.automaticMonitoring.description": "Epäilyttävä toiminta tunnistetaan automaattisesti ja raportoidaan välittömästi",
+  
+  "cybersecurity.continuousDevelopment.title": "Jatkuva kehitys",
+  "cybersecurity.continuousDevelopment.subtitle": "Tietoturva ei ole meille kertaluontoinen projekti, vaan jatkuva prosessi.",
+  "cybersecurity.continuousDevelopment.regularUpdates.title": "Säännölliset päivitykset",
+  "cybersecurity.continuousDevelopment.regularUpdates.description": "Päivitämme järjestelmiämme säännöllisesti ja seuraamme aktiivisesti tietoturvauhkia",
+  "cybersecurity.continuousDevelopment.externalAudits.title": "Ulkoiset auditoinnit",
+  "cybersecurity.continuousDevelopment.externalAudits.description": "Suoritamme säännöllisiä tietoturva-auditointeja ja testaamme järjestelmiämme ulkopuolisten asiantuntijoiden kanssa",
+  "cybersecurity.continuousDevelopment.staffTraining.title": "Henkilökunnan koulutus",
+  "cybersecurity.continuousDevelopment.staffTraining.description": "Henkilökuntamme on jatkuvasti koulutettu tietoturva-asioissa, sillä tietoturva riippuu ketjun heikoimmasta lenkistä",
+  "cybersecurity.continuousDevelopment.threatMonitoring.title": "Uhaten seuranta",
+  "cybersecurity.continuousDevelopment.threatMonitoring.description": "Parannamme jatkuvasti suojauksiamme ja vastaamme nopeasti uusiin uhkiin",
+  "cybersecurity.continuousDevelopment.commitment.title": "Sitoutumisemme tietoturvaan",
+  "cybersecurity.continuousDevelopment.commitment.description": "Lopulta tietoturva on luottamuskysymys. Luotamme sinuun jakamalla parhaat käytäntömme, ja toivomme, että luotat meihin antamalla Lyylin auttaa viestinnässäsi. Olemme sitoutuneita ylläpitämään korkeinta mahdollista tietoturvatasoa ja kehittämään sitä jatkuvasti.",
+  
+  "cybersecurity.support.title": "Yhteistyö ja tuki",
+  "cybersecurity.support.subtitle": "Jos sinulla on kysymyksiä tietoturvasta tai yksityisyydensuojasta, älä epäröi ottaa meihin yhteyttä.",
+  "cybersecurity.support.channels.email.title": "Sähköposti",
+  "cybersecurity.support.channels.email.description": "Nopea vastaus tietoturvakysymyksiin",
+  "cybersecurity.support.channels.email.address": "hello@lyyli.ai",
+  "cybersecurity.support.channels.chat.title": "Chat-tuki",
+  "cybersecurity.support.channels.chat.description": "Välitön apu tietoturvakysymyksiin",
+  "cybersecurity.support.channels.chat.button": "Aloita chat",
+  "cybersecurity.support.channels.phone.title": "Puhelintuki",
+  "cybersecurity.support.channels.phone.description": "Henkilökohtainen tuki yritysasiakkaille",
+  "cybersecurity.support.channels.phone.button": "Varaa puhelu",
+  "cybersecurity.support.dpo.title": "Tietosuojavastaava",
+  "cybersecurity.support.dpo.description": "Meillä on dedikoidtu tietosuojavastaava, joka vastaa kaikkiin GDPR- ja tietosuojaan liittyviin kysymyksiin. Saat asiantuntevan vastauksen 24 tunnin sisällä.",
+  "cybersecurity.support.dpo.button": "Ota yhteyttä tietosuojavastaavaan"
 }
