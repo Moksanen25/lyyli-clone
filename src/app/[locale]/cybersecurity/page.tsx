@@ -54,23 +54,23 @@ export default async function CybersecurityPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-normal leading-tight mb-6 text-white">
-              {t['cybersecurity.hero.title']}
+              Security & Privacy Protection at Lyyli
             </h1>
             <p className="text-xl md:text-2xl text-white/90 font-sans leading-relaxed mb-8">
-              {t['cybersecurity.hero.subtitle']}
+              When building AI tools for communication, we fully understand our responsibility in protecting our customers' data. Security is not just a technical requirement for us, but the cornerstone of our business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={`/${locale}/contact`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-turquoise text-white font-bold rounded-lg hover:bg-turquoise/90 transition-colors duration-200"
               >
-                {t['cybersecurity.hero.contactButton']}
+                Contact Us
               </a>
               <a
                 href={`/${locale}/features`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-colors duration-200 border border-white/20"
               >
-                {t['cybersecurity.hero.featuresButton']}
+                View Features
               </a>
             </div>
           </div>
@@ -88,10 +88,10 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                {t['cybersecurity.highlights.gdpr.title']}
+                GDPR Compliant
               </h3>
               <p className="text-mediumGray font-sans">
-                {t['cybersecurity.highlights.gdpr.description']}
+                Full GDPR compliance from the ground up
               </p>
             </div>
             
@@ -102,10 +102,10 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                {t['cybersecurity.highlights.euServers.title']}
+                EU Servers
               </h3>
               <p className="text-mediumGray font-sans">
-                {t['cybersecurity.highlights.euServers.description']}
+                All data stays within EU borders
               </p>
             </div>
             
@@ -116,10 +116,10 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                {t['cybersecurity.highlights.encryption.title']}
+                AES-256 Encryption
               </h3>
               <p className="text-mediumGray font-sans">
-                {t['cybersecurity.highlights.encryption.description']}
+                Military-grade encryption for all data
               </p>
             </div>
           </div>
