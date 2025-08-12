@@ -98,7 +98,7 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-forest font-semibold font-sans">{benefit}</span>
+                  <span className="text-forest font-bold font-sans">{benefit}</span>
                 </div>
               ))}
             </div>

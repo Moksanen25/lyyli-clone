@@ -58,13 +58,13 @@ export default async function CybersecurityPage({ params }: PageProps) {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href={`/${locale}/contact`}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-turquoise text-white font-semibold rounded-lg hover:bg-turquoise/90 transition-colors duration-200"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-turquoise text-white font-bold rounded-lg hover:bg-turquoise/90 transition-colors duration-200"
                 >
                   {t['cybersecurity.hero.contactButton']}
                 </a>
                 <a
                   href={`/${locale}/features`}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors duration-200 border border-white/20"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-colors duration-200 border border-white/20"
                 >
                   {t['cybersecurity.hero.featuresButton']}
                 </a>

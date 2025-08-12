@@ -77,7 +77,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
               </div>
 
               <div className="bg-grayLight p-6 rounded-lg">
-                <h3 className="text-xl text-forest mb-3 font-playfair font-semibold leading-normal">
+                <h3 className="text-xl text-forest mb-3 font-playfair font-bold leading-normal">
                   Functional cookies
                 </h3>
                 <p className="text-base text-muted-foreground mb-3 font-sans leading-relaxed">

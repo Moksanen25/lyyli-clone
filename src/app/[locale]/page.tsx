@@ -147,7 +147,7 @@ export default async function Home({ params }: HomeProps) {
                 {/* Enhanced glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-turquoise/20 to-rose/20 rounded-2xl blur-xl -z-10 group-hover:blur-2xl group-hover:from-turquoise/30 group-hover:to-rose/30 transition-all duration-300" />
               </div>
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-turquoise to-rose text-white px-6 py-3 rounded-full text-sm font-semibold shadow-soft">
+              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-turquoise to-rose text-white px-6 py-3 rounded-full text-sm font-bold shadow-soft">
                 Mobile experience
               </div>
             </div>

@@ -184,7 +184,7 @@ export default function AdminWaitlistPage() {
 
           <div className="mb-4">
             <p className="text-gray-600">
-              Total submissions: <span className="font-semibold">{submissions.length}</span>
+              Total submissions: <span className="font-bold">{submissions.length}</span>
             </p>
           </div>
 

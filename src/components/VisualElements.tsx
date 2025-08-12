@@ -898,7 +898,7 @@ export function TestimonialCard({
           />
         )}
         <div>
-          <div className="font-semibold text-forest">{author}</div>
+          <div className="font-bold text-forest">{author}</div>
           <div className="text-sm text-mediumGray font-sans">
             {role} at {company}
           </div>

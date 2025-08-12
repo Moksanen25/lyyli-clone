@@ -10,13 +10,13 @@ module.exports = {
       colors: {
         // Brand Colors - EXACT VALUES FROM BRAND BOOK
         forest: "#2F5D50", // Primary brand color - reliability and calm
-        rose: "#F7EBEB", // Gentle warmth and empathy - UPDATED BRAND COLOR
-        grayLight: "#F8F9FA", // Minimalism and clarity - CORRECTED VALUE
-        turquoise: "#00B4D8", // Subtle technological accent - CORRECTED VALUE
+        rose: "#F7EBEB", // Gentle warmth and empathy - CORRECTED TO BRAND BOOK
+        grayLight: "#F5F5F4", // Minimalism and clarity - CORRECTED TO BRAND BOOK
+        turquoise: "#A7D6D1", // Subtle technological accent - CORRECTED TO BRAND BOOK
 
         // Supporting Colors
-        darkGray: "#343A40", // CORRECTED VALUE
-        mediumGray: "#6C757D", // CORRECTED VALUE
+        darkGray: "#333333", // CORRECTED TO BRAND BOOK
+        mediumGray: "#666666", // CORRECTED TO BRAND BOOK
         white: "#FFFFFF",
 
         // Semantic Color Mapping
@@ -26,10 +26,10 @@ module.exports = {
         "primary-foreground": "#ffffff",
         secondary: "#F7EBEB", // Updated to match rose
         "secondary-foreground": "#2F5D50",
-        accent: "#00B4D8", // Updated to match turquoise
+        accent: "#A7D6D1", // Updated to match turquoise
         "accent-foreground": "#2F5D50",
-        muted: "#F8F9FA", // Updated to match grayLight
-        "muted-foreground": "#6C757D", // Updated to match mediumGray
+        muted: "#F5F5F4", // Updated to match grayLight
+        "muted-foreground": "#666666", // Updated to match mediumGray
       },
       fontFamily: {
         // Body text uses Inter via CSS variable

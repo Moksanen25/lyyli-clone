@@ -67,12 +67,12 @@ export default async function SecuritySupport({ locale }: SecuritySupportProps) 
               {channel.address ? (
                 <a
                   href={`mailto:${channel.address}`}
-                  className="inline-flex items-center justify-center px-6 py-3 bg-forest text-white font-semibold rounded-lg hover:bg-forest/90 transition-colors duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-forest text-white font-bold rounded-lg hover:bg-forest/90 transition-colors duration-200"
                 >
                   {channel.address}
                 </a>
               ) : (
-                <button className="inline-flex items-center justify-center px-6 py-3 bg-forest text-white font-semibold rounded-lg hover:bg-forest/90 transition-colors duration-200">
+                <button className="inline-flex items-center justify-center px-6 py-3 bg-forest text-white font-bold rounded-lg hover:bg-forest/90 transition-colors duration-200">
                   {channel.button}
                 </button>
               )}
@@ -94,7 +94,7 @@ export default async function SecuritySupport({ locale }: SecuritySupportProps) 
           </p>
           <a
             href={`/${locale}/contact`}
-            className="inline-flex items-center justify-center px-8 py-4 bg-turquoise text-white font-semibold rounded-lg hover:bg-turquoise/90 transition-colors duration-200"
+            className="inline-flex items-center justify-center px-8 py-4 bg-turquoise text-white font-bold rounded-lg hover:bg-turquoise/90 transition-colors duration-200"
           >
             {t['cybersecurity.support.dpo.button']}
           </a>

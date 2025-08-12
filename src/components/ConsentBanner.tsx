@@ -70,7 +70,7 @@ export default function ConsentBanner({ locale }: ConsentBannerProps) {
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-grayLight shadow-medium z-50 p-4">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-forest mb-2 font-playfair">
+          <h3 className="text-xl text-forest mb-2 font-playfair font-bold leading-normal">
             {locale === 'fi' ? 'Evästeet ja analytiikka' : 'Cookies & Analytics'}
           </h3>
           <p className="text-sm text-mediumGray font-sans">
