@@ -37,33 +37,7 @@ body {
 }
 
 /* Blog Post Typography */
-h1 {
-  font-family: var(--font-playfair);
-  font-size: var(--font-size-4xl);
-  line-height: var(--line-height-tight);
-  color: var(--foreground);
-  margin-bottom: 1.5rem;
-}
-
-h2 {
-  font-family: var(--font-playfair);
-  font-size: var(--font-size-3xl);
-  line-height: var(--line-height-snug);
-  color: var(--foreground);
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-}
-
-h3 {
-  font-family: var(--font-inter);
-  font-size: var(--font-size-2xl);
-  line-height: var(--line-height-snug);
-  color: var(--foreground);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
+/* Removed conflicting h1, h2, h3 rules - now handled by Tailwind classes */
 
 /* Blog post spacing */
 .blog-content h2 + p,
