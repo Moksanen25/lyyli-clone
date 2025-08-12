@@ -96,7 +96,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href={`/${currentLocale}/waitlist`}
-              className="bg-white text-forest px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center justify-center gap-2"
+              className="bg-white text-[#2F5D50] px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center justify-center gap-2"
               aria-label="Join the waitlist for Lyyli.ai"
             >
               {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}

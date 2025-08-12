@@ -740,7 +740,7 @@ export function FeatureHighlightCard({
 
       {/* Content */}
       <div className="relative z-10">
-        <h3 className="text-xl mb-3 text-forest group-hover:text-turquoise transition-colors duration-300 font-playfair font-bold leading-normal">
+        <h3 className="text-xl mb-3 text-[#2F5D50] group-hover:text-turquoise transition-colors duration-300 font-playfair font-bold leading-normal">
           {title}
         </h3>
         <p className="text-base text-darkGray font-sans leading-relaxed">
@@ -770,17 +770,17 @@ export function AnimatedTimeline({
       {steps.map((step, index) => (
         <div
           key={index}
-          className="relative flex items-start mb-8 transition-all duration-1000 opacity-100 translate-x-0"
+          className="relative flex flex-col sm:flex-row items-start mb-8 transition-all duration-1000 opacity-100 translate-x-0"
           style={{ transitionDelay: `${index * 200}ms` }}
         >
           {/* Timeline dot */}
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-turquoise to-rose flex items-center justify-center text-white font-bold text-lg z-10 transition-all duration-500 scale-100">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-turquoise to-rose flex items-center justify-center text-white font-bold text-lg z-10 transition-all duration-500 scale-100 mx-auto sm:mx-0 mb-4 sm:mb-0">
             {step.icon || index + 1}
           </div>
 
           {/* Content */}
-          <div className="ml-6 flex-1">
-            <h3 className="text-xl text-forest mb-2 font-playfair font-bold leading-normal">
+          <div className="sm:ml-6 flex-1 text-center sm:text-left">
+            <h3 className="text-xl text-[#2F5D50] mb-2 font-playfair font-bold leading-normal">
               {step.title}
             </h3>
             <p className="text-base text-darkGray font-sans leading-relaxed">
@@ -898,7 +898,7 @@ export function TestimonialCard({
           />
         )}
         <div>
-          <div className="font-bold text-forest">{author}</div>
+          <div className="font-bold text-[#2F5D50]">{author}</div>
           <div className="text-sm text-mediumGray font-sans">
             {role} at {company}
           </div>

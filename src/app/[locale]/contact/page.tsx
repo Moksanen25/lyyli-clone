@@ -108,60 +108,60 @@ export default async function ContactPage({ params }: ContactPageProps) {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
-          <InteractiveCard className="text-center p-8 bg-white/95 backdrop-blur-sm hover:shadow-medium transition-all duration-300">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+          <InteractiveCard className="text-center p-8 bg-white hover:shadow-medium transition-all duration-300">
             <div className="relative mb-6">
-              <div className="w-20 h-20 bg-gradient-to-br from-forest/20 to-forest/30 rounded-2xl flex items-center justify-center mx-auto mb-4 transform rotate-12 transition-transform duration-300 group-hover:rotate-0">
-                <svg className="w-10 h-10 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 bg-gradient-to-br from-[#2F5D50]/20 to-[#2F5D50]/30 rounded-2xl flex items-center justify-center mx-auto mb-4 transform rotate-12 transition-transform duration-300 group-hover:rotate-0">
+                <svg className="w-10 h-10 text-[#2F5D50]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               {/* Floating elements */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 bg-forest/60 rounded-full animate-ping opacity-75"></div>
-              <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-forest/50 rounded-full animate-pulse"></div>
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-[#2F5D50]/60 rounded-full animate-ping opacity-75"></div>
+              <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-[#2F5D50]/50 rounded-full animate-pulse"></div>
             </div>
-            <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal">
+            <h3 className="text-xl mb-3 text-[#2F5D50] font-playfair font-normal leading-normal">
               24h response
             </h3>
-            <p className="text-base text-forest font-sans leading-relaxed">
+            <p className="text-base text-[#2F5D50] font-sans leading-relaxed">
               {t["contact.response.timing"]}
             </p>
           </InteractiveCard>
 
-          <InteractiveCard className="text-center p-8 bg-white/95 backdrop-blur-sm hover:shadow-medium transition-all duration-300">
+          <InteractiveCard className="text-center p-8 bg-white hover:shadow-medium transition-all duration-300">
             <div className="relative mb-6">
-              <div className="w-20 h-20 bg-gradient-to-br from-turquoise/20 to-turquoise/30 rounded-2xl flex items-center justify-center mx-auto mb-4 transform -rotate-12 transition-transform duration-300 group-hover:rotate-0">
-                <svg className="w-10 h-10 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 bg-gradient-to-br from-[#A7D6D1]/20 to-[#A7D6D1]/30 rounded-2xl flex items-center justify-center mx-auto mb-4 transform -rotate-12 transition-transform duration-300 group-hover:rotate-0">
+                <svg className="w-10 h-10 text-[#A7D6D1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
               {/* Floating elements */}
-              <div className="absolute -top-2 -left-2 w-4 h-4 bg-turquoise/60 rounded-full animate-ping opacity-75"></div>
-              <div className="absolute -bottom-2 -right-2 w-3 h-3 bg-turquoise/50 rounded-full animate-pulse"></div>
+              <div className="absolute -top-2 -left-2 w-4 h-4 bg-[#A7D6D1]/60 rounded-full animate-ping opacity-75"></div>
+              <div className="absolute -bottom-2 -right-2 w-3 h-3 bg-[#A7D6D1]/50 rounded-full animate-pulse"></div>
             </div>
-            <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal">
+            <h3 className="text-xl mb-3 text-[#2F5D50] font-playfair font-normal leading-normal">
               Discovery call
             </h3>
-            <p className="text-base text-forest font-sans leading-relaxed">
+            <p className="text-base text-[#2F5D50] font-sans leading-relaxed">
               {t["contact.response.discovery"]}
             </p>
           </InteractiveCard>
 
-          <InteractiveCard className="text-center p-8 bg-white/95 backdrop-blur-sm hover:shadow-medium transition-all duration-300">
+          <InteractiveCard className="text-center p-8 bg-white hover:shadow-medium transition-all duration-300">
             <div className="relative mb-6">
-              <div className="w-20 h-20 bg-gradient-to-br from-forest/20 to-forest/30 rounded-2xl flex items-center justify-center mx-auto mb-4 transform rotate-6 transition-transform duration-300 group-hover:rotate-0">
-                <svg className="w-10 h-10 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 bg-gradient-to-br from-[#2F5D50]/20 to-[#2F5D50]/30 rounded-2xl flex items-center justify-center mx-auto mb-4 transform rotate-6 transition-transform duration-300 group-hover:rotate-0">
+                <svg className="w-10 h-10 text-[#2F5D50]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               {/* Floating elements */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 bg-forest/60 rounded-full animate-ping opacity-75"></div>
-              <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-forest/30 rounded-full animate-pulse"></div>
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-[#2F5D50]/60 rounded-full animate-ping opacity-75"></div>
+              <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-[#2F5D50]/30 rounded-full animate-pulse"></div>
             </div>
-            <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal">
+            <h3 className="text-xl mb-3 text-[#2F5D50] font-playfair font-normal leading-normal">
               Custom proposal
             </h3>
-            <p className="text-base text-forest font-sans leading-relaxed">
+            <p className="text-base text-[#2F5D50] font-sans leading-relaxed">
               {t["contact.response.followup"]}
             </p>
           </InteractiveCard>
@@ -181,7 +181,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
             Join leading companies that have transformed their communication with Lyyli
           </p>
           
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

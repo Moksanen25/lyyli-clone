@@ -82,7 +82,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       {/* Blog Posts */}
       <section className="max-w-7xl mx-auto px-6 pb-16 lg:pb-24">
         {posts.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {posts.map((post) => (
               <BlogPostCard
                 key={post.slug}

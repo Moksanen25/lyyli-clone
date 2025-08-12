@@ -116,7 +116,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           <div className="bg-white p-6 rounded-lg shadow-soft">
             <h3 className="text-xl mb-3 text-forest font-playfair font-bold">AI-powered efficiency</h3>
             <p className="text-mediumGray">Reduce manual communication tasks by 75% with intelligent automation and smart routing.</p>
@@ -149,29 +149,29 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
         </div>
         
         <div className="space-y-8">
-          <div className="flex items-start">
-            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mr-6">1</div>
+          <div className="flex flex-col sm:flex-row items-start text-center sm:text-left">
+            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto sm:mx-0 sm:mr-6 mb-4 sm:mb-0">1</div>
             <div>
               <h3 className="text-xl text-forest mb-2 font-playfair font-bold">Connect your tools</h3>
               <p className="text-mediumGray">Integrate with Slack, Teams, and email in minutes. No complex setup required.</p>
             </div>
           </div>
-          <div className="flex items-start">
-            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mr-6">2</div>
+          <div className="flex flex-col sm:flex-row items-start text-center sm:text-left">
+            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto sm:mx-0 sm:mr-6 mb-4 sm:mb-0">2</div>
             <div>
               <h3 className="text-xl text-forest mb-2 font-playfair font-bold">AI learns your patterns</h3>
               <p className="text-mediumGray">Our AI analyzes communication patterns and team dynamics to understand your workflow.</p>
             </div>
           </div>
-          <div className="flex items-start">
-            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mr-6">3</div>
+          <div className="flex flex-col sm:flex-row items-start text-center sm:text-left">
+            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto sm:mx-0 sm:mr-6 mb-4 sm:mb-0">3</div>
             <div>
               <h3 className="text-xl text-forest mb-2 font-playfair font-bold">Smart suggestions & routing</h3>
               <p className="text-mediumGray">Get intelligent recommendations for message timing, channels, and recipients.</p>
             </div>
           </div>
-          <div className="flex items-start">
-            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mr-6">4</div>
+          <div className="flex flex-col sm:flex-row items-start text-center sm:text-left">
+            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto sm:mx-0 sm:mr-6 mb-4 sm:mb-0">4</div>
             <div>
               <h3 className="text-xl text-forest mb-2 font-playfair font-bold">Measure & optimize</h3>
               <p className="text-mediumGray">Track communication effectiveness with detailed analytics and improvement suggestions.</p>
@@ -191,7 +191,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           <div className="bg-white p-6 rounded-lg shadow-soft text-center">
             <h3 className="text-xl font-playfair font-bold text-forest mb-2">ISO 27001 certified</h3>
             <p className="text-sm text-mediumGray">International security standard</p>

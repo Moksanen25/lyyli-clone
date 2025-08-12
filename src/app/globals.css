@@ -174,6 +174,53 @@ h3 {
 .bg-gradient-to-br.to-\[#2F5D50\]\/90 {
   --tw-gradient-stops: #2F5D50 0%, rgba(47, 93, 80, 0.9) 100% !important;
 }
+
+/* Accessibility improvements */
+.text-\[#2F5D50\] {
+  color: #2F5D50 !important;
+}
+
+/* Ensure sufficient contrast for accessibility */
+.text-forest {
+  color: #2F5D50 !important;
+}
+
+/* Mobile-first responsive improvements */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Focus states for accessibility */
+.btn-primary:focus,
+.btn-secondary:focus,
+a:focus {
+  outline: 2px solid #2F5D50;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-mediumGray {
+    color: #333333 !important;
+  }
+  
+  .text-muted-foreground {
+    color: #333333 !important;
+  }
+}
 .animate-spin {
   animation: spin 1s linear infinite;
 }

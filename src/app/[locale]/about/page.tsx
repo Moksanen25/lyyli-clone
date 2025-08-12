@@ -94,7 +94,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="/demo" 
-              className="bg-white text-forest px-8 py-4 rounded-lg hover:bg-white/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans"
+              className="bg-white text-[#2F5D50] px-8 py-4 rounded-lg hover:bg-white/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans"
               aria-label="Book a demo of Lyyli.ai"
             >
               {t['about.cta.demo']}

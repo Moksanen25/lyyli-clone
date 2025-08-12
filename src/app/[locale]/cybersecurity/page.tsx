@@ -79,7 +79,7 @@ export default async function CybersecurityPage({ params }: PageProps) {
       {/* Security Highlights */}
       <section className="bg-grayLight py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             <div className="text-center p-6 bg-forest/5 rounded-lg border border-forest/20">
               <div className="w-16 h-16 bg-forest rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

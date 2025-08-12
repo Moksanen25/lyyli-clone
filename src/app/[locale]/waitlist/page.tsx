@@ -62,7 +62,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             {/* Benefits Grid */}
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-16">
               <div className="text-center">
                 <div className="w-16 h-16 bg-rose rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
               <h3 className="text-2xl font-playfair font-normal text-forest mb-6">
                 {t["waitlist.info.title"]}
               </h3>
-              <div className="grid md:grid-cols-2 gap-8 text-left">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 text-left">
                 <div>
                   <h4 className="font-playfair font-bold text-forest mb-3">
                     {t["waitlist.info.timeline.title"]}

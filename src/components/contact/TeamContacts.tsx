@@ -61,7 +61,7 @@ export default function TeamContacts({
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {contacts.map((contact, index) => (
           <InteractiveCard key={index} className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
             <div className="text-center mb-6">

@@ -56,7 +56,7 @@ export default async function Home({ params }: HomeProps) {
         <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["problems.title"]}
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           <InteractiveCard>
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-rose rounded-full flex items-center justify-center mx-auto mb-4">
@@ -178,7 +178,7 @@ export default async function Home({ params }: HomeProps) {
         <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["features.title"]}
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           <FeatureHighlightCard
             title={t["features.speed.title"]}
             description={t["features.speed.description"]}
@@ -204,8 +204,9 @@ export default async function Home({ params }: HomeProps) {
             {t["desktop.subtitle"]}
           </p>
         </div>
-        <div className="flex justify-center">
-          <div className="relative group">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-8">
+          {/* Desktop UI - Hidden on mobile, shown on desktop */}
+          <div className="relative group hidden lg:block">
             <div className="relative">
               <img 
                 src="/images/general/Desktop_UI_for_web.png" 
@@ -219,6 +220,22 @@ export default async function Home({ params }: HomeProps) {
               {t["desktop.experience"]}
             </div>
           </div>
+          
+          {/* Mobile UI - Shown on mobile, hidden on desktop */}
+          <div className="relative group lg:hidden">
+            <div className="relative">
+              <img 
+                src="/images/general/Mobile_UI_for_web.jpeg" 
+                alt="Lyyli.ai Mobile Interface - AI Communication Assistant" 
+                className="w-full max-w-[300px] rounded-lg shadow-soft border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-medium"
+              />
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-turquoise/15 to-rose/15 rounded-lg blur-lg -z-10 group-hover:blur-xl transition-all duration-300" />
+            </div>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-turquoise text-white px-4 py-2 rounded-full text-sm font-medium shadow-soft">
+              Mobile experience
+            </div>
+          </div>
         </div>
       </section>
 
@@ -227,7 +244,7 @@ export default async function Home({ params }: HomeProps) {
         <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["benefits.title"]}
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           <FeatureHighlightCard
             title={t["benefits.speed.title"]}
             description={t["benefits.speed.description"]}
@@ -281,7 +298,7 @@ export default async function Home({ params }: HomeProps) {
         <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["testimonials.title"]}
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           <TestimonialCard
             quote={t["testimonials.quote1.text"]}
             author={t["testimonials.quote1.author"]}
