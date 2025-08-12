@@ -52,7 +52,7 @@ export default async function Home({ params }: HomeProps) {
       </div>
 
       {/* Problems Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 container mx-auto px-4 py-20">
         <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["problems.title"]}
         </h2>
@@ -106,7 +106,7 @@ export default async function Home({ params }: HomeProps) {
       </section>
 
       {/* Stats Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="bg-gradient-to-br from-forest/5 to-turquoise/10 container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl text-forest font-playfair font-normal leading-snug mb-4">
             {t["stats.title"]}
@@ -195,7 +195,7 @@ export default async function Home({ params }: HomeProps) {
       </section>
 
       {/* Desktop UI Showcase */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="bg-gradient-to-br from-forest/5 to-turquoise/5 container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl text-forest font-playfair font-normal leading-snug mb-4">
             {t["desktop.title"]}
@@ -223,7 +223,7 @@ export default async function Home({ params }: HomeProps) {
       </section>
 
       {/* Benefits Section */}
-      <section className="container mx-auto px-4 py-20 bg-gray-50">
+      <section className="container mx-auto px-4 py-20 bg-gradient-to-br from-grayLight to-rose/10">
         <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["benefits.title"]}
         </h2>
@@ -277,7 +277,7 @@ export default async function Home({ params }: HomeProps) {
       </section>
 
       {/* Testimonials Section */}
-      <section className="container mx-auto px-4 py-20 bg-gray-50">
+      <section className="container mx-auto px-4 py-20 bg-gradient-to-br from-rose/5 to-grayLight">
         <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["testimonials.title"]}
         </h2>
@@ -306,14 +306,14 @@ export default async function Home({ params }: HomeProps) {
         </p>
       </section>
 
-      <section id="cta" className="container mx-auto px-4 py-20 text-center">
-        <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+      <section id="cta" className="bg-gradient-to-br from-forest to-forest/90 text-white container mx-auto px-4 py-20 text-center">
+        <h2 className="text-3xl md:text-4xl text-white mb-4 font-playfair font-normal leading-snug">
           {t["cta.title"]}
         </h2>
-        <p className="text-lg text-foreground max-w-3xl mx-auto mb-8 font-sans leading-relaxed">
+        <p className="text-lg text-white/90 max-w-3xl mx-auto mb-8 font-sans leading-relaxed">
           {t["cta.description"]}
         </p>
-        <a href={`/${currentLocale}/waitlist`} className="btn-primary">
+        <a href={`/${currentLocale}/waitlist`} className="bg-white text-forest px-8 py-4 rounded-lg hover:bg-white/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans">
           {t["cta.button"]}
         </a>
       </section>

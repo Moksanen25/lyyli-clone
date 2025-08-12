@@ -53,7 +53,7 @@ export default function TeamContacts({
   return (
     <div>
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-bold leading-snug">
+        <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-normal leading-snug">
           {t["contact.team.title"]}
         </h2>
         <p className="text-lg text-white/90 font-sans leading-relaxed max-w-3xl mx-auto">
@@ -70,7 +70,7 @@ export default function TeamContacts({
               </div>
               {contact.name ? (
                 <>
-                  <h3 className="text-xl mb-2 text-forest font-playfair font-bold leading-normal">
+                  <h3 className="text-xl mb-2 text-forest font-playfair font-normal leading-normal">
                     {contact.name}
                   </h3>
                   <p className="text-base text-mediumGray font-medium mb-4 font-sans leading-relaxed">
@@ -78,7 +78,7 @@ export default function TeamContacts({
                   </p>
                 </>
               ) : (
-                <h3 className="text-xl mb-4 text-forest font-playfair font-bold leading-normal">
+                <h3 className="text-xl mb-4 text-forest font-playfair font-normal leading-normal">
                   {contact.title}
                 </h3>
               )}

@@ -70,7 +70,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-bold leading-tight text-forest">
+          <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-normal leading-tight text-forest">
             {t["blog.title"]}
           </h1>
           <p className="text-lg mb-12 text-muted-foreground max-w-3xl mx-auto font-sans leading-relaxed">

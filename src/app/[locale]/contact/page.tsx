@@ -98,11 +98,11 @@ export default async function ContactPage({ params }: ContactPageProps) {
       </section>
 
       {/* Response Expectations */}
-      <section className="max-w-6xl mx-auto px-6 py-20 relative z-10">
+      <section className="bg-gradient-to-br from-grayLight/50 to-white max-w-6xl mx-auto px-6 py-20 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-snug">
-            {t["contact.response.title"]}
-          </h2>
+                  <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
+          {t["contact.response.title"]}
+        </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto font-sans leading-relaxed">
             What you can expect when you reach out to us
           </p>
@@ -120,7 +120,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
               <div className="absolute -top-2 -right-2 w-4 h-4 bg-forest/40 rounded-full animate-ping opacity-75"></div>
               <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-forest/30 rounded-full animate-pulse"></div>
             </div>
-            <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+            <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal">
               24h response
             </h3>
             <p className="text-base text-muted-foreground font-sans leading-relaxed">
@@ -139,7 +139,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
               <div className="absolute -top-2 -left-2 w-4 h-4 bg-turquoise/40 rounded-full animate-ping opacity-75"></div>
               <div className="absolute -bottom-2 -right-2 w-3 h-3 bg-turquoise/30 rounded-full animate-pulse"></div>
             </div>
-            <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+            <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal">
               Discovery call
             </h3>
             <p className="text-base text-muted-foreground font-sans leading-relaxed">
@@ -158,7 +158,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
               <div className="absolute -top-2 -right-2 w-4 h-4 bg-forest/40 rounded-full animate-ping opacity-75"></div>
               <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-forest/30 rounded-full animate-pulse"></div>
             </div>
-            <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+            <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal">
               Custom proposal
             </h3>
             <p className="text-base text-muted-foreground font-sans leading-relaxed">
@@ -174,7 +174,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
         <EnhancedGeometricPattern className="opacity-10" />
         
         <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl mb-8 text-white font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-8 text-white font-playfair font-normal leading-snug">
             Trusted by professional service organizations
           </h2>
           <p className="text-lg mb-12 text-white/90 max-w-3xl mx-auto font-sans leading-relaxed">
