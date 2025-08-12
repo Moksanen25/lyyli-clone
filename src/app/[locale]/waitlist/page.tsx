@@ -58,7 +58,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
       </section>
 
       {/* Main Content */}
-      <section className="py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             {/* Benefits Grid */}

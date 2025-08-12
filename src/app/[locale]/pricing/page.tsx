@@ -66,14 +66,14 @@ export default async function PricingPage({ params }: PricingPageProps) {
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-grayLight py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-forest/10 to-turquoise/10 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <BenefitsSection locale={currentLocale} translations={t} />
         </div>
       </section>
 
       {/* ROI Assumptions */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="bg-gradient-to-br from-rose/5 to-grayLight max-w-7xl mx-auto px-6 py-16">
         <ROIAssumptions translations={t} />
       </section>
 

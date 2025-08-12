@@ -106,7 +106,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       </section>
 
       {/* Key Benefits Overview */}
-      <section className="container mx-auto px-4 py-16 bg-grayLight/30">
+      <section className="container mx-auto px-4 py-16 bg-gradient-to-br from-forest/10 to-turquoise/10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             Core benefits for professional service organizations
@@ -138,7 +138,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       </section>
 
       {/* How It Works Section */}
-      <section className="container mx-auto px-4 py-16 bg-grayLight/30">
+      <section className="container mx-auto px-4 py-16 bg-gradient-to-br from-rose/10 to-grayLight">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             How Lyyli works

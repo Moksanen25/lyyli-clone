@@ -64,14 +64,14 @@ export default async function AboutPage({ params }: AboutPageProps) {
       </section>
 
       {/* Origin Story - Why Lyyli Exists */}
-      <section className="bg-grayLight py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-forest to-forest/80 text-white py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <OriginStory translations={t} />
         </div>
       </section>
 
       {/* Mission, Vision & Values */}
-      <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-rose/10 to-turquoise/10 max-w-7xl mx-auto px-6 py-16 lg:py-24">
         <MissionVisionValues translations={t} />
       </section>
 
