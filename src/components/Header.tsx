@@ -292,8 +292,13 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             </div>
 
             {/* Locale Switcher */}
-            <div className="border-t border-grayLight pt-4 mt-2 pb-2">
-              <div className="flex justify-center">
+            <div className="border-t border-grayLight pt-4 mt-2 pb-2 bg-white relative z-10">
+              <div className="text-center mb-3">
+                <span className="text-sm text-mediumGray font-medium">
+                  {locale === "fi" ? "Kieli / Language" : "Language / Kieli"}
+                </span>
+              </div>
+              <div className="flex justify-center items-center">
                 <ClientLocaleSwitcher currentLocale={locale} />
               </div>
             </div>

@@ -234,6 +234,41 @@ h3 {
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   }
+  
+  /* Ensure locale switcher is visible in mobile menu */
+  .ClientLocaleSwitcher {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Mobile menu locale switcher styling */
+  .ClientLocaleSwitcher a {
+    min-width: 2.5rem;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Force locale switcher visibility in mobile menu */
+  .ClientLocaleSwitcher,
+  .ClientLocaleSwitcher * {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Ensure locale switcher links are properly styled */
+  .ClientLocaleSwitcher a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 2rem;
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
 }
 
 /* Focus states for accessibility */
