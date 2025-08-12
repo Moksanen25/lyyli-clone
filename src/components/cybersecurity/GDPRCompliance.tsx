@@ -56,7 +56,7 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
     <section className="py-16 lg:py-24 bg-rose">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
             {t['cybersecurity.gdprCompliance.title']}
           </h2>
           <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
@@ -72,7 +72,7 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
                   {feature.icon}
                 </div>
                 <div>
-                  <h4 className="text-lg font-playfair font-bold text-forest mb-2">
+                  <h4 className="text-lg font-playfair font-normal text-forest mb-2">
                     {feature.title}
                   </h4>
                   <p className="text-mediumGray font-sans leading-relaxed">
@@ -84,7 +84,7 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
           </div>
           
           <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h4 className="text-xl font-playfair font-bold text-forest mb-6">
+            <h4 className="text-xl font-playfair font-normal text-forest mb-6">
               {t['cybersecurity.gdprCompliance.dedicatedDPO.title']}
             </h4>
             <p className="text-mediumGray font-sans leading-relaxed mb-6">

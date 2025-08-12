@@ -49,7 +49,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
         <EnhancedGeometricPattern className="opacity-20" />
         
         <div className="text-center max-w-4xl mx-auto relative z-10">
-          <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-bold leading-tight text-forest">
+          <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-normal leading-tight text-forest">
             {t["features.hero.title"]}
           </h1>
           <p className="text-lg mb-8 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">

@@ -50,7 +50,7 @@ export default async function ContinuousDevelopment({ locale }: ContinuousDevelo
     <section className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
             {t['cybersecurity.continuousDevelopment.title']}
           </h2>
           <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
@@ -64,7 +64,7 @@ export default async function ContinuousDevelopment({ locale }: ContinuousDevelo
               <div className="w-16 h-16 bg-forest/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                 {feature.icon}
               </div>
-              <h4 className="text-lg font-playfair font-bold text-forest mb-2">
+              <h4 className="text-lg font-playfair font-normal text-forest mb-2">
                 {feature.title}
               </h4>
               <p className="text-mediumGray font-sans leading-relaxed">
@@ -75,7 +75,7 @@ export default async function ContinuousDevelopment({ locale }: ContinuousDevelo
         </div>
 
         <div className="bg-forest/5 p-8 rounded-lg text-center">
-          <h3 className="text-2xl font-playfair font-bold text-forest mb-4">
+          <h3 className="text-2xl font-playfair font-normal text-forest mb-4">
             {t['cybersecurity.continuousDevelopment.commitment.title']}
           </h3>
           <p className="text-mediumGray font-sans leading-relaxed max-w-4xl mx-auto">

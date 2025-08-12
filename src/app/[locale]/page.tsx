@@ -175,7 +175,7 @@ export default async function Home({ params }: HomeProps) {
 
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
-        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["features.title"]}
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -197,7 +197,7 @@ export default async function Home({ params }: HomeProps) {
       {/* Desktop UI Showcase */}
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl text-forest font-playfair font-bold leading-snug mb-4">
+          <h2 className="text-3xl md:text-4xl text-forest font-playfair font-normal leading-snug mb-4">
             {t["desktop.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -224,7 +224,7 @@ export default async function Home({ params }: HomeProps) {
 
       {/* Benefits Section */}
       <section className="container mx-auto px-4 py-20 bg-gray-50">
-        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["benefits.title"]}
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -251,7 +251,7 @@ export default async function Home({ params }: HomeProps) {
 
       {/* How It Works Section */}
       <section id="how-it-works" className="container mx-auto px-4 py-20">
-        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["howItWorks.title"]}
         </h2>
         <AnimatedTimeline
@@ -278,7 +278,7 @@ export default async function Home({ params }: HomeProps) {
 
       {/* Testimonials Section */}
       <section className="container mx-auto px-4 py-20 bg-gray-50">
-        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-bold leading-snug">
+        <h2 className="text-3xl md:text-4xl text-forest text-center mb-16 font-playfair font-normal leading-snug">
           {t["testimonials.title"]}
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
@@ -307,7 +307,7 @@ export default async function Home({ params }: HomeProps) {
       </section>
 
       <section id="cta" className="container mx-auto px-4 py-20 text-center">
-        <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
+        <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
           {t["cta.title"]}
         </h2>
         <p className="text-lg text-foreground max-w-3xl mx-auto mb-8 font-sans leading-relaxed">

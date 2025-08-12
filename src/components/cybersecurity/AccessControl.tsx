@@ -51,7 +51,7 @@ export default async function AccessControl({ locale }: AccessControlProps) {
     <section className="py-16 lg:py-24 bg-grayLight">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
             {t['cybersecurity.accessControl.title']}
           </h2>
           <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
@@ -61,7 +61,7 @@ export default async function AccessControl({ locale }: AccessControlProps) {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h3 className="text-2xl font-playfair font-bold text-forest mb-8">
+            <h3 className="text-2xl font-playfair font-normal text-forest mb-8">
               {t['cybersecurity.accessControl.control.title']}
             </h3>
             <div className="space-y-6">
@@ -71,9 +71,9 @@ export default async function AccessControl({ locale }: AccessControlProps) {
                     {feature.icon}
                   </div>
                   <div>
-                    <h4 className="text-lg font-playfair font-bold text-forest mb-2">
-                      {feature.title}
-                    </h4>
+                                      <h4 className="text-lg font-playfair font-normal text-forest mb-2">
+                    {feature.title}
+                  </h4>
                     <p className="text-mediumGray font-sans leading-relaxed">
                       {feature.description}
                     </p>
@@ -89,7 +89,7 @@ export default async function AccessControl({ locale }: AccessControlProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h4 className="text-xl font-playfair font-bold text-forest mb-4 text-center">
+            <h4 className="text-xl font-playfair font-normal text-forest mb-4 text-center">
               Enterprise-grade Security
             </h4>
             <p className="text-mediumGray font-sans leading-relaxed text-center">

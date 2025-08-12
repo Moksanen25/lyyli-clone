@@ -68,7 +68,7 @@ export default async function SecurityFeatures({ locale }: SecurityFeaturesProps
     <section className="py-16 lg:py-24 bg-grayLight">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
             {t['cybersecurity.securityFeatures.title']}
           </h2>
           <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
@@ -82,7 +82,7 @@ export default async function SecurityFeatures({ locale }: SecurityFeaturesProps
               <div className="w-16 h-16 bg-forest/10 rounded-lg flex items-center justify-center mb-6">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-playfair font-bold text-forest mb-4">
+              <h3 className="text-xl font-playfair font-normal text-forest mb-4">
                 {feature.title}
               </h3>
               <p className="text-mediumGray font-sans leading-relaxed">

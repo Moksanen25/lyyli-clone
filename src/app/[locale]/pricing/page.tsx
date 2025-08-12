@@ -51,7 +51,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
         <EnhancedGeometricPattern className="opacity-20" />
         
         <div className="text-center max-w-4xl mx-auto relative z-10">
-          <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-bold leading-tight text-forest">
+          <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-normal leading-tight text-forest">
             {t["pricing.title"]}
           </h1>
           <p className="text-lg mb-8 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -87,7 +87,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
       {/* CTA Section */}
       <section className="bg-forest text-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl mb-4 text-white font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-white font-playfair font-normal leading-snug">
             {t['cta.title']}
           </h2>
           <p className="text-lg mb-8 text-white opacity-90 font-sans leading-relaxed">
