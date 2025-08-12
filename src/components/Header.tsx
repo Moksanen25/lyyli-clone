@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { TranslationKeys } from "../lib/i18n";
 import ClientLocaleSwitcher from "./ClientLocaleSwitcher";
 import Image from "next/image";
@@ -8,6 +11,16 @@ interface HeaderProps {
 }
 
 export default function Header({ locale, translations: t }: HeaderProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className="bg-white border-b border-grayLight sticky top-0 z-50 shadow-soft">
       <nav
@@ -22,6 +35,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               href="/"
               className="flex items-center gap-3"
               aria-label="Lyyli.ai homepage"
+              onClick={closeMobileMenu}
             >
               <Image
                 src="/images/logos/vaakalogo_lyyli_1500x500_px.png"
@@ -129,10 +143,11 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             className="lg:hidden p-2 rounded-lg hover:bg-grayLight transition-colors duration-200"
-            aria-label="Open mobile navigation menu"
-            aria-expanded="false"
+            aria-label={isMobileMenuOpen ? "Close mobile navigation menu" : "Open mobile navigation menu"}
+            aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             type="button"
+            onClick={toggleMobileMenu}
           >
             <svg
               className="w-6 h-6 text-foreground"
@@ -141,20 +156,33 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
             </svg>
           </button>
         </div>
 
-        {/* Mobile Menu (Hidden by default - would need client-side JS to toggle) */}
+        {/* Mobile Menu */}
         <div
           id="mobile-menu"
-          className="lg:hidden hidden mt-4 pb-4 border-t border-grayLight"
+          className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+            isMobileMenuOpen 
+              ? "max-h-96 opacity-100 mt-4 pb-4 border-t border-grayLight" 
+              : "max-h-0 opacity-0 mt-0 pb-0 border-t-0"
+          }`}
         >
           <nav
             className="flex flex-col gap-4 pt-4"
@@ -163,53 +191,60 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           >
             <a
               href={`/${locale}/features`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
               aria-label="View features page"
+              onClick={closeMobileMenu}
             >
               {t["nav.features"]}
             </a>
             <a
               href={`/${locale}/cybersecurity`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
               aria-label="View cybersecurity page"
+              onClick={closeMobileMenu}
             >
               {t["nav.security"]}
             </a>
             <a
               href={`/${locale}/pricing`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
               aria-label="View pricing page"
+              onClick={closeMobileMenu}
             >
               {t["nav.pricing"]}
             </a>
             <a
               href={`/${locale}/about`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
               aria-label="About us page"
+              onClick={closeMobileMenu}
             >
               {locale === "fi" ? "Tietoja meistä" : "About"}
             </a>
             <a
               href={`/${locale}/blog`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
               aria-label="Blog page"
+              onClick={closeMobileMenu}
             >
               Blog
             </a>
             <a
               href={`/${locale}/contact`}
-              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+              className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-2 px-3 rounded-lg hover:bg-grayLight/50"
               aria-label="Contact page"
+              onClick={closeMobileMenu}
             >
               {t["nav.contact"]}
             </a>
 
-            <div className="flex items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
               <ClientLocaleSwitcher currentLocale={locale} />
               <a
                 href={`/${locale}/waitlist`}
-                className="bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest/90 hover:shadow-medium transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans"
+                className="bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest/90 hover:shadow-medium transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans w-full sm:w-auto justify-center"
                 aria-label="Join the waitlist for Lyyli.ai"
+                onClick={closeMobileMenu}
               >
                 {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
                 <svg
