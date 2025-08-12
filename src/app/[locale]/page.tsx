@@ -29,7 +29,7 @@ export default async function Home({ params }: HomeProps) {
           {/* Animated Hero Visual */}
           <HeroVisual />
           
-          <h1 className="text-5xl md:text-7xl text-forest text-center mb-8 font-playfair font-bold leading-tight relative z-10">
+          <h1 className="text-3xl md:text-4xl text-forest text-center mb-8 font-playfair font-bold leading-tight relative z-10">
             {t["hero.headline"]}
           </h1>
           <p className="text-lg text-foreground text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">

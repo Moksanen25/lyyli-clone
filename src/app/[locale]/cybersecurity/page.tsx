@@ -49,7 +49,7 @@ export default async function CybersecurityPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-white">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold leading-tight mb-6">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold leading-tight mb-6">
                 {t['cybersecurity.hero.title']}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 font-sans leading-relaxed mb-8">

@@ -24,7 +24,7 @@ export default function PricingHeader({ translations }: PricingHeaderProps) {
           </div>
 
           {/* Main heading - single H1 for SEO */}
-          <h1 className="text-4xl md:text-5xl mb-6 text-forest font-playfair font-bold leading-tight">
+          <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-tight">
             {t["pricing.pricingHeader.title"]}
           </h1>
 

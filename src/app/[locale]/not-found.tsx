@@ -12,7 +12,7 @@ export default async function NotFound() {
           🔍
         </div>
 
-        <h1 className="text-4xl md:text-5xl mb-4 text-forest font-playfair font-bold leading-tight">{t["404.heading"]}</h1>
+        <h1 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-tight">{t["404.heading"]}</h1>
 
         <p className="text-lg mb-8 text-mediumGray font-sans leading-relaxed">{t["404.message"]}</p>
 

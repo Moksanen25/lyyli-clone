@@ -28,7 +28,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
     <div className="bg-white">
       <div className="max-w-4xl mx-auto px-6 py-16 lg:py-24">
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl mb-4 text-forest font-playfair font-bold leading-tight">
+          <h1 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-tight">
             {t["privacy.title"]}
           </h1>
           <p className="text-base text-mediumGray font-sans leading-relaxed">
