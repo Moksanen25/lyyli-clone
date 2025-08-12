@@ -25,11 +25,11 @@ export default function Footer({
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/images/logos/vaakalogo_lyyli_1500x500_px.png"
+                src="/images/logos/Lyyli.ai (1500 x 500 px) tumma tausta.png"
                 alt="Lyyli.ai logo - AI Communication Assistant"
                 width={96}
                 height={32}
-                className="h-8 w-auto brightness-0 invert"
+                className="h-8 w-auto"
               />
               <span className="text-xl text-white font-bold leading-normal font-playfair">
                 Lyyli
