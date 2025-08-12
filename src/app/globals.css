@@ -157,6 +157,23 @@ h3 {
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Ensure green backgrounds are visible */
+.bg-\[#2F5D50\] {
+  background-color: #2F5D50 !important;
+}
+
+.bg-gradient-to-br.from-\[#2F5D50\] {
+  background-image: linear-gradient(to bottom right, #2F5D50, var(--tw-gradient-stops)) !important;
+}
+
+.bg-gradient-to-br.to-\[#2F5D50\]\/80 {
+  --tw-gradient-stops: #2F5D50 0%, rgba(47, 93, 80, 0.8) 100% !important;
+}
+
+.bg-gradient-to-br.to-\[#2F5D50\]\/90 {
+  --tw-gradient-stops: #2F5D50 0%, rgba(47, 93, 80, 0.9) 100% !important;
+}
 .animate-spin {
   animation: spin 1s linear infinite;
 }

@@ -85,7 +85,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-forest text-white py-16 lg:py-24">
+      <section className="bg-[#2F5D50] text-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl mb-4 text-white font-playfair font-normal leading-snug">
             {t['cta.title']}

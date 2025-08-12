@@ -88,7 +88,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
       </section>
 
       {/* Team Contacts */}
-      <section className="bg-gradient-to-br from-forest to-forest/80 py-16 lg:py-24 relative z-10 overflow-hidden">
+      <section className="bg-gradient-to-br from-[#2F5D50] to-[#2F5D50]/80 py-16 lg:py-24 relative z-10 overflow-hidden">
         {/* Background Pattern */}
         <EnhancedGeometricPattern className="opacity-10" />
         
@@ -98,7 +98,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
       </section>
 
       {/* Response Expectations */}
-      <section className="bg-gradient-to-br from-forest to-forest/80 text-white max-w-6xl mx-auto px-6 py-20 relative z-10">
+      <section className="bg-gradient-to-br from-[#2F5D50] to-[#2F5D50]/80 text-white max-w-6xl mx-auto px-6 py-20 relative z-10">
         <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-normal leading-snug">
           {t["contact.response.title"]}
@@ -169,7 +169,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
       </section>
 
       {/* Trust Indicators */}
-      <section className="bg-gradient-to-br from-forest to-forest/90 text-white py-16 lg:py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-[#2F5D50] to-[#2F5D50]/90 text-white py-16 lg:py-20 relative overflow-hidden">
         {/* Background Pattern */}
         <EnhancedGeometricPattern className="opacity-10" />
         

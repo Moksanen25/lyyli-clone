@@ -64,7 +64,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
       </section>
 
       {/* Origin Story - Why Lyyli Exists */}
-      <section className="bg-gradient-to-br from-forest to-forest/80 text-white py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-[#2F5D50] to-[#2F5D50]/80 text-white py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <OriginStory translations={t} />
         </div>
@@ -83,7 +83,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
       </section>
 
       {/* CTA Section - Following 10-layout rule: ensisijainen CTA */}
-      <section className="bg-forest text-white py-16 lg:py-24">
+      <section className="bg-[#2F5D50] text-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl mb-4 text-white font-playfair font-bold leading-snug">
             {t['about.cta.title']}

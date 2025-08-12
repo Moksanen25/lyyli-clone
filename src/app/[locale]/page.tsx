@@ -306,7 +306,7 @@ export default async function Home({ params }: HomeProps) {
         </p>
       </section>
 
-      <section id="cta" className="bg-gradient-to-br from-forest to-forest/90 text-white container mx-auto px-4 py-20 text-center">
+      <section id="cta" className="bg-gradient-to-br from-[#2F5D50] to-[#2F5D50]/90 text-white container mx-auto px-4 py-20 text-center">
         <h2 className="text-3xl md:text-4xl text-white mb-4 font-playfair font-normal leading-snug">
           {t["cta.title"]}
         </h2>
