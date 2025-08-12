@@ -30,6 +30,18 @@ module.exports = {
         "accent-foreground": "#2F5D50",
         muted: "#F5F5F4", // Updated to match grayLight
         "muted-foreground": "#666666", // Updated to match mediumGray
+
+        // Additional colors for visualizations
+        green: {
+          DEFAULT: "#059669", // Base green for gradients
+          600: "#059669", // Standard green for success indicators
+        },
+        amber: {
+          DEFAULT: "#F59E0B", // Standard amber
+        },
+        orange: {
+          DEFAULT: "#EA580C", // Standard orange
+        },
       },
       fontFamily: {
         // Body text uses Inter via CSS variable

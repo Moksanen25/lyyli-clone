@@ -23,6 +23,11 @@
   --accent-foreground: #2f5d50;
   --muted: #f5f5f4; /* Updated to match grayLight */
   --muted-foreground: #666666; /* Updated to match mediumGray */
+
+  /* Additional colors for visualizations */
+  --green-600: #059669; /* Standard green for success indicators */
+  --amber: #F59E0B; /* Standard amber */
+  --orange: #EA580C; /* Standard orange */
 }
 
 /* Typography Classes - Following Brand Hierarchy */
@@ -135,6 +140,15 @@ h3 {
 .text-rose {
   color: var(--rose);
 }
+.text-green-600 {
+  color: var(--green-600);
+}
+.text-amber {
+  color: var(--amber);
+}
+.text-orange {
+  color: var(--orange);
+}
 
 .bg-white {
   background-color: white;
@@ -147,6 +161,15 @@ h3 {
 }
 .bg-rose {
   background-color: var(--rose);
+}
+.bg-green-600 {
+  background-color: var(--green-600);
+}
+.bg-amber {
+  background-color: var(--amber);
+}
+.bg-orange {
+  background-color: var(--orange);
 }
 
 .shadow-soft {

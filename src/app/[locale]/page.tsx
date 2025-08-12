@@ -105,32 +105,40 @@ export default async function Home({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Key Benefits Section */}
       <section className="bg-gradient-to-br from-forest/5 to-turquoise/10 container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl text-forest font-playfair font-normal leading-snug mb-4">
-            {t["stats.title"]}
+            Why professional service organizations choose Lyyli
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            {t["stats.subtitle"]}
+            Transform your internal communications with AI-powered efficiency, enterprise security, and seamless multilingual support.
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-3 gap-8 items-center">
-          {/* Left: Enhanced Stats Visual */}
-          <div className="flex justify-center">
-            <div className="text-center group transition-all duration-1000">
-              <div className="flex items-center justify-center w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-rose to-turquoise rounded-full shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
+          {/* Left: Communication Efficiency */}
+          <div className="bg-white rounded-2xl p-8 shadow-soft border border-gray-100 hover:shadow-medium transition-all duration-300">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-rose to-turquoise rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-forest mb-3 transition-all duration-300 group-hover:text-turquoise">
-                75%
+              <h3 className="text-xl font-bold text-forest">Communication Efficiency</h3>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <span className="text-mediumGray">75% faster message delivery</span>
               </div>
-              <div className="text-lg text-muted-foreground mb-3 font-medium">{t["stats.fasterResponse"]}</div>
-              <div className="text-sm font-medium text-green-600 transition-all duration-300">
-                ↗ {t["stats.growing"]}
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <span className="text-mediumGray">60% reduction in search time</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <span className="text-mediumGray">Automated priority routing</span>
               </div>
             </div>
           </div>
@@ -153,20 +161,28 @@ export default async function Home({ params }: HomeProps) {
             </div>
           </div>
           
-          {/* Right: Additional Performance Metric */}
-          <div className="flex justify-center">
-            <div className="text-center group transition-all duration-1000">
-              <div className="flex items-center justify-center w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-forest to-green rounded-full shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {/* Right: Enterprise Security */}
+          <div className="bg-white rounded-2xl p-8 shadow-soft border border-gray-100 hover:shadow-medium transition-all duration-300">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-forest to-green rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <div className="text-4xl font-bold text-forest mb-3 transition-all duration-300 group-hover:text-green-600">
-                99.9%
+              <h3 className="text-xl font-bold text-forest">Enterprise Security</h3>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <span className="text-mediumGray">GDPR compliant</span>
               </div>
-              <div className="text-lg text-muted-foreground mb-3 font-medium">{t["stats.uptimeReliability"]}</div>
-              <div className="text-sm font-medium text-green-600 transition-all duration-300">
-                ↗ {t["stats.stable"]}
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <span className="text-mediumGray">AES-256 encryption</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <span className="text-mediumGray">Complete audit trails</span>
               </div>
             </div>
           </div>
