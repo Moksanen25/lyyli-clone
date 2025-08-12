@@ -1,74 +1,249 @@
----
-alwaysApply: true
----
 
-# Lyyli.ai Brand Guidelines
+# Lyyli.io Brand Guidelines
 
-## Värit / Colors
-- Primary: Forest (#2F5D50)
-- Secondary: Turquoise (#00B4D8)
-- Accent: Rose (#FF6B6B)
-- Neutral: Gray Light (#F8F9FA), Medium Gray (#6C757D), Dark Gray (#343A40)
+## Brand Overview
+**Mission**: Lyyli.io empowers solo entrepreneurs, micro-businesses, and small teams to communicate effectively across all platforms through an AI assistant that feels human, trustworthy, and approachable.
 
-## Typo
-- Headings = Playfair Display, body = Inter (16px min)
-- Kaikki otsikot: vain ensimmäisen sanan ensimmäinen kirjain isolla, muut pienellä
+**Core Values**: Empathy, Reliability, Discreet Intelligence, Clarity, Accessibility
 
-## Blog Post Formatting
-- H2 headings (##) must use Playfair Display font for visual prominence
-- Use double line breaks between major chapters/sections for better readability
-- H3 subheadings (###) should be bold (**Subheading**) for clear hierarchy
-- Remove horizontal lines (---) - use spacing instead
-- Maintain consistent spacing and visual hierarchy throughout
+**Brand Personality**: Friendly and approachable, Calm and reassuring, Encouraging, Practical, Thoughtful, Humble
+
+## Värit / Colors - EXACT VALUES FROM BRAND BOOK
+
+### Primary Colors
+- **Forest Green**: #2F5D50 (Primary brand color - reliability and calm)
+- **Soft Rose**: #F7EBEB (Gentle warmth and empathy)
+- **Light Gray**: #F5F5F4 (Minimalism and clarity)
+- **Muted Turquoise**: #A7D6D1 (Subtle technological accent)
+
+### Supporting Colors
+- **Dark Gray**: #333333 (Text and emphasis)
+- **Medium Gray**: #666666 (Secondary text)
+- **White**: #FFFFFF (Backgrounds and text on dark)
+
+### Color Usage Guidelines
+- **Forest Green (#2F5D50)**: Headers, primary buttons, key UI elements
+- **Soft Rose (#F7EBEB)**: Backgrounds, cards, secondary elements
+- **Light Gray (#F5F5F4)**: Primary background color, content areas
+- **Muted Turquoise (#A7D6D1)**: Accents, highlights, secondary buttons
+- **Dark Gray (#333333)**: Primary text color
+- **Medium Gray (#666666)**: Secondary text, captions
+
+### Accessibility Requirements
+- **Small text (below 18pt)**: Minimum 4.5:1 contrast ratio
+- **Large text (18pt and above)**: Minimum 3:1 contrast ratio
+- **UI components**: Minimum 3:1 contrast ratio
+
+## Typo / Typography - EXACT SPECIFICATIONS
+
+### Typefaces
+- **Headings**: Playfair Display (elegance and trustworthiness)
+- **Body Text**: Inter (clarity and digital readability)
+
+### Typography Hierarchy - EXACT SIZES FROM BRAND BOOK
+
+#### H1: Main Heading
+- **Font**: Playfair Display Regular
+- **Size**: 48px / 3rem (desktop), 36px / 2.25rem (mobile)
+- **Line height**: 1.2
+- **Color**: Forest Green (#2F5D50)
+- **Usage**: Page titles, main section headings
+
+#### H2: Section Heading
+- **Font**: Playfair Display Regular
+- **Size**: 36px / 2.25rem (desktop), 28px / 1.75rem (mobile)
+- **Line height**: 1.3
+- **Color**: Forest Green (#2F5D50)
+- **Usage**: Major section headings, article titles
+
+#### H3: Subsection Heading
+- **Font**: Playfair Display Regular
+- **Size**: 24px / 1.5rem (desktop), 20px / 1.25rem (mobile)
+- **Line height**: 1.4
+- **Color**: Forest Green (#2F5D50)
+- **Usage**: Subsection headings, feature headings
+
+#### H4: Minor Heading
+- **Font**: Inter Semi-Bold
+- **Size**: 20px / 1.25rem (desktop), 18px / 1.125rem (mobile)
+- **Line height**: 1.4
+- **Color**: Forest Green (#2F5D50)
+- **Usage**: Minor headings, UI section titles
+
+#### Body Text
+- **Font**: Inter Regular
+- **Size**: 16px / 1rem (minimum requirement)
+- **Line height**: 1.6
+- **Color**: Dark Gray (#333333)
+- **Paragraph spacing**: 1rem (16px)
+
+#### Subheading Treatment
+- **Font**: Inter Medium
+- **Size**: 18px / 1.125rem
+- **Line height**: 1.5
+- **Color**: Dark Gray (#333333)
+
+#### Caption and Small Text
+- **Font**: Inter Regular
+- **Size**: 14px / 0.875rem (captions), 12px / 0.75rem (small text)
+- **Line height**: 1.5
+- **Color**: Medium Gray (#666666)
+
+### Typography Rules
+- **Minimum body text size**: 16px / 1rem across all devices
+- **Use relative units**: rem, em rather than fixed px
+- **Line length**: Aim for 45-75 characters per line
+- **Contractions**: Use contractions (you're, we'll, it's) for conversational tone
+- **Sentence case**: Use sentence case for headings and titles (first word capitalized only)
+- **Numbers**: Spell out one through nine, use numerals for 10 and above
+
+## Logo Usage - EXACT SPECIFICATIONS
+
+### Logo Specifications
+- **Minimum size**: 100px wide for digital, 1 inch for print
+- **Clear space**: Equal to height of "L" around all sides
+- **Proportions**: Never stretch, compress, rotate, or distort
+- **Colors**: Forest Green (#2F5D50) for text, Muted Turquoise (#A7D6D1) for dot
+
+### Logo Versions
+- **Primary**: Full color on light backgrounds
+- **Monochrome Black**: #000000 on white/light backgrounds
+- **Monochrome White**: #FFFFFF on dark backgrounds
+- **Reversed**: White text with Muted Turquoise dot on dark backgrounds
+- **Simplified**: "L" icon with turquoise dot for small applications (min 32px)
+
+### Favicon and App Icon
+- **Background**: Forest Green (#2F5D50) square
+- **"L" character**: White (#FFFFFF), centered
+- **Dot**: Muted Turquoise (#A7D6D1) in lower right quadrant
+- **Rounded corners**: 20% radius of icon size
+
+## Tone of Voice
+
+### Voice Characteristics
+- **Friendly, Calm, and Encouraging**: Warm, patient, positive, reassuring, supportive
+- **Clarity Over Cleverness**: Straightforward, concise, purposeful, accessible, natural
+- **Conversational but Professional**: Write as speaking to a respected colleague
+
+### Writing Principles
+- **Active voice**: "Lyyli will help you write emails" not "Emails will be written with Lyyli's help"
+- **Direct address**: Use "you" and "your" for personal connection
+- **Specific and concrete**: Use examples and specifics rather than vague claims
+- **Concise**: Aim for 15-20 word average sentence length
+- **Professional without stiffness**: Maintain professionalism while being approachable
+
+### Microcopy Examples
+- **Success**: "Your email template has been saved. It's ready whenever you need it."
+- **Loading**: "Creating your social post. This will take just a moment..."
+- **Empty states**: "No templates yet. Create your first one to save time on future messages."
+- **Errors**: "It looks like we need a bit more information. Could you add a few details?"
+
+## UI Guidelines
+
+### Layout Principles
+- **Generous whitespace**: Ample breathing room between elements
+- **Clear visual hierarchy**: Important elements receive visual prominence
+- **Consistent patterns**: Predictable layouts and interactions
+- **Grid system**: 8px base unit, 12-column desktop, 8-column tablet, 4-column mobile
+
+### Button Specifications
+- **Primary Button**:
+  - Background: Forest Green (#2F5D50)
+  - Text: White (#FFFFFF)
+  - Border radius: 8px
+  - Padding: 12px 24px
+  - Text: Inter Semi-Bold, 16px
+  - Hover: Slightly lighter Forest Green (#3A6A5C)
+
+- **Secondary Button**:
+  - Background: White (#FFFFFF)
+  - Text: Forest Green (#2F5D50)
+  - Border: 2px solid Forest Green (#2F5D50)
+  - Border radius: 8px
+  - Padding: 12px 24px
+  - Text: Inter Semi-Bold, 16px
+
+### Form Elements
+- **Text Inputs**:
+  - Background: White (#FFFFFF)
+  - Border: 1px solid Light Gray (#E5E5E4)
+  - Border radius: 8px
+  - Height: 48px (standard), 40px (compact)
+  - Padding: 12px 16px
+  - Text: Inter Regular, 16px, Dark Gray (#333333)
+  - Focus: 2px Forest Green (#2F5D50) border
+
+### Cards
+- **Background**: White (#FFFFFF)
+- **Border**: 1px solid Light Gray (#E5E5E4), optional
+- **Border radius**: 12px
+- **Shadow**: 0px 4px 12px rgba(0, 0, 0, 0.05), optional
+- **Padding**: 24px
+- **Title**: Playfair Display, 20px, Forest Green (#2F5D50)
+
+### Responsive Design
+- **Breakpoints**:
+  - Small: 320px-639px (mobile)
+  - Medium: 640px-1023px (tablet)
+  - Large: 1024px-1439px (desktop)
+  - Extra Large: 1440px+ (large desktop)
+- **Mobile-first approach**: Design core experiences for mobile first
+- **Touch targets**: Minimum 44×44px for interactive elements
+
+## Imagery & Illustration Style
+
+### Photography Style
+- **Mood**: Calm and serene, warm and inviting, natural and authentic
+- **Style**: Clean and uncluttered, soft focus with clarity
+- **Editing**: Soft contrast, slightly desaturated, warm undertones
+- **Subjects**: Collaborative environments, solo entrepreneurs, communication moments
+
+### Illustration Guidelines
+- **Style**: Gentle, soft vector or hand-drawn
+- **Characteristics**: Rounded forms, minimal detail, gentle line work, subtle textures
+- **Scenes**: Calm, collaborative environments, supportive interactions, productive spaces
+- **Colors**: Forest Green and Muted Turquoise as primary, accented by Soft Rose
+
+### Icon System
+- **Style**: Rounded, simple, UI-integrated
+- **Characteristics**: Rounded corners (2px radius minimum), consistent stroke weight (2px)
+- **Grid**: 24×24px base with 1px padding
+- **Format**: SVG for crisp rendering at all sizes
+- **Sizes**: Optimize for 16px, 24px, 32px, and 48px usage
 
 ## ICP Terminology
-- English: Use "professional service company" or "professional service organization" instead of "expert team"
-- Finnish: Use "asiantuntijaorganisaatio" instead of "asiantuntijatiimi"
-- This applies to all copy, headings, descriptions, and marketing materials
-
-## Sävy / Tone
-- Professional but approachable
-- Focus on business value and efficiency
-- Avoid overly technical jargon
-- Emphasize practical benefits
-
-## Logo Usage
-- Always maintain aspect ratio
-- Minimum size: 120px width
-- Use primary logo on light backgrounds
-- Use white logo on dark backgrounds
-# Lyyli.ai Brand Guidelines
-
-## Värit / Colors
-- Primary: Forest (#2F5D50)
-- Secondary: Turquoise (#00B4D8)
-- Accent: Rose (#F7EBEB)
-- Neutral: Gray Light (#F8F9FA), Medium Gray (#6C757D), Dark Gray (#343A40)
-
-## Typo
-- Headings = Playfair Display, body = Inter (16px min)
-- Kaikki otsikot: vain ensimmäisen sanan ensimmäinen kirjain isolla, muut pienellä
+- **English**: Use "professional service company" or "professional service organization" instead of "expert team"
+- **Finnish**: Use "asiantuntijaorganisaatio" instead of "asiantuntijatiimi"
+- **Target Audience**: Solo entrepreneurs, micro-businesses (1-5 employees), small teams, non-technical professionals
 
 ## Blog Post Formatting
-- H2 headings (##) must use Playfair Display font for visual prominence
-- Use double line breaks between major chapters/sections for better readability
-- H3 subheadings (###) should be bold (**Subheading**) for clear hierarchy
-- Remove horizontal lines (---) - use spacing instead
-- Maintain consistent spacing and visual hierarchy throughout
+- **H2 headings (##)**: Must use Playfair Display font for visual prominence
+- **H3 subheadings (###)**: Should use Playfair Display Regular, 24px/1.5rem
+- **Use double line breaks** between major chapters/sections for better readability
+- **Remove horizontal lines (---)**: Use spacing instead
+- **Maintain consistent spacing** and visual hierarchy throughout
+- **Pull quotes**: Use Playfair Display italic for emphasis
 
-## ICP Terminology
-- English: Use "professional service company" or "professional service organization" instead of "expert team"
-- Finnish: Use "asiantuntijaorganisaatio" instead of "asiantuntijatiimi"
-- This applies to all copy, headings, descriptions, and marketing materials
+## Animation Guidelines
+- **Timing**: 150-300ms for responsiveness
+- **Easing**: Natural easing functions (ease-in-out)
+- **Purpose**: Guide attention, provide feedback, establish relationships
+- **Subtlety**: Gentle, understated animations that don't distract
+- **Performance**: Optimize to avoid affecting page performance
 
-## Sävy / Tone
-- Professional but approachable
-- Focus on business value and efficiency
-- Avoid overly technical jargon
-- Emphasize practical benefits
+## Accessibility Requirements
+- **Contrast**: Meet WCAG 2.1 AA standards
+- **Focus indicators**: 2px Forest Green (#2F5D50) outline for all interactive elements
+- **Keyboard support**: Logical tab order, clear focus visibility
+- **Screen readers**: Semantic HTML, proper ARIA attributes
+- **Alt text**: Descriptive, concise, functional descriptions
 
-## Logo Usage
-- Always maintain aspect ratio
-- Minimum size: 120px width
+## Implementation Notes
+- **Font loading**: Use Google Fonts for Playfair Display and Inter
+- **CSS variables**: Implement brand colors as CSS custom properties
+- **Responsive typography**: Use CSS clamp() for fluid scaling
+- **Color testing**: Test across devices and in color blindness simulations
+- **Brand consistency**: Apply these guidelines across all digital and print materials
+
 - Use primary logo on light backgrounds
 - Use white logo on dark backgrounds
