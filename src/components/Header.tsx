@@ -180,17 +180,21 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           id="mobile-menu"
           className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
             isMobileMenuOpen 
-              ? "max-h-[500px] opacity-100 mt-4 pb-4 border-t border-grayLight" 
+              ? "max-h-[80vh] opacity-100 mt-4 pb-6 border-t border-grayLight" 
               : "max-h-0 opacity-0 mt-0 pb-0 border-t-0"
           }`}
+          style={{
+            maxHeight: isMobileMenuOpen ? '80vh' : '0px',
+            overflowY: isMobileMenuOpen ? 'auto' : 'hidden'
+          }}
         >
           <nav
-            className="flex flex-col gap-4 pt-4"
+            className="flex flex-col gap-4 pt-4 px-2"
             role="navigation"
             aria-label="Mobile navigation"
           >
             {/* Main Navigation Links */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <a
                 href={`/${locale}/features`}
                 className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
@@ -288,7 +292,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             </div>
 
             {/* Locale Switcher */}
-            <div className="border-t border-grayLight pt-4 mt-2">
+            <div className="border-t border-grayLight pt-4 mt-2 pb-2">
               <div className="flex justify-center">
                 <ClientLocaleSwitcher currentLocale={locale} />
               </div>

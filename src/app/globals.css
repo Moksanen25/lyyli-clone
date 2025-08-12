@@ -203,6 +203,39 @@ h3 {
   }
 }
 
+/* iOS-specific mobile menu fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari specific styles */
+  .max-h-\[80vh\] {
+    max-height: 80vh !important;
+    max-height: 80dvh !important; /* Dynamic viewport height for iOS */
+  }
+}
+
+/* Ensure mobile menu is fully visible on iOS */
+@media (max-width: 640px) {
+  /* Use dynamic viewport height for better iOS compatibility */
+  .max-h-\[80vh\] {
+    max-height: 80dvh !important;
+  }
+  
+  /* Add safe area padding for iOS devices */
+  .px-2 {
+    padding-left: max(0.5rem, env(safe-area-inset-left)) !important;
+    padding-right: max(0.5rem, env(safe-area-inset-right)) !important;
+  }
+  
+  /* Ensure proper scrolling on iOS */
+  .overflow-hidden {
+    overflow: hidden !important;
+  }
+  
+  .overflow-y-auto {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+}
+
 /* Focus states for accessibility */
 .btn-primary:focus,
 .btn-secondary:focus,
