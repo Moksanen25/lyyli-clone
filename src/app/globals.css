@@ -37,7 +37,30 @@ body {
 }
 
 /* Blog Post Typography */
-/* Removed conflicting h1, h2, h3 rules - now handled by Tailwind classes */
+h1 {
+  font-family: var(--font-playfair), Georgia, serif;
+  line-height: 1.2;
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  line-height: 1.3;
+  color: var(--foreground);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: var(--font-playfair), Georgia, serif;
+  line-height: 1.4;
+  color: var(--foreground);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
 
 /* Blog post spacing */
 .blog-content h2 + p,
