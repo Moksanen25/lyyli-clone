@@ -1,10 +1,26 @@
+// Updated 2024-12-19: Added client-side validation, CSRF protection, and improved error handling
+
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { VALIDATION_PATTERNS, validateInput, sanitizeInput } from "@/lib/security";
+
+interface FormErrors {
+  email?: string;
+  company?: string;
+  role?: string;
+  phone?: string;
+  organizationSize?: string;
+  gdprConsent?: string;
+  securityConsent?: string;
+  general?: string;
+}
 
 export default function WaitlistForm() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [csrfToken, setCsrfToken] = useState("");
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState({
     email: '',
     company: '',
@@ -16,12 +32,77 @@ export default function WaitlistForm() {
     securityConsent: false
   });
 
+  // Generate CSRF token on component mount
+  useEffect(() => {
+    const token = Math.random().toString(36).substring(2, 15) + 
+                  Math.random().toString(36).substring(2, 15);
+    setCsrfToken(token);
+  }, []);
+
+  // Client-side validation
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    
+    // Validate email
+    const emailValidation = validateInput(formData.email, VALIDATION_PATTERNS.EMAIL, 'Email');
+    if (!emailValidation.isValid) {
+      newErrors.email = emailValidation.error;
+    }
+    
+    // Validate company
+    const companyValidation = validateInput(formData.company, VALIDATION_PATTERNS.COMPANY, 'Company');
+    if (!companyValidation.isValid) {
+      newErrors.company = companyValidation.error;
+    }
+    
+    // Validate role
+    const roleValidation = validateInput(formData.role, VALIDATION_PATTERNS.ROLE, 'Role');
+    if (!roleValidation.isValid) {
+      newErrors.role = roleValidation.error;
+    }
+    
+    // Validate phone if provided
+    if (formData.phone) {
+      const phoneValidation = validateInput(formData.phone, VALIDATION_PATTERNS.PHONE, 'Phone');
+      if (!phoneValidation.isValid) {
+        newErrors.phone = phoneValidation.error;
+      }
+    }
+    
+    // Validate organization size
+    if (!formData.organizationSize) {
+      newErrors.organizationSize = 'Organization size is required';
+    }
+    
+    // Validate GDPR consent
+    if (!formData.gdprConsent) {
+      newErrors.gdprConsent = 'GDPR consent is required';
+    }
+    
+    // Validate security consent
+    if (!formData.securityConsent) {
+      newErrors.securityConsent = 'Security consent is required';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Clear previous errors
+    setErrors({});
+    
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+    
     setLoading(true);
     
     try {
-      // Send data to backend API
+      // Send data to backend API with CSRF token
       const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: {
@@ -30,12 +111,14 @@ export default function WaitlistForm() {
         body: JSON.stringify({
           ...formData,
           timestamp: new Date().toISOString(),
-          source: 'waitlist-form'
+          source: 'waitlist-form',
+          csrfToken
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit form');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit form');
       }
 
       const result = await response.json();
@@ -46,8 +129,10 @@ export default function WaitlistForm() {
     } catch (error) {
       console.error('Error submitting form:', error);
       setLoading(false);
-      // Show error state
-      alert('Failed to submit form. Please try again or contact us directly.');
+      
+      // Show user-friendly error message
+      const errorMessage = error instanceof Error ? error.message : 'An error occurred';
+      setErrors({ general: errorMessage });
     }
   };
 
@@ -97,9 +182,14 @@ export default function WaitlistForm() {
             required
             value={formData.email}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm ${
+              errors.email ? 'border-red-500' : 'border-grayLight'
+            }`}
             placeholder="your.email@company.com"
           />
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+          )}
         </div>
 
         <div>
@@ -113,9 +203,14 @@ export default function WaitlistForm() {
             required
             value={formData.company}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm ${
+              errors.company ? 'border-red-500' : 'border-grayLight'
+            }`}
             placeholder="Your Organization"
           />
+          {errors.company && (
+            <p className="mt-1 text-sm text-red-600">{errors.company}</p>
+          )}
         </div>
 
                        <div>
@@ -129,9 +224,14 @@ export default function WaitlistForm() {
                    required
                    value={formData.role}
                    onChange={handleInputChange}
-                   className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm"
+                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm ${
+                     errors.role ? 'border-red-500' : 'border-grayLight'
+                   }`}
                    placeholder="e.g., Operations Manager, Communications Director"
                  />
+                 {errors.role && (
+                   <p className="mt-1 text-sm text-red-600">{errors.role}</p>
+                 )}
                </div>
 
                <div>
@@ -229,6 +329,9 @@ export default function WaitlistForm() {
                . I can withdraw my consent at any time by contacting us.
              </label>
            </div>
+           {errors.gdprConsent && (
+             <p className="text-sm text-red-600">{errors.gdprConsent}</p>
+           )}
 
            <div className="flex items-start gap-3">
              <input
@@ -244,7 +347,17 @@ export default function WaitlistForm() {
                access, alteration, disclosure, or destruction.
              </label>
            </div>
+           {errors.securityConsent && (
+             <p className="text-sm text-red-600">{errors.securityConsent}</p>
+           )}
          </div>
+
+         {/* General Error Display */}
+         {errors.general && (
+           <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+             <p className="text-sm text-red-600">{errors.general}</p>
+           </div>
+         )}
 
          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
           <div className="flex items-start gap-3">

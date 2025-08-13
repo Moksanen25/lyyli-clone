@@ -1,11 +1,23 @@
+// Updated 2024-12-19: Added client-side validation, CSRF protection, and improved error handling
+
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TranslationKeys } from "@/lib/i18n";
+import { VALIDATION_PATTERNS, validateInput, sanitizeInput } from "@/lib/security";
 
 interface ContactFormProps {
   locale: string;
   translations: TranslationKeys;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  company?: string;
+  role?: string;
+  teamSize?: string;
+  message?: string;
 }
 
 export default function ContactForm({
@@ -14,6 +26,8 @@ export default function ContactForm({
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [csrfToken, setCsrfToken] = useState("");
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,12 +37,73 @@ export default function ContactForm({
     message: "",
   });
 
+  // Generate CSRF token on component mount
+  useEffect(() => {
+    const token = Math.random().toString(36).substring(2, 15) + 
+                  Math.random().toString(36).substring(2, 15);
+    setCsrfToken(token);
+  }, []);
+
+  // Client-side validation
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    
+    // Validate name
+    const nameValidation = validateInput(formData.name, VALIDATION_PATTERNS.NAME, 'Name');
+    if (!nameValidation.isValid) {
+      newErrors.name = nameValidation.error;
+    }
+    
+    // Validate email
+    const emailValidation = validateInput(formData.email, VALIDATION_PATTERNS.EMAIL, 'Email');
+    if (!emailValidation.isValid) {
+      newErrors.email = emailValidation.error;
+    }
+    
+    // Validate company
+    const companyValidation = validateInput(formData.company, VALIDATION_PATTERNS.COMPANY, 'Company');
+    if (!companyValidation.isValid) {
+      newErrors.company = companyValidation.error;
+    }
+    
+    // Validate role
+    const roleValidation = validateInput(formData.role, VALIDATION_PATTERNS.ROLE, 'Role');
+    if (!roleValidation.isValid) {
+      newErrors.role = roleValidation.error;
+    }
+    
+    // Validate team size
+    if (!formData.teamSize) {
+      newErrors.teamSize = 'Team size is required';
+    }
+    
+    // Validate message if provided
+    if (formData.message) {
+      const messageValidation = validateInput(formData.message, VALIDATION_PATTERNS.MESSAGE, 'Message');
+      if (!messageValidation.isValid) {
+        newErrors.message = messageValidation.error;
+      }
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Clear previous errors
+    setErrors({});
+    
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
-      // Send data to backend API
+      // Send data to backend API with CSRF token
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -37,12 +112,14 @@ export default function ContactForm({
         body: JSON.stringify({
           ...formData,
           timestamp: new Date().toISOString(),
-          source: 'contact-form'
+          source: 'contact-form',
+          csrfToken
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit form');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit form');
       }
 
       const result = await response.json();
@@ -53,12 +130,10 @@ export default function ContactForm({
     } catch (error) {
       console.error('Error submitting form:', error);
       setIsSubmitting(false);
-      // Show error state
-      alert(
-        locale === "fi"
-          ? "Lomakkeen lähetys epäonnistui. Yritä uudelleen tai ota yhteyttä suoraan."
-          : "Failed to submit form. Please try again or contact us directly."
-      );
+      
+      // Show user-friendly error message
+      const errorMessage = error instanceof Error ? error.message : 'An error occurred';
+      setErrors({ general: errorMessage });
     }
   };
 
@@ -130,8 +205,13 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.name.placeholder"]}
             required
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
+              errors.name ? 'border-red-500' : 'border-grayLight'
+            }`}
           />
+          {errors.name && (
+            <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+          )}
         </div>
 
         {/* Email Field */}
@@ -150,8 +230,13 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.email.placeholder"]}
             required
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
+              errors.email ? 'border-red-500' : 'border-grayLight'
+            }`}
           />
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+          )}
         </div>
 
         {/* Company and Role Row */}
@@ -171,8 +256,13 @@ export default function ContactForm({
               onChange={handleChange}
               placeholder={t["contact.form.company.placeholder"]}
               required
-              className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors"
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
+                errors.company ? 'border-red-500' : 'border-grayLight'
+              }`}
             />
+            {errors.company && (
+              <p className="mt-1 text-sm text-red-600">{errors.company}</p>
+            )}
           </div>
           <div>
             <label
@@ -189,8 +279,13 @@ export default function ContactForm({
               onChange={handleChange}
               placeholder={t["contact.form.role.placeholder"]}
               required
-              className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors"
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
+                errors.role ? 'border-red-500' : 'border-grayLight'
+              }`}
             />
+            {errors.role && (
+              <p className="mt-1 text-sm text-red-600">{errors.role}</p>
+            )}
           </div>
         </div>
 
@@ -208,7 +303,9 @@ export default function ContactForm({
             value={formData.teamSize}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
+              errors.teamSize ? 'border-red-500' : 'border-grayLight'
+            }`}
           >
             <option value="">Select team size</option>
             <option value="10-50">{t["contact.form.teamsize.option1"]}</option>
@@ -218,6 +315,9 @@ export default function ContactForm({
             </option>
             <option value="500+">{t["contact.form.teamsize.option4"]}</option>
           </select>
+          {errors.teamSize && (
+            <p className="mt-1 text-sm text-red-600">{errors.teamSize}</p>
+          )}
         </div>
 
         {/* Message Field */}
@@ -235,9 +335,21 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.message.placeholder"]}
             rows={4}
-            className="w-full px-4 py-3 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors resize-vertical"
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors resize-vertical ${
+              errors.message ? 'border-red-500' : 'border-grayLight'
+            }`}
           />
+          {errors.message && (
+            <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+          )}
         </div>
+
+        {/* General Error Display */}
+        {errors.general && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+            <p className="text-sm text-red-600">{errors.general}</p>
+          </div>
+        )}
 
         {/* Security Notice */}
         <div className="bg-forest/5 border border-forest/20 p-4 rounded-lg">

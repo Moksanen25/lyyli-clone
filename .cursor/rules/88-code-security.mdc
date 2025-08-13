@@ -1,0 +1,102 @@
+# Coding and Security Rules - Always Follow
+
+## 1. Be Clear and Goal-Oriented
+- Clearly describe your UI/UX objectives, features, and design inspirations.
+- Specify the platform, framework, and any design systems or libraries in use.
+- Always understand the user's requirements before proceeding.
+
+## 2. Never Rewrite Existing Code Without Confirmation
+- **CRITICAL**: Do not modify or overwrite existing code unless explicit user confirmation is given.
+- Always propose changes first and wait for approval before applying them.
+- Use version control and backup existing code before any modifications.
+
+## 3. Keep Code Clean, Modular, and Well-Documented
+- Write modular, reusable components with clear, concise documentation.
+- Use inline comments for complex logic, and document all functions and modules.
+- **MANDATORY**: For any code updates, comment changes with the date and a brief description:
+  ```typescript
+  // Updated 2024-12-19: Improved validation logic for email inputs
+  // Updated 2024-12-19: Added XSS protection for user-generated content
+  ```
+
+## 4. Separate Concerns: User/Admin, Client/Server
+- Maintain separate routes and components for user and admin dashboards.
+- Clearly distinguish between client-side and server-side code, keeping them in their respective directories.
+- Ensure role-based access control is implemented and documented.
+- Never expose admin functionality to regular users.
+
+## 5. Prioritize Security and Best Practices (MOST IMPORTANT)
+- **ALWAYS** follow secure coding practices:
+  - Input validation and sanitization on both client and server
+  - XSS/CSRF protection
+  - Secure authentication and authorization
+  - SQL injection prevention
+  - Secure session management
+- Implement robust error handling and user-friendly error messages.
+- Sanitize and validate all inputs on both client and server sides.
+- Use HTTPS for all communications.
+- Implement rate limiting and DDoS protection.
+
+### Security Protocols (Always Follow):
+- **Input Validation**: Validate all user inputs using whitelist approach
+- **Output Encoding**: Encode all output to prevent XSS attacks
+- **Authentication**: Use secure, time-limited tokens
+- **Authorization**: Implement principle of least privilege
+- **Data Protection**: Encrypt sensitive data at rest and in transit
+- **Logging**: Log security events without exposing sensitive information
+- **Error Handling**: Never expose system information in error messages
+
+## 6. Design for Accessibility, Responsiveness, and Modern UX
+- Ensure all UI is accessible (WCAG compliance, ARIA roles, keyboard navigation).
+- Require responsive layouts and mobile-first design principles.
+- Test with screen readers and keyboard-only navigation.
+
+## 7. Enforce Coding Standards and Consistency
+- Adhere to established coding standards (ESLint, Prettier, TypeScript).
+- Use design tokens for consistent theming (colors, spacing, typography).
+- Follow the project's existing patterns and conventions.
+
+## 8. Iterative Development and Feedback
+- Keep each request focused on a single feature or improvement.
+- Review and test changes frequently, providing clear, actionable feedback.
+- Build incrementally and test at each step.
+
+## 9. Comprehensive Testing and Quality Assurance
+- Write unit, integration, and end-to-end tests for all components.
+- Integrate accessibility and security testing tools.
+- Test all security measures thoroughly.
+
+## 10. Document All Decisions and Changes
+- Summarize key design, architectural, and security decisions in project documentation.
+- Clearly comment all code updates with the date and reason for change.
+- Maintain a changelog for security-related updates.
+
+## Example Prompt Format:
+```
+Add a new, accessible registration form for users (not admins) using React and Tailwind. 
+Validate all inputs on both client and server. Do not overwrite existing code—propose changes first. 
+Comment all updates with today's date and document any new routes or components.
+```
+
+## Security Checklist (Run Before Any Deployment):
+- [ ] All inputs validated and sanitized
+- [ ] XSS protection implemented
+- [ ] CSRF protection in place
+- [ ] Authentication secure and tested
+- [ ] Authorization properly implemented
+- [ ] Error messages don't expose system info
+- [ ] HTTPS enforced
+- [ ] Rate limiting configured
+- [ ] Security headers set
+- [ ] Dependencies scanned for vulnerabilities
+
+---
+
+**Remember**: Security is not optional. Every line of code must be written with security in mind. When in doubt, err on the side of caution and ask for clarification.
+
+**Last Updated**: 2024-12-19
+**Status**: ACTIVE - Always Follow
+description:
+globs:
+alwaysApply: false
+---
