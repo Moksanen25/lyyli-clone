@@ -8,7 +8,7 @@ interface ContactSubmission {
   email: string;
   company: string;
   role: string;
-  teamSize: string;
+  organizationSize: string;
   message?: string;
   timestamp: string;
   source: string;
@@ -107,7 +107,7 @@ export default function ContactAdminPage() {
                               {submission.name}
                             </h3>
                             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-forest text-white">
-                              {submission.teamSize}
+                              {submission.organizationSize}
                             </span>
                           </div>
                           <div className="mt-1 flex items-center space-x-4 text-sm text-gray-500">

@@ -19,7 +19,7 @@ interface ContactSubmission {
   email: string;
   company: string;
   role: string;
-  teamSize: string;
+  organizationSize: string;
   message?: string;
   timestamp: string;
   source: string;
@@ -54,9 +54,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate required fields
-    const { name, email, company, role, teamSize, message, timestamp, source, csrfToken } = body;
+    const { name, email, company, role, organizationSize, message, timestamp, source, csrfToken } = body;
     
-    if (!name || !email || !company || !role || !teamSize || !csrfToken) {
+    if (!name || !email || !company || !role || !organizationSize || !csrfToken) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -96,11 +96,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate team size (whitelist approach)
-    const validTeamSizes = ['10-50', '50-100', '100-500', '500+'];
-    if (!validTeamSizes.includes(teamSize)) {
+    // Validate organization size (whitelist approach)
+    const validOrgSizes = ['10-50', '50-100', '100-500', '500+'];
+    if (!validOrgSizes.includes(organizationSize)) {
       return NextResponse.json(
-        { error: 'Invalid team size selection' },
+        { error: 'Invalid organization size selection' },
         { status: 400 }
       );
     }
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
       email: sanitizeInput(email).toLowerCase(),
       company: sanitizeInput(company),
       role: sanitizeInput(role),
-      teamSize,
+      organizationSize: organizationSize,
       message: message ? sanitizeInput(message) : undefined,
       timestamp,
       source: sanitizeInput(source),
@@ -192,7 +192,7 @@ export async function GET(request: NextRequest) {
         email: sub.email,
         company: sub.company,
         role: sub.role,
-        teamSize: sub.teamSize,
+        organizationSize: sub.organizationSize,
         message: sub.message,
         timestamp: sub.timestamp,
         source: sub.source

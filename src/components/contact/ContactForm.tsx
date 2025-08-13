@@ -16,7 +16,7 @@ interface FormErrors {
   email?: string;
   company?: string;
   role?: string;
-  teamSize?: string;
+  organizationSize?: string;
   message?: string;
   general?: string;
 }
@@ -34,7 +34,7 @@ export default function ContactForm({
     email: "",
     company: "",
     role: "",
-    teamSize: "",
+    organizationSize: "",
     message: "",
   });
 
@@ -73,9 +73,9 @@ export default function ContactForm({
       newErrors.role = roleValidation.error;
     }
     
-    // Validate team size
-    if (!formData.teamSize) {
-      newErrors.teamSize = 'Team size is required';
+    // Validate organization size
+    if (!formData.organizationSize) {
+      newErrors.organizationSize = 'Organization size is required';
     }
     
     // Validate message if provided
@@ -290,34 +290,41 @@ export default function ContactForm({
           </div>
         </div>
 
-        {/* Team Size Field */}
+        {/* Organization Size Field */}
         <div>
           <label
-            htmlFor="teamSize"
+            htmlFor="organizationSize"
             className="block text-sm font-medium text-foreground mb-2 font-sans"
           >
             {t["contact.form.teamsize.label"]}
           </label>
-          <select
-            id="teamSize"
-            name="teamSize"
-            value={formData.teamSize}
-            onChange={handleChange}
-            required
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
-              errors.teamSize ? 'border-red-500' : 'border-grayLight'
-            }`}
-          >
-            <option value="">Select team size</option>
-            <option value="10-50">{t["contact.form.teamsize.option1"]}</option>
-            <option value="50-100">{t["contact.form.teamsize.option2"]}</option>
-            <option value="100-500">
-              {t["contact.form.teamsize.option3"]}
-            </option>
-            <option value="500+">{t["contact.form.teamsize.option4"]}</option>
-          </select>
-          {errors.teamSize && (
-            <p className="mt-1 text-sm text-red-600">{errors.teamSize}</p>
+          <div className="relative">
+            <select
+              id="organizationSize"
+              name="organizationSize"
+              value={formData.organizationSize}
+              onChange={handleChange}
+              required
+              className={`appearance-none w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
+                errors.organizationSize ? 'border-red-500' : 'border-grayLight'
+              }`}
+            >
+              <option value="">Select organization size</option>
+              <option value="10-50">{t["contact.form.teamsize.option1"]}</option>
+              <option value="50-100">{t["contact.form.teamsize.option2"]}</option>
+              <option value="100-500">
+                {t["contact.form.teamsize.option3"]}
+              </option>
+              <option value="500+">{t["contact.form.teamsize.option4"]}</option>
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+          {errors.organizationSize && (
+            <p className="mt-1 text-sm text-red-600">{errors.organizationSize}</p>
           )}
         </div>
 
