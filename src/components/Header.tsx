@@ -111,6 +111,16 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   {t["nav.contact"]}
                 </a>
               </li>
+              <li role="none">
+                <a
+                  href={`/${locale}/help`}
+                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  role="menuitem"
+                  aria-label="Help and Support"
+                >
+                  {locale === "fi" ? "Apu ja tuki" : "Help & Support"}
+                </a>
+              </li>
             </ul>
 
             {/* Locale Switcher */}
@@ -242,6 +252,14 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                 onClick={closeMobileMenu}
               >
                 {t["nav.contact"]}
+              </a>
+              <a
+                href={`/${locale}/help`}
+                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                aria-label="Help and Support"
+                onClick={closeMobileMenu}
+              >
+                {locale === "fi" ? "Apu ja tuki" : "Help & Support"}
               </a>
             </div>
 
