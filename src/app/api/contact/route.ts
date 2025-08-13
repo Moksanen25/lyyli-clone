@@ -8,9 +8,9 @@ import {
   checkRateLimit, 
   getClientIP, 
   sanitizeUserAgent,
-  createSecureError,
-  shouldRetainData
+  createSecureError
 } from '@/lib/security';
+import { requireAdminAuth } from '@/lib/auth';
 
 // GDPR-compliant data structure
 interface ContactSubmission {

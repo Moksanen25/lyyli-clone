@@ -3,7 +3,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { VALIDATION_PATTERNS, validateInput, sanitizeInput } from "@/lib/security";
+import { VALIDATION_PATTERNS, validateInput } from "@/lib/security";
 
 interface FormErrors {
   email?: string;

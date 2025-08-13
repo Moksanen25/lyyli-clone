@@ -8,9 +8,7 @@ import {
   checkRateLimit, 
   getClientIP, 
   sanitizeUserAgent,
-  createSecureError,
-  isGDPRCompliant,
-  shouldRetainData
+  createSecureError
 } from '@/lib/security';
 import { requireAdminAuth } from '@/lib/auth';
 

@@ -36,7 +36,7 @@ export function requireAuth(request: NextRequest): NextResponse | null {
     if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
       return null; // Authentication successful
     }
-  } catch (error) {
+  } catch {
     // Invalid authorization header
   }
   

@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from "react";
 import { TranslationKeys } from "@/lib/i18n";
-import { VALIDATION_PATTERNS, validateInput, sanitizeInput } from "@/lib/security";
+import { VALIDATION_PATTERNS, validateInput } from "@/lib/security";
 
 interface ContactFormProps {
   locale: string;
@@ -18,6 +18,7 @@ interface FormErrors {
   role?: string;
   teamSize?: string;
   message?: string;
+  general?: string;
 }
 
 export default function ContactForm({

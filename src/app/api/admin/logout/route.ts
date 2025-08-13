@@ -1,10 +1,10 @@
 // Updated 2024-12-19: Created admin logout API endpoint to securely invalidate sessions
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { invalidateAdminSession } from '@/lib/auth';
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const cookieStore = await cookies();
     const sessionCookie = cookieStore.get('admin-session')?.value;
