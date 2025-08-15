@@ -179,7 +179,7 @@ export default function ContactForm({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-soft p-8">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-soft dark:shadow-gray-900/50 p-8">
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
           {t["contact.form.title"]}
@@ -206,8 +206,8 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.name.placeholder"]}
             required
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
-              errors.name ? 'border-red-500' : 'border-grayLight'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+              errors.name ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
             }`}
           />
           {errors.name && (
@@ -231,8 +231,8 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.email.placeholder"]}
             required
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
-              errors.email ? 'border-red-500' : 'border-grayLight'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+              errors.email ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
             }`}
           />
           {errors.email && (
@@ -257,9 +257,9 @@ export default function ContactForm({
               onChange={handleChange}
               placeholder={t["contact.form.company.placeholder"]}
               required
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
-                errors.company ? 'border-red-500' : 'border-grayLight'
-              }`}
+                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+              errors.company ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+            }`}
             />
             {errors.company && (
               <p className="mt-1 text-sm text-red-600">{errors.company}</p>
@@ -280,9 +280,9 @@ export default function ContactForm({
               onChange={handleChange}
               placeholder={t["contact.form.role.placeholder"]}
               required
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
-                errors.role ? 'border-red-500' : 'border-grayLight'
-              }`}
+                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+              errors.role ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+            }`}
             />
             {errors.role && (
               <p className="mt-1 text-sm text-red-600">{errors.role}</p>
@@ -305,9 +305,9 @@ export default function ContactForm({
               value={formData.organizationSize}
               onChange={handleChange}
               required
-              className={`appearance-none w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors ${
-                errors.organizationSize ? 'border-red-500' : 'border-grayLight'
-              }`}
+                          className={`appearance-none w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+              errors.organizationSize ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+            }`}
             >
               <option value="">Select organization size</option>
               <option value="10-50">{t["contact.form.teamsize.option1"]}</option>
@@ -343,8 +343,8 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.message.placeholder"]}
             rows={4}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors resize-vertical ${
-              errors.message ? 'border-red-500' : 'border-grayLight'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors resize-vertical bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+              errors.message ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
             }`}
           />
           {errors.message && (

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fontVars } from "@/lib/fonts";
+import { ClientThemeProvider } from "@/components/ClientThemeProvider";
 
 export const metadata: Metadata = {
   title: "Lyyli.ai - AI Communication Assistant",
@@ -13,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html className={fontVars}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <ClientThemeProvider>
+          {children}
+        </ClientThemeProvider>
+      </body>
     </html>
   );
 }

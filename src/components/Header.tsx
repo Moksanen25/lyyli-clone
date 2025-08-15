@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { TranslationKeys } from "../lib/i18n";
 import ClientLocaleSwitcher from "./ClientLocaleSwitcher";
+import ThemeToggle from "./ThemeToggle";
 import Image from "next/image";
 
 interface HeaderProps {
@@ -22,7 +23,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white border-b border-grayLight sticky top-0 z-50 shadow-soft">
+    <header className="bg-white dark:bg-gray-900 border-b border-grayLight dark:border-gray-700 sticky top-0 z-50 shadow-soft dark:shadow-gray-900/50">
       <nav
         className="max-w-7xl mx-auto px-6 py-4"
         role="navigation"
@@ -125,6 +126,9 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
             {/* Locale Switcher */}
             <ClientLocaleSwitcher currentLocale={locale} />
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
 
             {/* CTA Button - Following 10-layout rule: ensisijainen CTA "Get started" tai "Book a demo" */}
             <a

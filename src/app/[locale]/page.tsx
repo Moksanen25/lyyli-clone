@@ -23,7 +23,7 @@ export default async function Home({ params }: HomeProps) {
   const t = await getTranslations(currentLocale);
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section - Unchanged as requested */}
       <div className="relative z-10">
         <section className="container mx-auto px-4 py-20 relative">
@@ -51,7 +51,7 @@ export default async function Home({ params }: HomeProps) {
       </div>
 
       {/* Problems Section - Improved contrast and structure */}
-      <section className="bg-white border-t border-gray-100">
+      <section className="bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
         <div className="container mx-auto px-4 py-24">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
@@ -63,21 +63,21 @@ export default async function Home({ params }: HomeProps) {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-rose rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
                 {t["problems.missedCommunications.title"]}
               </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
+              <p className="text-mediumGray dark:text-gray-300 text-center font-sans leading-relaxed">
                 {t["problems.missedCommunications.description"]}
               </p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-turquoise rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -86,12 +86,12 @@ export default async function Home({ params }: HomeProps) {
               <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
                 {t["problems.channelOverload.title"]}
               </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
+              <p className="text-mediumGray dark:text-gray-300 text-center font-sans leading-relaxed">
                 {t["problems.channelOverload.description"]}
               </p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-forest/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -101,12 +101,12 @@ export default async function Home({ params }: HomeProps) {
               <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
                 {t["problems.accountability.title"]}
               </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
+              <p className="text-mediumGray dark:text-gray-300 text-center font-sans leading-relaxed">
                 {t["problems.accountability.description"]}
               </p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-amber/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -115,7 +115,7 @@ export default async function Home({ params }: HomeProps) {
               <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
                 {t["problems.regulatory.title"]}
               </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
+              <p className="text-mediumGray dark:text-gray-300 text-center font-sans leading-relaxed">
                 {t["problems.regulatory.description"]}
               </p>
             </div>

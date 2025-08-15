@@ -182,8 +182,8 @@ export default function WaitlistForm() {
             required
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm ${
-              errors.email ? 'border-red-500' : 'border-grayLight'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+              errors.email ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
             }`}
             placeholder="your.email@company.com"
           />
@@ -203,8 +203,8 @@ export default function WaitlistForm() {
             required
             value={formData.company}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm ${
-              errors.company ? 'border-red-500' : 'border-grayLight'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+              errors.company ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
             }`}
             placeholder="Your Organization"
           />
@@ -224,8 +224,8 @@ export default function WaitlistForm() {
                    required
                    value={formData.role}
                    onChange={handleInputChange}
-                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm ${
-                     errors.role ? 'border-red-500' : 'border-grayLight'
+                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
+                     errors.role ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
                    }`}
                    placeholder="e.g., Operations Manager, Communications Director"
                  />
@@ -244,7 +244,7 @@ export default function WaitlistForm() {
                        name="countryCode"
                        value={formData.countryCode}
                        onChange={handleInputChange}
-                       className="appearance-none px-4 py-3 pr-10 border border-grayLight rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 bg-white hover:border-forest/50 cursor-pointer shadow-sm"
+                       className="appearance-none px-4 py-3 pr-10 border border-grayLight dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:border-forest/50 cursor-pointer shadow-sm"
                      >
                        <option value="+358">🇫🇮 +358</option>
                        <option value="+46">🇸🇪 +46</option>
