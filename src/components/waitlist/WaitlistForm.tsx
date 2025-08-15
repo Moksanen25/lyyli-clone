@@ -172,7 +172,7 @@ export default function WaitlistForm() {
     <div className="max-w-2xl mx-auto">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-forest mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-forest dark:text-white mb-2">
             Business Email *
           </label>
           <input
@@ -193,7 +193,7 @@ export default function WaitlistForm() {
         </div>
 
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-forest mb-2">
+          <label htmlFor="company" className="block text-sm font-medium text-forest dark:text-white mb-2">
             Company Name *
           </label>
           <input
@@ -214,7 +214,7 @@ export default function WaitlistForm() {
         </div>
 
                        <div>
-                 <label htmlFor="role" className="block text-sm font-medium text-forest mb-2">
+                 <label htmlFor="role" className="block text-sm font-medium text-forest dark:text-white mb-2">
                    Your Role *
                  </label>
                  <input
@@ -235,9 +235,9 @@ export default function WaitlistForm() {
                </div>
 
                <div>
-                 <label htmlFor="phone" className="block text-sm font-medium text-forest mb-2">
-                   Phone Number
-                 </label>
+                                <label htmlFor="phone" className="block text-sm font-medium text-forest dark:text-white mb-2">
+                 Phone Number
+               </label>
                  <div className="flex gap-3">
                    <div className="relative">
                      <select
@@ -280,9 +280,9 @@ export default function WaitlistForm() {
                </div>
 
                           <div>
-           <label htmlFor="organizationSize" className="block text-sm font-medium text-forest mb-2">
-             Organization Size *
-           </label>
+                          <label htmlFor="organizationSize" className="block text-sm font-medium text-forest dark:text-white mb-2">
+                 Organization Size *
+               </label>
            <div className="relative">
              <select
                id="organizationSize"

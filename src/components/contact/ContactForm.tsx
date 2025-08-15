@@ -180,21 +180,21 @@ export default function ContactForm({
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-soft dark:shadow-gray-900/50 p-8">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-          {t["contact.form.title"]}
-        </h2>
-        <p className="text-lg text-muted-foreground font-sans leading-relaxed">
-          {t["contact.form.subtitle"]}
-        </p>
-      </div>
+              <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest dark:text-white font-playfair font-bold leading-snug">
+            {t["contact.form.title"]}
+          </h2>
+          <p className="text-lg text-muted-foreground dark:text-white font-sans leading-relaxed">
+            {t["contact.form.subtitle"]}
+          </p>
+        </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name Field */}
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-foreground mb-2 font-sans"
+            className="block text-sm font-medium text-foreground dark:text-white mb-2 font-sans"
           >
             {t["contact.form.name.label"]}
           </label>
@@ -219,7 +219,7 @@ export default function ContactForm({
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-foreground mb-2 font-sans"
+            className="block text-sm font-medium text-foreground dark:text-white mb-2 font-sans"
           >
             {t["contact.form.email.label"]}
           </label>
@@ -243,10 +243,10 @@ export default function ContactForm({
         {/* Company and Role Row */}
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label
-              htmlFor="company"
-              className="block text-sm font-medium text-foreground mb-2 font-sans"
-            >
+                      <label
+            htmlFor="company"
+            className="block text-sm font-medium text-foreground dark:text-white mb-2 font-sans"
+          >
               {t["contact.form.company.label"]}
             </label>
             <input
@@ -268,7 +268,7 @@ export default function ContactForm({
           <div>
             <label
               htmlFor="role"
-              className="block text-sm font-medium text-foreground mb-2 font-sans"
+              className="block text-sm font-medium text-foreground dark:text-white mb-2 font-sans"
             >
               {t["contact.form.role.label"]}
             </label>
@@ -294,7 +294,7 @@ export default function ContactForm({
         <div>
           <label
             htmlFor="organizationSize"
-            className="block text-sm font-medium text-foreground mb-2 font-sans"
+            className="block text-sm font-medium text-foreground dark:text-white mb-2 font-sans"
           >
             {t["contact.form.teamsize.label"]}
           </label>
@@ -332,7 +332,7 @@ export default function ContactForm({
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-foreground mb-2 font-sans"
+            className="block text-sm font-medium text-foreground dark:text-white mb-2 font-sans"
           >
             {t["contact.form.message.label"]}
           </label>
