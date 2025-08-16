@@ -55,7 +55,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <li role="none">
                 <a
                   href={`/${locale}/features`}
-                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  className="text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="View features page"
                 >
@@ -65,7 +65,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <li role="none">
                 <a
                   href={`/${locale}/cybersecurity`}
-                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  className="text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="View cybersecurity page"
                 >
@@ -75,7 +75,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <li role="none">
                 <a
                   href={`/${locale}/pricing`}
-                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  className="text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="View pricing page"
                 >
@@ -85,7 +85,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <li role="none">
                 <a
                   href={`/${locale}/about`}
-                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  className="text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="About us page"
                 >
@@ -95,7 +95,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <li role="none">
                 <a
                   href={`/${locale}/blog`}
-                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  className="text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="Blog page"
                 >
@@ -105,7 +105,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <li role="none">
                 <a
                   href={`/${locale}/contact`}
-                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  className="text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="Contact page"
                 >
@@ -115,7 +115,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <li role="none">
                 <a
                   href={`/${locale}/help`}
-                  className="text-base text-foreground hover:text-forest transition-colors duration-200 font-sans"
+                  className="text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans"
                   role="menuitem"
                   aria-label="Help and Support"
                 >
@@ -156,7 +156,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-grayLight transition-colors duration-200"
+            className="lg:hidden p-2 rounded-lg hover:bg-grayLight dark:hover:bg-gray-700 transition-colors duration-200"
             aria-label={isMobileMenuOpen ? "Close mobile navigation menu" : "Open mobile navigation menu"}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -164,7 +164,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             onClick={toggleMobileMenu}
           >
             <svg
-              className="w-6 h-6 text-foreground"
+              className="w-6 h-6 text-forest dark:text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -194,7 +194,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           id="mobile-menu"
           className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
             isMobileMenuOpen 
-              ? "max-h-[80vh] opacity-100 mt-4 pb-6 border-t border-grayLight" 
+              ? "max-h-[80vh] opacity-100 mt-4 pb-6 border-t border-grayLight dark:border-gray-700" 
               : "max-h-0 opacity-0 mt-0 pb-0 border-t-0"
           }`}
           style={{
@@ -211,7 +211,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             <div className="space-y-1">
               <a
                 href={`/${locale}/features`}
-                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                className="block text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50 dark:hover:bg-gray-700/50"
                 aria-label="View features page"
                 onClick={closeMobileMenu}
               >
@@ -219,7 +219,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </a>
               <a
                 href={`/${locale}/cybersecurity`}
-                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                className="block text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50 dark:hover:bg-gray-700/50"
                 aria-label="View cybersecurity page"
                 onClick={closeMobileMenu}
               >
@@ -227,7 +227,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </a>
               <a
                 href={`/${locale}/pricing`}
-                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                className="block text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50 dark:hover:bg-gray-700/50"
                 aria-label="View pricing page"
                 onClick={closeMobileMenu}
               >
@@ -235,7 +235,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </a>
               <a
                 href={`/${locale}/about`}
-                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                className="block text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50 dark:hover:bg-gray-700/50"
                 aria-label="About us page"
                 onClick={closeMobileMenu}
               >
@@ -243,7 +243,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </a>
               <a
                 href={`/${locale}/blog`}
-                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                className="block text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50 dark:hover:bg-gray-700/50"
                 aria-label="Blog page"
                 onClick={closeMobileMenu}
               >
@@ -251,7 +251,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </a>
               <a
                 href={`/${locale}/contact`}
-                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                className="block text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50 dark:hover:bg-gray-700/50"
                 aria-label="Contact page"
                 onClick={closeMobileMenu}
               >
@@ -259,7 +259,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </a>
               <a
                 href={`/${locale}/help`}
-                className="block text-base text-foreground hover:text-forest transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50"
+                className="block text-base text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-sans py-3 px-4 rounded-lg hover:bg-grayLight/50 dark:hover:bg-gray-700/50"
                 aria-label="Help and Support"
                 onClick={closeMobileMenu}
               >
@@ -268,12 +268,12 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             </div>
 
             {/* Prominent Waitlist CTA Section */}
-            <div className="border-t border-grayLight pt-4 mt-2">
+            <div className="border-t border-grayLight dark:border-gray-700 pt-4 mt-2">
               <div className="text-center mb-4">
-                <h3 className="text-lg font-semibold text-forest mb-2">
+                <h3 className="text-lg font-semibold text-forest dark:text-white mb-2">
                   {locale === "fi" ? "Oletko valmis aloittamaan?" : "Ready to get started?"}
                 </h3>
-                <p className="text-sm text-mediumGray mb-4">
+                <p className="text-sm text-mediumGray dark:text-white/80 mb-4">
                   {locale === "fi" ? "Liity odotuslistalle ja ole ensimmäisten joukossa" : "Join the waitlist and be among the first"}
                 </p>
               </div>
@@ -305,7 +305,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               {/* Secondary Waitlist Link */}
               <a
                 href={`/${locale}/waitlist`}
-                className="block w-full text-center text-forest hover:text-forest/80 transition-colors duration-200 font-medium text-sm py-2"
+                className="block w-full text-center text-forest dark:text-white hover:text-forest/80 dark:hover:text-white/80 transition-colors duration-200 font-medium text-sm py-2"
                 aria-label="Learn more about joining the waitlist"
                 onClick={closeMobileMenu}
               >
@@ -314,9 +314,9 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             </div>
 
             {/* Locale Switcher */}
-            <div className="border-t border-grayLight pt-4 mt-2 pb-2 bg-white relative z-10">
+            <div className="border-t border-grayLight dark:border-gray-700 pt-4 mt-2 pb-2 bg-white dark:bg-gray-800 relative z-10">
               <div className="text-center mb-3">
-                <span className="text-sm text-mediumGray font-medium">
+                <span className="text-sm text-mediumGray dark:text-white/80 font-medium">
                   {locale === "fi" ? "Kieli / Language" : "Language / Kieli"}
                 </span>
               </div>

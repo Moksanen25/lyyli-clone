@@ -549,9 +549,9 @@ export function StatsVisual({
   const { ref, isVisible } = useIntersectionObserver();
 
   const trendColors = {
-    up: "text-green-600",
-    down: "text-red-600",
-    neutral: "text-muted-foreground",
+    up: "text-green-600 dark:text-white",
+    down: "text-red-600 dark:text-white",
+    neutral: "text-muted-foreground dark:text-white",
   };
 
   const trendIcons = {

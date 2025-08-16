@@ -24,7 +24,7 @@ export default async function Home({ params }: HomeProps) {
 
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Hero Section - Unchanged as requested */}
+      {/* Hero Section - Fixed text colors for both themes */}
       <div className="relative z-10">
         <section className="container mx-auto px-4 py-20 relative">
           {/* Animated Hero Visual */}
@@ -33,7 +33,7 @@ export default async function Home({ params }: HomeProps) {
           <h1 className="text-3xl md:text-4xl text-forest dark:text-white text-center mb-8 font-playfair font-normal leading-tight relative z-10">
             {t["hero.headline"]}
           </h1>
-          <p className="text-lg text-foreground dark:text-white text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
+          <p className="text-lg text-[#2F5D50] dark:text-white text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
             {t["hero.description"]}
           </p>
           <div className="flex justify-center gap-4 mb-12 relative z-10">
@@ -44,7 +44,7 @@ export default async function Home({ params }: HomeProps) {
               {t["hero.ctaSecondary"]}
             </a>
           </div>
-          <div className="text-center text-muted-foreground text-sm font-sans relative z-10 mb-8">
+          <div className="text-center text-mediumGray dark:text-white text-sm font-sans relative z-10 mb-8">
             {t["hero.trustBadge"]}
           </div>
         </section>
