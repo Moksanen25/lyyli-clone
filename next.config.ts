@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["next-intl"],
   },
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  images: {
+    unoptimized: false,
+    domains: [],
+    remotePatterns: [],
+  },
   async headers() {
     return [
       {
