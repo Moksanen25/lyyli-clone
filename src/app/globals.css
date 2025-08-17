@@ -58,6 +58,9 @@
   --warning: #d97706;
   --error: #dc2626;
   --info: #2563eb;
+
+  /* Hero text color variable */
+  --hero-text-color: #2f5d50;
 }
 
 /* Dark theme colors */
@@ -90,6 +93,9 @@
   --warning: #f59e0b;
   --error: #ef4444;
   --info: #3b82f6;
+
+  /* Hero text color variable - dark mode */
+  --hero-text-color: white;
 }
 
 /* Typography Classes - Following Brand Hierarchy */
@@ -274,6 +280,11 @@ h3 {
 /* Accessibility improvements */
 .text-\[#2F5D50\] {
   color: #2F5D50;
+}
+
+/* Hero text color using CSS variable */
+.hero-description {
+  color: var(--hero-text-color);
 }
 
 /* Mobile-first responsive improvements */
