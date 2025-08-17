@@ -33,7 +33,7 @@ export default async function Home({ params }: HomeProps) {
           <h1 className="text-3xl md:text-4xl text-forest dark:text-white text-center mb-8 font-playfair font-normal leading-tight relative z-10">
             {t["hero.headline"]}
           </h1>
-          <p className="text-lg text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10 dark:text-white" style={{ color: '#2F5D50' }}>
+          <p className="text-lg text-[#2F5D50] dark:text-white text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
             {t["hero.description"]}
           </p>
           <div className="flex justify-center gap-4 mb-12 relative z-10">
