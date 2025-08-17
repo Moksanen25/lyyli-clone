@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 export default function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Prevent hydration mismatch
   useEffect(() => {
@@ -27,11 +28,16 @@ export default function ThemeToggle() {
   ] as const;
 
   return (
-    <div className="relative group">
+    <div 
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <button
         className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
         aria-label="Toggle theme"
         title="Toggle theme"
+        onClick={() => setIsOpen(!isOpen)}
       >
         {resolvedTheme === 'dark' ? (
           <MoonIcon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
@@ -41,12 +47,17 @@ export default function ThemeToggle() {
       </button>
       
       {/* Dropdown menu */}
-      <div className="absolute right-0 top-12 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+      <div className={`absolute right-0 top-12 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-700 transition-all duration-200 z-50 ${
+        isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+      }`}>
         <div className="py-2">
           {themes.map(({ value, label, icon: Icon }) => (
             <button
               key={value}
-              onClick={() => setTheme(value)}
+              onClick={() => {
+                setTheme(value);
+                setIsOpen(false);
+              }}
               className={`w-full flex items-center px-4 py-2 text-sm transition-colors duration-200 ${
                 theme === value
                   ? 'bg-forest/10 text-forest dark:bg-forest/20 dark:text-forest/80'
