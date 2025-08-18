@@ -29,6 +29,8 @@ interface ContactSubmission {
   message?: string;
   timestamp: string;
   source: string;
+  gdprConsent: boolean;
+  securityConsent: boolean;
   ipAddress: string;
   userAgent: string;
   csrfToken: string;
@@ -101,6 +103,8 @@ export async function POST(request: NextRequest) {
       message,
       timestamp,
       source,
+      gdprConsent,
+      securityConsent,
       ipAddress: clientIP,
       userAgent: sanitizeUserAgent(request.headers.get('user-agent')),
       csrfToken

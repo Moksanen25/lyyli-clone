@@ -33,12 +33,12 @@ export interface ValidationConfig {
 /**
  * Validate request body against validation rules
  */
-export function validateRequestBody<T extends Record<string, any>>(
+export function validateRequestBody<T>(
   request: NextRequest,
   config: ValidationConfig
 ): ValidationResult<T> {
   const errors: Record<string, string> = {};
-  const data: Partial<T> = {};
+  const data: Record<string, any> = {};
 
   try {
     // Parse request body
@@ -99,7 +99,7 @@ export function validateRequestBody<T extends Record<string, any>>(
       }
 
       // Add valid field to data
-      (data as any)[rule.field] = processedValue;
+      data[rule.field] = processedValue;
     }
 
     // Check for unknown fields in strict mode
@@ -130,7 +130,7 @@ export function validateRequestBody<T extends Record<string, any>>(
 
     return {
       isValid: Object.keys(errors).length === 0,
-      data: Object.keys(errors).length === 0 ? data : undefined,
+      data: Object.keys(errors).length === 0 ? data as T : undefined,
       errors,
     };
 
@@ -164,8 +164,8 @@ export const VALIDATION_CONFIGS = {
       { field: 'organizationSize', required: true },
       { field: 'message', required: false, maxLength: FORM_CONFIG.MAX_LENGTH.MESSAGE, sanitize: true },
       { field: 'source', required: true, sanitize: true },
-      { field: 'gdprConsent', required: true, custom: (value) => value === true || 'GDPR consent is required' },
-      { field: 'securityConsent', required: true, custom: (value) => value === true || 'Security consent is required' },
+      { field: 'gdprConsent', required: true, custom: (value: any) => value === true || 'GDPR consent is required' },
+      { field: 'securityConsent', required: true, custom: (value: any) => value === true || 'Security consent is required' },
       { field: 'csrfToken', required: true, sanitize: true },
     ],
     allowUnknownFields: false,
@@ -181,8 +181,8 @@ export const VALIDATION_CONFIGS = {
       { field: 'phone', required: false, pattern: VALIDATION_PATTERNS.PHONE, sanitize: true },
       { field: 'countryCode', required: true },
       { field: 'organizationSize', required: true },
-      { field: 'gdprConsent', required: true, custom: (value) => value === true || 'GDPR consent is required' },
-      { field: 'securityConsent', required: true, custom: (value) => value === true || 'Security consent is required' },
+      { field: 'gdprConsent', required: true, custom: (value: any) => value === true || 'GDPR consent is required' },
+      { field: 'securityConsent', required: true, custom: (value: any) => value === true || 'Security consent is required' },
       { field: 'csrfToken', required: true, sanitize: true },
     ],
     allowUnknownFields: false,
@@ -198,7 +198,7 @@ export const VALIDATION_CONFIGS = {
     allowUnknownFields: false,
     strictMode: true,
   },
-} as const;
+};
 
 /**
  * Create a validation middleware function for a specific config
