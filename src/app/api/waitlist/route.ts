@@ -8,13 +8,14 @@ import {
   createRateLimitErrorResponse 
 } from '@/middleware/validation';
 import { 
-  checkRateLimit, 
   getClientIP, 
   sanitizeUserAgent, 
   createSecureError,
   isGDPRCompliant,
   shouldRetainData
 } from '@/lib/security';
+import { createRateLimiterWithPreset, RATE_LIMIT_CONFIGS } from '@/lib/rateLimiter';
+import { addSecurityHeaders, createSecurityConfig } from '@/middleware/security';
 import { logger } from '@/lib/logger';
 import { CONSENT_CONFIG, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/lib/constants';
 
@@ -39,27 +40,44 @@ interface WaitlistSubmission {
 // In-memory storage (replace with database in production)
 const submissions: WaitlistSubmission[] = [];
 
+// Create rate limiter with moderate configuration for form submissions
+const rateLimiter = createRateLimiterWithPreset('MODERATE', {
+  onLimitReached: (identifier, config) => {
+    logger.warn('Rate limit reached for waitlist form', {
+      identifier,
+      maxRequests: config.maxRequests,
+      windowMs: config.windowMs,
+    });
+  }
+});
+
+// Create security configuration
+const securityConfig = createSecurityConfig(process.env.NODE_ENV as 'development' | 'staging' | 'production');
+
 export async function POST(request: NextRequest) {
   try {
     // Rate limiting
     const clientIP = getClientIP(request);
-    const rateLimit = checkRateLimit(clientIP);
+    const rateLimit = await rateLimiter.checkLimit(clientIP);
     
     if (!rateLimit.isAllowed) {
       logger.warn('Rate limit exceeded', {
         ip: clientIP,
         endpoint: '/api/waitlist',
         userAgent: request.headers.get('user-agent'),
+        totalRequests: rateLimit.totalRequests,
       });
       
-      return createRateLimitErrorResponse(rateLimit.remaining, rateLimit.resetTime);
+      const response = createRateLimitErrorResponse(rateLimit.remaining, rateLimit.resetTime);
+      return addSecurityHeaders(response, securityConfig);
     }
 
     // Validate request body
     const validation = validateRequestBody<WaitlistSubmission>(request, VALIDATION_CONFIGS.WAITLIST_FORM);
     
     if (!validation.isValid || !validation.data) {
-      return createValidationErrorResponse(validation.errors);
+      const response = createValidationErrorResponse(validation.errors);
+      return addSecurityHeaders(response, securityConfig);
     }
 
     const {
@@ -84,10 +102,11 @@ export async function POST(request: NextRequest) {
         ip: clientIP,
       });
       
-      return NextResponse.json(
+      const response = NextResponse.json(
         { error: 'Both GDPR and security consent are required' },
         { status: 400 }
       );
+      return addSecurityHeaders(response, securityConfig);
     }
 
     const timestamp = new Date().toISOString();
@@ -132,16 +151,19 @@ export async function POST(request: NextRequest) {
       userAgent: submission.userAgent,
     });
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       message: SUCCESS_MESSAGES.WAITLIST_JOINED,
       id: submission.id
     }, {
       headers: {
         'X-RateLimit-Remaining': rateLimit.remaining.toString(),
-        'X-RateLimit-Reset': rateLimit.resetTime.toString()
+        'X-RateLimit-Reset': rateLimit.resetTime.toString(),
+        'X-RateLimit-Limit': RATE_LIMIT_CONFIGS.MODERATE.maxRequests.toString(),
       }
     });
+
+    return addSecurityHeaders(response, securityConfig);
 
   } catch (error) {
     logger.error('Waitlist submission failed', {
@@ -153,11 +175,9 @@ export async function POST(request: NextRequest) {
     
     // Return secure error message
     const secureError = createSecureError('Waitlist submission failed');
+    const response = NextResponse.json(secureError, { status: 500 });
     
-    return NextResponse.json(
-      secureError,
-      { status: 500 }
-    );
+    return addSecurityHeaders(response, securityConfig);
   }
 }
 
@@ -167,11 +187,11 @@ export async function GET(request: NextRequest) {
     // Require authentication for admin access
     const authResult = requireAdminAuth(request);
     if (authResult) {
-      return authResult;
+      return addSecurityHeaders(authResult, securityConfig);
     }
 
     // Return submissions with sensitive data filtered out
-    return NextResponse.json({
+    const response = NextResponse.json({
       submissions: submissions.map(sub => ({
         id: sub.id,
         email: sub.email,
@@ -189,6 +209,8 @@ export async function GET(request: NextRequest) {
       total: submissions.length
     });
 
+    return addSecurityHeaders(response, securityConfig);
+
   } catch (error) {
     logger.error('Failed to retrieve waitlist submissions', {
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -198,11 +220,9 @@ export async function GET(request: NextRequest) {
     
     // Return secure error message
     const secureError = createSecureError('Failed to retrieve waitlist submissions');
+    const response = NextResponse.json(secureError, { status: 500 });
     
-    return NextResponse.json(
-      secureError,
-      { status: 500 }
-    );
+    return addSecurityHeaders(response, securityConfig);
   }
 }
 
