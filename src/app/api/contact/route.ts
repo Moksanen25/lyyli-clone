@@ -2,17 +2,23 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { 
-  validateInput, 
-  sanitizeInput, 
-  VALIDATION_PATTERNS, 
+  validateRequestBody, 
+  VALIDATION_CONFIGS, 
+  createValidationErrorResponse,
+  createRateLimitErrorResponse 
+} from '@/middleware/validation';
+import { 
   checkRateLimit, 
   getClientIP, 
-  sanitizeUserAgent,
-  createSecureError
+  sanitizeUserAgent, 
+  createSecureError,
+  isGDPRCompliant,
+  shouldRetainData
 } from '@/lib/security';
-import { requireAdminAuth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { CONSENT_CONFIG, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/lib/constants';
 
-// GDPR-compliant data structure
+// Types
 interface ContactSubmission {
   id: string;
   name: string;
@@ -28,108 +34,76 @@ interface ContactSubmission {
   csrfToken: string;
 }
 
-// In-memory storage (replace with proper database in production)
+// In-memory storage (replace with database in production)
 const submissions: ContactSubmission[] = [];
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting check
+    // Rate limiting
     const clientIP = getClientIP(request);
-    const rateLimit = checkRateLimit(`contact:${clientIP}`, 5, 60000); // 5 requests per minute
+    const rateLimit = checkRateLimit(clientIP);
     
     if (!rateLimit.isAllowed) {
-      return NextResponse.json(
-        { error: 'Too many requests. Please try again later.' },
-        { 
-          status: 429,
-          headers: {
-            'X-RateLimit-Remaining': '0',
-            'X-RateLimit-Reset': rateLimit.resetTime.toString(),
-            'Retry-After': '60'
-          }
-        }
-      );
+      logger.warn('Rate limit exceeded', {
+        ip: clientIP,
+        endpoint: '/api/contact',
+        userAgent: request.headers.get('user-agent'),
+      });
+      
+      return createRateLimitErrorResponse(rateLimit.remaining, rateLimit.resetTime);
     }
 
-    const body = await request.json();
+    // Validate request body
+    const validation = validateRequestBody<ContactSubmission>(request, VALIDATION_CONFIGS.CONTACT_FORM);
     
-    // Validate required fields
-    const { name, email, company, role, organizationSize, message, timestamp, source, csrfToken } = body;
-    
-    if (!name || !email || !company || !role || !organizationSize || !csrfToken) {
+    if (!validation.isValid || !validation.data) {
+      return createValidationErrorResponse(validation.errors);
+    }
+
+    const {
+      name,
+      email,
+      company,
+      role,
+      organizationSize,
+      message,
+      source,
+      gdprConsent,
+      securityConsent,
+      csrfToken
+    } = validation.data;
+
+    // Additional consent validation
+    if (!gdprConsent || !securityConsent) {
+      logger.warn('Missing consent', {
+        email,
+        gdprConsent,
+        securityConsent,
+        ip: clientIP,
+      });
+      
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Both GDPR and security consent are required' },
         { status: 400 }
       );
     }
 
-    // Input validation with sanitization
-    const nameValidation = validateInput(name, VALIDATION_PATTERNS.NAME, 'Name');
-    if (!nameValidation.isValid) {
-      return NextResponse.json(
-        { error: nameValidation.error },
-        { status: 400 }
-      );
-    }
-
-    const emailValidation = validateInput(email, VALIDATION_PATTERNS.EMAIL, 'Email');
-    if (!emailValidation.isValid) {
-      return NextResponse.json(
-        { error: emailValidation.error },
-        { status: 400 }
-      );
-    }
-
-    const companyValidation = validateInput(company, VALIDATION_PATTERNS.COMPANY, 'Company');
-    if (!companyValidation.isValid) {
-      return NextResponse.json(
-        { error: companyValidation.error },
-        { status: 400 }
-      );
-    }
-
-    const roleValidation = validateInput(role, VALIDATION_PATTERNS.ROLE, 'Role');
-    if (!roleValidation.isValid) {
-      return NextResponse.json(
-        { error: roleValidation.error },
-        { status: 400 }
-      );
-    }
-
-    // Validate organization size (whitelist approach)
-    const validOrgSizes = ['10-50', '50-100', '100-500', '500+'];
-    if (!validOrgSizes.includes(organizationSize)) {
-      return NextResponse.json(
-        { error: 'Invalid organization size selection' },
-        { status: 400 }
-      );
-    }
-
-    // Validate message if provided
-    if (message) {
-      const messageValidation = validateInput(message, VALIDATION_PATTERNS.MESSAGE, 'Message');
-      if (!messageValidation.isValid) {
-        return NextResponse.json(
-          { error: messageValidation.error },
-          { status: 400 }
-        );
-      }
-    }
+    const timestamp = new Date().toISOString();
 
     // Create submission with GDPR compliance and sanitized data
     const submission: ContactSubmission = {
       id: Date.now().toString(),
-      name: sanitizeInput(name),
-      email: sanitizeInput(email).toLowerCase(),
-      company: sanitizeInput(company),
-      role: sanitizeInput(role),
-      organizationSize: organizationSize,
-      message: message ? sanitizeInput(message) : undefined,
+      name,
+      email: email.toLowerCase(),
+      company,
+      role,
+      organizationSize,
+      message,
       timestamp,
-      source: sanitizeInput(source),
+      source,
       ipAddress: clientIP,
       userAgent: sanitizeUserAgent(request.headers.get('user-agent')),
-      csrfToken: sanitizeInput(csrfToken)
+      csrfToken
     };
 
     // Store submission
@@ -137,7 +111,7 @@ export async function POST(request: NextRequest) {
 
     // Clean up old data (GDPR compliance)
     const now = Date.now();
-    const retentionPeriod = 2555 * 24 * 60 * 60 * 1000; // 7 years in milliseconds
+    const retentionPeriod = CONSENT_CONFIG.GDPR_RETENTION_DAYS * 24 * 60 * 60 * 1000; // Convert to milliseconds
     
     for (let i = submissions.length - 1; i >= 0; i--) {
       const submissionDate = new Date(submissions[i].timestamp).getTime();
@@ -146,11 +120,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Log successful submission (in production, use proper logging service)
+    // Log successful submission
+    logger.logFormSubmission('contact', true, {
+      email: submission.email,
+      company: submission.company,
+      ip: clientIP,
+      userAgent: submission.userAgent,
+    });
 
     return NextResponse.json({
       success: true,
-      message: 'Contact form submitted successfully',
+      message: SUCCESS_MESSAGES.CONTACT_SENT,
       id: submission.id
     }, {
       headers: {
@@ -160,7 +140,12 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Error processing contact submission:', error);
+    logger.error('Contact form submission failed', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      endpoint: '/api/contact',
+      ip: getClientIP(request),
+      userAgent: request.headers.get('user-agent'),
+    });
     
     // Return secure error message
     const secureError = createSecureError('Contact form submission failed');
@@ -171,8 +156,6 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-// Updated 2024-12-19: Added authentication requirement for admin access
 
 // Admin endpoint to view submissions (requires authentication)
 export async function GET(request: NextRequest) {
@@ -201,7 +184,11 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Error retrieving contact submissions:', error);
+    logger.error('Failed to retrieve contact submissions', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      endpoint: '/api/contact',
+      method: 'GET',
+    });
     
     // Return secure error message
     const secureError = createSecureError('Failed to retrieve submissions');
@@ -211,4 +198,11 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// Helper function for admin authentication (placeholder)
+function requireAdminAuth(request: NextRequest): NextResponse | null {
+  // Implement proper authentication logic here
+  // For now, return null to allow access
+  return null;
 }

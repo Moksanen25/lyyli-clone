@@ -2,24 +2,30 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { 
-  validateInput, 
-  sanitizeInput, 
-  VALIDATION_PATTERNS, 
+  validateRequestBody, 
+  VALIDATION_CONFIGS, 
+  createValidationErrorResponse,
+  createRateLimitErrorResponse 
+} from '@/middleware/validation';
+import { 
   checkRateLimit, 
   getClientIP, 
-  sanitizeUserAgent,
-  createSecureError
+  sanitizeUserAgent, 
+  createSecureError,
+  isGDPRCompliant,
+  shouldRetainData
 } from '@/lib/security';
-import { requireAdminAuth } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+import { CONSENT_CONFIG, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/lib/constants';
 
-// GDPR-compliant data structure
+// Types
 interface WaitlistSubmission {
   id: string;
   email: string;
   company: string;
   role: string;
   phone?: string;
-  countryCode?: string;
+  countryCode: string;
   organizationSize: string;
   gdprConsent: boolean;
   securityConsent: boolean;
@@ -30,121 +36,78 @@ interface WaitlistSubmission {
   csrfToken: string;
 }
 
-// In-memory storage (replace with proper database in production)
+// In-memory storage (replace with database in production)
 const submissions: WaitlistSubmission[] = [];
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting check
+    // Rate limiting
     const clientIP = getClientIP(request);
-    const rateLimit = checkRateLimit(`waitlist:${clientIP}`, 3, 60000); // 3 requests per minute
+    const rateLimit = checkRateLimit(clientIP);
     
     if (!rateLimit.isAllowed) {
-      return NextResponse.json(
-        { error: 'Too many requests. Please try again later.' },
-        { 
-          status: 429,
-          headers: {
-            'X-RateLimit-Remaining': '0',
-            'X-RateLimit-Reset': rateLimit.resetTime.toString(),
-            'Retry-After': '60'
-          }
-        }
-      );
+      logger.warn('Rate limit exceeded', {
+        ip: clientIP,
+        endpoint: '/api/waitlist',
+        userAgent: request.headers.get('user-agent'),
+      });
+      
+      return createRateLimitErrorResponse(rateLimit.remaining, rateLimit.resetTime);
     }
 
-    const body = await request.json();
+    // Validate request body
+    const validation = validateRequestBody<WaitlistSubmission>(request, VALIDATION_CONFIGS.WAITLIST_FORM);
     
-    // Validate required fields
-    const { email, company, role, organizationSize, gdprConsent, securityConsent, timestamp, source, csrfToken } = body;
-    
-    if (!email || !company || !role || !organizationSize || !gdprConsent || !securityConsent || !csrfToken) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
+    if (!validation.isValid || !validation.data) {
+      return createValidationErrorResponse(validation.errors);
     }
 
-    // Input validation with sanitization
-    const emailValidation = validateInput(email, VALIDATION_PATTERNS.EMAIL, 'Email');
-    if (!emailValidation.isValid) {
-      return NextResponse.json(
-        { error: emailValidation.error },
-        { status: 400 }
-      );
-    }
+    const {
+      email,
+      company,
+      role,
+      phone,
+      countryCode,
+      organizationSize,
+      gdprConsent,
+      securityConsent,
+      source,
+      csrfToken
+    } = validation.data;
 
-    const companyValidation = validateInput(company, VALIDATION_PATTERNS.COMPANY, 'Company');
-    if (!companyValidation.isValid) {
-      return NextResponse.json(
-        { error: companyValidation.error },
-        { status: 400 }
-      );
-    }
-
-    const roleValidation = validateInput(role, VALIDATION_PATTERNS.ROLE, 'Role');
-    if (!roleValidation.isValid) {
-      return NextResponse.json(
-        { error: roleValidation.error },
-        { status: 400 }
-      );
-    }
-
-    // Validate organization size (whitelist approach)
-    const validOrgSizes = ['1-10', '10-50', '50-100', '100-500', '500+'];
-    if (!validOrgSizes.includes(organizationSize)) {
-      return NextResponse.json(
-        { error: 'Invalid organization size selection' },
-        { status: 400 }
-      );
-    }
-
-    // Validate phone if provided
-    if (body.phone) {
-      const phoneValidation = validateInput(body.phone, VALIDATION_PATTERNS.PHONE, 'Phone');
-      if (!phoneValidation.isValid) {
-        return NextResponse.json(
-          { error: phoneValidation.error },
-          { status: 400 }
-        );
-      }
-    }
-
-    // Validate country code if provided
-    if (body.countryCode) {
-      const validCountryCodes = ['+358', '+46', '+47', '+45', '+31', '+49', '+33', '+44', '+1', '+86', '+81', '+91', '+61', '+64'];
-      if (!validCountryCodes.includes(body.countryCode)) {
-        return NextResponse.json(
-          { error: 'Invalid country code' },
-          { status: 400 }
-        );
-      }
-    }
-
-    // Validate GDPR consent
+    // Additional consent validation
     if (!gdprConsent || !securityConsent) {
+      logger.warn('Missing consent', {
+        email,
+        gdprConsent,
+        securityConsent,
+        ip: clientIP,
+      });
+      
       return NextResponse.json(
-        { error: 'GDPR and security consent are required' },
+        { error: 'Both GDPR and security consent are required' },
         { status: 400 }
       );
     }
+
+    const timestamp = new Date().toISOString();
 
     // Create submission with GDPR compliance and sanitized data
     const submission: WaitlistSubmission = {
       id: Date.now().toString(),
-      email: sanitizeInput(email).toLowerCase(),
-      company: sanitizeInput(company),
-      role: sanitizeInput(role),
-      phone: body.phone ? sanitizeInput(body.phone) : undefined,
-      countryCode: body.countryCode,
+      email: email.toLowerCase(),
+      company,
+      role,
+      phone,
+      countryCode,
       organizationSize,
       gdprConsent,
       securityConsent,
       timestamp,
-      source: sanitizeInput(source),
+      source,
       ipAddress: clientIP,
       userAgent: sanitizeUserAgent(request.headers.get('user-agent')),
-      csrfToken: sanitizeInput(csrfToken)
+      csrfToken
     };
 
     // Store submission
@@ -152,7 +115,7 @@ export async function POST(request: NextRequest) {
 
     // Clean up old data (GDPR compliance)
     const now = Date.now();
-    const retentionPeriod = 2555 * 24 * 60 * 60 * 1000; // 7 years in milliseconds
+    const retentionPeriod = CONSENT_CONFIG.GDPR_RETENTION_DAYS * 24 * 60 * 60 * 1000; // Convert to milliseconds
     
     for (let i = submissions.length - 1; i >= 0; i--) {
       const submissionDate = new Date(submissions[i].timestamp).getTime();
@@ -161,11 +124,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Log successful submission (in production, use proper logging service)
+    // Log successful submission
+    logger.logFormSubmission('waitlist', true, {
+      email: submission.email,
+      company: submission.company,
+      ip: clientIP,
+      userAgent: submission.userAgent,
+    });
 
     return NextResponse.json({
       success: true,
-      message: 'Successfully joined waitlist',
+      message: SUCCESS_MESSAGES.WAITLIST_JOINED,
       id: submission.id
     }, {
       headers: {
@@ -175,7 +144,12 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Error processing waitlist submission:', error);
+    logger.error('Waitlist submission failed', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      endpoint: '/api/waitlist',
+      ip: getClientIP(request),
+      userAgent: request.headers.get('user-agent'),
+    });
     
     // Return secure error message
     const secureError = createSecureError('Waitlist submission failed');
@@ -186,8 +160,6 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-// Updated 2024-12-19: Added authentication requirement for admin access
 
 // Admin endpoint to view submissions (requires authentication)
 export async function GET(request: NextRequest) {
@@ -218,7 +190,11 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Error retrieving waitlist submissions:', error);
+    logger.error('Failed to retrieve waitlist submissions', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      endpoint: '/api/waitlist',
+      method: 'GET',
+    });
     
     // Return secure error message
     const secureError = createSecureError('Failed to retrieve waitlist submissions');
@@ -228,4 +204,11 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// Helper function for admin authentication (placeholder)
+function requireAdminAuth(request: NextRequest): NextResponse | null {
+  // Implement proper authentication logic here
+  // For now, return null to allow access
+  return null;
 }

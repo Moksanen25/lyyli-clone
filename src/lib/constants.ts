@@ -29,7 +29,7 @@ export const FORM_CONFIG = {
     ROLE: 2,
     MESSAGE: 10,
   },
-} as const;
+};
 
 // Organization Sizes
 export const ORGANIZATION_SIZES = [
@@ -38,7 +38,7 @@ export const ORGANIZATION_SIZES = [
   { value: '51-200', label: '51-200 employees' },
   { value: '201-1000', label: '201-1000 employees' },
   { value: '1000+', label: '1000+ employees' },
-] as const;
+];
 
 // Country Codes
 export const COUNTRY_CODES = [
@@ -57,7 +57,7 @@ export const COUNTRY_CODES = [
   { value: '+86', label: 'China (+86)' },
   { value: '+91', label: 'India (+91)' },
   { value: '+61', label: 'Australia (+61)' },
-] as const;
+];
 
 // GDPR and Security
 export const CONSENT_CONFIG = {
@@ -68,7 +68,7 @@ export const CONSENT_CONFIG = {
     ENHANCED: 'enhanced',
     ENTERPRISE: 'enterprise',
   },
-} as const;
+};
 
 // UI Configuration
 export const UI_CONFIG = {
@@ -89,14 +89,14 @@ export const UI_CONFIG = {
     TOOLTIP: 200,
     NOTIFICATION: 300,
   },
-} as const;
+};
 
 // Feature Flags
 export const FEATURE_FLAGS = {
   ANALYTICS: process.env.NODE_ENV === 'production',
   DEBUG_MODE: process.env.NODE_ENV === 'development',
   EXPERIMENTAL_FEATURES: false,
-} as const;
+};
 
 // Error Messages
 export const ERROR_MESSAGES = {
@@ -106,7 +106,7 @@ export const ERROR_MESSAGES = {
   RATE_LIMIT: 'Too many requests. Please try again later.',
   UNAUTHORIZED: 'You are not authorized to perform this action.',
   NOT_FOUND: 'The requested resource was not found.',
-} as const;
+};
 
 // Success Messages
 export const SUCCESS_MESSAGES = {
@@ -114,4 +114,4 @@ export const SUCCESS_MESSAGES = {
   CONTACT_SENT: 'Your message has been sent successfully!',
   WAITLIST_JOINED: 'Successfully joined the waitlist!',
   SETTINGS_SAVED: 'Settings saved successfully!',
-} as const;
+};
