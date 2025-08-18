@@ -42,9 +42,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('theme', newTheme);
   };
 
-  return React.createElement(ThemeContext.Provider, {
-    value: { theme, setTheme: handleSetTheme, resolvedTheme }
-  }, children);
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme: handleSetTheme, resolvedTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }
 
 export function useTheme() {

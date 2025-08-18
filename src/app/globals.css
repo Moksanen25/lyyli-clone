@@ -262,19 +262,19 @@ h3 {
 
 /* Ensure green backgrounds are visible */
 .bg-\[#2F5D50\] {
-  background-color: #2F5D50 !important;
+  background-color: #2F5D50;
 }
 
 .bg-gradient-to-br.from-\[#2F5D50\] {
-  background-image: linear-gradient(to bottom right, #2F5D50, var(--tw-gradient-stops)) !important;
+  background-image: linear-gradient(to bottom right, #2F5D50, var(--tw-gradient-stops));
 }
 
 .bg-gradient-to-br.to-\[#2F5D50\]\/80 {
-  --tw-gradient-stops: #2F5D50 0%, rgba(47, 93, 80, 0.8) 100% !important;
+  --tw-gradient-stops: #2F5D50 0%, rgba(47, 93, 80, 0.8) 100%;
 }
 
 .bg-gradient-to-br.to-\[#2F5D50\]\/90 {
-  --tw-gradient-stops: #2F5D50 0%, rgba(47, 93, 80, 0.9) 100% !important;
+  --tw-gradient-stops: #2F5D50 0%, rgba(47, 93, 80, 0.9) 100%;
 }
 
 /* Accessibility improvements */
@@ -309,8 +309,8 @@ h3 {
 @supports (-webkit-touch-callout: none) {
   /* iOS Safari specific styles */
   .max-h-\[80vh\] {
-    max-height: 80vh !important;
-    max-height: 80dvh !important; /* Dynamic viewport height for iOS */
+    max-height: 80vh;
+    max-height: 80dvh; /* Dynamic viewport height for iOS */
   }
 }
 
@@ -318,30 +318,30 @@ h3 {
 @media (max-width: 640px) {
   /* Use dynamic viewport height for better iOS compatibility */
   .max-h-\[80vh\] {
-    max-height: 80dvh !important;
+    max-height: 80dvh;
   }
   
   /* Add safe area padding for iOS devices */
   .px-2 {
-    padding-left: max(0.5rem, env(safe-area-inset-left)) !important;
-    padding-right: max(0.5rem, env(safe-area-inset-right)) !important;
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
   }
   
   /* Ensure proper scrolling on iOS */
   .overflow-hidden {
-    overflow: hidden !important;
+    overflow: hidden;
   }
   
   .overflow-y-auto {
-    overflow-y: auto !important;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   }
   
   /* Ensure locale switcher is visible in mobile menu */
   .ClientLocaleSwitcher {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
   }
   
   /* Mobile menu locale switcher styling */
@@ -354,18 +354,18 @@ h3 {
   /* Force locale switcher visibility in mobile menu */
   .ClientLocaleSwitcher,
   .ClientLocaleSwitcher * {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
   }
   
   /* Ensure locale switcher links are properly styled */
   .ClientLocaleSwitcher a {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 2rem;
-    padding: 0.5rem 0.75rem !important;
+    padding: 0.5rem 0.75rem;
     border-radius: 0.375rem;
     font-weight: 500;
     text-decoration: none;
@@ -384,11 +384,11 @@ a:focus {
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   .text-mediumGray {
-    color: #333333 !important;
+    color: #333333;
   }
   
   .text-muted-foreground {
-    color: #333333 !important;
+    color: #333333;
   }
 }
 
@@ -615,82 +615,82 @@ body {
 
 /* Dark mode text color fixes */
 .dark .text-forest {
-  color: white !important;
+  color: white;
 }
 
 .dark .text-\[#2F5D50\] {
-  color: white !important;
+  color: white;
 }
 
 .dark .text-foreground {
-  color: white !important;
+  color: white;
 }
 
 .dark .text-mediumGray {
-  color: #e2e8f0 !important;
+  color: #e2e8f0;
 }
 
 .dark .text-muted-foreground {
-  color: #cbd5e1 !important;
+  color: #cbd5e1;
 }
 
 /* Light mode text color fixes */
 .light .text-forest,
 .light .text-\[#2F5D50\] {
-  color: #2F5D50 !important;
+  color: #2F5D50;
 }
 
 .light .text-foreground {
-  color: #2F5D50 !important;
+  color: #2F5D50;
 }
 
 .light .text-mediumGray {
-  color: #666666 !important;
+  color: #666666;
 }
 
 .light .text-muted-foreground {
-  color: #666666 !important;
+  color: #666666;
 }
 
 /* Ensure proper contrast for forest background */
 .bg-forest .text-white,
 .bg-forest .text-white\/90,
 .bg-forest .text-white\/80 {
-  color: white !important;
+  color: white;
 }
 
 /* Footer specific fixes */
 footer.bg-forest .text-white,
 footer.bg-forest .text-white\/80,
 footer.bg-forest .text-white\/60 {
-  color: white !important;
+  color: white;
 }
 
 /* Hero area text fixes */
 .dark .text-forest {
-  color: white !important;
+  color: white;
 }
 
 .light .text-forest {
-  color: #2F5D50 !important;
+  color: #2F5D50;
 }
 
 /* Canvas button fixes for dark mode */
 .dark .text-green-600 {
-  color: white !important;
+  color: white;
 }
 
 .dark .border-green-600\/5,
 .dark .border-green-600\/10 {
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .dark .from-green-600\/10,
 .dark .to-green-600\/20 {
-  --tw-gradient-stops: rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100% !important;
+  --tw-gradient-stops: rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%;
 }
 
 .dark .from-green-600\/15,
 .dark .to-green-600\/30 {
-  --tw-gradient-stops: rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.3) 100% !important;
+  --tw-gradient-stops: rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.3) 100%;
 }

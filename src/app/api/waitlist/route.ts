@@ -162,7 +162,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Log successful submission (in production, use proper logging service)
-    console.log(`New waitlist submission from ${submission.email} at ${submission.timestamp}`);
 
     return NextResponse.json({
       success: true,

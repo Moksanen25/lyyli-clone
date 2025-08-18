@@ -122,7 +122,7 @@ export default function WaitlistForm() {
       }
 
       const result = await response.json();
-      console.log('Form submitted successfully:', result);
+      // console.log('Form submitted successfully:', result);
       
       setSubmitted(true);
       setLoading(false);

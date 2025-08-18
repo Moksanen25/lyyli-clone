@@ -57,7 +57,8 @@ export const trackEvent = (eventName: string, properties: Record<string, unknown
 
   // Log to console in development
   if (process.env.NODE_ENV === 'development') {
-    console.log('Analytics Event:', { event: eventName, properties });
+    // Development logging - could be replaced with proper logger service
+    // console.log('Analytics Event:', { event: eventName, properties });
   }
 };
 
