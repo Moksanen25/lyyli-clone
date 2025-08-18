@@ -1,45 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-// Custom hook to handle IntersectionObserver with hydration-safe state management
-function useIntersectionObserver(options: IntersectionObserverInit = {}) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (
-      !isClient ||
-      typeof window === "undefined" ||
-      !("IntersectionObserver" in window)
-    ) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1, ...options },
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isClient, options]);
-
-  // Return consistent initial state for server and client
-  return { ref, isVisible: isClient ? isVisible : false, isClient };
-}
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 // Enhanced Geometric Pattern Component with brand colors and advanced animations
 export function EnhancedGeometricPattern({

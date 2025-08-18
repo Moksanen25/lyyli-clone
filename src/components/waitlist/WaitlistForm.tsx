@@ -5,11 +5,23 @@
 import { useState, useEffect } from "react";
 import { VALIDATION_PATTERNS, validateInput } from "@/lib/security";
 
-interface FormErrors {
+interface WaitlistFormData {
+  email: string;
+  company: string;
+  role: string;
+  phone?: string;
+  countryCode: string;
+  organizationSize: string;
+  gdprConsent: boolean;
+  securityConsent: boolean;
+}
+
+interface WaitlistFormErrors {
   email?: string;
   company?: string;
   role?: string;
   phone?: string;
+  countryCode?: string;
   organizationSize?: string;
   gdprConsent?: string;
   securityConsent?: string;
@@ -20,8 +32,8 @@ export default function WaitlistForm() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [formData, setFormData] = useState({
+  const [errors, setErrors] = useState<WaitlistFormErrors>({});
+  const [formData, setFormData] = useState<WaitlistFormData>({
     email: '',
     company: '',
     role: '',
@@ -41,7 +53,7 @@ export default function WaitlistForm() {
 
   // Client-side validation
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
+    const newErrors: WaitlistFormErrors = {};
     
     // Validate email
     const emailValidation = validateInput(formData.email, VALIDATION_PATTERNS.EMAIL, 'Email');

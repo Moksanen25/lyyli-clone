@@ -6,19 +6,34 @@ import { useState, useEffect } from "react";
 import { TranslationKeys } from "@/lib/i18n";
 import { VALIDATION_PATTERNS, validateInput } from "@/lib/security";
 
-interface ContactFormProps {
-  locale: string;
-  translations: TranslationKeys;
+interface ContactFormData {
+  name: string;
+  email: string;
+  company: string;
+  role: string;
+  organizationSize: string;
+  message?: string;
+  source: string;
+  gdprConsent: boolean;
+  securityConsent: boolean;
 }
 
-interface FormErrors {
+interface ContactFormErrors {
   name?: string;
   email?: string;
   company?: string;
   role?: string;
   organizationSize?: string;
   message?: string;
+  source?: string;
+  gdprConsent?: string;
+  securityConsent?: string;
   general?: string;
+}
+
+interface ContactFormProps {
+  locale: string;
+  translations: TranslationKeys;
 }
 
 export default function ContactForm({
@@ -28,14 +43,17 @@ export default function ContactForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [formData, setFormData] = useState({
+  const [errors, setErrors] = useState<ContactFormErrors>({});
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
     company: "",
     role: "",
     organizationSize: "",
     message: "",
+    source: "contact-form",
+    gdprConsent: false,
+    securityConsent: false,
   });
 
   // Generate CSRF token on component mount
@@ -47,7 +65,7 @@ export default function ContactForm({
 
   // Client-side validation
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
+    const newErrors: ContactFormErrors = {};
     
     // Validate name
     const nameValidation = validateInput(formData.name, VALIDATION_PATTERNS.NAME, 'Name');

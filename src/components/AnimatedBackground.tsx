@@ -1,44 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 // Custom hook to handle IntersectionObserver with hydration-safe state management
-function useIntersectionObserver(options: IntersectionObserverInit = {}) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (
-      !isClient ||
-      typeof window === "undefined" ||
-      !("IntersectionObserver" in window)
-    ) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1, ...options },
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isClient, options]);
-
-  return { ref, isVisible: isClient && isVisible, isClient };
-}
+// This has been moved to src/hooks/useIntersectionObserver.ts to eliminate duplication
 
 interface AnimatedBackgroundProps {
   variant?: "hero" | "section" | "card" | "minimal";
