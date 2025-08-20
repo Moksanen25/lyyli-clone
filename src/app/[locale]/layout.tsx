@@ -6,6 +6,7 @@ import ConsentBanner from "../../components/ConsentBanner";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import { getTranslations } from "../../lib/i18n";
 import { fontVars } from "../../lib/fonts";
+import { ClientThemeProvider } from "../../components/ClientThemeProvider";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -132,17 +133,19 @@ export default async function LocaleLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="antialiased font-sans" suppressHydrationWarning={true}>
-        <div className="flex flex-col min-h-screen">
-          <Header locale={currentLocale} translations={t} />
-          <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />
-          <main className="flex-1">{children}</main>
-          <Footer
-            locale={currentLocale}
-            translations={t}
-            canonicalUrl={canonicalUrl}
-          />
-          <ConsentBanner locale={currentLocale} translations={t} />
-        </div>
+        <ClientThemeProvider>
+          <div className="flex flex-col min-h-screen">
+            <Header locale={currentLocale} translations={t} />
+            <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />
+            <main className="flex-1">{children}</main>
+            <Footer
+              locale={currentLocale}
+              translations={t}
+              canonicalUrl={canonicalUrl}
+            />
+            <ConsentBanner locale={currentLocale} translations={t} />
+          </div>
+        </ClientThemeProvider>
 
         {/* Schema.org structured data */}
         <script

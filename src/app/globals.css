@@ -3,6 +3,9 @@
 :root {
   /* Brand Colors - EXACT VALUES FROM BRAND BOOK */
   --forest: #2f5d50; /* Primary brand color - reliability and calm */
+  --softRose: #F7EBEB; /* Gentle warmth and empathy - CORRECTED TO BRAND BOOK */
+  --lightGray: #f5f5f4; /* Minimalism and clarity - CORRECTED TO BRAND BOOK */
+  --mutedTurquoise: #A7D6D1; /* Subtle technological accent - CORRECTED TO BRAND BOOK */
   --rose: #F7EBEB; /* Gentle warmth and empathy - CORRECTED TO BRAND BOOK */
   --grayLight: #f5f5f4; /* Minimalism and clarity - CORRECTED TO BRAND BOOK */
   --turquoise: #A7D6D1; /* Subtle technological accent - CORRECTED TO BRAND BOOK */
@@ -61,6 +64,16 @@
 
   /* Hero text color variable */
   --hero-text-color: #2f5d50;
+
+  /* Animation keyframes */
+  --animation-float: float 3s ease-in-out infinite;
+  --animation-dash: dash 2s linear infinite;
+
+  /* Debug: Ensure brand colors are visible */
+  --debug-forest: #2F5D50;
+  --debug-rose: #F7EBEB;
+  --debug-grayLight: #F5F5F4;
+  --debug-turquoise: #A7D6D1;
 }
 
 /* Dark theme colors */
@@ -693,4 +706,54 @@ footer.bg-forest .text-white\/60 {
 .dark .from-green-600\/15,
 .dark .to-green-600\/30 {
   --tw-gradient-stops: rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.3) 100%;
+}
+
+/* Custom animations for hero visual */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -20; }
+}
+
+.animate-float {
+  animation: var(--animation-float);
+}
+
+.animate-dash {
+  animation: var(--animation-dash);
+}
+
+/* Force floating header styles */
+header.fixed {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
+}
+
+/* Ensure backdrop blur works */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px) !important;
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px) !important;
+}
+
+/* Force rounded corners */
+.rounded-2xl {
+  border-radius: 1rem !important;
+}
+
+/* Ensure proper shadows */
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
 }

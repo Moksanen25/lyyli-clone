@@ -25,7 +25,7 @@ export default async function Home({ params }: HomeProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section - Fixed text colors for both themes */}
-      <div className="relative z-10">
+      <div className="relative z-10 pt-32">
         <section className="container mx-auto px-4 py-20 relative">
           {/* Animated Hero Visual */}
           <HeroVisual />
@@ -124,40 +124,40 @@ export default async function Home({ params }: HomeProps) {
       </section>
 
       {/* Key Benefits Section - Unified design with better contrast */}
-      <section className="bg-gray-50 dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
+      <section className="bg-gray-50 border-t border-gray-100">
         <div className="container mx-auto px-4 py-24">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl text-forest dark:text-white mb-6 font-playfair font-normal leading-tight">
+            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
               Why professional service organizations choose Lyyli
             </h2>
-            <p className="text-xl text-mediumGray dark:text-white max-w-3xl mx-auto font-sans leading-relaxed">
+            <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
               Transform your internal communications with AI-powered efficiency, enterprise security, and seamless multilingual support.
             </p>
           </div>
           
           <div className="grid lg:grid-cols-3 gap-12 items-start">
             {/* Left: Communication Efficiency */}
-            <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-rose to-turquoise rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-forest dark:text-white font-sans">Communication Efficiency</h3>
+                <h3 className="text-xl font-bold text-forest font-sans">Communication Efficiency</h3>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray dark:text-white font-sans">75% faster message delivery</span>
+                  <span className="text-mediumGray font-sans">75% faster message delivery</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray dark:text-white font-sans">60% reduction in search time</span>
+                  <span className="text-mediumGray font-sans">60% reduction in search time</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray dark:text-white font-sans">Automated priority routing</span>
+                  <span className="text-mediumGray font-sans">Automated priority routing</span>
                 </div>
               </div>
             </div>
@@ -180,27 +180,27 @@ export default async function Home({ params }: HomeProps) {
             </div>
             
             {/* Right: Enterprise Security */}
-            <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-forest to-green rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-forest dark:text-white font-sans">Enterprise Security</h3>
+                <h3 className="text-xl font-bold text-forest font-sans">Enterprise Security</h3>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray dark:text-white font-sans">GDPR compliant</span>
+                  <span className="text-mediumGray font-sans">GDPR compliant</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray dark:text-white font-sans">AES-256 encryption</span>
+                  <span className="text-mediumGray font-sans">AES-256 encryption</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray dark:text-white font-sans">Complete audit trails</span>
+                  <span className="text-mediumGray font-sans">Complete audit trails</span>
                 </div>
               </div>
             </div>
@@ -356,7 +356,7 @@ export default async function Home({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* How It Works Section - Clean background */}
+      {/* How It Works Section - Stunning visuals inspired by saas-magicui */}
       <section id="how-it-works" className="bg-gray-50 border-t border-gray-100">
         <div className="container mx-auto px-4 py-24">
           <div className="text-center mb-20">
@@ -364,30 +364,117 @@ export default async function Home({ params }: HomeProps) {
               {t["howItWorks.title"]}
             </h2>
             <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Simple steps to transform your team's communication
+              Just 3 simple steps to transform your team's communication
             </p>
           </div>
           
-          <AnimatedTimeline
-            steps={[
-              {
-                title: t["howItWorks.step1.title"],
-                description: t["howItWorks.step1.description"],
-              },
-              {
-                title: t["howItWorks.step2.title"],
-                description: t["howItWorks.step2.description"],
-              },
-              {
-                title: t["howItWorks.step3.title"],
-                description: t["howItWorks.step3.description"],
-              },
-              {
-                title: t["howItWorks.step4.title"],
-                description: t["howItWorks.step4.description"],
-              },
-            ]}
-          />
+          {/* Stunning Visual Timeline */}
+          <div className="relative">
+            {/* Connection Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-forest via-turquoise to-rose transform -translate-y-1/2 hidden lg:block" />
+            
+            {/* Steps Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+              {/* Step 1: Upload Data */}
+              <div className="relative group">
+                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative z-10">
+                  {/* Step Number */}
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-forest to-turquoise rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    1
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className="w-20 h-20 bg-gradient-to-br from-forest to-turquoise rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-forest mb-4 text-center font-sans">
+                    {t["howItWorks.step1.title"]}
+                  </h3>
+                  <p className="text-mediumGray text-center font-sans leading-relaxed">
+                    {t["howItWorks.step1.description"]}
+                  </p>
+                </div>
+                
+                {/* Floating Elements */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-rose to-turquoise rounded-full opacity-60 animate-pulse" />
+                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-turquoise to-forest rounded-full opacity-40 animate-pulse" style={{ animationDelay: '0.5s' }} />
+              </div>
+
+              {/* Step 2: AI Processing */}
+              <div className="relative group">
+                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative z-10">
+                  {/* Step Number */}
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-turquoise to-rose rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    2
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className="w-20 h-20 bg-gradient-to-br from-turquoise to-rose rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-forest mb-4 text-center font-sans">
+                    {t["howItWorks.step2.title"]}
+                  </h3>
+                  <p className="text-mediumGray text-center font-sans leading-relaxed">
+                    {t["howItWorks.step2.description"]}
+                  </p>
+                </div>
+                
+                {/* Floating Elements */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-forest to-turquoise rounded-full opacity-60 animate-pulse" />
+                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-rose to-turquoise rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
+              </div>
+
+              {/* Step 3: Get Results */}
+              <div className="relative group">
+                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative z-10">
+                  {/* Step Number */}
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-rose to-forest rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    3
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className="w-20 h-20 bg-gradient-to-br from-rose to-forest rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-forest mb-4 text-center font-sans">
+                    {t["howItWorks.step3.title"]}
+                  </h3>
+                  <p className="text-mediumGray text-center font-sans leading-relaxed">
+                    {t["howItWorks.step3.description"]}
+                  </p>
+                </div>
+                
+                {/* Floating Elements */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-turquoise to-forest rounded-full opacity-60 animate-pulse" />
+                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-forest to-rose rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1.5s' }} />
+              </div>
+            </div>
+            
+            {/* Background Decorative Elements */}
+            <div className="absolute inset-0 -z-10">
+              {/* Large Circles */}
+              <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-forest/5 to-turquoise/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-br from-rose/5 to-turquoise/5 rounded-full blur-3xl" />
+              
+              {/* Small Floating Dots */}
+              <div className="absolute top-1/3 left-1/3 w-2 h-2 bg-forest/30 rounded-full animate-ping" />
+              <div className="absolute top-2/3 right-1/3 w-3 h-3 bg-turquoise/30 rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
+              <div className="absolute bottom-1/3 left-2/3 w-2 h-2 bg-rose/30 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+            </div>
+          </div>
         </div>
       </section>
 
