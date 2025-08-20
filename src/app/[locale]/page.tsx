@@ -123,19 +123,20 @@ export default async function Home({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* Key Benefits Section - Unified design with better contrast */}
+      {/* Enterprise Solutions Section - Combined benefits and features */}
       <section className="bg-gray-50 border-t border-gray-100">
         <div className="container mx-auto px-4 py-24">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
-              Why professional service organizations choose Lyyli
+              Enterprise-scale solutions for all professional service organizations
             </h2>
             <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
               Transform your internal communications with AI-powered efficiency, enterprise security, and seamless multilingual support.
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-12 items-start">
+          {/* Benefits Grid - 3 columns */}
+          <div className="grid lg:grid-cols-3 gap-12 items-start mb-20">
             {/* Left: Communication Efficiency */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-center gap-4 mb-6">
@@ -205,21 +206,8 @@ export default async function Home({ params }: HomeProps) {
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Features Section - Consistent card design */}
-      <section className="bg-white border-t border-gray-100">
-        <div className="container mx-auto px-4 py-24">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
-              {t["features.title"]}
-            </h2>
-            <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Core features that make Lyyli the ideal communication solution for professional service organizations
-            </p>
-          </div>
-          
+          {/* Features Grid - 3 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
@@ -246,6 +234,20 @@ export default async function Home({ params }: HomeProps) {
               </h3>
               <p className="text-mediumGray text-center font-sans leading-relaxed">
                 {t["features.clarity.description"]}
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-16 h-16 bg-rose rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
+                {t["features.multilingual.title"]}
+              </h3>
+              <p className="text-mediumGray text-center font-sans leading-relaxed">
+                {t["features.multilingual.description"]}
               </p>
             </div>
           </div>

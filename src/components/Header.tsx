@@ -118,7 +118,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0`}>
+                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0`}>
                   <div className="py-2">
                     <a
                       href={`/${locale}/features`}
@@ -152,7 +152,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0`}>
+                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0`}>
                   <div className="py-2">
                     <a
                       href={`/${locale}/about`}
@@ -178,7 +178,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0`}>
+                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0`}>
                   <div className="py-2">
                     <a
                       href={`/${locale}/contact`}
