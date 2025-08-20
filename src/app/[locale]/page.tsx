@@ -273,7 +273,7 @@ export default async function Home({ params }: HomeProps) {
                   alt="Lyyli.ai Desktop Interface - AI Communication Assistant" 
                   className="w-full max-w-4xl rounded-2xl shadow-lg border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-2xl blur-xl -z-10 group-hover:blur-2xl transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-forest/20 to-turquoise/20 rounded-2xl blur-xl -z-10 group-hover:blur-2xl transition-all duration-300" />
               </div>
               <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-forest text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg">
                 {t["desktop.experience"]}
@@ -288,7 +288,7 @@ export default async function Home({ params }: HomeProps) {
                   alt="Lyyli.ai Mobile Interface - AI Communication Assistant" 
                   className="w-full max-w-[300px] rounded-2xl shadow-lg border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-turquoise/15 to-rose/15 rounded-2xl blur-lg -z-10 group-hover:blur-xl transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-turquoise/25 to-rose/25 rounded-2xl blur-lg -z-10 group-hover:blur-xl transition-all duration-300" />
               </div>
               <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-turquoise text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg">
                 Mobile experience
@@ -493,7 +493,7 @@ export default async function Home({ params }: HomeProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="mb-6">
-                <svg className="w-12 h-12 text-forest/20 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-12 h-12 text-forest mx-auto" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                 </svg>
               </div>
@@ -508,7 +508,7 @@ export default async function Home({ params }: HomeProps) {
             
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="mb-6">
-                <svg className="w-12 h-12 text-forest/20 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-12 h-12 text-forest mx-auto" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                 </svg>
               </div>
@@ -523,7 +523,7 @@ export default async function Home({ params }: HomeProps) {
             
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="mb-6">
-                <svg className="w-12 h-12 text-forest/20 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-12 h-12 text-forest mx-auto" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                 </svg>
               </div>
