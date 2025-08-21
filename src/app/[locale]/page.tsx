@@ -15,6 +15,7 @@ import DemoVideo from "../../components/DemoVideo";
 import ROICalculator from "../../components/ROICalculator";
 import TestimonialSection from "../../components/TestimonialSection";
 import PricingCards from "../../components/PricingCards";
+import HeroToggle from "../../components/HeroToggle";
 
 interface HomeProps {
   params: Promise<{ locale: string }>;
@@ -33,7 +34,14 @@ export default async function Home({ params }: HomeProps) {
     <main className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section - Fixed text colors for both themes */}
       <div className="relative z-10 pt-32">
-        <section className="container mx-auto px-4 py-20 relative">
+        {/* Hero Variant Toggle for Demo */}
+        <HeroToggle />
+        
+        <section 
+          className="container mx-auto px-4 py-20 relative"
+          data-hero="light"
+          aria-label="Hero"
+        >
           {/* Animated Hero Visual */}
           <HeroVisual />
           
