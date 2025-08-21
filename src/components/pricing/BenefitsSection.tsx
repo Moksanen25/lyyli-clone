@@ -54,7 +54,7 @@ export default function BenefitsSection({
         {benefits.map((benefit, index) => (
           <article
             key={index}
-            className="text-center bg-white p-8 rounded-lg shadow-soft border border-grayLight hover:border-turquoise transition-all duration-300 hover:shadow-medium"
+            className="text-center bg-white p-8 rounded-lg shadow-soft border border-grayLight hover:border-turquoise transition-all duration-300 ease-out hover:shadow-medium"
           >
             <div className="flex justify-center mb-6">
               <div className="p-3 bg-rose rounded-full">

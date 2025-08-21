@@ -8,6 +8,13 @@ import {
   AnimatedTimeline,
 } from "../../components/VisualElements";
 import HeroVisual from "../../components/HeroVisual";
+import ROIStats from "../../components/ROIStats";
+import ProcessSteps from "../../components/ProcessSteps";
+import FeatureGrid from "../../components/FeatureGrid";
+import DemoVideo from "../../components/DemoVideo";
+import ROICalculator from "../../components/ROICalculator";
+import TestimonialCarousel from "../../components/TestimonialCarousel";
+import PricingCards from "../../components/PricingCards";
 
 interface HomeProps {
   params: Promise<{ locale: string }>;
@@ -49,6 +56,9 @@ export default async function Home({ params }: HomeProps) {
           </div>
         </section>
       </div>
+
+      {/* ROI Statistics Section */}
+      <ROIStats />
 
       {/* Problems Section - Improved contrast and structure */}
       <section className="bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
@@ -99,467 +109,78 @@ export default async function Home({ params }: HomeProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-forest dark:text-white mb-4 text-center font-sans">
-                {t["problems.accountability.title"]}
+                {t["problems.brandInconsistency.title"]}
               </h3>
               <p className="text-mediumGray dark:text-white text-center font-sans leading-relaxed">
-                {t["problems.accountability.description"]}
+                {t["problems.brandInconsistency.description"]}
               </p>
             </div>
             
             <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 bg-amber/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              <div className="w-16 h-16 bg-rose/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-forest dark:text-white mb-4 text-center font-sans">
-                {t["problems.regulatory.title"]}
+                {t["problems.timeWaste.title"]}
               </h3>
               <p className="text-mediumGray dark:text-white text-center font-sans leading-relaxed">
-                {t["problems.regulatory.description"]}
+                {t["problems.timeWaste.description"]}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enterprise Solutions Section - Combined benefits and features */}
-      <section className="bg-gray-50 border-t border-gray-100">
-        <div className="container mx-auto px-4 py-24">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
-              Enterprise-scale solutions for all professional service organizations
-            </h2>
-            <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Transform your internal communications with AI-powered efficiency, enterprise security, and seamless multilingual support.
-            </p>
-          </div>
-          
-          {/* Benefits Grid - 3 columns */}
-          <div className="grid lg:grid-cols-3 gap-12 items-start mb-20">
-            {/* Left: Communication Efficiency */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-forest rounded-xl flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-forest font-sans">Communication Efficiency</h3>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray font-sans">75% faster message delivery</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray font-sans">60% reduction in search time</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray font-sans">Automated priority routing</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Center: Mobile UI Showcase */}
-            <div className="flex justify-center">
-              <div className="relative group">
-                <div className="relative">
-                  <img 
-                    src="/images/general/Mobile_UI_for_web.jpeg" 
-                    alt="Lyyli.ai Mobile Interface - AI Communication Assistant" 
-                    className="w-full max-w-[280px] rounded-2xl shadow-lg border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-turquoise/20 to-rose/20 rounded-2xl blur-xl -z-10 group-hover:blur-2xl group-hover:from-turquoise/30 group-hover:to-rose/30 transition-all duration-300" />
-                </div>
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-turquoise to-rose text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg">
-                  Mobile experience
-                </div>
-              </div>
-            </div>
-            
-            {/* Right: Enterprise Security */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-turquoise rounded-xl flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6 text-forest" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-forest font-sans">Enterprise Security</h3>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray font-sans">GDPR compliant</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray font-sans">AES-256 encryption</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-mediumGray font-sans">Complete audit trails</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* Process Steps Section */}
+      <ProcessSteps />
 
-          {/* Features Grid - 3 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
-                {t["features.speed.title"]}
-              </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
-                {t["features.speed.description"]}
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 bg-turquoise rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <svg className="w-8 h-8 text-forest" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
-                {t["features.clarity.title"]}
-              </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
-                {t["features.clarity.description"]}
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 bg-rose rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
-                {t["features.multilingual.title"]}
-              </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
-                {t["features.multilingual.description"]}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Feature Grid Section */}
+      <FeatureGrid />
 
-      {/* Desktop UI Showcase - Cleaner background */}
-      <section className="bg-gray-50 border-t border-gray-100">
-        <div className="container mx-auto px-4 py-24">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
-              {t["desktop.title"]}
-            </h2>
-            <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              {t["desktop.subtitle"]}
-            </p>
-          </div>
-          
-          <div className="flex flex-col lg:flex-row justify-center items-center gap-12">
-            {/* Desktop UI - Hidden on mobile, shown on desktop */}
-            <div className="relative group hidden lg:block">
-              <div className="relative">
-                <img 
-                  src="/images/general/Desktop_UI_for_web.png" 
-                  alt="Lyyli.ai Desktop Interface - AI Communication Assistant" 
-                  className="w-full max-w-4xl rounded-2xl shadow-lg border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-forest/20 to-turquoise/20 rounded-2xl blur-xl -z-10 group-hover:blur-2xl transition-all duration-300" />
-              </div>
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-forest text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg">
-                {t["desktop.experience"]}
-              </div>
-            </div>
-            
-            {/* Mobile UI - Shown on mobile, hidden on desktop */}
-            <div className="relative group lg:hidden">
-              <div className="relative">
-                <img 
-                  src="/images/general/Mobile_UI_for_web.jpeg" 
-                  alt="Lyyli.ai Mobile Interface - AI Communication Assistant" 
-                  className="w-full max-w-[300px] rounded-2xl shadow-lg border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-turquoise/25 to-rose/25 rounded-2xl blur-lg -z-10 group-hover:blur-xl transition-all duration-300" />
-              </div>
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-turquoise text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg">
-                Mobile experience
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Demo Video Section */}
+      <DemoVideo />
 
-      {/* Benefits Section - Consistent styling */}
-      <section className="bg-white border-t border-gray-100">
-        <div className="container mx-auto px-4 py-24">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
-              {t["benefits.title"]}
-            </h2>
-            <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Measurable benefits that drive real business value
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 bg-rose rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <svg className="w-8 h-8 text-forest" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
-                {t["benefits.speed.title"]}
-              </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
-                {t["benefits.speed.description"]}
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
-                {t["benefits.governance.title"]}
-              </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
-                {t["benefits.governance.description"]}
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 bg-turquoise rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <svg className="w-8 h-8 text-forest" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
-                {t["benefits.multilingual.title"]}
-              </h3>
-              <p className="text-mediumGray text-center font-sans leading-relaxed">
-                {t["benefits.multilingual.description"]}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ROI Calculator Section */}
+      <ROICalculator />
 
-      {/* How It Works Section - Stunning visuals inspired by saas-magicui */}
-      <section id="how-it-works" className="bg-gray-50 border-t border-gray-100">
-        <div className="container mx-auto px-4 py-24">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
-              {t["howItWorks.title"]}
-            </h2>
-            <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Just 3 simple steps to transform your team's communication
-            </p>
-          </div>
-          
-          {/* Stunning Visual Timeline */}
-          <div className="relative">
-            {/* Connection Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-forest via-turquoise to-rose transform -translate-y-1/2 hidden lg:block" />
-            
-            {/* Steps Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-              {/* Step 1: Upload Data */}
-              <div className="relative group">
-                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative z-10">
-                  {/* Step Number */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                    1
-                  </div>
-                  
-                  {/* Icon */}
-                  <div className="w-20 h-20 bg-forest rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                    </svg>
-                  </div>
-                  
-                  {/* Content */}
-                  <h3 className="text-2xl font-bold text-forest mb-4 text-center font-sans">
-                    {t["howItWorks.step1.title"]}
-                  </h3>
-                  <p className="text-mediumGray text-center font-sans leading-relaxed">
-                    {t["howItWorks.step1.description"]}
-                  </p>
-                </div>
-                
-                {/* Floating Elements */}
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-rose rounded-full opacity-60 animate-pulse" />
-                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-turquoise rounded-full opacity-40 animate-pulse" style={{ animationDelay: '0.5s' }} />
-              </div>
+      {/* Testimonials and Customer Logos */}
+      <TestimonialCarousel />
 
-              {/* Step 2: AI Processing */}
-              <div className="relative group">
-                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative z-10">
-                  {/* Step Number */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-turquoise rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                    2
-                  </div>
-                  
-                  {/* Icon */}
-                  <div className="w-20 h-20 bg-turquoise rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <svg className="w-10 h-10 text-forest" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                  </div>
-                  
-                  {/* Content */}
-                  <h3 className="text-2xl font-bold text-forest mb-4 text-center font-sans">
-                    {t["howItWorks.step2.title"]}
-                  </h3>
-                  <p className="text-mediumGray text-center font-sans leading-relaxed">
-                    {t["howItWorks.step2.description"]}
-                  </p>
-                </div>
-                
-                {/* Floating Elements */}
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-forest rounded-full opacity-60 animate-pulse" />
-                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-rose rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
-              </div>
+      {/* Pricing Section */}
+      <PricingCards />
 
-              {/* Step 3: Get Results */}
-              <div className="relative group">
-                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative z-10">
-                  {/* Step Number */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-rose rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                    3
-                  </div>
-                  
-                  {/* Icon */}
-                  <div className="w-20 h-20 bg-rose rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                  
-                  {/* Content */}
-                  <h3 className="text-2xl font-bold text-forest mb-4 text-center font-sans">
-                    {t["howItWorks.step3.title"]}
-                  </h3>
-                  <p className="text-mediumGray text-center font-sans leading-relaxed">
-                    {t["howItWorks.step3.description"]}
-                  </p>
-                </div>
-                
-                {/* Floating Elements */}
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-turquoise rounded-full opacity-60 animate-pulse" />
-                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-forest rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1.5s' }} />
-              </div>
-            </div>
-            
-            {/* Background Decorative Elements */}
-            <div className="absolute inset-0 -z-10">
-              {/* Large Circles */}
-              <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-forest/5 to-turquoise/5 rounded-full blur-3xl" />
-              <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-br from-rose/5 to-turquoise/5 rounded-full blur-3xl" />
-              
-              {/* Small Floating Dots */}
-              <div className="absolute top-1/3 left-1/3 w-2 h-2 bg-forest/30 rounded-full animate-ping" />
-              <div className="absolute top-2/3 right-1/3 w-3 h-3 bg-turquoise/30 rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
-              <div className="absolute bottom-1/3 left-2/3 w-2 h-2 bg-rose/30 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section - Consistent styling */}
-      <section className="bg-white border-t border-gray-100">
-        <div className="container mx-auto px-4 py-24">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
-              {t["testimonials.title"]}
-            </h2>
-            <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Real results from professional service organizations
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6">
-                <svg className="w-12 h-12 text-forest mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <p className="text-mediumGray text-center font-sans leading-relaxed mb-6 italic">
-                "{t["testimonials.quote1.text"]}"
-              </p>
-              <div className="text-center">
-                <p className="font-bold text-forest font-sans">{t["testimonials.quote1.author"]}</p>
-                <p className="text-sm text-mediumGray font-sans">Operations Manager, TechFlow</p>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6">
-                <svg className="w-12 h-12 text-forest mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <p className="text-mediumGray text-center font-sans leading-relaxed mb-6 italic">
-                "{t["testimonials.quote2.text"]}"
-              </p>
-              <div className="text-center">
-                <p className="font-bold text-forest font-sans">{t["testimonials.quote2.author"]}</p>
-                <p className="text-sm text-mediumGray font-sans">PMO Director, Consulting Firm</p>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6">
-                <svg className="w-12 h-12 text-forest mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <p className="text-mediumGray text-center font-sans leading-relaxed mb-6 italic">
-                "{t["testimonials.quote3.text"]}"
-              </p>
-              <div className="text-center">
-                <p className="font-bold text-forest font-sans">{t["testimonials.quote3.author"]}</p>
-                <p className="text-sm text-mediumGray font-sans">HR Director, Healthcare Organization</p>
-              </div>
-            </div>
-          </div>
-          
-          <p className="text-center text-sm text-mediumGray mt-12 font-sans">
-            {t["testimonials.disclaimer"]}
-          </p>
-        </div>
-      </section>
-
-      {/* CTA Section - Strong contrast */}
-      <section id="cta" className="bg-forest text-white border-t border-forest/20">
-        <div className="container mx-auto px-4 py-24 text-center">
+      {/* CTA Section */}
+      <section id="cta" className="py-24 bg-gradient-to-br from-forest to-turquoise">
+        <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl text-white mb-6 font-playfair font-normal leading-tight">
-            {t["cta.title"]}
+            Ready to transform your communication?
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
-            {t["cta.description"]}
+            Join hundreds of professional service organizations that have already revolutionized 
+            their communication with Lyyli.ai
           </p>
-          <a 
-            href={`/${currentLocale}/waitlist`} 
-            className="bg-white text-forest px-10 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 font-bold text-lg inline-flex items-center justify-center gap-3 font-sans hover:shadow-xl hover:-translate-y-1"
-          >
-            {t["cta.button"]}
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/waitlist" 
+              className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
+            >
+              Start your free trial
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a 
+              href="/contact" 
+              className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
+            >
+              Schedule a demo
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
     </main>

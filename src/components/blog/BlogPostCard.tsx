@@ -34,14 +34,14 @@ export default function BlogPostCard({
   );
 
   return (
-    <article className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+    <article className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out overflow-hidden group">
       {post.image && (
         <div className="relative h-48 overflow-hidden">
           <Image
             src={post.image}
             alt={post.title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out"
           />
         </div>
       )}
@@ -57,7 +57,7 @@ export default function BlogPostCard({
 
         <div className="mb-4">
           <Link href={`/${locale}/blog/${post.slug}`} className="block group">
-            <h2 className="text-xl font-playfair font-bold text-darkGray mb-2 group-hover:text-forest transition-colors leading-normal cursor-pointer">
+            <h2 className="text-xl font-playfair font-bold text-darkGray mb-2 group-hover:text-forest transition-colors duration-300 ease-out leading-normal cursor-pointer">
               {post.title}
             </h2>
           </Link>
@@ -75,7 +75,7 @@ export default function BlogPostCard({
 
           <Link
             href={`/${locale}/blog/${post.slug}`}
-            className="text-forest hover:text-forest/80 font-medium text-sm group-hover:underline transition-all font-sans"
+            className="text-forest hover:text-forest/80 font-medium text-sm group-hover:underline transition-all duration-300 ease-out font-sans"
           >
             Read more →
           </Link>

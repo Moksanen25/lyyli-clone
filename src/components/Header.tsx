@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { TranslationKeys } from "../lib/i18n";
 import ClientLocaleSwitcher from "./ClientLocaleSwitcher";
-import ThemeToggle from "./ThemeToggle";
+import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "../lib/theme";
 import Image from "next/image";
 
@@ -284,7 +284,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             >
               {/* Features Section */}
               <div className="space-y-1">
-                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-gray-500'} px-4 py-2`}>
+                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-mediumGray'} px-4 py-2`}>
                   {t["nav.features"]}
                 </div>
                 <a
@@ -314,7 +314,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
               {/* About Section */}
               <div className="space-y-1">
-                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-gray-500'} px-4 py-2`}>
+                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-mediumGray'} px-4 py-2`}>
                   {locale === "fi" ? "Tietoja meistä" : "About"}
                 </div>
                 <a
@@ -335,7 +335,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
               {/* Contact Section */}
               <div className="space-y-1">
-                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-gray-500'} px-4 py-2`}>
+                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-mediumGray'} px-4 py-2`}>
                   {t["nav.contact"]}
                 </div>
                 <a

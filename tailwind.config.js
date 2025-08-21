@@ -70,6 +70,7 @@ module.exports = {
       boxShadow: {
         soft: "0px 4px 12px rgba(0, 0, 0, 0.05)", // Card shadows
         medium: "0px 8px 24px rgba(0, 0, 0, 0.1)", // Modal shadows
+        "soft-hover": "0px 8px 24px rgba(0, 0, 0, 0.08)", // Enhanced soft shadow for hover
       },
       screens: {
         xs: "320px", // Small mobile

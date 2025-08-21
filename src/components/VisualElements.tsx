@@ -464,7 +464,7 @@ export function InteractiveCard({
 
   return (
     <div
-      className={`relative bg-white rounded-xl shadow-soft overflow-hidden transition-all duration-500 ${
+      className={`relative bg-white rounded-xl shadow-soft overflow-hidden transition-all duration-500 ease-out ${
         hoverEffect && isHovered ? "shadow-medium scale-105 -translate-y-1" : ""
       } ${className}`}
       onMouseEnter={() => setIsHovered(true)}
@@ -473,7 +473,7 @@ export function InteractiveCard({
       {/* Enhanced gradient overlay on hover with brand colors */}
       {hoverEffect && (
         <div
-          className={`absolute inset-0 bg-gradient-to-br from-forest via-turquoise to-rose opacity-0 transition-all duration-500 ${
+          className={`absolute inset-0 bg-gradient-to-br from-forest via-turquoise to-rose opacity-0 transition-all duration-500 ease-out ${
             isHovered ? "opacity-10" : ""
           }`}
         />
@@ -481,7 +481,7 @@ export function InteractiveCard({
 
       {/* Subtle border effect with brand colors */}
       <div
-        className={`absolute inset-0 rounded-xl transition-all duration-500 ${
+        className={`absolute inset-0 rounded-xl transition-all duration-500 ease-out ${
           hoverEffect && isHovered
             ? "ring-2 ring-turquoise ring-opacity-30"
             : ""
@@ -525,23 +525,23 @@ export function StatsVisual({
   return (
     <div
       ref={ref}
-      className={`text-center group transition-all duration-1000 ${
+      className={`text-center group transition-all duration-1000 ease-out ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       } ${className}`}
     >
       <div
-        className={`flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-rose to-turquoise rounded-full shadow-md transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg ${
+        className={`flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-rose to-turquoise rounded-full shadow-md transition-all duration-500 ease-out group-hover:scale-110 group-hover:shadow-lg ${
           isVisible ? "animate-pulse" : ""
         }`}
       >
         <div className="text-forest text-2xl">{icon}</div>
       </div>
-      <div className="text-3xl font-bold text-forest mb-2 transition-all duration-300 group-hover:text-turquoise">
+      <div className="text-3xl font-bold text-forest mb-2 transition-all duration-300 ease-out group-hover:text-turquoise">
         {value}
       </div>
       <div className="text-muted-foreground mb-2 font-medium">{label}</div>
       <div
-        className={`text-sm font-medium ${trendColors[trend]} transition-all duration-300`}
+        className={`text-sm font-medium ${trendColors[trend]} transition-all duration-300 ease-out`}
       >
         {trendIcons[trend]}{" "}
         {trend === "up" ? "Growing" : trend === "down" ? "Declining" : "Stable"}

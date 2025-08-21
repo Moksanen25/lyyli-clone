@@ -8,6 +8,7 @@ interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   resolvedTheme: 'light' | 'dark';
+  resetToLight: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -25,13 +26,13 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>('system');
+  const [theme, setTheme] = useState<Theme>('light');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    // Get theme from localStorage or default to system
+    // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
+    if (savedTheme && savedTheme !== 'system') {
       setTheme(savedTheme);
     }
   }, []);
@@ -42,17 +43,13 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     // Remove existing theme classes
     root.classList.remove('light', 'dark');
     
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      setResolvedTheme(systemTheme);
-      root.classList.add(systemTheme);
-    } else {
-      setResolvedTheme(theme);
-      root.classList.add(theme);
-    }
+    // Force light mode to fix the background issue
+    setTheme('light');
+    setResolvedTheme('light');
+    root.classList.add('light');
     
     // Save theme preference
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('theme', 'light');
   }, [theme]);
 
   useEffect(() => {
@@ -72,10 +69,16 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
 
+  const resetToLight = () => {
+    setTheme('light');
+    localStorage.removeItem('theme');
+  };
+
   const value = {
     theme,
     setTheme,
     resolvedTheme,
+    resetToLight,
   };
 
   return (

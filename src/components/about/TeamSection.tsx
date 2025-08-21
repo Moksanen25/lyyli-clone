@@ -55,7 +55,7 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
           {leadership.map((member, index) => (
             <article
               key={index}
-              className="bg-white p-8 rounded-xl shadow-soft text-center border border-gray-100 hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1"
+              className="bg-white p-8 rounded-xl shadow-soft text-center border border-gray-100 hover:shadow-medium transition-all duration-300 ease-out transform hover:-translate-y-1"
             >
               <div className="w-24 h-24 bg-forest rounded-full mx-auto mb-6 flex items-center justify-center shadow-soft">
                 <span className="text-2xl font-bold text-white font-playfair">
@@ -86,7 +86,7 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
           {boardMembers.map((member, index) => (
             <article
               key={index}
-              className="bg-white p-6 rounded-xl shadow-soft text-center border border-gray-100 hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1"
+              className="bg-white p-6 rounded-xl shadow-soft text-center border border-gray-100 hover:shadow-medium transition-all duration-300 ease-out transform hover:-translate-y-1"
             >
               <div className="w-16 h-16 bg-turquoise rounded-full mx-auto mb-4 flex items-center justify-center shadow-soft">
                 <span className="text-lg font-bold text-white font-playfair">

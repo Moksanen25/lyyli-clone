@@ -204,7 +204,7 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-shadow`}
+                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
               >
                 <div className="text-4xl mb-4 flex justify-center" aria-hidden="true">
                   {feature.icon}
@@ -236,7 +236,7 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-shadow`}
+                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -270,7 +270,7 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-shadow`}
+                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -304,7 +304,7 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-shadow`}
+                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -338,7 +338,7 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-shadow`}
+                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
               >
                 <div className="text-4xl mb-4 flex justify-center" aria-hidden="true">
                   {feature.icon}

@@ -77,10 +77,10 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
               <img 
                 src="/images/general/Desktop_UI_for_web.png" 
                 alt="Lyyli.ai Desktop Interface - AI Communication Hub" 
-                className="w-full max-w-md lg:max-w-lg rounded-lg shadow-soft border border-gray-200 transition-all duration-300 group-hover:scale-105 group-hover:shadow-medium"
+                className="w-full max-w-md lg:max-w-lg rounded-lg shadow-soft border border-gray-200 transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-medium"
               />
               {/* Subtle glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-lg blur-xl -z-10 group-hover:blur-2xl transition-all duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-lg blur-xl -z-10 group-hover:blur-2xl transition-all duration-300 ease-out" />
             </div>
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-forest text-white px-4 py-2 rounded-full text-sm font-medium shadow-soft">
               Desktop experience
@@ -93,10 +93,10 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
               <img 
                 src="/images/general/Mobile_UI_for_web.jpeg" 
                 alt="Lyyli.ai Mobile Interface - AI Communication Hub" 
-                className="w-full max-w-[200px] lg:max-w-[180px] rounded-lg shadow-soft border border-gray-200 transition-all duration-300 group-hover:scale-110 group-hover:shadow-medium group-hover:-translate-y-1 group-hover:rotate-1"
+                className="w-full max-w-[200px] lg:max-w-[180px] rounded-lg shadow-soft border border-gray-200 transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-medium group-hover:-translate-y-1 group-hover:rotate-1"
               />
               {/* Enhanced glow effect for mobile */}
-              <div className="absolute inset-0 bg-gradient-to-br from-turquoise/15 to-rose/15 rounded-lg blur-lg -z-10 group-hover:blur-xl group-hover:from-turquoise/25 group-hover:to-rose/25 transition-all duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-br from-turquoise/15 to-rose/15 rounded-lg blur-lg -z-10 group-hover:blur-xl group-hover:from-turquoise/25 group-hover:to-rose/25 transition-all duration-300 ease-out" />
             </div>
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-turquoise text-white px-3 py-1 rounded-full text-xs font-medium shadow-soft">
               Mobile

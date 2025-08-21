@@ -57,7 +57,7 @@ export default function OriginStory({ translations: t }: OriginStoryProps) {
         {problems.map((problem, index) => (
           <article
             key={index}
-            className="bg-white p-8 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1 text-center border border-gray-100"
+            className="bg-white p-8 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 ease-out transform hover:-translate-y-1 text-center border border-gray-100"
           >
             <div className={`w-16 h-16 ${problem.color} rounded-full mx-auto mb-6 flex items-center justify-center`}>
               <div className={problem.iconColor}>
