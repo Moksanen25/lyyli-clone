@@ -132,13 +132,13 @@ export default function FeatureGrid() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl text-forest dark:text-white mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
             Powerful features for modern communication
           </h2>
-          <p className="text-xl text-mediumGray dark:text-white max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
             Everything you need to streamline your communication workflow and amplify your brand message
           </p>
         </div>
@@ -157,7 +157,7 @@ export default function FeatureGrid() {
               variants={cardVariants}
             >
               <motion.div 
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 h-full"
+                className="bg-white  rounded-2xl p-6 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 h-full"
                 whileHover={{ 
                   y: -8,
                   scale: 1.02,
@@ -172,10 +172,10 @@ export default function FeatureGrid() {
                 </div>
                 
                 {/* Content */}
-                <h3 className="text-lg font-semibold text-forest dark:text-white mb-3 font-sans group-hover:text-turquoise dark:group-hover:text-turquoise transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-forest  mb-3 font-sans group-hover:text-turquoise  transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-mediumGray dark:text-white text-sm font-sans leading-relaxed">
+                <p className="text-mediumGray  text-sm font-sans leading-relaxed">
                   {feature.description}
                 </p>
                 

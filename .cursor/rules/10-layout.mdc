@@ -7,5 +7,5 @@
 - Breadcrumbit syvyydellä > 2 (esim. features/security).
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

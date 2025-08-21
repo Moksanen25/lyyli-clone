@@ -5,5 +5,5 @@
 - Alt-tekstit, placeholderit ja metat käännetään samalla avainmallilla.
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

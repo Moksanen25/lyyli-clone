@@ -120,10 +120,10 @@ export default function PerformanceDashboard({
 
   if (!summary) {
     return (
-      <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+      <div className="p-6 bg-white  rounded-lg shadow">
         <div className="animate-pulse">
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4 mb-4"></div>
-          <div className="h-32 bg-gray-200 dark:bg-gray-700 rounded"></div>
+          <div className="h-4 bg-gray-200  rounded w-1/4 mb-4"></div>
+          <div className="h-32 bg-gray-200  rounded"></div>
         </div>
       </div>
     );
@@ -134,10 +134,10 @@ export default function PerformanceDashboard({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-2xl font-bold text-gray-900">
             Performance Dashboard
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600">
             Last updated: {lastRefresh.toLocaleTimeString()}
           </p>
         </div>
@@ -150,7 +150,7 @@ export default function PerformanceDashboard({
           </button>
           <button
             onClick={clearMetrics}
-            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            className="px-4 py-2 bg-gray-200  text-gray-700  rounded-lg hover:bg-gray-300  transition-colors"
           >
             Clear
           </button>
@@ -166,15 +166,15 @@ export default function PerformanceDashboard({
       {/* Status */}
       <div className="flex items-center space-x-4">
         <div className={`w-3 h-3 rounded-full ${isMonitoring ? 'bg-green-500' : 'bg-red-500'}`}></div>
-        <span className="text-sm text-gray-600 dark:text-gray-400">
+        <span className="text-sm text-gray-600 
           Monitoring: {isMonitoring ? 'Active' : 'Inactive'}
         </span>
       </div>
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        <div className="bg-white  p-6 rounded-lg shadow">
+          <h3 className="text-lg font-semibold text-gray-900  mb-2">
             Total Metrics
           </h3>
           <p className="text-3xl font-bold text-forest">
@@ -182,8 +182,8 @@ export default function PerformanceDashboard({
           </p>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        <div className="bg-white  p-6 rounded-lg shadow">
+          <h3 className="text-lg font-semibold text-gray-900  mb-2">
             Average Load Time
           </h3>
           <p className="text-3xl font-bold text-blue-600">
@@ -191,8 +191,8 @@ export default function PerformanceDashboard({
           </p>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        <div className="bg-white  p-6 rounded-lg shadow">
+          <h3 className="text-lg font-semibold text-gray-900  mb-2">
             Monitoring Status
           </h3>
           <p className="text-3xl font-bold text-green-600">
@@ -203,8 +203,8 @@ export default function PerformanceDashboard({
 
       {/* Core Web Vitals */}
       {showCoreWebVitals && summary.coreWebVitals && (
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white  p-6 rounded-lg shadow">
+          <h3 className="text-xl font-semibold text-gray-900  mb-4">
             Core Web Vitals
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -213,7 +213,7 @@ export default function PerformanceDashboard({
                 <div className={`text-2xl font-bold ${getMetricColor(key, value as number)}`}>
                   {formatMetricValue(value as number, key === 'cls' ? 'score' : 'ms')}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase">
+                <div className="text-sm text-gray-600  uppercase">
                   {key}
                 </div>
               </div>
@@ -224,8 +224,8 @@ export default function PerformanceDashboard({
 
       {/* Bundle Analysis */}
       {showBundleAnalysis && summary.bundleAnalysis && (
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white  p-6 rounded-lg shadow">
+          <h3 className="text-xl font-semibold text-gray-900  mb-4">
             Bundle Analysis
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -233,25 +233,25 @@ export default function PerformanceDashboard({
               <div className="text-2xl font-bold text-blue-600">
                 {summary.bundleAnalysis.totalSize}KB
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Total Size</div>
+              <div className="text-sm text-gray-600  Size</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-green-600">
                 {summary.bundleAnalysis.chunks}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Chunks</div>
+              <div className="text-sm text-gray-600 
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-purple-600">
                 {summary.bundleAnalysis.jsSize}KB
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">JavaScript</div>
+              <div className="text-sm text-gray-600 
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-orange-600">
                 {summary.bundleAnalysis.cssSize}KB
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">CSS</div>
+              <div className="text-sm text-gray-600 
             </div>
           </div>
         </div>
@@ -259,41 +259,41 @@ export default function PerformanceDashboard({
 
       {/* Metrics Table */}
       {showMetrics && metrics.length > 0 && (
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white  p-6 rounded-lg shadow">
+          <h3 className="text-xl font-semibold text-gray-900  mb-4">
             Recent Metrics ({metrics.length})
           </h3>
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-              <thead className="bg-gray-50 dark:bg-gray-700">
+            <table className="min-w-full divide-y divide-gray-200 
+              <thead className="bg-gray-50 
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Value
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Time
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody className="bg-white  divide-y divide-gray-200 
                 {metrics.slice(-10).reverse().map((metric, index) => (
                   <tr key={index}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 
                       {metric.name}
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${getMetricColor(metric.name, metric.value)}`}>
                       {formatMetricValue(metric.value, metric.unit)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 
                       {metric.category}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 
                       {new Date(metric.timestamp).toLocaleTimeString()}
                     </td>
                   </tr>
@@ -306,8 +306,8 @@ export default function PerformanceDashboard({
 
       {/* No Metrics Message */}
       {showMetrics && metrics.length === 0 && (
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow text-center">
-          <p className="text-gray-500 dark:text-gray-400">
+        <div className="bg-white  p-6 rounded-lg shadow text-center">
+          <p className="text-gray-500 
             No performance metrics collected yet. Metrics will appear here as they are recorded.
           </p>
         </div>

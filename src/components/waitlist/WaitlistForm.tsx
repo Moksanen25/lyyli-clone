@@ -184,7 +184,7 @@ export default function WaitlistForm() {
     <div className="max-w-2xl mx-auto">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-forest dark:text-white mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-forest  mb-2">
             Business Email *
           </label>
           <input
@@ -194,8 +194,8 @@ export default function WaitlistForm() {
             required
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-              errors.email ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white  text-gray-900  ${
+              errors.email ? 'border-red-500' : 'border-grayLight'
             }`}
             placeholder="your.email@company.com"
           />
@@ -205,7 +205,7 @@ export default function WaitlistForm() {
         </div>
 
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-forest dark:text-white mb-2">
+          <label htmlFor="company" className="block text-sm font-medium text-forest  mb-2">
             Company Name *
           </label>
           <input
@@ -215,8 +215,8 @@ export default function WaitlistForm() {
             required
             value={formData.company}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-              errors.company ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white  text-gray-900  ${
+              errors.company ? 'border-red-500' : 'border-grayLight'
             }`}
             placeholder="Your Organization"
           />
@@ -226,7 +226,7 @@ export default function WaitlistForm() {
         </div>
 
                        <div>
-                 <label htmlFor="role" className="block text-sm font-medium text-forest dark:text-white mb-2">
+                 <label htmlFor="role" className="block text-sm font-medium text-forest  mb-2">
                    Your Role *
                  </label>
                  <input
@@ -236,8 +236,8 @@ export default function WaitlistForm() {
                    required
                    value={formData.role}
                    onChange={handleInputChange}
-                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-                     errors.role ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 hover:border-forest/50 shadow-sm bg-white  text-gray-900  ${
+                                           errors.role ? 'border-red-500' : 'border-grayLight' 
                    }`}
                    placeholder="e.g., Operations Manager, Communications Director"
                  />
@@ -247,7 +247,7 @@ export default function WaitlistForm() {
                </div>
 
                <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-forest dark:text-white mb-2">
+                                <label htmlFor="phone" className="block text-sm font-medium text-forest  mb-2">
                  Phone Number
                </label>
                  <div className="flex gap-3">
@@ -256,7 +256,7 @@ export default function WaitlistForm() {
                        name="countryCode"
                        value={formData.countryCode}
                        onChange={handleInputChange}
-                       className="appearance-none px-4 py-3 pr-10 border border-grayLight dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:border-forest/50 cursor-pointer shadow-sm"
+                       className="appearance-none px-4 py-3 pr-10 border border-grayLight  rounded-lg focus:ring-2 focus:ring-forest focus:border-transparent transition-all duration-200 bg-white  text-gray-900  hover:border-forest/50 cursor-pointer shadow-sm"
                      >
                        <option value="+358">🇫🇮 +358</option>
                        <option value="+46">🇸🇪 +46</option>
@@ -292,7 +292,7 @@ export default function WaitlistForm() {
                </div>
 
                           <div>
-                          <label htmlFor="organizationSize" className="block text-sm font-medium text-forest dark:text-white mb-2">
+                          <label htmlFor="organizationSize" className="block text-sm font-medium text-forest  mb-2">
                  Organization Size *
                </label>
            <div className="relative">

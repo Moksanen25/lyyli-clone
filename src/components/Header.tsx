@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { TranslationKeys } from "../lib/i18n";
 import ClientLocaleSwitcher from "./ClientLocaleSwitcher";
-import { ThemeToggle } from "./ThemeToggle";
-import { useTheme } from "../lib/theme";
 import Image from "next/image";
 
 interface HeaderProps {
@@ -15,7 +13,7 @@ interface HeaderProps {
 export default function Header({ locale, translations: t }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { resolvedTheme } = useTheme();
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,49 +32,58 @@ export default function Header({ locale, translations: t }: HeaderProps) {
     setIsMobileMenuOpen(false);
   };
 
-  // Dynamic classes based on theme
+  // Dropdown management
+  const openDropdown = (dropdownName: string) => {
+    setActiveDropdown(dropdownName);
+  };
+
+  const closeDropdown = (dropdownName: string) => {
+    // Add a small delay to allow moving mouse to dropdown content
+    setTimeout(() => {
+      setActiveDropdown((current) => current === dropdownName ? null : current);
+    }, 150);
+  };
+
+  const keepDropdownOpen = (dropdownName: string) => {
+    setActiveDropdown(dropdownName);
+  };
+
   const getHeaderClasses = () => {
-    if (resolvedTheme === 'dark') {
-      return isScrolled 
-        ? "bg-gray-900/95 backdrop-blur-md border border-gray-700/50 shadow-xl rounded-2xl" 
-        : "bg-gray-900/80 backdrop-blur-sm border border-gray-800/20 shadow-lg rounded-2xl";
-    } else {
-      return isScrolled 
-        ? "bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-xl rounded-2xl" 
-        : "bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg rounded-2xl";
-    }
+    return isScrolled 
+      ? "bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-xl rounded-2xl" 
+      : "bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg rounded-2xl";
   };
 
   const getTextColor = () => {
-    return resolvedTheme === 'dark' ? 'text-white' : 'text-forest';
+    return 'text-forest';
   };
 
   const getHoverTextColor = () => {
-    return resolvedTheme === 'dark' ? 'hover:text-white/80' : 'hover:text-forest/80';
+    return 'hover:text-forest/80';
   };
 
   const getDropdownBg = () => {
-    return resolvedTheme === 'dark' ? 'bg-gray-800' : 'bg-white';
+    return 'bg-white';
   };
 
   const getDropdownBorder = () => {
-    return resolvedTheme === 'dark' ? 'border-gray-700' : 'border-gray-200';
+    return 'border-gray-200';
   };
 
   const getHoverBg = () => {
-    return resolvedTheme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-gray-50';
+    return 'hover:bg-gray-50';
   };
 
   const getMobileBorder = () => {
-    return resolvedTheme === 'dark' ? 'border-gray-700' : 'border-gray-200';
+    return 'border-gray-200';
   };
 
   const getMobileHoverBg = () => {
-    return resolvedTheme === 'dark' ? 'hover:bg-gray-700/50' : 'hover:bg-gray-50';
+    return 'hover:bg-gray-50';
   };
 
   const getMobileTextColor = () => {
-    return resolvedTheme === 'dark' ? 'text-white/80' : 'text-gray-600';
+    return 'text-gray-600';
   };
 
   return (
@@ -111,14 +118,26 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {/* Features Dropdown */}
-              <div className="relative group">
-                <button className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}>
+              <div className="relative">
+                <button 
+                  className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}
+                  onMouseEnter={() => openDropdown('features')}
+                  onMouseLeave={() => closeDropdown('features')}
+                >
                   {t["nav.features"]}
-                  <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'features' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0`}>
+                <div 
+                  className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} transition-all duration-300 transform ${
+                    activeDropdown === 'features' 
+                      ? 'opacity-100 visible translate-y-0' 
+                      : 'opacity-0 invisible translate-y-2'
+                  }`}
+                  onMouseEnter={() => keepDropdownOpen('features')}
+                  onMouseLeave={() => closeDropdown('features')}
+                >
                   <div className="py-2">
                     <a
                       href={`/${locale}/features`}
@@ -145,14 +164,26 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </a>
 
               {/* About Us Dropdown */}
-              <div className="relative group">
-                <button className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}>
+              <div className="relative">
+                <button 
+                  className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}
+                  onMouseEnter={() => openDropdown('about')}
+                  onMouseLeave={() => closeDropdown('about')}
+                >
                   {locale === "fi" ? "Tietoja meistä" : "About"}
-                  <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0`}>
+                <div 
+                  className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} transition-all duration-300 transform ${
+                    activeDropdown === 'about' 
+                      ? 'opacity-100 visible translate-y-0' 
+                      : 'opacity-0 invisible translate-y-2'
+                  }`}
+                  onMouseEnter={() => keepDropdownOpen('about')}
+                  onMouseLeave={() => closeDropdown('about')}
+                >
                   <div className="py-2">
                     <a
                       href={`/${locale}/about`}
@@ -171,14 +202,26 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               </div>
 
               {/* Contact Dropdown */}
-              <div className="relative group">
-                <button className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}>
+              <div className="relative">
+                <button 
+                  className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}
+                  onMouseEnter={() => openDropdown('contact')}
+                  onMouseLeave={() => closeDropdown('contact')}
+                >
                   {t["nav.contact"]}
-                  <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'contact' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0`}>
+                <div 
+                  className={`absolute top-full left-0 mt-2 w-48 ${getDropdownBg()} rounded-xl shadow-xl border ${getDropdownBorder()} transition-all duration-300 transform ${
+                    activeDropdown === 'contact' 
+                      ? 'opacity-100 visible translate-y-0' 
+                      : 'opacity-0 invisible translate-y-2'
+                  }`}
+                  onMouseEnter={() => keepDropdownOpen('contact')}
+                  onMouseLeave={() => closeDropdown('contact')}
+                >
                   <div className="py-2">
                     <a
                       href={`/${locale}/contact`}
@@ -200,9 +243,6 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <div className="flex items-center gap-4 ml-4">
                 {/* Locale Switcher */}
                 <ClientLocaleSwitcher currentLocale={locale} />
-
-                {/* Theme Toggle */}
-                <ThemeToggle />
 
                 {/* CTA Button */}
                 <a
@@ -231,7 +271,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
             {/* Mobile Menu Button */}
             <button
-              className={`lg:hidden p-2 rounded-lg ${resolvedTheme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} transition-colors duration-200`}
+              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
               aria-label={isMobileMenuOpen ? "Close mobile navigation menu" : "Open mobile navigation menu"}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -239,7 +279,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               onClick={toggleMobileMenu}
             >
               <svg
-                className={`w-6 h-6 ${getTextColor()}`}
+                className="w-6 h-6 text-forest"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -284,7 +324,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             >
               {/* Features Section */}
               <div className="space-y-1">
-                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-mediumGray'} px-4 py-2`}>
+                <div className={`text-sm font-medium ${getTextColor()} px-4 py-2`}>
                   {t["nav.features"]}
                 </div>
                 <a
@@ -314,7 +354,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
               {/* About Section */}
               <div className="space-y-1">
-                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-mediumGray'} px-4 py-2`}>
+                <div className={`text-sm font-medium ${getTextColor()} px-4 py-2`}>
                   {locale === "fi" ? "Tietoja meistä" : "About"}
                 </div>
                 <a
@@ -335,7 +375,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
               {/* Contact Section */}
               <div className="space-y-1">
-                <div className={`text-sm font-medium ${resolvedTheme === 'dark' ? 'text-gray-400' : 'text-mediumGray'} px-4 py-2`}>
+                <div className={`text-sm font-medium ${getTextColor()} px-4 py-2`}>
                   {t["nav.contact"]}
                 </div>
                 <a

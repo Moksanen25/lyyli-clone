@@ -4,5 +4,5 @@
 - Prod-deploy vain kun tarkistuslista vihreä (SEO/metat, sitemap, analytiikka).
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

@@ -19,8 +19,8 @@ export default function ROICharts({ timeSavingsData, efficiencyData }: ROICharts
   return (
     <>
       {/* Efficiency Comparison Chart */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 mb-8">
-        <h4 className="text-lg font-semibold text-forest dark:text-white mb-4 font-sans">
+      <div className="bg-white  rounded-2xl p-6 shadow-lg  border border-gray-200  mb-8">
+        <h4 className="text-lg font-semibold text-forest  mb-4 font-sans">
           Time efficiency comparison
         </h4>
         <div className="h-64">
@@ -40,8 +40,8 @@ export default function ROICharts({ timeSavingsData, efficiencyData }: ROICharts
       </div>
 
       {/* Cumulative Savings Chart */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600">
-        <h4 className="text-lg font-semibold text-forest dark:text-white mb-4 font-sans">
+      <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+        <h4 className="text-lg font-semibold text-forest mb-4 font-sans">
           Cumulative savings over time
         </h4>
         <div className="h-64">

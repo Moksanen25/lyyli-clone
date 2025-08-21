@@ -4,5 +4,5 @@
 - Suorituskyky & a11y läpäisty; eventit lisätty (page_view, CTA, form_submit).
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

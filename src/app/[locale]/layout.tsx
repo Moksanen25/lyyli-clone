@@ -6,7 +6,7 @@ import ConsentBanner from "../../components/ConsentBanner";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import { getTranslations } from "../../lib/i18n";
 import { fontVars } from "../../lib/fonts";
-import { ClientThemeProvider } from "../../components/ClientThemeProvider";
+
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -126,41 +126,25 @@ export default async function LocaleLayout({
           href={`${protocol}://${host}/en`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#2F5D50" />
+
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="antialiased font-sans" suppressHydrationWarning={true}>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                var theme = localStorage.getItem('theme') || 'light';
-                if (theme === 'system') {
-                  theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                }
-                document.documentElement.classList.add(theme);
-              } catch (e) {
-                document.documentElement.classList.add('light');
-              }
-            `,
-          }}
-        />
-        <ClientThemeProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header locale={currentLocale} translations={t} />
-            <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />
-            <main className="flex-1">{children}</main>
-            <Footer
-              locale={currentLocale}
-              translations={t}
-              canonicalUrl={canonicalUrl}
-            />
-            <ConsentBanner locale={currentLocale} translations={t} />
-          </div>
-        </ClientThemeProvider>
+
+        <div className="flex flex-col min-h-screen">
+          <Header locale={currentLocale} translations={t} />
+          <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />
+          <main className="flex-1">{children}</main>
+          <Footer
+            locale={currentLocale}
+            translations={t}
+            canonicalUrl={canonicalUrl}
+          />
+          <ConsentBanner locale={currentLocale} translations={t} />
+        </div>
 
         {/* Schema.org structured data */}
         <script

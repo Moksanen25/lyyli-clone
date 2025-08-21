@@ -76,37 +76,7 @@
   --debug-turquoise: #A7D6D1;
 }
 
-/* Dark theme colors */
-.dark {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --bg-card: #1e293b;
-  --bg-overlay: rgba(15, 23, 42, 0.8);
-  
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-inverse: #0f172a;
-  
-  --border-primary: #334155;
-  --border-secondary: #475569;
-  --border-accent: #3b82f6;
-  
-  --accent-forest: #10b981;
-  --accent-turquoise: #06b6d4;
-  --accent-amber: #f59e0b;
-  
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-  
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error: #ef4444;
-  --info: #3b82f6;
-}
+
 
 /* Custom Slider Styling for ROI Calculator */
 .slider {
@@ -164,30 +134,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Dark mode slider styling */
-.dark .slider::-webkit-slider-track {
-  background: #475569;
-}
 
-.dark .slider::-webkit-slider-thumb {
-  background: #10b981;
-}
 
-.dark .slider::-webkit-slider-thumb:hover {
-  background: #059669;
-}
 
-.dark .slider::-moz-range-track {
-  background: #475569;
-}
-
-.dark .slider::-moz-range-thumb {
-  background: #10b981;
-}
-
-.dark .slider::-moz-range-thumb:hover {
-  background: #059669;
-}
 
 /* Animation keyframes */
 @keyframes float {
@@ -215,12 +164,8 @@ html {
 }
 
 /* Ensure light mode is the default */
-html:not(.dark) {
+html {
   color-scheme: light;
-}
-
-html.dark {
-  color-scheme: dark;
 }
 
 body {
@@ -323,14 +268,9 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--hero-text-color);
   }
 
-  /* Light mode overrides */
-  html:not(.dark) .hero-description {
+  /* Hero description color */
+  .hero-description {
     color: var(--forest);
-  }
-
-  /* Dark mode overrides */
-  .dark .hero-description {
-    color: white;
   }
 
 
@@ -351,7 +291,7 @@ h1, h2, h3, h4, h5, h6 {
   outline-offset: 2px;
 }
 
-/* Smooth transitions for theme switching */
+/* Smooth transitions */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

@@ -4,5 +4,5 @@
 - Kolmansien osapuolien skriptit vain sallituista lähteistä (CSP script-src).
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

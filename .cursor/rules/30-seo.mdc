@@ -5,5 +5,5 @@
 - Ei loremia; copy = arvoa kohderyhmälle (C-level / viestintäjohto).
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

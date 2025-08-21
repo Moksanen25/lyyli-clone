@@ -2,7 +2,7 @@ import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import FeaturesAccordionLayout from "@/components/features/FeaturesAccordionLayout";
-import LayoutToggle from "@/components/features/LayoutToggle";
+
 import {
   InteractiveCard,
   FeatureHighlightCard,

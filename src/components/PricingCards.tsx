@@ -171,21 +171,21 @@ export default function PricingCards() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl text-forest dark:text-white mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
             Simple, transparent pricing
           </h2>
-          <p className="text-xl text-mediumGray dark:text-white max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
             Choose the perfect plan for your organization. All plans include a 14-day free trial.
           </p>
         </div>
 
         {/* Billing Toggle */}
         <div className="flex justify-center items-center mb-12">
-          <div className="flex items-center bg-white dark:bg-gray-800 rounded-xl p-1 border border-gray-200 dark:border-gray-600">
+          <div className="flex items-center bg-white rounded-xl p-1 border border-gray-200">
             <button
               onClick={() => setBillingPeriod("monthly")}
               className={`px-6 py-2 rounded-lg font-medium transition-colors duration-200 ${
@@ -241,10 +241,10 @@ export default function PricingCards() {
 
               {/* Plan Card */}
               <motion.div 
-                className={`bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-900/50 border-2 transition-all duration-300 h-full cursor-pointer ${
+                className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full cursor-pointer ${
                   plan.highlight 
-                    ? 'border-forest/30 dark:border-forest/50 scale-105 shadow-xl dark:shadow-gray-900/70' 
-                    : 'border-gray-200 dark:border-gray-600 hover:border-forest/20 dark:hover:border-forest/40'
+                    ? 'border-forest/30 scale-105 shadow-xl'  
+                    : 'border-gray-200 hover:border-forest/20'
                 } ${
                   selectedPlan === plan.name ? 'ring-2 ring-forest/50' : ''
                 }`}
@@ -258,16 +258,16 @@ export default function PricingCards() {
                 {/* Plan Header */}
                 <div className="text-center mb-6">
                   <h3 className={`text-xl font-bold mb-2 font-sans ${
-                    plan.highlight ? 'text-forest dark:text-white' : 'text-forest dark:text-white'
+                    plan.highlight ? 'text-forest' : 'text-forest'
                   }`}>
                     {plan.name}
                   </h3>
                   <div className="mb-4">
-                    <span className="text-3xl font-bold text-forest dark:text-white font-sans">
+                    <span className="text-3xl font-bold text-forest  font-sans">
                       {getPrice(plan)}
                     </span>
                     {plan.name !== "Free" && plan.name !== "Enterprise" && (
-                      <span className="text-mediumGray dark:text-white font-sans">
+                      <span className="text-mediumGray  font-sans">
                         /{getPeriod(plan)}
                       </span>
                     )}
@@ -277,7 +277,7 @@ export default function PricingCards() {
                       Save €{getSavings(plan)} per year
                     </p>
                   )}
-                  <p className="text-sm text-mediumGray dark:text-white font-sans">
+                  <p className="text-sm text-mediumGray  font-sans">
                     {plan.description}
                   </p>
                 </div>
@@ -289,7 +289,7 @@ export default function PricingCards() {
                       <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-mediumGray dark:text-white font-sans">
+                      <span className="text-sm text-mediumGray  font-sans">
                         {feature}
                       </span>
                     </li>
@@ -319,11 +319,11 @@ export default function PricingCards() {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-forest dark:text-white mb-4 font-sans">
+          <div className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold text-forest  mb-4 font-sans">
               Need more information?
             </h3>
-            <p className="text-mediumGray dark:text-white font-sans leading-relaxed mb-6">
+            <p className="text-mediumGray  font-sans leading-relaxed mb-6">
               All plans include enterprise-grade security, GDPR compliance, and 99.9% uptime guarantee. 
               Need a custom solution? Our team is here to help.
             </p>
@@ -339,7 +339,7 @@ export default function PricingCards() {
               </a>
               <a 
                 href="/contact" 
-                className="inline-flex items-center px-6 py-3 border-2 border-forest text-forest dark:text-white font-semibold rounded-xl hover:bg-forest hover:text-white transition-all duration-300 font-sans"
+                className="inline-flex items-center px-6 py-3 border-2 border-forest text-forest  font-semibold rounded-xl hover:bg-forest hover:text-white transition-all duration-300 font-sans"
               >
                 Contact sales team
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

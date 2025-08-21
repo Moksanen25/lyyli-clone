@@ -85,13 +85,13 @@ export default function ContactAdminPage() {
 
         {submissions.length === 0 ? (
           <div className="bg-white rounded-lg shadow p-8 text-center">
-            <div className="text-mediumGray dark:text-gray-400 mb-4">
+            <div className="text-mediumGray mb-4">
               <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
               </svg>
             </div>
             <h3 className="text-lg font-medium text-gray-900 mb-2">No submissions yet</h3>
-            <p className="text-mediumGray dark:text-gray-500">Contact form submissions will appear here once people start using the form.</p>
+            <p className="text-mediumGray">Form submissions will appear here once people start using the form.</p>
           </div>
         ) : (
           <div className="bg-white shadow overflow-hidden sm:rounded-md">
@@ -110,7 +110,7 @@ export default function ContactAdminPage() {
                               {submission.organizationSize}
                             </span>
                           </div>
-                          <div className="mt-1 flex items-center space-x-4 text-sm text-mediumGray dark:text-gray-500">
+                          <div className="mt-1 flex items-center space-x-4 text-sm text-mediumGray">
                             <span className="flex items-center">
                               <svg className="flex-shrink-0 mr-1.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -137,7 +137,7 @@ export default function ContactAdminPage() {
                           )}
                         </div>
                         <div className="ml-4 flex-shrink-0">
-                          <div className="text-xs text-mediumGray dark:text-gray-500">
+                          <div className="text-xs text-mediumGray">
                             <div>Source: {submission.source}</div>
                             <div>{formatDate(submission.timestamp)}</div>
                           </div>

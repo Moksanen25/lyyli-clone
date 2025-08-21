@@ -14,10 +14,10 @@ export default function DemoVideo() {
       <section className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl text-forest dark:text-white mb-6 font-playfair font-normal leading-tight">
+            <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
               See Lyyli.ai in action
             </h2>
-            <p className="text-xl text-mediumGray dark:text-white max-w-3xl mx-auto font-sans leading-relaxed">
+            <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
               Watch how our AI-powered platform transforms communication workflows in real-time
             </p>
           </div>
@@ -25,7 +25,7 @@ export default function DemoVideo() {
           <div className="max-w-4xl mx-auto">
             {/* Video Preview Card */}
             <motion.div 
-              className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl dark:shadow-gray-900/50 overflow-hidden cursor-pointer group"
+              className="relative bg-white  rounded-2xl shadow-2xl  overflow-hidden cursor-pointer group"
               whileHover={{ 
                 scale: 1.02,
                 transition: { duration: 0.2 }
@@ -36,7 +36,7 @@ export default function DemoVideo() {
               <div className="relative aspect-video bg-gradient-to-br from-forest to-turquoise">
                 {/* Play Button Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-white/90 dark:bg-white/80 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-20 h-20 bg-white/90  rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-8 h-8 text-forest ml-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
@@ -70,17 +70,17 @@ export default function DemoVideo() {
 
               {/* Video Info */}
               <div className="p-8">
-                <h3 className="text-2xl font-semibold text-forest dark:text-white mb-4 font-sans">
+                <h3 className="text-2xl font-semibold text-forest  mb-4 font-sans">
                   Lyyli.ai platform demo
                 </h3>
-                <p className="text-mediumGray dark:text-white font-sans leading-relaxed mb-6">
+                <p className="text-mediumGray  font-sans leading-relaxed mb-6">
                   See how Lyyli.ai integrates with Slack and Microsoft Teams to streamline your 
                   communication workflow. Watch the AI generate content, manage approvals, and 
                   publish across multiple channels seamlessly.
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4 text-sm text-mediumGray dark:text-white">
+                  <div className="flex items-center space-x-4 text-sm text-mediumGray">
                     <span className="flex items-center">
                       <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -114,10 +114,10 @@ export default function DemoVideo() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-forest dark:text-white mb-2 font-sans">
+                <h4 className="text-lg font-semibold text-forest  mb-2 font-sans">
                   Content creation
                 </h4>
-                <p className="text-mediumGray dark:text-white text-sm font-sans">
+                <p className="text-mediumGray  text-sm font-sans">
                   See AI generate engaging content
                 </p>
               </div>
@@ -128,10 +128,10 @@ export default function DemoVideo() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-forest dark:text-white mb-2 font-sans">
+                <h4 className="text-lg font-semibold text-forest  mb-2 font-sans">
                   Team collaboration
                 </h4>
-                <p className="text-mediumGray dark:text-white text-sm font-sans">
+                <p className="text-mediumGray  text-sm font-sans">
                   Watch approval workflows in action
                 </p>
               </div>
@@ -142,10 +142,10 @@ export default function DemoVideo() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-forest dark:text-white mb-2 font-sans">
+                <h4 className="text-lg font-semibold text-forest  mb-2 font-sans">
                   Multi-channel publishing
                 </h4>
-                <p className="text-mediumGray dark:text-white text-sm font-sans">
+                <p className="text-mediumGray  text-sm font-sans">
                   See content go live everywhere
                 </p>
               </div>

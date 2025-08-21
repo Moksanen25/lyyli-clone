@@ -4,5 +4,5 @@
 - Data: vältä turhaa client-fetchiä; suosi RSC + revalidate.
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

@@ -170,16 +170,16 @@ export default function ContactForm({
   if (submitted) {
     return (
       <div className="max-w-2xl mx-auto">
-        <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg p-8 text-center">
-          <div className="w-16 h-16 bg-green-100 dark:bg-green-800 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-green-600 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="bg-green-50  border border-green-200  rounded-lg p-8 text-center">
+          <div className="w-16 h-16 bg-green-100  rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-xl font-playfair font-bold text-forest dark:text-white mb-2">
+          <h3 className="text-xl font-playfair font-bold text-forest  mb-2">
             {locale === "fi" ? "Kiitos yhteydenotostasi!" : "Thank you for your message!"}
           </h3>
-          <p className="text-mediumGray dark:text-white mb-4">
+          <p className="text-mediumGray  mb-4">
             {locale === "fi" 
               ? "Otamme yhteyttä pian ja varaamme sinulle kartoituskeskustelun."
               : "We'll be in touch soon and schedule a discovery call for you."
@@ -197,17 +197,17 @@ export default function ContactForm({
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-soft dark:shadow-gray-900/50 p-8">
+    <div className="bg-white  rounded-lg shadow-soft  p-8">
               <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest dark:text-white font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest  font-playfair font-bold leading-snug">
             {t["contact.form.title"]}
           </h2>
-          <p className="text-lg text-muted-foreground dark:text-white font-sans leading-relaxed">
+          <p className="text-lg text-muted-foreground  font-sans leading-relaxed">
             {t["contact.form.subtitle"]}
           </p>
         </div>
@@ -217,7 +217,7 @@ export default function ContactForm({
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-forest dark:text-white mb-2 font-sans"
+            className="block text-sm font-medium text-forest  mb-2 font-sans"
           >
             {t["contact.form.name.label"]}
           </label>
@@ -229,8 +229,8 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.name.placeholder"]}
             required
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-              errors.name ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white  text-gray-900  ${
+              errors.name ? 'border-red-500' : 'border-grayLight'
             }`}
           />
           {errors.name && (
@@ -242,7 +242,7 @@ export default function ContactForm({
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-forest dark:text-white mb-2 font-sans"
+            className="block text-sm font-medium text-forest  mb-2 font-sans"
           >
             {t["contact.form.email.label"]}
           </label>
@@ -254,8 +254,8 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.email.placeholder"]}
             required
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-              errors.email ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white  text-gray-900  ${
+              errors.email ? 'border-red-500' : 'border-grayLight'
             }`}
           />
           {errors.email && (
@@ -268,7 +268,7 @@ export default function ContactForm({
           <div>
                       <label
             htmlFor="company"
-            className="block text-sm font-medium text-forest dark:text-white mb-2 font-sans"
+            className="block text-sm font-medium text-forest  mb-2 font-sans"
           >
               {t["contact.form.company.label"]}
             </label>
@@ -280,8 +280,8 @@ export default function ContactForm({
               onChange={handleChange}
               placeholder={t["contact.form.company.placeholder"]}
               required
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-              errors.company ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white  text-gray-900  ${
+              errors.company ? 'border-red-500' : 'border-grayLight'
             }`}
             />
             {errors.company && (
@@ -291,7 +291,7 @@ export default function ContactForm({
           <div>
             <label
               htmlFor="role"
-              className="block text-sm font-medium text-forest dark:text-white mb-2 font-sans"
+              className="block text-sm font-medium text-forest  mb-2 font-sans"
             >
               {t["contact.form.role.label"]}
             </label>
@@ -303,8 +303,8 @@ export default function ContactForm({
               onChange={handleChange}
               placeholder={t["contact.form.role.placeholder"]}
               required
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-              errors.role ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white  text-gray-900  ${
+              errors.role ? 'border-red-500' : 'border-grayLight'
             }`}
             />
             {errors.role && (
@@ -317,7 +317,7 @@ export default function ContactForm({
         <div>
           <label
             htmlFor="organizationSize"
-            className="block text-sm font-medium text-forest dark:text-white mb-2 font-sans"
+            className="block text-sm font-medium text-forest  mb-2 font-sans"
           >
             {t["contact.form.teamsize.label"]}
           </label>
@@ -328,8 +328,8 @@ export default function ContactForm({
               value={formData.organizationSize}
               onChange={handleChange}
               required
-                          className={`appearance-none w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-              errors.organizationSize ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+                          className={`appearance-none w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors bg-white  text-gray-900  ${
+              errors.organizationSize ? 'border-red-500' : 'border-grayLight'
             }`}
             >
               <option value="">Select organization size</option>
@@ -355,7 +355,7 @@ export default function ContactForm({
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-forest dark:text-white mb-2 font-sans"
+            className="block text-sm font-medium text-forest  mb-2 font-sans"
           >
             {t["contact.form.message.label"]}
           </label>
@@ -366,8 +366,8 @@ export default function ContactForm({
             onChange={handleChange}
             placeholder={t["contact.form.message.placeholder"]}
             rows={4}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors resize-vertical bg-white dark:bg-gray-700 text-gray-900 dark:text-white ${
-              errors.message ? 'border-red-500' : 'border-grayLight dark:border-gray-600'
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-forest focus:border-forest transition-colors resize-vertical bg-white  text-gray-900  ${
+              errors.message ? 'border-red-500' : 'border-grayLight'
             }`}
           />
           {errors.message && (

@@ -5,5 +5,5 @@
 - Kuvat: next/image; lisää alt; width/height/aspect-ratio → ei CLS:ää.
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

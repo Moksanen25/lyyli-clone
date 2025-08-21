@@ -64,7 +64,7 @@ export default async function StatusPage({
             </h2>
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-green-600 dark:text-white font-medium">
+              <span className="text-green-600  font-medium">
                 Operational
               </span>
             </div>
@@ -215,7 +215,7 @@ export default async function StatusPage({
                 <h3 className="text-lg font-semibold text-gray-900">
                   {locale === "fi" ? "Scheduled Maintenance - API Services" : "Scheduled Maintenance - API Services"}
                 </h3>
-                <span className="text-sm text-green-600 dark:text-white font-medium">
+                <span className="text-sm text-green-600  font-medium">
                   Operational
                 </span>
               </div>
@@ -239,7 +239,7 @@ export default async function StatusPage({
                 <h3 className="text-lg font-semibold text-gray-900">
                   {locale === "fi" ? "Performance Optimization - Analytics" : "Performance Optimization - Analytics"}
                 </h3>
-                <span className="text-sm text-green-600 dark:text-white font-medium">
+                <span className="text-sm text-green-600  font-medium">
                   Operational
                 </span>
               </div>
@@ -280,7 +280,7 @@ export default async function StatusPage({
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 dark:text-white mb-2">99.9%</div>
+              <div className="text-3xl font-bold text-green-600  mb-2">99.9%</div>
               <div className="text-sm text-gray-600">
                 {locale === "fi" ? "Käytettävyys (30 päivää)" : "Uptime (30 days)"}
               </div>

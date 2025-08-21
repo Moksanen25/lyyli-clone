@@ -96,7 +96,7 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900 relative">
+    <section className="py-24 bg-white  relative">
       <div className="container mx-auto px-4">
         {/* Customer Logos */}
         <motion.div 
@@ -107,7 +107,7 @@ export default function TestimonialSection() {
           viewport={{ once: true }}
         >
           <div className="text-center mb-12">
-            <h3 className="text-lg font-medium text-mediumGray dark:text-white mb-4 font-sans">
+            <h3 className="text-lg font-medium text-mediumGray  mb-4 font-sans">
               Trusted by leading organizations
             </h3>
           </div>
@@ -122,8 +122,8 @@ export default function TestimonialSection() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="w-24 h-16 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-xl flex items-center justify-center border border-forest/20 dark:border-white/20">
-                  <span className="text-forest dark:text-white font-semibold text-lg font-sans">
+                <div className="w-24 h-16 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-xl flex items-center justify-center border border-forest/20">
+                  <span className="text-forest font-semibold text-lg font-sans">
                     {company.logo}
                   </span>
                 </div>
@@ -140,10 +140,10 @@ export default function TestimonialSection() {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <h2 className="text-4xl md:text-5xl text-forest dark:text-white mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
             What our customers say
           </h2>
-          <p className="text-xl text-mediumGray dark:text-white max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
             Real feedback from professional service organizations that have transformed their communication with Lyyli.ai
           </p>
         </motion.div>
@@ -157,7 +157,7 @@ export default function TestimonialSection() {
             {testimonials.map((testimonial) => (
               <motion.div 
                 key={testimonial.id}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 h-full"
+                className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  h-full"
                 whileHover={{ 
                   y: -8,
                   transition: { duration: 0.2 }
@@ -173,7 +173,7 @@ export default function TestimonialSection() {
                 </div>
 
                 {/* Testimonial Content */}
-                <blockquote className="text-mediumGray dark:text-white font-sans leading-relaxed mb-6 italic">
+                <blockquote className="text-mediumGray  font-sans leading-relaxed mb-6 italic">
                   "{testimonial.content}"
                 </blockquote>
 
@@ -182,10 +182,10 @@ export default function TestimonialSection() {
                   <div className="w-16 h-16 bg-gradient-to-br from-forest to-turquoise rounded-full flex items-center justify-center mx-auto mb-4 text-white font-semibold text-lg font-sans">
                     {testimonial.name.split(' ').map(n => n[0]).join('')}
                   </div>
-                  <h4 className="font-semibold text-forest dark:text-white font-sans">
+                  <h4 className="font-semibold text-forest  font-sans">
                     {testimonial.name}
                   </h4>
-                  <p className="text-sm text-mediumGray dark:text-white font-sans">
+                  <p className="text-sm text-mediumGray  font-sans">
                     {testimonial.role} at {testimonial.company}
                   </p>
                 </div>

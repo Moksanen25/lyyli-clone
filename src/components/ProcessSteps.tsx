@@ -85,13 +85,13 @@ export default function ProcessSteps() {
   };
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl text-forest dark:text-white mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
             How Lyyli.ai works
           </h2>
-          <p className="text-xl text-mediumGray dark:text-white max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
             A simple, intelligent process that transforms how professional service organizations communicate
           </p>
         </div>
@@ -118,7 +118,7 @@ export default function ProcessSteps() {
               >
                 {/* Step Card */}
                 <motion.div 
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300"
+                  className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300"
                   whileHover={{ 
                     y: -8,
                     scale: 1.02,
@@ -126,7 +126,7 @@ export default function ProcessSteps() {
                   }}
                 >
                   {/* Large Number */}
-                  <div className="text-8xl md:text-9xl font-bold text-forest/10 dark:text-white/10 mb-4 text-center font-sans">
+                  <div className="text-8xl md:text-9xl font-bold text-forest/10  mb-4 text-center font-sans">
                     {step.number}
                   </div>
                   
@@ -137,10 +137,10 @@ export default function ProcessSteps() {
                   
                   {/* Content */}
                   <div className="text-center">
-                    <h3 className="text-xl font-semibold text-forest dark:text-white mb-4 font-sans">
+                    <h3 className="text-xl font-semibold text-forest  mb-4 font-sans">
                       {step.title}
                     </h3>
-                    <p className="text-mediumGray dark:text-white font-sans leading-relaxed">
+                    <p className="text-mediumGray  font-sans leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -149,7 +149,7 @@ export default function ProcessSteps() {
                 {/* Connection Arrow (for mobile) */}
                 {index < steps.length - 1 && (
                   <div className="md:hidden flex justify-center mt-6">
-                    <div className="w-8 h-8 text-forest/30 dark:text-white/30">
+                    <div className="w-8 h-8 text-forest/30">
                       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                       </svg>

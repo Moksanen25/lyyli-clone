@@ -48,10 +48,10 @@ export default function ROIStats() {
     <section className="py-20 bg-gradient-to-br from-forest/5 to-turquoise/3">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl text-forest dark:text-white mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
             Proven results that speak for themselves
           </h2>
-          <p className="text-xl text-mediumGray dark:text-white max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
             See how Lyyli.ai transforms communication efficiency and delivers measurable business value
           </p>
         </div>
@@ -63,10 +63,10 @@ export default function ROIStats() {
           {stats.map((stat, index) => (
             <div 
               key={stat.label}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 hover:-translate-y-1"
+              className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 hover:-translate-y-1"
             >
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-forest dark:text-white mb-2 font-sans">
+                <div className="text-4xl md:text-5xl font-bold text-forest  mb-2 font-sans">
                   {inView ? (
                     <CountUp
                       start={0}
@@ -82,11 +82,11 @@ export default function ROIStats() {
                   {stat.suffix}
                   {stat.prefix}
                 </div>
-                <h3 className="text-xl font-semibold text-forest dark:text-white mb-2 font-sans">
+                <h3 className="text-xl font-semibold text-forest  mb-2 font-sans">
                   {stat.label}
                 </h3>
                 {stat.description && (
-                  <p className="text-mediumGray dark:text-white text-sm font-sans leading-relaxed">
+                  <p className="text-mediumGray  text-sm font-sans leading-relaxed">
                     {stat.description}
                   </p>
                 )}
@@ -97,11 +97,11 @@ export default function ROIStats() {
 
         {/* Additional context */}
         <div className="mt-16 text-center">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-forest dark:text-white mb-4 font-playfair">
+          <div className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold text-forest  mb-4 font-playfair">
               Based on real customer data
             </h3>
-            <p className="text-mediumGray dark:text-white font-sans leading-relaxed">
+            <p className="text-mediumGray  font-sans leading-relaxed">
               These statistics are compiled from actual usage data across our customer base, 
               representing the average improvements in communication efficiency, time savings, 
               and return on investment that organizations experience after implementing Lyyli.ai.
