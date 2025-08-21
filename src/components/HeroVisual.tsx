@@ -24,7 +24,7 @@ export default function HeroVisual() {
       {/* C. Bokeh blobs */}
       <div className="absolute inset-0">
         <span 
-          className="absolute rounded-full"
+          className="hero-blob absolute rounded-full"
           style={{
             top: '-10%',
             left: '-8%',
@@ -33,13 +33,11 @@ export default function HeroVisual() {
             background: '#A7D6D1',
             opacity: 0.16,
             filter: 'blur(36px)',
-            mixBlendMode: 'soft-light',
-            animation: 'hero-drift 55s ease-in-out infinite',
-            willChange: 'transform'
+            mixBlendMode: 'soft-light'
           }}
         />
         <span 
-          className="absolute rounded-full"
+          className="hero-blob absolute rounded-full"
           style={{
             top: '8%',
             right: '-12%',
@@ -48,13 +46,11 @@ export default function HeroVisual() {
             background: '#A7D6D1',
             opacity: 0.16,
             filter: 'blur(36px)',
-            mixBlendMode: 'soft-light',
-            animation: 'hero-drift 55s ease-in-out infinite',
-            willChange: 'transform'
+            mixBlendMode: 'soft-light'
           }}
         />
         <span 
-          className="absolute rounded-full"
+          className="hero-blob absolute rounded-full"
           style={{
             bottom: '-14%',
             right: '-10%',
@@ -63,13 +59,11 @@ export default function HeroVisual() {
             background: '#A7D6D1',
             opacity: 0.16,
             filter: 'blur(36px)',
-            mixBlendMode: 'soft-light',
-            animation: 'hero-drift 55s ease-in-out infinite',
-            willChange: 'transform'
+            mixBlendMode: 'soft-light'
           }}
         />
         <span 
-          className="absolute rounded-full"
+          className="hero-blob absolute rounded-full"
           style={{
             top: '34%',
             left: '-14%',
@@ -78,13 +72,11 @@ export default function HeroVisual() {
             background: '#A7D6D1',
             opacity: 0.16,
             filter: 'blur(36px)',
-            mixBlendMode: 'soft-light',
-            animation: 'hero-drift 55s ease-in-out infinite',
-            willChange: 'transform'
+            mixBlendMode: 'soft-light'
           }}
         />
         <span 
-          className="absolute rounded-full"
+          className="hero-blob absolute rounded-full"
           style={{
             bottom: '18%',
             left: '-12%',
@@ -93,13 +85,11 @@ export default function HeroVisual() {
             background: '#A7D6D1',
             opacity: 0.16,
             filter: 'blur(36px)',
-            mixBlendMode: 'soft-light',
-            animation: 'hero-drift 55s ease-in-out infinite',
-            willChange: 'transform'
+            mixBlendMode: 'soft-light'
           }}
         />
         <span 
-          className="absolute rounded-full"
+          className="hero-blob absolute rounded-full"
           style={{
             top: '22%',
             right: '-6%',
@@ -108,9 +98,7 @@ export default function HeroVisual() {
             background: '#2F5D50',
             opacity: 0.12,
             filter: 'blur(36px)',
-            mixBlendMode: 'soft-light',
-            animation: 'hero-drift 55s ease-in-out infinite',
-            willChange: 'transform'
+            mixBlendMode: 'soft-light'
           }}
         />
       </div>
@@ -122,21 +110,6 @@ export default function HeroVisual() {
           background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, #FFFFFF 100%)'
         }}
       />
-
-      {/* CSS for animations */}
-      <style jsx>{`
-        @keyframes hero-drift {
-          0%   { transform: translate3d(0,0,0) scale(1); }
-          50%  { transform: translate3d(2vw, -1.6vh, 0) scale(1.05); }
-          100% { transform: translate3d(0,0,0) scale(1); }
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-          .absolute.rounded-full {
-            animation: none !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }
