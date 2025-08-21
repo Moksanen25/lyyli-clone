@@ -55,7 +55,7 @@ const steps: ProcessStep[] = [
 
 export default function ProcessSteps() {
   const [ref, inView] = useInView({
-    threshold: 0.2,
+    threshold: 0.1,
     triggerOnce: true
   });
 
@@ -64,7 +64,7 @@ export default function ProcessSteps() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.2
       }
     }
   };
@@ -72,15 +72,13 @@ export default function ProcessSteps() {
   const stepVariants = {
     hidden: { 
       opacity: 0, 
-      y: 50,
-      scale: 0.9
+      y: 30
     },
     visible: { 
       opacity: 1, 
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: "easeOut" as const
       }
     }

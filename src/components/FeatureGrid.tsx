@@ -102,7 +102,7 @@ const categoryColors = {
 
 export default function FeatureGrid() {
   const [ref, inView] = useInView({
-    threshold: 0.1,
+    threshold: 0.05,
     triggerOnce: true
   });
 
@@ -119,15 +119,13 @@ export default function FeatureGrid() {
   const cardVariants = {
     hidden: { 
       opacity: 0, 
-      y: 30,
-      scale: 0.95
+      y: 20
     },
     visible: { 
       opacity: 1, 
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: "easeOut" as const
       }
     }

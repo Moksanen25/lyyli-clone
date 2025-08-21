@@ -4,12 +4,16 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-// Dynamic import for the entire ROI Calculator to avoid SSR issues with Recharts
+// Dynamic import for the charts to avoid SSR issues with Recharts
 const DynamicCharts = dynamic(() => import("./ROICharts"), { 
   ssr: false,
   loading: () => (
-    <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center">
-      <div className="animate-pulse text-mediumGray dark:text-white">Loading charts...</div>
+    <div className="space-y-8">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600">
+        <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center">
+          <div className="animate-pulse text-mediumGray dark:text-white">Loading charts...</div>
+        </div>
+      </div>
     </div>
   )
 });

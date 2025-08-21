@@ -349,48 +349,6 @@ html:not(.dark) .hero-description {
   outline-offset: 2px;
 }
 
-/* Light mode section backgrounds - Force override dark mode classes */
-html:not(.dark) section.bg-white,
-html:not(.dark) .bg-white {
-  background-color: #ffffff;
-}
-
-html:not(.dark) section.bg-gray-50,
-html:not(.dark) .bg-gray-50 {
-  background-color: #f8fafc;
-}
-
-html:not(.dark) section.bg-gradient-to-br,
-html:not(.dark) .bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #f8fafc, #ffffff);
-}
-
-/* Force light mode for all components */
-html:not(.dark) *[class*="dark:bg-gray-800"] {
-  background-color: #ffffff;
-}
-
-html:not(.dark) *[class*="dark:bg-gray-900"] {
-  background-color: #ffffff;
-}
-
-html:not(.dark) *[class*="dark:bg-gray-700"] {
-  background-color: #ffffff;
-}
-
-/* Force light mode for specific components */
-html:not(.dark) .bg-white.dark\:bg-gray-800 {
-  background-color: #ffffff;
-}
-
-html:not(.dark) .bg-white.dark\:bg-gray-900 {
-  background-color: #ffffff;
-}
-
-html:not(.dark) .bg-gradient-to-br.from-forest\/5.to-turquoise\/3 {
-  background: linear-gradient(to bottom right, rgba(47, 93, 80, 0.05), rgba(167, 214, 209, 0.03));
-}
-
 /* Smooth transitions for theme switching */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
