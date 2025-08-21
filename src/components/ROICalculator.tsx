@@ -9,9 +9,9 @@ const DynamicCharts = dynamic(() => import("./ROICharts"), {
   ssr: false,
   loading: () => (
     <div className="space-y-8">
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600">
-        <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center">
-          <div className="animate-pulse text-mediumGray dark:text-white">Loading charts...</div>
+      <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+        <div className="h-64 bg-gray-100 rounded-xl flex items-center justify-center">
+          <div className="animate-pulse text-mediumGray">Loading charts...</div>
         </div>
       </div>
     </div>
@@ -73,13 +73,13 @@ export default function ROICalculator() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl text-forest dark:text-white mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
             Calculate your ROI
           </h2>
-          <p className="text-xl text-mediumGray dark:text-white max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
             See exactly how much time and money Lyyli.ai can save your organization
           </p>
         </div>
@@ -88,19 +88,19 @@ export default function ROICalculator() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Calculator Inputs */}
             <motion.div 
-              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600"
+              className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold text-forest dark:text-white mb-6 font-sans">
+              <h3 className="text-2xl font-semibold text-forest mb-6 font-sans">
                 Your organization details
               </h3>
 
               {/* Team Size Input */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-forest dark:text-white mb-2 font-sans">
+                <label className="block text-sm font-medium text-forest mb-2 font-sans">
                   Team size
                 </label>
                 <div className="relative">
@@ -110,9 +110,9 @@ export default function ROICalculator() {
                     max="100"
                     value={teamSize}
                     onChange={(e) => setTeamSize(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                   />
-                  <div className="flex justify-between text-xs text-mediumGray dark:text-white mt-1">
+                  <div className="flex justify-between text-xs text-mediumGray mt-1">
                     <span>1</span>
                     <span>25</span>
                     <span>50</span>
@@ -121,7 +121,7 @@ export default function ROICalculator() {
                   </div>
                 </div>
                 <div className="text-center mt-2">
-                  <span className="text-2xl font-bold text-forest dark:text-white font-sans">
+                  <span className="text-2xl font-bold text-forest font-sans">
                     {teamSize} {teamSize === 1 ? 'person' : 'people'}
                   </span>
                 </div>
@@ -129,7 +129,7 @@ export default function ROICalculator() {
 
               {/* Current Time Input */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-forest dark:text-white mb-2 font-sans">
+                <label className="block text-sm font-medium text-forest mb-2 font-sans">
                   Current time spent on communication (hours per week)
                 </label>
                 <div className="relative">
@@ -139,9 +139,9 @@ export default function ROICalculator() {
                     max="20"
                     value={currentTime}
                     onChange={(e) => setCurrentTime(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                   />
-                  <div className="flex justify-between text-xs text-mediumGray dark:text-white mt-1">
+                  <div className="flex justify-between text-xs text-mediumGray mt-1">
                     <span>1h</span>
                     <span>5h</span>
                     <span>10h</span>
@@ -150,7 +150,7 @@ export default function ROICalculator() {
                   </div>
                 </div>
                 <div className="text-center mt-2">
-                  <span className="text-2xl font-bold text-forest dark:text-white font-sans">
+                  <span className="text-2xl font-bold text-forest font-sans">
                     {currentTime} hours/week
                   </span>
                 </div>
@@ -158,23 +158,23 @@ export default function ROICalculator() {
 
               {/* Results Summary */}
               <div className="bg-gradient-to-br from-forest/20 to-turquoise/20 rounded-xl p-6 mt-8 border border-forest/30">
-                <h4 className="text-lg font-semibold text-forest dark:text-white mb-4 font-sans">
+                <h4 className="text-lg font-semibold text-forest mb-4 font-sans">
                   Your potential savings
                 </h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-forest dark:text-white font-sans">
+                    <div className="text-2xl font-bold text-forest font-sans">
                       {results.timeSaved}h
                     </div>
-                    <div className="text-sm text-forest dark:text-white font-sans">
+                    <div className="text-sm text-forest font-sans">
                       Time saved/week
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-forest dark:text-white font-sans">
+                    <div className="text-2xl font-bold text-forest font-sans">
                       {results.efficiencyGain}%
                     </div>
-                    <div className="text-sm text-forest dark:text-white font-sans">
+                    <div className="text-sm text-forest font-sans">
                       Efficiency gain
                     </div>
                   </div>
@@ -192,20 +192,20 @@ export default function ROICalculator() {
             >
               {/* Key Metrics */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 text-center">
-                  <div className="text-3xl font-bold text-forest dark:text-white mb-2 font-sans">
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 text-center">
+                  <div className="text-3xl font-bold text-forest mb-2 font-sans">
                     €{results.monthlySavings.toLocaleString()}
                   </div>
-                  <div className="text-mediumGray dark:text-white font-sans">
+                  <div className="text-mediumGray font-sans">
                     Monthly savings
                   </div>
                 </div>
                 
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 text-center">
-                  <div className="text-3xl font-bold text-forest dark:text-white mb-2 font-sans">
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 text-center">
+                  <div className="text-3xl font-bold text-forest mb-2 font-sans">
                     €{results.yearlySavings.toLocaleString()}
                   </div>
-                  <div className="text-mediumGray dark:text-white font-sans">
+                  <div className="text-mediumGray font-sans">
                     Yearly savings
                   </div>
                 </div>
