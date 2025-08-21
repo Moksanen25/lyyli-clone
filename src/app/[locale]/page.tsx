@@ -33,7 +33,7 @@ export default async function Home({ params }: HomeProps) {
       {/* Hero Section */}
       <div className="relative z-10 pt-32">
         <section 
-          className="container mx-auto px-4 py-20 relative"
+          className="container mx-auto px-4 py-20 relative overflow-hidden"
           aria-label="Hero"
         >
           {/* Animated Hero Visual */}
