@@ -64,8 +64,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     
     // Save to localStorage
     localStorage.setItem('theme', theme);
-    
-    console.log('Theme applied:', finalTheme, 'to element:', root.className);
   }, [theme]);
 
   const resetToLight = () => {
