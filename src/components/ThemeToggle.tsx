@@ -8,15 +8,10 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    console.log('ThemeToggle: Setting mounted to true');
     setMounted(true);
   }, []);
 
-  console.log('ThemeToggle: Rendering with theme:', theme, 'resolvedTheme:', resolvedTheme, 'mounted:', mounted);
-
-  // Show a simpler loading state
   if (!mounted) {
-    console.log('ThemeToggle: Not mounted, showing loading state');
     return (
       <button className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
         <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -27,13 +22,9 @@ export function ThemeToggle() {
   }
 
   const toggleTheme = () => {
-    console.log('ThemeToggle: Toggle clicked, current resolvedTheme:', resolvedTheme);
     const newTheme = resolvedTheme === 'light' ? 'dark' : 'light';
-    console.log('ThemeToggle: Setting new theme to:', newTheme);
     setTheme(newTheme);
   };
-
-  console.log('ThemeToggle: About to render button with resolvedTheme:', resolvedTheme);
 
   return (
     <button

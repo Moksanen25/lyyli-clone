@@ -30,43 +30,40 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
 
+  // Apply theme immediately on mount
   useEffect(() => {
-    console.log('ThemeProvider: Setting mounted to true');
     setMounted(true);
+    
+    // Apply light theme immediately to prevent flash
+    if (typeof window !== 'undefined') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+    
     // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem('theme') as Theme;
-    console.log('ThemeProvider: Saved theme from localStorage:', savedTheme);
     if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
-      console.log('ThemeProvider: Setting theme to saved theme:', savedTheme);
       setTheme(savedTheme);
     } else {
       // Force light mode as default
-      console.log('ThemeProvider: No saved theme, forcing light mode');
       setTheme('light');
       localStorage.setItem('theme', 'light');
     }
   }, []);
 
   useEffect(() => {
-    console.log('ThemeProvider: Theme effect triggered, theme:', theme, 'mounted:', mounted);
-    if (!mounted) {
-      console.log('ThemeProvider: Not mounted yet, skipping theme application');
-      return;
-    }
+    if (!mounted) return;
     
     const root = window.document.documentElement;
-    console.log('ThemeProvider: Applying theme to root element:', theme);
     
     // Remove existing theme classes
     root.classList.remove('light', 'dark');
     
     if (theme === 'system') {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      console.log('ThemeProvider: System theme detected:', systemTheme);
       setResolvedTheme(systemTheme);
       root.classList.add(systemTheme);
     } else {
-      console.log('ThemeProvider: Setting resolved theme to:', theme);
       setResolvedTheme(theme);
       root.classList.add(theme);
     }
@@ -76,11 +73,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   }, [theme, mounted]);
 
   useEffect(() => {
-    console.log('ThemeProvider: System theme change listener effect, theme:', theme, 'mounted:', mounted);
-    if (!mounted) {
-      console.log('ThemeProvider: Not mounted yet, skipping system theme listener');
-      return;
-    }
+    if (!mounted) return;
     
     // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -88,7 +81,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     const handleChange = () => {
       if (theme === 'system') {
         const systemTheme = mediaQuery.matches ? 'dark' : 'light';
-        console.log('ThemeProvider: System theme changed to:', systemTheme);
         setResolvedTheme(systemTheme);
         document.documentElement.classList.remove('light', 'dark');
         document.documentElement.classList.add(systemTheme);
@@ -100,12 +92,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   }, [theme, mounted]);
 
   const resetToLight = () => {
-    console.log('ThemeProvider: Resetting to light theme');
     setTheme('light');
     localStorage.setItem('theme', 'light');
   };
-
-  console.log('ThemeProvider: Rendering with theme:', theme, 'resolvedTheme:', resolvedTheme, 'mounted:', mounted);
 
   const value = {
     theme,
