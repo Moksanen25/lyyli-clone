@@ -123,20 +123,22 @@ export default function HeroVisual() {
         }}
       />
 
-      {/* CSS Animations */}
-      <style jsx>{`
-        @keyframes hero-drift {
-          0%   { transform: translate3d(0,0,0) scale(1); }
-          50%  { transform: translate3d(2vw, -1.6vh, 0) scale(1.05); }
-          100% { transform: translate3d(0,0,0) scale(1); }
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-          [style*="animation: hero-drift"] {
-            animation: none !important;
+      {/* CSS Animations - using a more reliable approach */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes hero-drift {
+            0%   { transform: translate3d(0,0,0) scale(1); }
+            50%  { transform: translate3d(2vw, -1.6vh, 0) scale(1.05); }
+            100% { transform: translate3d(0,0,0) scale(1); }
           }
-        }
-      `}</style>
+          
+          @media (prefers-reduced-motion: reduce) {
+            [style*="animation: hero-drift"] {
+              animation: none !important;
+            }
+          }
+        `
+      }} />
     </div>
   );
 }
