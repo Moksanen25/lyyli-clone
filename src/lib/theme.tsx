@@ -32,11 +32,18 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   // Initialize theme from localStorage
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') return;
+    
+    console.log('ThemeProvider: Client-side effect running, setting mounted to true');
     setMounted(true);
     
     // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem('theme') as Theme;
+    console.log('ThemeProvider: Saved theme from localStorage:', savedTheme);
+    
     if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
+      console.log('ThemeProvider: Setting theme to saved theme:', savedTheme);
       setTheme(savedTheme);
       // Set resolved theme based on current state
       if (savedTheme === 'system') {
@@ -47,6 +54,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       }
     } else {
       // Default to light mode
+      console.log('ThemeProvider: No saved theme, defaulting to light');
       setTheme('light');
       setResolvedTheme('light');
       localStorage.setItem('theme', 'light');
@@ -72,6 +80,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     
     // Save theme preference
     localStorage.setItem('theme', theme);
+    
+    // Force immediate application
+    console.log('Theme applied:', theme, 'to element:', root.className);
   }, [theme, mounted]);
 
   useEffect(() => {
