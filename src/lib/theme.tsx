@@ -29,66 +29,51 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>('light');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
-  // Simple theme initialization
+  // Initialize theme on mount
   useEffect(() => {
-    // Only run on client side
-    if (typeof window === 'undefined') return;
-    
     // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
       setTheme(savedTheme);
-      if (savedTheme === 'system') {
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        setResolvedTheme(systemTheme);
-      } else {
-        setResolvedTheme(savedTheme);
-      }
     } else {
-      // Default to light mode
       setTheme('light');
-      setResolvedTheme('light');
       localStorage.setItem('theme', 'light');
     }
   }, []);
 
-  // Apply theme to HTML element
+  // Apply theme to HTML element whenever theme changes
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
-    const root = window.document.documentElement;
+    const root = document.documentElement;
+    
+    // Remove existing theme classes
     root.classList.remove('light', 'dark');
     
+    let finalTheme: 'light' | 'dark';
+    
     if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      setResolvedTheme(systemTheme);
-      root.classList.add(systemTheme);
+      finalTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     } else {
-      setResolvedTheme(theme);
-      root.classList.add(theme);
+      finalTheme = theme;
     }
     
-    // Save theme preference
+    // Apply the theme class
+    root.classList.add(finalTheme);
+    setResolvedTheme(finalTheme);
+    
+    // Save to localStorage
     localStorage.setItem('theme', theme);
     
-    // Debug: Log what's happening
-    console.log('Theme effect running:', { theme, resolvedTheme, elementClasses: root.className });
+    console.log('Theme applied:', finalTheme, 'to element:', root.className);
   }, [theme]);
 
   const resetToLight = () => {
     setTheme('light');
-    localStorage.setItem('theme', 'light');
-  };
-
-  const value = {
-    theme,
-    setTheme,
-    resolvedTheme,
-    resetToLight,
   };
 
   return (
-    <ThemeContext.Provider value={value}>
+    <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme, resetToLight }}>
       {children}
     </ThemeContext.Provider>
   );
