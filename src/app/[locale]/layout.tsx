@@ -142,8 +142,10 @@ export default async function LocaleLayout({
                   if (theme === 'system') {
                     theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                   }
+                  document.documentElement.classList.remove('light', 'dark');
                   document.documentElement.classList.add(theme);
                 } catch (e) {
+                  document.documentElement.classList.remove('light', 'dark');
                   document.documentElement.classList.add('light');
                 }
               })()

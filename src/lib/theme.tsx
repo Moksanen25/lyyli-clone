@@ -30,23 +30,25 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
 
-  // Apply theme immediately on mount
+  // Initialize theme from localStorage
   useEffect(() => {
     setMounted(true);
-    
-    // Apply light theme immediately to prevent flash
-    if (typeof window !== 'undefined') {
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
-    }
     
     // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
       setTheme(savedTheme);
+      // Set resolved theme based on current state
+      if (savedTheme === 'system') {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        setResolvedTheme(systemTheme);
+      } else {
+        setResolvedTheme(savedTheme);
+      }
     } else {
-      // Force light mode as default
+      // Default to light mode
       setTheme('light');
+      setResolvedTheme('light');
       localStorage.setItem('theme', 'light');
     }
   }, []);
@@ -56,15 +58,14 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     
     const root = window.document.documentElement;
     
-    // Remove existing theme classes
-    root.classList.remove('light', 'dark');
-    
     if (theme === 'system') {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       setResolvedTheme(systemTheme);
+      root.classList.remove('light', 'dark');
       root.classList.add(systemTheme);
     } else {
       setResolvedTheme(theme);
+      root.classList.remove('light', 'dark');
       root.classList.add(theme);
     }
     
