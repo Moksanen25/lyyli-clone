@@ -17,9 +17,9 @@ export default function HeroVisual() {
         <div 
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(47, 93, 80, 0.08) 0%, rgba(47, 93, 80, 0.02) 70%)',
-            border: '1px solid rgba(47, 93, 80, 0.12)',
-            boxShadow: '0 0 20px rgba(47, 93, 80, 0.1)'
+            background: 'radial-gradient(circle, rgba(47, 93, 80, 0.12) 0%, rgba(47, 93, 80, 0.04) 70%)',
+            border: '1px solid rgba(47, 93, 80, 0.18)',
+            boxShadow: '0 0 20px rgba(47, 93, 80, 0.15)'
           }}
         />
 
@@ -30,7 +30,7 @@ export default function HeroVisual() {
             <div 
               className="absolute top-8 left-8 w-32 h-0.5"
               style={{
-                background: 'linear-gradient(to right, transparent, rgba(34, 197, 94, 0.3), transparent)',
+                background: 'linear-gradient(to right, transparent, rgba(34, 197, 94, 0.5), transparent)',
                 transform: 'rotate(-45deg)',
                 transformOrigin: '0 0',
                 animation: 'dataFlow1 8s ease-in-out infinite'
@@ -39,7 +39,7 @@ export default function HeroVisual() {
             <div 
               className="absolute top-12 left-12 w-2 h-2 rounded-full"
               style={{
-                background: 'rgba(34, 197, 94, 0.4)',
+                background: 'rgba(34, 197, 94, 0.6)',
                 animation: 'dataPulse1 3s ease-in-out infinite 0.5s'
               }}
             />
@@ -50,7 +50,7 @@ export default function HeroVisual() {
             <div 
               className="absolute top-8 right-8 w-32 h-0.5"
               style={{
-                background: 'linear-gradient(to left, transparent, rgba(34, 197, 94, 0.3), transparent)',
+                background: 'linear-gradient(to left, transparent, rgba(34, 197, 94, 0.5), transparent)',
                 transform: 'rotate(45deg)',
                 transformOrigin: '100% 0',
                 animation: 'dataFlow2 8s ease-in-out infinite 1s'
@@ -59,7 +59,7 @@ export default function HeroVisual() {
             <div 
               className="absolute top-12 right-12 w-2 h-2 rounded-full"
               style={{
-                background: 'rgba(34, 197, 94, 0.4)',
+                background: 'rgba(34, 197, 94, 0.6)',
                 animation: 'dataPulse2 3s ease-in-out infinite 1.5s'
               }}
             />
@@ -70,7 +70,7 @@ export default function HeroVisual() {
             <div 
               className="absolute bottom-8 left-8 w-32 h-0.5"
               style={{
-                background: 'linear-gradient(to right, transparent, rgba(34, 197, 94, 0.3), transparent)',
+                background: 'linear-gradient(to right, transparent, rgba(34, 197, 94, 0.5), transparent)',
                 transform: 'rotate(45deg)',
                 transformOrigin: '0 100%',
                 animation: 'dataFlow3 8s ease-in-out infinite 2s'
@@ -79,7 +79,7 @@ export default function HeroVisual() {
             <div 
               className="absolute bottom-12 left-12 w-2 h-2 rounded-full"
               style={{
-                background: 'rgba(34, 197, 94, 0.4)',
+                background: 'rgba(34, 197, 94, 0.6)',
                 animation: 'dataPulse3 3s ease-in-out infinite 2.5s'
               }}
             />
@@ -90,7 +90,7 @@ export default function HeroVisual() {
             <div 
               className="absolute bottom-8 right-8 w-32 h-0.5"
               style={{
-                background: 'linear-gradient(to left, transparent, rgba(34, 197, 94, 0.3), transparent)',
+                background: 'linear-gradient(to left, transparent, rgba(34, 197, 94, 0.5), transparent)',
                 transform: 'rotate(-45deg)',
                 transformOrigin: '100% 100%',
                 animation: 'dataFlow4 8s ease-in-out infinite 3s'
@@ -99,7 +99,7 @@ export default function HeroVisual() {
             <div 
               className="absolute bottom-12 right-12 w-2 h-2 rounded-full"
               style={{
-                background: 'rgba(34, 197, 94, 0.4)',
+                background: 'rgba(34, 197, 94, 0.6)',
                 animation: 'dataPulse4 3s ease-in-out infinite 3.5s'
               }}
             />
@@ -111,7 +111,7 @@ export default function HeroVisual() {
             <div 
               className="absolute w-0.5 h-16"
               style={{
-                background: 'linear-gradient(to top, transparent, rgba(34, 197, 94, 0.2), transparent)',
+                background: 'linear-gradient(to top, transparent, rgba(34, 197, 94, 0.4), transparent)',
                 top: '-8rem',
                 left: '50%',
                 transform: 'translateX(-50%)',
@@ -123,7 +123,7 @@ export default function HeroVisual() {
             <div 
               className="absolute w-16 h-0.5"
               style={{
-                background: 'linear-gradient(to right, transparent, rgba(34, 197, 94, 0.2), transparent)',
+                background: 'linear-gradient(to right, transparent, rgba(34, 197, 94, 0.4), transparent)',
                 top: '50%',
                 left: '2rem',
                 transform: 'translateY(-50%)',
@@ -135,7 +135,7 @@ export default function HeroVisual() {
             <div 
               className="absolute w-0.5 h-16"
               style={{
-                background: 'linear-gradient(to bottom, transparent, rgba(34, 197, 94, 0.2), transparent)',
+                background: 'linear-gradient(to bottom, transparent, rgba(34, 197, 94, 0.4), transparent)',
                 bottom: '-8rem',
                 left: '50%',
                 transform: 'translateX(-50%)',
@@ -147,7 +147,7 @@ export default function HeroVisual() {
             <div 
               className="absolute w-16 h-0.5"
               style={{
-                background: 'linear-gradient(to left, transparent, rgba(34, 197, 94, 0.2), transparent)',
+                background: 'linear-gradient(to left, transparent, rgba(34, 197, 94, 0.4), transparent)',
                 top: '50%',
                 right: '2rem',
                 transform: 'translateY(-50%)',
@@ -161,78 +161,78 @@ export default function HeroVisual() {
         <style dangerouslySetInnerHTML={{
           __html: `
             @keyframes dataFlow1 {
-              0%, 100% { opacity: 0.3; }
-              50% { opacity: 0.8; }
+              0%, 100% { opacity: 0.4; }
+              50% { opacity: 0.9; }
             }
             @keyframes dataFlow2 {
-              0%, 100% { opacity: 0.3; }
-              50% { opacity: 0.8; }
+              0%, 100% { opacity: 0.4; }
+              50% { opacity: 0.9; }
             }
             @keyframes dataFlow3 {
-              0%, 100% { opacity: 0.3; }
-              50% { opacity: 0.8; }
+              0%, 100% { opacity: 0.4; }
+              50% { opacity: 0.9; }
             }
             @keyframes dataFlow4 {
-              0%, 100% { opacity: 0.3; }
-              50% { opacity: 0.8; }
+              0%, 100% { opacity: 0.4; }
+              50% { opacity: 0.9; }
             }
             
             @keyframes dataPulse1 {
               0%, 100% { 
-                opacity: 0.4; 
+                opacity: 0.6; 
                 transform: scale(1);
               }
               50% { 
-                opacity: 0.8; 
-                transform: scale(1.2);
+                opacity: 1; 
+                transform: scale(1.3);
               }
             }
             @keyframes dataPulse2 {
               0%, 100% { 
-                opacity: 0.4; 
+                opacity: 0.6; 
                 transform: scale(1);
               }
               50% { 
-                opacity: 0.8; 
-                transform: scale(1.2);
+                opacity: 1; 
+                transform: scale(1.3);
               }
             }
             @keyframes dataPulse3 {
               0%, 100% { 
-                opacity: 0.4; 
+                opacity: 0.6; 
                 transform: scale(1);
               }
               50% { 
-                opacity: 0.8; 
-                transform: scale(1.2);
+                opacity: 1; 
+                transform: scale(1.3);
               }
             }
             @keyframes dataPulse4 {
               0%, 100% { 
-                opacity: 0.4; 
+                opacity: 0.6; 
                 transform: scale(1);
               }
               50% { 
-                opacity: 0.8; 
-                transform: scale(1.2);
+                opacity: 1; 
+                transform: scale(1.3);
               }
             }
             
             @keyframes distributeData1 {
-              0%, 100% { opacity: 0.1; }
-              50% { opacity: 0.4; }
+              0%, 100% { opacity: 0.2; }
+              50% { opacity: 0.6; }
             }
             @keyframes distributeData2 {
-              0%, 100% { opacity: 0.1; }
-              50% { opacity: 0.4; }
+              0%, 100% { opacity: 0.2; }
+              50% { opacity: 0.6; }
             }
             @keyframes distributeData3 {
-              0%, 100% { opacity: 0.1; }
-              50% { opacity: 0.4; }
+              0%, 100% { opacity: 0.2; }
+              50% { opacity: 0.6; }
             }
             @keyframes distributeData4 {
-              0%, 100% { opacity: 0.1; }
-              50% { opacity: 0.4; }
+              0%, 100% { opacity: 0.2; }
+              50% { opacity: 0.6; }
             }
             
             @media (prefers-reduced-motion: reduce) {
