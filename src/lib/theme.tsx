@@ -70,6 +70,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     
     // Save theme preference
     localStorage.setItem('theme', theme);
+    
+    // Debug: Log what's happening
+    console.log('Theme effect running:', { theme, resolvedTheme, elementClasses: root.className });
   }, [theme]);
 
   const resetToLight = () => {
