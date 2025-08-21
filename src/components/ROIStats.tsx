@@ -98,7 +98,7 @@ export default function ROIStats() {
         {/* Additional context */}
         <div className="mt-16 text-center">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-200 dark:border-gray-600 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-forest dark:text-white mb-4 font-sans">
+            <h3 className="text-2xl font-semibold text-forest dark:text-white mb-4 font-playfair">
               Based on real customer data
             </h3>
             <p className="text-mediumGray dark:text-white font-sans leading-relaxed">

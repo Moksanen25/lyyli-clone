@@ -168,7 +168,9 @@ export default function FeatureGrid() {
               >
                 {/* Icon */}
                 <div className={`w-16 h-16 bg-gradient-to-br ${categoryColors[feature.category]} rounded-2xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300`}>
-                  {feature.icon}
+                  <div className="text-white">
+                    {feature.icon}
+                  </div>
                 </div>
                 
                 {/* Content */}

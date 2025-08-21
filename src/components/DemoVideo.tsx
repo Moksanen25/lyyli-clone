@@ -96,7 +96,7 @@ export default function DemoVideo() {
                     </span>
                   </div>
                   
-                  <button className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-forest to-turquoise text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans">
+                  <button className="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-xl hover:bg-turquoise hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans">
                     Watch demo
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

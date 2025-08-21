@@ -245,7 +245,7 @@ export default function TestimonialCarousel() {
         >
           <a 
             href="#cta" 
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-forest to-turquoise text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
+            className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans hover:bg-turquoise"
           >
             Join our satisfied customers
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

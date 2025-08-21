@@ -13,7 +13,7 @@ interface ProcessStep {
 const steps: ProcessStep[] = [
   {
     number: 1,
-    title: "Lyyli oppii sinusta",
+    title: "Lyyli learns from you",
     description: "Our AI analyzes your communication patterns, brand voice, and content preferences to understand your unique style.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@ const steps: ProcessStep[] = [
   },
   {
     number: 2,
-    title: "Tekoäly ehdottaa sisältöä",
+    title: "AI suggests content",
     description: "Get AI-generated content suggestions that match your brand voice and communication goals across all channels.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,7 +33,7 @@ const steps: ProcessStep[] = [
   },
   {
     number: 3,
-    title: "Teette yhteistyötä",
+    title: "You collaborate",
     description: "Collaborate with your team to refine and approve content, ensuring it perfectly represents your organization.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,11 +43,11 @@ const steps: ProcessStep[] = [
   },
   {
     number: 4,
-    title: "Lyyli julkaisee puolestasi",
+    title: "Lyyli publishes for you",
     description: "Automatically publish approved content across all your communication channels with perfect timing and formatting.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
       </svg>
     )
   }
@@ -171,7 +171,7 @@ export default function ProcessSteps() {
           >
             <a 
               href="#cta" 
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-forest to-turquoise text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
+              className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans hover:bg-turquoise"
             >
               Get started with Lyyli.ai
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

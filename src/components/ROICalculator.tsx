@@ -153,7 +153,7 @@ export default function ROICalculator() {
               </div>
 
               {/* Results Summary */}
-              <div className="bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-xl p-6 mt-8">
+              <div className="bg-gradient-to-br from-forest/20 to-turquoise/20 rounded-xl p-6 mt-8 border border-forest/30">
                 <h4 className="text-lg font-semibold text-forest dark:text-white mb-4 font-sans">
                   Your potential savings
                 </h4>
@@ -162,7 +162,7 @@ export default function ROICalculator() {
                     <div className="text-2xl font-bold text-forest dark:text-white font-sans">
                       {results.timeSaved}h
                     </div>
-                    <div className="text-sm text-mediumGray dark:text-white font-sans">
+                    <div className="text-sm text-forest dark:text-white font-sans">
                       Time saved/week
                     </div>
                   </div>
@@ -170,7 +170,7 @@ export default function ROICalculator() {
                     <div className="text-2xl font-bold text-forest dark:text-white font-sans">
                       {results.efficiencyGain}%
                     </div>
-                    <div className="text-sm text-mediumGray dark:text-white font-sans">
+                    <div className="text-sm text-forest dark:text-white font-sans">
                       Efficiency gain
                     </div>
                   </div>
@@ -225,7 +225,7 @@ export default function ROICalculator() {
           >
             <a 
               href="#cta" 
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-forest to-turquoise text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
+              className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans hover:bg-turquoise"
             >
               Start saving with Lyyli.ai
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

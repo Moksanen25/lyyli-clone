@@ -141,54 +141,6 @@ export default function HeroVisual() {
             </div>
           </div>
 
-          {/* Data Flow Connections - Abstract flowing lines */}
-          <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
-            <defs>
-              {/* Source to Hub Gradients */}
-              <linearGradient id="sourceGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgb(47, 93, 80)" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="rgb(167, 214, 209)" stopOpacity="0.4" />
-              </linearGradient>
-              <linearGradient id="sourceGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgb(247, 235, 235)" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="rgb(47, 93, 80)" stopOpacity="0.4" />
-              </linearGradient>
-              <linearGradient id="sourceGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgb(167, 214, 209)" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="rgb(247, 235, 235)" stopOpacity="0.4" />
-              </linearGradient>
-              
-              {/* Hub to Destination Gradients */}
-              <linearGradient id="destGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgb(167, 214, 209)" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="rgb(47, 93, 80)" stopOpacity="0.2" />
-              </linearGradient>
-              <linearGradient id="destGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgb(247, 235, 235)" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="rgb(167, 214, 209)" stopOpacity="0.2" />
-              </linearGradient>
-              
-              {/* Hub Core Gradient */}
-              <radialGradient id="hubGradient" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="rgb(47, 93, 80)" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="rgb(167, 214, 209)" stopOpacity="0.3" />
-              </radialGradient>
-            </defs>
-            
-            {/* Source to Hub Connections */}
-            <path d="M 120 200 Q 300 300 400 400" stroke="url(#sourceGradient1)" strokeWidth="2" fill="none" className="animate-dash" />
-            <path d="M 160 400 Q 280 350 400 400" stroke="url(#sourceGradient2)" strokeWidth="2" fill="none" className="animate-dash" style={{ animationDelay: '0.5s' }} />
-            <path d="M 200 600 Q 320 450 400 400" stroke="url(#sourceGradient3)" strokeWidth="2" fill="none" className="animate-dash" style={{ animationDelay: '1s' }} />
-            <path d="M 140 800 Q 260 500 400 400" stroke="url(#sourceGradient1)" strokeWidth="2" fill="none" className="animate-dash" style={{ animationDelay: '1.5s' }} />
-            
-            {/* Hub to Destination Connections */}
-            <path d="M 520 400 Q 700 300 800 200" stroke="url(#destGradient1)" strokeWidth="2" fill="none" className="animate-dash" style={{ animationDelay: '0.3s' }} />
-            <path d="M 520 400 Q 720 350 800 400" stroke="url(#destGradient2)" strokeWidth="2" fill="none" className="animate-dash" style={{ animationDelay: '0.8s' }} />
-            <path d="M 520 400 Q 700 450 800 600" stroke="url(#destGradient1)" strokeWidth="2" fill="none" className="animate-dash" style={{ animationDelay: '1.2s' }} />
-            <path d="M 520 400 Q 740 500 800 800" stroke="url(#destGradient2)" strokeWidth="2" fill="none" className="animate-dash" style={{ animationDelay: '1.6s' }} />
-            <path d="M 520 400 Q 720 550 800 960" stroke="url(#destGradient1)" strokeWidth="2" fill="none" className="animate-dash" style={{ animationDelay: '2s' }} />
-          </svg>
-
           {/* Floating Data Particles - Abstract energy flows */}
           <div className="absolute inset-0">
             {/* Source particles */}

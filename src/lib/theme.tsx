@@ -32,7 +32,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme && savedTheme !== 'system') {
+    if (savedTheme) {
       setTheme(savedTheme);
     }
   }, []);
@@ -43,13 +43,17 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     // Remove existing theme classes
     root.classList.remove('light', 'dark');
     
-    // Force light mode to fix the background issue
-    setTheme('light');
-    setResolvedTheme('light');
-    root.classList.add('light');
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      setResolvedTheme(systemTheme);
+      root.classList.add(systemTheme);
+    } else {
+      setResolvedTheme(theme);
+      root.classList.add(theme);
+    }
     
     // Save theme preference
-    localStorage.setItem('theme', 'light');
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   useEffect(() => {
@@ -71,7 +75,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   const resetToLight = () => {
     setTheme('light');
-    localStorage.removeItem('theme');
+    localStorage.setItem('theme', 'light');
   };
 
   const value = {

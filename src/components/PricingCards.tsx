@@ -6,8 +6,8 @@ import { useInView } from "react-intersection-observer";
 
 interface PricingPlan {
   name: string;
-  price: string;
-  period: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
   description: string;
   features: string[];
   cta: string;
@@ -18,45 +18,49 @@ interface PricingPlan {
 const plans: PricingPlan[] = [
   {
     name: "Free",
-    price: "€0",
-    period: "forever",
+    monthlyPrice: 0,
+    yearlyPrice: 0,
     description: "Perfect for individuals and small teams getting started",
     features: [
-      "Up to 3 team members",
+      "Up to 1 team member",
       "Basic AI content generation",
-      "Slack integration",
-      "5 content pieces per month",
-      "Basic analytics",
+      "Web interface",
+      "Up to 20 conversations",
+      "Up to 5 posts per month",
+      "Up to 2 integrations",
       "Email support"
     ],
     cta: "Get started free"
   },
   {
     name: "Starter",
-    price: "€29",
-    period: "per month",
+    monthlyPrice: 29,
+    yearlyPrice: Math.round(29 * 12 * 0.8), // 12 months - 20% discount
     description: "Ideal for growing teams and small organizations",
     features: [
-      "Up to 10 team members",
+      "Up to 1 team member",
       "Advanced AI content generation",
-      "Slack & Teams integration",
-      "Unlimited content pieces",
-      "Advanced analytics",
-      "Priority email support",
-      "Custom brand guidelines",
-      "Approval workflows"
+      "Web interface",
+      "Up to 50 conversations",
+      "Up to 10 posts per month",
+      "Up to 3 integrations",
+      "Extensive customization",
+      "Priority email support"
     ],
     cta: "Start free trial"
   },
   {
     name: "Growth",
-    price: "€79",
-    period: "per month",
+    monthlyPrice: 199,
+    yearlyPrice: Math.round(199 * 12 * 0.8), // 12 months - 20% discount
     description: "Built for scaling organizations with advanced needs",
     features: [
-      "Up to 25 team members",
+      "Up to 3 team members",
       "Premium AI content generation",
-      "All integrations (Slack, Teams, Email)",
+      "Web, Slack & Teams apps",
+      "Up to 100 conversations",
+      "Unlimited posts",
+      "All integrations",
       "Advanced approval workflows",
       "Team collaboration tools",
       "Performance analytics",
@@ -68,13 +72,14 @@ const plans: PricingPlan[] = [
   },
   {
     name: "Professional",
-    price: "€199",
-    period: "per month",
+    monthlyPrice: 599,
+    yearlyPrice: Math.round(599 * 12 * 0.8), // 12 months - 20% discount
     description: "Our most popular plan for established organizations",
     features: [
-      "Up to 100 team members",
+      "Up to 10 team members",
       "Enterprise AI content generation",
       "All integrations + custom connectors",
+      "Unlimited conversations",
       "Advanced workflow automation",
       "Comprehensive analytics & reporting",
       "Custom integrations",
@@ -89,8 +94,8 @@ const plans: PricingPlan[] = [
   },
   {
     name: "Enterprise",
-    price: "Custom",
-    period: "pricing",
+    monthlyPrice: 0, // Custom pricing
+    yearlyPrice: 0,
     description: "Tailored solutions for large enterprises",
     features: [
       "Unlimited team members",
@@ -110,6 +115,7 @@ const plans: PricingPlan[] = [
 
 export default function PricingCards() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true
@@ -142,6 +148,28 @@ export default function PricingCards() {
     }
   };
 
+  const getPrice = (plan: PricingPlan) => {
+    if (plan.name === "Enterprise") return "Custom";
+    if (plan.monthlyPrice === 0) return "€0";
+    
+    const price = billingPeriod === "monthly" ? plan.monthlyPrice : plan.yearlyPrice;
+    return `€${price}`;
+  };
+
+  const getPeriod = (plan: PricingPlan) => {
+    if (plan.name === "Free") return "forever";
+    if (plan.name === "Enterprise") return "";
+    return billingPeriod === "monthly" ? "per month" : "per year";
+  };
+
+  const getSavings = (plan: PricingPlan) => {
+    if (plan.name === "Enterprise" || plan.monthlyPrice === 0) return null;
+    const yearlyTotal = plan.yearlyPrice;
+    const monthlyTotal = plan.monthlyPrice * 12;
+    const savings = monthlyTotal - yearlyTotal;
+    return savings;
+  };
+
   return (
     <section className="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4">
@@ -155,10 +183,43 @@ export default function PricingCards() {
           </p>
         </div>
 
+        {/* Billing Toggle */}
+        <div className="flex justify-center items-center mb-12">
+          <div className="flex items-center bg-white dark:bg-gray-800 rounded-xl p-1 border border-gray-200 dark:border-gray-600">
+            <button
+              onClick={() => setBillingPeriod("monthly")}
+              className={`px-6 py-2 rounded-lg font-medium transition-colors duration-200 ${
+                billingPeriod === "monthly"
+                  ? "bg-forest text-white"
+                  : "text-mediumGray hover:text-forest"
+              }`}
+              aria-pressed={billingPeriod === "monthly"}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setBillingPeriod("yearly")}
+              className={`px-6 py-2 rounded-lg font-medium transition-colors duration-200 ${
+                billingPeriod === "yearly"
+                  ? "bg-forest text-white"
+                  : "text-mediumGray hover:text-forest"
+              }`}
+              aria-pressed={billingPeriod === "yearly"}
+            >
+              Yearly
+            </button>
+          </div>
+          {billingPeriod === "yearly" && (
+            <div className="ml-4 px-3 py-1 bg-forest text-white text-sm rounded-full">
+              Save 20%
+            </div>
+          )}
+        </div>
+
         {/* Pricing Cards */}
         <motion.div 
           ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -166,7 +227,7 @@ export default function PricingCards() {
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
-              className={`relative ${plan.highlight ? 'lg:col-span-2 lg:row-span-1' : ''}`}
+              className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
               variants={cardVariants}
             >
               {/* Popular Badge */}
@@ -201,16 +262,21 @@ export default function PricingCards() {
                   }`}>
                     {plan.name}
                   </h3>
-                  <div className="mb-2">
+                  <div className="mb-4">
                     <span className="text-3xl font-bold text-forest dark:text-white font-sans">
-                      {plan.price}
+                      {getPrice(plan)}
                     </span>
-                    {plan.period !== "forever" && (
+                    {plan.name !== "Free" && plan.name !== "Enterprise" && (
                       <span className="text-mediumGray dark:text-white font-sans">
-                        /{plan.period}
+                        /{getPeriod(plan)}
                       </span>
                     )}
                   </div>
+                  {billingPeriod === "yearly" && getSavings(plan) && (
+                    <p className="text-sm text-forest font-medium mb-2">
+                      Save €{getSavings(plan)} per year
+                    </p>
+                  )}
                   <p className="text-sm text-mediumGray dark:text-white font-sans">
                     {plan.description}
                   </p>
@@ -277,7 +343,7 @@ export default function PricingCards() {
               >
                 Contact sales team
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </a>
             </div>
