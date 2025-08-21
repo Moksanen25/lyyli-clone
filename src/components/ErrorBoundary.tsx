@@ -119,7 +119,7 @@ export class ErrorBoundary extends Component<Props, State> {
               </button>
             </div>
 
-            <div className="mt-6 text-sm text-gray-500 
+            <div className="mt-6 text-sm text-gray-500">
               <p>If this problem persists, please contact our support team.</p>
             </div>
           </div>
