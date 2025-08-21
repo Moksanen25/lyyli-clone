@@ -133,25 +133,7 @@ export default async function LocaleLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="antialiased font-sans" suppressHydrationWarning={true}>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme') || 'light';
-                  if (theme === 'system') {
-                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                  }
-                  document.documentElement.classList.remove('light', 'dark');
-                  document.documentElement.classList.add(theme);
-                } catch (e) {
-                  document.documentElement.classList.remove('light', 'dark');
-                  document.documentElement.classList.add('light');
-                }
-              })()
-            `,
-          }}
-        />
+
         <ClientThemeProvider>
           <div className="flex flex-col min-h-screen">
             <Header locale={currentLocale} translations={t} />

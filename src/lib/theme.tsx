@@ -54,18 +54,19 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || typeof window === 'undefined') return;
     
     const root = window.document.documentElement;
+    
+    // Always remove existing classes first
+    root.classList.remove('light', 'dark');
     
     if (theme === 'system') {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       setResolvedTheme(systemTheme);
-      root.classList.remove('light', 'dark');
       root.classList.add(systemTheme);
     } else {
       setResolvedTheme(theme);
-      root.classList.remove('light', 'dark');
       root.classList.add(theme);
     }
     
