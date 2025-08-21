@@ -134,6 +134,7 @@ export default async function LocaleLayout({
       </head>
       <body className="antialiased font-sans" suppressHydrationWarning={true}>
 
+
         <ClientThemeProvider>
           <div className="flex flex-col min-h-screen">
             <Header locale={currentLocale} translations={t} />

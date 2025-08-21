@@ -28,24 +28,16 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>('light');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
-  const [mounted, setMounted] = useState(false);
 
-  // Initialize theme from localStorage
+  // Simple theme initialization
   useEffect(() => {
     // Only run on client side
     if (typeof window === 'undefined') return;
     
-    console.log('ThemeProvider: Client-side effect running, setting mounted to true');
-    setMounted(true);
-    
     // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem('theme') as Theme;
-    console.log('ThemeProvider: Saved theme from localStorage:', savedTheme);
-    
     if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
-      console.log('ThemeProvider: Setting theme to saved theme:', savedTheme);
       setTheme(savedTheme);
-      // Set resolved theme based on current state
       if (savedTheme === 'system') {
         const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         setResolvedTheme(systemTheme);
@@ -54,19 +46,17 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       }
     } else {
       // Default to light mode
-      console.log('ThemeProvider: No saved theme, defaulting to light');
       setTheme('light');
       setResolvedTheme('light');
       localStorage.setItem('theme', 'light');
     }
   }, []);
 
+  // Apply theme to HTML element
   useEffect(() => {
-    if (!mounted || typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return;
     
     const root = window.document.documentElement;
-    
-    // Always remove existing classes first
     root.classList.remove('light', 'dark');
     
     if (theme === 'system') {
@@ -80,29 +70,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     
     // Save theme preference
     localStorage.setItem('theme', theme);
-    
-    // Force immediate application
-    console.log('Theme applied:', theme, 'to element:', root.className);
-  }, [theme, mounted]);
-
-  useEffect(() => {
-    if (!mounted) return;
-    
-    // Listen for system theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    const handleChange = () => {
-      if (theme === 'system') {
-        const systemTheme = mediaQuery.matches ? 'dark' : 'light';
-        setResolvedTheme(systemTheme);
-        document.documentElement.classList.remove('light', 'dark');
-        document.documentElement.classList.add(systemTheme);
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme, mounted]);
+  }, [theme]);
 
   const resetToLight = () => {
     setTheme('light');
