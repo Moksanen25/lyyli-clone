@@ -28,16 +28,24 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>('light');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
+    if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
       setTheme(savedTheme);
+    } else {
+      // Force light mode as default
+      setTheme('light');
+      localStorage.setItem('theme', 'light');
     }
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+    
     const root = window.document.documentElement;
     
     // Remove existing theme classes
@@ -54,9 +62,11 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     
     // Save theme preference
     localStorage.setItem('theme', theme);
-  }, [theme]);
+  }, [theme, mounted]);
 
   useEffect(() => {
+    if (!mounted) return;
+    
     // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     
@@ -71,7 +81,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
+  }, [theme, mounted]);
 
   const resetToLight = () => {
     setTheme('light');
