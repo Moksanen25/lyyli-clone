@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { TranslationKeys } from "../../lib/i18n";
-import { motion } from "framer-motion";
 
 interface PricingTiersProps {
   translations: TranslationKeys;
@@ -128,15 +127,15 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
   };
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-16">
       {/* Billing Toggle */}
-      <div className="flex justify-center items-center mb-12">
-        <div className="flex items-center bg-white rounded-xl p-1 border border-gray-200">
+      <div className="flex justify-center items-center">
+        <div className="flex items-center bg-white rounded-xl p-1 border border-gray-200 shadow-sm">
           <button
             onClick={() => setBillingPeriod("monthly")}
             className={`px-6 py-2 rounded-lg font-medium transition-colors duration-200 ${
               billingPeriod === "monthly"
-                ? "bg-forest text-white"
+                ? "bg-forest text-white shadow-sm"
                 : "text-mediumGray hover:text-forest"
             }`}
             aria-pressed={billingPeriod === "monthly"}
@@ -147,7 +146,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
             onClick={() => setBillingPeriod("yearly")}
             className={`px-6 py-2 rounded-lg font-medium transition-colors duration-200 ${
               billingPeriod === "yearly"
-                ? "bg-forest text-white"
+                ? "bg-forest text-white shadow-sm"
                 : "text-mediumGray hover:text-forest"
             }`}
             aria-pressed={billingPeriod === "yearly"}
@@ -156,58 +155,47 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
           </button>
         </div>
         {billingPeriod === "yearly" && (
-          <div className="ml-4 px-3 py-1 bg-forest text-white text-sm rounded-full">
+          <div className="ml-4 px-3 py-1 bg-forest text-white text-sm rounded-full font-medium">
             {t["pricing.save"]} 20%
           </div>
         )}
       </div>
 
-      {/* Pricing Grid - Responsive 1/2/3/5 grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 max-w-7xl mx-auto">
+      {/* Pricing Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
         {tiers.map((tier, index) => (
-          <motion.div
+          <div
             key={tier.id}
             className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ 
-              y: -8,
-              scale: tier.popular ? 1.08 : 1.02,
-              transition: { duration: 0.2 }
-            }}
           >
-            {/* Popular Badge */}
+            {/* Popular Badge - Positioned outside the card with proper spacing */}
             {tier.popular && (
-              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-20">
-                <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-semibold font-sans shadow-lg border-2 border-white">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-30">
+                <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                   Most Popular
                 </div>
               </div>
             )}
 
             {/* Plan Card */}
-            <motion.div 
+            <div 
               className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full flex flex-col ${
                 tier.popular 
-                  ? 'border-forest/30 scale-105 shadow-xl'  
-                  : 'border-gray-200 hover:border-forest/20'
+                  ? 'border-forest shadow-xl scale-105'  
+                  : 'border-gray-200 hover:border-forest/30 hover:shadow-xl'
               }`}
             >
               {/* Plan Header */}
               <div className="text-center mb-6">
-                <h3 className={`text-xl font-bold mb-2 font-sans ${
-                  tier.popular ? 'text-forest' : 'text-forest'
-                }`}>
+                <h3 className="text-xl font-bold mb-2 text-forest">
                   {tier.name}
                 </h3>
                 <div className="mb-4">
-                  <span className="text-3xl font-bold text-forest font-sans">
+                  <span className="text-3xl font-bold text-forest">
                     {getPrice(tier)}
                   </span>
                   {tier.id !== "enterprise" && tier.monthlyPrice > 0 && (
-                    <span className="text-mediumGray font-sans">
+                    <span className="text-mediumGray ml-1">
                       /{billingPeriod === "monthly" ? t["pricing.perMonth"] : t["pricing.perYear"]}
                     </span>
                   )}
@@ -220,7 +208,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
                     )}
                   </p>
                 )}
-                <p className="text-sm text-mediumGray font-sans">
+                <p className="text-sm text-mediumGray">
                   {tier.description}
                 </p>
               </div>
@@ -232,29 +220,29 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
                     <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-mediumGray font-sans">
+                    <span className="text-sm text-mediumGray">
                       {feature}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              {/* CTA Button */}
-              <div className="mt-auto pt-4">
+              {/* CTA Button - Simple, working solution */}
+              <div className="mt-auto">
                 <a
                   href={tier.ctaHref}
-                  className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 font-sans inline-block text-center shadow-sm hover:shadow-md text-white font-bold ${
+                  className={`block w-full py-3 px-4 rounded-xl font-bold text-center transition-all duration-300 ${
                     tier.popular
-                      ? 'bg-gradient-to-r from-forest to-turquoise hover:from-forest/90 hover:to-turquoise/90 hover:shadow-lg hover:-translate-y-1'
-                      : 'bg-forest hover:bg-turquoise hover:-translate-y-1'
+                      ? 'bg-gradient-to-r from-forest to-turquoise text-white hover:shadow-lg'
+                      : 'bg-forest text-white hover:bg-turquoise'
                   }`}
                   aria-label={`${tier.cta} for ${tier.name} plan`}
                 >
                   {tier.cta}
                 </a>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
