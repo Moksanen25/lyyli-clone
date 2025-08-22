@@ -230,21 +230,15 @@ export default function PricingCards() {
               className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
               variants={cardVariants}
             >
-              {/* Popular Badge */}
+              {/* Popular Badge - Positioned in right top corner with proper width */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-50">
+                <div className="absolute -top-3 -right-2 z-50">
                   <div 
+                    className="px-5 py-2 text-sm font-bold text-white shadow-xl border-2 border-white rounded-full whitespace-nowrap"
                     style={{
                       background: 'linear-gradient(to right, #2F5D50, #0F766E)',
-                      color: 'white',
-                      padding: '8px 16px',
-                      borderRadius: '9999px',
-                      fontSize: '14px',
-                      fontWeight: 'bold',
                       boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                      border: '2px solid white'
                     }}
-                    className="px-4 py-2 text-sm font-bold shadow-xl border-2 border-white"
                   >
                     Most Popular
                   </div>
