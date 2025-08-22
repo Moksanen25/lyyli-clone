@@ -14,7 +14,7 @@ import ROIStats from "../../components/ROIStats";
 import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";
 import DemoVideo from "../../components/DemoVideo";
-import ROICalculator from "../../components/pricing/ROICalculator";
+import ROICalculator from "../../components/ROICalculator";
 import TestimonialSection from "../../components/TestimonialSection";
 import PricingCards from "../../components/PricingCards";
 interface HomeProps {
@@ -157,7 +157,7 @@ export default async function Home({ params }: HomeProps) {
       <DemoVideo translations={t} />
 
       {/* ROI Calculator Section */}
-      <ROICalculator translations={t} />
+      <ROICalculator />
 
       {/* Testimonials and Customer Logos */}
       <TestimonialSection />
