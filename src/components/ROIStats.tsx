@@ -11,6 +11,10 @@ interface ROIStat {
   description?: string;
 }
 
+interface ROIStatsProps {
+  translations?: any;
+}
+
 const stats: ROIStat[] = [
   {
     value: 80,
@@ -38,7 +42,7 @@ const stats: ROIStat[] = [
   }
 ];
 
-export default function ROIStats() {
+export default function ROIStats({ translations }: ROIStatsProps) {
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true
@@ -49,10 +53,10 @@ export default function ROIStats() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
-            Proven results that speak for themselves
+            {translations?.["roiStats.title"] || "Proven results that speak for themselves"}
           </h2>
           <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
-            See how Lyyli.ai transforms communication efficiency and delivers measurable business value
+            {translations?.["roiStats.subtitle"] || "See how Lyyli.ai transforms communication efficiency and delivers measurable business value"}
           </p>
         </div>
 
@@ -99,12 +103,10 @@ export default function ROIStats() {
         <div className="mt-16 text-center">
           <div className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  max-w-4xl mx-auto">
             <h3 className="text-2xl font-semibold text-forest  mb-4 font-playfair">
-              Based on real customer data
+              {translations?.["roiStats.basedOnRealData.title"] || "Based on real customer data"}
             </h3>
             <p className="text-mediumGray  font-sans leading-relaxed">
-              These statistics are compiled from actual usage data across our customer base, 
-              representing the average improvements in communication efficiency, time savings, 
-              and return on investment that organizations experience after implementing Lyyli.ai.
+              {translations?.["roiStats.basedOnRealData.description"] || "These statistics are compiled from actual usage data across our customer base, representing the average improvements in communication efficiency, time savings, and return on investment that organizations experience after implementing Lyyli.ai."}
             </p>
           </div>
         </div>

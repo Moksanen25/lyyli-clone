@@ -10,6 +10,10 @@ interface ProcessStep {
   icon: React.ReactNode;
 }
 
+interface ProcessStepsProps {
+  translations?: any;
+}
+
 const steps: ProcessStep[] = [
   {
     number: 1,
@@ -53,7 +57,7 @@ const steps: ProcessStep[] = [
   }
 ];
 
-export default function ProcessSteps() {
+export default function ProcessSteps({ translations }: ProcessStepsProps) {
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true
@@ -89,10 +93,10 @@ export default function ProcessSteps() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
-            How Lyyli.ai works
+            {translations?.["howItWorks.title"] || "How Lyyli.ai works"}
           </h2>
           <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
-            A simple, intelligent process that transforms how professional service organizations communicate
+            {translations?.["howItWorks.overview.description"] || "A simple, intelligent process that transforms how professional service organizations communicate"}
           </p>
         </div>
 

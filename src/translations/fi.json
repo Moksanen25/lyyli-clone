@@ -636,5 +636,10 @@
   "roi.calculator.moneySaved": "Säästetty raha/viikko",
   "roi.calculator.efficiencyGain": "Tehokkuuden parannus",
   "roi.calculator.monthlySavings": "Kuukausittaiset säästöt",
-  "roi.calculator.yearlySavings": "Vuosittaiset säästöt"
+  "roi.calculator.yearlySavings": "Vuosittaiset säästöt",
+
+  "roiStats.title": "Todistetut tulokset puhuvat puolestaan",
+  "roiStats.subtitle": "Katso miten Lyyli.ai muuttaa viestinnän tehokkuutta ja tuottaa mitattavaa liiketoiminta-arvoa",
+  "roiStats.basedOnRealData.title": "Perustuu todellisiin asiakastietoihin",
+  "roiStats.basedOnRealData.description": "Nämä tilastot on koottu todellisista käyttötiedoista asiakaskannastamme, edustaen keskimääräisiä parannuksia viestinnän tehokkuudessa, ajan säästössä ja sijoitetun pääoman tuotossa, joita organisaatiot kokevat Lyyli.ain toteuttamisen jälkeen."
 }

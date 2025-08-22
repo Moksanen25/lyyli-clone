@@ -101,6 +101,12 @@ export interface TranslationKeys {
   "cta.demo": string;
   "cta.contactSales": string;
 
+  // ROI Stats Section
+  "roiStats.title": string;
+  "roiStats.subtitle": string;
+  "roiStats.basedOnRealData.title": string;
+  "roiStats.basedOnRealData.description": string;
+
   // Footer
   "footer.tagline": string;
   "footer.rights": string;

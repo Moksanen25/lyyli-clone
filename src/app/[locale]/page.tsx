@@ -71,7 +71,7 @@ export default async function Home({ params }: HomeProps) {
 
       {/* ROI Statistics Section */}
       <div className="relative z-20">
-        <ROIStats />
+        <ROIStats translations={t} />
       </div>
 
       {/* Problems Section - Improved contrast and structure */}
@@ -148,7 +148,7 @@ export default async function Home({ params }: HomeProps) {
       </section>
 
       {/* Process Steps Section */}
-      <ProcessSteps />
+      <ProcessSteps translations={t} />
 
       {/* Feature Grid Section */}
       <FeatureGrid />

@@ -94,6 +94,11 @@
   "cta.contactSales": "Contact Sales",
   "cta.startTrial": "Start your free trial",
 
+  "roiStats.title": "Proven results that speak for themselves",
+  "roiStats.subtitle": "See how Lyyli.ai transforms communication efficiency and delivers measurable business value",
+  "roiStats.basedOnRealData.title": "Based on real customer data",
+  "roiStats.basedOnRealData.description": "These statistics are compiled from actual usage data across our customer base, representing the average improvements in communication efficiency, time savings, and return on investment that organizations experience after implementing Lyyli.ai.",
+
   "footer.tagline": "AI communication assistant for professional service organizations",
   "footer.rights": "© 2024 Lyyli. All rights reserved.",
 
