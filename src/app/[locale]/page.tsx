@@ -151,10 +151,10 @@ export default async function Home({ params }: HomeProps) {
       <ProcessSteps translations={t} />
 
       {/* Feature Grid Section */}
-      <FeatureGrid />
+      <FeatureGrid translations={t} />
 
       {/* Demo Video Section */}
-      <DemoVideo />
+      <DemoVideo translations={t} />
 
       {/* ROI Calculator Section */}
       <ROICalculator translations={t} />

@@ -142,10 +142,10 @@ export default function ProcessSteps({ translations }: ProcessStepsProps) {
                   {/* Content */}
                   <div className="text-center">
                     <h3 className="text-xl font-semibold text-forest  mb-4 font-sans">
-                      {step.title}
+                      {translations?.[`howItWorks.step${step.number}.title`] || step.title}
                     </h3>
                     <p className="text-mediumGray  font-sans leading-relaxed">
-                      {step.description}
+                      {translations?.[`howItWorks.step${step.number}.description`] || step.description}
                     </p>
                   </div>
                 </motion.div>
@@ -175,7 +175,7 @@ export default function ProcessSteps({ translations }: ProcessStepsProps) {
               href="#cta" 
               className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans hover:bg-turquoise"
             >
-              Get started with Lyyli.ai
+              {translations?.["howItWorks.cta"] || "Get started with Lyyli.ai"}
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

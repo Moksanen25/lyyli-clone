@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function DemoVideo() {
+export default function DemoVideo({ translations }: { translations?: any }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -15,10 +15,10 @@ export default function DemoVideo() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
-              See Lyyli.ai in action
+              {translations?.["demo.title"] || "See Lyyli.ai in action"}
             </h2>
             <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
-              Watch how our AI-powered platform transforms communication workflows in real-time
+              {translations?.["demo.subtitle"] || "Watch how our AI-powered platform transforms communication workflows in real-time"}
             </p>
           </div>
 
@@ -71,12 +71,10 @@ export default function DemoVideo() {
               {/* Video Info */}
               <div className="p-8">
                 <h3 className="text-2xl font-semibold text-forest  mb-4 font-sans">
-                  Lyyli.ai platform demo
+                  {translations?.["demo.video.title"] || "Lyyli.ai platform demo"}
                 </h3>
                 <p className="text-mediumGray  font-sans leading-relaxed mb-6">
-                  See how Lyyli.ai integrates with Slack and Microsoft Teams to streamline your 
-                  communication workflow. Watch the AI generate content, manage approvals, and 
-                  publish across multiple channels seamlessly.
+                  {translations?.["demo.video.description"] || "See how Lyyli.ai integrates with Slack and Microsoft Teams to streamline your communication workflow. Watch the AI generate content, manage approvals, and publish across multiple channels seamlessly."}
                 </p>
                 
                 <div className="flex items-center justify-between">
@@ -85,19 +83,19 @@ export default function DemoVideo() {
                       <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      2:34 min
+                      {translations?.["demo.video.duration"] || "2:34 min"}
                     </span>
                     <span className="flex items-center">
                       <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
-                      HD Quality
+                      {translations?.["demo.video.quality"] || "HD Quality"}
                     </span>
                   </div>
                   
                   <button className="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-xl hover:bg-turquoise hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans">
-                    Watch demo
+                    {translations?.["demo.video.button"] || "Watch demo"}
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -115,10 +113,10 @@ export default function DemoVideo() {
                   </svg>
                 </div>
                 <h4 className="text-lg font-semibold text-forest  mb-2 font-sans">
-                  Content creation
+                  {translations?.["demo.features.content.title"] || "Content creation"}
                 </h4>
                 <p className="text-mediumGray  text-sm font-sans">
-                  See AI generate engaging content
+                  {translations?.["demo.features.content.description"] || "See AI generate engaging content"}
                 </p>
               </div>
               
@@ -129,24 +127,24 @@ export default function DemoVideo() {
                   </svg>
                 </div>
                 <h4 className="text-lg font-semibold text-forest  mb-2 font-sans">
-                  Team collaboration
+                  {translations?.["demo.features.collaboration.title"] || "Team collaboration"}
                 </h4>
                 <p className="text-mediumGray  text-sm font-sans">
-                  Watch approval workflows in action
+                  {translations?.["demo.features.collaboration.description"] || "Watch approval workflows in action"}
                 </p>
               </div>
               
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-rose to-forest rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </div>
                 <h4 className="text-lg font-semibold text-forest  mb-2 font-sans">
-                  Multi-channel publishing
+                  {translations?.["demo.features.publishing.title"] || "Multi-channel publishing"}
                 </h4>
                 <p className="text-mediumGray  text-sm font-sans">
-                  See content go live everywhere
+                  {translations?.["demo.features.publishing.description"] || "See content go live everywhere"}
                 </p>
               </div>
             </div>

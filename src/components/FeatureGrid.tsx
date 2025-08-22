@@ -24,7 +24,7 @@ const features: Feature[] = [
   {
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
       </svg>
     ),
     title: "Multi-channel publishing",
@@ -100,7 +100,11 @@ const categoryColors = {
   analytics: "from-forest to-rose"
 };
 
-export default function FeatureGrid() {
+interface FeatureGridProps {
+  translations?: any;
+}
+
+export default function FeatureGrid({ translations }: FeatureGridProps) {
   const [ref, inView] = useInView({
     threshold: 0.05,
     triggerOnce: true
@@ -131,15 +135,30 @@ export default function FeatureGrid() {
     }
   };
 
+  // Function to get translation key for feature
+  const getFeatureTranslationKey = (title: string) => {
+    const keyMap: { [key: string]: string } = {
+      "AI-powered content generation": "ai",
+      "Multi-channel publishing": "multichannel",
+      "Smart scheduling": "scheduling",
+      "Performance analytics": "analytics",
+      "Team collaboration": "collaboration",
+      "Brand voice consistency": "brand",
+      "Lightning-fast delivery": "delivery",
+      "Enterprise security": "security"
+    };
+    return keyMap[title] || title.toLowerCase().replace(/\s+/g, '');
+  };
+
   return (
     <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
-            Powerful features for modern communication
+            {translations?.["features.hero.title"] || "Powerful features for modern communication"}
           </h2>
           <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
-            Everything you need to streamline your communication workflow and amplify your brand message
+            {translations?.["features.hero.subtitle"] || "Everything you need to streamline your communication workflow and amplify your brand message"}
           </p>
         </div>
 
@@ -150,42 +169,45 @@ export default function FeatureGrid() {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {features.map((feature) => (
-            <motion.div
-              key={feature.title}
-              className="group"
-              variants={cardVariants}
-            >
-              <motion.div 
-                className="bg-white  rounded-2xl p-6 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 h-full"
-                whileHover={{ 
-                  y: -8,
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
-                }}
+          {features.map((feature) => {
+            const translationKey = getFeatureTranslationKey(feature.title);
+            return (
+              <motion.div
+                key={feature.title}
+                className="group"
+                variants={cardVariants}
               >
-                {/* Icon */}
-                <div className={`w-16 h-16 bg-gradient-to-br ${categoryColors[feature.category]} rounded-2xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300`}>
-                  <div className="text-white">
-                    {feature.icon}
+                <motion.div 
+                  className="bg-white  rounded-2xl p-6 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 h-full"
+                  whileHover={{ 
+                    y: -8,
+                    scale: 1.02,
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  {/* Icon */}
+                  <div className={`w-16 h-16 bg-gradient-to-br ${categoryColors[feature.category]} rounded-2xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="text-white">
+                      {feature.icon}
+                    </div>
                   </div>
-                </div>
-                
-                {/* Content */}
-                <h3 className="text-lg font-semibold text-forest  mb-3 font-sans group-hover:text-turquoise  transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-mediumGray  text-sm font-sans leading-relaxed">
-                  {feature.description}
-                </p>
-                
-                {/* Hover indicator */}
-                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-forest to-turquoise rounded-full" />
-                </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-lg font-semibold text-forest  mb-3 font-sans group-hover:text-turquoise  transition-colors duration-300">
+                    {translations?.[`features.grid.${translationKey}.title`] || feature.title}
+                  </h3>
+                  <p className="text-mediumGray  text-sm font-sans leading-relaxed">
+                    {translations?.[`features.grid.${translationKey}.description`] || feature.description}
+                  </p>
+                  
+                  {/* Hover indicator */}
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-8 h-0.5 bg-gradient-to-r from-forest to-turquoise rounded-full" />
+                  </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* Bottom CTA */}
@@ -199,7 +221,7 @@ export default function FeatureGrid() {
             href="/features" 
             className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-turquoise font-sans"
           >
-            Explore all features
+            {translations?.["features.hero.cta"] || "Explore all features"}
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

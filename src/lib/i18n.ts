@@ -70,6 +70,7 @@ export interface TranslationKeys {
   "howItWorks.step4.description": string;
   "howItWorks.overview.title": string;
   "howItWorks.overview.description": string;
+  "howItWorks.cta": string;
 
   // Industries Section
   "industries.title": string;
@@ -106,6 +107,29 @@ export interface TranslationKeys {
   "roiStats.subtitle": string;
   "roiStats.basedOnRealData.title": string;
   "roiStats.basedOnRealData.description": string;
+  "roiStats.metrics.roi.title": string;
+  "roiStats.metrics.roi.description": string;
+  "roiStats.metrics.savings.title": string;
+  "roiStats.metrics.savings.description": string;
+  "roiStats.metrics.time.title": string;
+  "roiStats.metrics.time.description": string;
+  "roiStats.metrics.satisfaction.title": string;
+  "roiStats.metrics.satisfaction.description": string;
+
+  // Demo Video
+  "demo.title": string;
+  "demo.subtitle": string;
+  "demo.video.title": string;
+  "demo.video.description": string;
+  "demo.video.duration": string;
+  "demo.video.quality": string;
+  "demo.video.button": string;
+  "demo.features.content.title": string;
+  "demo.features.content.description": string;
+  "demo.features.collaboration.title": string;
+  "demo.features.collaboration.description": string;
+  "demo.features.publishing.title": string;
+  "demo.features.publishing.description": string;
 
   // Footer
   "footer.tagline": string;
@@ -116,6 +140,23 @@ export interface TranslationKeys {
   "features.page.description": string;
   "features.hero.title": string;
   "features.hero.subtitle": string;
+  "features.hero.cta": string;
+  "features.grid.ai.title": string;
+  "features.grid.ai.description": string;
+  "features.grid.multichannel.title": string;
+  "features.grid.multichannel.description": string;
+  "features.grid.scheduling.title": string;
+  "features.grid.scheduling.description": string;
+  "features.grid.analytics.title": string;
+  "features.grid.analytics.description": string;
+  "features.grid.collaboration.title": string;
+  "features.grid.collaboration.description": string;
+  "features.grid.brand.title": string;
+  "features.grid.brand.description": string;
+  "features.grid.delivery.title": string;
+  "features.grid.delivery.description": string;
+  "features.grid.security.title": string;
+  "features.grid.security.description": string;
   "features.automatic.title": string;
   "features.automatic.description": string;
   "features.automatic.slack.title": string;

@@ -87,11 +87,11 @@ export default function ROIStats({ translations }: ROIStatsProps) {
                   {stat.prefix}
                 </div>
                 <h3 className="text-xl font-semibold text-forest  mb-2 font-sans">
-                  {stat.label}
+                  {translations?.[`roiStats.metrics.${stat.label.toLowerCase().replace(/\s+/g, '')}.title`] || stat.label}
                 </h3>
                 {stat.description && (
                   <p className="text-mediumGray  text-sm font-sans leading-relaxed">
-                    {stat.description}
+                    {translations?.[`roiStats.metrics.${stat.label.toLowerCase().replace(/\s+/g, '')}.description`] || stat.description}
                   </p>
                 )}
               </div>
