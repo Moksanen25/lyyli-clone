@@ -162,16 +162,16 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       </div>
 
       {/* Pricing Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 max-w-7xl mx-auto">
         {tiers.map((tier, index) => (
           <div
             key={tier.id}
             className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
           >
-            {/* Popular Badge - Positioned outside the card with proper spacing */}
+            {/* Popular Badge - Using a completely different approach */}
             {tier.popular && (
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-30">
-                <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-50">
+                <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white">
                   Most Popular
                 </div>
               </div>
@@ -227,15 +227,25 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
                 ))}
               </ul>
 
-              {/* CTA Button - Simple, working solution */}
+              {/* CTA Button - Force visibility with explicit styles */}
               <div className="mt-auto">
                 <a
                   href={tier.ctaHref}
-                  className={`block w-full py-3 px-4 rounded-xl font-bold text-center transition-all duration-300 ${
-                    tier.popular
-                      ? 'bg-gradient-to-r from-forest to-turquoise text-white hover:shadow-lg'
-                      : 'bg-forest text-white hover:bg-turquoise'
-                  }`}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: '12px 16px',
+                    borderRadius: '12px',
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    color: 'white',
+                    background: tier.popular 
+                      ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
+                      : '#2F5D50',
+                    transition: 'all 0.3s ease'
+                  }}
+                  className="hover:shadow-lg"
                   aria-label={`${tier.cta} for ${tier.name} plan`}
                 >
                   {tier.cta}
