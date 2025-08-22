@@ -180,8 +180,8 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
           >
             {/* Popular Badge */}
             {tier.popular && (
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-semibold font-sans">
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
+                <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-semibold font-sans shadow-lg border-2 border-white">
                   Most Popular
                 </div>
               </div>
@@ -189,7 +189,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
 
             {/* Plan Card */}
             <motion.div 
-              className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full ${
+              className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full flex flex-col ${
                 tier.popular 
                   ? 'border-forest/30 scale-105 shadow-xl'  
                   : 'border-gray-200 hover:border-forest/20'
@@ -226,7 +226,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
               </div>
 
               {/* Features List */}
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-grow">
                 {tier.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
                     <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -240,13 +240,13 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
               </ul>
 
               {/* CTA Button */}
-              <div className="mt-auto">
+              <div className="mt-auto pt-4">
                 <a
                   href={tier.ctaHref}
-                  className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 font-sans inline-block text-center ${
+                  className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 font-sans inline-block text-center shadow-sm hover:shadow-md text-white ${
                     tier.popular
-                      ? 'bg-gradient-to-r from-forest to-turquoise text-white hover:shadow-lg hover:-translate-y-1'
-                      : 'bg-forest text-white hover:bg-turquoise hover:-translate-y-1'
+                      ? 'bg-gradient-to-r from-forest to-turquoise hover:from-forest/90 hover:to-turquoise/90 hover:shadow-lg hover:-translate-y-1'
+                      : 'bg-forest hover:bg-turquoise hover:-translate-y-1'
                   }`}
                   aria-label={`${tier.cta} for ${tier.name} plan`}
                 >
