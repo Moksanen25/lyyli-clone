@@ -171,7 +171,19 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
             {/* Popular Badge - Using a completely different approach */}
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-50">
-                <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white">
+                <div 
+                  style={{
+                    background: 'linear-gradient(to right, #2F5D50, #0F766E)',
+                    color: 'white',
+                    padding: '8px 16px',
+                    borderRadius: '9999px',
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    border: '2px solid white'
+                  }}
+                  className="px-4 py-2 text-sm font-bold shadow-xl border-2 border-white"
+                >
                   Most Popular
                 </div>
               </div>
