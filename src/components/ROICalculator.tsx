@@ -73,7 +73,7 @@ export default function ROICalculator() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
@@ -219,12 +219,132 @@ export default function ROICalculator() {
             </motion.div>
           </div>
 
+          {/* ROI Assumptions Section */}
+          <motion.div 
+            className="mt-16 bg-white rounded-2xl p-8 shadow-lg border border-gray-200"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-semibold text-forest mb-4 font-playfair font-normal leading-tight">
+                ROI calculation assumptions
+              </h3>
+              <p className="text-mediumGray font-sans leading-relaxed">
+                Our calculations are based on industry benchmarks and real customer data
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-forest mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-base text-mediumGray font-sans leading-relaxed">
+                    60% average time reduction in communication tasks
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-forest mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-base text-mediumGray font-sans leading-relaxed">
+                    €75 average hourly rate for professional services
+                  </span>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-forest mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-base text-mediumGray font-sans leading-relaxed">
+                    40 working hours per week, 4.33 weeks per month
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-forest mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-base text-mediumGray font-sans leading-relaxed">
+                    Based on actual customer outcomes and industry data
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 p-4 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-lg border-l-4 border-forest">
+              <p className="text-sm text-mediumGray font-sans leading-relaxed">
+                <strong>Note:</strong> ROI calculations are estimates based on
+                typical customer outcomes and industry benchmarks. Actual results
+                may vary depending on your organization&apos;s specific
+                communication patterns, team size, and implementation approach.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Measurable Business Impact Section */}
+          <motion.div 
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-3xl font-semibold text-forest mb-6 font-playfair font-normal leading-tight">
+              Measurable business impact
+            </h3>
+            <p className="text-lg text-mediumGray max-w-3xl mx-auto mb-8 font-sans leading-relaxed">
+              Beyond time and cost savings, Lyyli.ai delivers measurable improvements in communication quality, team collaboration, and customer satisfaction
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">Faster response times</h4>
+                <p className="text-mediumGray text-sm font-sans leading-relaxed">
+                  Reduce communication delays by up to 80% with AI-powered assistance
+                </p>
+              </div>
+              
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                <div className="w-12 h-12 bg-turquoise/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <svg className="w-6 h-6 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">Improved consistency</h4>
+                <p className="text-mediumGray text-sm font-sans leading-relaxed">
+                  Maintain brand voice and messaging consistency across all communications
+                </p>
+              </div>
+              
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                <div className="w-12 h-12 bg-rose/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <svg className="w-6 h-6 text-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">Higher satisfaction</h4>
+                <p className="text-mediumGray text-sm font-sans leading-relaxed">
+                  Boost customer and team satisfaction with more effective communication
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Bottom CTA */}
           <motion.div 
             className="text-center mt-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
             viewport={{ once: true }}
           >
             <a 

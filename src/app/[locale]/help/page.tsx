@@ -18,7 +18,7 @@ export default async function HelpPage({
   const t = await getTranslations(locale);
 
   return (
-    <div className="min-h-screen bg-forest">
+    <div className="min-h-screen bg-white">
       {/* Hero Section with Search */}
       <div className="relative z-10 pt-32">
         <section 
@@ -29,10 +29,10 @@ export default async function HelpPage({
           <HeroVisual />
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-4xl font-bold text-white mb-6 font-playfair font-normal leading-tight">
+            <h1 className="text-4xl font-bold text-forest mb-6 font-playfair font-normal leading-tight">
               {locale === "fi" ? "Apu ja tuki" : "Help & Support Center"}
             </h1>
-            <p className="text-xl text-white/90 mb-8 font-sans leading-relaxed">
+            <p className="text-xl text-mediumGray mb-8 font-sans leading-relaxed">
               {locale === "fi" 
                 ? "Etsi vastauksia, oppaat ja tuki Lyyli.ai:n käyttöön"
                 : "Find answers, guides, and support for using Lyyli.ai"
@@ -51,8 +51,8 @@ export default async function HelpPage({
       </div>
 
       {/* Main Content */}
-      <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6">
           {/* Popular Topics */}
           <div className="mb-16">
             <h2 className="text-2xl font-semibold text-forest mb-8 font-playfair font-normal leading-tight">
@@ -177,7 +177,7 @@ export default async function HelpPage({
           </div>
 
           {/* Contact Support */}
-          <div className="text-center py-12 bg-gradient-to-br from-forest/5 to-turquoise/5 rounded-2xl">
+          <div className="text-center py-12 bg-white rounded-2xl shadow-lg border border-gray-200">
             <h2 className="text-2xl font-semibold text-forest mb-4 font-playfair font-normal leading-tight">
               {locale === "fi" ? "Tarvitsetko lisäapua?" : "Need additional help?"}
             </h2>
