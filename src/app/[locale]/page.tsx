@@ -8,11 +8,13 @@ import {
   AnimatedTimeline,
 } from "../../components/VisualElements";
 import HeroVisual from "../../components/HeroVisual";
+import MobileHeroVisual from "../../components/MobileHeroVisual";
+import AccessibleHeroVisual from "../../components/AccessibleHeroVisual";
 import ROIStats from "../../components/ROIStats";
 import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";
 import DemoVideo from "../../components/DemoVideo";
-import ROICalculator from "../../components/ROICalculator";
+import ROICalculator from "../../components/pricing/ROICalculator";
 import TestimonialSection from "../../components/TestimonialSection";
 import PricingCards from "../../components/PricingCards";
 interface HomeProps {
@@ -36,8 +38,16 @@ export default async function Home({ params }: HomeProps) {
           className="container mx-auto px-4 py-20 relative overflow-hidden"
           aria-label="Hero"
         >
-          {/* Animated Hero Visual */}
-          <HeroVisual />
+          {/* Conditional Hero Visual - Mobile vs Desktop with Accessibility Options */}
+          <div className="hidden lg:block">
+            <AccessibleHeroVisual />
+          </div>
+          <div className="hidden md:block lg:hidden">
+            <HeroVisual />
+          </div>
+          <div className="md:hidden">
+            <MobileHeroVisual />
+          </div>
           
           <h1 className="text-3xl md:text-4xl text-forest text-center mb-8 font-playfair font-normal leading-tight relative z-10">
             {t["hero.headline"]}
@@ -70,7 +80,7 @@ export default async function Home({ params }: HomeProps) {
               {t["problems.title"]}
             </h2>
             <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Common communication challenges that hold professional service organizations back
+              {t["problems.subtitle"]}
             </p>
           </div>
           
@@ -145,7 +155,7 @@ export default async function Home({ params }: HomeProps) {
       <DemoVideo />
 
       {/* ROI Calculator Section */}
-      <ROICalculator />
+      <ROICalculator translations={t} />
 
       {/* Testimonials and Customer Logos */}
       <TestimonialSection />
@@ -157,18 +167,17 @@ export default async function Home({ params }: HomeProps) {
       <section id="cta" className="py-24 bg-gradient-to-br from-forest to-turquoise">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl text-white mb-6 font-playfair font-normal leading-tight">
-            Ready to transform your communication?
+            {t["cta.subtitle"]}
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
-            Join hundreds of professional service organizations that have already revolutionized 
-            their communication with Lyyli.ai
+            {t["cta.descriptionLong"]}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="/waitlist" 
               className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
             >
-              Start your free trial
+              {t["cta.startTrial"]}
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -177,7 +186,7 @@ export default async function Home({ params }: HomeProps) {
               href="/contact" 
               className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
             >
-              Schedule a demo
+              {t["cta.demo"]}
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>

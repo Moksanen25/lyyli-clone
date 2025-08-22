@@ -76,6 +76,66 @@
   --debug-turquoise: #A7D6D1;
 }
 
+/* Accessibility and Mobile Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .hero-visual {
+    opacity: 0.8;
+  }
+  
+  .data-stream {
+    opacity: 0.7;
+  }
+  
+  .data-node {
+    opacity: 0.9;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --forest: #1a3d2e;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --border-primary: #000000;
+  }
+  
+  .hero-visual {
+    filter: contrast(1.5);
+  }
+}
+
+/* Focus styles for accessibility */
+.hero-visual-toggle:focus {
+  outline: 2px solid var(--forest);
+  outline-offset: 2px;
+}
+
+/* Reduced motion alternatives */
+.reduced-motion .hero-visual {
+  animation: none;
+}
+
+.reduced-motion .data-stream {
+  opacity: 0.6;
+}
+
+.reduced-motion .data-node {
+  opacity: 0.8;
+}
+
 
 
 /* Custom Slider Styling for ROI Calculator */
