@@ -298,7 +298,7 @@ export default function PricingCards() {
 
                 {/* CTA Button */}
                 <div className="mt-auto">
-                  <button className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 font-sans text-white shadow-sm hover:shadow-md ${
+                  <button className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 font-sans text-white shadow-sm hover:shadow-md font-bold ${
                     plan.highlight
                       ? 'bg-gradient-to-r from-forest to-turquoise hover:from-forest/90 hover:to-turquoise/90 hover:shadow-lg hover:-translate-y-1'
                       : 'bg-forest hover:bg-turquoise hover:-translate-y-1'

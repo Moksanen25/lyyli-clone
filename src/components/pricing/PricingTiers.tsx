@@ -180,7 +180,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
           >
             {/* Popular Badge */}
             {tier.popular && (
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-20">
                 <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-semibold font-sans shadow-lg border-2 border-white">
                   Most Popular
                 </div>
@@ -243,7 +243,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
               <div className="mt-auto pt-4">
                 <a
                   href={tier.ctaHref}
-                  className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 font-sans inline-block text-center shadow-sm hover:shadow-md text-white ${
+                  className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 font-sans inline-block text-center shadow-sm hover:shadow-md text-white font-bold ${
                     tier.popular
                       ? 'bg-gradient-to-r from-forest to-turquoise hover:from-forest/90 hover:to-turquoise/90 hover:shadow-lg hover:-translate-y-1'
                       : 'bg-forest hover:bg-turquoise hover:-translate-y-1'
