@@ -115,7 +115,7 @@ export default async function LocaleLayout({
   const canonicalUrl = `${protocol}://${host}${pathname}`;
 
   return (
-    <html lang={currentLocale} dir="ltr" className={fontVars}>
+    <html lang={currentLocale} dir="ltr" className={`${fontVars} h-full`}>
       <head>
         <link rel="canonical" href={canonicalUrl} />
         <link rel="alternate" hrefLang="en" href={`${protocol}://${host}/en`} />
@@ -132,12 +132,24 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="antialiased font-sans" suppressHydrationWarning={true}>
+      <body className="antialiased font-sans min-h-screen" suppressHydrationWarning={true}>
 
-        <div className="flex flex-col min-h-screen">
+        {/* Full-screen gradient background */}
+        <div className="fixed top-0 left-0 w-screen h-screen -z-50 pointer-events-none">
+          <div 
+            className="w-full h-full"
+            style={{
+              background: 'linear-gradient(135deg, #F4FAF7 0%, #FFFFFF 50%, #F4FAF7 100%)',
+              minHeight: '100vh',
+              minWidth: '100vw'
+            }}
+          />
+        </div>
+
+        <div className="flex flex-col min-h-screen relative">
           <Header locale={currentLocale} translations={t} />
           <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 relative">{children}</main>
           <Footer
             locale={currentLocale}
             translations={t}

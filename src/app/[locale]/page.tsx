@@ -31,11 +31,11 @@ export default async function Home({ params }: HomeProps) {
   const t = await getTranslations(currentLocale);
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <div className="relative z-10 pt-32">
+      <div className="relative z-30 pt-32">
         <section 
-          className="container mx-auto px-4 py-20 relative overflow-hidden"
+          className="container mx-auto px-4 py-20 relative"
           aria-label="Hero"
         >
           {/* Conditional Hero Visual - Mobile vs Desktop with Accessibility Options */}
@@ -70,10 +70,12 @@ export default async function Home({ params }: HomeProps) {
       </div>
 
       {/* ROI Statistics Section */}
-      <ROIStats />
+      <div className="relative z-20">
+        <ROIStats />
+      </div>
 
       {/* Problems Section - Improved contrast and structure */}
-      <section className="bg-white border-t border-gray-100">
+      <section className="border-t border-gray-100 relative z-20">
         <div className="container mx-auto px-4 py-24">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">

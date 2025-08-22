@@ -2,14 +2,8 @@
 
 export default function HeroVisual() {
   return (
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      {/* Base radial gradient for subtle contrast */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(1200px 620px at 50% 18%, #F4FAF7 0%, #FFFFFF 65%)'
-        }}
-      />
+    <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+
 
       {/* Data Stream Visualization */}
       <div className="absolute inset-0">

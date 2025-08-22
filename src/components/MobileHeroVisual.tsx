@@ -17,14 +17,8 @@ export default function MobileHeroVisual() {
   }, []);
 
   return (
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      {/* Simple gradient background */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(135deg, #F4FAF7 0%, #FFFFFF 50%, #F4FAF7 100%)'
-        }}
-      />
+    <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+
 
       {/* Mobile-optimized data flow visualization */}
       <div className="absolute inset-0">
