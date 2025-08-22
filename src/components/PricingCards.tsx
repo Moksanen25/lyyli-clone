@@ -232,8 +232,8 @@ export default function PricingCards() {
             >
               {/* Popular Badge */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-semibold font-sans">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-50">
+                  <div className="bg-gradient-to-r from-forest to-turquoise text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white">
                     Most Popular
                   </div>
                 </div>
@@ -242,8 +242,8 @@ export default function PricingCards() {
               {/* Plan Card */}
               <motion.div 
                 className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full cursor-pointer ${
-                  plan.highlight 
-                    ? 'border-forest/30 scale-105 shadow-xl'  
+                  plan.popular 
+                    ? 'border-forest shadow-xl scale-105'  
                     : 'border-gray-200 hover:border-forest/20'
                 } ${
                   selectedPlan === plan.name ? 'ring-2 ring-forest/50' : ''
@@ -298,11 +298,23 @@ export default function PricingCards() {
 
                 {/* CTA Button */}
                 <div className="mt-auto">
-                  <button className={`w-full py-3 px-4 rounded-xl font-bold text-center transition-all duration-300 ${
-                    plan.highlight
-                      ? 'bg-gradient-to-r from-forest to-turquoise text-white hover:shadow-lg'
-                      : 'bg-forest text-white hover:bg-turquoise'
-                  }`}>
+                  <button 
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      fontWeight: 'bold',
+                      textAlign: 'center',
+                      textDecoration: 'none',
+                      color: 'white',
+                      background: plan.popular 
+                        ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
+                        : '#2F5D50',
+                      transition: 'all 0.3s ease'
+                    }}
+                    className="hover:shadow-lg"
+                  >
                     {plan.cta}
                   </button>
                 </div>
