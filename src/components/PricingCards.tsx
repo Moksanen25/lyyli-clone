@@ -234,9 +234,9 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
               className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
               variants={cardVariants}
             >
-              {/* Popular Badge - Positioned to align with card outline and avoid text interference */}
+              {/* Popular Badge - Positioned to avoid text interference and move with card outline */}
               {plan.popular && (
-                <div className="absolute -top-2 -right-1 z-50">
+                <div className="absolute -top-4 -right-2 z-50">
                   <div 
                     className="px-5 py-2 text-sm font-bold text-white shadow-xl border-2 border-white rounded-full whitespace-nowrap"
                     style={{
