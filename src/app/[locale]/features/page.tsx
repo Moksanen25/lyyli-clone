@@ -2,15 +2,7 @@ import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import FeaturesAccordionLayout from "@/components/features/FeaturesAccordionLayout";
-
-import {
-  InteractiveCard,
-  FeatureHighlightCard,
-  AnimatedTimeline,
-  EnhancedGeometricPattern,
-  FloatingElements,
-} from "@/components/VisualElements";
-import SubPageVisual from "@/components/SubPageVisual";
+import HeroVisual from "@/components/HeroVisual";
 
 interface FeaturesPageProps {
   params: Promise<{ locale: string }>;
@@ -36,34 +28,31 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
   const t = await getTranslations(currentLocale);
 
   return (
-    <div className="bg-white relative overflow-hidden">
-      {/* Background Visual Elements */}
-      <FloatingElements />
-      
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative container mx-auto px-4 py-16 lg:py-24">
-        {/* Animated Sub-Page Visual */}
-        <SubPageVisual />
-        
-        {/* Hero Background Pattern */}
-        <EnhancedGeometricPattern className="opacity-20" />
-        
-        <div className="text-center max-w-4xl mx-auto relative z-10">
-          <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-normal leading-tight text-forest">
-            {t["features.hero.title"]}
-          </h1>
-          <p className="text-lg mb-8 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            {t["features.hero.subtitle"]}
-          </p>
-
-
-        </div>
-      </section>
+      <div className="relative z-10 pt-32">
+        <section 
+          className="container mx-auto px-4 py-20 relative overflow-hidden"
+          aria-label="Hero"
+        >
+          {/* Animated Hero Visual */}
+          <HeroVisual />
+          
+          <div className="text-center max-w-4xl mx-auto relative z-10">
+            <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-normal leading-tight text-forest">
+              {t["features.hero.title"]}
+            </h1>
+            <p className="text-lg mb-8 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+              {t["features.hero.subtitle"]}
+            </p>
+          </div>
+        </section>
+      </div>
 
       {/* AI Communication Visualization */}
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
             How Lyyli connects your teams
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -98,162 +87,71 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
               {/* Enhanced glow effect for mobile */}
               <div className="absolute inset-0 bg-gradient-to-br from-turquoise/15 to-rose/15 rounded-lg blur-lg -z-10 group-hover:blur-xl group-hover:from-turquoise/25 group-hover:to-rose/25 transition-all duration-300 ease-out" />
             </div>
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-turquoise text-white px-3 py-1 rounded-full text-xs font-medium shadow-soft">
-              Mobile
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-turquoise text-white px-4 py-2 rounded-full text-sm font-medium shadow-soft">
+              Mobile experience
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Benefits Overview */}
-      <section className="container mx-auto px-4 py-16 bg-gradient-to-br from-forest/10 to-turquoise/10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            Core benefits for professional service organizations
-          </h2>
-          <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            Discover how Lyyli transforms communication workflows with intelligent automation and enterprise-grade security.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-soft">
-            <h3 className="text-xl mb-3 text-forest font-playfair font-bold">AI-powered efficiency</h3>
-            <p className="text-mediumGray">Reduce manual communication tasks by 75% with intelligent automation and smart routing.</p>
+      {/* Features Grid */}
+      <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+              {t["features.grid.title"]}
+            </h2>
+            <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+              {t["features.grid.subtitle"]}
+            </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-soft">
-            <h3 className="text-xl mb-3 text-forest font-playfair font-bold">Enterprise security</h3>
-            <p className="text-mediumGray">Bank-grade encryption, ISO certifications, and comprehensive compliance built-in.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-soft">
-            <h3 className="text-xl mb-3 text-forest font-playfair font-bold">Seamless integration</h3>
-            <p className="text-mediumGray">Works with your existing Slack, Teams, and email workflows without disruption.</p>
-          </div>
+          <FeaturesCardLayout locale={currentLocale} translations={t} />
         </div>
       </section>
 
-      {/* Features Content */}
-      <section className="container mx-auto px-4 py-16">
-        <FeaturesCardLayout locale={currentLocale} translations={t} />
-      </section>
-
-      {/* How It Works Section */}
-      <section className="container mx-auto px-4 py-16 bg-gradient-to-br from-rose/10 to-grayLight">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            How Lyyli works
-          </h2>
-          <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            Get started in minutes with our simple 4-step process.
-          </p>
-        </div>
-        
-        <div className="space-y-8">
-          <div className="flex flex-col sm:flex-row items-start text-center sm:text-left">
-            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto sm:mx-0 sm:mr-6 mb-4 sm:mb-0">1</div>
-            <div>
-              <h3 className="text-xl text-forest mb-2 font-playfair font-bold">Connect your tools</h3>
-              <p className="text-mediumGray">Integrate with Slack, Teams, and email in minutes. No complex setup required.</p>
-            </div>
+      {/* Features Accordion */}
+      <section className="bg-white py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+              {t["features.accordion.title"]}
+            </h2>
+            <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+              {t["features.accordion.subtitle"]}
+            </p>
           </div>
-          <div className="flex flex-col sm:flex-row items-start text-center sm:text-left">
-            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto sm:mx-0 sm:mr-6 mb-4 sm:mb-0">2</div>
-            <div>
-              <h3 className="text-xl text-forest mb-2 font-playfair font-bold">AI learns your patterns</h3>
-              <p className="text-mediumGray">Our AI analyzes communication patterns and team dynamics to understand your workflow.</p>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row items-start text-center sm:text-left">
-            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto sm:mx-0 sm:mr-6 mb-4 sm:mb-0">3</div>
-            <div>
-              <h3 className="text-xl text-forest mb-2 font-playfair font-bold">Smart suggestions & routing</h3>
-              <p className="text-mediumGray">Get intelligent recommendations for message timing, channels, and recipients.</p>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row items-start text-center sm:text-left">
-            <div className="w-16 h-16 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto sm:mx-0 sm:mr-6 mb-4 sm:mb-0">4</div>
-            <div>
-              <h3 className="text-xl text-forest mb-2 font-playfair font-bold">Measure & optimize</h3>
-              <p className="text-mediumGray">Track communication effectiveness with detailed analytics and improvement suggestions.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust & Compliance Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            Trust & compliance
-          </h2>
-          <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            Built for organizations that demand the highest standards of security and compliance.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-soft text-center">
-            <h3 className="text-xl font-playfair font-bold text-forest mb-2">ISO 27001 certified</h3>
-            <p className="text-sm text-mediumGray">International security standard</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-soft text-center">
-            <h3 className="text-xl font-playfair font-bold text-forest mb-2">GDPR compliant</h3>
-            <p className="text-sm text-mediumGray">Full data protection</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-soft text-center">
-            <h3 className="text-xl font-playfair font-bold text-forest mb-2">SOC 2 type II</h3>
-            <p className="text-sm text-mediumGray">Service organization control</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-soft text-center">
-            <h3 className="text-xl font-playfair font-bold text-forest mb-2">Regular audits</h3>
-            <p className="text-sm text-mediumGray">Continuous security monitoring and third-party security assessments.</p>
-          </div>
+          <FeaturesAccordionLayout locale={currentLocale} translations={t} />
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-forest text-white py-16 lg:py-24 relative overflow-hidden">
-        {/* CTA Background Pattern */}
-        <EnhancedGeometricPattern className="opacity-10" />
-        
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl mb-4 text-white font-playfair font-bold leading-snug">
-            {t["cta.title"]}
+      <section className="bg-gradient-to-br from-forest to-turquoise py-16 lg:py-24">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-normal leading-tight">
+            Ready to transform your communication?
           </h2>
-          <p className="text-lg mb-8 text-white opacity-90 font-sans leading-relaxed">
-            {t["cta.description"]}
+          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
+            Join hundreds of professional service organizations that have already revolutionized 
+            their communication with Lyyli.ai
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/demo"
-              className="bg-white text-forest px-8 py-4 rounded-lg hover:bg-white/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans"
-              aria-label="Book a demo of Lyyli.ai"
+            <a 
+              href={`/${currentLocale}/waitlist`}
+              className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
             >
-              {t["cta.button"]}
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
+              Start your free trial
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
-            <a
-              href="/contact"
-              className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-colors font-medium inline-flex items-center justify-center font-sans"
-              aria-label="Contact Lyyli.ai sales team"
+            <a 
+              href={`/${currentLocale}/contact`}
+              className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
             >
-              Contact sales
+              Schedule a demo
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
             </a>
           </div>
         </div>

@@ -1,13 +1,12 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
+import HeroVisual from "@/components/HeroVisual";
 
 interface PrivacyPageProps {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({
-  params,
-}: PrivacyPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PrivacyPageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations(locale);
 
@@ -25,24 +24,36 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
   const t = await getTranslations(currentLocale);
 
   return (
-    <div className="bg-white">
-      <div className="max-w-4xl mx-auto px-6 py-16 lg:py-24">
-        <header className="mb-12">
-          <h1 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-tight">
-            {t["privacy.title"]}
-          </h1>
-          <p className="text-base text-mediumGray font-sans leading-relaxed">
-            {t["privacy.updated"]}: January 15, 2024
-          </p>
-        </header>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative z-10 pt-32">
+        <section 
+          className="container mx-auto px-4 py-20 relative overflow-hidden"
+          aria-label="Hero"
+        >
+          {/* Animated Hero Visual */}
+          <HeroVisual />
+          
+          <div className="text-center max-w-4xl mx-auto relative z-10">
+            <h1 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-tight">
+              {t["privacy.title"]}
+            </h1>
+            <p className="text-base text-mediumGray font-sans leading-relaxed">
+              {t["privacy.updated"]}: January 15, 2024
+            </p>
+          </div>
+        </section>
+      </div>
 
+      {/* Privacy Content */}
+      <div className="max-w-4xl mx-auto px-6 py-16 lg:py-24">
         <div className="prose prose-lg max-w-none space-y-8">
           <section>
             <p className="text-lg text-mediumGray font-sans leading-relaxed">{t["privacy.intro"]}</p>
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
               1. Information we collect
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -60,7 +71,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
               2. How we use your information
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -78,7 +89,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
               3. GDPR compliance
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -101,133 +112,102 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                 personal data at any time
               </li>
               <li>
-                <strong>Right to rectification:</strong> You can request
-                correction of inaccurate personal data
-              </li>
-              <li>
                 <strong>Right to erasure:</strong> You can request deletion of
-                your personal data
+                your personal data, subject to legal obligations
               </li>
               <li>
-                <strong>Data portability:</strong> You can request your data in
-                a structured, machine-readable format
+                <strong>Data portability:</strong> You can request a copy of
+                your data in a machine-readable format
               </li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
-              4. Enterprise-grade security
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+              4. Data security
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
-              We implement comprehensive security measures to protect your
-              information:
+              We implement industry-standard security measures to protect your
+              personal information:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-base text-mediumGray font-sans leading-relaxed">
-              <li>
-                <strong>Encryption:</strong> All data is encrypted in transit
-                using TLS 1.3 and at rest using AES-256 encryption
-              </li>
-              <li>
-                <strong>Access controls:</strong> Role-based access controls
-                ensure only authorized personnel can access your data
-              </li>
-              <li>
-                <strong>Audit trails:</strong> Complete logging of all data
-                access and processing activities
-              </li>
-              <li>
-                <strong>Regular audits:</strong> Our security practices are
-                regularly reviewed by third-party security firms
-              </li>
-              <li>
-                <strong>Data centers:</strong> We use ISO 27001 certified data
-                centers with physical security controls
-              </li>
+              <li>End-to-end encryption for all data in transit</li>
+              <li>Strong encryption for data at rest</li>
+              <li>Regular security audits and penetration testing</li>
+              <li>Access controls and authentication requirements</li>
+              <li>Incident response and breach notification procedures</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
               5. Data retention
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
-              We retain personal data only as long as necessary to fulfill the
-              purposes for which it was collected:
+              We retain your personal data only for as long as necessary to:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-base text-mediumGray font-sans leading-relaxed">
-              <li>
-                Account information: Retained while your account is active and
-                for 30 days after account closure
-              </li>
-              <li>
-                Communication data: Retained according to your
-                organization&apos;s data retention policies
-              </li>
-              <li>
-                Audit logs: Retained for 7 years to meet compliance requirements
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
-              6. Data transfers
-            </h2>
-            <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
-              When personal data is transferred outside the European Economic
-              Area (EEA), we ensure adequate protection through:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-base text-mediumGray font-sans leading-relaxed">
-              <li>
-                Standard contractual clauses approved by the European Commission
-              </li>
-              <li>
-                Adequacy decisions for countries with equivalent data protection
-                laws
-              </li>
-              <li>
-                Additional safeguards including encryption and access controls
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">7. Your rights</h2>
-            <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
-              You have the following rights regarding your personal data:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-base text-mediumGray font-sans leading-relaxed">
-              <li>Request access to your personal data</li>
-              <li>Request correction of inaccurate data</li>
-              <li>Request deletion of your data</li>
-              <li>Request restriction of processing</li>
-              <li>Object to processing based on legitimate interests</li>
-              <li>Data portability for data you have provided</li>
+              <li>Provide our services to you</li>
+              <li>Comply with legal obligations</li>
+              <li>Resolve disputes and enforce agreements</li>
+              <li>Improve our services and user experience</li>
             </ul>
             <p className="text-base text-mediumGray mt-4 font-sans leading-relaxed">
-              To exercise these rights, contact us at privacy@lyyli.ai. We will
-              respond within 30 days.
+              When we no longer need your data, we securely delete or
+              anonymize it.
             </p>
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
-              8. Contact information
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+              6. Your rights
             </h2>
-            <p className="text-base text-mediumGray font-sans leading-relaxed">
-              For questions about this privacy policy or our data practices,
-              contact:
+            <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
+              Under GDPR, you have the following rights regarding your personal
+              data:
             </p>
-            <div className="bg-rose p-6 rounded-lg mt-4">
-              <p className="text-base text-forest font-sans leading-relaxed">
-                <strong>Data protection officer</strong>
-                <br />
-                Email: privacy@lyyli.ai
-                <br />
-                Address: Lyyli Oy, Finland
+            <ul className="list-disc pl-6 space-y-2 text-base text-mediumGray font-sans leading-relaxed">
+              <li>Right to access and information</li>
+              <li>Right to rectification</li>
+              <li>Right to erasure ("right to be forgotten")</li>
+              <li>Right to restrict processing</li>
+              <li>Right to data portability</li>
+              <li>Right to object to processing</li>
+              <li>Rights related to automated decision making</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+              7. Contact us
+            </h2>
+            <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
+              If you have any questions about this Privacy Policy or our data
+              practices, please contact us:
+            </p>
+            <div className="bg-grayLight p-6 rounded-lg">
+              <p className="text-base text-mediumGray font-sans leading-relaxed">
+                <strong>Email:</strong> privacy@lyyli.ai
+              </p>
+              <p className="text-base text-mediumGray font-sans leading-relaxed">
+                <strong>Address:</strong> Lyyli.ai, Helsinki, Finland
+              </p>
+              <p className="text-base text-mediumGray font-sans leading-relaxed">
+                <strong>Data Protection Officer:</strong> dpo@lyyli.ai
               </p>
             </div>
+          </section>
+
+          <section>
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+              8. Changes to this policy
+            </h2>
+            <p className="text-base text-mediumGray font-sans leading-relaxed">
+              We may update this Privacy Policy from time to time. We will
+              notify you of any material changes by posting the new policy on
+              this page and updating the "Last Updated" date. We encourage you
+              to review this policy periodically.
+            </p>
           </section>
         </div>
       </div>

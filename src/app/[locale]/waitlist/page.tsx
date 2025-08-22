@@ -1,6 +1,7 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
+import HeroVisual from "@/components/HeroVisual";
 
 interface WaitlistPageProps {
   params: Promise<{ locale: string }>;
@@ -44,18 +45,26 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
   const t = await getTranslations(currentLocale);
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-forest to-turquoise text-white py-20 lg:py-32">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-4xl font-playfair font-normal mb-6 leading-tight">
-            {t["waitlist.hero.title"]}
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-            {t["waitlist.hero.subtitle"]}
-          </p>
-        </div>
-      </section>
+      <div className="relative z-10 pt-32">
+        <section 
+          className="container mx-auto px-4 py-20 relative overflow-hidden"
+          aria-label="Hero"
+        >
+          {/* Animated Hero Visual */}
+          <HeroVisual />
+          
+          <div className="text-center max-w-4xl mx-auto relative z-10">
+            <h1 className="text-3xl md:text-4xl font-playfair font-normal mb-6 leading-tight text-forest">
+              {t["waitlist.hero.title"]}
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-mediumGray font-sans leading-relaxed">
+              {t["waitlist.hero.subtitle"]}
+            </p>
+          </div>
+        </section>
+      </div>
 
       {/* Main Content */}
       <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
@@ -72,7 +81,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
                 <h3 className="text-xl font-playfair font-normal text-forest mb-2">
                   {t["waitlist.benefits.speed.title"]}
                 </h3>
-                <p className="text-mediumGray">
+                <p className="text-mediumGray font-sans leading-relaxed">
                   {t["waitlist.benefits.speed.description"]}
                 </p>
               </div>
@@ -86,7 +95,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
                 <h3 className="text-xl font-playfair font-normal text-forest mb-2">
                   {t["waitlist.benefits.quality.title"]}
                 </h3>
-                <p className="text-mediumGray">
+                <p className="text-mediumGray font-sans leading-relaxed">
                   {t["waitlist.benefits.quality.description"]}
                 </p>
               </div>
@@ -98,53 +107,16 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
                   </svg>
                 </div>
                 <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                  {t["waitlist.benefits.access.title"]}
+                  {t["waitlist.benefits.community.title"]}
                 </h3>
-                <p className="text-mediumGray">
-                  {t["waitlist.benefits.access.description"]}
+                <p className="text-mediumGray font-sans leading-relaxed">
+                  {t["waitlist.benefits.community.description"]}
                 </p>
               </div>
             </div>
 
-            {/* Form Section */}
-            <div className="bg-grayLight rounded-2xl p-8 lg:p-12">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-playfair font-normal text-forest mb-4">
-                  {t["waitlist.form.title"]}
-                </h2>
-                <p className="text-lg text-mediumGray max-w-2xl mx-auto">
-                  {t["waitlist.form.subtitle"]}
-                </p>
-              </div>
-
-              {/* HubSpot Form */}
-              <WaitlistForm />
-            </div>
-
-            {/* Additional Info */}
-            <div className="mt-16 text-center">
-              <h3 className="text-2xl font-playfair font-normal text-forest mb-6">
-                {t["waitlist.info.title"]}
-              </h3>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 text-left">
-                <div>
-                  <h4 className="font-playfair font-bold text-forest mb-3">
-                    {t["waitlist.info.timeline.title"]}
-                  </h4>
-                  <p className="text-mediumGray">
-                    {t["waitlist.info.timeline.description"]}
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-playfair font-bold text-forest mb-3">
-                    {t["waitlist.info.updates.title"]}
-                  </h4>
-                  <p className="text-mediumGray">
-                    {t["waitlist.info.updates.description"]}
-                  </p>
-                </div>
-              </div>
-            </div>
+            {/* Waitlist Form */}
+            <WaitlistForm />
           </div>
         </div>
       </section>

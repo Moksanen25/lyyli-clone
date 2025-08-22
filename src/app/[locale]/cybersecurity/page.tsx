@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
-import SubPageVisual from '@/components/SubPageVisual';
+import HeroVisual from '@/components/HeroVisual';
 import SecurityFeatures from '@/components/cybersecurity/SecurityFeatures';
 import TechnicalArchitecture from '@/components/cybersecurity/TechnicalArchitecture';
 import GDPRCompliance from '@/components/cybersecurity/GDPRCompliance';
@@ -41,40 +41,46 @@ export default async function CybersecurityPage({ params }: PageProps) {
   if (!supportedLocales.includes(locale)) notFound();
   
   const t = await getTranslations(locale);
+  const currentLocale = locale;
 
   return (
-    <div className="bg-white">
-      {/* Hero Section - Following 10-layout rule: arvolupaus + 1–2 CTA:ta, kuvitus/kuva */}
-      <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24 relative">
-        {/* Animated Sub-Page Visual */}
-        <SubPageVisual />
-        
-        <div className="text-center max-w-4xl mx-auto relative z-10">
-          <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-tight">
-            {t['cybersecurity.hero.title']}
-          </h1>
-          <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            {t['cybersecurity.hero.subtitle']}
-          </p>
-          {/* Hero CTA buttons following layout rule */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={`/${locale}/contact`}
-              className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans"
-              aria-label="Contact Lyyli.ai about cybersecurity"
-            >
-              {t['cybersecurity.hero.contactButton']}
-            </a>
-            <a
-              href={`/${locale}/features`}
-              className="border border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-colors font-medium inline-flex items-center justify-center font-sans"
-              aria-label="View Lyyli.ai features"
-            >
-              {t['cybersecurity.hero.featuresButton']}
-            </a>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative z-10 pt-32">
+        <section 
+          className="container mx-auto px-4 py-20 relative overflow-hidden"
+          aria-label="Hero"
+        >
+          {/* Animated Hero Visual */}
+          <HeroVisual />
+          
+          <div className="text-center max-w-4xl mx-auto relative z-10">
+            <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-tight">
+              {t['cybersecurity.hero.title']}
+            </h1>
+            <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+              {t['cybersecurity.hero.subtitle']}
+            </p>
+            {/* Hero CTA buttons following layout rule */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={`/${locale}/contact`}
+                className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans"
+                aria-label="Contact Lyyli.ai about cybersecurity"
+              >
+                {t['cybersecurity.hero.contactButton']}
+              </a>
+              <a
+                href={`/${locale}/features`}
+                className="border border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-colors font-medium inline-flex items-center justify-center font-sans"
+                aria-label="View Lyyli.ai features"
+              >
+                {t['cybersecurity.hero.featuresButton']}
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Security Highlights */}
       <section className="bg-grayLight py-16 lg:py-24">
@@ -101,10 +107,10 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                {t['cybersecurity.highlights.euServers.title']}
+                {t['cybersecurity.highlights.encryption.title']}
               </h3>
               <p className="text-mediumGray font-sans">
-                {t['cybersecurity.highlights.euServers.description']}
+                {t['cybersecurity.highlights.encryption.description']}
               </p>
             </div>
             
@@ -115,10 +121,10 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 </svg>
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-2">
-                {t['cybersecurity.highlights.encryption.title']}
+                {t['cybersecurity.highlights.access.title']}
               </h3>
               <p className="text-mediumGray font-sans">
-                {t['cybersecurity.highlights.encryption.description']}
+                {t['cybersecurity.highlights.access.description']}
               </p>
             </div>
           </div>
@@ -126,22 +132,46 @@ export default async function CybersecurityPage({ params }: PageProps) {
       </section>
 
       {/* Security Features */}
-      <SecurityFeatures locale={locale} />
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <SecurityFeatures locale={currentLocale} />
+        </div>
+      </section>
 
       {/* Technical Architecture */}
-      <TechnicalArchitecture locale={locale} />
+      <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <TechnicalArchitecture locale={currentLocale} />
+        </div>
+      </section>
 
       {/* GDPR Compliance */}
-      <GDPRCompliance locale={locale} />
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <GDPRCompliance locale={currentLocale} />
+        </div>
+      </section>
 
       {/* Access Control */}
-      <AccessControl locale={locale} />
+      <section className="bg-gradient-to-br from-forest/5 to-grayLight py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <AccessControl locale={currentLocale} />
+        </div>
+      </section>
 
       {/* Continuous Development */}
-      <ContinuousDevelopment locale={locale} />
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <ContinuousDevelopment locale={currentLocale} />
+        </div>
+      </section>
 
-      {/* Support Section */}
-      <SecuritySupport locale={locale} />
+      {/* Security Support */}
+      <section className="bg-forest text-white py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <SecuritySupport locale={currentLocale} />
+        </div>
+      </section>
     </div>
   );
 }
