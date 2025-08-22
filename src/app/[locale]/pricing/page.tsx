@@ -1,6 +1,6 @@
 import { getTranslations } from '@/lib/i18n';
 import { Metadata } from 'next';
-import PricingTiers from '@/components/pricing/PricingTiers';
+import PricingCards from '@/components/PricingCards';
 import BenefitsSection from '@/components/pricing/BenefitsSection';
 import PricingFAQ from '@/components/pricing/PricingFAQ';
 import HeroVisual from '@/components/HeroVisual';
@@ -55,9 +55,9 @@ export default async function PricingPage({ params }: PricingPageProps) {
         </section>
       </div>
 
-      {/* Pricing Tiers - Moved higher up */}
+      {/* Pricing Cards - Using front page pricing section */}
       <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        <PricingTiers translations={t} />
+        <PricingCards />
       </section>
 
       {/* ROI Calculator Section */}
