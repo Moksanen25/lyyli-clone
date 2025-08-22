@@ -56,8 +56,8 @@ export default async function PricingPage({ params }: PricingPageProps) {
       </div>
 
       {/* Pricing Cards - Using front page pricing section */}
-      <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        <PricingCards />
+      <section className="py-16 lg:py-24">
+        <PricingCards fullWidth={true} />
       </section>
 
       {/* ROI Calculator Section */}

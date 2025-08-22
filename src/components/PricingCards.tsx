@@ -15,6 +15,10 @@ interface PricingPlan {
   highlight?: boolean;
 }
 
+interface PricingCardsProps {
+  fullWidth?: boolean;
+}
+
 const plans: PricingPlan[] = [
   {
     name: "Free",
@@ -113,7 +117,7 @@ const plans: PricingPlan[] = [
   }
 ];
 
-export default function PricingCards() {
+export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
   const [ref, inView] = useInView({
@@ -171,8 +175,8 @@ export default function PricingCards() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
-      <div className="container mx-auto px-4">
+    <section className={`${fullWidth ? 'py-0' : 'py-24'} ${fullWidth ? '' : 'bg-gradient-to-br from-gray-50 to-white'}`}>
+      <div className={fullWidth ? "w-full px-4" : "container mx-auto px-4"}>
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
@@ -219,7 +223,7 @@ export default function PricingCards() {
         {/* Pricing Cards */}
         <motion.div 
           ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 max-w-7xl mx-auto"
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 max-w-7xl mx-auto ${fullWidth ? 'w-full' : ''}`}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
