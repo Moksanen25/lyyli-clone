@@ -51,6 +51,85 @@ export async function generateMetadata({
   };
 }
 
+// Function to convert markdown to HTML
+function markdownToHtml(markdown: string): string {
+  let html = markdown;
+  
+  // Convert headers
+  html = html.replace(/^# (.*$)/gim, '<h1 class="text-4xl font-playfair font-bold text-forest mb-6">$1</h1>');
+  html = html.replace(/^## (.*$)/gim, '<h2 class="text-3xl font-playfair font-bold text-forest mb-4 mt-8">$1</h2>');
+  html = html.replace(/^### (.*$)/gim, '<h3 class="text-2xl font-playfair font-bold text-forest mb-3 mt-6">$1</h3>');
+  html = html.replace(/^#### (.*$)/gim, '<h4 class="text-xl font-playfair font-bold text-forest mb-2 mt-4">$1</h4>');
+  
+  // Convert bold and italic
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-forest">$1</strong>');
+  html = html.replace(/\*(.*?)\*/g, '<em class="italic">$1</em>');
+  
+  // Process lists more carefully
+  // First, split content into lines
+  const lines = html.split('\n');
+  const processedLines = [];
+  let inUnorderedList = false;
+  let inOrderedList = false;
+  let listItems = [];
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    
+    if (line.trim().startsWith('- ')) {
+      // Unordered list item
+      if (!inUnorderedList) {
+        if (inOrderedList) {
+          // Close previous ordered list
+          processedLines.push('</ol>');
+          inOrderedList = false;
+        }
+        inUnorderedList = true;
+        processedLines.push('<ul class="list-disc list-inside mb-4 space-y-2">');
+      }
+      const content = line.replace(/^- (.*)/, '$1');
+      processedLines.push(`<li class="mb-2">${content}</li>`);
+    } else if (/^\d+\. .*/.test(line.trim())) {
+      // Ordered list item
+      if (!inOrderedList) {
+        if (inUnorderedList) {
+          // Close previous unordered list
+          processedLines.push('</ul>');
+          inUnorderedList = false;
+        }
+        inOrderedList = true;
+        processedLines.push('<ol class="list-decimal list-inside mb-4 space-y-2">');
+      }
+      const content = line.replace(/^\d+\. (.*)/, '$1');
+      processedLines.push(`<li class="mb-2">${content}</li>`);
+    } else {
+      // Not a list item
+      if (inUnorderedList) {
+        processedLines.push('</ul>');
+        inUnorderedList = false;
+      } else if (inOrderedList) {
+        processedLines.push('</ol>');
+        inOrderedList = false;
+      }
+      processedLines.push(line);
+    }
+  }
+  
+  // Close any open lists
+  if (inUnorderedList) {
+    processedLines.push('</ul>');
+  } else if (inOrderedList) {
+    processedLines.push('</ol>');
+  }
+  
+  html = processedLines.join('\n');
+  
+  // Convert line breaks
+  html = html.replace(/\n\n/g, '<br><br>');
+  
+  return html;
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { locale, slug } = await params;
   const supportedLocales = ["en", "fi"];
@@ -160,7 +239,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="max-w-4xl mx-auto px-6 pb-16 lg:pb-24">
         <div className="prose prose-lg max-w-none prose-headings:text-forest prose-a:text-forest prose-a:no-underline hover:prose-a:text-turquoise">
           {/* MDX content will be rendered here by Next.js */}
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }} />
         </div>
       </div>
 
