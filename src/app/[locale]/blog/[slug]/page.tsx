@@ -134,9 +134,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const currentLocale = supportedLocales.includes(locale) ? locale : "en";
 
   let post = null;
+  let fallbackLocale = null;
   
   try {
     post = getBlogPost(slug, currentLocale);
+    
+    // If post not found in current locale, try to fallback to English
+    if (!post && currentLocale === "fi") {
+      post = getBlogPost(slug, "en");
+      fallbackLocale = "en";
+    }
   } catch {
     console.warn("Blog content loading failed, showing fallback");
   }
@@ -194,6 +201,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
         </div>
 
+        {/* Fallback notice for Finnish users */}
+        {fallbackLocale && (
+          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="flex items-center gap-2 text-blue-800">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-sm font-medium">
+                Tämä blogikirjoitus on saatavilla vain englanniksi. 
+                <br />
+                <span className="font-normal">This blog post is only available in English.</span>
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="mb-8">
           <span className="inline-block bg-forest text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
             {post.category}
@@ -243,17 +266,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Related CTA */}
       <section className="bg-grayLight py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-playfair font-bold mb-4 text-forest">Ready to get started?</h2>
+          <h2 className="text-3xl font-playfair font-bold mb-4 text-forest">
+            {currentLocale === "fi" ? "Valmiina aloittamaan?" : "Ready to get started?"}
+          </h2>
           <p className="text-lg mb-8 text-mediumGray">
-            Transform your internal communications with Lyyli.ai
+            {currentLocale === "fi" 
+              ? "Muunna sisäiset viestintäsi Lyyli.ain avulla"
+              : "Transform your internal communications with Lyyli.ai"
+            }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/demo"
               className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-colors font-medium inline-flex items-center justify-center gap-2"
-              aria-label="Book a demo of Lyyli.ai"
+              aria-label={currentLocale === "fi" ? "Varaa Lyyli.ain demo" : "Book a demo of Lyyli.ai"}
             >
-              Book a Demo
+              {currentLocale === "fi" ? "Varaa Demo" : "Book a Demo"}
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -272,9 +300,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <Link
               href="/contact"
               className="border border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-colors font-medium inline-flex items-center justify-center"
-              aria-label="Contact Lyyli.ai sales team"
+              aria-label={currentLocale === "fi" ? "Ota yhteyttä Lyyli.ain myyntitiimiin" : "Contact Lyyli.ai sales team"}
             >
-              Contact Sales
+              {currentLocale === "fi" ? "Ota yhteyttä myyntiin" : "Contact Sales"}
             </Link>
           </div>
         </div>
