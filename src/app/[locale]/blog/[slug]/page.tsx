@@ -2,6 +2,9 @@ import {
   getBlogPost,
   getAllBlogSlugs,
   generateBlogMetadata,
+  hasTranslation,
+  getTranslatedBlogPost,
+  getAlternativeBlogPosts,
 } from "../../../../lib/blog";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -134,46 +137,90 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const currentLocale = supportedLocales.includes(locale) ? locale : "en";
 
   let post = null;
-  let fallbackLocale = null;
+  let translatedPost = null;
+  let alternativePosts: any[] = [];
   
   try {
+    // First try to get the post in the current locale
     post = getBlogPost(slug, currentLocale);
     
-    // If post not found in current locale, try to fallback to English
-    if (!post && currentLocale === "fi") {
-      post = getBlogPost(slug, "en");
-      fallbackLocale = "en";
+    // If post exists, check if it has a translation
+    if (post && hasTranslation(slug)) {
+      const targetLocale = currentLocale === "en" ? "fi" : "en";
+      translatedPost = getTranslatedBlogPost(slug, targetLocale);
+    }
+    
+    // If no post in current locale, try to get the translated version
+    if (!post && hasTranslation(slug)) {
+      const targetLocale = currentLocale === "en" ? "fi" : "en";
+      post = getTranslatedBlogPost(slug, targetLocale);
+      if (post) {
+        // This means we're showing content in a different language
+        translatedPost = null; // No need to show translation option
+      }
+    }
+    
+    // If still no post, get alternative posts in the current locale
+    if (!post) {
+      alternativePosts = getAlternativeBlogPosts(currentLocale, slug);
     }
   } catch {
-    console.warn("Blog content loading failed, showing fallback");
+    console.warn("Blog content loading failed");
   }
 
   if (!post) {
     return (
       <article className="bg-white">
-        <header className="max-w-4xl mx-auto px-6 py-16 lg:py-24">
-          <div className="mb-8">
+        <header className="max-w-4xl mx-auto px-6 py-16 text-center">
+          <h1 className="text-4xl font-playfair font-bold mb-6 text-forest">
+            {currentLocale === "fi" ? "Blogikirjoitus ei löytynyt" : "Blog Post Not Found"}
+          </h1>
+          <p className="text-lg mb-8 text-mediumGray">
+            {currentLocale === "fi" 
+              ? "Valitettavasti tätä blogikirjoitusta ei ole saatavilla."
+              : "Unfortunately, this blog post is not available."
+            }
+          </p>
+          
+          {alternativePosts.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-2xl font-playfair font-bold mb-6 text-forest">
+                {currentLocale === "fi" ? "Suosittelemme näitä artikkeleita:" : "We recommend these articles:"}
+              </h2>
+              <div className="grid gap-6 md:grid-cols-3">
+                {alternativePosts.map((altPost) => (
+                  <Link
+                    key={altPost.slug}
+                    href={`/${currentLocale}/blog/${altPost.slug}`}
+                    className="block p-6 border border-gray-200 rounded-lg hover:border-forest transition-colors"
+                  >
+                    <h3 className="text-lg font-semibold mb-2 text-forest line-clamp-2">
+                      {altPost.title}
+                    </h3>
+                    <p className="text-sm text-mediumGray line-clamp-3">
+                      {altPost.description}
+                    </p>
+                    <div className="mt-3 text-xs text-mediumGray">
+                      {altPost.readTime} min read
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          <div className="mt-12">
             <Link
               href={`/${currentLocale}/blog`}
-              className="inline-flex items-center text-forest-green hover:text-muted-turquoise transition-colors"
+              className="inline-flex items-center text-forest hover:text-turquoise transition-colors"
             >
-              ← Back to Blog
+              <span>← </span>
+              <span>
+                {currentLocale === "fi" ? "Takaisin blogiin" : "Back to Blog"}
+              </span>
             </Link>
           </div>
-          <div className="mb-8">
-            <h1 className="text-4xl lg:text-5xl font-playfair font-bold text-forest mb-4">
-              Blog Post: {slug}
-            </h1>
-            <p className="text-lg text-mediumGray mb-6">
-              This blog post content will be available soon. We're working on restoring the full functionality.
-            </p>
-          </div>
         </header>
-        <div className="max-w-4xl mx-auto px-6 pb-16">
-          <div className="prose prose-lg max-w-none">
-            <p>Content coming soon. This is a temporary placeholder while we restore the blog functionality.</p>
-          </div>
-        </div>
       </article>
     );
   }
@@ -195,24 +242,41 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="mb-8">
           <Link
             href={`/${currentLocale}/blog`}
-            className="inline-flex items-center text-forest-green hover:text-muted-turquoise transition-colors"
+            className="inline-flex items-center text-forest hover:text-turquoise transition-colors"
           >
-            ← Back to Blog
+            ← {currentLocale === "fi" ? "Takaisin blogiin" : "Back to Blog"}
           </Link>
         </div>
 
-        {/* Fallback notice for Finnish users */}
-        {fallbackLocale && (
+        {/* Language switching notice */}
+        {translatedPost && (
           <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <div className="flex items-center gap-2 text-blue-800">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
               </svg>
-              <p className="text-sm font-medium">
-                Tämä blogikirjoitus on saatavilla vain englanniksi. 
-                <br />
-                <span className="font-normal">This blog post is only available in English.</span>
-              </p>
+              <span className="font-medium">
+                {currentLocale === "fi" 
+                  ? "Tämä blogikirjoitus on saatavilla myös englanniksi."
+                  : "This blog post is also available in Finnish."
+                }
+              </span>
+            </div>
+            <div className="mt-2 text-blue-700">
+              <Link
+                href={`/${currentLocale === "en" ? "fi" : "en"}/blog/${translatedPost.slug}`}
+                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 underline"
+              >
+                <span>
+                  {currentLocale === "fi" 
+                    ? "Lue englanniksi"
+                    : "Lue suomeksi"
+                  }
+                </span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </Link>
             </div>
           </div>
         )}
@@ -227,11 +291,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>{post.author}</span>
             <span>•</span>
             <time dateTime={post.date}>
-              Published on {publishedDate}
+              {currentLocale === "fi" ? "Julkaistu" : "Published on"} {publishedDate}
             </time>
             <span>•</span>
             <span>
-              {post.readTime} min read
+              {post.readTime} {currentLocale === "fi" ? "min luku" : "min read"}
             </span>
           </div>
         </div>
@@ -257,9 +321,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </header>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 pb-16 lg:py-24">
-        <div className="prose prose-lg max-w-none prose-headings:text-forest prose-a:text-forest prose-a:no-underline hover:prose-a:text-turquoise">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }} />
+      <div className="max-w-4xl mx-auto px-6 pb-16 lg:pb-24">
+        <div className="prose prose-lg max-w-none prose-headings:text-forest prose-a:text-forest prose-a:no-underline hover:prose-a:text-turquoise prose-strong:text-forest prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700">
+          {/* Process markdown content manually for now */}
+          <div 
+            className="markdown-content"
+            dangerouslySetInnerHTML={{ 
+              __html: markdownToHtml(post.content) 
+            }} 
+          />
         </div>
       </div>
 
@@ -293,14 +363,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
             </Link>
             <Link
               href="/contact"
-              className="border border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-colors font-medium inline-flex items-center justify-center"
-              aria-label={currentLocale === "fi" ? "Ota yhteyttä Lyyli.ain myyntitiimiin" : "Contact Lyyli.ai sales team"}
+              className="border-2 border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-colors font-medium"
             >
               {currentLocale === "fi" ? "Ota yhteyttä myyntiin" : "Contact Sales"}
             </Link>

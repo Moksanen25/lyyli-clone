@@ -33,6 +33,28 @@ export interface BlogPostMetadata {
 
 const contentDirectory = path.join(process.cwd(), "content/blog");
 
+// Translation mapping between English and Finnish blog posts
+const TRANSLATION_MAP: Record<string, string> = {
+  // English -> Finnish
+  "communication-roi-leadership": "viestinnan-roi-johdolle",
+  "turning-communication-into-profit-center": "viestinnasta-tuottava-funktio",
+  "internal-communication-pitfalls": "sisaisen-viestinnan-sudenkuopat",
+  "enterprise-security-gdpr-compliance": "yritysturvallisuus-gdpr-vaatimustenmukaisuus",
+  "ai-communication-expert-teams": "ai-viestinta-asiantuntijatiimit",
+  "ai-spots-communication-opportunities": "tekoaly-tunnistaa-viestinnan-mahdollisuudet",
+  "consistent-brand-voice": "yhtenainen-brandi-aanen",
+  "lyyli-funding-announcement": "lyyli-funding-announcement", // Same slug in both
+  
+  // Finnish -> English (reverse mapping)
+  "viestinnan-roi-johdolle": "communication-roi-leadership",
+  "viestinnasta-tuottava-funktio": "turning-communication-into-profit-center",
+  "sisaisen-viestinnan-sudenkuopat": "internal-communication-pitfalls",
+  "yritysturvallisuus-gdpr-vaatimustenmukaisuus": "enterprise-security-gdpr-compliance",
+  "ai-viestinta-asiantuntijatiimit": "ai-communication-expert-teams",
+  "tekoaly-tunnistaa-viestinnan-mahdollisuudet": "ai-spots-communication-opportunities",
+  "yhtenainen-brandi-aanen": "consistent-brand-voice",
+};
+
 export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
   const localeDir = path.join(contentDirectory, locale);
 
@@ -112,6 +134,40 @@ export function getAllBlogSlugs(): { slug: string; locale: string }[] {
   });
 
   return slugs;
+}
+
+/**
+ * Get the translated slug for a blog post
+ */
+export function getTranslationSlug(slug: string): string | null {
+  return TRANSLATION_MAP[slug] || null;
+}
+
+/**
+ * Get the translated blog post if it exists
+ */
+export function getTranslatedBlogPost(slug: string, targetLocale: string): BlogPost | null {
+  const translationSlug = getTranslationSlug(slug);
+  if (!translationSlug) return null;
+  
+  return getBlogPost(translationSlug, targetLocale);
+}
+
+/**
+ * Get alternative blog posts in the target locale when a translation doesn't exist
+ */
+export function getAlternativeBlogPosts(targetLocale: string, excludeSlug?: string): BlogPostMetadata[] {
+  const allPosts = getAllBlogPosts(targetLocale);
+  return allPosts
+    .filter(post => post.slug !== excludeSlug)
+    .slice(0, 3); // Return top 3 alternatives
+}
+
+/**
+ * Check if a blog post has a translation
+ */
+export function hasTranslation(slug: string): boolean {
+  return !!getTranslationSlug(slug);
 }
 
 export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
