@@ -4,7 +4,6 @@ import {
   generateBlogMetadata,
 } from "../../../../lib/blog";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -19,7 +18,7 @@ export async function generateStaticParams() {
       locale: item.locale,
       slug: item.slug,
     }));
-  } catch (error) {
+  } catch {
     console.warn("Blog system not fully loaded, using fallback");
     return [
       { locale: 'en', slug: 'sample' },
@@ -41,7 +40,7 @@ export async function generateMetadata({
     if (post) {
       return generateBlogMetadata(post, locale);
     }
-  } catch (error) {
+  } catch {
     console.warn("Blog metadata generation failed, using fallback");
   }
 
@@ -71,7 +70,6 @@ function markdownToHtml(markdown: string): string {
   const processedLines = [];
   let inUnorderedList = false;
   let inOrderedList = false;
-  let listItems = [];
   
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -139,7 +137,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   
   try {
     post = getBlogPost(slug, currentLocale);
-  } catch (error) {
+  } catch {
     console.warn("Blog content loading failed, showing fallback");
   }
 
@@ -236,9 +234,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </header>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 pb-16 lg:pb-24">
+      <div className="max-w-4xl mx-auto px-6 pb-16 lg:py-24">
         <div className="prose prose-lg max-w-none prose-headings:text-forest prose-a:text-forest prose-a:no-underline hover:prose-a:text-turquoise">
-          {/* MDX content will be rendered here by Next.js */}
           <div dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }} />
         </div>
       </div>
