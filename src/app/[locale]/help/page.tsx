@@ -173,6 +173,82 @@ export default async function HelpPage({
                   </p>
                 </div>
               </Link>
+
+              <Link href={`/${locale}/help/billing`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-forest mb-2 group-hover:text-forest transition-colors font-sans">
+                    {locale === "fi" ? "Laskutus" : "Billing"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" 
+                      ? "Hallitse tilauksia ja maksutapoja"
+                      : "Manage subscriptions and payment methods"
+                    }
+                  </p>
+                </div>
+              </Link>
+
+              <Link href={`/${locale}/help/user-management`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-forest mb-2 group-hover:text-forest transition-colors font-sans">
+                    {locale === "fi" ? "Käyttäjien hallinta" : "User Management"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" 
+                      ? "Hallitse tiimiä ja oikeuksia"
+                      : "Manage team and permissions"
+                    }
+                  </p>
+                </div>
+              </Link>
+
+              <Link href={`/${locale}/help/data-management`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-forest mb-2 group-hover:text-forest transition-colors font-sans">
+                    {locale === "fi" ? "Tietojen hallinta" : "Data Management"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" 
+                      ? "Vie tietoja ja varmuuskopioi"
+                      : "Export data and backup"
+                    }
+                  </p>
+                </div>
+              </Link>
+
+              <Link href={`/${locale}/help/api-documentation`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-forest mb-2 group-hover:text-forest transition-colors font-sans">
+                    {locale === "fi" ? "API-dokumentaatio" : "API Documentation"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" 
+                      ? "Integroi palvelut sovelluksiin"
+                      : "Integrate services into applications"
+                    }
+                  </p>
+                </div>
+              </Link>
             </div>
           </div>
 
