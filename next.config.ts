@@ -5,9 +5,17 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   poweredByHeader: false,
   experimental: {
-    optimizePackageImports: ["next-intl"],
+    // Removed next-intl optimization to restore working routing
   },
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  webpack: (config, { isServer }) => {
+    // Fix for d3-shape module resolution issue
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      'd3-shape': false,
+    };
+    return config;
+  },
   images: {
     unoptimized: false,
     domains: [],
