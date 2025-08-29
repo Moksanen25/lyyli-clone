@@ -21,7 +21,7 @@ export default function MeshGradientBackground() {
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 -z-10 pointer-events-none"
+      className="fixed inset-0 -z-50 pointer-events-none"
       style={{ opacity: fadeOpacity }}
     >
       {/* Base mesh gradient */}
