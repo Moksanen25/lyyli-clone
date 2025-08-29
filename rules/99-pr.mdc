@@ -1,0 +1,53 @@
+# 🔀 PULL REQUEST RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 PULL REQUEST STANDARDS
+- **Code Review**: Required reviews before merging
+- **Quality Gates**: Automated testing and linting checks
+- **Documentation**: Clear descriptions and linked issues
+- **Branch Protection**: Prevent direct pushes to main branch
+
+### 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 📝 PULL REQUEST REQUIREMENTS
+
+#### **Kuvaus mitä/miksi, riskit, testausohjeet, ennen/jälkeen-kuvat UI-muutoksista**
+- **Description**: Selkeä kuvaus mitä muutetaan ja miksi
+- **Risks**: Tunnistaa mahdolliset riskit ja miten ne minimoidaan
+- **Testing**: Yksityiskohtaiset testausohjeet
+- **UI Changes**: Ennen/jälkeen-kuvat UI-muutoksista
+
+#### **i18n: kaikki tekstit avaimilla; ei kovakoodauksia**
+- **Internationalization**: Kaikki tekstit locale-tiedostoissa avain-arvo -pareina
+- **No Hardcoding**: Ei kovakoodattuja tekstejä komponentteihin
+- **Translation Keys**: Käytä selkeitä avainnimiä (esim. `common.buttons.submit`)
+
+#### **Brändi: värit, typot, kuvitus linjassa ohjeiden kanssa**
+- **Colors**: Noudata brändin värejä (#2F5D50, #F7EBEB, #F5F5F4, #A7D6D1)
+- **Typography**: Playfair Display (headings), Inter (body) - fontit
+- **Illustrations**: Brändin visuaalisen identiteetin mukaiset kuvat ja ikonit
+
+#### **Suorituskyky & a11y läpäisty; eventit lisätty (page_view, CTA, form_submit)**
+- **Performance**: Core Web Vitals budjetit täytetty (LCP < 2.5s, CLS < 0.1)
+- **Accessibility**: WCAG 2.1 AA standardit täytetty
+- **Analytics Events**: Varmista että seuraavat eventit on lisätty:
+  - `page_view` (language, route)
+  - `CTA-click` (language, route, cta_variant)
+  - `form_submit` (language, route, form_type)
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+description:
+globs:
+alwaysApply: true
+---

@@ -1,0 +1,268 @@
+# 🌍 INTERNATIONALIZATION RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 I18N STANDARDS
+- **Languages**: Finnish (fi) and English (en)
+- **Framework**: next-intl
+- **Locale Routing**: [locale] dynamic routing
+- **Translation Management**: Centralized message files
+
+## 🌐 LANGUAGE CONFIGURATION
+
+### **Language Defaults**
+- **EN = oletus** (English = default)
+- **FI = /fi** (Finnish = /fi prefix)
+
+### **Locale Structure**
+```
+/locales/
+├── en/
+│   ├── common.ts
+│   ├── navigation.ts
+│   ├── forms.ts
+│   └── seo.ts
+└── fi/
+    ├── common.ts
+    ├── navigation.ts
+    ├── forms.ts
+    └── seo.ts
+```
+
+### **Language Detection**
+- **Default Language**: English (no prefix)
+- **Finnish Language**: `/fi` prefix required
+- **Fallback**: English for missing translations
+- **Browser Language**: Respect user's browser language preference
+
+## 📝 TRANSLATION MANAGEMENT
+
+### **Text Localization Rules**
+- **Älä kovakoodaa tekstejä** (Don't hardcode texts)
+- **Use Translation Keys**: All text must use translation keys
+- **Key-Value Structure**: Maintain consistent key-value pairs
+
+### **Locale File Structure**
+```typescript
+// /locales/en/common.ts
+export default {
+  "common.welcome": "Welcome",
+  "common.getStarted": "Get started",
+  "common.learnMore": "Learn more"
+}
+
+// /locales/fi/common.ts
+export default {
+  "common.welcome": "Tervetuloa",
+  "common.getStarted": "Aloita",
+  "common.learnMore": "Lue lisää"
+}
+```
+
+### **Translation Key Patterns**
+- **Namespacing**: Use dot notation for organization
+  - `navigation.home`
+  - `forms.submit`
+  - `seo.pageTitle`
+- **Consistent Naming**: Use descriptive, logical key names
+- **Pluralization**: Handle singular/plural forms properly
+
+## 🛣️ ROUTING & NAVIGATION
+
+### **Route Preservation**
+- **Säilytä reitti kieltä vaihtaessa** (Preserve route when changing language)
+- **Examples**:
+  - `/pricing` ↔ `/fi/pricing`
+  - `/features/security` ↔ `/fi/features/security`
+  - `/blog/ai-communication` ↔ `/fi/blog/ai-communication`
+
+### **URL Structure**
+```typescript
+// Route examples
+/                    // English home
+/fi                  // Finnish home
+/pricing            // English pricing
+/fi/pricing         // Finnish pricing
+/features/security  // English security features
+/fi/features/security // Finnish security features
+```
+
+### **Language Switcher Implementation**
+```tsx
+// Language switcher component
+<LanguageSwitcher 
+  currentLocale={locale}
+  currentPath={pathname}
+  onLanguageChange={(newLocale) => {
+    // Preserve current route when switching language
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`)
+    router.push(newPath)
+  }}
+/>
+```
+
+## 🔍 SEO INTERNATIONALIZATION
+
+### **Hreflang Implementation**
+- **Add hreflang (en, fi)**: Language alternatives for search engines
+- **Alternates**: Provide language alternatives for each page
+- **Canonical URLs**: Set canonical URL for each language version
+
+### **SEO Meta Tags**
+```tsx
+// SEO component with hreflang
+<SEO 
+  title={t('seo.pageTitle')}
+  description={t('seo.pageDescription')}
+  canonical={`${baseUrl}/${locale}${pathname}`}
+  alternates={{
+    'en': `${baseUrl}/en${pathname}`,
+    'fi': `${baseUrl}/fi${pathname}`
+  }}
+  hreflang={[
+    { lang: 'en', url: `${baseUrl}/en${pathname}` },
+    { lang: 'fi', url: `${baseUrl}/fi${pathname}` }
+  ]}
+/>
+```
+
+### **SEO Requirements**
+- **Hreflang**: `<link rel="alternate" hreflang="en" href="...">`
+- **Alternates**: `<link rel="alternate" hreflang="fi" href="...">`
+- **Canonical**: `<link rel="canonical" href="...">`
+- **Language Meta**: `<meta property="og:locale" content="en_US">`
+
+## 🏷️ CONTENT TRANSLATION
+
+### **Translation Coverage**
+- **Alt-tekstit**: Image alt texts must be translated
+- **Placeholderit**: Form placeholders must be translated
+- **Metat**: Meta tags and descriptions must be translated
+- **UI Elements**: All user interface text must be translated
+
+### **Translation Key Examples**
+```typescript
+// Alt texts
+"images.hero.alt": "Professional team collaborating"
+
+// Form placeholders
+"forms.email.placeholder": "Enter your email address"
+
+// Meta descriptions
+"seo.home.description": "Lyyli.io helps professional service companies communicate effectively"
+
+// UI elements
+"buttons.submit": "Submit"
+"buttons.cancel": "Cancel"
+```
+
+### **Content Translation Rules**
+- **Same Key Pattern**: Use identical key structure across languages
+- **Context Preservation**: Maintain meaning and context in translations
+- **Cultural Adaptation**: Adapt content for Finnish cultural context
+- **Professional Tone**: Maintain professional service company terminology
+
+## 🔧 TECHNICAL IMPLEMENTATION
+
+### **Next.js Configuration**
+```typescript
+// next.config.ts
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
+
+export default withNextIntl({
+  // Configuration options
+});
+```
+
+### **i18n Configuration**
+```typescript
+// src/i18n.ts
+import { getRequestConfig } from 'next-intl/server';
+
+export default getRequestConfig(async ({ locale }) => ({
+  messages: (await import(`../locales/${locale}/index.ts`)).default
+}));
+
+export const locales = ['en', 'fi'];
+export const defaultLocale = 'en';
+```
+
+### **Middleware Configuration**
+```typescript
+// middleware.ts
+import createMiddleware from 'next-intl/middleware';
+
+export default createMiddleware({
+  locales: ['en', 'fi'],
+  defaultLocale: 'en',
+  localePrefix: 'as-needed'
+});
+
+export const config = {
+  matcher: ['/((?!api|_next|.*\\..*).*)']
+};
+```
+
+## 📱 RESPONSIVE I18N
+
+### **Text Length Considerations**
+- **Finnish Text**: Often longer than English equivalents
+- **Layout Adaptation**: Ensure layouts accommodate longer text
+- **Button Sizing**: Adjust button widths for different languages
+- **Form Validation**: Handle different text lengths in forms
+
+### **Mobile Considerations**
+- **Touch Targets**: Maintain 44×44px minimum for all languages
+- **Text Scaling**: Ensure readability across device sizes
+- **Navigation**: Adapt navigation for different text lengths
+
+## 🧪 TESTING & QUALITY
+
+### **Translation Testing**
+- **Coverage Check**: Verify all keys have translations
+- **Context Testing**: Test translations in actual UI context
+- **Length Testing**: Ensure translations fit in allocated space
+- **Cultural Testing**: Validate cultural appropriateness
+
+### **Quality Assurance**
+- **Professional Review**: Have native speakers review translations
+- **Consistency Check**: Maintain consistent terminology
+- **Update Process**: Regular review and update of translations
+- **User Feedback**: Collect feedback on translation quality
+
+## 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+### 📋 IMPLEMENTATION CHECKLIST
+- [ ] Language defaults: EN = default, FI = /fi
+- [ ] No hardcoded texts - use translation keys
+- [ ] Locale files: /locales/en/*.ts and /locales/fi/*.ts
+- [ ] Route preservation when switching languages
+- [ ] SEO: hreflang, alternates, canonical URLs
+- [ ] Alt texts, placeholders, and meta tags translated
+- [ ] next-intl framework configured
+- [ ] Middleware for locale routing
+- [ ] Translation key-value structure
+- [ ] Responsive design for different text lengths
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+
+description:
+globs:
+alwaysApply: true
+---
+description:
+globs:
+alwaysApply: true
+---

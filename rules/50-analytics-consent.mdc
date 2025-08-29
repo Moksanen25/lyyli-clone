@@ -1,0 +1,560 @@
+# 📊 ANALYTICS & CONSENT RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 ANALYTICS & CONSENT STANDARDS
+- **GDPR Compliance**: Full compliance with European data protection rules
+- **User Consent**: Explicit consent before tracking
+- **Cookie Management**: Proper cookie consent and management
+- **Data Privacy**: Minimal data collection and processing
+
+## 🍪 CONSENT BANNER IMPLEMENTATION
+
+### **Toteuta consent-banneri; lataa skriptit vasta consentin jälkeen** (Implement consent banner; load scripts only after consent)
+
+### **Consent Banner Component**
+```tsx
+// components/ConsentBanner.tsx
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useConsent } from '@/hooks/useConsent';
+
+export function ConsentBanner() {
+  const { consent, updateConsent, hasConsented } = useConsent();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Show banner if no consent decision has been made
+    if (!hasConsented) {
+      setIsVisible(true);
+    }
+  }, [hasConsented]);
+
+  const handleAccept = () => {
+    updateConsent({
+      analytics: true,
+      marketing: true,
+      necessary: true
+    });
+    setIsVisible(false);
+  };
+
+  const handleReject = () => {
+    updateConsent({
+      analytics: false,
+      marketing: false,
+      necessary: true
+    });
+    setIsVisible(false);
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 z-50">
+      <div className="max-w-4xl mx-auto">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex-1">
+            <h3 className="font-playfair text-lg text-forest mb-2">
+              Evästeiden käyttö
+            </h3>
+            <p className="text-sm text-darkGray">
+              Käytämme evästeitä parantaaksemme sivuston toimintaa ja tarjotaksemme 
+              sinulle paremman käyttökokemuksen. Hyväksymällä evästeet suostut 
+              niiden käyttöön.
+            </p>
+            <div className="mt-2 text-xs text-mediumGray">
+              <a href="/privacy" className="underline hover:text-forest">
+                Tietosuojakäytäntö
+              </a>
+              {' • '}
+              <a href="/cookies" className="underline hover:text-forest">
+                Evästeet
+              </a>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <button
+              onClick={handleReject}
+              className="px-4 py-2 text-sm border border-forest text-forest rounded hover:bg-forest hover:text-white transition-colors"
+            >
+              Hylkää
+            </button>
+            <button
+              onClick={handleAccept}
+              className="px-4 py-2 text-sm bg-forest text-white rounded hover:bg-forest/90 transition-colors"
+            >
+              Hyväksy kaikki
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+### **Consent Hook**
+```typescript
+// hooks/useConsent.ts
+'use client';
+
+import { useState, useEffect } from 'react';
+
+interface ConsentPreferences {
+  necessary: boolean;
+  analytics: boolean;
+  marketing: boolean;
+}
+
+export function useConsent() {
+  const [consent, setConsent] = useState<ConsentPreferences | null>(null);
+  const [hasConsented, setHasConsented] = useState(false);
+
+  useEffect(() => {
+    // Load consent from localStorage
+    const savedConsent = localStorage.getItem('lyyli-consent');
+    if (savedConsent) {
+      const parsedConsent = JSON.parse(savedConsent);
+      setConsent(parsedConsent);
+      setHasConsented(true);
+    }
+  }, []);
+
+  const updateConsent = (newConsent: ConsentPreferences) => {
+    setConsent(newConsent);
+    setHasConsented(true);
+    localStorage.setItem('lyyli-consent', JSON.stringify(newConsent));
+    
+    // Trigger consent update event
+    window.dispatchEvent(new CustomEvent('consent-updated', { detail: newConsent }));
+  };
+
+  return { consent, updateConsent, hasConsented };
+}
+```
+
+## 📊 ANALYTICS SCRIPT LOADING
+
+### **GA4, Hotjar, HubSpot, Datafast lisätään <Script> strategy="afterInteractive"** (GA4, Hotjar, HubSpot, Datafast added with <Script> strategy="afterInteractive")
+
+### **Conditional Script Loading**
+```tsx
+// components/AnalyticsScripts.tsx
+'use client';
+
+import Script from 'next/script';
+import { useConsent } from '@/hooks/useConsent';
+
+export function AnalyticsScripts() {
+  const { consent, hasConsented } = useConsent();
+
+  // Don't load scripts until consent is given
+  if (!hasConsented || !consent?.analytics) {
+    return null;
+  }
+
+  return (
+    <>
+      {/* Google Analytics 4 */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="ga4" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+            page_title: document.title,
+            page_location: window.location.href,
+            language: document.documentElement.lang || 'en'
+          });
+        `}
+      </Script>
+
+      {/* Hotjar */}
+      <Script id="hotjar" strategy="afterInteractive">
+        {`
+          (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:${process.env.NEXT_PUBLIC_HOTJAR_ID},hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        `}
+      </Script>
+
+      {/* HubSpot */}
+      <Script
+        src={`//js.hs-scripts.com/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID}.js`}
+        strategy="afterInteractive"
+      />
+
+      {/* Datafast */}
+      <Script id="datafast" strategy="afterInteractive">
+        {`
+          window.datafast = window.datafast || [];
+          window.datafast.push({
+            key: '${process.env.NEXT_PUBLIC_DATAFAST_KEY}',
+            config: {
+              consent: true
+            }
+          });
+        `}
+      </Script>
+    </>
+  );
+}
+```
+
+## 🔑 ENVIRONMENT VARIABLES
+
+### **Tunnukset .envissä: GA_ID, HOTJAR_ID, HUBSPOT_PORTAL_ID, DATAFAST_KEY** (IDs in .env: GA_ID, HOTJAR_ID, HUBSPOT_PORTAL_ID, DATAFAST_KEY)
+
+### **Environment Configuration**
+```bash
+# .env.local
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_HOTJAR_ID=1234567
+NEXT_PUBLIC_HUBSPOT_PORTAL_ID=12345678
+NEXT_PUBLIC_DATAFAST_KEY=df_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+### **Environment Type Definitions**
+```typescript
+// types/env.d.ts
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      NEXT_PUBLIC_GA_ID: string;
+      NEXT_PUBLIC_HOTJAR_ID: string;
+      NEXT_PUBLIC_HUBSPOT_PORTAL_ID: string;
+      NEXT_PUBLIC_DATAFAST_KEY: string;
+    }
+  }
+}
+
+export {};
+```
+
+### **Environment Validation**
+```typescript
+// lib/env.ts
+export function validateEnvironment() {
+  const required = [
+    'NEXT_PUBLIC_GA_ID',
+    'NEXT_PUBLIC_HOTJAR_ID',
+    'NEXT_PUBLIC_HUBSPOT_PORTAL_ID',
+    'NEXT_PUBLIC_DATAFAST_KEY'
+  ];
+
+  const missing = required.filter(key => !process.env[key]);
+  
+  if (missing.length > 0) {
+    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+  }
+}
+```
+
+## 📈 EVENT TRACKING
+
+### **Lähetä page_view & CTA-click eventit (kentät: language, route, cta_variant)** (Send page_view & CTA-click events with fields: language, route, cta_variant)
+
+### **Event Tracking Implementation**
+```typescript
+// lib/analytics.ts
+import { useConsent } from '@/hooks/useConsent';
+
+interface EventData {
+  language: string;
+  route: string;
+  cta_variant?: string;
+  [key: string]: any;
+}
+
+export function trackEvent(eventName: string, data: EventData) {
+  const { consent } = useConsent();
+  
+  // Only track if analytics consent is given
+  if (!consent?.analytics) return;
+
+  // Google Analytics 4
+  if (window.gtag) {
+    window.gtag('event', eventName, {
+      ...data,
+      event_category: 'engagement',
+      event_label: data.route
+    });
+  }
+
+  // Hotjar
+  if (window.hj) {
+    window.hj('event', eventName, data);
+  }
+
+  // Datafast
+  if (window.datafast) {
+    window.datafast.push({
+      event: eventName,
+      data: data
+    });
+  }
+}
+
+// Page view tracking
+export function trackPageView(route: string, language: string) {
+  trackEvent('page_view', {
+    language,
+    route,
+    timestamp: new Date().toISOString()
+  });
+}
+
+// CTA click tracking
+export function trackCTAClick(route: string, language: string, ctaVariant: string) {
+  trackEvent('cta_click', {
+    language,
+    route,
+    cta_variant: ctaVariant,
+    timestamp: new Date().toISOString()
+  });
+}
+```
+
+### **Page View Tracking Hook**
+```typescript
+// hooks/usePageTracking.ts
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import { trackPageView } from '@/lib/analytics';
+
+export function usePageTracking() {
+  const router = useRouter();
+  const locale = useLocale();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      trackPageView(url, locale);
+    };
+
+    // Track initial page view
+    trackPageView(window.location.pathname, locale);
+
+    // Listen for route changes
+    router.events?.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events?.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router, locale]);
+}
+```
+
+### **CTA Click Tracking**
+```tsx
+// components/CTAButton.tsx
+'use client';
+
+import { useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { trackCTAClick } from '@/lib/analytics';
+
+interface CTAButtonProps {
+  variant: string;
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function CTAButton({ variant, href, children, className }: CTAButtonProps) {
+  const locale = useLocale();
+  const router = useRouter();
+
+  const handleClick = () => {
+    // Track CTA click
+    trackCTAClick(window.location.pathname, locale, variant);
+    
+    // Navigate to destination
+    router.push(href);
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className={`px-6 py-3 bg-forest text-white rounded-lg hover:bg-forest/90 transition-colors ${className}`}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+## 📝 HUBSPOT FORMS & GDPR COMPLIANCE
+
+### **HubSpot-lomakkeet: GDPR-suostumus & tietosuojalinkit mukaan** (HubSpot forms: GDPR consent & privacy policy links included)
+
+### **HubSpot Form Configuration**
+```tsx
+// components/HubSpotForm.tsx
+'use client';
+
+import { useConsent } from '@/hooks/useConsent';
+
+interface HubSpotFormProps {
+  portalId: string;
+  formId: string;
+  title?: string;
+}
+
+export function HubSpotForm({ portalId, formId, title }: HubSpotFormProps) {
+  const { consent } = useConsent();
+
+  useEffect(() => {
+    if (consent?.marketing && window.hbspt) {
+      window.hbspt.forms.create({
+        portalId: portalId,
+        formId: formId,
+        target: '#hubspot-form',
+        region: 'na1',
+        onFormReady: (form: any) => {
+          // Add GDPR consent field
+          const consentField = form.findField('gdpr_consent');
+          if (consentField) {
+            consentField.setValue(true);
+          }
+        }
+      });
+    }
+  }, [consent, portalId, formId]);
+
+  if (!consent?.marketing) {
+    return (
+      <div className="text-center p-8 bg-gray-50 rounded-lg">
+        <p className="text-darkGray mb-4">
+          Marketing analytics consent required to show this form
+        </p>
+        <button
+          onClick={() => updateConsent({ ...consent, marketing: true })}
+          className="px-4 py-2 bg-forest text-white rounded hover:bg-forest/90"
+        >
+          Enable Marketing Analytics
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="hubspot-form-container">
+      {title && (
+        <h3 className="font-playfair text-2xl text-forest mb-6">
+          {title}
+        </h3>
+      )}
+      
+      <div id="hubspot-form" className="min-h-[400px]" />
+      
+      <div className="mt-4 text-xs text-mediumGray">
+        <p>
+          By submitting this form, you agree to our{' '}
+          <a href="/privacy" className="underline hover:text-forest">
+            Privacy Policy
+          </a>
+          {' '}and{' '}
+          <a href="/terms" className="underline hover:text-forest">
+            Terms of Service
+          </a>
+          .
+        </p>
+        <p className="mt-2">
+          You can withdraw your consent at any time by contacting us.
+        </p>
+      </div>
+    </div>
+  );
+}
+```
+
+### **GDPR Compliance Features**
+- **Explicit Consent**: Clear consent options for different tracking types
+- **Privacy Policy Links**: Links to privacy policy and terms of service
+- **Withdrawal Rights**: Information about withdrawing consent
+- **Data Minimization**: Only collect necessary data
+- **Transparency**: Clear information about data usage
+
+## 🔒 PRIVACY & COMPLIANCE
+
+### **Data Protection Standards**
+- **GDPR Compliance**: Full compliance with European regulations
+- **Data Minimization**: Collect only necessary data
+- **User Rights**: Respect user rights to access, rectify, and delete data
+- **Data Security**: Secure data transmission and storage
+
+### **Cookie Management**
+```typescript
+// lib/cookies.ts
+export function getCookieConsent() {
+  if (typeof window === 'undefined') return null;
+  
+  const consent = localStorage.getItem('lyyli-consent');
+  return consent ? JSON.parse(consent) : null;
+}
+
+export function setCookieConsent(consent: ConsentPreferences) {
+  if (typeof window === 'undefined') return;
+  
+  localStorage.setItem('lyyli-consent', JSON.stringify(consent));
+  
+  // Set cookie consent flag
+  document.cookie = `lyyli-consent=${JSON.stringify(consent)}; path=/; max-age=31536000; SameSite=Strict`;
+}
+```
+
+### **Privacy Policy Requirements**
+- **Data Collection**: Clear explanation of what data is collected
+- **Data Usage**: How collected data is used
+- **Third-Party Services**: Information about analytics and marketing tools
+- **User Rights**: How users can exercise their GDPR rights
+- **Contact Information**: How to contact about privacy concerns
+
+## 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+### 📋 IMPLEMENTATION CHECKLIST
+- [ ] Consent banner implementation with clear options
+- [ ] Script loading only after consent is given
+- [ ] GA4, Hotjar, HubSpot, Datafast with afterInteractive strategy
+- [ ] Environment variables for all analytics IDs
+- [ ] Page view and CTA click event tracking
+- [ ] Event fields: language, route, cta_variant
+- [ ] HubSpot forms with GDPR consent fields
+- [ ] Privacy policy and terms of service links
+- [ ] GDPR compliance and user rights
+- [ ] Cookie management and consent storage
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+
+description:
+globs:
+alwaysApply: false
+---
+description:
+globs:
+alwaysApply: true
+---

@@ -1,0 +1,30 @@
+# 🚀 CI/CD DEPLOYMENT RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 CI/CD STANDARDS
+- **Continuous Integration**: Automated testing and quality checks
+- **Deployment Pipeline**: Structured deployment process
+- **Environment Management**: Proper staging and production environments
+- **Rollback Procedures**: Quick rollback capabilities
+
+### 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 📝 CONTENT PLACEHOLDER
+**COPY YOUR ACTUAL CI/CD DEPLOYMENT RULES CONTENT HERE**
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+description:
+globs:
+alwaysApply: true
+---

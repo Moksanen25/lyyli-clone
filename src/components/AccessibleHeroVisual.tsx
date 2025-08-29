@@ -26,7 +26,7 @@ export default function AccessibleHeroVisual() {
   }, []);
 
   return (
-    <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       {/* Full visualization with animations */}
       <div className="absolute inset-0">
         

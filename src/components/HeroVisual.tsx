@@ -2,7 +2,7 @@
 
 export default function HeroVisual() {
   return (
-    <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
 
 
       {/* Data Stream Visualization */}
@@ -645,13 +645,6 @@ export default function HeroVisual() {
         }} />
       </div>
 
-      {/* Bottom fade for seamless transition */}
-      <div 
-        className="absolute inset-x-0 bottom-0 h-40"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, #FFFFFF 100%)'
-        }}
-      />
     </div>
   );
 }

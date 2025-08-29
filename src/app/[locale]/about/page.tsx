@@ -1,9 +1,9 @@
-import { getTranslations } from '@/lib/i18n';
+import { getTranslations } from '../../../lib/i18n';
 import { Metadata } from 'next';
-import OriginStory from '@/components/about/OriginStory';
-import MissionVisionValues from '@/components/about/MissionVisionValues';
-import TeamSection from '@/components/about/TeamSection';
-import HeroVisual from '@/components/HeroVisual';
+import OriginStory from '../../../components/about/OriginStory';
+import MissionVisionValues from '../../../components/about/MissionVisionValues';
+import TeamSection from '../../../components/about/TeamSection';
+import HeroVisual from '../../../components/HeroVisual';
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;

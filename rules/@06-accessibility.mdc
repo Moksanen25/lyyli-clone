@@ -1,0 +1,123 @@
+# ♿ ACCESSIBILITY RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 ACCESSIBILITY STANDARDS
+- **WCAG 2.1**: AA compliance minimum
+- **Screen Reader**: Full compatibility required
+- **Keyboard Navigation**: Complete keyboard access
+- **Color Contrast**: Minimum 4.5:1 ratio
+
+### 🔍 SCREEN READER COMPATIBILITY
+
+#### **Semantic HTML**
+- **Headings**: Use proper heading hierarchy (h1 → h2 → h3)
+- **Landmarks**: Use semantic elements (nav, main, section, article)
+- **Lists**: Use proper list elements (ul, ol, dl)
+- **Forms**: Use proper form labels and fieldset
+
+#### **Alt Text Requirements**
+- **Images**: Descriptive alt text for all images
+- **Decorative Images**: Use `alt=""` for purely decorative images
+- **Complex Images**: Provide detailed descriptions
+- **Charts/Graphs**: Include data summary in alt text
+
+### ⌨️ KEYBOARD NAVIGATION
+
+#### **Focus Management**
+- **Visible Focus**: Clear focus indicators on all interactive elements
+- **Tab Order**: Logical tab sequence through page
+- **Skip Links**: Provide skip navigation for main content
+- **Focus Trapping**: Proper focus management in modals
+
+#### **Interactive Elements**
+- **Buttons**: All buttons must be keyboard accessible
+- **Links**: All links must be keyboard accessible
+- **Forms**: All form controls must be keyboard accessible
+- **Custom Components**: Ensure keyboard support
+
+### 🎨 VISUAL ACCESSIBILITY
+
+#### **Color and Contrast**
+- **Text Contrast**: Minimum 4.5:1 for normal text
+- **Large Text**: Minimum 3:1 for large text (18px+)
+- **Color Independence**: Don't rely solely on color for information
+- **Focus Indicators**: High contrast focus indicators
+
+#### **Typography**
+- **Font Size**: Minimum 16px for body text
+- **Line Height**: Minimum 1.5 for body text
+- **Font Choice**: Use readable, sans-serif fonts
+- **Spacing**: Adequate spacing between lines and paragraphs
+
+### 📱 RESPONSIVE ACCESSIBILITY
+
+#### **Mobile Considerations**
+- **Touch Targets**: Minimum 44x44px for touch targets
+- **Viewport**: Proper viewport meta tags
+- **Zoom**: Allow zoom up to 200%
+- **Orientation**: Support both portrait and landscape
+
+#### **Responsive Design**
+- **Breakpoints**: Test accessibility at all breakpoints
+- **Content**: Ensure content is accessible on all screen sizes
+- **Navigation**: Mobile navigation must be accessible
+- **Forms**: Mobile forms must be usable
+
+### 🧪 TESTING REQUIREMENTS
+
+#### **Automated Testing**
+- **Lighthouse**: Run accessibility audits
+- **axe-core**: Use axe testing library
+- **ESLint**: Enable accessibility linting rules
+- **Continuous**: Test accessibility in CI/CD
+
+#### **Manual Testing**
+- **Screen Reader**: Test with NVDA, JAWS, VoiceOver
+- **Keyboard**: Complete keyboard navigation testing
+- **Color Blindness**: Test with color blindness simulators
+- **Mobile**: Test on various mobile devices
+
+### 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** accessibility standards without approval
+- **REQUIRES EXPLICIT PERMISSION** for any changes
+- **ALWAYS REFERENCE** this file for accessibility decisions
+
+### 📋 IMPLEMENTATION EXAMPLES
+
+```tsx
+// ✅ CORRECT - Follows accessibility rules
+<button 
+  className="px-4 py-2 bg-forest text-white rounded"
+  aria-label="Submit form"
+  onClick={handleSubmit}
+>
+  Submit
+</button>
+
+<img 
+  src="/hero-image.jpg" 
+  alt="Professional team collaborating on communication strategy"
+  className="w-full h-auto"
+/>
+
+// ❌ WRONG - Violates accessibility rules
+<button 
+  className="px-4 py-2 bg-forest text-white rounded"
+  onClick={handleSubmit}
+>
+  Submit
+</button>
+
+<img 
+  src="/hero-image.jpg" 
+  className="w-full h-auto"
+/>
+```
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+description:
+globs:
+alwaysApply: true
+---

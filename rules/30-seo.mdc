@@ -1,0 +1,377 @@
+# 🔍 SEO RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 SEO STANDARDS
+- **Meta Tags**: Proper title, description, and keywords
+- **Structured Data**: JSON-LD markup for rich snippets
+- **Performance**: Core Web Vitals optimization
+- **Accessibility**: SEO and accessibility go hand in hand
+
+## 📋 METADATA REQUIREMENTS
+
+### **Jokaiselle sivulle metadata** (Metadata for every page)
+Every page must include complete metadata with the following structure:
+
+#### **Required Metadata Fields**
+- **title**: Page title (60 characters max)
+- **description**: Meta description (160 characters max)
+- **openGraph**: Open Graph tags for social sharing
+- **alternates.canonical**: Canonical URL for language versions
+
+### **Metadata Implementation**
+```tsx
+// SEO component structure
+<SEO 
+  title={t('seo.pageTitle')}
+  description={t('seo.pageDescription')}
+  canonical={`${baseUrl}/${locale}${pathname}`}
+  alternates={{
+    'en': `${baseUrl}/en${pathname}`,
+    'fi': `${baseUrl}/fi${pathname}`
+  }}
+  openGraph={{
+    title: t('seo.ogTitle'),
+    description: t('seo.ogDescription'),
+    image: `${baseUrl}/api/og?title=${encodeURIComponent(t('seo.ogTitle'))}`,
+    url: `${baseUrl}/${locale}${pathname}`,
+    type: 'website',
+    locale: locale === 'fi' ? 'fi_FI' : 'en_US'
+  }}
+/>
+```
+
+### **Meta Tag Examples**
+```tsx
+// Required meta tags
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+// Open Graph tags
+<meta property="og:title" content={openGraph.title} />
+<meta property="og:description" content={openGraph.description} />
+<meta property="og:image" content={openGraph.image} />
+<meta property="og:url" content={openGraph.url} />
+<meta property="og:type" content={openGraph.type} />
+<meta property="og:locale" content={openGraph.locale} />
+
+// Language alternates
+<link rel="alternate" hreflang="en" href={alternates.en} />
+<link rel="alternate" hreflang="fi" href={alternates.fi} />
+```
+
+## 🖼️ OG-IMAGE GENERATION
+
+### **Luo OG-kuva reitillä /api/og** (Create OG image at route /api/og)
+Generate dynamic Open Graph images using brand colors and typography.
+
+### **OG Image API Route**
+```typescript
+// /api/og/route.ts
+import { ImageResponse } from 'next/og';
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const title = searchParams.get('title') || 'Lyyli.io';
+  
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          background: 'linear-gradient(135deg, #2F5D50 0%, #A7D6D1 100%)',
+          width: '1200',
+          height: '630',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '60px',
+        }}
+      >
+        <div
+          style={{
+            fontFamily: 'Playfair Display',
+            fontSize: '72px',
+            fontWeight: 'bold',
+            color: '#FFFFFF',
+            textAlign: 'center',
+            lineHeight: '1.2',
+            marginBottom: '40px',
+          }}
+        >
+          {title}
+        </div>
+        <div
+          style={{
+            fontFamily: 'Inter',
+            fontSize: '32px',
+            color: '#F7EBEB',
+            textAlign: 'center',
+            maxWidth: '800px',
+          }}
+        >
+          Professional service company communication platform
+        </div>
+      </div>
+    ),
+    {
+      width: 1200,
+      height: 630,
+    }
+  );
+}
+```
+
+### **OG Image Requirements**
+- **Dimensions**: 1200×630px (Facebook/LinkedIn standard)
+- **Brand Colors**: Forest Green (#2F5D50) and Muted Turquoise (#A7D6D1)
+- **Typography**: Playfair Display for headings, Inter for body text
+- **Dynamic Content**: Generate based on page title parameter
+- **Performance**: Optimize for fast generation and caching
+
+## 🤖 ROBOTS.TXT & SITEMAP.XML
+
+### **robots.txt + sitemap.xml pidetään ajan tasalla** (Keep robots.txt and sitemap.xml up to date)
+Maintain current robots.txt and sitemap.xml files, updating when new routes are added.
+
+### **Robots.txt Implementation**
+```txt
+# /public/robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lyyli.io/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+# Allow important routes
+Allow: /features/
+Allow: /pricing/
+Allow: /blog/
+Allow: /help/
+```
+
+### **Sitemap.xml Generation**
+```typescript
+// /app/sitemap.ts
+import { MetadataRoute } from 'next';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://lyyli.io';
+  
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/features`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/pricing`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    // Finnish versions
+    {
+      url: `${baseUrl}/fi`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/fi/features`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    // Add more routes as they're created
+  ];
+}
+```
+
+### **Sitemap Maintenance**
+- **Automatic Updates**: Update sitemap when new routes are added
+- **Priority Setting**: Set appropriate priorities for different page types
+- **Change Frequency**: Update change frequency based on content type
+- **Language Versions**: Include both English and Finnish versions
+
+## 📝 HEADING HIERARCHY
+
+### **Heading-hierarkia: 1 × H1 / sivu; looginen H2–H3** (Heading hierarchy: 1 × H1 per page; logical H2–H3)
+
+### **Heading Structure Rules**
+- **H1**: Only one per page, main page title
+- **H2**: Major section headings (2-4 per page)
+- **H3**: Subsection headings (4-8 per page)
+- **H4+**: Use sparingly for minor divisions
+
+### **Heading Implementation**
+```tsx
+// Correct heading hierarchy
+<h1 className="font-playfair text-4xl text-forest mb-6">
+  Main page title
+</h1>
+
+<section>
+  <h2 className="font-playfair text-3xl text-forest mb-4">
+    Major section heading
+  </h2>
+  
+  <div>
+    <h3 className="font-playfair text-2xl text-forest mb-3">
+      Subsection heading
+    </h3>
+    <p>Content...</p>
+  </div>
+</section>
+
+<section>
+  <h2 className="font-playfair text-3xl text-forest mb-4">
+    Another major section
+  </h2>
+  {/* Content */}
+</section>
+```
+
+### **Heading Best Practices**
+- **Semantic Structure**: Use headings for content organization, not styling
+- **Keyword Placement**: Include relevant keywords in H1 and H2 tags
+- **Consistent Styling**: Apply brand typography rules to all headings
+- **Accessibility**: Ensure proper heading order for screen readers
+
+## ✍️ COPY REQUIREMENTS
+
+### **Ei loremia; copy = arvoa kohderyhmälle** (No lorem ipsum; copy = value for target audience)
+All content must provide real value for the target audience (C-level executives and communication leaders).
+
+### **Content Quality Standards**
+- **No Placeholder Text**: Never use lorem ipsum or placeholder content
+- **Target Audience Focus**: Write for C-level executives and communication leaders
+- **Professional Service Companies**: Focus on asiantuntijaorganisaatio needs
+- **Value-Driven Content**: Every piece must provide actionable insights
+
+### **Copy Guidelines**
+```tsx
+// ✅ GOOD - Provides value for target audience
+<h2 className="font-playfair text-3xl text-forest mb-4">
+  Transform communication into a profit center
+</h2>
+<p className="text-base text-darkGray leading-relaxed">
+  Professional service companies waste 15-20% of revenue on inefficient communication. 
+  Lyyli.io helps you turn this cost into a competitive advantage with AI-powered 
+  communication tools that improve client relationships and team productivity.
+</p>
+
+// ❌ BAD - Placeholder content
+<h2 className="font-playfair text-3xl text-forest mb-4">
+  Section heading
+</h2>
+<p className="text-base text-darkGray leading-relaxed">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
+  incididunt ut labore et dolore magna aliqua.
+</p>
+```
+
+### **Content Strategy**
+- **Problem-Solution**: Address real pain points of professional service companies
+- **Data-Driven**: Include relevant statistics and research
+- **Actionable Insights**: Provide practical advice and next steps
+- **Professional Tone**: Maintain executive-level communication style
+- **Finnish Context**: Consider Finnish business culture and terminology
+
+## 🔍 SEO OPTIMIZATION
+
+### **Technical SEO**
+- **Page Speed**: Optimize for Core Web Vitals
+- **Mobile-First**: Ensure mobile optimization
+- **Structured Data**: Implement JSON-LD markup
+- **Internal Linking**: Create logical internal link structure
+
+### **Content SEO**
+- **Keyword Research**: Target relevant professional service company terms
+- **Long-Tail Keywords**: Focus on specific use cases and pain points
+- **Content Length**: Provide comprehensive, valuable content
+- **Regular Updates**: Keep content current and relevant
+
+### **Local SEO (Finland)**
+- **Finnish Keywords**: Include relevant Finnish search terms
+- **Local Business**: Optimize for Finnish professional service companies
+- **Cultural Context**: Consider Finnish business practices and terminology
+
+## 🧪 SEO TESTING & MONITORING
+
+### **Testing Requirements**
+- **Meta Tag Validation**: Verify all meta tags are properly implemented
+- **OG Image Testing**: Test Open Graph images on social platforms
+- **Sitemap Validation**: Ensure sitemap.xml is valid and accessible
+- **Heading Structure**: Validate heading hierarchy with SEO tools
+
+### **Monitoring Tools**
+- **Google Search Console**: Monitor search performance
+- **Google Analytics**: Track organic traffic and user behavior
+- **Social Media Testing**: Test OG images on Facebook, LinkedIn, Twitter
+- **SEO Audits**: Regular technical SEO audits
+
+## 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+### 📋 IMPLEMENTATION CHECKLIST
+- [ ] Metadata: title, description, openGraph, alternates.canonical for every page
+- [ ] OG image API route: /api/og with brand colors and typography
+- [ ] robots.txt and sitemap.xml kept up to date
+- [ ] Heading hierarchy: 1 × H1 per page, logical H2–H3 structure
+- [ ] No lorem ipsum - all copy provides value for target audience
+- [ ] Content focused on C-level executives and communication leaders
+- [ ] Professional service company terminology (asiantuntijaorganisaatio)
+- [ ] SEO optimization for both English and Finnish content
+- [ ] Regular SEO testing and monitoring
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+
+description:
+globs:
+alwaysApply: true
+---
+description:
+globs:
+alwaysApply: true
+---

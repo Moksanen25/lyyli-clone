@@ -1,0 +1,440 @@
+# 📝 BLOG MDX RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 BLOG MDX STANDARDS
+- **MDX Format**: Markdown with React components
+- **Content Structure**: Consistent heading hierarchy
+- **Component Usage**: Proper React component integration
+- **Content Management**: Organized content structure
+
+## 📋 FRONTMATTER REQUIREMENTS
+
+### **Frontmatter vaaditaan: title, description, date (ISO), author, tags[], locale, heroImage** (Frontmatter required: title, description, date (ISO), author, tags[], locale, heroImage)
+
+### **Required Frontmatter Structure**
+```yaml
+---
+title: "Communication ecosystem for professional service companies"
+description: "Learn how to build a comprehensive communication strategy that transforms your professional service company's communication into a competitive advantage."
+date: "2024-01-15T10:00:00Z"
+author: "Lyyli Team"
+tags: ["communication", "professional-services", "strategy", "ai"]
+locale: "en"
+heroImage: "/images/blog/communication-ecosystem-hero.jpg"
+---
+```
+
+### **Frontmatter Validation**
+```typescript
+// lib/blog/validateFrontmatter.ts
+interface BlogFrontmatter {
+  title: string;
+  description: string;
+  date: string; // ISO format
+  author: string;
+  tags: string[];
+  locale: 'en' | 'fi';
+  heroImage: string;
+}
+
+export function validateFrontmatter(frontmatter: any): BlogFrontmatter {
+  const required = ['title', 'description', 'date', 'author', 'tags', 'locale', 'heroImage'];
+  const missing = required.filter(field => !frontmatter[field]);
+  
+  if (missing.length > 0) {
+    throw new Error(`Missing required frontmatter fields: ${missing.join(', ')}`);
+  }
+  
+  // Validate date format
+  if (!isValidISOString(frontmatter.date)) {
+    throw new Error('Date must be in ISO format');
+  }
+  
+  // Validate locale
+  if (!['en', 'fi'].includes(frontmatter.locale)) {
+    throw new Error('Locale must be "en" or "fi"');
+  }
+  
+  // Validate tags array
+  if (!Array.isArray(frontmatter.tags) || frontmatter.tags.length === 0) {
+    throw new Error('Tags must be a non-empty array');
+  }
+  
+  return frontmatter as BlogFrontmatter;
+}
+
+function isValidISOString(dateString: string): boolean {
+  const date = new Date(dateString);
+  return date instanceof Date && !isNaN(date.getTime());
+}
+```
+
+## 🔗 SLUG GENERATION
+
+### **Slugit = tiedostonimi (pienet kirjaimet, ei välilyöntejä)** (Slugs = filename (lowercase, no spaces))
+
+### **Slug Rules**
+- **File-based**: Slug matches the filename exactly
+- **Lowercase**: All characters converted to lowercase
+- **No Spaces**: Spaces replaced with hyphens
+- **No Special Characters**: Remove or replace special characters
+
+### **Slug Examples**
+```typescript
+// File: communication-ecosystem.mdx
+// Slug: /blog/communication-ecosystem
+
+// File: ai-communication-expert-teams.mdx
+// Slug: /blog/ai-communication-expert-teams
+
+// File: sisaisen-viestinnan-sudenkuopat.mdx
+// Slug: /fi/blog/sisaisen-viestinnan-sudenkuopat
+```
+
+### **Slug Implementation**
+```typescript
+// lib/blog/getSlug.ts
+export function getSlug(filename: string): string {
+  // Remove .mdx extension
+  const nameWithoutExt = filename.replace(/\.mdx$/, '');
+  
+  // Convert to lowercase and replace spaces with hyphens
+  return nameWithoutExt.toLowerCase().replace(/\s+/g, '-');
+}
+
+// Usage in blog listing
+export function getBlogPosts() {
+  const posts = fs.readdirSync(blogDirectory);
+  
+  return posts.map(filename => {
+    const slug = getSlug(filename);
+    const fullPath = path.join(blogDirectory, filename);
+    const source = fs.readFileSync(fullPath, 'utf8');
+    const { data } = matter(source);
+    
+    return {
+      slug,
+      frontmatter: data,
+      content: source
+    };
+  });
+}
+```
+
+## 🖼️ IMAGE HANDLING
+
+### **Kuville alt + kuvateksti; typohierarkia noudattaa brändiä** (Images require alt + caption; typography hierarchy follows brand)
+
+### **Image Requirements**
+```tsx
+// Image component with alt text and caption
+<figure className="my-8">
+  <Image
+    src="/images/blog/team-collaboration.jpg"
+    alt="Professional team collaborating on communication strategy in a modern office"
+    width={800}
+    height={600}
+    className="w-full h-auto rounded-lg"
+    priority={false}
+  />
+  <figcaption className="mt-3 text-sm text-mediumGray text-center font-inter">
+    Professional service company team collaborating on communication strategy
+  </figcaption>
+</figure>
+```
+
+### **Image Typography Hierarchy**
+```tsx
+// Hero image with H2 heading
+<div className="hero-image-container mb-8">
+  <Image
+    src={frontmatter.heroImage}
+    alt={frontmatter.title}
+    width={1200}
+    height={630}
+    className="w-full h-auto rounded-xl"
+    priority={true}
+  />
+  <h2 className="font-playfair text-3xl text-forest mt-4 text-center">
+    {frontmatter.title}
+  </h2>
+</div>
+
+// Inline images with proper typography
+<figure className="my-6">
+  <Image
+    src="/images/blog/communication-flow.png"
+    alt="Diagram showing communication flow between team members and clients"
+    width={600}
+    height={400}
+    className="w-full h-auto border border-lightGray rounded-lg"
+  />
+  <figcaption className="mt-2 text-sm text-mediumGray font-inter">
+    Communication flow diagram for professional service companies
+  </figcaption>
+</figure>
+```
+
+### **Image Best Practices**
+- **Alt Text**: Descriptive, contextual alt text for accessibility
+- **Captions**: Use Inter font, 14px, Medium Gray color
+- **Typography**: Follow brand typography hierarchy
+- **Responsive**: Use responsive image sizing
+- **Optimization**: WebP format with fallbacks
+
+## 🌍 LOCALIZATION STRATEGY
+
+### **EN ensisijainen; FI-versio peilaa sisällön (ei suora konekäännös)** (EN primary; FI version mirrors content (not direct machine translation))
+
+### **Localization Approach**
+- **Primary Language**: English (EN) is the source language
+- **Finnish Version**: Finnish (FI) mirrors the English content
+- **No Machine Translation**: Human-written, culturally adapted content
+- **Content Parity**: Both versions should have equivalent information
+
+### **Content Structure**
+```typescript
+// Blog directory structure
+/content/blog/
+├── en/
+│   ├── communication-ecosystem.mdx
+│   ├── ai-communication-expert-teams.mdx
+│   └── ...
+└── fi/
+    ├── viestinnan-ekosysteemi.mdx
+    ├── tekoaly-viestinta-asiantuntijatiimit.mdx
+    └── ...
+```
+
+### **Localization Guidelines**
+```typescript
+// Content adaptation examples
+// EN: "Professional service companies need clear communication"
+// FI: "Asiantuntijaorganisaatiot tarvitsevat selkeää viestintää"
+
+// EN: "Transform communication into a profit center"
+// FI: "Muunna viestintä tuottavaksi toiminnoksi"
+
+// Key terms to maintain consistency:
+const keyTerms = {
+  en: {
+    'professional service company': 'professional service company',
+    'communication strategy': 'communication strategy',
+    'AI-powered': 'AI-powered'
+  },
+  fi: {
+    'professional service company': 'asiantuntijaorganisaatio',
+    'communication strategy': 'viestintästrategia',
+    'AI-powered': 'tekoälyavusteinen'
+  }
+};
+```
+
+### **Cultural Adaptation**
+- **Finnish Business Culture**: Consider Finnish business practices
+- **Language Nuances**: Adapt idioms and expressions appropriately
+- **Professional Tone**: Maintain professional service company terminology
+- **Local Examples**: Use relevant Finnish business examples when possible
+
+## 🔗 RELATED POSTS
+
+### **Related-posts tagien perusteella; OG-kuva artikkelille** (Related posts based on tags; OG image for articles)
+
+### **Related Posts Algorithm**
+```typescript
+// lib/blog/getRelatedPosts.ts
+export function getRelatedPosts(currentPost: BlogPost, allPosts: BlogPost[], maxPosts: number = 3): BlogPost[] {
+  const { tags, slug, locale } = currentPost;
+  
+  // Filter posts by same locale and exclude current post
+  const candidatePosts = allPosts.filter(post => 
+    post.locale === locale && post.slug !== slug
+  );
+  
+  // Calculate relevance score based on tag overlap
+  const postsWithScores = candidatePosts.map(post => {
+    const commonTags = tags.filter(tag => post.tags.includes(tag));
+    const score = commonTags.length;
+    
+    return { post, score, commonTags };
+  });
+  
+  // Sort by relevance score and return top posts
+  return postsWithScores
+    .sort((a, b) => b.score - a.score)
+    .slice(0, maxPosts)
+    .map(item => item.post);
+}
+```
+
+### **Related Posts Component**
+```tsx
+// components/blog/RelatedPosts.tsx
+interface RelatedPostsProps {
+  posts: BlogPost[];
+  currentSlug: string;
+}
+
+export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
+  const relatedPosts = getRelatedPosts(
+    { slug: currentSlug, tags: [], locale: 'en' },
+    posts,
+    3
+  );
+  
+  if (relatedPosts.length === 0) return null;
+  
+  return (
+    <section className="mt-12 pt-8 border-t border-lightGray">
+      <h3 className="font-playfair text-2xl text-forest mb-6">
+        Related articles
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {relatedPosts.map(post => (
+          <RelatedPostCard key={post.slug} post={post} />
+        ))}
+      </div>
+    </section>
+  );
+}
+```
+
+### **OG Image Generation**
+```typescript
+// lib/blog/generateOGImage.ts
+export function generateOGImage(frontmatter: BlogFrontmatter): string {
+  const { title, heroImage } = frontmatter;
+  
+  // Use hero image if available, otherwise generate dynamic OG image
+  if (heroImage) {
+    return `${process.env.NEXT_PUBLIC_BASE_URL}${heroImage}`;
+  }
+  
+  // Generate dynamic OG image with title
+  return `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${encodeURIComponent(title)}`;
+}
+```
+
+## 📅 DATE HANDLING
+
+### **Älä hallusinoi päiviä, vaan käytä päivämääränä aina deployment-päivää** (Don't hallucinate dates, but use deployment date as the date)
+
+### **Date Implementation**
+```typescript
+// lib/blog/getDeploymentDate.ts
+export function getDeploymentDate(): string {
+  // Use deployment date from environment variable
+  const deploymentDate = process.env.DEPLOYMENT_DATE;
+  
+  if (deploymentDate) {
+    return new Date(deploymentDate).toISOString();
+  }
+  
+  // Fallback to current date (for development)
+  return new Date().toISOString();
+}
+
+// Usage in blog post creation
+export function createBlogPost(frontmatter: Partial<BlogFrontmatter>): BlogFrontmatter {
+  return {
+    ...frontmatter,
+    date: getDeploymentDate(), // Always use deployment date
+    // ... other required fields
+  };
+}
+```
+
+### **Date Validation**
+```typescript
+// Ensure dates are not in the future
+export function validateDate(dateString: string): boolean {
+  const postDate = new Date(dateString);
+  const now = new Date();
+  
+  // Post date should not be in the future
+  if (postDate > now) {
+    console.warn(`Post date ${dateString} is in the future. Using current date.`);
+    return false;
+  }
+  
+  return true;
+}
+```
+
+## 📝 CONTENT STRUCTURE
+
+### **Blog Post Template**
+```mdx
+---
+title: "Your blog post title"
+description: "Clear, compelling description under 160 characters"
+date: "2024-01-15T10:00:00Z"
+author: "Lyyli Team"
+tags: ["tag1", "tag2", "tag3"]
+locale: "en"
+heroImage: "/images/blog/hero-image.jpg"
+---
+
+# Main heading (H1)
+
+## Section heading (H2)
+
+Content with proper typography and spacing...
+
+### Subsection heading (H3)
+
+More content...
+
+## Another section (H2)
+
+<figure className="my-8">
+  <Image
+    src="/images/blog/example.jpg"
+    alt="Descriptive alt text"
+    width={800}
+    height={600}
+    className="w-full h-auto rounded-lg"
+  />
+  <figcaption className="mt-3 text-sm text-mediumGray text-center font-inter">
+    Image caption with proper typography
+  </figcaption>
+</figure>
+
+Content continues...
+```
+
+## 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+### 📋 IMPLEMENTATION CHECKLIST
+- [ ] Frontmatter validation: title, description, date, author, tags, locale, heroImage
+- [ ] Slug generation based on filename (lowercase, no spaces)
+- [ ] Image handling with alt text and captions
+- [ ] Typography hierarchy following brand guidelines
+- [ ] Localization strategy: EN primary, FI mirrors content
+- [ ] Related posts algorithm based on tags
+- [ ] OG image generation for articles
+- [ ] Date handling using deployment date
+- [ ] Content structure and MDX formatting
+- [ ] No machine translation, human-written content
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+
+description:
+globs:
+alwaysApply: false
+---
+description:
+globs:
+alwaysApply: true
+---

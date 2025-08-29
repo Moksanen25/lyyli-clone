@@ -17,7 +17,7 @@ export default function MobileHeroVisual() {
   }, []);
 
   return (
-    <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
 
 
       {/* Mobile-optimized data flow visualization */}

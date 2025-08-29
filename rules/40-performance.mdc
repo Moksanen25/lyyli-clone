@@ -1,0 +1,425 @@
+# ⚡ PERFORMANCE RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 PERFORMANCE STANDARDS
+- **Core Web Vitals**: LCP, FID, CLS optimization
+- **Bundle Size**: Minimize JavaScript bundle size
+- **Image Optimization**: Next.js Image component usage
+- **Lazy Loading**: Implement lazy loading for non-critical content
+
+## 📊 CORE WEB VITALS BUDGETS
+
+### **Budjetit: LCP < 2.5s, CLS < 0.1** (Budgets: LCP < 2.5s, CLS < 0.1)
+Performance budgets must be strictly maintained. If limits are exceeded, suggest corrections.
+
+### **Performance Budgets**
+- **LCP (Largest Contentful Paint)**: < 2.5 seconds
+- **CLS (Cumulative Layout Shift)**: < 0.1
+- **FID (First Input Delay)**: < 100ms
+- **FCP (First Contentful Paint)**: < 1.8 seconds
+- **TTFB (Time to First Byte)**: < 800ms
+
+### **Budget Monitoring**
+```typescript
+// Performance monitoring setup
+export const performanceBudgets = {
+  lcp: 2500, // 2.5 seconds
+  cls: 0.1,  // 0.1
+  fid: 100,  // 100ms
+  fcp: 1800, // 1.8 seconds
+  ttfb: 800  // 800ms
+};
+
+// Budget violation detection
+export function checkPerformanceBudget(metrics: PerformanceMetrics) {
+  const violations = [];
+  
+  if (metrics.lcp > performanceBudgets.lcp) {
+    violations.push({
+      metric: 'LCP',
+      current: metrics.lcp,
+      budget: performanceBudgets.lcp,
+      suggestions: getLCPSuggestions(metrics.lcp)
+    });
+  }
+  
+  if (metrics.cls > performanceBudgets.cls) {
+    violations.push({
+      metric: 'CLS',
+      current: metrics.cls,
+      budget: performanceBudgets.cls,
+      suggestions: getCLSSuggestions(metrics.cls)
+    });
+  }
+  
+  return violations;
+}
+```
+
+### **Correction Suggestions When Limits Exceeded**
+
+#### **LCP > 2.5s Suggestions**
+```typescript
+export function getLCPSuggestions(lcp: number): string[] {
+  const suggestions = [];
+  
+  if (lcp > 4000) {
+    suggestions.push(
+      'Optimize hero image: compress, use WebP format, implement responsive images',
+      'Reduce server response time: optimize database queries, implement caching',
+      'Minimize render-blocking resources: defer non-critical CSS/JS'
+    );
+  } else if (lcp > 3000) {
+    suggestions.push(
+      'Implement image lazy loading for below-the-fold images',
+      'Optimize font loading: use font-display: swap',
+      'Reduce bundle size: code splitting, tree shaking'
+    );
+  } else {
+    suggestions.push(
+      'Monitor performance trends',
+      'Consider implementing resource hints (preload, prefetch)'
+    );
+  }
+  
+  return suggestions;
+}
+```
+
+#### **CLS > 0.1 Suggestions**
+```typescript
+export function getCLSSuggestions(cls: number): string[] {
+  const suggestions = [];
+  
+  if (cls > 0.25) {
+    suggestions.push(
+      'Set explicit dimensions for all images and media elements',
+      'Reserve space for dynamic content (ads, embeds)',
+      'Avoid inserting content above existing content'
+    );
+  } else if (cls > 0.15) {
+    suggestions.push(
+      'Use CSS aspect-ratio for responsive images',
+      'Implement skeleton screens for dynamic content',
+      'Ensure consistent spacing and layout'
+    );
+  } else {
+    suggestions.push(
+      'Review layout stability',
+      'Test with different content lengths'
+    );
+  }
+  
+  return suggestions;
+}
+```
+
+## 🔤 FONT OPTIMIZATION
+
+### **Fontit: next/font; vain tarvittavat painot** (Fonts: next/font; only necessary weights)
+Use Next.js built-in font optimization with only required font weights.
+
+### **Font Implementation**
+```typescript
+// /lib/fonts.ts
+import { Inter, Playfair_Display } from 'next/font/google';
+
+// Inter font - only necessary weights
+export const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'], // Regular and Medium only
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+// Playfair Display - only necessary weights
+export const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400'], // Regular only
+  display: 'swap',
+  variable: '--font-playfair',
+});
+```
+
+### **Font Display Strategy**
+- **Font-display: swap**: Show fallback font immediately, swap when custom font loads
+- **Font-display: optional**: Use custom font only if it loads quickly
+- **Preload Critical Fonts**: Preload above-the-fold fonts
+
+### **Font Loading Best Practices**
+```tsx
+// Font preloading in layout
+<link
+  rel="preload"
+  href="/fonts/inter-400.woff2"
+  as="font"
+  type="font/woff2"
+  crossOrigin="anonymous"
+/>
+
+// CSS variables for font usage
+:root {
+  --font-inter: ${inter.style.fontFamily};
+  --font-playfair: ${playfair.style.fontFamily};
+}
+```
+
+### **Font Weight Strategy**
+- **Inter**: 400 (Regular), 500 (Medium) - avoid 300, 600, 700
+- **Playfair Display**: 400 (Regular) - avoid 500, 600, 700
+- **Remove Unused Weights**: Eliminate unused font files
+- **Font Subsetting**: Only include required characters
+
+## 🖼️ IMAGE OPTIMIZATION
+
+### **Kuvat: määritä sizes; lazy oletuksena, priority vain above-the-fold** (Images: define sizes; lazy by default, priority only for above-the-fold)
+
+### **Image Implementation Rules**
+```tsx
+// Above-the-fold image with priority
+<Image
+  src="/hero-image.jpg"
+  alt="Professional team collaborating"
+  width={800}
+  height={600}
+  priority={true} // Only for above-the-fold
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  className="w-full h-auto"
+/>
+
+// Below-the-fold image with lazy loading (default)
+<Image
+  src="/team-photo.jpg"
+  alt="Our team at work"
+  width={400}
+  height={300}
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+  className="w-full h-auto"
+  // lazy loading is default
+/>
+```
+
+### **Image Sizes Strategy**
+```tsx
+// Responsive image sizes
+const imageSizes = {
+  hero: "(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px",
+  card: "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px",
+  thumbnail: "(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px",
+  icon: "48px"
+};
+
+// Usage
+<Image
+  src="/feature-icon.svg"
+  alt="Feature icon"
+  width={48}
+  height={48}
+  sizes={imageSizes.icon}
+  className="w-12 h-12"
+/>
+```
+
+### **Image Optimization Requirements**
+- **Format Selection**: WebP with JPEG fallback
+- **Responsive Images**: Multiple sizes for different screen sizes
+- **Lazy Loading**: Default behavior for below-the-fold images
+- **Priority Loading**: Only for critical above-the-fold images
+- **Alt Text**: Descriptive alt text for accessibility
+
+### **Image Performance Checklist**
+- [ ] WebP format with fallbacks
+- [ ] Responsive sizes defined
+- [ ] Lazy loading for below-the-fold
+- [ ] Priority only for critical images
+- [ ] Optimized dimensions
+- [ ] Descriptive alt text
+- [ ] Proper aspect ratios
+
+## 📊 DATA FETCHING STRATEGY
+
+### **Data: vältä turhaa client-fetchiä; suosi RSC + revalidate** (Data: avoid unnecessary client fetching; prefer RSC + revalidate)
+
+### **Data Fetching Hierarchy**
+1. **Server Components (RSC)**: Fetch data on server
+2. **Revalidation**: Use Next.js revalidation for fresh data
+3. **Client Fetching**: Only when necessary (user interactions, real-time updates)
+
+### **Server Component Data Fetching**
+```typescript
+// /app/features/page.tsx - Server Component
+export default async function FeaturesPage() {
+  // Fetch data on server
+  const features = await getFeatures();
+  
+  return (
+    <div>
+      <h1 className="font-playfair text-4xl text-forest">
+        Features
+      </h1>
+      <FeaturesList features={features} />
+    </div>
+  );
+}
+
+// Data fetching function with revalidation
+async function getFeatures() {
+  const res = await fetch('https://api.lyyli.io/features', {
+    next: { revalidate: 3600 } // Revalidate every hour
+  });
+  
+  if (!res.ok) {
+    throw new Error('Failed to fetch features');
+  }
+  
+  return res.json();
+}
+```
+
+### **Revalidation Strategies**
+```typescript
+// Time-based revalidation
+export const revalidate = 3600; // 1 hour
+
+// On-demand revalidation
+export async function revalidateFeatures() {
+  await revalidatePath('/features');
+  await revalidatePath('/api/features');
+}
+
+// Route handler for revalidation
+export async function POST(request: Request) {
+  const { secret, path } = await request.json();
+  
+  if (secret !== process.env.REVALIDATION_SECRET) {
+    return Response.json({ message: 'Invalid secret' }, { status: 401 });
+  }
+  
+  try {
+    await revalidatePath(path);
+    return Response.json({ revalidated: true, now: Date.now() });
+  } catch (err) {
+    return Response.json({ message: 'Error revalidating' }, { status: 500 });
+  }
+}
+```
+
+### **Client Fetching Guidelines**
+```typescript
+// Only use client fetching when necessary
+'use client';
+
+import { useState, useEffect } from 'react';
+
+export function RealTimeCounter() {
+  const [count, setCount] = useState(0);
+  
+  // Only fetch when user interacts
+  const handleIncrement = async () => {
+    const response = await fetch('/api/counter', {
+      method: 'POST',
+      body: JSON.stringify({ action: 'increment' })
+    });
+    
+    if (response.ok) {
+      const { newCount } = await response.json();
+      setCount(newCount);
+    }
+  };
+  
+  return (
+    <button onClick={handleIncrement}>
+      Count: {count}
+    </button>
+  );
+}
+```
+
+### **Data Fetching Best Practices**
+- **Server First**: Always prefer server-side data fetching
+- **Revalidation**: Use Next.js revalidation for fresh data
+- **Caching**: Implement proper caching strategies
+- **Error Handling**: Graceful error handling and fallbacks
+- **Loading States**: Show loading states during data fetching
+
+## 🚀 PERFORMANCE OPTIMIZATION
+
+### **Bundle Optimization**
+```typescript
+// Dynamic imports for code splitting
+const DynamicComponent = dynamic(() => import('./HeavyComponent'), {
+  loading: () => <Skeleton />,
+  ssr: false // Only load on client if needed
+});
+
+// Tree shaking friendly imports
+import { Button } from '@/components/ui/button'; // Specific import
+// Avoid: import * from '@/components/ui'; // Barrel import
+```
+
+### **Resource Hints**
+```tsx
+// Preload critical resources
+<link rel="preload" href="/critical.css" as="style" />
+<link rel="preload" href="/hero-image.webp" as="image" />
+
+// Prefetch non-critical resources
+<link rel="prefetch" href="/about" />
+<link rel="prefetch" href="/pricing" />
+```
+
+### **Performance Monitoring**
+```typescript
+// Core Web Vitals monitoring
+export function reportWebVitals(metric: any) {
+  if (metric.label === 'web-vital') {
+    // Send to analytics
+    console.log(metric);
+    
+    // Check against budgets
+    if (metric.name === 'LCP' && metric.value > 2500) {
+      console.warn('LCP budget exceeded:', metric.value);
+    }
+    
+    if (metric.name === 'CLS' && metric.value > 0.1) {
+      console.warn('CLS budget exceeded:', metric.value);
+    }
+  }
+}
+```
+
+## 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+### 📋 IMPLEMENTATION CHECKLIST
+- [ ] Core Web Vitals budgets: LCP < 2.5s, CLS < 0.1
+- [ ] Performance monitoring with budget violation detection
+- [ ] Correction suggestions when limits are exceeded
+- [ ] Font optimization: next/font with only necessary weights
+- [ ] Font-display: swap/optional implementation
+- [ ] Image optimization: sizes defined, lazy loading default
+- [ ] Priority loading only for above-the-fold images
+- [ ] Data fetching: prefer RSC + revalidate over client fetching
+- [ ] Bundle optimization and code splitting
+- [ ] Performance monitoring and reporting
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+
+description:
+globs:
+alwaysApply: true
+---
+description:
+globs:
+alwaysApply: true
+---

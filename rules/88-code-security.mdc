@@ -1,0 +1,30 @@
+# 🛡️ CODE SECURITY RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 CODE SECURITY STANDARDS
+- **Input Validation**: Validate and sanitize all user inputs
+- **SQL Injection**: Use parameterized queries and ORMs
+- **XSS Prevention**: Proper output encoding and sanitization
+- **Dependency Security**: Regular security updates and audits
+
+### 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 📝 CONTENT PLACEHOLDER
+**COPY YOUR ACTUAL CODE SECURITY RULES CONTENT HERE**
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+description:
+globs:
+alwaysApply: true
+---

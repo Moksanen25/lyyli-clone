@@ -7,9 +7,7 @@ import {
   TestimonialCard,
   AnimatedTimeline,
 } from "../../components/VisualElements";
-import HeroVisual from "../../components/HeroVisual";
-import MobileHeroVisual from "../../components/MobileHeroVisual";
-import AccessibleHeroVisual from "../../components/AccessibleHeroVisual";
+import MeshGradientBackground from "../../components/MeshGradientBackground";
 import ROIStats from "../../components/ROIStats";
 import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";
@@ -32,23 +30,15 @@ export default async function Home({ params }: HomeProps) {
 
   return (
     <main className="min-h-screen">
+      {/* Mesh Gradient Background */}
+      <MeshGradientBackground />
+      
       {/* Hero Section */}
       <div className="relative z-30 pt-32">
         <section 
           className="container mx-auto px-4 py-20 relative"
           aria-label="Hero"
         >
-          {/* Conditional Hero Visual - Mobile vs Desktop with Accessibility Options */}
-          <div className="hidden lg:block">
-            <AccessibleHeroVisual />
-          </div>
-          <div className="hidden md:block lg:hidden">
-            <HeroVisual />
-          </div>
-          <div className="md:hidden">
-            <MobileHeroVisual />
-          </div>
-          
           <h1 className="text-3xl md:text-4xl text-forest text-center mb-8 font-playfair font-normal leading-tight relative z-10">
             {t["hero.headline"]}
           </h1>

@@ -1,0 +1,116 @@
+# 🏗️ BASE RULES - PROTECTED ASSET
+
+## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
+
+### 🎯 PROJECT STACK & STANDARDS
+- **Stack**: Next.js (App Router) + React + TypeScript (strict) + Tailwind + MDX (blog)
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript with strict mode enabled
+- **Styling**: Tailwind CSS v4
+- **Content**: MDX for blog posts
+- **Internationalization**: next-intl
+
+### 📚 LIBRARY MANAGEMENT RULES
+
+#### **Library Addition Policy**
+- **Älä lisää kirjastoja omin päin** (Don't add libraries on your own)
+- **Jos ehdotat lisäystä** (If you suggest an addition):
+  - Tarjoa perustelu (Provide justification)
+  - Tarjoa vaihtoehto (Provide alternative)
+  - Tarjoa poistosuunnitelma (Provide removal plan)
+
+#### **Approval Process**
+- All library additions require explicit user approval
+- Document why the library is needed
+- Provide alternative solutions
+- Plan for removal if not needed
+
+### 🔧 CODE QUALITY STANDARDS
+
+#### **ESLint + Prettier**
+- **Noudata repo-konfigeja** (Follow repository configurations)
+- **Korjaa linter-valitukset ennen PR:ää** (Fix linter complaints before PR)
+- Use existing ESLint and Prettier configurations
+- No linting errors allowed in pull requests
+
+#### **TypeScript Standards**
+- **Strict mode**: Always enabled
+- **Type safety**: All components and functions must be typed
+- **No any types**: Use proper TypeScript interfaces
+
+### 🎨 FONT CONFIGURATION
+
+#### **Font Setup Requirements**
+- **Käytä next/font/google** (Use next/font/google)
+- **Aseta Playfair Display (headings) & Inter (body) root-layouteissa** (Set Playfair Display for headings & Inter for body in root layouts)
+- **Implementation**:
+  ```tsx
+  import { Inter, Playfair_Display } from 'next/font/google'
+  
+  const inter = Inter({ subsets: ['latin'] })
+  const playfair = Playfair_Display({ subsets: ['latin'] })
+  ```
+
+### ⚛️ REACT COMPONENT ARCHITECTURE
+
+#### **Server vs Client Components**
+- **Server Components oletuksena** (Server Components by default)
+- **Client-komponentit vain kun pakko** (Client components only when necessary - interaction)
+- Use Server Components for static content
+- Use Client Components only for interactive elements
+
+### 🎨 STYLING STANDARDS
+
+#### **Tailwind CSS Usage**
+- **UI = Tailwind; ei inline-tyylejä** (UI = Tailwind; no inline styles)
+- **Vakioluokat**: kontti, spacing, typohierarkia @styles (Standard classes: container, spacing, typography hierarchy @styles)
+- Use Tailwind utility classes exclusively
+- No inline styles or custom CSS
+- Follow established design system patterns
+
+### 📄 COMPONENT & PAGE CREATION
+
+#### **Template Usage**
+- **Kun luot "uuden sivun/komponentin", käytä @templates-tiedostoja** (When creating "new page/component", use @templates files)
+- Always reference template files for new components
+- Follow established patterns and structures
+- Maintain consistency across the project
+
+### 📁 CRITICAL DIRECTORIES
+- `src/` - Source code (NEVER DELETE)
+- `content/` - Blog and content (NEVER DELETE)
+- `public/` - Static assets (NEVER DELETE)
+- `rules/` - Project rules (NEVER DELETE)
+
+### 🚨 PROTECTION STATUS
+- **NEVER DELETE** this file
+- **NEVER MODIFY** without explicit user permission
+- **REQUIRES EXPLICIT COMMAND** for any changes
+- **ALWAYS BACKUP** before modifications
+
+### 🔒 PROTECTION MECHANISMS
+1. **Git Tracking**: File is committed and tracked
+2. **AI Memory**: Rules stored in assistant memory
+3. **Explicit Warnings**: Clear protection notices
+4. **User Permission Required**: Cannot be changed without explicit command
+
+### 📋 IMPLEMENTATION CHECKLIST
+- [ ] Next.js App Router setup
+- [ ] TypeScript strict mode enabled
+- [ ] Tailwind CSS configured
+- [ ] MDX support for blog
+- [ ] Fonts configured in root layout
+- [ ] ESLint + Prettier configured
+- [ ] Template files available
+- [ ] No inline styles used
+
+**THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
+
+description:
+globs:
+alwaysApply: true
+---
+description:
+globs:
+alwaysApply: true
+---

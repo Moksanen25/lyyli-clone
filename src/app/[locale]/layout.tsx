@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   },
   description:
     "Transform your internal communications with enterprise-grade AI. Streamline workflows for operations leaders, PMO heads, and communications managers. SOC 2 compliant with multilingual support.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   keywords: [
     "AI communication assistant",
     "professional service organizations",

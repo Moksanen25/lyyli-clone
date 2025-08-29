@@ -8,15 +8,10 @@
 
   "icons": [
     {
-      "src": "/icon.svg",
+      "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/favicon.ico",
-      "sizes": "500x500",
-      "type": "image/x-icon"
     }
   ],
   "categories": ["business", "productivity", "communication"],

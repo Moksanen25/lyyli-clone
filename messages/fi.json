@@ -1,0 +1,23 @@
+{
+  "meta.title": "Lyyli.ai - Tekoälypohjainen tiimiviestintä",
+  "meta.description": "Muuta tiimiviestintäsi tekoälypohjaisella automatisaatiolla ja saumattomalla integraatiolla kaikissa työkaluissasi ja kanavissa.",
+  "features.page.title": "Ominaisuudet - Lyyli.ai",
+  "features.page.description": "Tutustu Lyyli.ain tehokkaisiin ominaisuuksiin, jotka muuttavat tiimiviestinnän",
+  "features.hero.title": "Tehokkaat tekoälyviestinnän ominaisuudet",
+  "features.hero.subtitle": "Muuta tiimiesi viestintätapoja älykkään automatisaation ja saumattoman integraation avulla",
+  "features.ui.desktop": "Työpöytäliittymä",
+  "features.ui.mobile": "Mobiililiittymä",
+  "features.grid.title": "Ydinominaisuudet",
+  "features.grid.subtitle": "Kaikki mitä tarvitset tiimiviestinnän sujuvoittamiseen",
+  "features.accordion.title": "Yksityiskohtainen ominaisuuksien kuvaus",
+  "features.accordion.subtitle": "Lue lisää jokaisesta ominaisuudesta ja siitä, miten se hyödyttää organisaatiotasi",
+  "cta.subtitle": "Valmiina muuttamaan viestintäsi?",
+  "cta.descriptionLong": "Liity tuhansien tiimien joukkoon, jotka jo käyttävät Lyyli.aita parantaakseen viestintätehokkuuttaan ja tiimiyhteistyötään.",
+  "cta.startTrial": "Aloita ilmainen kokeilu",
+  "cta.demo": "Pyydä demo",
+  "nav.features": "Ominaisuudet",
+  "nav.security": "Turvallisuus",
+  "nav.pricing": "Hinnat",
+  "nav.contact": "Yhteystiedot",
+  "nav.about": "Tietoja meistä"
+}
