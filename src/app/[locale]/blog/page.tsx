@@ -65,7 +65,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const posts = getAllBlogPosts(currentLocale);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative z-10 pt-32">
         <section 

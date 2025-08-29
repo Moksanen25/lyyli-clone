@@ -17,7 +17,7 @@ export default async function HelpPage({
   const t = await getTranslations(locale);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Hero Section with Search */}
       <div className="relative z-10 pt-32">
         <section 

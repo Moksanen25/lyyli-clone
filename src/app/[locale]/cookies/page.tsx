@@ -23,7 +23,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
   const t = await getTranslations(currentLocale);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative z-10 pt-32">
         <section 
