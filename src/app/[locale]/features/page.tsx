@@ -2,7 +2,6 @@ import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import FeaturesAccordionLayout from "@/components/features/FeaturesAccordionLayout";
-import HeroVisual from "@/components/HeroVisual";
 
 interface FeaturesPageProps {
   params: Promise<{ locale: string }>;
@@ -36,7 +35,6 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           aria-label="Hero"
         >
           {/* Animated Hero Visual */}
-          <HeroVisual />
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
             <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-normal leading-tight text-forest">

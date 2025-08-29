@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
-import HeroVisual from '@/components/HeroVisual';
 import SecurityFeatures from '@/components/cybersecurity/SecurityFeatures';
 import TechnicalArchitecture from '@/components/cybersecurity/TechnicalArchitecture';
 import GDPRCompliance from '@/components/cybersecurity/GDPRCompliance';
@@ -52,7 +51,6 @@ export default async function CybersecurityPage({ params }: PageProps) {
           aria-label="Hero"
         >
           {/* Animated Hero Visual */}
-          <HeroVisual />
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
             <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-tight">

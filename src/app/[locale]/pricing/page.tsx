@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import PricingCards from '@/components/PricingCards';
 import BenefitsSection from '@/components/pricing/BenefitsSection';
 import PricingFAQ from '@/components/pricing/PricingFAQ';
-import HeroVisual from '@/components/HeroVisual';
 import ROICalculator from '@/components/ROICalculator';
 
 interface PricingPageProps {
@@ -44,7 +43,6 @@ export default async function PricingPage({ params }: PricingPageProps) {
           aria-label="Hero"
         >
           {/* Animated Hero Visual */}
-          <HeroVisual />
           
           <h1 className="text-3xl md:text-4xl text-forest text-center mb-8 font-playfair font-normal leading-tight relative z-10">
             {t["pricing.title"]}

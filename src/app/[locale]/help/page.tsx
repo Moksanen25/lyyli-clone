@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { getTranslations } from "../../../lib/i18n";
 import Link from "next/link";
 import HelpSearch from "../../../components/HelpSearch";
-import HeroVisual from "../../../components/HeroVisual";
 
 export const metadata: Metadata = {
   title: "Help & Support Center",
@@ -26,7 +25,6 @@ export default async function HelpPage({
           aria-label="Hero"
         >
           {/* Animated Hero Visual */}
-          <HeroVisual />
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
             <h1 className="text-4xl font-bold text-forest mb-6 font-playfair font-normal leading-tight">

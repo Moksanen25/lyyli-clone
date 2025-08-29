@@ -7,7 +7,6 @@ import {
   TestimonialCard,
   AnimatedTimeline,
 } from "../../components/VisualElements";
-import MeshGradientBackground from "../../components/MeshGradientBackground";
 import ROIStats from "../../components/ROIStats";
 import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";
@@ -31,7 +30,6 @@ export default async function Home({ params }: HomeProps) {
   return (
     <main className="min-h-screen">
       {/* Mesh Gradient Background */}
-      <MeshGradientBackground />
       
       {/* Hero Section */}
       <div className="relative z-30 pt-32">

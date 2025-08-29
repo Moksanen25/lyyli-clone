@@ -1,7 +1,6 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
-import HeroVisual from "@/components/HeroVisual";
 
 interface WaitlistPageProps {
   params: Promise<{ locale: string }>;
@@ -53,7 +52,6 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
           aria-label="Hero"
         >
           {/* Animated Hero Visual */}
-          <HeroVisual />
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
             <h1 className="text-3xl md:text-4xl font-playfair font-normal mb-6 leading-tight text-forest">

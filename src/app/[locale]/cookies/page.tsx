@@ -1,6 +1,5 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
-import HeroVisual from "@/components/HeroVisual";
 
 interface CookiesPageProps {
   params: Promise<{ locale: string }>;
@@ -32,7 +31,6 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           aria-label="Hero"
         >
           {/* Animated Hero Visual */}
-          <HeroVisual />
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
             <h1 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-tight">

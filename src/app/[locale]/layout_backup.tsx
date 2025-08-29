@@ -4,7 +4,6 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ConsentBanner from "../../components/ConsentBanner";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import MeshGradientBackground from "../../components/MeshGradientBackground";
 import { getTranslations } from "../../lib/i18n";
 import { fontVars } from "../../lib/fonts";
 
@@ -140,8 +139,18 @@ export default async function LocaleLayout({
       </head>
       <body className="antialiased font-sans min-h-screen" suppressHydrationWarning={true}>
 
-        {/* Vibrant Mesh Gradient Background for all pages */}
-        <MeshGradientBackground />
+        {/* Full-screen gradient background */}
+        <div className="fixed top-0 left-0 w-screen h-screen -z-50 pointer-events-none">
+          <div 
+            className="w-full h-full"
+            style={{
+              background: 'linear-gradient(135deg, #F4FAF7 0%, #FFFFFF 50%, #F4FAF7 100%)',
+              minHeight: '100vh',
+              minWidth: '100vw'
+            }}
+          />
+        </div>
+
         <div className="flex flex-col min-h-screen relative">
           <Header locale={currentLocale} translations={t} />
           <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />

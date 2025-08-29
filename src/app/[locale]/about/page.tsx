@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import OriginStory from '../../../components/about/OriginStory';
 import MissionVisionValues from '../../../components/about/MissionVisionValues';
 import TeamSection from '../../../components/about/TeamSection';
-import HeroVisual from '../../../components/HeroVisual';
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;
@@ -35,7 +34,6 @@ export default async function AboutPage({ params }: AboutPageProps) {
           aria-label="Hero"
         >
           {/* Animated Hero Visual */}
-          <HeroVisual />
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
             <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-tight">
