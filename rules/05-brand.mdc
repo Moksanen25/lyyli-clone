@@ -42,32 +42,37 @@
 ### Typography Hierarchy - EXACT SIZES FROM BRAND BOOK
 
 #### H1: Main Heading
-- **Font**: Playfair Display Regular
+- **Font**: Playfair Display Bold
 - **Size**: 48px / 3rem (desktop), 36px / 2.25rem (mobile)
 - **Line height**: 1.2
 - **Color**: Forest Green (#2F5D50)
 - **Usage**: Page titles, main section headings
+- **Capitalization**: Sentence case (only first word capitalized)
 
 #### H2: Section Heading
-- **Font**: Playfair Display Regular
+- **Font**: Playfair Display Bold
 - **Size**: 36px / 2.25rem (desktop), 28px / 1.75rem (mobile)
 - **Line height**: 1.3
 - **Color**: Forest Green (#2F5D50)
 - **Usage**: Major section headings, article titles
+- **Capitalization**: Sentence case (only first word capitalized)
+- **Blog specific**: Must use Playfair font for visual prominence
 
 #### H3: Subsection Heading
-- **Font**: Playfair Display Regular
+- **Font**: Playfair Display Bold
 - **Size**: 24px / 1.5rem (desktop), 20px / 1.25rem (mobile)
 - **Line height**: 1.4
 - **Color**: Forest Green (#2F5D50)
 - **Usage**: Subsection headings, feature headings
+- **Capitalization**: Sentence case (only first word capitalized)
 
 #### H4: Minor Heading
-- **Font**: Inter Semi-Bold
+- **Font**: Inter Bold
 - **Size**: 20px / 1.25rem (desktop), 18px / 1.125rem (mobile)
 - **Line height**: 1.4
 - **Color**: Forest Green (#2F5D50)
 - **Usage**: Minor headings, UI section titles
+- **Capitalization**: Sentence case (only first word capitalized)
 
 #### Body Text
 - **Font**: Inter Regular
@@ -211,12 +216,33 @@
 - **Target Audience**: Solo entrepreneurs, micro-businesses (1-5 employees), small teams, non-technical professionals
 
 ## Blog Post Formatting
-- **H2 headings (##)**: Must use Playfair Display font for visual prominence
-- **H3 subheadings (###)**: Should use Playfair Display Regular, 24px/1.5rem
-- **Use double line breaks** between major chapters/sections for better readability
+- **All headings**: Must be in bold font weight with sentence case capitalization
+- **H2 headings (##)**: Must use Playfair Display Bold font for visual prominence
+- **H3 subheadings (###)**: Should use Playfair Display Bold, 24px/1.5rem
+- **Chapter breaks**: Use double line breaks between major chapters/sections for better readability
 - **Remove horizontal lines (---)**: Use spacing instead
 - **Maintain consistent spacing** and visual hierarchy throughout
 - **Pull quotes**: Use Playfair Display italic for emphasis
+
+### CSS Implementation for Blog Headings
+```css
+/* All headings must be bold */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+/* Blog H2 headings with Playfair font */
+.blog h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+}
+
+/* Blog H3 headings with Playfair font */
+.blog h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+}
+```
 
 ## Animation Guidelines
 - **Timing**: 150-300ms for responsiveness
