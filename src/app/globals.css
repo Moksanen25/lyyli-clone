@@ -236,10 +236,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Typography */
+/* Typography - Updated to follow brand rule: All headings must be bold */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
-  font-weight: 400;
+  font-weight: bold;
   line-height: 1.2;
   color: var(--text-primary);
 }

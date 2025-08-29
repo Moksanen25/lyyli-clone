@@ -1,0 +1,37 @@
+# Brand Rules
+
+## Heading Guidelines
+
+All headings should follow these rules:
+- **Font weight**: All headings must be in bold font
+- **Capitalization**: Only the first letter of the first word should be capitalized, all other letters should be lowercase
+- **Blog H2 headings**: Should use the Playfair font
+- **Chapter breaks**: Should use a double line break in blog posts
+
+### Examples
+
+```html
+<!-- Correct -->
+<h1 style="font-weight: bold;">Main title</h1>
+<h2 style="font-weight: bold; font-family: Playfair;">Section heading</h2>
+<h3 style="font-weight: bold;">Subsection title</h3>
+
+<!-- Incorrect -->
+<h1>Main Title</h1>
+<h2>Section Heading</h2>
+<h3>Subsection Title</h3>
+```
+
+### CSS Implementation
+
+```css
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+/* Blog H2 headings with Playfair font */
+.blog h2 {
+  font-family: 'Playfair', serif;
+  font-weight: bold;
+}
+```
