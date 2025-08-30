@@ -473,6 +473,26 @@ export interface TranslationKeys {
   "pricing.faq.support.question": string;
   "pricing.faq.support.answer": string;
 
+  // ROI Calculator
+  "roi.benefits.fasterResponse.title": string;
+  "roi.benefits.fasterResponse.description": string;
+  "roi.benefits.improvedConsistency.title": string;
+  "roi.benefits.improvedConsistency.description": string;
+  "roi.benefits.higherSatisfaction.title": string;
+  "roi.benefits.higherSatisfaction.description": string;
+  "roi.benefits.learnMore": string;
+  "roi.calculator.title": string;
+  "roi.calculator.subtitle": string;
+  "roi.calculator.organizationDetails": string;
+  "roi.calculator.teamSize": string;
+  "roi.calculator.communicationTime": string;
+  "roi.calculator.potentialSavings": string;
+  "roi.calculator.timeSaved": string;
+  "roi.calculator.moneySaved": string;
+  "roi.calculator.efficiencyGain": string;
+  "roi.calculator.monthlySavings": string;
+  "roi.calculator.yearlySavings": string;
+
   // About Page
   "about.page.title": string;
   "about.page.description": string;
