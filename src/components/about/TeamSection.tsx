@@ -55,9 +55,9 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
           {leadership.map((member, index) => (
             <article
               key={index}
-              className="bg-white p-8 rounded-xl shadow-soft text-center border border-gray-100 hover:shadow-medium transition-all duration-300 ease-out transform hover:-translate-y-1"
+              className="group bg-white p-8 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1"
             >
-              <div className="w-24 h-24 bg-forest rounded-full mx-auto mb-6 flex items-center justify-center shadow-soft">
+              <div className="w-24 h-24 bg-gradient-to-br from-forest to-forest/90 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl font-bold text-white font-playfair">
                   {member.initials}
                 </span>
@@ -86,9 +86,9 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
           {boardMembers.map((member, index) => (
             <article
               key={index}
-              className="bg-white p-6 rounded-xl shadow-soft text-center border border-gray-100 hover:shadow-medium transition-all duration-300 ease-out transform hover:-translate-y-1"
+              className="group bg-white p-6 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1"
             >
-              <div className="w-16 h-16 bg-turquoise rounded-full mx-auto mb-4 flex items-center justify-center shadow-soft">
+              <div className="w-16 h-16 bg-gradient-to-br from-turquoise to-turquoise/90 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <span className="text-lg font-bold text-white font-playfair">
                   {member.initials}
                 </span>

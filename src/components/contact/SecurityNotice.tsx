@@ -57,7 +57,7 @@ export default function SecurityNotice({
         <h2 className="text-2xl md:text-3xl mb-4 text-forest font-playfair font-bold leading-snug">
           {t["contact.security.title"]}
         </h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto font-sans leading-relaxed">
+        <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
           Your security and privacy are our top priorities
         </p>
       </div>
@@ -73,7 +73,7 @@ export default function SecurityNotice({
             <h3 className="text-lg font-playfair font-bold text-forest mb-3">
               {feature.title}
             </h3>
-            <p className="text-sm text-muted-foreground font-sans leading-relaxed">
+            <p className="text-sm text-mediumGray font-sans leading-relaxed">
               {feature.description}
             </p>
           </InteractiveCard>

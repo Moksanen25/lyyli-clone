@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { TranslationKeys } from "../lib/i18n";
 
 // Dynamic import for the charts to avoid SSR issues with Recharts
 const DynamicCharts = dynamic(() => import("./ROICharts"), { 
@@ -26,7 +27,12 @@ interface CalculationResult {
   yearlySavings: number;
 }
 
-export default function ROICalculator() {
+interface ROICalculatorProps {
+  locale?: string;
+  translations?: TranslationKeys;
+}
+
+export default function ROICalculator({ locale, translations }: ROICalculatorProps) {
   const [teamSize, setTeamSize] = useState(10);
   const [currentTime, setCurrentTime] = useState(5);
   const [results, setResults] = useState<CalculationResult>({
@@ -73,14 +79,79 @@ export default function ROICalculator() {
   ];
 
   return (
-    <section className="py-24">
-      <div className="container mx-auto px-4">
+    <>
+      <style jsx>{`
+        .slider {
+          outline: none;
+          background: transparent;
+          border: 1px solid rgba(167, 214, 209, 0.3);
+          border-radius: 10px;
+          padding: 2px;
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .slider:focus {
+          border-color: #A7D6D1;
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(167, 214, 209, 0.3);
+        }
+        
+        .slider::-webkit-slider-thumb {
+          appearance: none;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #A7D6D1 0%, #F7EBEB 100%);
+          cursor: pointer;
+          border: 3px solid white;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.3), 0 0 0 1px rgba(47, 93, 80, 0.2);
+          transition: all 0.2s ease;
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+          transform: scale(1.1);
+          box-shadow: 0 6px 12px rgba(0,0,0,0.4), 0 0 0 2px rgba(167, 214, 209, 0.5);
+        }
+        
+        .slider::-moz-range-thumb {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #A7D6D1 0%, #F7EBEB 100%);
+          cursor: pointer;
+          border: 3px solid white;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.3), 0 0 0 1px rgba(47, 93, 80, 0.2);
+          transition: all 0.2s ease;
+        }
+        
+        .slider::-moz-range-thumb:hover {
+          transform: scale(1.1);
+          box-shadow: 0 6px 12px rgba(0,0,0,0.4), 0 0 0 2px rgba(167, 214, 209, 0.5);
+        }
+        
+        .slider::-webkit-slider-track {
+          background: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(167, 214, 209, 0.2));
+          border-radius: 10px;
+          height: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider::-moz-range-track {
+          background: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(167, 214, 209, 0.2));
+          border-radius: 10px;
+          height: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
-            Calculate your ROI
+            {translations?.["roi.calculator.title" as keyof typeof translations] || "Calculate your ROI"}
           </h2>
           <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            See exactly how much time and money Lyyli.ai can save your organization
+            {translations?.["roi.calculator.subtitle" as keyof typeof translations] || "See exactly how much time and money Lyyli.ai can save your organization"}
           </p>
         </div>
 
@@ -88,20 +159,20 @@ export default function ROICalculator() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Calculator Inputs */}
             <motion.div 
-              className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200"
+              className="bg-forest rounded-2xl p-8 shadow-lg border border-forest"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold text-forest mb-6 font-sans">
-                Your organization details
+              <h3 className="text-2xl font-semibold text-turquoise mb-6 font-sans">
+                {"Your organization details"}
               </h3>
 
               {/* Team Size Input */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-forest mb-2 font-sans">
-                  Team size
+                <label className="block text-sm font-medium text-white mb-2 font-sans">
+                  {translations?.["roi.calculator.teamSize"] || "Team size"}
                 </label>
                 <div className="relative">
                   <input
@@ -110,9 +181,9 @@ export default function ROICalculator() {
                     max="100"
                     value={teamSize}
                     onChange={(e) => setTeamSize(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
                   />
-                  <div className="flex justify-between text-xs text-mediumGray mt-1">
+                  <div className="flex justify-between text-xs text-rose mt-1">
                     <span>1</span>
                     <span>25</span>
                     <span>50</span>
@@ -121,16 +192,16 @@ export default function ROICalculator() {
                   </div>
                 </div>
                 <div className="text-center mt-2">
-                  <span className="text-2xl font-bold text-forest font-sans">
-                    {teamSize} {teamSize === 1 ? 'person' : 'people'}
+                  <span className="text-2xl font-bold text-white font-sans">
+                    {teamSize} {translations?.["pricing.roi.people"] || (teamSize === 1 ? 'person' : 'people')}
                   </span>
                 </div>
               </div>
 
               {/* Current Time Input */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-forest mb-2 font-sans">
-                  Current time spent on communication (hours per week)
+                <label className="block text-sm font-medium text-white mb-2 font-sans">
+                  {translations?.["roi.calculator.communicationTime"] || "Current time spent on communication (hours per week)"}
                 </label>
                 <div className="relative">
                   <input
@@ -139,9 +210,9 @@ export default function ROICalculator() {
                     max="20"
                     value={currentTime}
                     onChange={(e) => setCurrentTime(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
                   />
-                  <div className="flex justify-between text-xs text-mediumGray mt-1">
+                  <div className="flex justify-between text-xs text-rose mt-1">
                     <span>1h</span>
                     <span>5h</span>
                     <span>10h</span>
@@ -150,32 +221,32 @@ export default function ROICalculator() {
                   </div>
                 </div>
                 <div className="text-center mt-2">
-                  <span className="text-2xl font-bold text-forest font-sans">
-                    {currentTime} hours/week
+                  <span className="text-2xl font-bold text-white font-sans">
+                    {currentTime} {translations?.["pricing.roi.messages"]?.replace('/kk', '/week') || "hours/week"}
                   </span>
                 </div>
               </div>
 
               {/* Results Summary */}
-              <div className="bg-gradient-to-br from-forest/20 to-turquoise/20 rounded-xl p-6 mt-8 border border-forest/30">
-                <h4 className="text-lg font-semibold text-forest mb-4 font-sans">
-                  Your potential savings
+              <div className="bg-gradient-to-br from-turquoise/20 to-rose/20 rounded-xl p-6 mt-8 border border-turquoise/40">
+                <h4 className="text-lg font-semibold text-turquoise mb-4 font-sans">
+                  {translations?.["roi.calculator.potentialSavings"] || "Your potential savings"}
                 </h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-forest font-sans">
+                    <div className="text-2xl font-bold text-white font-sans">
                       {results.timeSaved}h
                     </div>
-                    <div className="text-sm text-forest font-sans">
-                      Time saved/week
+                    <div className="text-sm text-turquoise font-sans">
+                      {translations?.["roi.calculator.timeSaved"] || "Time saved/week"}
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-forest font-sans">
+                    <div className="text-2xl font-bold text-white font-sans">
                       {results.efficiencyGain}%
                     </div>
-                    <div className="text-sm text-forest font-sans">
-                      Efficiency gain
+                    <div className="text-sm text-turquoise font-sans">
+                      {translations?.["roi.calculator.efficiencyGain"] || "Efficiency gain"}
                     </div>
                   </div>
                 </div>
@@ -192,21 +263,21 @@ export default function ROICalculator() {
             >
               {/* Key Metrics */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 text-center">
-                  <div className="text-3xl font-bold text-forest mb-2 font-sans">
+                <div className="bg-forest rounded-2xl p-6 shadow-lg border border-forest text-center">
+                  <div className="text-3xl font-bold text-white mb-2 font-sans">
                     €{results.monthlySavings.toLocaleString()}
                   </div>
-                  <div className="text-mediumGray font-sans">
-                    Monthly savings
+                  <div className="text-turquoise font-sans">
+                    {translations?.["roi.calculator.monthlySavings"] || "Monthly savings"}
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 text-center">
-                  <div className="text-3xl font-bold text-forest mb-2 font-sans">
+                <div className="bg-forest rounded-2xl p-6 shadow-lg border border-forest text-center">
+                  <div className="text-3xl font-bold text-white mb-2 font-sans">
                     €{results.yearlySavings.toLocaleString()}
                   </div>
-                  <div className="text-mediumGray font-sans">
-                    Yearly savings
+                  <div className="text-turquoise font-sans">
+                    {translations?.["roi.calculator.yearlySavings"] || "Yearly savings"}
                   </div>
                 </div>
               </div>
@@ -221,17 +292,17 @@ export default function ROICalculator() {
 
           {/* ROI Assumptions Section */}
           <motion.div 
-            className="mt-16 bg-white rounded-2xl p-8 shadow-lg border border-gray-200"
+            className="mt-16 bg-forest rounded-2xl p-8 shadow-lg border border-forest"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-semibold text-forest mb-4 font-playfair font-normal leading-tight">
+              <h3 className="text-2xl font-semibold text-turquoise mb-4 font-playfair font-normal leading-tight">
                 ROI calculation assumptions
               </h3>
-              <p className="text-mediumGray font-sans leading-relaxed">
+              <p className="text-rose font-sans leading-relaxed">
                 Our calculations are based on industry benchmarks and real customer data
               </p>
             </div>
@@ -239,45 +310,45 @@ export default function ROICalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-forest mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-turquoise mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-base text-mediumGray font-sans leading-relaxed">
+                  <span className="text-base text-white font-sans leading-relaxed">
                     60% average time reduction in communication tasks
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-forest mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-turquoise mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-base text-mediumGray font-sans leading-relaxed">
+                  <span className="text-base text-white font-sans leading-relaxed">
                     €75 average hourly rate for professional services
                   </span>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-forest mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-turquoise mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-base text-mediumGray font-sans leading-relaxed">
+                  <span className="text-base text-white font-sans leading-relaxed">
                     40 working hours per week, 4.33 weeks per month
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-forest mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-turquoise mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-base text-mediumGray font-sans leading-relaxed">
+                  <span className="text-base text-white font-sans leading-relaxed">
                     Based on actual customer outcomes and industry data
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-lg border-l-4 border-forest">
-              <p className="text-sm text-mediumGray font-sans leading-relaxed">
-                <strong>Note:</strong> ROI calculations are estimates based on
+            <div className="mt-6 p-4 bg-gradient-to-br from-turquoise/20 to-rose/20 rounded-lg border-l-4 border-turquoise">
+              <p className="text-sm text-white font-sans leading-relaxed">
+                <strong className="text-turquoise">Note:</strong> ROI calculations are estimates based on
                 typical customer outcomes and industry benchmarks. Actual results
                 may vary depending on your organization&apos;s specific
                 communication patterns, team size, and implementation approach.
@@ -360,5 +431,6 @@ export default function ROICalculator() {
         </div>
       </div>
     </section>
+    </>
   );
 }

@@ -47,51 +47,49 @@ export default async function TechnicalArchitecture({ locale }: TechnicalArchite
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
-            {t['cybersecurity.technicalArchitecture.title']}
-          </h2>
-          <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
-            {t['cybersecurity.technicalArchitecture.subtitle']}
+    <div>
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
+          {t['cybersecurity.technicalArchitecture.title']}
+        </h2>
+        <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
+          {t['cybersecurity.technicalArchitecture.subtitle']}
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <h3 className="text-2xl font-playfair font-normal text-forest mb-6">
+            {t['cybersecurity.technicalArchitecture.encryption.title']}
+          </h3>
+          <div className="space-y-6">
+            {technicalFeatures.map((feature, index) => (
+              <div key={index} className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-forest/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  {feature.icon}
+                </div>
+                <div>
+                  <h4 className="text-lg font-playfair font-normal text-forest mb-2">
+                    {feature.title}
+                  </h4>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300">
+          <h4 className="text-xl font-playfair font-normal text-forest mb-4">
+            {t['cybersecurity.technicalArchitecture.encryption.dataIsolation.title']}
+          </h4>
+          <p className="text-mediumGray font-sans leading-relaxed">
+            {t['cybersecurity.technicalArchitecture.encryption.dataIsolation.description']}
           </p>
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <h3 className="text-2xl font-playfair font-normal text-forest mb-6">
-              {t['cybersecurity.technicalArchitecture.encryption.title']}
-            </h3>
-            <div className="space-y-6">
-              {technicalFeatures.map((feature, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-playfair font-bold text-forest mb-2">
-                      {feature.title}
-                    </h4>
-                    <p className="text-mediumGray font-sans leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="bg-forest/5 p-8 rounded-lg border border-forest/20">
-            <h4 className="text-xl font-playfair font-normal text-forest mb-4">
-              {t['cybersecurity.technicalArchitecture.encryption.dataIsolation.title']}
-            </h4>
-            <p className="text-mediumGray font-sans leading-relaxed">
-              {t['cybersecurity.technicalArchitecture.encryption.dataIsolation.description']}
-            </p>
-          </div>
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { TranslationKeys } from "../lib/i18n";
 import ClientLocaleSwitcher from "./ClientLocaleSwitcher";
 import Image from "next/image";
@@ -134,7 +135,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <a
+              <Link
                 href="/"
                 className="flex items-center gap-3"
                 aria-label="Lyyli.ai homepage"
@@ -148,7 +149,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   priority
                   className="h-10 w-auto"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
@@ -176,29 +177,29 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   onMouseLeave={() => closeDropdown('features')}
                 >
                   <div className="py-2">
-                    <a
+                    <Link
                       href={`/${locale}/features`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
                     >
                       {t["nav.features"]}
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`/${locale}/cybersecurity`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
                     >
                       {t["nav.security"]}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
 
               {/* Pricing */}
-              <a
+              <Link
                 href={`/${locale}/pricing`}
                 className={`text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans`}
               >
                 {t["nav.pricing"]}
-              </a>
+              </Link>
 
               {/* About Us Dropdown */}
               <div className="relative">
@@ -223,18 +224,18 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   onMouseLeave={() => closeDropdown('about')}
                 >
                   <div className="py-2">
-                    <a
+                    <Link
                       href={`/${locale}/about`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
                     >
                       {locale === "fi" ? "Tietoja meistä" : "About"}
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`/${locale}/blog`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
                     >
                       Blog
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -262,18 +263,18 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   onMouseLeave={() => closeDropdown('contact')}
                 >
                   <div className="py-2">
-                    <a
+                    <Link
                       href={`/${locale}/contact`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
                     >
                       {t["nav.contact"]}
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`/${locale}/help`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
                     >
                       {locale === "fi" ? "Apu ja tuki" : "Help & Support"}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -284,7 +285,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                 <ClientLocaleSwitcher currentLocale={locale} />
 
                 {/* CTA Button */}
-                <a
+                <Link
                   href={`/${locale}/waitlist`}
                   className="bg-forest text-white px-6 py-3 rounded-xl hover:bg-forest/90 hover:shadow-lg transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans shadow-md"
                   aria-label="Join the waitlist for Lyyli.ai"
@@ -304,7 +305,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -363,71 +364,71 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             >
               {/* Consolidated Navigation Links */}
               <div className="grid grid-cols-2 gap-2">
-                <a
+                <Link
                   href={`/${locale}/features`}
                   className={`block text-base ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-3 px-4 rounded-lg text-center`}
                   onClick={closeMobileMenu}
                 >
                   {t["nav.features"]}
-                </a>
-                <a
+                </Link>
+                <Link
                   href={`/${locale}/pricing`}
                   className={`block text-base ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-3 px-4 rounded-lg text-center`}
                   onClick={closeMobileMenu}
                 >
                   {t["nav.pricing"]}
-                </a>
-                <a
+                </Link>
+                <Link
                   href={`/${locale}/about`}
                   className={`block text-base ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-3 px-4 rounded-lg text-center`}
                   onClick={closeMobileMenu}
                 >
                   {locale === "fi" ? "Tietoja meistä" : "About"}
-                </a>
-                <a
+                </Link>
+                <Link
                   href={`/${locale}/contact`}
                   className={`block text-base ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-3 px-4 rounded-lg text-center`}
                   onClick={closeMobileMenu}
                 >
                   {t["nav.contact"]}
-                </a>
+                </Link>
               </div>
 
               {/* Quick Links Row */}
               <div className="flex gap-2 pt-2">
-                <a
+                <Link
                   href={`/${locale}/cybersecurity`}
                   className={`flex-1 text-center text-sm ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-2 px-3 rounded-lg`}
                   onClick={closeMobileMenu}
                 >
                   {t["nav.security"]}
-                </a>
-                <a
+                </Link>
+                <Link
                   href={`/${locale}/blog`}
                   className={`flex-1 text-center text-sm ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-2 px-3 rounded-lg`}
                   onClick={closeMobileMenu}
                 >
                   Blog
-                </a>
-                <a
+                </Link>
+                <Link
                   href={`/${locale}/help`}
                   className={`flex-1 text-center text-sm ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-2 px-3 rounded-lg`}
                   onClick={closeMobileMenu}
                 >
                   {locale === "fi" ? "Apu" : "Help"}
-                </a>
+                </Link>
               </div>
 
               {/* Waitlist CTA - Simplified */}
               <div className={`border-t ${getMobileBorder()} pt-3 mt-2`}>
-                <a
+                <Link
                   href={`/${locale}/waitlist`}
                   className="block w-full bg-forest text-white px-4 py-3 rounded-xl hover:bg-forest/90 transition-all duration-200 font-semibold text-base text-center font-sans shadow-md"
                   aria-label="Join the waitlist for Lyyli.ai"
                   onClick={closeMobileMenu}
                 >
                   {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
-                </a>
+                </Link>
               </div>
 
               {/* Locale Switcher - Compact */}

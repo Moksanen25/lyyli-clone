@@ -75,7 +75,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
           {/* Animated Hero Visual */}
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-normal leading-tight text-forest">
+            {/* Badge */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 border border-forest/20 mb-6 backdrop-blur-sm">
+              <span className="text-sm font-medium text-forest">
+                {t["blog.tagline"] || "Latest insights"}
+              </span>
+            </div>
+
+            <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-bold leading-tight text-forest">
               {t["blog.title"]}
             </h1>
             <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">

@@ -325,12 +325,13 @@ h5, h6 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* Blog-specific heading styles */
+/* Blog-specific heading styles - Following brand rules exactly */
 .blog h1,
 .blog h2,
 .blog h3 {
   font-family: 'Playfair Display', serif;
   font-weight: bold;
+  color: var(--forest);
 }
 
 .blog h4,
@@ -338,6 +339,745 @@ h5, h6 {
 .blog h6 {
   font-family: 'Inter', sans-serif;
   font-weight: bold;
+  color: var(--forest);
+}
+
+/* Blog content styling for consistency with other pages */
+.blog p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--darkGray);
+  margin-bottom: 1.5rem;
+}
+
+.blog ul,
+.blog ol {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--darkGray);
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.blog li {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.blog ul li::before {
+  content: "•";
+  color: var(--forest);
+  font-weight: bold;
+  position: absolute;
+  left: -1.25rem;
+}
+
+.blog ol li {
+  counter-increment: list-counter;
+}
+
+.blog ol li::before {
+  content: counter(list-counter) ".";
+  color: var(--forest);
+  font-weight: 600;
+  position: absolute;
+  left: -1.5rem;
+}
+
+.blog strong {
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.blog em {
+  font-style: italic;
+  color: var(--darkGray);
+}
+
+/* Enhanced list styling */
+.blog ul, .blog ol {
+  counter-reset: list-counter;
+}
+
+/* Chapter breaks for better readability */
+.blog .chapter-break {
+  border: none;
+  margin: 3rem 0;
+  height: 0;
+}
+
+/* Enhanced blockquote styling */
+.blog blockquote {
+  border-left: 4px solid var(--forest);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--mediumGray);
+  background: var(--rose);
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Enhanced code block styling */
+.blog code {
+  background: var(--grayLight);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--forest);
+}
+
+.blog pre {
+  background: var(--grayLight);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--rose);
+}
+
+/* Enhanced table styling */
+.blog table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog th {
+  background: var(--forest);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.blog td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--rose);
+}
+
+.blog tr:nth-child(even) {
+  background: var(--rose);
+}
+
+/* Enhanced link styling */
+.blog a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-color: var(--turquoise);
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+}
+
+.blog a:hover {
+  color: var(--turquoise);
+  text-decoration-color: var(--forest);
+}
+
+/* Enhanced image styling */
+.blog img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+/* Enhanced heading spacing */
+.blog h1 + p,
+.blog h2 + p,
+.blog h3 + p,
+.blog h4 + p {
+  margin-top: 1rem;
+}
+
+/* Enhanced section spacing */
+.blog h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--rose);
+}
+
+.blog h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Enhanced paragraph spacing for better readability */
+.blog p + p {
+  margin-top: 1.25rem;
+}
+
+/* Enhanced visual elements for blog posts */
+.blog .highlight-box {
+  background: linear-gradient(135deg, var(--rose) 0%, var(--turquoise) 100%);
+  border: 1px solid var(--forest);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog .highlight-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--forest) 0%, var(--turquoise) 100%);
+}
+
+.blog .key-points {
+  background: var(--white);
+  border: 2px solid var(--forest);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(47, 93, 80, 0.1);
+}
+
+.blog .key-points h4 {
+  color: var(--forest);
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.blog .key-points ul {
+  margin: 0;
+  padding: 0;
+}
+
+.blog .key-points li {
+  background: var(--rose);
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--forest);
+}
+
+/* Enhanced call-to-action styling */
+.blog .cta-box {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--turquoise) 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  margin: 3rem 0;
+  box-shadow: 0 8px 32px rgba(47, 93, 80, 0.2);
+}
+
+/* Enhanced "Ask Mikko more" section styling */
+.blog .ask-mikko-section {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--turquoise) 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  margin: 3rem 0;
+  box-shadow: 0 8px 32px rgba(47, 93, 80, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.blog .ask-mikko-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, white 0%, var(--rose) 100%);
+}
+
+.blog .ask-mikko-section h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.blog .ask-mikko-section p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.blog .ask-mikko-section .contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.blog .ask-mikko-section .contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.blog .ask-mikko-section .contact-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.blog .ask-mikko-section .contact-link svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Enhanced inline CTA button styling */
+.blog .cta-button-primary {
+  display: inline-block;
+  background: var(--forest);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(47, 93, 80, 0.2);
+  border: 2px solid var(--forest);
+}
+
+.blog .cta-button-primary:hover {
+  background: var(--turquoise);
+  border-color: var(--turquoise);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(47, 93, 80, 0.3);
+}
+
+.blog .cta-link-email {
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-color: var(--turquoise);
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.blog .cta-link-email:hover {
+  color: var(--turquoise);
+  text-decoration-color: var(--forest);
+}
+
+/* Override inline HTML styling - Force override with higher specificity */
+.blog div[class*="bg-forest"],
+.blog .bg-forest,
+.blog div.bg-forest {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--turquoise) 100%) !important;
+  color: white !important;
+  padding: 2rem !important;
+  border-radius: 16px !important;
+  margin: 2rem 0 !important;
+  box-shadow: 0 8px 32px rgba(47, 93, 80, 0.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.blog div[class*="bg-forest"]::before,
+.blog .bg-forest::before,
+.blog div.bg-forest::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, white 0%, var(--rose) 100%) !important;
+}
+
+.blog div[class*="bg-forest"] h3,
+.blog div[class*="bg-forest"] h4,
+.blog .bg-forest h3,
+.blog .bg-forest h4,
+.blog div.bg-forest h3,
+.blog div.bg-forest h4 {
+  color: white !important;
+  margin-bottom: 1rem !important;
+  font-family: 'Playfair Display', serif !important;
+  font-weight: bold !important;
+}
+
+.blog div[class*="bg-forest"] p,
+.blog .bg-forest p,
+.blog div.bg-forest p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 1rem !important;
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.6 !important;
+}
+
+.blog div[class*="bg-forest"] a,
+.blog .bg-forest a,
+.blog div.bg-forest a {
+  color: white !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--rose) !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.blog div[class*="bg-forest"] a:hover,
+.blog .bg-forest a:hover,
+.blog div.bg-forest a:hover {
+  color: var(--rose) !important;
+  text-decoration-color: white !important;
+}
+
+/* Force override for any remaining inline styles */
+.blog div[style*="background"] {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--turquoise) 100%) !important;
+}
+
+/* AGGRESSIVE CTA section styling - override everything */
+.blog div[class*="bg-forest"],
+.blog div.bg-forest,
+.blog div[style*="background"],
+.blog div[class*="text-white"],
+.blog div[class*="p-8"],
+.blog div[class*="my-8"],
+.blog div[class*="rounded-xl"],
+.blog div[class*="shadow-soft"] {
+  background: linear-gradient(to bottom right, var(--forest), var(--turquoise)) !important;
+  color: white !important;
+  padding: 2rem !important;
+  border-radius: 16px !important;
+  margin: 2rem 0 !important;
+}
+
+/* Force ALL text to be white */
+.blog div[class*="bg-forest"] *,
+.blog div.bg-forest *,
+.blog div[style*="background"] *,
+.blog div[class*="text-white"] *,
+.blog div[class*="p-8"] *,
+.blog div[class*="my-8"] *,
+.blog div[class*="rounded-xl"] *,
+.blog div[class*="shadow-soft"] * {
+  color: white !important;
+}
+
+/* Force links to be white buttons */
+.blog div[class*="bg-forest"] a,
+.blog div.bg-forest a,
+.blog div[style*="background"] a,
+.blog div[class*="text-white"] a,
+.blog div[class*="p-8"] a,
+.blog div[class*="my-8"] a,
+.blog div[class*="rounded-xl"] a,
+.blog div[class*="shadow-soft"] a {
+  background: white !important;
+  color: var(--forest) !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  margin: 0.5rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.blog div[class*="bg-forest"] a:hover,
+.blog div.bg-forest a:hover,
+.blog div[style*="background"] a:hover,
+.blog div[class*="text-white"] a:hover,
+.blog div[class*="p-8"] a:hover,
+.blog div[class*="my-8"] a:hover,
+.blog div[class*="rounded-xl"] a:hover,
+.blog div[class*="shadow-soft"] a:hover {
+  background: var(--rose) !important;
+  color: var(--forest) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Hide broken images */
+.blog div[class*="bg-forest"] img,
+.blog div.bg-forest img,
+.blog div[style*="background"] img,
+.blog div[class*="text-white"] img,
+.blog div[class*="p-8"] img,
+.blog div[class*="my-8"] img,
+.blog div[class*="rounded-xl"] img,
+.blog div[class*="shadow-soft"] img {
+  display: none !important;
+}
+
+/* Remove double list points */
+.blog div[class*="bg-forest"] ul,
+.blog div.bg-forest ul,
+.blog div[style*="background"] ul,
+.blog div[class*="text-white"] ul,
+.blog div[class*="p-8"] ul,
+.blog div[class*="my-8"] ul,
+.blog div[class*="rounded-xl"] ul,
+.blog div[class*="shadow-soft"] ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 1rem 0 !important;
+}
+
+.blog div[class*="bg-forest"] li,
+.blog div.bg-forest li,
+.blog div[style*="background"] li,
+.blog div[class*="text-white"] li,
+.blog div[class*="p-8"] li,
+.blog div[class*="my-8"] li,
+.blog div[class*="rounded-xl"] li,
+.blog div[class*="shadow-soft"] li {
+  color: white !important;
+  margin: 0.5rem 0 !important;
+  padding: 0.5rem 0 !important;
+}
+
+/* Clean slate - removed all conflicting rules */
+.blog div[class*="bg-forest"],
+.blog div.bg-forest,
+.blog div[style*="background"],
+.blog div[class*="text-white"],
+.blog div[class*="p-8"],
+.blog div[class*="my-8"],
+.blog div[class*="rounded-xl"],
+.blog div[class*="shadow-soft"] {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--turquoise) 100%) !important;
+  color: white !important;
+  padding: 3rem !important;
+  border-radius: 20px !important;
+  margin: 3rem 0 !important;
+  box-shadow: 0 12px 40px rgba(47, 93, 80, 0.25) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Override ALL text colors in the section */
+.blog div[class*="bg-forest"] *,
+.blog div.bg-forest *,
+.blog div[style*="background"] *,
+.blog div[class*="text-white"] *,
+.blog div[class*="p-8"] *,
+.blog div[class*="my-8"] *,
+.blog div[class*="rounded-xl"] *,
+.blog div[class*="shadow-soft"] * {
+  color: white !important;
+}
+
+/* Override specific elements that might have inline styles */
+.blog div[class*="bg-forest"] p,
+.blog div.bg-forest p,
+.blog div[style*="background"] p,
+.blog div[class*="text-white"] p,
+.blog div[class*="p-8"] p,
+.blog div[class*="my-8"] p,
+.blog div[class*="rounded-xl"] p,
+.blog div[class*="shadow-soft"] p {
+  color: rgba(255, 255, 255, 0.95) !important;
+  margin-bottom: 1.5rem !important;
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.7 !important;
+  font-size: 1.1rem !important;
+}
+
+/* Override lists */
+.blog div[class*="bg-forest"] ul,
+.blog div.bg-forest ul,
+.blog div[style*="background"] ul,
+.blog div[class*="text-white"] ul,
+.blog div[class*="p-8"] ul,
+.blog div[class*="my-8"] ul,
+.blog div[class*="rounded-xl"] ul,
+.blog div[class*="shadow-soft"] ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 2rem 0 !important;
+}
+
+.blog div[class*="bg-forest"] li,
+.blog div.bg-forest li,
+.blog div[style*="background"] li,
+.blog div[class*="text-white"] li,
+.blog div[class*="p-8"] li,
+.blog div[class*="my-8"] li,
+.blog div[class*="rounded-xl"] li,
+.blog div[class*="shadow-soft"] li {
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 0.75rem 0 !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 12px !important;
+  border-left: 4px solid white !important;
+  color: white !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Override links */
+.blog div[class*="bg-forest"] a,
+.blog div.bg-forest a,
+.blog div[style*="background"] a,
+.blog div[class*="text-white"] a,
+.blog div[class*="p-8"] a,
+.blog div[class*="my-8"] a,
+.blog div[class*="rounded-xl"] a,
+.blog div[class*="shadow-soft"] a {
+  color: white !important;
+  text-decoration: none !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 8px !important;
+  display: inline-block !important;
+  margin: 0.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.blog div[class*="bg-forest"] a:hover,
+.blog div.bg-forest a:hover,
+.blog div[style*="background"] a:hover,
+.blog div[class*="text-white"] a:hover,
+.blog div[class*="p-8"] a:hover,
+.blog div[class*="my-8"] a:hover,
+.blog div[class*="rounded-xl"] a:hover,
+.blog div[class*="shadow-soft"] a:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Override images */
+.blog div[class*="bg-forest"] img,
+.blog div.bg-forest img,
+.blog div[style*="background"] img,
+.blog div[class*="text-white"] img,
+.blog div[class*="p-8"] img,
+.blog div[class*="my-8"] img,
+.blog div[class*="rounded-xl"] img,
+.blog div[class*="shadow-soft"] img {
+  display: none !important;
+}
+
+/* Additional specificity for any remaining cases */
+.blog div.bg-forest,
+.blog .bg-forest,
+.blog [class*="bg-forest"] {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--turquoise) 100%) !important;
+  color: white !important;
+}
+
+/* Enhanced CTA section styling */
+.blog .enhanced-cta-section {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--turquoise) 100%) !important;
+  color: white !important;
+  padding: 2rem !important;
+  border-radius: 16px !important;
+  margin: 2rem 0 !important;
+  box-shadow: 0 8px 32px rgba(47, 93, 80, 0.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.blog .enhanced-cta-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, white 0%, var(--rose) 100%) !important;
+}
+
+.blog .enhanced-cta-section h3,
+.blog .enhanced-cta-section h4 {
+  color: white !important;
+  margin-bottom: 1rem !important;
+}
+
+.blog .enhanced-cta-section p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 1rem !important;
+}
+
+.blog .enhanced-cta-section a {
+  color: white !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--rose) !important;
+}
+
+.blog .enhanced-cta-section a:hover {
+  color: var(--rose) !important;
+  text-decoration-color: white !important;
+}
+
+.blog .cta-box h3 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.blog .cta-box p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.blog .cta-box .btn {
+  display: inline-block;
+  background: white;
+  color: var(--forest);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog .cta-box .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced list styling for key points */
+.blog .key-points-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.blog .key-points-grid .point {
+  background: var(--white);
+  border: 1px solid var(--rose);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.blog .key-points-grid .point:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(47, 93, 80, 0.15);
+  border-color: var(--forest);
+}
+
+.blog .key-points-grid .point-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--forest);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: white;
+  font-size: 1.25rem;
 }
 
 /* Body text specifications */
@@ -590,6 +1330,8 @@ select:focus {
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
+
+
 /* Hero Animated Background Styles */
 @keyframes hero-drift {
   0%   { transform: translate3d(0,0,0) scale(1); }
@@ -607,7 +1349,6 @@ select:focus {
     animation: none !important;
   }
 }
-
 
 
 

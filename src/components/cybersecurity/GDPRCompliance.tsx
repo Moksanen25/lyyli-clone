@@ -53,58 +53,56 @@ export default async function GDPRCompliance({ locale }: GDPRComplianceProps) {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-rose">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
-            {t['cybersecurity.gdprCompliance.title']}
-          </h2>
-          <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
-            {t['cybersecurity.gdprCompliance.subtitle']}
-          </p>
-        </div>
+    <div>
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
+          {t['cybersecurity.gdprCompliance.title']}
+        </h2>
+        <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
+          {t['cybersecurity.gdprCompliance.subtitle']}
+        </p>
+      </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
-          <div className="space-y-8">
-            {gdprFeatures.map((feature, index) => (
-              <div key={index} className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  {feature.icon}
+      <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
+        <div className="space-y-8">
+          {gdprFeatures.map((feature, index) => (
+            <div key={index} className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-forest/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                {feature.icon}
+              </div>
+              <div>
+                <h4 className="text-lg font-playfair font-normal text-forest mb-2">
+                  {feature.title}
+                </h4>
+                <p className="text-mediumGray font-sans leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300">
+          <h4 className="text-xl font-playfair font-normal text-forest mb-6">
+            {t['cybersecurity.gdprCompliance.dedicatedDPO.title']}
+          </h4>
+          <p className="text-mediumGray font-sans leading-relaxed mb-6">
+            {t['cybersecurity.gdprCompliance.dedicatedDPO.description']}
+          </p>
+          <div className="space-y-3">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex items-center space-x-3">
+                <div className="w-5 h-5 bg-forest rounded-full flex items-center justify-center">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-                <div>
-                  <h4 className="text-lg font-playfair font-normal text-forest mb-2">
-                    {feature.title}
-                  </h4>
-                  <p className="text-mediumGray font-sans leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
+                <span className="text-mediumGray font-sans">{benefit}</span>
               </div>
             ))}
           </div>
-          
-          <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h4 className="text-xl font-playfair font-normal text-forest mb-6">
-              {t['cybersecurity.gdprCompliance.dedicatedDPO.title']}
-            </h4>
-            <p className="text-mediumGray font-sans leading-relaxed mb-6">
-              {t['cybersecurity.gdprCompliance.dedicatedDPO.description']}
-            </p>
-            <div className="space-y-3">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <div className="w-5 h-5 bg-forest rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-mediumGray font-sans">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

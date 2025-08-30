@@ -34,7 +34,7 @@ export default function BlogPostCard({
   );
 
   return (
-    <article className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out overflow-hidden group">
+    <article className="bg-white rounded-2xl shadow-soft hover:shadow-xl transition-all duration-300 ease-out overflow-hidden group border border-gray-200">
       {post.image && (
         <div className="relative h-48 overflow-hidden">
           <Image
@@ -48,7 +48,7 @@ export default function BlogPostCard({
 
       <div className="p-6">
         <div className="flex items-center gap-2 mb-3">
-          <span className="px-3 py-1 bg-primary-50 text-primary-600 text-sm font-medium rounded-full">
+          <span className="px-3 py-1 bg-rose text-forest text-sm font-medium rounded-full border border-forest/20">
             {(t as unknown as Record<string, string>)[
               `blog.categories.${post.category.toLowerCase()}`
             ] || post.category}
@@ -57,7 +57,7 @@ export default function BlogPostCard({
 
         <div className="mb-4">
           <Link href={`/${locale}/blog/${post.slug}`} className="block group">
-            <h2 className="text-xl font-playfair font-bold text-darkGray mb-2 group-hover:text-forest transition-colors duration-300 ease-out leading-normal cursor-pointer">
+            <h2 className="text-xl font-playfair font-bold text-forest mb-2 group-hover:text-turquoise transition-colors duration-300 ease-out leading-normal cursor-pointer">
               {post.title}
             </h2>
           </Link>

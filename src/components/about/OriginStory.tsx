@@ -44,10 +44,10 @@ export default function OriginStory({ translations: t }: OriginStoryProps) {
   return (
     <div>
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
+        <h2 className="text-3xl md:text-4xl mb-4 text-white font-playfair font-bold leading-snug">
           {t["about.origin.title"]}
         </h2>
-        <p className="text-lg text-mediumGray max-w-2xl mx-auto font-sans leading-relaxed">
+        <p className="text-lg text-white/90 max-w-2xl mx-auto font-sans leading-relaxed">
           {t["about.origin.subtitle"]}
         </p>
       </div>
@@ -57,9 +57,9 @@ export default function OriginStory({ translations: t }: OriginStoryProps) {
         {problems.map((problem, index) => (
           <article
             key={index}
-            className="bg-white p-8 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 ease-out transform hover:-translate-y-1 text-center border border-gray-100"
+            className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1 text-center border border-gray-200"
           >
-            <div className={`w-16 h-16 ${problem.color} rounded-full mx-auto mb-6 flex items-center justify-center`}>
+            <div className={`w-16 h-16 ${problem.color} rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
               <div className={problem.iconColor}>
                 {problem.icon}
               </div>
@@ -73,9 +73,9 @@ export default function OriginStory({ translations: t }: OriginStoryProps) {
       </div>
 
       {/* Solution Highlight - Following 05-brand rule: forest for headers & CTA */}
-      <div className="bg-forest text-white p-8 rounded-xl text-center shadow-soft">
+      <div className="bg-gradient-to-br from-forest to-forest/90 text-white p-8 lg:p-12 rounded-2xl text-center shadow-lg">
         <div className="max-w-3xl mx-auto">
-          <p className="text-lg text-white leading-relaxed font-sans">{t["about.origin.solution"]}</p>
+          <p className="text-xl text-white leading-relaxed font-sans">{t["about.origin.solution"]}</p>
         </div>
       </div>
     </div>

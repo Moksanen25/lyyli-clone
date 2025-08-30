@@ -145,13 +145,13 @@ export default async function Home({ params }: HomeProps) {
       <DemoVideo translations={t} />
 
       {/* ROI Calculator Section */}
-      <ROICalculator />
+      <ROICalculator locale={currentLocale} translations={t} />
 
       {/* Testimonials and Customer Logos */}
       <TestimonialSection />
 
       {/* Pricing Section */}
-      <PricingCards />
+      <PricingCards locale={currentLocale} translations={t} />
 
       {/* CTA Section */}
       <section id="cta" className="py-24 bg-gradient-to-br from-forest to-turquoise">

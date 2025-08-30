@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import OriginStory from '../../../components/about/OriginStory';
 import MissionVisionValues from '../../../components/about/MissionVisionValues';
 import TeamSection from '../../../components/about/TeamSection';
+import SubPageVisual from '../../../components/SubPageVisual';
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;
@@ -27,16 +28,17 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
   return (
     <div className="min-h-screen">
+      {/* Hero Visual Background */}
+      <SubPageVisual />
+      
       {/* Hero Section */}
       <div className="relative z-10 pt-32">
         <section 
           className="container mx-auto px-4 py-20 relative overflow-hidden"
           aria-label="Hero"
         >
-          {/* Animated Hero Visual */}
-          
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-tight">
+            <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-tight">
               {t['about.hero.title']}
             </h1>
             <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -68,46 +70,48 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
       {/* Origin Story - Why Lyyli Exists */}
       <section className="bg-gradient-to-br from-forest to-forest/80 text-white py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="container mx-auto px-4">
           <OriginStory translations={t} />
         </div>
       </section>
 
       {/* Mission, Vision & Values */}
-      <section className="bg-gradient-to-br from-rose/10 to-turquoise/10 max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        <MissionVisionValues translations={t} />
+      <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <MissionVisionValues translations={t} />
+        </div>
       </section>
 
       {/* Team Section */}
-      <section className="bg-rose py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-white py-16 lg:py-24">
+        <div className="container mx-auto px-4">
           <TeamSection translations={t} />
         </div>
       </section>
 
       {/* CTA Section - Following 10-layout rule: ensisijainen CTA */}
-      <section className="bg-forest text-white py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl mb-4 text-white font-playfair font-normal leading-snug">
+      <section className="bg-gradient-to-br from-forest to-turquoise py-16 lg:py-24">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-bold leading-tight">
             {t['about.cta.title']}
           </h2>
-          <p className="text-lg mb-8 text-white opacity-90 font-sans leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
             {t['about.cta.description']}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="/demo" 
-              className="bg-white text-forest px-8 py-4 rounded-lg hover:bg-white/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans"
+              className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
               aria-label="Book a demo of Lyyli.ai"
             >
               {t['about.cta.demo']}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </a>
             <a 
               href="/trial" 
-              className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-colors font-medium inline-flex items-center justify-center font-sans"
+              className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
               aria-label="Start free trial of Lyyli.ai"
             >
               {t['about.cta.trial']}

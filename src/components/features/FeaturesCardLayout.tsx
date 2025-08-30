@@ -10,192 +10,158 @@ export default function FeaturesCardLayout({
   translations: t,
 }: FeaturesCardLayoutProps) {
   const features = [
-    // Automatic Content Creation
+    // Lyyli learns from your messages
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M6.194 14.644c0 1.293.857 2.43 2.164 2.43 1.301 0 2.168-1.137 2.168-2.43 0-1.288-.867-2.43-2.168-2.43-1.307 0-2.164 1.142-2.164 2.43zm2.164-9.644c-1.307 0-2.164 1.142-2.164 2.43 0 1.293.857 2.43 2.164 2.43 1.301 0 2.168-1.137 2.168-2.43 0-1.288-.867-2.43-2.168-2.43zm5.636 0c-1.307 0-2.164 1.142-2.164 2.43 0 1.293.857 2.43 2.164 2.43 1.301 0 2.168-1.137 2.168-2.43 0-1.288-.867-2.43-2.168-2.43zm2.164 9.644c0-1.288-.867-2.43-2.168-2.43-1.307 0-2.164 1.142-2.164 2.43 0 1.293.857 2.43 2.164 2.43 1.301 0 2.168-1.137 2.168-2.43z"/>
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M19.902 4.098a3.75 3.75 0 00-5.304 0l-4.5 4.5a3.75 3.75 0 001.035 6.037.75.75 0 01-.646 1.353 5.25 5.25 0 01-1.449-8.45l4.5-4.5a5.25 5.25 0 117.424 7.424l-1.757 1.757a.75.75 0 11-1.06-1.06l1.757-1.757a3.75 3.75 0 000-5.304zm-7.804 9.804a3.75 3.75 0 00-1.035-6.037.75.75 0 01.646-1.353 5.25 5.25 0 011.449 8.45l-4.5 4.5a5.25 5.25 0 11-7.424-7.424l1.757-1.757a.75.75 0 111.06 1.06l-1.757 1.757a3.75 3.75 0 105.304 5.304l4.5-4.5z" clipRule="evenodd" />
         </svg>
       ),
-      title: t["features.automatic.slack.title"],
-      description: t["features.automatic.slack.description"],
-      color: "bg-blue-50 border-blue-200",
+      title: "Seamless channel integration",
+      description: "Lyyli integrates with your communication channels like email, Slack, and Teams to understand your messaging patterns and organizational needs.",
+      gradient: "from-forest to-turquoise",
     },
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M6 3a3 3 0 00-3 3v12a3 3 0 003 3h12a3 3 0 003-3V6a3 3 0 00-3-3H6zm.75 3.75A.75.75 0 017.5 6h9a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75v-.75zm0 3A.75.75 0 017.5 9h9a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75v-.75zm0 3A.75.75 0 017.5 12h9a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75v-.75z" clipRule="evenodd" />
         </svg>
       ),
-      title: t["features.automatic.teams.title"],
-      description: t["features.automatic.teams.description"],
-      color: "bg-blue-50 border-blue-200",
+      title: "Learns your unique voice",
+      description: "Our AI understands your communication style and brand voice, adapting to match your organization's tone and professional standards.",
+      gradient: "from-forest to-turquoise",
     },
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path d="M12 .75a8.25 8.25 0 00-4.135 15.39c.686.398 1.115 1.008 1.134 1.623a.75.75 0 00.577.706 4.5 4.5 0 004.848 0 .75.75 0 00.577-.706c.019-.615.448-1.225 1.134-1.623A8.25 8.25 0 0012 .75z" />
+          <path fillRule="evenodd" d="M9.013 19.9a.75.75 0 01.877-.597 11.319 11.319 0 004.22 0 .75.75 0 11.28 1.473 12.819 12.819 0 01-4.78 0 .75.75 0 01-.597-.876zM9.754 22.344a.75.75 0 01.824-.668 13.682 13.682 0 002.844 0 .75.75 0 11.156 1.492 15.156 15.156 0 01-3.156 0 .75.75 0 01-.668-.824z" clipRule="evenodd" />
         </svg>
       ),
-      title: t["features.automatic.email.title"],
-      description: t["features.automatic.email.description"],
-      color: "bg-blue-50 border-blue-200",
+      title: "Proactive communication ideas",
+      description: "Lyyli creates messages that sound authentically like you or your organization, suggesting communications you didn't even realize you needed for internal and external stakeholders.",
+      gradient: "from-forest to-turquoise",
     },
 
     // Governance & Compliance
     {
       category: "governance",
       icon: (
-        <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625zM7.5 15a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 017.5 15zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H8.25z" clipRule="evenodd" />
         </svg>
       ),
       title: t["features.governance.audit.title"],
       description: t["features.governance.audit.description"],
-      color: "bg-green-50 border-green-200",
+      gradient: "from-turquoise to-forest",
     },
     {
       category: "governance",
       icon: (
-        <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clipRule="evenodd" />
         </svg>
       ),
       title: t["features.governance.version.title"],
       description: t["features.governance.version.description"],
-      color: "bg-green-50 border-green-200",
+      gradient: "from-turquoise to-forest",
     },
     {
       category: "governance",
       icon: (
-        <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clipRule="evenodd" />
         </svg>
       ),
       title: t["features.governance.access.title"],
       description: t["features.governance.access.description"],
-      color: "bg-green-50 border-green-200",
+      gradient: "from-turquoise to-forest",
     },
 
     // Enterprise Security
     {
       category: "security",
       icon: (
-        <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z" clipRule="evenodd" />
         </svg>
       ),
       title: t["features.security.encryption.title"],
       description: t["features.security.encryption.description"],
-      color: "bg-red-50 border-red-200",
+      gradient: "from-rose to-turquoise",
     },
     {
       category: "security",
       icon: (
-        <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.814 3.51 10.815 8.625 12.975a.75.75 0 00.75 0C16.74 20.565 20.25 15.564 20.25 9.75a12.74 12.74 0 00-.635-3.985.75.75 0 00-.722-.515 11.209 11.209 0 01-7.877-3.08zM15.75 9.75a.75.75 0 00-.75-.75H9a.75.75 0 00-.75.75v.75c0 .414.336.75.75.75h6a.75.75 0 00.75-.75v-.75z" clipRule="evenodd" />
         </svg>
       ),
-      title: t["features.security.iso.title"],
-      description: t["features.security.iso.description"],
-      color: "bg-red-50 border-red-200",
+      title: "ISO 27001 readiness",
+      description: "Information security management system built to international standards for comprehensive data protection and compliance readiness.",
+      gradient: "from-rose to-turquoise",
     },
     {
       category: "security",
       icon: (
-        <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.814 3.51 10.815 8.625 12.975a.75.75 0 00.75 0C16.74 20.565 20.25 15.564 20.25 9.75a12.74 12.74 0 00-.635-3.985.75.75 0 00-.722-.515 11.209 11.209 0 01-7.877-3.08zM15.75 9.75a.75.75 0 00-.75-.75H9a.75.75 0 00-.75.75v.75c0 .414.336.75.75.75h6a.75.75 0 00.75-.75v-.75z" clipRule="evenodd" />
         </svg>
       ),
       title: t["features.security.gdpr.title"],
       description: t["features.security.gdpr.description"],
-      color: "bg-red-50 border-red-200",
+      gradient: "from-rose to-turquoise",
     },
 
     // Multilingual Support
     {
       category: "multilingual",
       icon: (
-        <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clipRule="evenodd" />
         </svg>
       ),
       title: t["features.multilingual.translation.title"],
       description: t["features.multilingual.translation.description"],
-      color: "bg-purple-50 border-purple-200",
+      gradient: "from-turquoise to-rose",
     },
     {
       category: "multilingual",
       icon: (
-        <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM6.75 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5H7.5a.75.75 0 01-.75-.75zm6-5.25a.75.75 0 01.75-.75h3a.75.75 0 010 1.5h-3a.75.75 0 01-.75-.75zm2.25 8.25a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5H15a.75.75 0 01-.75-.75z" clipRule="evenodd" />
         </svg>
       ),
       title: t["features.multilingual.locales.title"],
       description: t["features.multilingual.locales.description"],
-      color: "bg-purple-50 border-purple-200",
+      gradient: "from-turquoise to-rose",
     },
     {
       category: "multilingual",
       icon: (
-        <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM8.25 8.25a.75.75 0 01.75-.75h6a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zm0 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zm0 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75z" clipRule="evenodd" />
         </svg>
       ),
       title: t["features.multilingual.cultural.title"],
       description: t["features.multilingual.cultural.description"],
-      color: "bg-purple-50 border-purple-200",
-    },
-
-    // System Integrations
-    {
-      category: "integrations",
-      icon: (
-        <svg className="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M6.194 14.644c0 1.293.857 2.43 2.164 2.43 1.301 0 2.168-1.137 2.168-2.43 0-1.293-.867-2.43-2.168-2.43-1.307 0-2.164 1.137-2.164 2.43zm2.164-9.644c-1.307 0-2.164 1.142-2.164 2.43 0 1.293.857 2.43 2.164 2.43 1.301 0 2.168-1.137 2.168-2.43 0-1.288-.867-2.43-2.168-2.43zm5.636 0c-1.307 0-2.164 1.142-2.164 2.43 0 1.293.857 2.43 2.164 2.43 1.301 0 2.168-1.137 2.168-2.43 0-1.288-.867-2.43-2.168-2.43zm2.164 9.644c0-1.288-.867-2.43-2.168-2.43-1.307 0-2.164 1.142-2.164 2.43 0 1.293.857 2.43 2.164 2.43 1.301 0 2.168-1.137 2.168-2.43z"/>
-        </svg>
-      ),
-      title: t["features.integrations.slack.title"],
-      description: t["features.integrations.slack.description"],
-      color: "bg-yellow-50 border-yellow-200",
-    },
-    {
-      category: "integrations",
-      icon: (
-        <svg className="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      ),
-      title: t["features.integrations.teams.title"],
-      description: t["features.integrations.teams.description"],
-      color: "bg-yellow-50 border-yellow-200",
-    },
-    {
-      category: "integrations",
-      icon: (
-        <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: t["features.integrations.email.title"],
-      description: t["features.integrations.email.description"],
-      color: "bg-yellow-50 border-yellow-200",
+      gradient: "from-turquoise to-rose",
     },
   ];
 
   return (
     <div className="space-y-16">
-      {/* Automatic Content Creation */}
+      {/* Lyyli learns from your messages */}
       <div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            {t["features.automatic.title"]}
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+            Lyyli learns from your messages
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            {t["features.automatic.description"]}
+            Lyyli learns from your messaging patterns and gives you intelligent ideas for communication, helping you stay connected with what matters most.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -204,15 +170,15 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group"
               >
-                <div className="text-4xl mb-4 flex justify-center" aria-hidden="true">
+                <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+                <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal text-center">
                   {feature.title}
                 </h3>
-                <p className="text-base font-sans leading-relaxed">
+                <p className="text-mediumGray text-base font-sans leading-relaxed text-center">
                   {feature.description}
                 </p>
               </article>
@@ -223,7 +189,7 @@ export default function FeaturesCardLayout({
       {/* Governance & Compliance */}
       <div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
             {t["features.governance.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -236,17 +202,15 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+                <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
+                  {feature.icon}
                 </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+                <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal text-center">
                   {feature.title}
                 </h3>
-                <p className="text-base font-sans leading-relaxed">
+                <p className="text-mediumGray text-base font-sans leading-relaxed text-center">
                   {feature.description}
                 </p>
               </article>
@@ -257,11 +221,11 @@ export default function FeaturesCardLayout({
       {/* Enterprise Security */}
       <div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            {t["features.security.title"]}
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+            Enterprise Security
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            {t["features.security.description"]}
+            Bank-grade encryption, ISO 27001 readiness, and comprehensive security measures to protect your organization's communications.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -270,17 +234,15 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
+                <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
+                  {feature.icon}
                 </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+                <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal text-center">
                   {feature.title}
                 </h3>
-                <p className="text-base font-sans leading-relaxed">
+                <p className="text-mediumGray text-base font-sans leading-relaxed text-center">
                   {feature.description}
                 </p>
               </article>
@@ -291,7 +253,7 @@ export default function FeaturesCardLayout({
       {/* Multilingual Support */}
       <div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
             {t["features.multilingual.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -304,49 +266,15 @@ export default function FeaturesCardLayout({
             .map((feature, index) => (
               <article
                 key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                  </svg>
-                </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
-                  {feature.title}
-                </h3>
-                <p className="text-base font-sans leading-relaxed">
-                  {feature.description}
-                </p>
-              </article>
-            ))}
-        </div>
-      </div>
-
-      {/* System Integrations */}
-      <div>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            {t["features.integrations.title"]}
-          </h2>
-          <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            {t["features.integrations.description"]}
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features
-            .filter((f) => f.category === "integrations")
-            .map((feature, index) => (
-              <article
-                key={index}
-                className={`p-6 rounded-lg border-2 ${feature.color} hover:shadow-soft transition-all duration-300 ease-out`}
-              >
-                <div className="text-4xl mb-4 flex justify-center" aria-hidden="true">
+                <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+                <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal text-center">
                   {feature.title}
                 </h3>
-                <p className="text-base font-sans leading-relaxed">
+                <p className="text-mediumGray text-base font-sans leading-relaxed text-center">
                   {feature.description}
                 </p>
               </article>

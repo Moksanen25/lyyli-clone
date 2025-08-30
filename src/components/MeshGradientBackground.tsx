@@ -11,20 +11,22 @@ export default function MeshGradientBackground() {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
-  // Calculate opacity based on scroll position - smoother fade over 1200px
-  const fadeOpacity = Math.max(0, 1 - (scrollY * 0.0008));
+  // Simplified opacity - always visible for now
+  const currentOpacity = 1;
 
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 -z-50 pointer-events-none"
-      style={{ opacity: fadeOpacity }}
+      className="fixed inset-0 -z-10 pointer-events-none"
+      style={{ opacity: currentOpacity }}
     >
-      {/* Base mesh gradient */}
+      {/* Fluid mesh gradient that flows throughout the page */}
       <div className="absolute inset-0">
         <svg
           className="w-full h-full"
@@ -32,10 +34,10 @@ export default function MeshGradientBackground() {
           preserveAspectRatio="none"
         >
           <defs>
-            {/* Primary mesh gradients with more vibrant colors and higher opacity */}
+            {/* Primary mesh gradients with vibrant colors */}
             <radialGradient id="meshGradient1" cx="0.2" cy="0.2" r="0.8">
-              <stop offset="0%" stopColor="#FFB9B9" stopOpacity="1" />
-              <stop offset="70%" stopColor="#FFB9B9" stopOpacity="0.7" />
+              <stop offset="0%" stopColor="#FFB9B9" stopOpacity="0.8" />
+              <stop offset="70%" stopColor="#FFB9B9" stopOpacity="0.5" />
               <stop offset="100%" stopColor="#FFB9B9" stopOpacity="0" />
             </radialGradient>
             
@@ -57,7 +59,7 @@ export default function MeshGradientBackground() {
               <stop offset="100%" stopColor="#3FBB9B" stopOpacity="0" />
             </radialGradient>
             
-            {/* Additional blending gradients for smoother transitions with higher opacity */}
+            {/* Additional blending gradients for smoother transitions */}
             <radialGradient id="meshGradient5" cx="0.5" cy="0.5" r="1.2">
               <stop offset="0%" stopColor="#FFB9B9" stopOpacity="0.6" />
               <stop offset="100%" stopColor="#FFB9B9" stopOpacity="0" />
@@ -68,7 +70,6 @@ export default function MeshGradientBackground() {
               <stop offset="100%" stopColor="#F8D6FF" stopOpacity="0" />
             </radialGradient>
             
-            {/* Additional subtle gradients for more organic feel with higher opacity */}
             <radialGradient id="meshGradient7" cx="0.7" cy="0.4" r="0.6">
               <stop offset="0%" stopColor="#FFF3BD" stopOpacity="0.6" />
               <stop offset="100%" stopColor="#FFF3BD" stopOpacity="0" />
@@ -79,7 +80,7 @@ export default function MeshGradientBackground() {
               <stop offset="100%" stopColor="#3FBB9B" stopOpacity="0" />
             </radialGradient>
 
-            {/* Additional vibrant gradients for more color pop */}
+            {/* Additional vibrant gradients for more color variety */}
             <radialGradient id="meshGradient9" cx="0.1" cy="0.5" r="0.7">
               <stop offset="0%" stopColor="#FF9A9A" stopOpacity="0.8" />
               <stop offset="100%" stopColor="#FF9A9A" stopOpacity="0" />
@@ -100,7 +101,7 @@ export default function MeshGradientBackground() {
               <stop offset="100%" stopColor="#66D9A3" stopOpacity="0" />
             </radialGradient>
 
-            {/* Additional vibrant colors for maximum color pop */}
+            {/* Even more variety for richer patterns */}
             <radialGradient id="meshGradient13" cx="0.3" cy="0.1" r="0.4">
               <stop offset="0%" stopColor="#FF6B6B" stopOpacity="0.9" />
               <stop offset="100%" stopColor="#FF6B6B" stopOpacity="0" />
@@ -120,9 +121,20 @@ export default function MeshGradientBackground() {
               <stop offset="0%" stopColor="#DDA0DD" stopOpacity="0.9" />
               <stop offset="100%" stopColor="#DDA0DD" stopOpacity="0" />
             </radialGradient>
+
+            {/* Additional gradients for even more fluid coverage */}
+            <radialGradient id="meshGradient17" cx="0.6" cy="0.1" r="0.4">
+              <stop offset="0%" stopColor="#87CEEB" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#87CEEB" stopOpacity="0" />
+            </radialGradient>
+            
+            <radialGradient id="meshGradient18" cx="0.1" cy="0.9" r="0.4">
+              <stop offset="0%" stopColor="#F0E68C" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#F0E68C" stopOpacity="0" />
+            </radialGradient>
           </defs>
           
-          {/* Multiple overlapping circles to create the mesh effect */}
+          {/* Multiple overlapping circles creating fluid mesh pattern */}
           <circle cx="20" cy="20" r="40" fill="url(#meshGradient1)" />
           <circle cx="80" cy="20" r="40" fill="url(#meshGradient2)" />
           <circle cx="20" cy="80" r="40" fill="url(#meshGradient3)" />
@@ -139,19 +151,26 @@ export default function MeshGradientBackground() {
           <circle cx="70" cy="70" r="20" fill="url(#meshGradient14)" />
           <circle cx="50" cy="20" r="15" fill="url(#meshGradient15)" />
           <circle cx="20" cy="70" r="15" fill="url(#meshGradient16)" />
+          <circle cx="60" cy="10" r="18" fill="url(#meshGradient17)" />
+          <circle cx="10" cy="90" r="18" fill="url(#meshGradient18)" />
+          
+          {/* Additional mid-range circles for better coverage */}
+          <circle cx="45" cy="65" r="25" fill="url(#meshGradient1)" opacity="0.6" />
+          <circle cx="65" cy="35" r="25" fill="url(#meshGradient2)" opacity="0.6" />
+          <circle cx="25" cy="45" r="25" fill="url(#meshGradient3)" opacity="0.6" />
+          <circle cx="75" cy="55" r="25" fill="url(#meshGradient4)" opacity="0.6" />
         </svg>
       </div>
       
-      {/* Reduced white overlay for more color pop (from 50% to 25%) */}
+      {/* Temporary test background to ensure visibility */}
       <div 
         className="absolute inset-0"
         style={{
-          background: 'rgba(255, 255, 255, 0.25)',
-          mixBlendMode: 'overlay'
+          background: 'linear-gradient(45deg, rgba(255, 182, 193, 0.3) 0%, rgba(173, 216, 230, 0.3) 50%, rgba(255, 218, 185, 0.3) 100%)'
         }}
       />
       
-      {/* Additional subtle noise texture for organic feel */}
+      {/* Subtle noise texture for organic feel */}
       <div 
         className="absolute inset-0 opacity-8"
         style={{

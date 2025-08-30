@@ -66,16 +66,15 @@ export default function PricingFAQ({
         {faqItems.map((item, index) => (
           <motion.article
             key={index}
-            className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+            className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
-            whileHover={{ y: -2 }}
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gradient-to-r hover:from-forest/5 hover:to-turquoise/5 transition-all duration-300 group"
+              className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gradient-to-r hover:from-turquoise/5 hover:to-rose/5 transition-all duration-300 group"
               aria-expanded={openIndex === index}
               aria-controls={`faq-answer-${index}`}
             >

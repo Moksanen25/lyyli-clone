@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { TranslationKeys } from "../lib/i18n";
 
 interface PricingPlan {
   name: string;
@@ -17,6 +18,8 @@ interface PricingPlan {
 
 interface PricingCardsProps {
   fullWidth?: boolean;
+  locale?: string;
+  translations?: TranslationKeys;
 }
 
 const plans: PricingPlan[] = [
@@ -26,13 +29,11 @@ const plans: PricingPlan[] = [
     yearlyPrice: 0,
     description: "Perfect for individuals and small teams getting started",
     features: [
-      "Up to 1 team member",
-      "Basic AI content generation",
-      "Web interface",
-      "Up to 20 conversations",
-      "Up to 5 posts per month",
-      "Up to 2 integrations",
-      "Email support"
+      "Max 1 user",
+      "Basic AI generation with limited tone of voice and brand settings",
+      "Max 20 AI conversations a week",
+      "No integrations",
+      "Help & Support library"
     ],
     cta: "Get started free"
   },
@@ -40,16 +41,12 @@ const plans: PricingPlan[] = [
     name: "Starter",
     monthlyPrice: 29,
     yearlyPrice: Math.round(29 * 12 * 0.8), // 12 months - 20% discount
-    description: "Ideal for growing teams and small organizations",
+    description: "Everything in Free and advanced AI features",
     features: [
-      "Up to 1 team member",
-      "Advanced AI content generation",
-      "Web interface",
-      "Up to 50 conversations",
-      "Up to 10 posts per month",
-      "Up to 3 integrations",
-      "Extensive customization",
-      "Priority email support"
+      "Everything in Free",
+      "Advanced AI content generation with personal suggestions based on your communication",
+      "Max 50 AI conversations a week",
+      "Limited tone of voice and brand settings"
     ],
     cta: "Start free trial"
   },
@@ -57,73 +54,111 @@ const plans: PricingPlan[] = [
     name: "Growth",
     monthlyPrice: 199,
     yearlyPrice: Math.round(199 * 12 * 0.8), // 12 months - 20% discount
-    description: "Built for scaling organizations with advanced needs",
+    description: "Everything in Starter plus team collaboration",
     features: [
-      "Up to 3 team members",
-      "Premium AI content generation",
-      "Web, Slack & Teams apps",
-      "Up to 100 conversations",
-      "Unlimited posts",
-      "All integrations",
-      "Advanced approval workflows",
-      "Team collaboration tools",
-      "Performance analytics",
-      "Custom templates",
-      "Priority support",
-      "API access"
-    ],
-    cta: "Start free trial"
-  },
-  {
-    name: "Professional",
-    monthlyPrice: 599,
-    yearlyPrice: Math.round(599 * 12 * 0.8), // 12 months - 20% discount
-    description: "Our most popular plan for established organizations",
-    features: [
-      "Up to 10 team members",
-      "Enterprise AI content generation",
-      "All integrations + custom connectors",
+      "Everything in Starter",
+      "User management: max 3 users",
+      "Premium AI content generation with personal suggestions",
+      "Slack and/or Teams native app",
       "Unlimited conversations",
-      "Advanced workflow automation",
-      "Comprehensive analytics & reporting",
-      "Custom integrations",
-      "Dedicated account manager",
-      "24/7 priority support",
-      "Advanced security features",
-      "Custom training sessions"
+      "Organisation management and advanced tone of voice and brand settings",
+      "Priority support (email)"
     ],
     cta: "Start free trial",
     popular: true,
     highlight: true
   },
   {
+    name: "Professional",
+    monthlyPrice: 599,
+    yearlyPrice: Math.round(599 * 12 * 0.8), // 12 months - 20% discount
+    description: "Advanced AI-powered features for content optimization and campaign management",
+    features: [
+      "Everything in Growth",
+      "Advanced AI-analytics to optimize your content and publishing",
+      "AI-enhanced Campaign mode to create and manage communication campaigns",
+      "Editor mode",
+      "AI-enhanced media library with intelligent media suggestions",
+      "C-level and management automated KPI-reports",
+      "Branded templates for different content: communications plan, management report, weekly report, personnel info",
+      "Priority support (email and phone)"
+    ],
+    cta: "Start free trial"
+  },
+  {
     name: "Enterprise",
     monthlyPrice: 0, // Custom pricing
     yearlyPrice: 0,
-    description: "Tailored solutions for large enterprises",
+    description: "Tailored solution for larger enterprises",
     features: [
-      "Unlimited team members",
-      "Custom AI model training",
-      "White-label solutions",
-      "Advanced compliance features",
-      "Custom development",
-      "Dedicated support team",
-      "SLA guarantees",
-      "On-premise deployment options",
-      "Custom integrations",
-      "Executive reporting"
+      "Local entity in customer's own environment",
+      "Premium support",
+      "APIs",
+      "Named account manager"
     ],
     cta: "Contact sales"
   }
 ];
 
-export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
+export default function PricingCards({ fullWidth = false, locale, translations }: PricingCardsProps) {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
+
+  // Feature translation mapping
+  const translateFeature = (feature: string): string => {
+    const featureMap: { [key: string]: string } = {
+      "Max 1 user": "pricing.features.maxOneUser",
+      "Basic AI generation with limited tone of voice and brand settings": "pricing.features.basicAILimited",
+      "Max 20 AI conversations a week": "pricing.features.maxTwentyConversationsWeek",
+      "No integrations": "pricing.features.noIntegrations",
+      "Help & Support library": "pricing.features.helpSupportLibrary",
+      "Everything in Free": "pricing.features.everythingInFree",
+      "Advanced AI content generation with personal suggestions based on your communication": "pricing.features.advancedAIPersonal",
+      "Max 50 AI conversations a week": "pricing.features.maxFiftyConversationsWeek",
+      "Limited tone of voice and brand settings": "pricing.features.limitedToneBrand",
+      "Everything in Starter": "pricing.features.everythingInStarter",
+      "User management: max 3 users": "pricing.features.userManagement3",
+      "Premium AI content generation with personal suggestions": "pricing.features.premiumAIPersonal",
+      "Slack and/or Teams native app": "pricing.features.slackTeamsNative",
+      "Unlimited conversations": "pricing.features.unlimitedConversations",
+      "Organisation management and advanced tone of voice and brand settings": "pricing.features.orgManagementAdvanced",
+      "Priority support (email)": "pricing.features.prioritySupportEmail",
+      "Everything in Growth": "pricing.features.everythingInGrowth",
+      "Advanced AI-analytics to optimize your content and publishing": "pricing.features.advancedAIAnalytics",
+      "AI-enhanced Campaign mode to create and manage communication campaigns": "pricing.features.aiCampaignMode",
+      "Editor mode": "pricing.features.editorMode",
+      "AI-enhanced media library with intelligent media suggestions": "pricing.features.aiMediaLibrary",
+      "C-level and management automated KPI-reports": "pricing.features.automatedKPIReports",
+      "Branded templates for different content: communications plan, management report, weekly report, personnel info": "pricing.features.brandedTemplates",
+      "Priority support (email and phone)": "pricing.features.prioritySupportEmailPhone",
+      "Local entity in customer's own environment": "pricing.features.localEntity",
+      "Premium support": "pricing.features.premiumSupport",
+      "APIs": "pricing.features.apis",
+      "Named account manager": "pricing.features.namedAccountManager"
+    };
+
+    const translationKey = featureMap[feature];
+    return translationKey ? (translations?.[translationKey as keyof typeof translations] || feature) : feature;
+  };
+
+  // Get translated plan data (keeping plan names in English as brand identifiers)
+  const getTranslatedPlans = () => {
+    return plans.map(plan => ({
+      ...plan,
+      // Keep plan names in English - they are brand identifiers
+      description: translations?.[`pricing.${plan.name.toLowerCase()}.description` as keyof typeof translations] || plan.description,
+      cta: (plan.name === "Professional" || plan.name === "Enterprise") 
+        ? (translations?.["waitlist.joinWaitlist" as keyof typeof translations] || "Join waitlist")
+        : (translations?.[`pricing.${plan.name.toLowerCase()}.cta` as keyof typeof translations] || plan.cta),
+      features: plan.features.map(feature => translateFeature(feature))
+    }));
+  };
+
+  const translatedPlans = getTranslatedPlans();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -153,17 +188,21 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
   };
 
   const getPrice = (plan: PricingPlan) => {
-    if (plan.name === "Enterprise") return "Custom";
-    if (plan.monthlyPrice === 0) return "€0";
+    if (plan.name === "Enterprise") return "";
+    if (plan.monthlyPrice === 0) return "0€";
     
     const price = billingPeriod === "monthly" ? plan.monthlyPrice : plan.yearlyPrice;
-    return `€${price}`;
+    return `${price}€`;
+  };
+
+  const getPricePeriod = (plan: PricingPlan) => {
+    if (plan.name === "Enterprise" || plan.name === "Free") return "";
+    return billingPeriod === "monthly" ? (translations?.["pricing.perMonth"] || "/month") : (translations?.["pricing.perYear"] || "/year");
   };
 
   const getPeriod = (plan: PricingPlan) => {
-    if (plan.name === "Free") return "forever";
-    if (plan.name === "Enterprise") return "";
-    return billingPeriod === "monthly" ? "per month" : "per year";
+    // Period is now included in getPrice, so return empty for all plans
+    return "";
   };
 
   const getSavings = (plan: PricingPlan) => {
@@ -175,17 +214,8 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
   };
 
   return (
-    <section className={`${fullWidth ? 'py-0' : 'py-24'} ${fullWidth ? '' : 'bg-gradient-to-br from-gray-50 to-white'}`}>
+    <section className={`${fullWidth ? 'py-0' : 'py-16 lg:py-24'} ${fullWidth ? '' : 'bg-gradient-to-br from-gray-50 to-white'}`}>
       <div className={fullWidth ? "w-full px-4" : "container mx-auto px-4"}>
-        {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
-            Simple, transparent pricing
-          </h2>
-          <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
-            Choose the perfect plan for your organization. All plans include a 14-day free trial.
-          </p>
-        </div>
 
         {/* Billing Toggle */}
         <div className="flex justify-center items-center mb-12">
@@ -199,7 +229,7 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
               }`}
               aria-pressed={billingPeriod === "monthly"}
             >
-              Monthly
+              {translations?.["pricing.monthly"] || "Monthly"}
             </button>
             <button
               onClick={() => setBillingPeriod("yearly")}
@@ -210,14 +240,19 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
               }`}
               aria-pressed={billingPeriod === "yearly"}
             >
-              Yearly
+              {translations?.["pricing.yearly"] || "Yearly"}
             </button>
           </div>
-          {billingPeriod === "yearly" && (
-            <div className="ml-4 px-3 py-1 bg-forest text-white text-sm rounded-full">
-              Save 20%
-            </div>
-          )}
+          <div className={`ml-4 px-3 py-1 text-sm rounded-full transition-colors duration-200 ${
+            billingPeriod === "yearly" 
+              ? "bg-forest text-white" 
+              : "bg-turquoise/10 text-forest border border-turquoise/30"
+          }`}>
+            {billingPeriod === "yearly" 
+              ? `${translations?.["pricing.save"] || "Save"} 20%`
+              : `20% ${(translations?.["pricing.save"] || "off").toLowerCase()} ${(translations?.["pricing.yearly"] || "yearly").toLowerCase()}`
+            }
+          </div>
         </div>
 
         {/* Pricing Cards */}
@@ -228,40 +263,44 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {plans.map((plan, index) => (
+          {translatedPlans.map((plan, index) => (
             <motion.div
               key={plan.name}
               className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
               variants={cardVariants}
             >
-              {/* Popular Badge - Positioned to align middle of tag with card's outer line */}
+              {/* Popular Badge - Enhanced positioning and styling */}
               {plan.popular && (
-                <div className="absolute -top-6 -right-2 z-50">
+                <div className="absolute -top-4 -right-3 z-50">
                   <div 
-                    className="px-6 py-2 text-sm font-bold text-white shadow-xl border-2 border-white rounded-full whitespace-nowrap"
+                    className="px-4 py-2 text-xs font-bold text-white shadow-2xl border-2 border-white rounded-full whitespace-nowrap transform rotate-12"
                     style={{
-                      background: 'linear-gradient(to right, #2F5D50, #0F766E)',
-                      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                      background: 'linear-gradient(135deg, #2F5D50 0%, #A7D6D1 100%)',
+                      boxShadow: '0 25px 50px -12px rgba(47, 93, 80, 0.25), 0 0 0 1px rgba(167, 214, 209, 0.1)',
                     }}
                   >
-                    Most Popular
+                    ⭐ Most Popular
                   </div>
                 </div>
               )}
 
               {/* Plan Card */}
               <motion.div 
-                className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full cursor-pointer ${
+                className={`${
+                  plan.name === "Professional" || plan.name === "Enterprise" 
+                    ? 'bg-gradient-to-br from-grayLight to-white' 
+                    : 'bg-white'
+                } rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full cursor-pointer ${
                   plan.popular 
-                    ? 'border-forest shadow-xl scale-105'  
-                    : 'border-gray-200 hover:border-forest/20'
+                    ? 'border-turquoise/40 shadow-2xl scale-105 bg-gradient-to-br from-white to-turquoise/5'  
+                    : 'border-gray-200 hover:border-turquoise/30 hover:shadow-xl'
                 } ${
-                  selectedPlan === plan.name ? 'ring-2 ring-forest/50' : ''
+                  selectedPlan === plan.name ? 'ring-2 ring-turquoise/50' : ''
                 }`}
                 whileHover={{ 
                   y: -8,
                   scale: plan.highlight ? 1.08 : 1.02,
-                  transition: { duration: 0.2 }
+                  transition: { duration: 0.3, ease: "easeOut" }
                 }}
                 onClick={() => setSelectedPlan(plan.name)}
               >
@@ -272,14 +311,36 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
                   }`}>
                     {plan.name}
                   </h3>
-                  <div className="mb-4">
-                    <span className="text-3xl font-bold text-forest  font-sans">
-                      {getPrice(plan)}
-                    </span>
-                    {plan.name !== "Free" && plan.name !== "Enterprise" && (
-                      <span className="text-mediumGray  font-sans">
-                        /{getPeriod(plan)}
-                      </span>
+                  <div className="mb-4 flex flex-col items-center">
+                    {plan.name === "Enterprise" ? (
+                      <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-forest to-turquoise rounded-full">
+                        <span className="text-lg font-bold text-white font-sans">
+                          Contact us
+                        </span>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="relative mb-2">
+                          {/* Enhanced Price Tag Background */}
+                          <div className="bg-gradient-to-br from-turquoise/30 to-rose/30 rounded-2xl px-6 py-4 border-2 border-turquoise/40 shadow-xl relative overflow-hidden">
+                            {/* Subtle shimmer effect */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-pulse"></div>
+                            <div className="text-center relative z-10">
+                              <span className="text-2xl font-bold text-forest font-sans">
+                                {getPrice(plan)}
+                              </span>
+                            </div>
+                          </div>
+                          {/* Enhanced Price Tag Corner */}
+                          <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-turquoise to-forest rounded-full border-2 border-white shadow-lg"></div>
+                        </div>
+                        {/* Period text outside the tag */}
+                        {getPricePeriod(plan) && (
+                          <span className="text-sm text-mediumGray font-sans">
+                            {getPricePeriod(plan)}
+                          </span>
+                        )}
+                      </>
                     )}
                   </div>
                   {billingPeriod === "yearly" && getSavings(plan) && (
@@ -308,25 +369,48 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
 
                 {/* CTA Button */}
                 <div className="mt-auto">
-                  <button 
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      padding: '12px 16px',
-                      borderRadius: '12px',
-                      fontWeight: 'bold',
-                      textAlign: 'center',
-                      textDecoration: 'none',
-                      color: 'white',
-                      background: plan.popular 
-                        ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
-                        : '#2F5D50',
-                      transition: 'all 0.3s ease'
-                    }}
-                    className="hover:shadow-lg"
-                  >
-                    {plan.cta}
-                  </button>
+                  {(plan.name === "Professional" || plan.name === "Enterprise") ? (
+                    <a
+                      href={`/${locale || 'en'}/waitlist`}
+                      style={{
+                        display: 'block',
+                        width: '100%',
+                        padding: '12px 16px',
+                        borderRadius: '12px',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                        color: 'white',
+                        background: plan.popular 
+                          ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
+                          : '#2F5D50',
+                        transition: 'all 0.3s ease'
+                      }}
+                      className="hover:shadow-lg"
+                    >
+                      {plan.cta}
+                    </a>
+                  ) : (
+                    <button 
+                      style={{
+                        display: 'block',
+                        width: '100%',
+                        padding: '12px 16px',
+                        borderRadius: '12px',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                        color: 'white',
+                        background: plan.popular 
+                          ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
+                          : '#2F5D50',
+                        transition: 'all 0.3s ease'
+                      }}
+                      className="hover:shadow-lg"
+                    >
+                      {plan.cta}
+                    </button>
+                  )}
                 </div>
               </motion.div>
             </motion.div>
@@ -341,18 +425,18 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-forest  mb-4 font-sans">
+          <div className="bg-gradient-to-br from-white to-turquoise/5 rounded-2xl p-8 shadow-xl border border-turquoise/20 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold text-forest mb-4 font-playfair font-normal">
               Need more information?
             </h3>
-            <p className="text-mediumGray  font-sans leading-relaxed mb-6">
+            <p className="text-mediumGray font-sans leading-relaxed mb-6">
               All plans include enterprise-grade security, GDPR compliance, and 99.9% uptime guarantee. 
               Need a custom solution? Our team is here to help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="/pricing" 
-                className="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-xl hover:bg-turquoise transition-colors duration-300 font-sans"
+                className="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-2xl hover:bg-turquoise transition-all duration-300 font-sans hover:shadow-lg hover:-translate-y-1"
               >
                 View detailed pricing
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -361,7 +445,7 @@ export default function PricingCards({ fullWidth = false }: PricingCardsProps) {
               </a>
               <a 
                 href="/contact" 
-                className="inline-flex items-center px-6 py-3 border-2 border-forest text-forest  font-semibold rounded-xl hover:bg-forest hover:text-white transition-all duration-300 font-sans"
+                className="inline-flex items-center px-6 py-3 border-2 border-forest text-forest font-semibold rounded-2xl hover:bg-forest hover:text-white transition-all duration-300 font-sans hover:shadow-lg hover:-translate-y-1"
               >
                 Contact sales team
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

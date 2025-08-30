@@ -58,7 +58,7 @@ export default function MissionVisionValues({
     <div className="space-y-20">
       {/* Mission & Vision - Following 10-layout rule: korttigrid with pehmeät varjot */}
       <div className="grid md:grid-cols-2 gap-12">
-        <article className="text-center bg-white p-8 rounded-xl shadow-soft border border-gray-100 hover:shadow-medium transition-all duration-300 ease-out">
+        <article className="text-center bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1">
           <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-snug">
             {t["about.mission.title"]}
           </h2>
@@ -67,7 +67,7 @@ export default function MissionVisionValues({
           </p>
         </article>
 
-        <article className="text-center bg-white p-8 rounded-xl shadow-soft border border-gray-100 hover:shadow-medium transition-all duration-300 ease-out">
+        <article className="text-center bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1">
           <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-snug">
             {t["about.vision.title"]}
           </h2>
@@ -87,8 +87,8 @@ export default function MissionVisionValues({
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((value, index) => (
-            <article key={index} className="text-center bg-white p-6 rounded-xl shadow-soft border border-gray-100 hover:shadow-medium transition-all duration-300 ease-out transform hover:-translate-y-1">
-              <div className={`w-16 h-16 ${value.color} rounded-full mx-auto mb-6 flex items-center justify-center`}>
+            <article key={index} className="group text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1">
+              <div className={`w-16 h-16 ${value.color} rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                 <div className={value.iconColor}>
                   {value.icon}
                 </div>

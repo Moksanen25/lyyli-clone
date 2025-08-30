@@ -47,42 +47,40 @@ export default async function ContinuousDevelopment({ locale }: ContinuousDevelo
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
-            {t['cybersecurity.continuousDevelopment.title']}
-          </h2>
-          <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
-            {t['cybersecurity.continuousDevelopment.subtitle']}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <div key={index} className="text-center">
-              <div className="w-16 h-16 bg-forest/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                {feature.icon}
-              </div>
-              <h4 className="text-lg font-playfair font-normal text-forest mb-2">
-                {feature.title}
-              </h4>
-              <p className="text-mediumGray font-sans leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-forest/5 p-8 rounded-lg text-center">
-          <h3 className="text-2xl font-playfair font-normal text-forest mb-4">
-            {t['cybersecurity.continuousDevelopment.commitment.title']}
-          </h3>
-          <p className="text-mediumGray font-sans leading-relaxed max-w-4xl mx-auto">
-            {t['cybersecurity.continuousDevelopment.commitment.description']}
-          </p>
-        </div>
+    <div>
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
+          {t['cybersecurity.continuousDevelopment.title']}
+        </h2>
+        <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
+          {t['cybersecurity.continuousDevelopment.subtitle']}
+        </p>
       </div>
-    </section>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {features.map((feature, index) => (
+          <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
+            <div className="w-16 h-16 bg-forest/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              {feature.icon}
+            </div>
+            <h4 className="text-lg font-playfair font-normal text-forest mb-4">
+              {feature.title}
+            </h4>
+            <p className="text-mediumGray font-sans leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 text-center">
+        <h3 className="text-2xl font-playfair font-normal text-forest mb-4">
+          {t['cybersecurity.continuousDevelopment.commitment.title']}
+        </h3>
+        <p className="text-mediumGray font-sans leading-relaxed max-w-4xl mx-auto">
+          {t['cybersecurity.continuousDevelopment.commitment.description']}
+        </p>
+      </div>
+    </div>
   );
 }

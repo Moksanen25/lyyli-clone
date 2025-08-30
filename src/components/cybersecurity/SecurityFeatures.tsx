@@ -65,8 +65,8 @@ export default async function SecurityFeatures({ locale }: SecurityFeaturesProps
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-grayLight">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="border-t border-gray-100 py-16 lg:py-24">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
             {t['cybersecurity.securityFeatures.title']}
@@ -78,8 +78,8 @@ export default async function SecurityFeatures({ locale }: SecurityFeaturesProps
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-8 rounded-lg shadow-lg border border-forest/10 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-forest/10 rounded-lg flex items-center justify-center mb-6">
+            <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-16 h-16 bg-forest/20 rounded-2xl flex items-center justify-center mb-6">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-playfair font-normal text-forest mb-4">

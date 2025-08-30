@@ -45,7 +45,7 @@ export default function BenefitsSection({
   return (
     <div>
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
+        <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
           {t["pricing.benefits.title"]}
         </h2>
       </div>
@@ -54,17 +54,17 @@ export default function BenefitsSection({
         {benefits.map((benefit, index) => (
           <article
             key={index}
-            className="text-center bg-white p-8 rounded-lg shadow-soft border border-grayLight hover:border-turquoise transition-all duration-300 ease-out hover:shadow-medium"
+            className="text-center bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:border-turquoise/30 transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1"
           >
             <div className="flex justify-center mb-6">
-              <div className="p-3 bg-rose rounded-full">
+              <div className="w-16 h-16 bg-gradient-to-br from-turquoise/20 to-rose/20 rounded-2xl flex items-center justify-center border-2 border-turquoise/30">
                 {benefit.icon}
               </div>
             </div>
             <div className="text-3xl font-bold text-forest mb-2 font-playfair">
               {benefit.value}
             </div>
-            <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-snug">{benefit.title}</h3>
+            <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-snug">{benefit.title}</h3>
             <p className="text-base text-mediumGray font-sans leading-relaxed">{benefit.description}</p>
           </article>
         ))}

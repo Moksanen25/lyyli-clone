@@ -42,29 +42,36 @@ export default async function PricingPage({ params }: PricingPageProps) {
           className="container mx-auto px-4 py-20 relative overflow-hidden"
           aria-label="Hero"
         >
-          {/* Animated Hero Visual */}
+          {/* Animated Hero Visual Background */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-turquoise/10 to-rose/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-rose/15 to-forest/10 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
+          </div>
           
-          <h1 className="text-3xl md:text-4xl text-forest text-center mb-8 font-playfair font-normal leading-tight relative z-10">
-            {t["pricing.title"]}
-          </h1>
-          <p className="text-lg text-mediumGray text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
-            {t['pricing.pricingHeader.subtitle']}
-          </p>
+          <div className="text-center max-w-4xl mx-auto relative z-10">
+            <h1 className="text-3xl md:text-4xl text-forest mb-8 font-playfair font-normal leading-tight">
+              {t["pricing.title"]}
+            </h1>
+            <p className="text-lg text-mediumGray max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
+              {t['pricing.pricingHeader.subtitle']}
+            </p>
+          </div>
         </section>
       </div>
 
       {/* Pricing Cards - Using front page pricing section */}
-      <section className="py-16 lg:py-24">
-        <PricingCards fullWidth={true} />
+      <section className="bg-gradient-to-br from-gray-50 to-white py-16 lg:py-24">
+        <PricingCards fullWidth={true} locale={currentLocale} translations={t} />
       </section>
 
       {/* ROI Calculator Section */}
       <div className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
-        <ROICalculator />
+        <ROICalculator locale={currentLocale} translations={t} />
       </div>
 
       {/* Benefits Section */}
-      <div className="bg-gradient-to-br from-forest/10 to-turquoise/10 py-16 lg:py-24">
+      <div className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24">
         <section className="max-w-7xl mx-auto px-6">
           <BenefitsSection locale={currentLocale} translations={t} />
         </section>
@@ -78,31 +85,34 @@ export default async function PricingPage({ params }: PricingPageProps) {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-forest text-white py-16 lg:py-24">
+      <div className="bg-gradient-to-br from-forest to-turquoise py-16 lg:py-24">
         <section className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl mb-4 text-white font-playfair font-normal leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-normal leading-tight">
             {t['cta.title']}
           </h2>
-          <p className="text-lg mb-8 text-white opacity-90 font-sans leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
             {t['cta.description']}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href={`/${currentLocale}/waitlist`}
-              className="bg-white text-forest px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors font-medium inline-flex items-center justify-center gap-2"
+              className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
               aria-label="Join the waitlist for Lyyli.ai"
             >
               {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
             <a 
-              href={`/${currentLocale}/waitlist`}
-              className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-colors font-medium inline-flex items-center justify-center"
-              aria-label="Join the waitlist for Lyyli.ai"
+              href={`/${currentLocale}/contact`}
+              className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
+              aria-label="Contact us for more information"
             >
-              {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
+              {locale === "fi" ? "Ota yhteyttä" : "Contact us"}
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
             </a>
           </div>
         </section>
