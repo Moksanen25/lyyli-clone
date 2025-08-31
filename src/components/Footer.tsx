@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { TranslationKeys } from "../lib/i18n";
-import Link from "next/link";
 import Image from "next/image";
 
 interface FooterProps {
@@ -16,7 +15,6 @@ export default function Footer({
   translations: t,
   canonicalUrl,
 }: FooterProps) {
-  const [isNearBottom, setIsNearBottom] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const baseUrl = "https://lyyli.ai";
   const canonical = canonicalUrl || baseUrl;
@@ -26,10 +24,6 @@ export default function Footer({
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      
-      // Calculate if we're near the bottom (within 800px of the footer)
-      const distanceFromBottom = documentHeight - (scrollTop + windowHeight);
-      setIsNearBottom(distanceFromBottom < 800);
       
       // Check if we've scrolled at all for header-like styling
       setIsScrolled(scrollTop > 20);

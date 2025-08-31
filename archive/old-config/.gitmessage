@@ -1,0 +1,31 @@
+# Conventional Commits
+# Format: <type>(<scope>): <description>
+#
+# Types:
+# feat:     A new feature
+# fix:      A bug fix
+# docs:     Documentation only changes
+# style:    Changes that do not affect the meaning of the code
+# refactor: A code change that neither fixes a bug nor adds a feature
+# perf:     A code change that improves performance
+# test:     Adding missing tests or correcting existing tests
+# chore:    Changes to the build process or auxiliary tools
+#
+# Examples:
+# feat(auth): add OAuth2 authentication
+# fix(api): resolve user data loading issue
+# docs(readme): update installation instructions
+# style(components): fix indentation in Header component
+# refactor(utils): simplify date formatting function
+# perf(database): optimize user query performance
+# test(forms): add validation tests for contact form
+# chore(deps): update dependencies to latest versions
+#
+# Breaking changes should be indicated with ! after type and scope
+# Example: feat(auth)!: change OAuth2 implementation
+#
+# <type>(<scope>): <description>
+#
+# <body>
+#
+# <footer>

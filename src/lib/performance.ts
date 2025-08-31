@@ -500,3 +500,178 @@ export const performanceUtils = {
     return result;
   },
 };
+
+// Performance budgets from rules/40-performance.mdc
+export const performanceBudgets = {
+  lcp: 2500, // 2.5 seconds
+  cls: 0.1,  // 0.1
+  fid: 100,  // 100ms
+  fcp: 1800, // 1.8 seconds
+  ttfb: 800  // 800ms
+};
+
+// Budget violation detection
+export function checkPerformanceBudget(metrics: any) {
+  const violations = [];
+  
+  if (metrics.lcp > performanceBudgets.lcp) {
+    violations.push({
+      metric: 'LCP',
+      current: metrics.lcp,
+      budget: performanceBudgets.lcp,
+      suggestions: getLCPSuggestions(metrics.lcp)
+    });
+  }
+  
+  if (metrics.cls > performanceBudgets.cls) {
+    violations.push({
+      metric: 'CLS',
+      current: metrics.cls,
+      budget: performanceBudgets.cls,
+      suggestions: getCLSSuggestions(metrics.cls)
+    });
+  }
+
+  if (metrics.fid > performanceBudgets.fid) {
+    violations.push({
+      metric: 'FID',
+      current: metrics.fid,
+      budget: performanceBudgets.fid,
+      suggestions: getFIDSuggestions(metrics.fid)
+    });
+  }
+
+  if (metrics.fcp > performanceBudgets.fcp) {
+    violations.push({
+      metric: 'FCP',
+      current: metrics.fcp,
+      budget: performanceBudgets.fcp,
+      suggestions: getFCPSuggestions(metrics.fcp)
+    });
+  }
+
+  if (metrics.ttfb > performanceBudgets.ttfb) {
+    violations.push({
+      metric: 'TTFB',
+      current: metrics.ttfb,
+      budget: performanceBudgets.ttfb,
+      suggestions: getTTFBSuggestions(metrics.ttfb)
+    });
+  }
+  
+  return violations;
+}
+
+// Correction suggestions when limits are exceeded
+export function getLCPSuggestions(lcp: number): string[] {
+  const suggestions = [];
+  
+  if (lcp > 4000) {
+    suggestions.push('Critical: Optimize hero images and above-the-fold content');
+    suggestions.push('Implement critical CSS inlining');
+    suggestions.push('Consider server-side rendering for dynamic content');
+  } else if (lcp > 3000) {
+    suggestions.push('High priority: Optimize largest content element');
+    suggestions.push('Implement resource hints (preload) for critical resources');
+    suggestions.push('Review and optimize font loading strategy');
+  } else if (lcp > 2500) {
+    suggestions.push('Medium priority: Image optimization needed');
+    suggestions.push('Consider lazy loading for below-the-fold images');
+    suggestions.push('Review bundle size and code splitting');
+  }
+  
+  return suggestions;
+}
+
+export function getCLSSuggestions(cls: number): string[] {
+  const suggestions = [];
+  
+  if (cls > 0.25) {
+    suggestions.push('Critical: Fix layout shifts immediately');
+    suggestions.push('Set explicit dimensions for images and media');
+    suggestions.push('Avoid inserting content above existing content');
+  } else if (cls > 0.1) {
+    suggestions.push('High priority: Reduce cumulative layout shift');
+    suggestions.push('Use CSS transforms instead of changing layout properties');
+    suggestions.push('Implement skeleton screens for dynamic content');
+  }
+  
+  return suggestions;
+}
+
+export function getFIDSuggestions(fid: number): string[] {
+  const suggestions = [];
+  
+  if (fid > 300) {
+    suggestions.push('Critical: Reduce main thread blocking');
+    suggestions.push('Break up long tasks into smaller chunks');
+    suggestions.push('Optimize JavaScript execution');
+  } else if (fid > 100) {
+    suggestions.push('Medium priority: Optimize event handlers');
+    suggestions.push('Consider code splitting for non-critical functionality');
+    suggestions.push('Review third-party script impact');
+  }
+  
+  return suggestions;
+}
+
+export function getFCPSuggestions(fcp: number): string[] {
+  const suggestions = [];
+  
+  if (fcp > 3000) {
+    suggestions.push('Critical: Optimize critical rendering path');
+    suggestions.push('Minimize render-blocking resources');
+    suggestions.push('Implement critical CSS inlining');
+  } else if (fcp > 1800) {
+    suggestions.push('High priority: Optimize first contentful paint');
+    suggestions.push('Review CSS delivery strategy');
+    suggestions.push('Optimize server response time');
+  }
+  
+  return suggestions;
+}
+
+export function getTTFBSuggestions(ttfb: number): string[] {
+  const suggestions = [];
+  
+  if (ttfb > 1200) {
+    suggestions.push('Critical: Optimize server response time');
+    suggestions.push('Review database query performance');
+    suggestions.push('Consider CDN implementation');
+  } else if (ttfb > 800) {
+    suggestions.push('Medium priority: Optimize server performance');
+    suggestions.push('Review server-side rendering efficiency');
+    suggestions.push('Consider caching strategies');
+  }
+  
+  return suggestions;
+}
+
+// Core Web Vitals monitoring
+export function reportWebVitals(metric: any) {
+  if (metric.label === 'web-vital') {
+    // Send to analytics
+    console.log('Web Vital:', metric.name, metric.value);
+    
+    // Check against budgets
+    if (metric.name === 'LCP' && metric.value > performanceBudgets.lcp) {
+      console.warn('LCP budget exceeded:', metric.value, 'ms (budget:', performanceBudgets.lcp, 'ms)');
+    }
+    
+    if (metric.name === 'CLS' && metric.value > performanceBudgets.cls) {
+      console.warn('CLS budget exceeded:', metric.value, '(budget:', performanceBudgets.cls, ')');
+    }
+
+    if (metric.name === 'FID' && metric.value > performanceBudgets.fid) {
+      console.warn('FID budget exceeded:', metric.value, 'ms (budget:', performanceBudgets.fid, 'ms)');
+    }
+
+    if (metric.name === 'FCP' && metric.value > performanceBudgets.fcp) {
+      console.warn('FCP budget exceeded:', metric.value, 'ms (budget:', performanceBudgets.fcp, 'ms)');
+    }
+
+    if (metric.name === 'TTFB' && metric.value > performanceBudgets.ttfb) {
+      console.warn('TTFB budget exceeded:', metric.value, 'ms (budget:', performanceBudgets.ttfb, 'ms)');
+    }
+  }
+}

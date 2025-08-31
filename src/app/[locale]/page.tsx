@@ -1,12 +1,4 @@
 import { getTranslations } from "../../lib/i18n";
-import { IconSet } from "../../components/IconSet";
-import {
-  InteractiveCard,
-  StatsVisual,
-  FeatureHighlightCard,
-  TestimonialCard,
-  AnimatedTimeline,
-} from "../../components/VisualElements";
 import ROIStats from "../../components/ROIStats";
 import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";

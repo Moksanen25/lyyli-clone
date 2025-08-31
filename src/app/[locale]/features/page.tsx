@@ -1,5 +1,6 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
+import Image from "next/image";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import IntegrationsFlow from "@/components/features/IntegrationsFlow";
 
@@ -60,9 +61,11 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           {/* Desktop UI - Background */}
           <div className="relative group">
             <div className="relative z-0">
-              <img 
+              <Image 
                 src="/images/general/Desktop_UI_for_web.png" 
                 alt="Lyyli.ai Desktop Interface - AI Communication Hub" 
+                width={600}
+                height={400}
                 className="w-full max-w-md lg:max-w-lg rounded-lg shadow-soft border border-gray-200 transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-medium"
               />
               {/* Subtle glow effect */}
@@ -76,9 +79,11 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           {/* Mobile UI - Foreground, overlapping */}
           <div className="absolute right-0 lg:right-8 top-1/2 transform -translate-y-1/2 group">
             <div className="relative z-20">
-              <img 
+              <Image 
                 src="/images/general/Mobile_UI_for_web.jpeg" 
                 alt="Lyyli.ai Mobile Interface - AI Communication Hub" 
+                width={200}
+                height={300}
                 className="w-full max-w-[200px] lg:max-w-[180px] rounded-lg shadow-soft border border-gray-200 transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-medium group-hover:-translate-y-1 group-hover:rotate-1"
               />
               {/* Enhanced glow effect for mobile */}

@@ -119,9 +119,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
     return 'hover:bg-gray-50';
   };
 
-  const getMobileTextColor = () => {
-    return 'text-gray-600';
-  };
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">

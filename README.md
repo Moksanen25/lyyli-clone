@@ -1,8 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lyyli - AI-Powered Communication Platform
 
-## Getting Started
+This is a [Next.js](https://nextjs.org) project for the Lyyli AI communication platform, bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-First, run the development server:
+## 🚀 Getting Started
+
+**IMPORTANT**: Always run commands from the main project directory!
+
+First, ensure you're in the correct directory:
+
+```bash
+cd /Users/mikko.oksanen/Desktop/Content\ AI\ Oy/Cursor/lyyli-clone-fresh
+```
+
+Then run the development server:
 
 ```bash
 npm run dev
@@ -16,9 +26,52 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/[locale]/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load fonts.
+
+## 📚 Project Documentation
+
+- **[PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md)** - Complete project organization guide
+- **[CLEANUP_SUMMARY.md](./CLEANUP_SUMMARY.md)** - Summary of recent cleanup work
+- **[TESTING.md](./TESTING.md)** - Testing setup and guidelines
+- **[rules/](./rules/)** - Brand and development rules
+
+## 🏗️ Project Structure
+
+```
+lyyli-clone-fresh/           # ← MAIN PROJECT DIRECTORY
+├── src/                     # Source code
+├── public/                  # Static assets
+├── rules/                   # Brand and development rules
+├── content/                 # Content files
+├── messages/                # Internationalization
+├── archive/                 # Archived old files
+└── [configuration files]
+```
+
+## ⚠️ Important Notes
+
+- **Always work from the main directory**: `/lyyli-clone-fresh/`
+- **Never work from subdirectories** like `/lyyli-clone-fresh/lyyli-clone/`
+- **Check `pwd`** if you're unsure about your location
+- **All source files are in `src/`**
+
+## 🚀 Development Commands
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
+
+# Type checking
+npm run type-check
+```
 
 ## Learn More
 

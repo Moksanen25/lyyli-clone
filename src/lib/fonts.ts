@@ -12,7 +12,6 @@ export const playfair = Playfair_Display({
   display: "swap",
   variable: "--font-playfair",
   weight: ["400", "700"],
-  style: ["normal", "italic"],
 });
 
 export const fontVars = `${inter.variable} ${playfair.variable}`;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 // Enhanced Geometric Pattern Component with brand colors and advanced animations
@@ -853,9 +854,11 @@ export function TestimonialCard({
       {/* Author info */}
       <div className="flex items-center">
         {avatar && (
-          <img
+          <Image
             src={avatar}
             alt={author}
+            width={48}
+            height={48}
             className="w-12 h-12 rounded-full mr-4 object-cover"
           />
         )}

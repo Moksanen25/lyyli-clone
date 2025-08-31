@@ -91,7 +91,7 @@ function markdownToHtml(markdown: string): string {
   // Process "Ask Mikko more" section - Complete restructure
   html = html.replace(
     /## Ask Mikko more([\s\S]*?)<\/div>\s*<\/div>/g,
-    function(match, content) {
+    function() {
       // Extract the content and restructure it completely
       return `<div class="ask-mikko-section">
         <h3>Have questions about building data-driven communication?</h3>
