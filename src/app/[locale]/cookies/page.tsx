@@ -33,7 +33,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           {/* Animated Hero Visual */}
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-tight">
+            <h1 className="text-4xl md:text-5xl mb-4 text-forest font-playfair font-bold leading-tight">
               {t["cookies.title"]}
             </h1>
             <p className="text-base text-mediumGray font-sans leading-relaxed">
@@ -53,7 +53,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               1. What are cookies
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -65,13 +65,13 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               2. Types of cookies we use
             </h2>
 
             <div className="space-y-6">
               <div className="bg-rose p-6 rounded-lg">
-                <h3 className="text-xl text-forest mb-3 font-playfair font-normal leading-normal">
+                <h3 className="text-xl text-forest mb-3 font-playfair font-bold leading-normal">
                   Essential cookies
                 </h3>
                 <p className="text-mediumGray font-sans leading-relaxed">
@@ -86,7 +86,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
               </div>
 
               <div className="bg-grayLight p-6 rounded-lg">
-                <h3 className="text-xl text-forest mb-3 font-playfair font-normal leading-normal">
+                <h3 className="text-xl text-forest mb-3 font-playfair font-bold leading-normal">
                   Functional cookies
                 </h3>
                 <p className="text-base text-mediumGray mb-3 font-sans leading-relaxed">
@@ -101,7 +101,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
               </div>
 
               <div className="bg-white border-2 border-grayLight p-6 rounded-lg">
-                <h3 className="text-xl text-forest mb-3 font-playfair font-normal leading-normal">
+                <h3 className="text-xl text-forest mb-3 font-playfair font-bold leading-normal">
                   Analytics cookies
                 </h3>
                 <p className="text-mediumGray font-sans leading-relaxed">
@@ -117,7 +117,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               3. How to manage cookies
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -143,7 +143,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               4. Third-party cookies
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -166,7 +166,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               5. Cookie retention
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -189,7 +189,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               6. Updates to this policy
             </h2>
             <p className="text-base text-mediumGray font-sans leading-relaxed">
@@ -201,7 +201,7 @@ export default async function CookiesPage({ params }: CookiesPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               7. Contact us
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">

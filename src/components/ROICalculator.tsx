@@ -147,7 +147,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-bold leading-tight">
             {translations?.["roi.calculator.title" as keyof typeof translations] || "Calculate your ROI"}
           </h2>
           <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -299,7 +299,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
             viewport={{ once: true }}
           >
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-semibold text-turquoise mb-4 font-playfair font-normal leading-tight">
+              <h3 className="text-2xl font-semibold text-turquoise mb-4 font-playfair font-bold leading-tight">
                 ROI calculation assumptions
               </h3>
               <p className="text-rose font-sans leading-relaxed">
@@ -364,7 +364,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-3xl font-semibold text-forest mb-6 font-playfair font-normal leading-tight">
+            <h3 className="text-3xl font-semibold text-forest mb-6 font-playfair font-bold leading-tight">
               Measurable business impact
             </h3>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto mb-8 font-sans leading-relaxed">

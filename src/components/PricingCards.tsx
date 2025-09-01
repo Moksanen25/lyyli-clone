@@ -214,8 +214,20 @@ export default function PricingCards({ fullWidth = false, locale, translations }
   };
 
   return (
-    <section className={`${fullWidth ? 'py-0' : 'py-16 lg:py-24'} ${fullWidth ? '' : 'bg-gradient-to-br from-gray-50 to-white'}`}>
+    <section className={`${fullWidth ? 'py-0' : 'py-16 lg:py-24'}`}>
       <div className={fullWidth ? "w-full px-4" : "container mx-auto px-4"}>
+        
+        {/* Section Heading */}
+        {!fullWidth && (
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-bold leading-tight">
+              {translations?.["pricing.title"] || "Simple, transparent pricing"}
+            </h2>
+            <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+              {translations?.["pricing.subtitle"] || "Choose the plan that fits your organization's needs"}
+            </p>
+          </div>
+        )}
 
         {/* Billing Toggle */}
         <div className="flex justify-center items-center mb-12">
@@ -348,7 +360,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                       Save €{getSavings(plan)} per year
                     </p>
                   )}
-                  <p className="text-sm text-mediumGray  font-sans">
+                  <p className="text-sm text-mediumGray font-sans">
                     {plan.description}
                   </p>
                 </div>
@@ -360,7 +372,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                       <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-mediumGray  font-sans">
+                      <span className="text-sm text-mediumGray font-sans">
                         {feature}
                       </span>
                     </li>
@@ -426,7 +438,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
           viewport={{ once: true }}
         >
           <div className="bg-gradient-to-br from-white to-turquoise/5 rounded-2xl p-8 shadow-xl border border-turquoise/20 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-forest mb-4 font-playfair font-normal">
+            <h3 className="text-2xl font-semibold text-forest mb-4 font-playfair font-bold">
               Need more information?
             </h3>
             <p className="text-mediumGray font-sans leading-relaxed mb-6">

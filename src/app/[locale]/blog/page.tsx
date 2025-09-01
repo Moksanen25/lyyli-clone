@@ -113,7 +113,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-semibold text-forest mb-4 font-playfair font-normal leading-tight">
+              <h2 className="text-2xl font-semibold text-forest mb-4 font-playfair font-bold leading-tight">
                 {t["blog.noPosts.title"]}
               </h2>
               <p className="text-mediumGray font-sans leading-relaxed">

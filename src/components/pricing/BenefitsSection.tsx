@@ -45,7 +45,7 @@ export default function BenefitsSection({
   return (
     <div>
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+        <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
           {t["pricing.benefits.title"]}
         </h2>
       </div>
@@ -64,7 +64,7 @@ export default function BenefitsSection({
             <div className="text-3xl font-bold text-forest mb-2 font-playfair">
               {benefit.value}
             </div>
-            <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-snug">{benefit.title}</h3>
+            <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-snug">{benefit.title}</h3>
             <p className="text-base text-mediumGray font-sans leading-relaxed">{benefit.description}</p>
           </article>
         ))}

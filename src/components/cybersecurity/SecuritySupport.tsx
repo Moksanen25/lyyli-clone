@@ -43,7 +43,7 @@ export default async function SecuritySupport({ locale }: SecuritySupportProps) 
   return (
     <div>
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-normal leading-snug">
+        <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-bold leading-snug">
           {t['cybersecurity.support.title']}
         </h2>
         <p className="text-xl text-white/90 font-sans max-w-3xl mx-auto leading-relaxed">
@@ -57,7 +57,7 @@ export default async function SecuritySupport({ locale }: SecuritySupportProps) 
             <div className="w-16 h-16 bg-forest/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
               {channel.icon}
             </div>
-            <h3 className="text-xl font-playfair font-normal text-forest mb-4">
+            <h3 className="text-xl font-playfair font-bold text-forest mb-4">
               {channel.title}
             </h3>
             <p className="text-mediumGray font-sans mb-6 leading-relaxed">
@@ -85,7 +85,7 @@ export default async function SecuritySupport({ locale }: SecuritySupportProps) 
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
         </div>
-        <h3 className="text-2xl font-playfair font-normal text-forest mb-4">
+        <h3 className="text-2xl font-playfair font-bold text-forest mb-4">
           {t['cybersecurity.support.dpo.title']}
         </h3>
         <p className="text-mediumGray font-sans mb-8 leading-relaxed max-w-2xl mx-auto">

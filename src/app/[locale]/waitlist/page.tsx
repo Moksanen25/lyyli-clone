@@ -54,7 +54,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
           {/* Animated Hero Visual */}
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl font-playfair font-normal mb-6 leading-tight text-forest">
+            <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-6 leading-tight text-forest">
               {t["waitlist.hero.title"]}
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-mediumGray font-sans leading-relaxed">
@@ -76,7 +76,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-playfair font-normal text-forest mb-2">
+                <h3 className="text-xl font-playfair font-bold text-forest mb-2">
                   {t["waitlist.benefits.speed.title"]}
                 </h3>
                 <p className="text-mediumGray font-sans leading-relaxed">
@@ -90,7 +90,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-playfair font-normal text-forest mb-2">
+                <h3 className="text-xl font-playfair font-bold text-forest mb-2">
                   {t["waitlist.benefits.quality.title"]}
                 </h3>
                 <p className="text-mediumGray font-sans leading-relaxed">
@@ -104,7 +104,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-playfair font-normal text-forest mb-2">
+                <h3 className="text-xl font-playfair font-bold text-forest mb-2">
                   {t["waitlist.benefits.community.title"]}
                 </h3>
                 <p className="text-mediumGray font-sans leading-relaxed">

@@ -96,7 +96,7 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="py-24 bg-white  relative">
+    <section className="py-24 relative">
       <div className="container mx-auto px-4">
         {/* Customer Logos */}
         <motion.div 
@@ -107,7 +107,7 @@ export default function TestimonialSection() {
           viewport={{ once: true }}
         >
           <div className="text-center mb-12">
-            <h3 className="text-lg font-medium text-mediumGray  mb-4 font-sans">
+            <h3 className="text-lg font-medium text-mediumGray mb-4 font-sans">
               Trusted by leading organizations
             </h3>
           </div>
@@ -140,28 +140,29 @@ export default function TestimonialSection() {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-bold leading-tight">
             What our customers say
           </h2>
-          <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
             Real feedback from professional service organizations that have transformed their communication with Lyyli.ai
           </p>
         </motion.div>
 
         {/* Static Testimonials Grid */}
-        <motion.div 
+        <motion.div
           className="max-w-7xl mx-auto"
           variants={itemVariants}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
-              <motion.div 
+              <motion.div
                 key={testimonial.id}
-                className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  h-full"
-                whileHover={{ 
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 h-full will-change-transform"
+                whileHover={{
                   y: -8,
-                  transition: { duration: 0.2 }
+                  transition: { duration: 0.2, ease: "easeOut" }
                 }}
+
               >
                 {/* Rating */}
                 <div className="flex justify-center mb-6">
@@ -173,7 +174,7 @@ export default function TestimonialSection() {
                 </div>
 
                 {/* Testimonial Content */}
-                <blockquote className="text-mediumGray  font-sans leading-relaxed mb-6 italic">
+                <blockquote className="text-mediumGray font-sans leading-relaxed mb-6 italic">
                   "{testimonial.content}"
                 </blockquote>
 
@@ -182,10 +183,10 @@ export default function TestimonialSection() {
                   <div className="w-16 h-16 bg-gradient-to-br from-forest to-turquoise rounded-full flex items-center justify-center mx-auto mb-4 text-white font-semibold text-lg font-sans">
                     {testimonial.name.split(' ').map(n => n[0]).join('')}
                   </div>
-                  <h4 className="font-semibold text-forest  font-sans">
+                  <h4 className="font-semibold text-forest font-sans">
                     {testimonial.name}
                   </h4>
-                  <p className="text-sm text-mediumGray  font-sans">
+                  <p className="text-sm text-mediumGray font-sans">
                     {testimonial.role} at {testimonial.company}
                   </p>
                 </div>

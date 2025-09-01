@@ -27,7 +27,7 @@ export default async function HelpPage({
           {/* Animated Hero Visual */}
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-4xl font-bold text-forest mb-6 font-playfair font-normal leading-tight">
+            <h1 className="text-4xl font-bold text-forest mb-6 font-playfair font-bold leading-tight">
               {locale === "fi" ? "Apu ja tuki" : "Help & Support Center"}
             </h1>
             <p className="text-xl text-mediumGray mb-8 font-sans leading-relaxed">
@@ -53,7 +53,7 @@ export default async function HelpPage({
         <div className="max-w-7xl mx-auto px-6">
           {/* Popular Topics */}
           <div className="mb-16">
-            <h2 className="text-2xl font-semibold text-forest mb-8 font-playfair font-normal leading-tight">
+            <h2 className="text-2xl font-semibold text-forest mb-8 font-playfair font-bold leading-tight">
               {locale === "fi" ? "Suosituimmat aiheet" : "Popular Topics"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -252,7 +252,7 @@ export default async function HelpPage({
 
           {/* Contact Support */}
           <div className="text-center py-12 bg-white rounded-2xl shadow-lg border border-gray-200">
-            <h2 className="text-2xl font-semibold text-forest mb-4 font-playfair font-normal leading-tight">
+            <h2 className="text-2xl font-semibold text-forest mb-4 font-playfair font-bold leading-tight">
               {locale === "fi" ? "Tarvitsetko lisäapua?" : "Need additional help?"}
             </h2>
             <p className="text-mediumGray mb-6 font-sans leading-relaxed">

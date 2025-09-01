@@ -53,7 +53,7 @@ export default async function CybersecurityPage({ params }: PageProps) {
           {/* Animated Hero Visual */}
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-tight">
+            <h1 className="text-4xl md:text-5xl mb-6 text-forest font-playfair font-bold leading-tight">
               {t['cybersecurity.hero.title']}
             </h1>
             <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -96,7 +96,7 @@ export default async function CybersecurityPage({ params }: PageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-playfair font-normal text-forest mb-4">
+              <h3 className="text-xl font-playfair font-bold text-forest mb-4">
                 {t['cybersecurity.highlights.gdpr.title']}
               </h3>
               <p className="text-mediumGray font-sans leading-relaxed">
@@ -110,7 +110,7 @@ export default async function CybersecurityPage({ params }: PageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-playfair font-normal text-forest mb-4">
+              <h3 className="text-xl font-playfair font-bold text-forest mb-4">
                 {t['cybersecurity.highlights.encryption.title']}
               </h3>
               <p className="text-mediumGray font-sans leading-relaxed">
@@ -124,7 +124,7 @@ export default async function CybersecurityPage({ params }: PageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-playfair font-normal text-forest mb-4">
+              <h3 className="text-xl font-playfair font-bold text-forest mb-4">
                 {t['cybersecurity.highlights.access.title']}
               </h3>
               <p className="text-mediumGray font-sans leading-relaxed">
@@ -176,7 +176,7 @@ export default async function CybersecurityPage({ params }: PageProps) {
       {/* CTA Section */}
       <section className="bg-gradient-to-br from-forest to-turquoise py-16 lg:py-24">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-normal leading-tight">
+          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-bold leading-tight">
             {t["cta.subtitle"]}
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">

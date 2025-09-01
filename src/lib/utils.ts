@@ -130,3 +130,15 @@ export function isTouchDevice(): boolean {
   if (typeof window === 'undefined') return false;
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
+
+/**
+ * Normalizes className strings to prevent hydration mismatches
+ * Removes extra spaces and ensures consistent formatting
+ */
+export function normalizeClassName(...classes: (string | undefined | null | false)[]): string {
+  return classes
+    .filter(Boolean)
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}

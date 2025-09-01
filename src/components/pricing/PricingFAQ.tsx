@@ -53,7 +53,7 @@ export default function PricingFAQ({
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-tight">
+        <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-tight">
           {t["pricing.faq.title"]}
         </h2>
         <p className="text-lg text-mediumGray font-sans leading-relaxed">
@@ -131,7 +131,7 @@ export default function PricingFAQ({
         transition={{ duration: 0.6, delay: 0.4 }}
         viewport={{ once: true }}
       >
-        <h3 className="text-xl mb-4 text-forest font-playfair font-normal leading-tight">
+        <h3 className="text-xl mb-4 text-forest font-playfair font-bold leading-tight">
           {t["pricing.faqTitle"]}
         </h3>
         <p className="text-base text-mediumGray font-sans leading-relaxed mb-6">

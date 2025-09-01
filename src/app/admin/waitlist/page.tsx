@@ -160,7 +160,7 @@ export default function AdminWaitlistPage() {
       <div className="max-w-6xl mx-auto">
         <div className="bg-white rounded-lg shadow-md p-6">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-forest">
+            <h1 className="text-4xl font-bold text-forest">
               Waitlist Submissions
             </h1>
             <div className="flex gap-3">

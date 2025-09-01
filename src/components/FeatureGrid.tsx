@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { memo, useMemo, useCallback } from "react";
 
 interface Feature {
   icon: React.ReactNode;
@@ -104,13 +105,13 @@ interface FeatureGridProps {
   translations?: any;
 }
 
-export default function FeatureGrid({ translations }: FeatureGridProps) {
+const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps) {
   const [ref, inView] = useInView({
     threshold: 0.05,
     triggerOnce: true
   });
 
-  const containerVariants = {
+  const containerVariants = useMemo(() => ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -118,25 +119,25 @@ export default function FeatureGrid({ translations }: FeatureGridProps) {
         staggerChildren: 0.1
       }
     }
-  };
+  }), []);
 
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+  const cardVariants = useMemo(() => ({
+    hidden: {
+      opacity: 0,
       y: 20
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.3,
         ease: "easeOut" as const
       }
     }
-  };
+  }), []);
 
-  // Function to get translation key for feature
-  const getFeatureTranslationKey = (title: string) => {
+  // Memoize the translation key function
+  const getFeatureTranslationKey = useCallback((title: string) => {
     const keyMap: { [key: string]: string } = {
       "AI-powered content generation": "ai",
       "Multi-channel publishing": "multichannel",
@@ -148,16 +149,18 @@ export default function FeatureGrid({ translations }: FeatureGridProps) {
       "Enterprise security": "security"
     };
     return keyMap[title] || title.toLowerCase().replace(/\s+/g, '');
-  };
+  }, []);
+
+
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-bold leading-tight">
             {translations?.["features.hero.title"] || "Powerful features for modern communication"}
           </h2>
-          <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
             {translations?.["features.hero.subtitle"] || "Everything you need to streamline your communication workflow and amplify your brand message"}
           </p>
         </div>
@@ -178,7 +181,7 @@ export default function FeatureGrid({ translations }: FeatureGridProps) {
                 variants={cardVariants}
               >
                 <motion.div 
-                  className="bg-white  rounded-2xl p-6 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 h-full"
+                  className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 h-full"
                   whileHover={{ 
                     y: -8,
                     scale: 1.02,
@@ -193,10 +196,10 @@ export default function FeatureGrid({ translations }: FeatureGridProps) {
                   </div>
                   
                   {/* Content */}
-                  <h3 className="text-lg font-semibold text-forest  mb-3 font-sans group-hover:text-turquoise  transition-colors duration-300">
+                  <h3 className="text-lg font-semibold text-forest mb-3 font-sans group-hover:text-turquoise transition-colors duration-300">
                     {translations?.[`features.grid.${translationKey}.title`] || feature.title}
                   </h3>
-                  <p className="text-mediumGray  text-sm font-sans leading-relaxed">
+                  <p className="text-mediumGray text-sm font-sans leading-relaxed">
                     {translations?.[`features.grid.${translationKey}.description`] || feature.description}
                   </p>
                   
@@ -230,4 +233,6 @@ export default function FeatureGrid({ translations }: FeatureGridProps) {
       </div>
     </section>
   );
-}
+});
+
+export default FeatureGrid;

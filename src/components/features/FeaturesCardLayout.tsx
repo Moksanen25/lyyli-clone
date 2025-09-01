@@ -157,7 +157,7 @@ export default function FeaturesCardLayout({
       {/* Lyyli learns from your messages */}
       <div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             Lyyli learns from your messages
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -175,7 +175,7 @@ export default function FeaturesCardLayout({
                 <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal text-center">
+                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
                   {feature.title}
                 </h3>
                 <p className="text-mediumGray text-base font-sans leading-relaxed text-center">
@@ -189,7 +189,7 @@ export default function FeaturesCardLayout({
       {/* Governance & Compliance */}
       <div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t["features.governance.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -207,7 +207,7 @@ export default function FeaturesCardLayout({
                 <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal text-center">
+                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
                   {feature.title}
                 </h3>
                 <p className="text-mediumGray text-base font-sans leading-relaxed text-center">
@@ -221,7 +221,7 @@ export default function FeaturesCardLayout({
       {/* Enterprise Security */}
       <div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             Enterprise Security
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -239,7 +239,7 @@ export default function FeaturesCardLayout({
                 <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal text-center">
+                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
                   {feature.title}
                 </h3>
                 <p className="text-mediumGray text-base font-sans leading-relaxed text-center">
@@ -253,7 +253,7 @@ export default function FeaturesCardLayout({
       {/* Multilingual Support */}
       <div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+          <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t["features.multilingual.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -271,7 +271,7 @@ export default function FeaturesCardLayout({
                 <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl mb-3 text-forest font-playfair font-normal leading-normal text-center">
+                <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
                   {feature.title}
                 </h3>
                 <p className="text-mediumGray text-base font-sans leading-relaxed text-center">

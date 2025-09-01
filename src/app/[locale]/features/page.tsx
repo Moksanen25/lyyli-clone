@@ -36,7 +36,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           aria-label="Hero"
         >
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-normal leading-tight text-forest">
+            <h1 className="text-4xl md:text-5xl mb-6 font-playfair font-bold leading-tight text-forest">
               {t["features.hero.title"]}
             </h1>
             <p className="text-lg mb-8 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -50,7 +50,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
               {t["features.ui.title"] || "How Lyyli connects your teams"}
             </h2>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -101,7 +101,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       <section className="bg-white py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
               How Lyyli works
             </h2>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -121,7 +121,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-rose rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-sm">1</span>
                 </div>
-                <h3 className="text-xl font-playfair font-normal text-forest mb-3">
+                <h3 className="text-xl font-playfair font-bold text-forest mb-3">
                   Connect your tools
                 </h3>
                 <p className="text-mediumGray font-sans leading-relaxed">
@@ -141,7 +141,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-rose rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-sm">2</span>
                 </div>
-                <h3 className="text-xl font-playfair font-normal text-forest mb-3">
+                <h3 className="text-xl font-playfair font-bold text-forest mb-3">
                   AI learns your style
                 </h3>
                 <p className="text-mediumGray font-sans leading-relaxed">
@@ -161,7 +161,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-rose rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-sm">3</span>
                 </div>
-                <h3 className="text-xl font-playfair font-normal text-forest mb-3">
+                <h3 className="text-xl font-playfair font-bold text-forest mb-3">
                   Automate & optimize
                 </h3>
                 <p className="text-mediumGray font-sans leading-relaxed">
@@ -174,7 +174,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           {/* Results section */}
           <div className="mt-16 bg-gradient-to-br from-rose/5 to-turquoise/5 rounded-2xl p-8 lg:p-12">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-playfair font-normal text-forest mb-4">
+              <h3 className="text-2xl font-playfair font-bold text-forest mb-4">
                 Results you can measure
               </h3>
             </div>
@@ -200,7 +200,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       <section className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
               {t["features.grid.title"]}
             </h2>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -215,7 +215,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       <section className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
               Integrations & data flow
             </h2>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -229,7 +229,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       {/* CTA Section */}
       <section className="bg-gradient-to-br from-forest to-turquoise py-16 lg:py-24">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-normal leading-tight">
+          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-bold leading-tight">
             {t["cta.subtitle"]}
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">

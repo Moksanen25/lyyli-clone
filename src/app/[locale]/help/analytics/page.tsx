@@ -55,7 +55,7 @@ export default async function AnalyticsPage({
                 {locale === "fi" ? "25 min" : "25 min"}
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
               {locale === "fi" 
                 ? "Analytiikka ja raportointi"
                 : "Analytics and reporting"

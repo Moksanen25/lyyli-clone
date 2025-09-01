@@ -96,7 +96,7 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="py-24 bg-white  relative">
+    <section className="py-24 relative">
       <div className="container mx-auto px-4">
         {/* Customer Logos */}
         <motion.div 
@@ -140,7 +140,7 @@ export default function TestimonialSection() {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-forest  mb-6 font-playfair font-bold leading-tight">
             What our customers say
           </h2>
           <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">

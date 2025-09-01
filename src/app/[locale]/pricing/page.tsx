@@ -50,7 +50,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
           </div>
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl text-forest mb-8 font-playfair font-normal leading-tight">
+            <h1 className="text-4xl md:text-5xl text-forest mb-8 font-playfair font-bold leading-tight">
               {t["pricing.title"]}
             </h1>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
@@ -87,7 +87,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
       {/* CTA Section */}
       <div className="bg-gradient-to-br from-forest to-turquoise py-16 lg:py-24">
         <section className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-normal leading-tight">
+          <h2 className="text-3xl md:text-4xl mb-6 text-white font-playfair font-bold leading-tight">
             {t['cta.title']}
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">

@@ -49,7 +49,7 @@ export default async function ContinuousDevelopment({ locale }: ContinuousDevelo
   return (
     <div>
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-normal leading-snug">
+        <h2 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-snug">
           {t['cybersecurity.continuousDevelopment.title']}
         </h2>
         <p className="text-xl text-mediumGray font-sans max-w-3xl mx-auto leading-relaxed">
@@ -63,7 +63,7 @@ export default async function ContinuousDevelopment({ locale }: ContinuousDevelo
             <div className="w-16 h-16 bg-forest/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
               {feature.icon}
             </div>
-            <h4 className="text-lg font-playfair font-normal text-forest mb-4">
+            <h4 className="text-lg font-playfair font-bold text-forest mb-4">
               {feature.title}
             </h4>
             <p className="text-mediumGray font-sans leading-relaxed">
@@ -74,7 +74,7 @@ export default async function ContinuousDevelopment({ locale }: ContinuousDevelo
       </div>
 
       <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 text-center">
-        <h3 className="text-2xl font-playfair font-normal text-forest mb-4">
+        <h3 className="text-2xl font-playfair font-bold text-forest mb-4">
           {t['cybersecurity.continuousDevelopment.commitment.title']}
         </h3>
         <p className="text-mediumGray font-sans leading-relaxed max-w-4xl mx-auto">

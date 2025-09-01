@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "ES2020"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,6 +13,23 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+
+    // Performance optimizations
+    "removeComments": true,
+    "importHelpers": true,
+    "downlevelIteration": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false,
+
+    // Bundle size optimization
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+
     "plugins": [
       {
         "name": "next"

@@ -223,7 +223,7 @@ export default function FeaturesAccordionLayout({
             <div className="flex items-center gap-4">
               {feature.icon}
               <div>
-                <h3 className="text-lg font-playfair font-normal text-forest leading-normal">
+                <h3 className="text-lg font-playfair font-bold text-forest leading-normal">
                   {feature.title}
                 </h3>
               </div>

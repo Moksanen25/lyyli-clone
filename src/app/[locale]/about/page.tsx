@@ -38,7 +38,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
           aria-label="Hero"
         >
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl mb-6 text-forest font-playfair font-bold leading-tight">
+            <h1 className="text-4xl md:text-5xl mb-6 text-forest font-playfair font-bold leading-tight">
               {t['about.hero.title']}
             </h1>
             <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">

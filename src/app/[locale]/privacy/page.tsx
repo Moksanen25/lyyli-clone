@@ -33,7 +33,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           {/* Animated Hero Visual */}
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-normal leading-tight">
+            <h1 className="text-4xl md:text-5xl mb-4 text-forest font-playfair font-bold leading-tight">
               {t["privacy.title"]}
             </h1>
             <p className="text-base text-mediumGray font-sans leading-relaxed">
@@ -51,7 +51,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               1. Information we collect
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -69,7 +69,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               2. How we use your information
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -87,7 +87,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               3. GDPR compliance
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -121,7 +121,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               4. Data security
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -138,7 +138,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               5. Data retention
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -157,7 +157,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               6. Your rights
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -176,7 +176,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               7. Contact us
             </h2>
             <p className="text-base text-mediumGray mb-4 font-sans leading-relaxed">
@@ -197,7 +197,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </section>
 
           <section>
-            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-normal leading-snug">
+            <h2 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-snug">
               8. Changes to this policy
             </h2>
             <p className="text-base text-mediumGray font-sans leading-relaxed">

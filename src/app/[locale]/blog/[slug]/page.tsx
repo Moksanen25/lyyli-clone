@@ -257,7 +257,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     return (
       <article className="bg-white">
         <header className="max-w-4xl mx-auto px-6 py-16 text-center">
-          <h1 className="text-4xl font-playfair font-bold mb-6 text-forest">
+          <h1 className="text-5xl font-playfair font-bold mb-6 text-forest">
             {currentLocale === "fi" ? "Blogikirjoitus ei löytynyt" : "Blog Post Not Found"}
           </h1>
           <p className="text-lg mb-8 text-mediumGray">
@@ -384,7 +384,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </span>
           </div>
           
-          <h1 className="text-4xl lg:text-5xl font-playfair font-bold text-forest mb-4">{post.title}</h1>
+                      <h1 className="text-5xl lg:text-6xl font-playfair font-bold text-forest mb-4">{post.title}</h1>
           <p className="text-lg text-mediumGray mb-6 leading-relaxed">{post.description}</p>
           
           {/* Enhanced metadata with icons */}

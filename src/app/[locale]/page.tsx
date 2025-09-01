@@ -2,10 +2,60 @@ import { getTranslations } from "../../lib/i18n";
 import ROIStats from "../../components/ROIStats";
 import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";
-import DemoVideo from "../../components/DemoVideo";
-import ROICalculator from "../../components/ROICalculator";
-import TestimonialSection from "../../components/TestimonialSection";
-import PricingCards from "../../components/PricingCards";
+import dynamic from "next/dynamic";
+
+// Lazy load heavy components below the fold
+const DemoVideo = dynamic(() => import("../../components/DemoVideo"), {
+  loading: () => (
+    <div className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
+      <div className="container mx-auto px-4 text-center">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  )
+});
+
+const ROICalculator = dynamic(() => import("../../components/ROICalculator"), {
+  loading: () => (
+    <div className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
+      <div className="container mx-auto px-4 text-center">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  )
+});
+
+const StackingTestimonialCards = dynamic(() => import("../../components/StackingTestimonialCards"), {
+  loading: () => (
+    <div className="py-24 bg-grayLight">
+      <div className="container mx-auto px-4 text-center">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  )
+});
+
+const PricingCards = dynamic(() => import("../../components/PricingCards"), {
+  loading: () => (
+    <div className="py-24 bg-gradient-to-br from-forest to-turquoise">
+      <div className="container mx-auto px-4 text-center">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  )
+});
 interface HomeProps {
   params: Promise<{ locale: string }>;
 }
@@ -29,7 +79,7 @@ export default async function Home({ params }: HomeProps) {
           className="container mx-auto px-4 py-20 relative"
           aria-label="Hero"
         >
-          <h1 className="text-3xl md:text-4xl text-forest text-center mb-8 font-playfair font-normal leading-tight relative z-10">
+          <h1 className="text-4xl md:text-5xl text-forest text-center mb-8 font-playfair font-bold leading-tight relative z-10">
             {t["hero.headline"]}
           </h1>
           <p className="text-lg hero-description text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
@@ -58,7 +108,7 @@ export default async function Home({ params }: HomeProps) {
       <section className="border-t border-gray-100 relative z-20">
         <div className="container mx-auto px-4 py-24">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-normal leading-tight">
+            <h2 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-bold leading-tight">
               {t["problems.title"]}
             </h2>
             <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
@@ -67,59 +117,59 @@ export default async function Home({ params }: HomeProps) {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-rose/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-forest  mb-4 text-center font-sans">
+              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
                 {t["problems.missedCommunications.title"]}
               </h3>
-              <p className="text-mediumGray  text-center font-sans leading-relaxed">
+              <p className="text-mediumGray text-center font-sans leading-relaxed">
                 {t["problems.missedCommunications.description"]}
               </p>
             </div>
             
-            <div className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-turquoise/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-forest  mb-4 text-center font-sans">
+              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
                 {t["problems.channelOverload.title"]}
               </h3>
-              <p className="text-forest  text-center font-sans leading-relaxed">
+              <p className="text-forest text-center font-sans leading-relaxed">
                 {t["problems.channelOverload.description"]}
               </p>
             </div>
             
-            <div className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-forest/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-forest  mb-4 text-center font-sans">
+              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
                 {t["problems.accountability.title"]}
               </h3>
-              <p className="text-forest  text-center font-sans leading-relaxed">
+              <p className="text-forest text-center font-sans leading-relaxed">
                 {t["problems.accountability.description"]}
               </p>
             </div>
             
-            <div className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  hover:shadow-xl  transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-rose/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-forest  mb-4 text-center font-sans">
+              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
                 {t["problems.regulatory.title"]}
               </h3>
-              <p className="text-forest  text-center font-sans leading-relaxed">
+              <p className="text-forest text-center font-sans leading-relaxed">
                 {t["problems.regulatory.description"]}
               </p>
             </div>
@@ -139,8 +189,8 @@ export default async function Home({ params }: HomeProps) {
       {/* ROI Calculator Section */}
       <ROICalculator locale={currentLocale} translations={t} />
 
-      {/* Testimonials and Customer Logos */}
-      <TestimonialSection />
+      {/* Testimonials and Customer Logos - Fixed hydration issues */}
+      <StackingTestimonialCards />
 
       {/* Pricing Section */}
       <PricingCards locale={currentLocale} translations={t} />
@@ -148,7 +198,7 @@ export default async function Home({ params }: HomeProps) {
       {/* CTA Section */}
       <section id="cta" className="py-24 bg-gradient-to-br from-forest to-turquoise">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl text-white mb-6 font-playfair font-normal leading-tight">
+          <h2 className="text-4xl md:text-5xl text-white mb-6 font-playfair font-bold leading-tight">
             {t["cta.subtitle"]}
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
