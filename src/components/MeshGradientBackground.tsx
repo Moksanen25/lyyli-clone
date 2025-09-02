@@ -11,10 +11,8 @@ export default function MeshGradientBackground() {
       setScrollY(window.scrollY);
     };
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Simplified opacity - always visible for now

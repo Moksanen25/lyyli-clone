@@ -572,12 +572,13 @@ export function ProgressBar({
   const percentage = (value / max) * 100;
 
   useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => {
-        setAnimatedValue(percentage);
-      }, 300);
-      return () => clearTimeout(timer);
+    if (!isVisible) {
+      return;
     }
+    const timer = setTimeout(() => {
+      setAnimatedValue(percentage);
+    }, 300);
+    return () => clearTimeout(timer);
   }, [isVisible, percentage]);
 
   return (
