@@ -28,14 +28,7 @@ export default function ConsentBanner({ locale }: ConsentBannerProps) {
       gtag('config', process.env.NEXT_PUBLIC_GA_ID);
     }
 
-    // Load HubSpot
-    if (process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID) {
-      const script = document.createElement('script');
-      script.src = `//js.hs-scripts.com/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID}.js`;
-      script.async = true;
-      script.defer = true;
-      document.head.appendChild(script);
-    }
+    // HubSpot tracking temporarily disabled sitewide
 
     // Track page view event using analytics utility
     trackPageView(locale, window.location.pathname);

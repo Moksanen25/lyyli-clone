@@ -1,61 +1,12 @@
 import { getTranslations } from "../../lib/i18n";
-import ROIStats from "../../components/ROIStats";
 import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";
-import dynamic from "next/dynamic";
+import DemoVideo from "../../components/DemoVideo";
+import ROICalculator from "../../components/ROICalculator";
+import StackingTestimonialCards from "../../components/StackingTestimonialCards";
+import PricingCards from "../../components/PricingCards";
 
-// Lazy load heavy components below the fold
-const DemoVideo = dynamic(() => import("../../components/DemoVideo"), {
-  loading: () => (
-    <div className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
-      <div className="container mx-auto px-4 text-center">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
-        </div>
-      </div>
-    </div>
-  )
-});
-
-const ROICalculator = dynamic(() => import("../../components/ROICalculator"), {
-  loading: () => (
-    <div className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
-      <div className="container mx-auto px-4 text-center">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
-        </div>
-      </div>
-    </div>
-  )
-});
-
-const StackingTestimonialCards = dynamic(() => import("../../components/StackingTestimonialCards"), {
-  loading: () => (
-    <div className="py-24 bg-grayLight">
-      <div className="container mx-auto px-4 text-center">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
-        </div>
-      </div>
-    </div>
-  )
-});
-
-const PricingCards = dynamic(() => import("../../components/PricingCards"), {
-  loading: () => (
-    <div className="py-24 bg-gradient-to-br from-forest to-turquoise">
-      <div className="container mx-auto px-4 text-center">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
-        </div>
-      </div>
-    </div>
-  )
-});
+// Note: using static imports for client components inside a Server Component
 interface HomeProps {
   params: Promise<{ locale: string }>;
 }
@@ -99,10 +50,7 @@ export default async function Home({ params }: HomeProps) {
         </section>
       </div>
 
-      {/* ROI Statistics Section */}
-      <div className="relative z-20">
-        <ROIStats translations={t} />
-      </div>
+      {/* ROI Statistics Section - temporarily hidden */}
 
       {/* Problems Section - Improved contrast and structure */}
       <section className="border-t border-gray-100 relative z-20">
@@ -119,11 +67,11 @@ export default async function Home({ params }: HomeProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-rose/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                <svg className="w-8 h-8 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
+              <h3 className="text-xl text-forest mb-4 text-center font-playfair font-normal">
                 {t["problems.missedCommunications.title"]}
               </h3>
               <p className="text-mediumGray text-center font-sans leading-relaxed">
@@ -133,11 +81,11 @@ export default async function Home({ params }: HomeProps) {
             
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-turquoise/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                <svg className="w-8 h-8 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
+              <h3 className="text-xl text-forest mb-4 text-center font-playfair font-normal">
                 {t["problems.channelOverload.title"]}
               </h3>
               <p className="text-forest text-center font-sans leading-relaxed">
@@ -147,12 +95,12 @@ export default async function Home({ params }: HomeProps) {
             
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-forest/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
+              <h3 className="text-xl text-forest mb-4 text-center font-playfair font-normal">
                 {t["problems.accountability.title"]}
               </h3>
               <p className="text-forest text-center font-sans leading-relaxed">
@@ -162,11 +110,11 @@ export default async function Home({ params }: HomeProps) {
             
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-rose/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-forest mb-4 text-center font-sans">
+              <h3 className="text-xl text-forest mb-4 text-center font-playfair font-normal">
                 {t["problems.regulatory.title"]}
               </h3>
               <p className="text-forest text-center font-sans leading-relaxed">

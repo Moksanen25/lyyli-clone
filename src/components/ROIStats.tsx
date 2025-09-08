@@ -90,7 +90,7 @@ const ROIStats = memo(function ROIStats({ translations }: ROIStatsProps) {
                     {stat.suffix}
                     {stat.prefix}
                   </div>
-                <h3 className="text-lg md:text-xl font-semibold text-forest mb-3 font-sans">
+                <h3 className="text-lg md:text-xl text-forest mb-3 font-playfair font-normal">
                   {translations?.[`roiStats.metrics.${stat.label.toLowerCase().replace(/\s+/g, '')}.title`] || stat.label}
                 </h3>
                 {stat.description && (

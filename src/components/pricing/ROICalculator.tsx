@@ -24,7 +24,7 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
   const annualSavings = totalSavingsPerYear;
 
   // Assuming Professional plan for calculation
-  const professionalPlanCost = 599 * 12; // yearly
+  const professionalPlanCost = 199 * 12; // yearly
   const netROI =
     ((totalSavingsPerYear - professionalPlanCost) / professionalPlanCost) * 100;
   const paybackMonths = Math.ceil(professionalPlanCost / monthlySavings);

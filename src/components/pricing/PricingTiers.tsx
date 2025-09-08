@@ -43,19 +43,18 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       ],
     },
     {
-      id: "starter",
-      name: t["pricing.starter.name"],
-      monthlyPrice: 29,
-      yearlyPrice: Math.round(29 * 12 * 0.8), // 12 months - 20% discount
-      description: t["pricing.starter.description"],
-      cta: t["pricing.starter.cta"],
+      id: "launch",
+      name: t["pricing.launch.name"],
+      monthlyPrice: 39,
+      yearlyPrice: Math.round(39 * 12 * 0.8), // 12 months - 20% discount
+      description: t["pricing.launch.description"],
+      cta: t["pricing.launch.cta"],
       ctaHref: "/waitlist",
       features: [
         t["pricing.features.maxOneUser"],
-        t["pricing.features.maxFiftyConversations"],
-        t["pricing.features.maxTenPosts"],
+        t["pricing.features.maxThreeHundredMessages"],
+        t["pricing.features.webInterface"],
         t["pricing.features.maxThreeIntegrations"],
-        t["pricing.features.extensiveCustomization"],
       ],
     },
     {
@@ -204,6 +203,13 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
                     <span className="text-mediumGray ml-1">
                       /{billingPeriod === "monthly" ? t["pricing.perMonth"] : t["pricing.perYear"]}
                     </span>
+                  )}
+                  {tier.id !== "enterprise" && (
+                    <div className="mt-2">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-rose/60 text-forest">
+                        {t["pricing.perUserPerMonth"]}
+                      </span>
+                    </div>
                   )}
                 </div>
                 {billingPeriod === "yearly" && getSavings(tier) && (

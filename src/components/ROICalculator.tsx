@@ -165,7 +165,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold text-turquoise mb-6 font-sans">
+              <h3 className="text-2xl text-turquoise mb-6 font-playfair font-normal">
                 {"Your organization details"}
               </h3>
 
@@ -229,7 +229,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
 
               {/* Results Summary */}
               <div className="bg-gradient-to-br from-turquoise/20 to-rose/20 rounded-xl p-6 mt-8 border border-turquoise/40">
-                <h4 className="text-lg font-semibold text-turquoise mb-4 font-sans">
+                <h4 className="text-lg text-turquoise mb-4 font-playfair font-normal">
                   {translations?.["roi.calculator.potentialSavings"] || "Your potential savings"}
                 </h4>
                 <div className="grid grid-cols-2 gap-4">

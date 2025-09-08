@@ -196,7 +196,7 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
                   </div>
                   
                   {/* Content */}
-                  <h3 className="text-lg font-semibold text-forest mb-3 font-sans group-hover:text-turquoise transition-colors duration-300">
+                  <h3 className="text-lg text-forest mb-3 font-playfair font-normal group-hover:text-turquoise transition-colors duration-300">
                     {translations?.[`features.grid.${translationKey}.title`] || feature.title}
                   </h3>
                   <p className="text-mediumGray text-sm font-sans leading-relaxed">

@@ -38,30 +38,29 @@ const plans: PricingPlan[] = [
     cta: "Get started free"
   },
   {
-    name: "Starter",
-    monthlyPrice: 29,
-    yearlyPrice: Math.round(29 * 12 * 0.8), // 12 months - 20% discount
-    description: "Everything in Free and advanced AI features",
+    name: "Launch",
+    monthlyPrice: 39,
+    yearlyPrice: Math.round(39 * 12 * 0.8), // 12 months - 20% discount
+    description: "Everything in Free with added capacity for early growth",
     features: [
       "Everything in Free",
-      "Advanced AI content generation with personal suggestions based on your communication",
-      "Max 50 AI conversations a week",
-      "Limited tone of voice and brand settings"
+      "Basic tone of voice settings",
+      "Max 300 messages per month",
+      "Up to 3 integrations"
     ],
     cta: "Start free trial"
   },
   {
     name: "Growth",
-    monthlyPrice: 199,
-    yearlyPrice: Math.round(199 * 12 * 0.8), // 12 months - 20% discount
+    monthlyPrice: 69,
+    yearlyPrice: Math.round(69 * 12 * 0.8), // 12 months - 20% discount
     description: "Everything in Starter plus team collaboration",
     features: [
-      "Everything in Starter",
-      "User management: max 3 users",
-      "Premium AI content generation with personal suggestions",
+      "Everything in Launch",
+      "Organization management and user roles",
       "Slack and/or Teams native app",
-      "Unlimited conversations",
-      "Organisation management and advanced tone of voice and brand settings",
+      "Advanced tone of voice settings",
+      "Up to 1000 messages per month",
       "Priority support (email)"
     ],
     cta: "Start free trial",
@@ -70,9 +69,9 @@ const plans: PricingPlan[] = [
   },
   {
     name: "Professional",
-    monthlyPrice: 599,
-    yearlyPrice: Math.round(599 * 12 * 0.8), // 12 months - 20% discount
-    description: "Advanced AI-powered features for content optimization and campaign management",
+    monthlyPrice: 199,
+    yearlyPrice: Math.round(199 * 12 * 0.8), // 12 months - 20% discount
+    description: "Advanced features for content optimization, campaigns and reporting",
     features: [
       "Everything in Growth",
       "Advanced AI-analytics to optimize your content and publishing",
@@ -318,7 +317,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
               >
                 {/* Plan Header */}
                 <div className="text-center mb-6">
-                  <h3 className={`text-xl font-bold mb-2 font-sans ${
+                  <h3 className={`text-xl mb-2 font-playfair font-normal ${
                     plan.highlight ? 'text-forest' : 'text-forest'
                   }`}>
                     {plan.name}
@@ -352,6 +351,12 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                             {getPricePeriod(plan)}
                           </span>
                         )}
+                        {/* Per user/month pill */}
+                        <div className="mt-2">
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-rose/60 text-forest font-sans">
+                            {translations?.["pricing.perUserPerMonth"] || "per user per month"}
+                          </span>
+                        </div>
                       </>
                     )}
                   </div>
@@ -428,6 +433,17 @@ export default function PricingCards({ fullWidth = false, locale, translations }
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Per-user note under cards */}
+        <div className="w-full text-center mt-12">
+          <span className="text-sm text-mediumGray font-sans">
+            {(translations?.["pricing.pricingNote"] || "All prices shown are per user per month, billed {period}.")
+              .replace(
+                "{period}",
+                translations?.[billingPeriod === "monthly" ? "pricing.monthly" : "pricing.yearly"] || (billingPeriod === "monthly" ? "Monthly" : "Yearly")
+              )}
+          </span>
+        </div>
 
         {/* Additional Information */}
         <motion.div 

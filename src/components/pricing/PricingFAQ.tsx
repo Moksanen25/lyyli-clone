@@ -78,7 +78,7 @@ export default function PricingFAQ({
               aria-expanded={openIndex === index}
               aria-controls={`faq-answer-${index}`}
             >
-              <h3 className="font-medium text-forest pr-4 font-sans group-hover:text-forest/80 transition-colors">
+              <h3 className="text-forest pr-4 font-playfair font-normal group-hover:text-forest/80 transition-colors">
                 {item.question}
               </h3>
               <motion.svg

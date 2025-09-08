@@ -1,0 +1,14 @@
+lyyli-clone/src/app/[locale]/layout_backup.tsx
+archive/README.md
+archive/documentation/CHAT_AND_SCHEDULING_README.md
+archive/documentation/CUSTOMER_DATA_README.md
+archive/documentation/GDPR_COMPLIANCE.md
+archive/documentation/HERO_ACCESSIBILITY_README.md
+archive/documentation/HERO_BACKGROUND_README.md
+archive/documentation/IMPLEMENTATION_SUMMARY.md
+archive/documentation/PROTECTION_STRATEGY.md
+archive/old-config/.gitconfig
+archive/old-config/.gitmessage
+archive/old-config/.husky/pre-commit
+archive/old-project-structure/lyyli-clone
+src/app/[locale]/layout_backup.tsx

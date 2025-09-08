@@ -29,38 +29,34 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Optimize bundles
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Optimize bundle splitting
-    if (!dev && !isServer) {
-      config.optimization.splitChunks.chunks = 'all';
-      config.optimization.splitChunks.cacheGroups = {
-        ...config.optimization.splitChunks.cacheGroups,
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-          priority: 10,
-        },
-        // Separate Framer Motion for better caching
-        framermotion: {
-          test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-          name: 'framer-motion',
-          chunks: 'all',
-          priority: 20,
-        },
-        // Separate Recharts for better caching
-        recharts: {
-          test: /[\\/]node_modules[\\/]recharts[\\/]/,
-          name: 'recharts',
-          chunks: 'all',
-          priority: 20,
-        },
-      };
-    }
-
-    return config;
-  },
+  // Optimize bundles (disabled custom splitChunks to avoid Webpack runtime conflicts)
+  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  //   if (!dev && !isServer) {
+  //     config.optimization.splitChunks.chunks = 'all';
+  //     config.optimization.splitChunks.cacheGroups = {
+  //       ...config.optimization.splitChunks.cacheGroups,
+  //       vendor: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         name: 'vendors',
+  //         chunks: 'all',
+  //         priority: 10,
+  //       },
+  //       framermotion: {
+  //         test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+  //         name: 'framer-motion',
+  //         chunks: 'all',
+  //         priority: 20,
+  //       },
+  //       recharts: {
+  //         test: /[\\/]node_modules[\\/]recharts[\\/]/,
+  //         name: 'recharts',
+  //         chunks: 'all',
+  //         priority: 20,
+  //       },
+  //     };
+  //   }
+  //   return config;
+  // },
 
   // Optimize build output
   output: 'standalone',
