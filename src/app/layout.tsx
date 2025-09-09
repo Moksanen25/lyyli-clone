@@ -39,56 +39,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         {children}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (typeof window !== 'undefined') {
-                // Load non-critical CSS asynchronously
-                const loadNonCriticalCSS = () => {
-                  const link = document.createElement('link');
-                  link.rel = 'stylesheet';
-                  link.href = '/globals.css';
-                  link.media = 'print';
-                  link.onload = () => {
-                    link.media = 'all';
-                  };
-                  document.head.appendChild(link);
-                };
-
-
-
-                // Load CSS after initial render
-                if (document.readyState === 'loading') {
-                  document.addEventListener('DOMContentLoaded', loadNonCriticalCSS);
-                } else {
-                  loadNonCriticalCSS();
-                }
-
-                // Web Vitals monitoring
-                import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-                  getCLS(reportWebVitals);
-                  getFID(reportWebVitals);
-                  getFCP(reportWebVitals);
-                  getLCP(reportWebVitals);
-                  getTTFB(reportWebVitals);
-                });
-
-                // Service Worker registration
-                if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/sw.js')
-                      .then((registration) => {
-                        console.log('SW registered: ', registration);
-                      })
-                      .catch((registrationError) => {
-                        console.log('SW registration failed: ', registrationError);
-                      });
-                  });
-                }
-              }
-            `,
-          }}
-        />
       </body>
     </html>
   );

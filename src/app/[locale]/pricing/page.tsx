@@ -61,7 +61,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
       </div>
 
       {/* Pricing Cards - Using front page pricing section */}
-      <section className="bg-gradient-to-br from-gray-50 to-white py-16 lg:py-24">
+      <section className="py-16 lg:py-24">
         <PricingCards fullWidth={true} locale={currentLocale} translations={t} />
       </section>
 

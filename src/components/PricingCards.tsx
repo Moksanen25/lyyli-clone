@@ -38,30 +38,29 @@ const plans: PricingPlan[] = [
     cta: "Get started free"
   },
   {
-    name: "Starter",
-    monthlyPrice: 29,
-    yearlyPrice: Math.round(29 * 12 * 0.8), // 12 months - 20% discount
-    description: "Everything in Free and advanced AI features",
+    name: "Launch",
+    monthlyPrice: 39,
+    yearlyPrice: Math.round(39 * 12 * 0.8), // 12 months - 20% discount
+    description: "Everything in Free with added capacity for early growth",
     features: [
       "Everything in Free",
-      "Advanced AI content generation with personal suggestions based on your communication",
-      "Max 50 AI conversations a week",
-      "Limited tone of voice and brand settings"
+      "Basic tone of voice settings",
+      "Max 300 messages per month",
+      "Up to 3 integrations"
     ],
     cta: "Start free trial"
   },
   {
     name: "Growth",
-    monthlyPrice: 199,
-    yearlyPrice: Math.round(199 * 12 * 0.8), // 12 months - 20% discount
+    monthlyPrice: 69,
+    yearlyPrice: Math.round(69 * 12 * 0.8), // 12 months - 20% discount
     description: "Everything in Starter plus team collaboration",
     features: [
-      "Everything in Starter",
-      "User management: max 3 users",
-      "Premium AI content generation with personal suggestions",
+      "Everything in Launch",
+      "Organization management and user roles",
       "Slack and/or Teams native app",
-      "Unlimited conversations",
-      "Organisation management and advanced tone of voice and brand settings",
+      "Advanced tone of voice settings",
+      "Up to 1000 messages per month",
       "Priority support (email)"
     ],
     cta: "Start free trial",
@@ -70,9 +69,9 @@ const plans: PricingPlan[] = [
   },
   {
     name: "Professional",
-    monthlyPrice: 599,
-    yearlyPrice: Math.round(599 * 12 * 0.8), // 12 months - 20% discount
-    description: "Advanced AI-powered features for content optimization and campaign management",
+    monthlyPrice: 199,
+    yearlyPrice: Math.round(199 * 12 * 0.8), // 12 months - 20% discount
+    description: "Advanced features for content optimization, campaigns and reporting",
     features: [
       "Everything in Growth",
       "Advanced AI-analytics to optimize your content and publishing",
@@ -302,7 +301,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                   plan.name === "Professional" || plan.name === "Enterprise" 
                     ? 'bg-gradient-to-br from-grayLight to-white' 
                     : 'bg-white'
-                } rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full cursor-pointer ${
+                } rounded-2xl p-6 shadow-lg border transition-all duration-300 h-full cursor-pointer ${
                   plan.popular 
                     ? 'border-turquoise/40 shadow-2xl scale-105 bg-gradient-to-br from-white to-turquoise/5'  
                     : 'border-gray-200 hover:border-turquoise/30 hover:shadow-xl'
@@ -318,15 +317,15 @@ export default function PricingCards({ fullWidth = false, locale, translations }
               >
                 {/* Plan Header */}
                 <div className="text-center mb-6">
-                  <h3 className={`text-xl font-bold mb-2 font-sans ${
+                  <h3 className={`text-xl mb-2 font-playfair font-normal ${
                     plan.highlight ? 'text-forest' : 'text-forest'
                   }`}>
                     {plan.name}
                   </h3>
                   <div className="mb-4 flex flex-col items-center">
                     {plan.name === "Enterprise" ? (
-                      <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-forest to-turquoise rounded-full">
-                        <span className="text-lg font-bold text-white font-sans">
+                      <div className="inline-flex items-center px-4 py-2 bg-forest hover:bg-[#3A6A5C] transition-colors duration-200 rounded-full">
+                        <span className="text-lg font-semibold text-white font-sans">
                           Contact us
                         </span>
                       </div>
@@ -352,6 +351,12 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                             {getPricePeriod(plan)}
                           </span>
                         )}
+                        {/* Per user/month pill */}
+                        <div className="mt-2">
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-rose/60 text-forest font-sans">
+                            {translations?.["pricing.perUserPerMonth"] || "per user per month"}
+                          </span>
+                        </div>
                       </>
                     )}
                   </div>
@@ -369,7 +374,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
-                      <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-forest mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-sm text-mediumGray font-sans">
@@ -384,41 +389,13 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                   {(plan.name === "Professional" || plan.name === "Enterprise") ? (
                     <a
                       href={`/${locale || 'en'}/waitlist`}
-                      style={{
-                        display: 'block',
-                        width: '100%',
-                        padding: '12px 16px',
-                        borderRadius: '12px',
-                        fontWeight: 'bold',
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                        color: 'white',
-                        background: plan.popular 
-                          ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
-                          : '#2F5D50',
-                        transition: 'all 0.3s ease'
-                      }}
-                      className="hover:shadow-lg"
+                      className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
                     </a>
                   ) : (
                     <button 
-                      style={{
-                        display: 'block',
-                        width: '100%',
-                        padding: '12px 16px',
-                        borderRadius: '12px',
-                        fontWeight: 'bold',
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                        color: 'white',
-                        background: plan.popular 
-                          ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
-                          : '#2F5D50',
-                        transition: 'all 0.3s ease'
-                      }}
-                      className="hover:shadow-lg"
+                      className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
                     </button>
@@ -429,6 +406,17 @@ export default function PricingCards({ fullWidth = false, locale, translations }
           ))}
         </motion.div>
 
+        {/* Per-user note under cards */}
+        <div className="w-full text-center mt-12">
+          <span className="text-sm text-mediumGray font-sans">
+            {(translations?.["pricing.pricingNote"] || "All prices shown are per user per month, billed {period}.")
+              .replace(
+                "{period}",
+                translations?.[billingPeriod === "monthly" ? "pricing.monthly" : "pricing.yearly"] || (billingPeriod === "monthly" ? "Monthly" : "Yearly")
+              )}
+          </span>
+        </div>
+
         {/* Additional Information */}
         <motion.div 
           className="mt-20 text-center"
@@ -438,7 +426,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
           viewport={{ once: true }}
         >
           <div className="bg-gradient-to-br from-white to-turquoise/5 rounded-2xl p-8 shadow-xl border border-turquoise/20 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-forest mb-4 font-playfair font-bold">
+            <h3 className="text-2xl text-forest mb-4 font-playfair font-normal">
               Need more information?
             </h3>
             <p className="text-mediumGray font-sans leading-relaxed mb-6">

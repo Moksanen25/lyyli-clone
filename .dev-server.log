@@ -1,0 +1,370 @@
+
+> lyyli-clone@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.2
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.18.179:3000
+   - Experiments (use with caution):
+     ✓ mdxRs
+
+ ✓ Starting...
+ ✓ Ready in 3.1s
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 5.2s (2814 modules)
+ ✓ Compiled in 816ms (1313 modules)
+ GET /en 200 in 8155ms
+ ○ Compiling / ...
+ ✓ Compiled / in 748ms (2827 modules)
+ GET / 307 in 1135ms
+ GET /en 200 in 412ms
+ ⨯ ./src/app/[locale]/page.tsx
+Error:   [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/src/app/[locale]/page.tsx[0m:8:1]
+ [2m 5[0m |     import dynamic from "next/dynamic";
+ [2m 6[0m |     
+ [2m 7[0m |     // Lazy load heavy components below the fold
+ [2m 8[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const DemoVideo = dynamic(() => import("../../components/DemoVideo"), {
+ [2m 9[0m | [35;1m|[0m     ssr: false,
+ [2m10[0m | [35;1m|[0m     loading: () => (
+ [2m11[0m | [35;1m|[0m       <div className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
+ [2m12[0m | [35;1m|[0m         <div className="container mx-auto px-4 text-center">
+ [2m13[0m | [35;1m|[0m           <div className="animate-pulse">
+ [2m14[0m | [35;1m|[0m             <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+ [2m15[0m | [35;1m|[0m             <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+ [2m16[0m | [35;1m|[0m           </div>
+ [2m17[0m | [35;1m|[0m         </div>
+ [2m18[0m | [35;1m|[0m       </div>
+ [2m19[0m | [35;1m|[0m     )
+ [2m20[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m });
+ [2m21[0m |     
+ [2m22[0m |     const ROICalculator = dynamic(() => import("../../components/ROICalculator"), {
+ [2m23[0m |       ssr: false,
+    `----
+  [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/src/app/[locale]/page.tsx[0m:22:1]
+ [2m19[0m |       )
+ [2m20[0m |     });
+ [2m21[0m |     
+ [2m22[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const ROICalculator = dynamic(() => import("../../components/ROICalculator"), {
+ [2m23[0m | [35;1m|[0m     ssr: false,
+ [2m24[0m | [35;1m|[0m     loading: () => (
+ [2m25[0m | [35;1m|[0m       <div className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
+ [2m26[0m | [35;1m|[0m         <div className="container mx-auto px-4 text-center">
+ [2m27[0m | [35;1m|[0m           <div className="animate-pulse">
+ [2m28[0m | [35;1m|[0m             <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+ [2m29[0m | [35;1m|[0m             <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+ [2m30[0m | [35;1m|[0m           </div>
+ [2m31[0m | [35;1m|[0m         </div>
+ [2m32[0m | [35;1m|[0m       </div>
+ [2m33[0m | [35;1m|[0m     )
+ [2m34[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m });
+ [2m35[0m |     
+ [2m36[0m |     const StackingTestimonialCards = dynamic(() => import("../../components/StackingTestimonialCards"), {
+ [2m37[0m |       ssr: false,
+    `----
+  [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/src/app/[locale]/page.tsx[0m:36:1]
+ [2m33[0m |       )
+ [2m34[0m |     });
+ [2m35[0m |     
+ [2m36[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const StackingTestimonialCards = dynamic(() => import("../../components/StackingTestimonialCards"), {
+ [2m37[0m | [35;1m|[0m     ssr: false,
+ [2m38[0m | [35;1m|[0m     loading: () => (
+ [2m39[0m | [35;1m|[0m       <div className="py-24 bg-grayLight">
+ [2m40[0m | [35;1m|[0m         <div className="container mx-auto px-4 text-center">
+ [2m41[0m | [35;1m|[0m           <div className="animate-pulse">
+ [2m42[0m | [35;1m|[0m             <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+ [2m43[0m | [35;1m|[0m             <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+ [2m44[0m | [35;1m|[0m           </div>
+ [2m45[0m | [35;1m|[0m         </div>
+ [2m46[0m | [35;1m|[0m       </div>
+ [2m47[0m | [35;1m|[0m     )
+ [2m48[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m });
+ [2m49[0m |     
+ [2m50[0m |     const PricingCards = dynamic(() => import("../../components/PricingCards"), {
+ [2m51[0m |       ssr: false,
+    `----
+  [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/src/app/[locale]/page.tsx[0m:50:1]
+ [2m47[0m |       )
+ [2m48[0m |     });
+ [2m49[0m |     
+ [2m50[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const PricingCards = dynamic(() => import("../../components/PricingCards"), {
+ [2m51[0m | [35;1m|[0m     ssr: false,
+ [2m52[0m | [35;1m|[0m     loading: () => (
+ [2m53[0m | [35;1m|[0m       <div className="py-24 bg-gradient-to-br from-forest to-turquoise">
+ [2m54[0m | [35;1m|[0m         <div className="container mx-auto px-4 text-center">
+ [2m55[0m | [35;1m|[0m           <div className="animate-pulse">
+ [2m56[0m | [35;1m|[0m             <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+ [2m57[0m | [35;1m|[0m             <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+ [2m58[0m | [35;1m|[0m           </div>
+ [2m59[0m | [35;1m|[0m         </div>
+ [2m60[0m | [35;1m|[0m       </div>
+ [2m61[0m | [35;1m|[0m     )
+ [2m62[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m });
+ [2m63[0m |     interface HomeProps {
+ [2m64[0m |       params: Promise<{ locale: string }>;
+ [2m65[0m |     }
+    `----
+
+Import trace for requested module:
+./src/app/[locale]/page.tsx
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ○ Compiling /_error ...
+ ⨯ ./src/app/[locale]/page.tsx
+Error:   [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/src/app/[locale]/page.tsx[0m:8:1]
+ [2m 5[0m |     import dynamic from "next/dynamic";
+ [2m 6[0m |     
+ [2m 7[0m |     // Lazy load heavy components below the fold
+ [2m 8[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const DemoVideo = dynamic(() => import("../../components/DemoVideo"), {
+ [2m 9[0m | [35;1m|[0m     ssr: false,
+ [2m10[0m | [35;1m|[0m     loading: () => (
+ [2m11[0m | [35;1m|[0m       <div className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
+ [2m12[0m | [35;1m|[0m         <div className="container mx-auto px-4 text-center">
+ [2m13[0m | [35;1m|[0m           <div className="animate-pulse">
+ [2m14[0m | [35;1m|[0m             <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+ [2m15[0m | [35;1m|[0m             <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+ [2m16[0m | [35;1m|[0m           </div>
+ [2m17[0m | [35;1m|[0m         </div>
+ [2m18[0m | [35;1m|[0m       </div>
+ [2m19[0m | [35;1m|[0m     )
+ [2m20[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m });
+ [2m21[0m |     
+ [2m22[0m |     const ROICalculator = dynamic(() => import("../../components/ROICalculator"), {
+ [2m23[0m |       ssr: false,
+    `----
+  [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/src/app/[locale]/page.tsx[0m:22:1]
+ [2m19[0m |       )
+ [2m20[0m |     });
+ [2m21[0m |     
+ [2m22[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const ROICalculator = dynamic(() => import("../../components/ROICalculator"), {
+ [2m23[0m | [35;1m|[0m     ssr: false,
+ [2m24[0m | [35;1m|[0m     loading: () => (
+ [2m25[0m | [35;1m|[0m       <div className="py-24 bg-gradient-to-br from-forest/5 to-turquoise/3">
+ [2m26[0m | [35;1m|[0m         <div className="container mx-auto px-4 text-center">
+ [2m27[0m | [35;1m|[0m           <div className="animate-pulse">
+ [2m28[0m | [35;1m|[0m             <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+ [2m29[0m | [35;1m|[0m             <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+ [2m30[0m | [35;1m|[0m           </div>
+ [2m31[0m | [35;1m|[0m         </div>
+ [2m32[0m | [35;1m|[0m       </div>
+ [2m33[0m | [35;1m|[0m     )
+ [2m34[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m });
+ [2m35[0m |     
+ [2m36[0m |     const StackingTestimonialCards = dynamic(() => import("../../components/StackingTestimonialCards"), {
+ [2m37[0m |       ssr: false,
+    `----
+  [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/src/app/[locale]/page.tsx[0m:36:1]
+ [2m33[0m |       )
+ [2m34[0m |     });
+ [2m35[0m |     
+ [2m36[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const StackingTestimonialCards = dynamic(() => import("../../components/StackingTestimonialCards"), {
+ [2m37[0m | [35;1m|[0m     ssr: false,
+ [2m38[0m | [35;1m|[0m     loading: () => (
+ [2m39[0m | [35;1m|[0m       <div className="py-24 bg-grayLight">
+ [2m40[0m | [35;1m|[0m         <div className="container mx-auto px-4 text-center">
+ [2m41[0m | [35;1m|[0m           <div className="animate-pulse">
+ [2m42[0m | [35;1m|[0m             <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+ [2m43[0m | [35;1m|[0m             <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+ [2m44[0m | [35;1m|[0m           </div>
+ [2m45[0m | [35;1m|[0m         </div>
+ [2m46[0m | [35;1m|[0m       </div>
+ [2m47[0m | [35;1m|[0m     )
+ [2m48[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m });
+ [2m49[0m |     
+ [2m50[0m |     const PricingCards = dynamic(() => import("../../components/PricingCards"), {
+ [2m51[0m |       ssr: false,
+    `----
+  [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/src/app/[locale]/page.tsx[0m:50:1]
+ [2m47[0m |       )
+ [2m48[0m |     });
+ [2m49[0m |     
+ [2m50[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const PricingCards = dynamic(() => import("../../components/PricingCards"), {
+ [2m51[0m | [35;1m|[0m     ssr: false,
+ [2m52[0m | [35;1m|[0m     loading: () => (
+ [2m53[0m | [35;1m|[0m       <div className="py-24 bg-gradient-to-br from-forest to-turquoise">
+ [2m54[0m | [35;1m|[0m         <div className="container mx-auto px-4 text-center">
+ [2m55[0m | [35;1m|[0m           <div className="animate-pulse">
+ [2m56[0m | [35;1m|[0m             <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto mb-4"></div>
+ [2m57[0m | [35;1m|[0m             <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto"></div>
+ [2m58[0m | [35;1m|[0m           </div>
+ [2m59[0m | [35;1m|[0m         </div>
+ [2m60[0m | [35;1m|[0m       </div>
+ [2m61[0m | [35;1m|[0m     )
+ [2m62[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m });
+ [2m63[0m |     interface HomeProps {
+ [2m64[0m |       params: Promise<{ locale: string }>;
+ [2m65[0m |     }
+    `----
+
+Import trace for requested module:
+./src/app/[locale]/page.tsx
+ GET /en 500 in 6357ms
+ GET /en 500 in 9750ms
+ GET /en 500 in 64ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/.next/cache/webpack/client-development-fallback/0.pack.gz_' -> '/Users/mikko.oksanen/Desktop/Content AI Oy/Cursor/lyyli-clone-fresh/.next/cache/webpack/client-development-fallback/0.pack.gz'
+ GET /en 500 in 53ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled /_error in 2.2s (3163 modules)
+ GET /en 200 in 3483ms
+ GET /en 200 in 1438ms
+ GET /en 200 in 408ms
+ ✓ Compiled in 679ms (3163 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /en 200 in 555ms
+ GET /en 200 in 274ms
+ GET /en 200 in 286ms
+ GET /en 200 in 274ms
+ GET /fi 200 in 268ms
+ ○ Compiling / ...
+ ✓ Compiled / in 603ms (1603 modules)
+ GET / 307 in 1008ms
+ GET /en 200 in 414ms
+ ○ Compiling /[locale]/contact ...
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /[locale]/contact in 3.2s (3124 modules)
+ GET /fi 200 in 3715ms
+ GET /en/pricing 200 in 7054ms
+ GET /fi 200 in 637ms
+ GET /en/contact 200 in 6960ms
+ GET /en/about 200 in 7040ms
+ GET /en/features 200 in 7132ms
+ ○ Compiling /icon.svg ...
+ ✓ Compiled /icon.svg in 962ms (1666 modules)
+ ✓ Compiled (1668 modules)
+ GET /icon.svg 200 in 1618ms
+ GET /favicon.ico 200 in 1645ms
+ GET /icon.svg 200 in 22ms
+ GET /favicon.ico 200 in 23ms
+ GET /en 200 in 227ms
+ ✓ Compiled in 3.1s (3073 modules)
+ GET /en 200 in 421ms
+ ✓ Compiled in 773ms (3073 modules)
+ GET /en 200 in 159ms
+ ✓ Compiled in 1989ms (3073 modules)
+ GET /en 200 in 239ms
+ ✓ Compiled in 773ms (3073 modules)
+ GET /en 200 in 120ms
+ ✓ Compiled in 1866ms (3073 modules)
+ GET /en 200 in 290ms
+ ✓ Compiled in 717ms (3073 modules)
+ GET /en 200 in 109ms
+ ✓ Compiled in 5.1s (3073 modules)
+ ✓ Compiled in 1500ms (1486 modules)
+ GET /en 200 in 1576ms
+ GET /en 200 in 289ms
+ ✓ Compiled in 1326ms (3073 modules)
+ GET /en 200 in 374ms
+ ✓ Compiled in 1141ms (1486 modules)
+ GET /en 200 in 156ms
+ ✓ Compiled in 1528ms (3073 modules)
+ GET /en 200 in 927ms
+ ✓ Compiled in 967ms (1486 modules)
+ GET /en 200 in 67ms
+ ✓ Compiled in 3.6s (3073 modules)
+ GET /en 200 in 362ms
+ ✓ Compiled in 812ms (1486 modules)
+ GET /en 200 in 177ms
+ ✓ Compiled in 854ms (1486 modules)
+ GET /en 200 in 106ms
+ ✓ Compiled in 1310ms (1486 modules)
+ GET /en 200 in 304ms
+ ✓ Compiled in 1325ms (1486 modules)
+ GET /en 200 in 176ms
+ ✓ Compiled in 2.6s (3073 modules)
+ GET /en 200 in 255ms
+ GET /en 200 in 1424ms
+ ○ Compiling /[locale]/contact ...
+ ✓ Compiled /[locale]/contact in 1314ms (1605 modules)
+ ✓ Compiled /icon.svg in 2ms (1633 modules)
+ ✓ Compiled in 1ms (1650 modules)
+ ✓ Compiled in 0ms (1650 modules)
+ ✓ Compiled in 1ms (1650 modules)
+ GET /en/pricing 200 in 9613ms
+ GET /en/features 200 in 9641ms
+ GET /en/contact 200 in 9810ms
+ GET /icon.svg 200 in 8316ms
+ GET /en/about 200 in 10298ms
+ GET /en 200 in 4347ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 568ms (1652 modules)
+ GET /favicon.ico 200 in 629ms
+ GET /icon.svg 200 in 32ms
+ GET /favicon.ico 200 in 56ms
+ ✓ Compiled in 8.9s (1486 modules)
+ ✓ Compiled in 2.9s (3073 modules)
+ ✓ Compiled in 1080ms (3073 modules)
+ ✓ Compiled in 674ms (1486 modules)
+ ✓ Compiled in 1078ms (1486 modules)
+ ✓ Compiled in 1422ms (3073 modules)
+ ✓ Compiled in 1910ms (3073 modules)
+ ✓ Compiled in 1766ms (3073 modules)
+ ✓ Compiled in 973ms (3073 modules)
+ GET /en 200 in 1054ms
+ ○ Compiling /[locale]/contact ...
+ ✓ Compiled /[locale]/contact in 904ms (1605 modules)
+ ✓ Compiled (1633 modules)
+ ○ Compiling /icon.svg ...
+ GET /en/pricing 200 in 5575ms
+ GET /en/contact 200 in 5880ms
+ GET /en/about 200 in 6130ms
+ ✓ Compiled /icon.svg in 1119ms (1650 modules)
+ GET /icon.svg 200 in 2482ms
+ GET /en/features 200 in 6861ms
+ ✓ Compiled /favicon.ico in 316ms (1652 modules)
+ GET /favicon.ico 200 in 429ms
+ ✓ Compiled in 3.6s (3073 modules)
+ GET /en 200 in 1012ms
+ ✓ Compiled in 1528ms (3073 modules)
+ GET /en 200 in 567ms
+ ✓ Compiled in 2.1s (3073 modules)
+ GET /en 200 in 226ms
+ ✓ Compiled in 1252ms (1486 modules)
+ GET /en 200 in 119ms
+ ✓ Compiled in 919ms (1486 modules)
+ GET /en 200 in 84ms
+ ✓ Compiled in 1620ms (3073 modules)
+ GET /en 200 in 140ms
+ ✓ Compiled in 2.4s (3073 modules)
+ GET /en 200 in 247ms
+ ✓ Compiled in 1392ms (3073 modules)
+ GET /en 200 in 119ms
+ ✓ Compiled in 2.9s (1486 modules)
+ ✓ Compiled in 1506ms (1486 modules)
+ GET /en 200 in 1542ms
+ GET /en 200 in 236ms
+ ✓ Compiled in 2.3s (3073 modules)
+ GET /en 200 in 468ms
+ ✓ Compiled in 799ms (3073 modules)
+ GET /en 200 in 143ms
+ GET /pricing 200 in 694ms
+ ○ Compiling /[locale]/contact ...
+ ✓ Compiled /[locale]/contact in 806ms (1605 modules)
+ ✓ Compiled (1633 modules)
+ GET /en/pricing 200 in 3425ms
+ GET /en/contact 200 in 3374ms
+ GET /en/about 200 in 3431ms
+ GET /en/features 200 in 3501ms
+ GET /en/pricing 200 in 68ms
+ ✓ Compiled in 1226ms (1486 modules)
+ GET /en/pricing 200 in 194ms
+ ✓ Compiled in 1700ms (3080 modules)
+ GET /en/pricing 200 in 641ms
+ ✓ Compiled in 1247ms (3080 modules)
+ GET /en/pricing 200 in 356ms
+ ✓ Compiled in 1068ms (3080 modules)
+ GET /en/pricing 200 in 165ms
+ ✓ Compiled in 922ms (3080 modules)
+ GET /en/pricing 200 in 270ms
+ ○ Compiling / ...
+ ✓ Compiled / in 770ms (1606 modules)
+ GET / 200 in 1134ms
+ GET /en 200 in 177ms
+ GET /en 200 in 63ms

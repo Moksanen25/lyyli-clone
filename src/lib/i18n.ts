@@ -1,5 +1,7 @@
 // Translation type definitions
 export interface TranslationKeys {
+  // Allow additional keys to support incremental translation additions
+  [key: string]: string;
   // Navigation
   "nav.home": string;
   "nav.features": string;

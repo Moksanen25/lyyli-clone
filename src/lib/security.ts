@@ -1,6 +1,6 @@
 // Updated 2024-12-19: Created security utilities for input validation, sanitization, and CSRF protection
 
-import { NextRequest } from 'next/server';
+import type { NextRequest } from 'next/server';
 
 // Input validation patterns
 export const VALIDATION_PATTERNS = {

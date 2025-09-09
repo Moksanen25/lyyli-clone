@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import ConsentBanner from "../../components/ConsentBanner";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import MeshGradientBackground from "../../components/MeshGradientBackground";
+import DevSWCleanup from "../../components/DevSWCleanup";
 import { getTranslations } from "../../lib/i18n";
 import { fontVars } from "../../lib/fonts";
 
@@ -152,6 +153,7 @@ export default async function LocaleLayout({
             canonicalUrl={canonicalUrl}
           />
           <ConsentBanner locale={currentLocale} translations={t} />
+          <DevSWCleanup />
         </div>
 
         {/* Schema.org structured data */}

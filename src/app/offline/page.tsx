@@ -35,7 +35,7 @@ export default function OfflinePage() {
 
         {/* Available Offline Features */}
         <div className="bg-white rounded-2xl p-6 mb-8 shadow-soft border border-gray-200">
-          <h2 className="text-lg font-semibold text-forest mb-4 font-sans">
+          <h2 className="text-lg text-forest mb-4 font-playfair font-normal">
             Available Offline
           </h2>
           <ul className="space-y-3 text-left">

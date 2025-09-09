@@ -43,19 +43,18 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       ],
     },
     {
-      id: "starter",
-      name: t["pricing.starter.name"],
-      monthlyPrice: 29,
-      yearlyPrice: Math.round(29 * 12 * 0.8), // 12 months - 20% discount
-      description: t["pricing.starter.description"],
-      cta: t["pricing.starter.cta"],
+      id: "launch",
+      name: t["pricing.launch.name"],
+      monthlyPrice: 39,
+      yearlyPrice: Math.round(39 * 12 * 0.8), // 12 months - 20% discount
+      description: t["pricing.launch.description"],
+      cta: t["pricing.launch.cta"],
       ctaHref: "/waitlist",
       features: [
         t["pricing.features.maxOneUser"],
-        t["pricing.features.maxFiftyConversations"],
-        t["pricing.features.maxTenPosts"],
+        t["pricing.features.maxThreeHundredMessages"],
+        t["pricing.features.webInterface"],
         t["pricing.features.maxThreeIntegrations"],
-        t["pricing.features.extensiveCustomization"],
       ],
     },
     {
@@ -185,25 +184,32 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
 
             {/* Plan Card */}
             <div 
-              className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full flex flex-col ${
+              className={`bg-white rounded-2xl p-6 shadow-lg border transition-all duration-300 h-full flex flex-col ${
                 tier.popular 
-                  ? 'border-forest shadow-xl scale-105'  
-                  : 'border-gray-200 hover:border-forest/30 hover:shadow-xl'
+                  ? 'border-turquoise/40 shadow-2xl scale-105 bg-gradient-to-br from-white to-turquoise/5'  
+                  : 'border-gray-200 hover:border-turquoise/30 hover:shadow-xl'
               }`}
             >
               {/* Plan Header */}
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold mb-2 text-forest">
+                <h3 className="text-xl mb-2 text-forest font-playfair font-normal">
                   {tier.name}
                 </h3>
                 <div className="mb-4">
-                  <span className="text-3xl font-bold text-forest">
+                  <span className="text-3xl font-bold text-forest font-sans">
                     {getPrice(tier)}
                   </span>
                   {tier.id !== "enterprise" && tier.monthlyPrice > 0 && (
-                    <span className="text-mediumGray ml-1">
+                    <span className="text-mediumGray ml-1 font-sans">
                       /{billingPeriod === "monthly" ? t["pricing.perMonth"] : t["pricing.perYear"]}
                     </span>
+                  )}
+                  {tier.id !== "enterprise" && (
+                    <div className="mt-2">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-rose/60 text-forest font-sans">
+                        {t["pricing.perUserPerMonth"]}
+                      </span>
+                    </div>
                   )}
                 </div>
                 {billingPeriod === "yearly" && getSavings(tier) && (
@@ -214,7 +220,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
                     )}
                   </p>
                 )}
-                <p className="text-sm text-mediumGray">
+                <p className="text-sm text-mediumGray font-sans">
                   {tier.description}
                 </p>
               </div>
@@ -223,10 +229,10 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
               <ul className="space-y-3 mb-8 flex-grow">
                 {tier.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
-                    <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-forest mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-mediumGray">
+                    <span className="text-sm text-mediumGray font-sans">
                       {feature}
                     </span>
                   </li>
@@ -237,21 +243,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
               <div className="mt-auto">
                 <a
                   href={tier.ctaHref}
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    padding: '12px 16px',
-                    borderRadius: '12px',
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                    textDecoration: 'none',
-                    color: 'white',
-                    background: tier.popular 
-                      ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
-                      : '#2F5D50',
-                    transition: 'all 0.3s ease'
-                  }}
-                  className="hover:shadow-lg"
+                  className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                   aria-label={`${tier.cta} for ${tier.name} plan`}
                 >
                   {tier.cta}

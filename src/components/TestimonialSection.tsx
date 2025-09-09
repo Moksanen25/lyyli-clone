@@ -182,7 +182,7 @@ export default function TestimonialSection() {
                   <div className="w-16 h-16 bg-gradient-to-br from-forest to-turquoise rounded-full flex items-center justify-center mx-auto mb-4 text-white font-semibold text-lg font-sans">
                     {testimonial.name.split(' ').map(n => n[0]).join('')}
                   </div>
-                  <h4 className="font-semibold text-forest  font-sans">
+                  <h4 className="text-forest font-playfair font-normal">
                     {testimonial.name}
                   </h4>
                   <p className="text-sm text-mediumGray  font-sans">

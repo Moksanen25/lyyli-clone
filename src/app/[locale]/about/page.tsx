@@ -41,26 +41,15 @@ export default async function AboutPage({ params }: AboutPageProps) {
             <h1 className="text-4xl md:text-5xl mb-6 text-forest font-playfair font-bold leading-tight">
               {t['about.hero.title']}
             </h1>
-            <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
+            <p className="text-lg hero-description text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
               {t['about.hero.subtitle']}
             </p>
             {/* Hero CTA buttons following layout rule */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/demo" 
-                className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-colors font-medium inline-flex items-center justify-center gap-2 font-sans"
-                aria-label="Book a demo of Lyyli.ai"
-              >
+            <div className="flex justify-center gap-4 mb-0">
+              <a href={`/${currentLocale}/demo`} className="btn-primary" aria-label="Book a demo of Lyyli.ai">
                 {t['about.cta.demo']}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
               </a>
-              <a 
-                href="/trial" 
-                className="border border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-colors font-medium inline-flex items-center justify-center font-sans"
-                aria-label="Start free trial of Lyyli.ai"
-              >
+              <a href={`/${currentLocale}/trial`} className="btn-secondary" aria-label="Start free trial of Lyyli.ai">
                 {t['about.cta.trial']}
               </a>
             </div>
@@ -99,21 +88,10 @@ export default async function AboutPage({ params }: AboutPageProps) {
             {t['about.cta.description']}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/demo" 
-              className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
-              aria-label="Book a demo of Lyyli.ai"
-            >
+            <a href={`/${currentLocale}/demo`} className="btn-secondary" aria-label="Book a demo of Lyyli.ai">
               {t['about.cta.demo']}
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
             </a>
-            <a 
-              href="/trial" 
-              className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
-              aria-label="Start free trial of Lyyli.ai"
-            >
+            <a href={`/${currentLocale}/trial`} className="btn-primary" aria-label="Start free trial of Lyyli.ai">
               {t['about.cta.trial']}
             </a>
           </div>

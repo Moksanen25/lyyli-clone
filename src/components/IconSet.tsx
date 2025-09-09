@@ -29,6 +29,71 @@ export const IconSet = {
     </svg>
   ),
 
+  // New feature-specific icons
+  ToneBasic: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 8h12M6 12h8M6 16h6" />
+    </svg>
+  ),
+  ToneAdvanced: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M7 12h10M10 17h8" />
+      <circle cx="7" cy="12" r="1.25" stroke="currentColor" />
+      <circle cx="10" cy="17" r="1.25" stroke="currentColor" />
+    </svg>
+  ),
+  Editor: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" />
+    </svg>
+  ),
+  OrgRoles: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM4 21v-2a5 5 0 015-5h6a5 5 0 015 5v2" />
+    </svg>
+  ),
+  SlackTeams: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 7h7v10H3zM14 7h7v10h-7z" />
+    </svg>
+  ),
+  AIAnalytics: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 19h16M6 16v-6m4 6v-4m4 4V7m4 9v-8" />
+    </svg>
+  ),
+  CampaignMode: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h12M4 18h8" />
+    </svg>
+  ),
+  MediaLibrary: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 13l3-3 5 5" />
+    </svg>
+  ),
+  KPIReports: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M7 15l3-3 4 4 5-7" />
+    </svg>
+  ),
+  Templates: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <rect x="4" y="5" width="7" height="6" rx="1" />
+      <rect x="13" y="5" width="7" height="6" rx="1" />
+      <rect x="4" y="13" width="7" height="6" rx="1" />
+    </svg>
+  ),
+  Onboarding: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
+    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8m-4-4h8" />
+      <circle cx="12" cy="12" r="9" />
+    </svg>
+  ),
+
   Communication: ({
     className = "",
     size = 24,
@@ -237,7 +302,7 @@ export const IconSet = {
     size?: number;
   }) => (
     <svg
-      className={`text-muted-turquoise transition-all duration-300 hover:text-forest-green ${className}`}
+      className={`text-forest transition-all duration-300 hover:text-turquoise ${className}`}
       width={size}
       height={size}
       viewBox="0 0 24 24"

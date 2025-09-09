@@ -1,0 +1,2 @@
+lyyli-clone/src/app/[locale]/layout_backup.tsx
+archive/old-project-structure/lyyli-clone

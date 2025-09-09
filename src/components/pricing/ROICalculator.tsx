@@ -24,7 +24,7 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
   const annualSavings = totalSavingsPerYear;
 
   // Assuming Professional plan for calculation
-  const professionalPlanCost = 599 * 12; // yearly
+  const professionalPlanCost = 199 * 12; // yearly
   const netROI =
     ((totalSavingsPerYear - professionalPlanCost) / professionalPlanCost) * 100;
   const paybackMonths = Math.ceil(professionalPlanCost / monthlySavings);
@@ -43,8 +43,8 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
           {t["pricing.roi.subtitle"]}
         </p>
 
-        <div className="bg-white rounded-lg border border-grayLight p-8 space-y-6">
-          <h3 className="text-2xl text-forest font-playfair font-bold leading-normal mb-6">ROI calculator</h3>
+        <div className="bg-white rounded-2xl border border-gray-200 p-8 space-y-6 shadow-lg">
+          <h3 className="text-2xl text-forest font-playfair font-normal leading-normal mb-6">ROI calculator</h3>
           
           {/* Team Size Input */}
           <div>
@@ -99,7 +99,7 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
           </div>
 
           {/* Results Display */}
-          <div className="bg-gradient-to-r from-forest/10 to-turquoise/10 rounded-lg p-6">
+          <div className="bg-gradient-to-r from-forest/10 to-turquoise/10 rounded-2xl p-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-medium text-forest">Annual savings</h4>
@@ -126,13 +126,13 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
 
           {/* Additional Metrics */}
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white rounded-lg border border-grayLight p-4 text-center">
+            <div className="bg-white rounded-2xl border border-gray-200 p-4 text-center shadow-sm">
               <div className="text-2xl font-bold text-forest mb-1">
                 {paybackMonths}
               </div>
               <div className="text-sm text-mediumGray">Months to payback</div>
             </div>
-            <div className="bg-white rounded-lg border border-grayLight p-4 text-center">
+            <div className="bg-white rounded-2xl border border-gray-200 p-4 text-center shadow-sm">
               <div className="text-2xl font-bold text-forest mb-1">
                 €{monthlySavings.toLocaleString()}
               </div>
@@ -141,7 +141,7 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
           </div>
 
           {/* Assumptions */}
-          <div className="bg-rose rounded-lg p-6">
+          <div className="bg-rose/60 rounded-2xl p-6 border border-rose/30">
             <h4 className="font-medium text-forest mb-3">
               {t["pricing.roi.assumptions"]}
             </h4>

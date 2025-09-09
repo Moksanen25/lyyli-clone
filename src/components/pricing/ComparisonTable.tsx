@@ -10,7 +10,7 @@ interface ComparisonTableProps {
 interface ComparisonRow {
   feature: string;
   free: string | boolean;
-  starter: string | boolean;
+  launch: string | boolean;
   growth: string | boolean;
   professional: string | boolean;
   enterprise: string | boolean;
@@ -23,126 +23,70 @@ export default function ComparisonTable({
   const [showComparison, setShowComparison] = useState(false);
 
   const comparisonData: ComparisonRow[] = [
+    // Limits
     {
       feature: t["pricing.features.price"],
       free: "€0",
-      starter: "€29",
-      growth: "€199",
-      professional: "€599",
+      launch: "€39",
+      growth: "€69",
+      professional: "€199",
       enterprise: t["pricing.custom"],
     },
     {
       feature: t["pricing.features.users"],
       free: "1",
-      starter: "1",
-      growth: "3",
-      professional: "10",
-      enterprise: t["pricing.custom"],
-    },
-    {
-      feature: t["pricing.features.conversations"],
-      free: "20/week",
-      starter: "50/week",
-      growth: "100/week",
-      professional: t["pricing.features.unlimited"],
-      enterprise: t["pricing.features.unlimited"],
-    },
-    {
-      feature: t["pricing.features.posts"],
-      free: "5/week",
-      starter: "10/week",
-      growth: t["pricing.features.unlimited"],
-      professional: t["pricing.features.unlimited"],
-      enterprise: t["pricing.features.unlimited"],
-    },
-    {
-      feature: t["pricing.features.integrations"],
-      free: "2",
-      starter: "3",
-      growth: t["pricing.features.unlimited"],
-      professional: t["pricing.features.unlimited"],
-      enterprise: t["pricing.features.unlimited"],
-    },
-    {
-      feature: t["pricing.features.agents"],
-      free: "1",
-      starter: "1",
+      launch: "1",
       growth: "1",
-      professional: "3",
-      enterprise: t["pricing.custom"],
+      professional: "1",
+      enterprise: t["pricing.features.unlimited"],
     },
     {
-      feature: t["pricing.features.webInterface"],
-      free: true,
-      starter: true,
-      growth: true,
-      professional: true,
-      enterprise: true,
+      feature: t["pricing.features.messagesPerMonth"],
+      free: "20",
+      launch: "300",
+      growth: "1000",
+      professional: t["pricing.features.fairUse"],
+      enterprise: t["pricing.features.unlimited"],
     },
-    {
-      feature: t["pricing.features.slack"],
-      free: false,
-      starter: false,
-      growth: false,
-      professional: true,
-      enterprise: true,
-    },
-    {
-      feature: t["pricing.features.teams"],
-      free: false,
-      starter: false,
-      growth: true,
-      professional: true,
-      enterprise: true,
-    },
-    {
-      feature: t["pricing.features.customization"],
-      free: false,
-      starter: true,
-      growth: true,
-      professional: true,
-      enterprise: true,
-    },
-    {
-      feature: t["pricing.features.communicationSuggestions"],
-      free: "3x/week",
-      starter: "1x/day",
-      growth: t["pricing.custom"],
-      professional: t["pricing.custom"],
-      enterprise: t["pricing.custom"],
-    },
-    {
-      feature: t["pricing.features.onboarding"],
-      free: "€199",
-      starter: "€199",
-      growth: "€199 (free with annual)",
-      professional: t["pricing.features.included"],
-      enterprise: t["pricing.custom"],
-    },
-    {
-      feature: t["pricing.features.support"],
-      free: false,
-      starter: false,
-      growth: "Chat 8-20",
-      professional: "Chat 8-20",
-      enterprise: t["pricing.custom"],
-    },
-    {
-      feature: t["pricing.features.phoneSupport"],
-      free: false,
-      starter: false,
-      growth: false,
-      professional: "9-15",
-      enterprise: true,
-    },
-    {
-      feature: t["pricing.features.apiAccess"],
-      free: false,
-      starter: false,
-      growth: false,
-      professional: false,
-      enterprise: true,
-    },
+
+    // Features
+    { feature: t["pricing.features.section.features"], free: "", launch: "", growth: "", professional: "", enterprise: "" },
+    { feature: t["pricing.features.basicTone"], free: true, launch: true, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.advancedTone"], free: false, launch: false, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.integrations"], free: false, launch: true, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.editorMode"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.orgManagementRoles"], free: false, launch: false, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.slackOrTeams"], free: false, launch: false, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.advancedAIAnalytics"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.campaignMode"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.mediaLibrary"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.kpiReports"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.brandedTemplates"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.guidedOnboarding"], free: "€199", launch: "€199", growth: t["pricing.features.guidedOnboardingFreeAnnual"], professional: t["pricing.features.included"], enterprise: t["pricing.custom"] },
+    { feature: t["pricing.features.formalSLA"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.namedAccountManager"], free: false, launch: false, growth: false, professional: false, enterprise: true },
+    { feature: t["pricing.features.localEntity"], free: false, launch: false, growth: false, professional: false, enterprise: true },
+
+    // Help & Support
+    { feature: t["pricing.features.section.support"], free: "", launch: "", growth: "", professional: "", enterprise: "" },
+    { feature: t["pricing.features.helpLibrary"], free: true, launch: true, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.emailSupport"], free: false, launch: true, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.phoneSupport"], free: false, launch: false, growth: false, professional: "9-15", enterprise: "9-15" },
+    { feature: t["pricing.features.firstResponseTarget"], free: "1-2 days", launch: "1-2 days", growth: t["pricing.features.sameDay"], professional: "4 hours (9-15)", enterprise: "4 hours (9-15)" },
+    { feature: t["pricing.features.serviceAvailability"], free: t["pricing.features.bestEffort"], launch: t["pricing.features.bestEffort"], growth: "99.5%", professional: "99.9%", enterprise: "99.9%" },
+
+    // Access & Security
+    { feature: t["pricing.features.section.accessSecurity"], free: "", launch: "", growth: "", professional: "", enterprise: "" },
+    { feature: t["pricing.features.sso"], free: false, launch: false, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.mfa"], free: false, launch: false, growth: true, professional: true, enterprise: true },
+    { feature: t["pricing.features.scim"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.slo"], free: false, launch: false, growth: false, professional: false, enterprise: true },
+    { feature: t["pricing.features.euDataResidencyDpa"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.allIntegrationsIncluded"], free: false, launch: false, growth: false, professional: false, enterprise: true },
+    { feature: t["pricing.features.apiAccess"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.webhooks"], free: false, launch: false, growth: false, professional: true, enterprise: true },
+    { feature: t["pricing.features.auditLogsRetention"], free: "-", launch: "30 days", growth: "180 days", professional: "365 days", enterprise: "365 days" },
+    { feature: t["pricing.features.apiScope"], free: t["pricing.features.none"], launch: t["pricing.features.none"], growth: t["pricing.features.coreAPIs"], professional: t["pricing.features.fullAPIsWebhooks"], enterprise: t["pricing.features.fullAPIsWebhooks"] },
   ];
 
   const renderCell = (value: string | boolean) => {
@@ -191,6 +135,9 @@ export default function ComparisonTable({
         </h2>
         <p className="text-lg text-mediumGray mb-8 font-sans leading-relaxed">
           {t["pricing.comparison.subtitle"]}
+        </p>
+        <p className="text-sm text-mediumGray font-sans">
+          {(t["pricing.pricingNote"] as string).replace("{period}", t["pricing.monthly"])}
         </p>
 
         {/* Toggle Button */}
@@ -247,7 +194,7 @@ export default function ComparisonTable({
                     scope="col"
                     className="px-6 py-4 text-center font-medium text-forest"
                   >
-                    {t["pricing.starter.name"]}
+                    {t["pricing.launch.name"]}
                   </th>
                   <th
                     scope="col"
@@ -283,7 +230,7 @@ export default function ComparisonTable({
                       {renderCell(row.free)}
                     </td>
                     <td className="px-6 py-4 text-center text-mediumGray">
-                      {renderCell(row.starter)}
+                      {renderCell(row.launch)}
                     </td>
                     <td className="px-6 py-4 text-center text-mediumGray bg-forest/5">
                       {renderCell(row.growth)}
