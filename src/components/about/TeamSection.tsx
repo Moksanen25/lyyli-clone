@@ -27,11 +27,6 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
       initials: "SN",
     },
     {
-      name: t["about.board.perttu.name"],
-      title: t["about.board.perttu.title"],
-      initials: "PA",
-    },
-    {
       name: t["about.board.teemu.name"],
       title: t["about.board.teemu.title"],
       initials: "TL",
@@ -55,7 +50,7 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
           {leadership.map((member, index) => (
             <article
               key={index}
-              className="group bg-white p-8 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1"
+              className="group p-8 rounded-2xl shadow-lg text-center border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1"
             >
               <div className="w-24 h-24 bg-gradient-to-br from-forest to-forest/90 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <span className="text-2xl font-bold text-white font-playfair">
@@ -74,6 +69,48 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
         </div>
       </div>
 
+      {/* Trusted by investors */}
+      <div>
+        <div className="text-center mb-10">
+          <h3 className="text-2xl mb-4 text-forest font-playfair font-bold leading-normal">
+            {t["about.trustedBy.title"]}
+          </h3>
+          <p className="text-base text-mediumGray max-w-2xl mx-auto font-sans leading-relaxed">
+            {t["about.trustedBy.subtitle"]}
+          </p>
+        </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12">
+          <a
+            href="https://www.redstone.vc/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Redstone.vc website"
+            className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity"
+          >
+            <img
+              src="/images/logos/redstone.svg"
+              alt="Redstone.vc logo"
+              className="h-8 w-auto"
+              loading="lazy"
+            />
+          </a>
+          <a
+            href="https://expion.fi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Expion.fi website"
+            className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity"
+          >
+            <img
+              src="/images/logos/expion.svg"
+              alt="Expion.fi logo"
+              className="h-8 w-auto"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      </div>
+
       {/* Board & Advisors - Following 10-layout rule: korttigrid with pehmeät varjot */}
       <div>
         <div className="text-center mb-12">
@@ -82,7 +119,7 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
           </h3>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto justify-center justify-items-center">
           {boardMembers.map((member, index) => (
             <article
               key={index}

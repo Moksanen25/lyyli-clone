@@ -301,7 +301,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                   plan.name === "Professional" || plan.name === "Enterprise" 
                     ? 'bg-gradient-to-br from-grayLight to-white' 
                     : 'bg-white'
-                } rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 h-full cursor-pointer ${
+                } rounded-2xl p-6 shadow-lg border transition-all duration-300 h-full cursor-pointer ${
                   plan.popular 
                     ? 'border-turquoise/40 shadow-2xl scale-105 bg-gradient-to-br from-white to-turquoise/5'  
                     : 'border-gray-200 hover:border-turquoise/30 hover:shadow-xl'
@@ -324,8 +324,8 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                   </h3>
                   <div className="mb-4 flex flex-col items-center">
                     {plan.name === "Enterprise" ? (
-                      <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-forest to-turquoise rounded-full">
-                        <span className="text-lg font-bold text-white font-sans">
+                      <div className="inline-flex items-center px-4 py-2 bg-forest hover:bg-[#3A6A5C] transition-colors duration-200 rounded-full">
+                        <span className="text-lg font-semibold text-white font-sans">
                           Contact us
                         </span>
                       </div>
@@ -374,7 +374,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
-                      <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-forest mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-sm text-mediumGray font-sans">
@@ -389,41 +389,13 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                   {(plan.name === "Professional" || plan.name === "Enterprise") ? (
                     <a
                       href={`/${locale || 'en'}/waitlist`}
-                      style={{
-                        display: 'block',
-                        width: '100%',
-                        padding: '12px 16px',
-                        borderRadius: '12px',
-                        fontWeight: 'bold',
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                        color: 'white',
-                        background: plan.popular 
-                          ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
-                          : '#2F5D50',
-                        transition: 'all 0.3s ease'
-                      }}
-                      className="hover:shadow-lg"
+                      className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
                     </a>
                   ) : (
                     <button 
-                      style={{
-                        display: 'block',
-                        width: '100%',
-                        padding: '12px 16px',
-                        borderRadius: '12px',
-                        fontWeight: 'bold',
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                        color: 'white',
-                        background: plan.popular 
-                          ? 'linear-gradient(to right, #2F5D50, #0F766E)' 
-                          : '#2F5D50',
-                        transition: 'all 0.3s ease'
-                      }}
-                      className="hover:shadow-lg"
+                      className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
                     </button>
@@ -454,7 +426,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
           viewport={{ once: true }}
         >
           <div className="bg-gradient-to-br from-white to-turquoise/5 rounded-2xl p-8 shadow-xl border border-turquoise/20 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-forest mb-4 font-playfair font-bold">
+            <h3 className="text-2xl text-forest mb-4 font-playfair font-normal">
               Need more information?
             </h3>
             <p className="text-mediumGray font-sans leading-relaxed mb-6">

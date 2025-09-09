@@ -131,7 +131,7 @@ export default function PricingFAQ({
         transition={{ duration: 0.6, delay: 0.4 }}
         viewport={{ once: true }}
       >
-        <h3 className="text-xl mb-4 text-forest font-playfair font-bold leading-tight">
+        <h3 className="text-xl mb-4 text-forest font-playfair font-normal leading-tight">
           {t["pricing.faqTitle"]}
         </h3>
         <p className="text-base text-mediumGray font-sans leading-relaxed mb-6">
@@ -140,7 +140,7 @@ export default function PricingFAQ({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <motion.a
             href="/faq"
-            className="inline-flex items-center justify-center px-6 py-3 border border-forest text-forest rounded-lg hover:bg-forest hover:text-white transition-all duration-300 font-medium hover:shadow-md"
+            className="inline-flex items-center justify-center px-6 py-3 border-2 border-forest text-forest rounded-2xl hover:bg-forest hover:text-white transition-all duration-300 font-medium hover:shadow-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -148,7 +148,7 @@ export default function PricingFAQ({
           </motion.a>
           <motion.a
             href={`/${locale}/contact`}
-            className="inline-flex items-center justify-center px-6 py-3 bg-forest text-white rounded-lg hover:bg-turquoise transition-all duration-300 font-medium hover:shadow-md"
+            className="inline-flex items-center justify-center px-6 py-3 bg-forest text-white rounded-2xl hover:bg-[#3A6A5C] transition-all duration-300 font-medium hover:shadow-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
