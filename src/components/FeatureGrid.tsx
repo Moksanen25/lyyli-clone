@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import IconSet from "./IconSet";
 import { useInView } from "react-intersection-observer";
 import { memo, useMemo, useCallback } from "react";
 
@@ -13,84 +14,76 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
-    title: "AI-powered content generation",
-    description: "Create engaging, on-brand content that resonates with your audience using advanced natural language processing.",
+    icon: <IconSet.ToneBasic className="w-8 h-8" />,
+    title: "Basic tone of voice settings",
+    description: "Set foundational brand voice parameters for consistent messaging across channels.",
     category: "ai"
   },
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      </svg>
-    ),
-    title: "Multi-channel publishing",
-    description: "Seamlessly publish content across Slack, Teams, email, social media, and your website from one platform.",
-    category: "communication"
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: "Smart scheduling",
-    description: "AI-optimized posting times ensure your content reaches your audience when they're most engaged.",
-    category: "automation"
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      </svg>
-    ),
-    title: "Performance analytics",
-    description: "Track engagement, reach, and ROI with comprehensive analytics and actionable insights.",
-    category: "analytics"
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-    title: "Team collaboration",
-    description: "Streamline approval workflows with built-in collaboration tools and role-based permissions.",
-    category: "communication"
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-      </svg>
-    ),
-    title: "Brand voice consistency",
-    description: "Maintain consistent messaging and tone across all communications with AI-powered brand guidelines.",
+    icon: <IconSet.ToneAdvanced className="w-8 h-8" />,
+    title: "Advanced tone of voice settings",
+    description: "Fine‑tune tone, style and terminology per channel, audience and use case.",
     category: "ai"
   },
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-    title: "Lightning-fast delivery",
-    description: "From idea to published content in minutes, not hours, with our streamlined content creation process.",
+    icon: <IconSet.Integration className="w-8 h-8" />,
+    title: "Integrations",
+    description: "Connect Outlook, Gmail, Slack, Teams, SharePoint and more.",
+    category: "communication"
+  },
+  {
+    icon: <IconSet.Editor className="w-8 h-8" />,
+    title: "Editor mode",
+    description: "Review, edit and approve content with clear version history and control.",
     category: "automation"
   },
   {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-    title: "Enterprise security",
-    description: "Bank-level security with SOC 2 compliance, end-to-end encryption, and GDPR-ready data handling.",
+    icon: <IconSet.OrgRoles className="w-8 h-8" />,
+    title: "Organization management and user roles",
+    description: "Structure teams, assign roles and manage permissions safely.",
+    category: "communication"
+  },
+  {
+    icon: <IconSet.SlackTeams className="w-8 h-8" />,
+    title: "Slack and/or Teams native app",
+    description: "Use Lyyli directly in Slack and Microsoft Teams.",
+    category: "communication"
+  },
+  {
+    icon: <IconSet.AIAnalytics className="w-8 h-8" />,
+    title: "Advanced AI‑analytics",
+    description: "Optimize content and publishing with AI‑driven insights and benchmarks.",
     category: "analytics"
+  },
+  {
+    icon: <IconSet.CampaignMode className="w-8 h-8" />,
+    title: "AI‑enhanced Campaign mode",
+    description: "Plan and manage multi‑channel communication campaigns with guidance.",
+    category: "automation"
+  },
+  {
+    icon: <IconSet.MediaLibrary className="w-8 h-8" />,
+    title: "AI‑enhanced media library",
+    description: "Smart media suggestions and organized assets ready for publishing.",
+    category: "ai"
+  },
+  {
+    icon: <IconSet.KPIReports className="w-8 h-8" />,
+    title: "Automated KPI‑reports",
+    description: "C‑level and management dashboards with automated KPI reporting.",
+    category: "analytics"
+  },
+  {
+    icon: <IconSet.Templates className="w-8 h-8" />,
+    title: "Branded templates",
+    description: "Templates for communications plan, management report, weekly report and personnel info.",
+    category: "automation"
+  },
+  {
+    icon: <IconSet.Onboarding className="w-8 h-8" />,
+    title: "Guided onboarding",
+    description: "Best‑practice onboarding that gets your organization productive quickly.",
+    category: "communication"
   }
 ];
 
@@ -139,14 +132,18 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
   // Memoize the translation key function
   const getFeatureTranslationKey = useCallback((title: string) => {
     const keyMap: { [key: string]: string } = {
-      "AI-powered content generation": "ai",
-      "Multi-channel publishing": "multichannel",
-      "Smart scheduling": "scheduling",
-      "Performance analytics": "analytics",
-      "Team collaboration": "collaboration",
-      "Brand voice consistency": "brand",
-      "Lightning-fast delivery": "delivery",
-      "Enterprise security": "security"
+      "Basic tone of voice settings": "basicTone",
+      "Advanced tone of voice settings": "advancedTone",
+      "Integrations": "integrations",
+      "Editor mode": "editor",
+      "Organization management and user roles": "orgRoles",
+      "Slack and/or Teams native app": "slackTeams",
+      "Advanced AI‑analytics": "advancedAIAnalytics",
+      "AI‑enhanced Campaign mode": "campaignMode",
+      "AI‑enhanced media library": "mediaLibrary",
+      "Automated KPI‑reports": "kpiReports",
+      "Branded templates": "brandedTemplates",
+      "Guided onboarding": "guidedOnboarding"
     };
     return keyMap[title] || title.toLowerCase().replace(/\s+/g, '');
   }, []);
@@ -189,7 +186,7 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
                   }}
                 >
                   {/* Icon */}
-                  <div className={`w-16 h-16 bg-gradient-to-br ${categoryColors[feature.category]} rounded-2xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-16 h-16 bg-gradient-to-br ${categoryColors[feature.category]} rounded-2xl flex items-center justify-center mb-6 text-forest group-hover:scale-110 transition-transform duration-300`}>
                     <div className="text-white">
                       {feature.icon}
                     </div>
