@@ -119,7 +119,7 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto justify-center justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto place-items-center">
           {boardMembers.map((member, index) => (
             <article
               key={index}

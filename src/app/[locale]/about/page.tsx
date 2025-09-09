@@ -72,7 +72,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
       </section>
 
       {/* Team Section */}
-      <section className="bg-white py-16 lg:py-24">
+      <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <TeamSection translations={t} />
         </div>
