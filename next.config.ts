@@ -8,6 +8,26 @@ const withMDX = createMDX({
   },
 });
 
+const securityHeaders = [
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self';",
+      // HubSpot + Next
+      "script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' https://js-eu1.hsforms.net https://static.hsappstatic.net;",
+      "style-src 'self' 'unsafe-inline';",
+      "img-src 'self' data: https:;",
+      // Lomakkeet + meetings iframet
+      "frame-src https://*.hubspot.com https://*.hsforms.com https://*.hsforms.net;",
+      // XHR/fetch kohteet
+      "connect-src 'self' https://api-eu1.hubspot.com https://forms-eu1.hsforms.com https://forms.hsforms.com;",
+      "font-src 'self' data: https:;"
+    ].join(' ')
+  },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' }
+];
+
 const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
@@ -67,6 +87,14 @@ const nextConfig: NextConfig = {
   // Do not fail the production build on ESLint errors
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ];
   },
 };
 
