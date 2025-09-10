@@ -1,6 +1,6 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
-import ContactForm from "@/components/contact/ContactForm";
+import HubSpotFormSection from "@/components/contact/HubSpotFormSection";
 import TeamContacts from "@/components/contact/TeamContacts";
 import SecurityNotice from "@/components/contact/SecurityNotice";
 import MeshGradientBackground from "@/components/MeshGradientBackground";
@@ -52,6 +52,8 @@ export default async function ContactPage({ params }: ContactPageProps) {
 
   const t = await getTranslations(currentLocale);
 
+  
+
   return (
     <main className="min-h-screen">
       {/* Mesh Gradient Background */}
@@ -79,7 +81,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
       {/* Contact Form Section */}
       <section className="bg-gradient-to-br from-grayLight to-white py-24 relative z-20 border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-6">
-          <ContactForm locale={currentLocale} translations={t} />
+          <HubSpotFormSection locale={currentLocale} />
         </div>
       </section>
 
@@ -138,7 +140,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
             <div className="text-center bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
               <h3 className="text-xl text-forest mb-2 font-playfair font-normal">
