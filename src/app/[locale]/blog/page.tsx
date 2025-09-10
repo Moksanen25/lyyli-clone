@@ -82,7 +82,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl mb-6 font-playfair font-bold leading-tight text-forest">
+            <h1 className="text-4xl md:text-5xl mb-6 font-playfair font-normal leading-[1.2] text-forest">
               {t["blog.title"]}
             </h1>
             <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
