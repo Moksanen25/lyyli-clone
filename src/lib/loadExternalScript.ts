@@ -5,7 +5,7 @@ const loaders: Record<string, Promise<void> | undefined> = {};
 export function loadExternalScriptOnce(src: string): Promise<void> {
   if (typeof window === 'undefined') return Promise.resolve();
   if (loaders[src]) return loaders[src];
-  loaders[src] = new Promise((resolve, reject) => {
+  loaders[src] = new Promise<void>((resolve, reject) => {
     const existing = document.querySelector(`script[src="${src}"]`) as HTMLScriptElement | null;
     if (existing) {
       if ((existing as any)._loaded === true) return resolve();
