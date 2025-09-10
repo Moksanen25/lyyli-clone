@@ -14,13 +14,13 @@ const securityHeaders = [
     value: [
       "default-src 'self';",
       // HubSpot + Next
-      "script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' https://js-eu1.hsforms.net https://static.hsappstatic.net;",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://js-eu1.hsforms.net https://static.hsappstatic.net https://www.googletagmanager.com;",
       "style-src 'self' 'unsafe-inline';",
       "img-src 'self' data: https:;",
       // Lomakkeet + meetings iframet
       "frame-src https://*.hubspot.com https://*.hsforms.com https://*.hsforms.net;",
       // XHR/fetch kohteet
-      "connect-src 'self' https://api-eu1.hubspot.com https://forms-eu1.hsforms.com https://forms.hsforms.com;",
+      "connect-src 'self' https://api-eu1.hubspot.com https://forms-eu1.hsforms.com https://forms.hsforms.com https://www.google-analytics.com https://www.googletagmanager.com;",
       "font-src 'self' data: https:;"
     ].join(' ')
   },
