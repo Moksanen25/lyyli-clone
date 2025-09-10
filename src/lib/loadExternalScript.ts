@@ -1,6 +1,6 @@
 'use client';
 
-const loaders: Record<string, Promise<void>> = {};
+const loaders: Record<string, Promise<void> | undefined> = {};
 
 export function loadExternalScriptOnce(src: string): Promise<void> {
   if (typeof window === 'undefined') return Promise.resolve();
