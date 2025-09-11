@@ -465,7 +465,7 @@ export function InteractiveCard({
 
   return (
     <div
-      className={`relative bg-white rounded-xl shadow-soft overflow-hidden transition-all duration-500 ease-out ${
+      className={`relative group bg-white rounded-xl shadow-soft overflow-hidden transition-all duration-500 ease-out ${
         hoverEffect && isHovered ? "shadow-medium scale-105 -translate-y-1" : ""
       } ${className}`}
       onMouseEnter={() => setIsHovered(true)}
