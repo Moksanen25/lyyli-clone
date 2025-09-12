@@ -248,7 +248,7 @@
   "features.ui.mobile": "Mobiilikokemus",
   "footer.rights": "© 2024 Lyyli. Kaikki oikeudet pidätetään.",
   "footer.tagline": "Tekoälyavusteinen viestintäassistentti ammattilaispalveluorganisaatioille",
-  "footer.productHeading": "Lyyli.ai",
+  "footer.product": "Tuote",
   "hero.ctaPrimary": "Varaa demo – 30 minuuttia",
   "hero.ctaSecondary": "Lue lisää",
   "hero.description": "Tekoälyavusteinen viestintäassistentti asiantuntijaorganisaatioille – viestit pikaviestikanavissa kuin ammattilainen ja varmistat, etteivät tärkeät asiat jaa ikinä viestimättä.",
@@ -423,5 +423,8 @@
   "waitlist.hero.subtitle": "Ole ensimmäisten joukossa kokeilemassa, miten tekoäly voi muuttaa sisäisen viestinnän asiantuntijaorganisaatioissa aikaisella pääsyllä ja eksklusiivisilla päivityksillä.",
   "waitlist.hero.title": "Liity odotuslistalle",
   "waitlist.page.description": "Liity odotuslistalle ja ole ensimmäisten joukossa kokeilemassa Lyylin tekoälyavusteista viestintäalustaa asiantuntijaorganisaatioille.",
-  "waitlist.page.title": "Liity odotuslistalle - Lyyli.ai"
+  "waitlist.page.title": "Liity odotuslistalle - Lyyli.ai",
+  "waitlist.joinWaitlist": "Liity jonotuslistalle",
+  "pricing.moreInfo.viewPricing": "Katso yksityiskohtaiset hinnat",
+  "pricing.moreInfo.contactSales": "Ota yhteyttä myyntiin"
 }
