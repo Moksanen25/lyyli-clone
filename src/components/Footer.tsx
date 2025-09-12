@@ -103,7 +103,7 @@ export default function Footer({
               {/* Product Links - Following 10-layout rule: sivupolut */}
               <div>
                 <h3 className="text-xl text-gray-100 mb-4 font-bold leading-normal font-playfair" style={{ color: '#F5F5F4' }}>
-                  Product
+                  {t["footer.product"] || (locale === "fi" ? "Tuote" : "Product")}
                 </h3>
                 <nav>
                   <ul className="space-y-2">

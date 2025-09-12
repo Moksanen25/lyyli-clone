@@ -438,7 +438,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                 href="/pricing" 
                 className="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-2xl hover:bg-turquoise transition-all duration-300 font-sans hover:shadow-lg hover:-translate-y-1"
               >
-                View detailed pricing
+                {translations?.["pricing.moreInfo.viewPricing" as keyof typeof translations] || "View detailed pricing"}
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -447,7 +447,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                 href="/contact" 
                 className="inline-flex items-center px-6 py-3 border-2 border-forest text-forest font-semibold rounded-2xl hover:bg-forest hover:text-white transition-all duration-300 font-sans hover:shadow-lg hover:-translate-y-1"
               >
-                Contact sales team
+                {translations?.["pricing.moreInfo.contactSales" as keyof typeof translations] || "Contact sales team"}
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
