@@ -3,7 +3,6 @@ import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";
 import DemoVideo from "../../components/DemoVideo";
 import ROICalculator from "../../components/ROICalculator";
-import StackingTestimonialCards from "../../components/StackingTestimonialCards";
 import PricingCards from "../../components/PricingCards";
 
 // Note: using static imports for client components inside a Server Component
@@ -137,8 +136,7 @@ export default async function Home({ params }: HomeProps) {
       {/* ROI Calculator Section */}
       <ROICalculator locale={currentLocale} translations={t} />
 
-      {/* Testimonials and Customer Logos - Fixed hydration issues */}
-      <StackingTestimonialCards />
+      {/* Testimonials hidden */}
 
       {/* Pricing Section */}
       <PricingCards locale={currentLocale} translations={t} />
