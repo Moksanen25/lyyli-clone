@@ -14,35 +14,35 @@ export default function FeaturesCardLayout({
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
           <path fillRule="evenodd" d="M19.902 4.098a3.75 3.75 0 00-5.304 0l-4.5 4.5a3.75 3.75 0 001.035 6.037.75.75 0 01-.646 1.353 5.25 5.25 0 01-1.449-8.45l4.5-4.5a5.25 5.25 0 117.424 7.424l-1.757 1.757a.75.75 0 11-1.06-1.06l1.757-1.757a3.75 3.75 0 000-5.304zm-7.804 9.804a3.75 3.75 0 00-1.035-6.037.75.75 0 01.646-1.353 5.25 5.25 0 011.449 8.45l-4.5 4.5a5.25 5.25 0 11-7.424-7.424l1.757-1.757a.75.75 0 111.06 1.06l-1.757 1.757a3.75 3.75 0 105.304 5.304l4.5-4.5z" clipRule="evenodd" />
         </svg>
       ),
-      title: "Seamless channel integration",
-      description: "Lyyli integrates with your communication channels like email, Slack, and Teams to understand your messaging patterns and organizational needs.",
+      title: t["features.learns.seamlessIntegration.title"],
+      description: t["features.learns.seamlessIntegration.description"],
       gradient: "from-forest to-turquoise",
     },
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
           <path fillRule="evenodd" d="M6 3a3 3 0 00-3 3v12a3 3 0 003 3h12a3 3 0 003-3V6a3 3 0 00-3-3H6zm.75 3.75A.75.75 0 017.5 6h9a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75v-.75zm0 3A.75.75 0 017.5 9h9a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75v-.75zm0 3A.75.75 0 017.5 12h9a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-9a.75.75 0 01-.75-.75v-.75z" clipRule="evenodd" />
         </svg>
       ),
-      title: "Learns your unique voice",
-      description: "Our AI understands your communication style and brand voice, adapting to match your organization's tone and professional standards.",
+      title: t["features.learns.voice.title"],
+      description: t["features.learns.voice.description"],
       gradient: "from-forest to-turquoise",
     },
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 .75a8.25 8.25 0 00-4.135 15.39c.686.398 1.115 1.008 1.134 1.623a.75.75 0 00.577.706 4.5 4.5 0 004.848 0 .75.75 0 00.577-.706c.019-.615.448-1.225 1.134-1.623A8.25 8.25 0 0012 .75z" />
           <path fillRule="evenodd" d="M9.013 19.9a.75.75 0 01.877-.597 11.319 11.319 0 004.22 0 .75.75 0 11.28 1.473 12.819 12.819 0 01-4.78 0 .75.75 0 01-.597-.876zM9.754 22.344a.75.75 0 01.824-.668 13.682 13.682 0 002.844 0 .75.75 0 11.156 1.492 15.156 15.156 0 01-3.156 0 .75.75 0 01-.668-.824z" clipRule="evenodd" />
         </svg>
       ),
-      title: "Proactive communication ideas",
-      description: "Lyyli creates messages that sound authentically like you or your organization, suggesting communications you didn't even realize you needed for internal and external stakeholders.",
+      title: t["features.learns.proactive.title"],
+      description: t["features.learns.proactive.description"],
       gradient: "from-forest to-turquoise",
     },
 
@@ -158,10 +158,10 @@ export default function FeaturesCardLayout({
       <div>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            Lyyli learns from your messages
+            {t["features.learns.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            Lyyli learns from your messaging patterns and gives you intelligent ideas for communication, helping you stay connected with what matters most.
+            {t["features.learns.description"]}
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -222,10 +222,10 @@ export default function FeaturesCardLayout({
       <div>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-            Enterprise Security
+            {t["features.security.title"]}
           </h2>
           <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-            Bank-grade encryption, ISO 27001 readiness, and comprehensive security measures to protect your organization's communications.
+            {t["features.security.description"]}
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

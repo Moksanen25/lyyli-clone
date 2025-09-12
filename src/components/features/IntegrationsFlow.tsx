@@ -1,4 +1,10 @@
-export default function IntegrationsFlow() {
+import { TranslationKeys } from "../../lib/i18n";
+
+interface Props {
+  translations?: TranslationKeys;
+}
+
+export default function IntegrationsFlow({ translations: t }: Props) {
   return (
     <div className="max-w-6xl mx-auto">
       {/* Integration Cards Grid */}
@@ -19,13 +25,13 @@ export default function IntegrationsFlow() {
               <h3 className="text-lg font-semibold text-forest">Slack</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-green-600 font-medium">Connected</span>
+                <span className="text-sm text-green-600 font-medium">{t?.["integrations.status.connected"] || "Connected"}</span>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Get instant meeting summaries & action items in your team channel
+            {t?.["integrations.slack.description"] || "Get instant meeting summaries & action items in your team channel"}
           </p>
           
           {/* Dataflow visualization */}
@@ -75,13 +81,13 @@ export default function IntegrationsFlow() {
               <h3 className="text-lg font-semibold text-forest">Teams</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                <span className="text-sm text-mediumGray font-medium">Not connected</span>
+                <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Capture key action and automate action items
+            {t?.["integrations.teams.description"] || "Capture key action and automate action items"}
           </p>
           
           {/* Dataflow visualization */}
@@ -132,13 +138,13 @@ export default function IntegrationsFlow() {
               <h3 className="text-lg font-semibold text-forest">Gmail</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                <span className="text-sm text-mediumGray font-medium">Not connected</span>
+                <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Tracking all email communication and respond accordingly
+            {t?.["integrations.gmail.description"] || "Tracking all email communication and respond accordingly"}
           </p>
           
           {/* Dataflow visualization - One way to Lyyli */}
@@ -185,13 +191,13 @@ export default function IntegrationsFlow() {
               <h3 className="text-lg font-semibold text-forest">Outlook</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                <span className="text-sm text-mediumGray font-medium">Not connected</span>
+                <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Schedule and track discussion effortlessly
+            {t?.["integrations.outlook.description"] || "Schedule and track discussion effortlessly"}
           </p>
           
           {/* Dataflow visualization - One way to Lyyli */}
@@ -235,13 +241,13 @@ export default function IntegrationsFlow() {
               <h3 className="text-lg font-semibold text-forest">LinkedIn</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                <span className="text-sm text-mediumGray font-medium">Not connected</span>
+                <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Read post and publish new content with the power of AI
+            {t?.["integrations.linkedin.description"] || "Read post and publish new content with the power of AI"}
           </p>
           
           {/* Dataflow visualization - One way from Lyyli */}
@@ -286,13 +292,13 @@ export default function IntegrationsFlow() {
               <h3 className="text-lg font-semibold text-forest">Threads</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                <span className="text-sm text-mediumGray font-medium">Not connected</span>
+                <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Read post and publish new content with the power of AI
+            {t?.["integrations.threads.description"] || "Read post and publish new content with the power of AI"}
           </p>
           
           {/* Dataflow visualization - One way from Lyyli */}
@@ -336,13 +342,13 @@ export default function IntegrationsFlow() {
               <h3 className="text-lg font-semibold text-forest">Facebook</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                <span className="text-sm text-mediumGray font-medium">Not connected</span>
+                <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Read post and publish new content with the power of AI
+            {t?.["integrations.facebook.description"] || "Read post and publish new content with the power of AI"}
           </p>
           
           {/* Dataflow visualization - One way from Lyyli */}
@@ -396,13 +402,13 @@ export default function IntegrationsFlow() {
               <h3 className="text-lg font-semibold text-forest">Instagram</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                <span className="text-sm text-mediumGray font-medium">Not connected</span>
+                <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Read post and publish new content with the power of AI
+            {t?.["integrations.instagram.description"] || "Read post and publish new content with the power of AI"}
           </p>
           
           {/* Dataflow visualization - One way from Lyyli */}
@@ -445,13 +451,13 @@ export default function IntegrationsFlow() {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">X (Twitter)</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="bg-rose/20 text-rose text-xs px-2 py-1 rounded-full font-medium">Coming soon</div>
+                <div className="bg-rose/20 text-rose text-xs px-2 py-1 rounded-full font-medium">{t?.["common.comingSoon"] || "Coming soon"}</div>
               </div>
             </div>
           </div>
           
           <p className="text-mediumGray text-sm mb-4 font-sans">
-            Read post and publish new content with the power of AI
+            {t?.["integrations.twitter.description"] || "Read post and publish new content with the power of AI"}
           </p>
           
           {/* Dataflow visualization - Disabled */}
@@ -493,11 +499,11 @@ export default function IntegrationsFlow() {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">SharePoint</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="bg-rose/20 text-rose text-xs px-2 py-1 rounded-full font-medium">Coming soon</div>
+                <div className="bg-rose/20 text-rose text-xs px-2 py-1 rounded-full font-medium">{t?.["common.comingSoon"] || "Coming soon"}</div>
               </div>
             </div>
           </div>
-          <p className="text-mediumGray text-sm mb-4 font-sans">Search and attach files from your SharePoint libraries.</p>
+          <p className="text-mediumGray text-sm mb-4 font-sans">{t?.["integrations.sharepoint.description"] || "Search and attach files from your SharePoint libraries."}</p>
           <div className="flex items-center justify-between mb-4 bg-gray-100 rounded-xl p-3">
             <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center">
               <span className="text-gray-500 text-xs font-bold">L</span>
@@ -533,13 +539,13 @@ export default function IntegrationsFlow() {
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-forest">Most common CRM's</h3>
+              <h3 className="text-lg font-semibold text-forest">{t?.["integrations.crms.title"] || "Most common CRM's"}</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="bg-rose/20 text-rose text-xs px-2 py-1 rounded-full font-medium">Coming soon</div>
+                <div className="bg-rose/20 text-rose text-xs px-2 py-1 rounded-full font-medium">{t?.["common.comingSoon"] || "Coming soon"}</div>
               </div>
             </div>
           </div>
-          <p className="text-mediumGray text-sm mb-4 font-sans">Sync contacts and activities with leading CRM platforms.</p>
+          <p className="text-mediumGray text-sm mb-4 font-sans">{t?.["integrations.crms.description"] || "Sync contacts and activities with leading CRM platforms."}</p>
           <div className="flex items-center justify-between mb-4 bg-gray-100 rounded-xl p-3">
             <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center">
               <span className="text-gray-500 text-xs font-bold">L</span>
@@ -575,13 +581,13 @@ export default function IntegrationsFlow() {
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-forest">Newsletter & marketing email apps</h3>
+              <h3 className="text-lg font-semibold text-forest">{t?.["integrations.emailApps.title"] || "Newsletter & marketing email apps"}</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="bg-rose/20 text-rose text-xs px-2 py-1 rounded-full font-medium">Coming soon</div>
+                <div className="bg-rose/20 text-rose text-xs px-2 py-1 rounded-full font-medium">{t?.["common.comingSoon"] || "Coming soon"}</div>
               </div>
             </div>
           </div>
-          <p className="text-mediumGray text-sm mb-4 font-sans">Publish campaigns to your preferred email platforms.</p>
+          <p className="text-mediumGray text-sm mb-4 font-sans">{t?.["integrations.emailApps.description"] || "Publish campaigns to your preferred email platforms."}</p>
           <div className="flex items-center justify-between mb-4 bg-gray-100 rounded-xl p-3">
             <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center">
               <span className="text-gray-500 text-xs font-bold">L</span>

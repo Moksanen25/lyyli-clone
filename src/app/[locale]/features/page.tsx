@@ -1,6 +1,5 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
-import Image from "next/image";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import IntegrationsFlow from "@/components/features/IntegrationsFlow";
 
@@ -46,168 +45,56 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
         </section>
       </div>
 
-      {/* AI Communication Visualization */}
-      <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-              {t["features.ui.title"] || "How Lyyli connects your teams"}
-            </h2>
-            <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              {t["features.ui.subtitle"] || "Our AI-powered platform creates seamless communication bridges across all your tools and channels."}
-            </p>
-          </div>
-        <div className="relative flex justify-center items-center">
-          {/* Desktop UI - Background */}
-          <div className="relative group">
-            <div className="relative z-0">
-              <Image 
-                src="/images/general/Desktop_UI_for_web.png" 
-                alt="Lyyli.ai Desktop Interface - AI Communication Hub" 
-                width={600}
-                height={400}
-                className="w-full max-w-md lg:max-w-lg rounded-lg shadow-soft border border-gray-200 transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-medium"
-              />
-              {/* Subtle glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-lg blur-xl -z-10 group-hover:blur-2xl transition-all duration-300 ease-out" />
-            </div>
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-forest text-white px-4 py-2 rounded-full text-sm font-medium shadow-soft">
-              {t["features.ui.desktop"]}
-            </div>
-          </div>
+      {/* Removed UI visualization section (desktop and mobile images) */}
 
-          {/* Mobile UI - Foreground, overlapping */}
-          <div className="absolute right-0 lg:right-8 top-1/2 transform -translate-y-1/2 group">
-            <div className="relative z-20">
-              <Image 
-                src="/images/general/Mobile_UI_for_web.jpeg" 
-                alt="Lyyli.ai Mobile Interface - AI Communication Hub" 
-                width={200}
-                height={300}
-                className="w-full max-w-[200px] lg:max-w-[180px] rounded-lg shadow-soft border border-gray-200 transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-medium group-hover:-translate-y-1 group-hover:rotate-1"
-              />
-              {/* Enhanced glow effect for mobile */}
-              <div className="absolute inset-0 bg-gradient-to-br from-turquoise/15 to-rose/15 rounded-lg blur-lg -z-10 group-hover:blur-xl group-hover:from-turquoise/25 group-hover:to-rose/25 transition-all duration-300 ease-out" />
-            </div>
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-turquoise text-white px-4 py-2 rounded-full text-sm font-medium shadow-soft">
-              {t["features.ui.mobile"]}
-            </div>
-          </div>
-        </div>
-        </div>
-      </section>
-
-      {/* How Lyyli Works */}
-      <section className="bg-white py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-              How Lyyli works
-            </h2>
-            <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Simple, powerful steps to transform your professional service organization's communication workflow.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Step 1 */}
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-br from-forest to-turquoise rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
-                </svg>
-              </div>
-              <div className="relative">
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-rose rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">1</span>
-                </div>
-                <h3 className="text-xl font-playfair font-bold text-forest mb-3">
-                  Connect your tools
-                </h3>
-                <p className="text-mediumGray font-sans leading-relaxed">
-                  Seamlessly integrate with Slack, Teams, and email systems. No disruption to your existing workflow.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-br from-turquoise to-rose rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <div className="relative">
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-rose rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">2</span>
-                </div>
-                <h3 className="text-xl font-playfair font-bold text-forest mb-3">
-                  AI learns your style
-                </h3>
-                <p className="text-mediumGray font-sans leading-relaxed">
-                  Our AI adapts to your organization's communication patterns, tone, and professional requirements.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-br from-rose to-forest rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <div className="relative">
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-rose rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">3</span>
-                </div>
-                <h3 className="text-xl font-playfair font-bold text-forest mb-3">
-                  Automate & optimize
-                </h3>
-                <p className="text-mediumGray font-sans leading-relaxed">
-                  Generate professional communications instantly with full audit trails and compliance tracking.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Results section */}
-          <div className="mt-16 bg-gradient-to-br from-rose/5 to-turquoise/5 rounded-2xl p-8 lg:p-12">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-playfair font-bold text-forest mb-4">
-                Results you can measure
-              </h3>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-forest mb-2">75%</div>
-                <p className="text-mediumGray font-sans">Faster response times</p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-forest mb-2">60%</div>
-                <p className="text-mediumGray font-sans">Less time searching for information</p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-forest mb-2">100%</div>
-                <p className="text-mediumGray font-sans">Compliance audit readiness</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Removed "How Lyyli works" and results sections */}
 
       {/* Features Grid */}
       <section className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <FeaturesCardLayout locale={currentLocale} translations={t} />
+        </div>
+      </section>
+
+      {/* Upcoming features */}
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-              {t["features.grid.title"]}
+              {t["features.upcoming.title"]}
             </h2>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              {t["features.grid.subtitle"]}
+              {t["features.upcoming.subtitle"]}
             </p>
           </div>
-          <FeaturesCardLayout locale={currentLocale} translations={t} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { key: "campaignMode", gradient: "from-rose to-forest" },
+              { key: "advancedAIAnalytics", gradient: "from-forest to-rose" },
+              { key: "mediaLibrary", gradient: "from-turquoise to-rose" },
+              { key: "kpiReports", gradient: "from-forest to-turquoise" },
+              { key: "brandedTemplates", gradient: "from-turquoise to-rose" },
+            ].map((item, idx) => (
+              <article key={idx} className="group">
+                <div className="bg-gradient-to-br from-grayLight to-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 relative">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300`}>
+                    <svg className="w-8 h-8" fill="#FFFFFF" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="8" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+                    {t[`features.grid.${item.key}.title`]}
+                  </h3>
+                  <p className="text-mediumGray text-base font-sans leading-relaxed">
+                    {t[`features.grid.${item.key}.description`]}
+                  </p>
+                  <div className="absolute top-4 right-4">
+                    <div className="px-2 py-1 text-xs rounded-full font-semibold bg-forest/90 text-white shadow-md">{t["common.comingSoon"]}</div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -216,13 +103,13 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-              Integrations & data flow
+              {t["features.integrationsFlow.title"]}
             </h2>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              Connect seamlessly with your existing tools and platforms. Lyyli intelligently manages data flow to optimize your communication workflow.
+              {t["features.integrationsFlow.description"]}
             </p>
           </div>
-          <IntegrationsFlow />
+          <IntegrationsFlow translations={t} />
         </div>
       </section>
 

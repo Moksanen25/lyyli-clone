@@ -12,6 +12,15 @@ interface Feature {
   category: "ai" | "communication" | "automation" | "analytics";
 }
 
+// Features that should show as coming soon with transparent/gradient background
+const comingSoonFeatureTitles = new Set<string>([
+  "Advanced AI‑analytics",
+  "AI‑enhanced Campaign mode",
+  "AI‑enhanced media library",
+  "Automated KPI‑reports",
+  "Branded templates",
+]);
+
 const features: Feature[] = [
   {
     icon: <IconSet.ToneBasic className="w-8 h-8" />,
@@ -171,6 +180,7 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
         >
           {features.map((feature) => {
             const translationKey = getFeatureTranslationKey(feature.title);
+            const isComingSoon = comingSoonFeatureTitles.has(feature.title);
             return (
               <motion.div
                 key={feature.title}
@@ -178,13 +188,22 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
                 variants={cardVariants}
               >
                 <motion.div 
-                  className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 h-full"
+                  className={`${
+                    isComingSoon 
+                      ? 'bg-gradient-to-br from-grayLight to-white' 
+                      : 'bg-white'
+                  } rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 h-full relative`}
                   whileHover={{ 
                     y: -8,
                     scale: 1.02,
                     transition: { duration: 0.2 }
                   }}
                 >
+                  {isComingSoon && (
+                    <div className="absolute top-4 right-4">
+                      <div className="px-2 py-1 text-xs rounded-full font-semibold bg-forest/90 text-white shadow-md">Coming soon</div>
+                    </div>
+                  )}
                   {/* Icon */}
                   <div className={`w-16 h-16 bg-gradient-to-br ${categoryColors[feature.category]} rounded-2xl flex items-center justify-center mb-6 text-forest group-hover:scale-110 transition-transform duration-300`}>
                     <div className="text-white">
