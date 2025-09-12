@@ -74,8 +74,8 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
 
   // Chart data for efficiency comparison
   const efficiencyData = [
-    { metric: "Current", value: currentTime, fill: "#94A3B8" },
-    { metric: "With Lyyli", value: results.timeSaved, fill: "#2F5D50" }
+    { metric: translations?.["roi.charts.current"] || "Current", value: currentTime, fill: "#94A3B8" },
+    { metric: translations?.["roi.charts.withLyyli"] || "With Lyyli", value: results.timeSaved, fill: "#2F5D50" }
   ];
 
   return (
@@ -166,7 +166,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
               viewport={{ once: true }}
             >
               <h3 className="text-2xl text-turquoise mb-6 font-playfair font-normal">
-                {"Your organization details"}
+                {translations?.["roi.calculator.organizationDetails"] || "Your organization details"}
               </h3>
 
               {/* Team Size Input */}
@@ -222,7 +222,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                 </div>
                 <div className="text-center mt-2">
                   <span className="text-2xl font-bold text-white font-sans">
-                    {currentTime} {translations?.["pricing.roi.messages"]?.replace('/kk', '/week') || "hours/week"}
+                    {currentTime} {translations?.["roi.charts.hoursPerWeek"] || "hours/week"}
                   </span>
                 </div>
               </div>
@@ -286,6 +286,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
               <DynamicCharts 
                 timeSavingsData={timeSavingsData}
                 efficiencyData={efficiencyData}
+                translations={translations}
               />
             </motion.div>
           </div>
@@ -300,10 +301,10 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
           >
             <div className="text-center mb-8">
               <h3 className="text-2xl font-semibold text-turquoise mb-4 font-playfair font-bold leading-tight">
-                ROI calculation assumptions
+                {translations?.["pricing.assumptions.title"] || "ROI calculation assumptions"}
               </h3>
               <p className="text-rose font-sans leading-relaxed">
-                Our calculations are based on industry benchmarks and real customer data
+                {translations?.["roi.assumptions.note"] || "Our calculations are based on industry benchmarks and real customer data"}
               </p>
             </div>
 
@@ -314,7 +315,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span className="text-base text-white font-sans leading-relaxed">
-                    60% average time reduction in communication tasks
+                    {translations?.["pricing.assumptions.efficiency"] || "80% efficiency improvement from routine communication automation"}
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
@@ -322,7 +323,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span className="text-base text-white font-sans leading-relaxed">
-                    €75 average hourly rate for professional services
+                    {translations?.["pricing.assumptions.cost"] || "Based on €60/hour average professional service costs"}
                   </span>
                 </div>
               </div>
@@ -332,7 +333,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span className="text-base text-white font-sans leading-relaxed">
-                    40 working hours per week, 4.33 weeks per month
+                    {translations?.["pricing.assumptions.time"] || "Average 2 hours per week saved per knowledge worker"}
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
@@ -340,7 +341,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span className="text-base text-white font-sans leading-relaxed">
-                    Based on actual customer outcomes and industry data
+                    {translations?.["pricing.assumptions.overhead"] || "Includes reduced meeting time and faster decision-making"}
                   </span>
                 </div>
               </div>
@@ -422,7 +423,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
               href="#cta" 
               className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans hover:bg-turquoise"
             >
-              Start saving with Lyyli.ai
+              {translations?.["roi.cta.startSaving"] || "Start saving with Lyyli.ai"}
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

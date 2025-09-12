@@ -489,5 +489,15 @@
   "roi.calculator.moneySaved": "Säästetty raha",
   "roi.calculator.efficiencyGain": "Tehokkuuden kasvu",
   "roi.calculator.monthlySavings": "Kuukausittaiset säästöt",
-  "roi.calculator.yearlySavings": "Vuosittaiset säästöt"
+  "roi.calculator.yearlySavings": "Vuosittaiset säästöt",
+  "roi.charts.efficiencyComparison": "Ajan tehokkuuden vertailu",
+  "roi.charts.cumulativeSavings": "Kumulatiiviset säästöt ajan myötä",
+  "roi.charts.timeSpent": "Käytetty aika",
+  "roi.charts.savings": "Säästöt",
+  "roi.charts.monthLabel": "Kuukausi {month}",
+  "roi.charts.hoursPerWeek": "tuntia/viikko",
+  "roi.charts.current": "Nykyinen",
+  "roi.charts.withLyyli": "Lyylin kanssa",
+  "roi.assumptions.note": "Laskelmamme perustuvat alan vertailuihin ja todellisiin asiakastuloksiin",
+  "roi.cta.startSaving": "Aloita säästäminen Lyylin avulla"
 }

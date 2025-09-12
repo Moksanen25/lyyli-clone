@@ -1,6 +1,7 @@
 "use client";
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
+import { TranslationKeys } from "../lib/i18n";
 
 interface ROIChartsProps {
   timeSavingsData: Array<{
@@ -13,15 +14,16 @@ interface ROIChartsProps {
     value: number;
     fill: string;
   }>;
+  translations?: TranslationKeys;
 }
 
-export default function ROICharts({ timeSavingsData, efficiencyData }: ROIChartsProps) {
+export default function ROICharts({ timeSavingsData, efficiencyData, translations }: ROIChartsProps) {
   return (
     <>
       {/* Efficiency Comparison Chart */}
       <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 mb-8">
         <h4 className="text-lg font-semibold text-forest mb-4 font-sans">
-          Time efficiency comparison
+          {translations?.["roi.charts.efficiencyComparison"] || "Time efficiency comparison"}
         </h4>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
@@ -30,7 +32,10 @@ export default function ROICharts({ timeSavingsData, efficiencyData }: ROICharts
               <XAxis dataKey="metric" stroke="#6B7280" />
               <YAxis stroke="#6B7280" />
               <Tooltip 
-                formatter={(value: number) => [`${value} hours/week`, 'Time spent']}
+                formatter={(value: number) => [
+                  `${value} ${translations?.["roi.charts.hoursPerWeek"] || "hours/week"}`,
+                  translations?.["roi.charts.timeSpent"] || "Time spent"
+                ]}
                 labelStyle={{ color: '#374151' }}
               />
               <Bar dataKey="value" fill="#2F5D50" radius={[4, 4, 0, 0]} />
@@ -42,7 +47,7 @@ export default function ROICharts({ timeSavingsData, efficiencyData }: ROICharts
       {/* Cumulative Savings Chart */}
       <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
         <h4 className="text-lg font-semibold text-forest mb-4 font-sans">
-          Cumulative savings over time
+          {translations?.["roi.charts.cumulativeSavings"] || "Cumulative savings over time"}
         </h4>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
@@ -51,8 +56,15 @@ export default function ROICharts({ timeSavingsData, efficiencyData }: ROICharts
               <XAxis dataKey="month" stroke="#6B7280" />
               <YAxis stroke="#6B7280" />
               <Tooltip 
-                formatter={(value: number) => [`€${value.toLocaleString()}`, 'Savings']}
-                labelFormatter={(label) => `Month ${label}`}
+                formatter={(value: number) => [
+                  `€${(value as number).toLocaleString()}`,
+                  translations?.["roi.charts.savings"] || "Savings"
+                ]}
+                labelFormatter={(label) => {
+                  const month = String(label);
+                  const template = translations?.["roi.charts.monthLabel"] || "Month {month}";
+                  return template.replace("{month}", month);
+                }}
                 labelStyle={{ color: '#374151' }}
               />
               <Line 
