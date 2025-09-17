@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useAnimation } from "framer-motion";
+import dynamic from "next/dynamic";
+import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { memo, useMemo, useEffect, useState } from "react";
 
@@ -58,6 +59,9 @@ const steps: ProcessStep[] = [
   }
 ];
 
+// Dynamically import framer-motion's motion to avoid bundling it into the initial chunk
+const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
+const MotionA = dynamic(() => import("framer-motion").then(m => m.motion.a), { ssr: false, loading: () => <a /> });
 const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsProps) {
   const [ref, inView] = useInView({
     threshold: 0.2,
@@ -118,13 +122,13 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
     <section className="py-24 relative overflow-hidden">
       {/* Subtle background flow */}
       <div className="absolute inset-0">
-        <motion.div 
+        <MotionDiv 
           className="absolute top-1/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-rose/10 to-transparent"
           initial={{ scaleX: 0, opacity: 0 }}
           animate={inView ? { scaleX: 1, opacity: 1 } : {}}
           transition={{ duration: 2, ease: "easeInOut" }}
         />
-        <motion.div 
+        <MotionDiv 
           className="absolute bottom-1/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-turquoise/10 to-transparent"
           initial={{ scaleX: 0, opacity: 0 }}
           animate={inView ? { scaleX: 1, opacity: 1 } : {}}
@@ -133,7 +137,7 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
+        <MotionDiv 
           className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -145,12 +149,12 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
           <p className="text-xl text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
             {translations?.["howItWorks.overview.description"] || "A simple, intelligent process that transforms how professional service organizations communicate"}
           </p>
-        </motion.div>
+        </MotionDiv>
 
         <div ref={ref} className="relative">
           {/* Flowing process line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 z-0">
-            <motion.div 
+            <MotionDiv 
               className="h-full bg-gradient-to-r from-rose/20 via-turquoise/30 to-forest/20"
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : {}}
@@ -158,7 +162,7 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
             />
             
             {/* Single flowing element */}
-            <motion.div
+            <MotionDiv
               className="absolute top-0 w-3 h-3 bg-turquoise rounded-full shadow-lg"
               animate={{
                 x: ["0%", "100%"],
@@ -172,20 +176,20 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
           </div>
           
           {/* Steps Grid */}
-          <motion.div 
+          <MotionDiv 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
             {steps.map((step, index) => (
-              <motion.div
+              <MotionDiv
                 key={step.number}
                 className="relative group"
                 variants={stepVariants}
               >
                 {/* Step Card */}
-                <motion.div 
+                <MotionDiv 
                   className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-500"
                   whileHover={{ 
                     y: -8,
@@ -200,7 +204,7 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
                   transition={{ duration: 0.5, ease: "easeOut" }}
                 >
                   {/* Subtle background glow when active */}
-                  <motion.div 
+                  <MotionDiv 
                     className="absolute inset-0 bg-gradient-to-br from-rose/5 to-turquoise/5 rounded-2xl opacity-0"
                     animate={{
                       opacity: activeStep === index ? 1 : 0
@@ -209,7 +213,7 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
                   />
                   
                   {/* Large Number */}
-                  <motion.div 
+                  <MotionDiv 
                     className="text-7xl md:text-8xl font-bold text-forest mb-6 text-center font-sans"
                     animate={{
                       color: activeStep === index ? "#2F5D50" : "#2F5D50"
@@ -217,10 +221,10 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
                     transition={{ duration: 0.5 }}
                   >
                     {step.number}
-                  </motion.div>
+                  </MotionDiv>
                   
                   {/* Icon */}
-                  <motion.div 
+                  <MotionDiv 
                     className="w-16 h-16 bg-white border-2 border-forest rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md"
                     whileHover={{ 
                       scale: 1.05,
@@ -237,11 +241,11 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
                     <div className="text-forest">
                       {step.icon}
                     </div>
-                  </motion.div>
+                  </MotionDiv>
                   
                   {/* Content */}
                   <div className="text-center">
-                    <motion.h3 
+                    <MotionDiv 
                       className="text-xl font-semibold text-forest mb-4 font-sans"
                       animate={{
                         color: activeStep === index ? "#2F5D50" : "#374151"
@@ -249,14 +253,14 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
                       transition={{ duration: 0.5 }}
                     >
                       {translations?.[`howItWorks.step${step.number}.title`] || step.title}
-                    </motion.h3>
+                    </MotionDiv>
                     <p className="text-mediumGray font-sans leading-relaxed">
                       {translations?.[`howItWorks.step${step.number}.description`] || step.description}
                     </p>
                   </div>
 
                   {/* Subtle progress indicator */}
-                  <motion.div 
+                  <MotionDiv 
                     className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-rose to-turquoise rounded-b-2xl"
                     initial={{ width: 0 }}
                     animate={{ 
@@ -264,21 +268,21 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
                     }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   />
-                </motion.div>
+                </MotionDiv>
 
 
-              </motion.div>
+              </MotionDiv>
             ))}
-          </motion.div>
+          </MotionDiv>
 
           {/* Bottom CTA */}
-          <motion.div 
+          <MotionDiv 
             className="text-center mt-20"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 2, duration: 0.8, ease: "easeOut" }}
           >
-            <motion.a 
+            <MotionA 
               href="#cta" 
               className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-sans"
               whileHover={{ 
@@ -290,8 +294,8 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </motion.a>
-          </motion.div>
+            </MotionA>
+          </MotionDiv>
         </div>
       </div>
     </section>
