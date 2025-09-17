@@ -1,13 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function DemoVideo({ translations }: { translations?: any }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [motion, setMotion] = useState<any>(null);
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = async () => {
+    if (!motion) {
+      const mod = await import("framer-motion");
+      setMotion({ motion: mod.motion, AnimatePresence: mod.AnimatePresence });
+    }
+    setIsModalOpen(true);
+  };
   const closeModal = () => setIsModalOpen(false);
+
+  const MotionDiv = motion?.motion?.div || (('div' as unknown) as any);
+  const AnimatePresence = motion?.AnimatePresence || (({ children }: any) => children);
 
   return (
     <>
@@ -24,7 +33,7 @@ export default function DemoVideo({ translations }: { translations?: any }) {
 
           <div className="max-w-4xl mx-auto">
             {/* Video Preview Card */}
-            <motion.div 
+            <MotionDiv 
               className="relative bg-white  rounded-2xl shadow-2xl  overflow-hidden cursor-pointer group"
               whileHover={{ 
                 scale: 1.02,
@@ -42,7 +51,6 @@ export default function DemoVideo({ translations }: { translations?: any }) {
                     </svg>
                   </div>
                 </div>
-                
                 {/* Demo Content Preview */}
                 <div className="absolute inset-0 opacity-20">
                   <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg p-3">
@@ -51,14 +59,12 @@ export default function DemoVideo({ translations }: { translations?: any }) {
                       <span className="text-white text-sm font-medium">Slack</span>
                     </div>
                   </div>
-                  
                   <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-lg p-3">
                     <div className="flex items-center space-x-2">
                       <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" />
                       <span className="text-white text-sm font-medium">Teams</span>
                     </div>
                   </div>
-                  
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/20 backdrop-blur-sm rounded-lg p-3">
                     <div className="flex items-center space-x-2">
                       <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" />
@@ -76,7 +82,6 @@ export default function DemoVideo({ translations }: { translations?: any }) {
                 <p className="text-mediumGray  font-sans leading-relaxed mb-6">
                   {translations?.["demo.video.description"] || "See how Lyyli.ai integrates with Slack and Microsoft Teams to streamline your communication workflow. Watch the AI generate content, manage approvals, and publish across multiple channels seamlessly."}
                 </p>
-                
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4 text-sm text-mediumGray">
                     <span className="flex items-center">
@@ -93,7 +98,6 @@ export default function DemoVideo({ translations }: { translations?: any }) {
                       {translations?.["demo.video.quality"] || "HD Quality"}
                     </span>
                   </div>
-                  
                   <button className="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-xl hover:bg-turquoise hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans">
                     {translations?.["demo.video.button"] || "Watch demo"}
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,7 +106,7 @@ export default function DemoVideo({ translations }: { translations?: any }) {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
 
             {/* Additional Demo Options */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
@@ -154,46 +158,48 @@ export default function DemoVideo({ translations }: { translations?: any }) {
 
       {/* Video Modal */}
       <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeModal}
-          >
-            <motion.div
-              className="relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
+        {isModalOpen && motion && (
+          <motion.AnimatePresence>
+            <motion.motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeModal}
             >
-              {/* Close Button */}
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200"
+              <motion.motion.div
+                className="relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                onClick={(e: any) => e.stopPropagation()}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+                {/* Close Button */}
+                <button
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
 
-              {/* Video Player Placeholder */}
-              <div className="w-full h-full bg-gradient-to-br from-forest to-turquoise flex items-center justify-center">
-                <div className="text-center text-white">
-                  <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+                {/* Video Player Placeholder */}
+                <div className="w-full h-full bg-gradient-to-br from-forest to-turquoise flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-2">Demo video</h3>
+                    <p className="text-white/80">Video player would be integrated here</p>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-2">Demo video</h3>
-                  <p className="text-white/80">Video player would be integrated here</p>
                 </div>
-              </div>
-            </motion.div>
-          </motion.div>
+              </motion.motion.div>
+            </motion.motion.div>
+          </motion.AnimatePresence>
         )}
       </AnimatePresence>
     </>
