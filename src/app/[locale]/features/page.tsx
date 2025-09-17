@@ -16,6 +16,26 @@ export async function generateMetadata({
   return {
     title: t["features.page.title"],
     description: t["features.page.description"],
+    openGraph: {
+      title: t["features.page.title"],
+      description: t["features.page.description"],
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(t["features.page.title"])}&description=${encodeURIComponent(t["features.page.description"])}`,
+          width: 1200,
+          height: 630,
+          alt: t["features.page.title"],
+        },
+      ],
+      type: 'website',
+    },
+    alternates: {
+      canonical: `/${locale}/features`,
+      languages: {
+        en: '/en/features',
+        fi: '/fi/features',
+      },
+    },
   };
 }
 

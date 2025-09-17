@@ -16,6 +16,26 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
   return {
     title: t['about.page.title'],
     description: t['about.page.description'],
+    openGraph: {
+      title: t['about.page.title'],
+      description: t['about.page.description'],
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(t['about.page.title'])}&description=${encodeURIComponent(t['about.page.description'])}`,
+          width: 1200,
+          height: 630,
+          alt: t['about.page.title']
+        }
+      ],
+      type: 'website'
+    },
+    alternates: {
+      canonical: `/${locale}/about`,
+      languages: {
+        en: '/en/about',
+        fi: '/fi/about',
+      },
+    },
   };
 }
 

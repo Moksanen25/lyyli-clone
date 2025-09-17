@@ -20,9 +20,21 @@ export async function generateMetadata({ params }: PricingPageProps): Promise<Me
       title: t['pricing.page.title'],
       description: t['pricing.page.description'],
       type: 'website',
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(t['pricing.page.title'])}&description=${encodeURIComponent(t['pricing.page.description'])}`,
+          width: 1200,
+          height: 630,
+          alt: t['pricing.page.title']
+        }
+      ]
     },
     alternates: {
       canonical: `/${locale}/pricing`,
+      languages: {
+        en: '/en/pricing',
+        fi: '/fi/pricing',
+      },
     },
   };
 }

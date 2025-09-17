@@ -30,6 +30,14 @@ export async function generateMetadata({
       siteName: "Lyyli.ai",
       locale: locale === "fi" ? "fi_FI" : "en_US",
       type: "website",
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(t['contact.page.title'])}&description=${encodeURIComponent(t['contact.page.description'])}`,
+          width: 1200,
+          height: 630,
+          alt: t['contact.page.title']
+        }
+      ],
     },
     twitter: {
       card: "summary_large_image",
