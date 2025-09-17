@@ -128,7 +128,8 @@ export function isMobile(): boolean {
  */
 export function isTouchDevice(): boolean {
   if (typeof window === 'undefined') return false;
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const hasOnTouchStart = Object.prototype.hasOwnProperty.call(window, 'ontouchstart') && (window as any).ontouchstart !== undefined;
+  return hasOnTouchStart || navigator.maxTouchPoints > 0;
 }
 
 /**

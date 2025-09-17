@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent, waitFor } from '../../__tests__/utils/test-utils'
+import { render, screen, fireEvent, waitFor, within } from '../../__tests__/utils/test-utils'
 import userEvent from '@testing-library/user-event'
 import Header from '../Header'
 import type { TranslationKeys } from '@/lib/i18n'
@@ -58,10 +58,11 @@ describe('Header', () => {
     const logo = screen.getByAltText('Lyyli.ai logo - AI Communication Assistant for Professional Service Organizations')
     expect(logo).toBeInTheDocument()
 
-    // Check navigation links
-    expect(screen.getByText('Features')).toBeInTheDocument()
-    expect(screen.getByText('Pricing')).toBeInTheDocument()
-    expect(screen.getByText('Contact')).toBeInTheDocument()
+    // Check top-level desktop navigation button and links
+    const mainNav = screen.getByRole('navigation', { name: /main navigation/i })
+    expect(within(mainNav).getByRole('button', { name: /features/i })).toBeInTheDocument()
+    expect(within(mainNav).getAllByText('Pricing')[0]).toBeInTheDocument()
+    expect(within(mainNav).getAllByText('Contact')[0]).toBeInTheDocument()
 
     // Check locale switcher
     expect(screen.getByTestId('locale-switcher')).toBeInTheDocument()
@@ -86,6 +87,10 @@ describe('Header', () => {
       expect(mobileMenuButton).toHaveAttribute('aria-expanded', 'true')
     })
 
+    // Within mobile nav, ensure link exists uniquely
+    const mobileNav = screen.getByRole('navigation', { name: /mobile navigation/i })
+    expect(within(mobileNav).getAllByRole('link', { name: /features/i })[0]).toBeInTheDocument()
+
     // Click to close menu
     await user.click(mobileMenuButton)
 
@@ -101,14 +106,15 @@ describe('Header', () => {
     const featuresButton = screen.getByRole('button', { name: /features/i })
 
     // Initially dropdown should be hidden
-    expect(screen.queryByText('Security')).not.toBeVisible()
+    expect(screen.queryAllByText('Security')[0]).not.toBeVisible()
 
     // Hover over features button
     fireEvent.mouseEnter(featuresButton)
 
     // Dropdown should appear
     await waitFor(() => {
-      expect(screen.getByText('Security')).toBeVisible()
+      const dropdownLinks = screen.getAllByText('Security')
+      expect(dropdownLinks[0]).toBeVisible()
     })
 
     // Move mouse away
@@ -116,7 +122,8 @@ describe('Header', () => {
 
     // Dropdown should disappear after timeout
     await waitFor(() => {
-      expect(screen.queryByText('Security')).not.toBeVisible()
+      const dropdownLinks = screen.getAllByText('Security')
+      expect(dropdownLinks[0]).not.toBeVisible()
     }, { timeout: 200 })
   })
 
@@ -154,9 +161,9 @@ describe('Header', () => {
 
     render(<Header {...fiProps} />)
 
-    // Check for Finnish text in mobile menu where it appears uniquely
-    expect(screen.getByText('Liity odotuslistalle')).toBeInTheDocument()
-    expect(screen.getByText('Apu')).toBeInTheDocument()
+    // Ensure Finnish CTAs appear; pick the first instance if multiple
+    expect(screen.getAllByText('Liity odotuslistalle')[0]).toBeInTheDocument()
+    expect(screen.getAllByText('Apu')[0]).toBeInTheDocument()
   })
 
   it('has proper accessibility attributes', () => {
