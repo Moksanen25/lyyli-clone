@@ -21,10 +21,6 @@ export default function RootLayout({
   return (
     <html className={fontVars}>
       <head>
-        {/* DNS prefetch for external domains */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-
         {/* Preload critical images */}
         <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.png" as="image" type="image/png" />
         <link rel="preload" href="/images/general/Desktop_UI_for_web.png" as="image" type="image/png" />

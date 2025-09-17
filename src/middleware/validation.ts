@@ -33,16 +33,21 @@ export interface ValidationConfig {
 /**
  * Validate request body against validation rules
  */
-export function validateRequestBody<T>(
+export async function validateRequestBody<T>(
   request: NextRequest,
   config: ValidationConfig
-): ValidationResult<T> {
+): Promise<ValidationResult<T>> {
   const errors: Record<string, string> = {};
   const data: Record<string, any> = {};
 
   try {
-    // Parse request body
-    const body = request.body ? JSON.parse(JSON.stringify(request.body)) : {};
+    // Parse request body safely (handles empty or invalid JSON)
+    let body: Record<string, any> = {};
+    try {
+      body = await request.json();
+    } catch {
+      body = {};
+    }
     
     // Validate each field according to rules
     for (const rule of config.rules) {
@@ -130,7 +135,7 @@ export function validateRequestBody<T>(
 
     return {
       isValid: Object.keys(errors).length === 0,
-      data: Object.keys(errors).length === 0 ? data as T : undefined,
+      data: Object.keys(errors).length === 0 ? (data as T) : undefined,
       errors,
     };
 
@@ -204,7 +209,7 @@ export const VALIDATION_CONFIGS = {
  * Create a validation middleware function for a specific config
  */
 export function createValidationMiddleware<T>(config: ValidationConfig) {
-  return (request: NextRequest): ValidationResult<T> => {
+  return async (request: NextRequest): Promise<ValidationResult<T>> => {
     return validateRequestBody<T>(request, config);
   };
 }

@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate request body
-    const validation = validateRequestBody<WaitlistSubmission>(request, VALIDATION_CONFIGS.WAITLIST_FORM);
+    const validation = await validateRequestBody<WaitlistSubmission>(request, VALIDATION_CONFIGS.WAITLIST_FORM);
     
     if (!validation.isValid || !validation.data) {
       const response = createValidationErrorResponse(validation.errors);
