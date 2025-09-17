@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { TranslationKeys } from "../lib/i18n";
 
@@ -18,6 +17,9 @@ const DynamicCharts = dynamic(() => import("./ROICharts"), {
     </div>
   )
 });
+
+// Lazily load framer-motion's motion.div to reduce initial bundle size
+const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
 
 interface CalculationResult {
   timeSaved: number;
@@ -158,7 +160,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Calculator Inputs */}
-            <motion.div 
+            <MotionDiv 
               className="bg-forest rounded-2xl p-8 shadow-lg border border-forest"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -251,10 +253,10 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
 
             {/* Results and Charts */}
-            <motion.div 
+            <MotionDiv 
               className="space-y-8"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -288,11 +290,11 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                 efficiencyData={efficiencyData}
                 translations={translations}
               />
-            </motion.div>
+            </MotionDiv>
           </div>
 
           {/* ROI Assumptions Section */}
-          <motion.div 
+          <MotionDiv 
             className="mt-16 bg-forest rounded-2xl p-8 shadow-lg border border-forest"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -355,10 +357,10 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                 communication patterns, team size, and implementation approach.
               </p>
             </div>
-          </motion.div>
+          </MotionDiv>
 
           {/* Measurable Business Impact Section */}
-          <motion.div 
+          <MotionDiv 
             className="mt-16 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -409,10 +411,10 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                 </p>
               </div>
             </div>
-          </motion.div>
+          </MotionDiv>
 
           {/* Bottom CTA */}
-          <motion.div 
+          <MotionDiv 
             className="text-center mt-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -428,7 +430,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
     </section>

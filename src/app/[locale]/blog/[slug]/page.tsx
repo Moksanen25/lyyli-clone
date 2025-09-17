@@ -10,6 +10,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 
+export const revalidate = 3600; // ISR: revalidate blog posts hourly
+
 interface BlogPostPageProps {
   params: Promise<{ locale: string; slug: string }>;
 }

@@ -3,6 +3,8 @@ import { getAllBlogPosts } from "@/lib/blog";
 import { Metadata } from "next";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 
+export const revalidate = 3600; // ISR: revalidate blog listing hourly
+
 interface BlogPageProps {
   params: Promise<{ locale: string }>;
 }

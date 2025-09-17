@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import IconSet from "./IconSet";
 import { useInView } from "react-intersection-observer";
 import { memo, useMemo, useCallback } from "react";
@@ -107,6 +107,8 @@ interface FeatureGridProps {
   translations?: any;
 }
 
+const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
+
 const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps) {
   const [ref, inView] = useInView({
     threshold: 0.05,
@@ -171,7 +173,7 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
           </p>
         </div>
 
-        <motion.div 
+        <MotionDiv 
           ref={ref}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={containerVariants}
@@ -182,12 +184,12 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
             const translationKey = getFeatureTranslationKey(feature.title);
             const isComingSoon = comingSoonFeatureTitles.has(feature.title);
             return (
-              <motion.div
+              <MotionDiv
                 key={feature.title}
                 className="group"
                 variants={cardVariants}
               >
-                <motion.div 
+                <MotionDiv 
                   className={`${
                     isComingSoon 
                       ? 'bg-gradient-to-br from-grayLight to-white' 
@@ -223,14 +225,14 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
                   <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="w-8 h-0.5 bg-gradient-to-r from-forest to-turquoise rounded-full" />
                   </div>
-                </motion.div>
-              </motion.div>
+                </MotionDiv>
+              </MotionDiv>
             );
           })}
-        </motion.div>
+        </MotionDiv>
 
         {/* Bottom CTA */}
-        <motion.div 
+        <MotionDiv 
           className="text-center mt-16"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -245,7 +247,7 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
 import { TranslationKeys } from "../lib/i18n";
 
@@ -98,6 +98,8 @@ const plans: PricingPlan[] = [
     cta: "Contact sales"
   }
 ];
+
+const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
 
 export default function PricingCards({ fullWidth = false, locale, translations }: PricingCardsProps) {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
@@ -267,7 +269,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
         </div>
 
         {/* Pricing Cards */}
-        <motion.div 
+        <MotionDiv 
           ref={ref}
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 max-w-7xl mx-auto ${fullWidth ? 'w-full' : ''}`}
           variants={containerVariants}
@@ -275,7 +277,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
           animate={inView ? "visible" : "hidden"}
         >
           {translatedPlans.map((plan, index) => (
-            <motion.div
+            <MotionDiv
               key={plan.name}
               className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
               variants={cardVariants}
@@ -296,7 +298,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
               )}
 
               {/* Plan Card */}
-              <motion.div 
+              <MotionDiv 
                 className={`${
                   plan.name === "Professional" || plan.name === "Enterprise" 
                     ? 'bg-gradient-to-br from-grayLight to-white' 
@@ -401,10 +403,10 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                     </button>
                   )}
                 </div>
-              </motion.div>
-            </motion.div>
+              </MotionDiv>
+            </MotionDiv>
           ))}
-        </motion.div>
+        </MotionDiv>
 
         {/* Per-user note under cards */}
         <div className="w-full text-center mt-12">
@@ -418,7 +420,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
         </div>
 
         {/* Additional Information */}
-        <motion.div 
+        <MotionDiv 
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -454,7 +456,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
               </a>
             </div>
           </div>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   );

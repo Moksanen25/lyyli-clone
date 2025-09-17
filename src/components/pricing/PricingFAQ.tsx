@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import { TranslationKeys } from "@/lib/i18n";
-import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
+const MotionSvg = dynamic(() => import("framer-motion").then(m => m.motion.svg), { ssr: false, loading: () => <svg /> });
+const MotionA = dynamic(() => import("framer-motion").then(m => m.motion.a), { ssr: false, loading: () => <a /> });
+const AnimatePresence = dynamic(() => import("framer-motion").then(m => m.AnimatePresence), { ssr: false, loading: () => null });
 
 interface PricingFAQProps {
   locale: string;
@@ -46,7 +51,7 @@ export default function PricingFAQ({
   return (
     <div className="space-y-8">
       {/* Section Header */}
-      <motion.div 
+      <MotionDiv 
         className="text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -59,12 +64,12 @@ export default function PricingFAQ({
         <p className="text-lg text-mediumGray font-sans leading-relaxed">
           {t["pricing.faq.subtitle"]}
         </p>
-      </motion.div>
+      </MotionDiv>
 
       {/* FAQ Items */}
       <div className="space-y-4">
         {faqItems.map((item, index) => (
-          <motion.article
+          <MotionDiv
             key={index}
             className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
@@ -81,7 +86,7 @@ export default function PricingFAQ({
               <h3 className="text-forest pr-4 font-playfair font-normal group-hover:text-forest/80 transition-colors">
                 {item.question}
               </h3>
-              <motion.svg
+              <MotionSvg
                 className="w-5 h-5 text-forest flex-shrink-0 transition-colors group-hover:text-turquoise"
                 fill="none"
                 stroke="currentColor"
@@ -96,12 +101,12 @@ export default function PricingFAQ({
                   strokeWidth={2}
                   d="M19 9l-7 7-7-7"
                 />
-              </motion.svg>
+              </MotionSvg>
             </button>
 
             <AnimatePresence>
               {openIndex === index && (
-                <motion.div
+                <MotionDiv
                   id={`faq-answer-${index}`}
                   className="overflow-hidden"
                   role="region"
@@ -116,15 +121,15 @@ export default function PricingFAQ({
                       <p className="text-base text-mediumGray font-sans leading-relaxed">{item.answer}</p>
                     </div>
                   </div>
-                </motion.div>
+                </MotionDiv>
               )}
             </AnimatePresence>
-          </motion.article>
+          </MotionDiv>
         ))}
       </div>
 
       {/* CTA Section */}
-      <motion.div 
+      <MotionDiv 
         className="text-center pt-8 border-t border-gray-200"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -138,24 +143,24 @@ export default function PricingFAQ({
           {t["pricing.faqText"]}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <motion.a
+          <MotionA
             href="/faq"
             className="inline-flex items-center justify-center px-6 py-3 border-2 border-forest text-forest rounded-2xl hover:bg-forest hover:text-white transition-all duration-300 font-medium hover:shadow-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             {t["pricing.faqButton"]}
-          </motion.a>
-          <motion.a
+          </MotionA>
+          <MotionA
             href={`/${locale}/contact`}
             className="inline-flex items-center justify-center px-6 py-3 bg-forest text-white rounded-2xl hover:bg-[#3A6A5C] transition-all duration-300 font-medium hover:shadow-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             {t["pricing.contactButton"]}
-          </motion.a>
+          </MotionA>
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   );
 }

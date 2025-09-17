@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
+const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
 
 interface Testimonial {
   id: number;
@@ -99,7 +100,7 @@ export default function TestimonialSection() {
     <section className="py-24 relative">
       <div className="container mx-auto px-4">
         {/* Customer Logos */}
-        <motion.div 
+        <MotionDiv 
           className="mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -114,7 +115,7 @@ export default function TestimonialSection() {
           
           <div className="flex items-center justify-center space-x-12 md:space-x-16 lg:space-x-20 overflow-hidden">
             {customerLogos.map((company, index) => (
-              <motion.div
+              <MotionDiv
                 key={company.name}
                 className="flex-shrink-0"
                 initial={{ opacity: 0, x: 50 }}
@@ -127,13 +128,13 @@ export default function TestimonialSection() {
                     {company.logo}
                   </span>
                 </div>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
-        </motion.div>
+        </MotionDiv>
 
         {/* Testimonials Section */}
-        <motion.div 
+        <MotionDiv 
           ref={ref}
           className="text-center mb-16"
           variants={containerVariants}
@@ -146,16 +147,16 @@ export default function TestimonialSection() {
           <p className="text-xl text-mediumGray  max-w-3xl mx-auto font-sans leading-relaxed">
             Real feedback from professional service organizations that have transformed their communication with Lyyli.ai
           </p>
-        </motion.div>
+        </MotionDiv>
 
         {/* Static Testimonials Grid */}
-        <motion.div 
+        <MotionDiv 
           className="max-w-7xl mx-auto"
           variants={itemVariants}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
-              <motion.div 
+              <MotionDiv 
                 key={testimonial.id}
                 className="bg-white  rounded-2xl p-8 shadow-lg  border border-gray-200  h-full"
                 whileHover={{ 
@@ -189,13 +190,13 @@ export default function TestimonialSection() {
                     {testimonial.role} at {testimonial.company}
                   </p>
                 </div>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
-        </motion.div>
+        </MotionDiv>
 
         {/* Bottom CTA */}
-        <motion.div 
+        <MotionDiv 
           className="text-center mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -211,7 +212,7 @@ export default function TestimonialSection() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   );
