@@ -174,6 +174,15 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
   const baseUrl = "https://lyyli.ai";
   const canonicalUrl = `${baseUrl}/${locale}/blog/${post.slug}`;
 
+  // Determine translated slug if available for hreflang alternates
+  const otherLocale = locale === 'fi' ? 'en' : 'fi';
+  const translatedSlug = getTranslationSlug(post.slug);
+  const alternates: Record<string, string> = {};
+  alternates[locale] = canonicalUrl;
+  if (translatedSlug) {
+    alternates[otherLocale] = `${baseUrl}/${otherLocale}/blog/${translatedSlug}`;
+  }
+
   // Primary and secondary keywords for SEO
   const primaryKeywords = [
     "AI communication assistant",
@@ -204,7 +213,14 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
               alt: post.imageAlt || post.title,
             },
           ]
-        : [],
+        : [
+            {
+              url: `/api/og?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.description)}`,
+              width: 1200,
+              height: 630,
+              alt: post.title,
+            },
+          ],
       locale: locale === "fi" ? "fi_FI" : "en_US",
       type: "article",
       publishedTime: post.date,
@@ -213,14 +229,13 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: post.image ? [post.image] : [],
+      images: post.image
+        ? [post.image]
+        : [`/api/og?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.description)}`],
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${baseUrl}/en/blog/${post.slug}`,
-        fi: `${baseUrl}/fi/blog/${post.slug}`,
-      },
+      languages: alternates,
     },
   };
 }
