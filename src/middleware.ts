@@ -57,6 +57,13 @@ export default function middleware(request: NextRequest) {
 
     // Add nonce to response for downstream inline scripts if needed
     response.headers.set('x-csp-nonce', nonce);
+    // Also set cookie so Server Components can read it reliably
+    response.cookies.set('csp-nonce', nonce, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+    });
 
     // Add security headers on the way out (with nonce)
     return addSecurityHeaders(response, securityConfig, nonce);

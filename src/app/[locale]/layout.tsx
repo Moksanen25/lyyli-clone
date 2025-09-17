@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ConsentBanner from "../../components/ConsentBanner";
@@ -121,6 +121,12 @@ export default async function LocaleLayout({
   const pathname = headersList.get("x-pathname") || "/";
   const canonicalUrl = `${protocol}://${host}${pathname}`;
 
+  // Read CSP nonce from headers or cookie (middleware provides both)
+  const headersList = await headers();
+  const nonceHeader = headersList.get('x-csp-nonce') || undefined;
+  const nonceCookie = cookies().get('csp-nonce')?.value;
+  const nonce = nonceHeader || nonceCookie;
+
   return (
     <html lang={currentLocale} dir="ltr" className={`${fontVars} h-full`}>
       <head>
@@ -159,6 +165,7 @@ export default async function LocaleLayout({
         {/* Schema.org structured data */}
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
