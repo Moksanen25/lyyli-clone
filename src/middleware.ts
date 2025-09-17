@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
-import crypto from 'node:crypto';
 import { addSecurityHeaders, createSecurityConfig, securityMiddleware } from '@/middleware/security';
 import { ensureEnvValidated } from '@/lib/env';
 import { logger } from '@/lib/logger';
@@ -39,8 +38,8 @@ export default function middleware(request: NextRequest) {
       // continue
     }
 
-    // Nonce for CSP
-    const nonce = crypto.randomBytes(16).toString('base64');
+    // Nonce for CSP (use Web Crypto to avoid Node-specific imports in middleware)
+    const nonce = (globalThis.crypto?.randomUUID?.() as string) || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
     // Locale routing via next-intl
     let response: NextResponse;
