@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
+import crypto from 'node:crypto';
 import { addSecurityHeaders, createSecurityConfig, securityMiddleware } from '@/middleware/security';
 import { ensureEnvValidated } from '@/lib/env';
 import { logger } from '@/lib/logger';
@@ -38,6 +39,9 @@ export default function middleware(request: NextRequest) {
       // continue
     }
 
+    // Nonce for CSP
+    const nonce = crypto.randomBytes(16).toString('base64');
+
     // Locale routing via next-intl
     let response: NextResponse;
     try {
@@ -51,8 +55,11 @@ export default function middleware(request: NextRequest) {
       response = NextResponse.next();
     }
 
-    // Add security headers on the way out
-    return addSecurityHeaders(response, securityConfig);
+    // Add nonce to response for downstream inline scripts if needed
+    response.headers.set('x-csp-nonce', nonce);
+
+    // Add security headers on the way out (with nonce)
+    return addSecurityHeaders(response, securityConfig, nonce);
   } catch (error) {
     logger.error('Root middleware handler threw', {
       error: error instanceof Error ? error.message : 'Unknown error',

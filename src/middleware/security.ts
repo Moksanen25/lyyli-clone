@@ -122,11 +122,20 @@ function generatePermissionsPolicyHeader(policies: Record<string, string[]>): st
  */
 export function addSecurityHeaders(
   response: NextResponse,
-  config: SecurityConfig = DEFAULT_SECURITY_CONFIG
+  config: SecurityConfig = DEFAULT_SECURITY_CONFIG,
+  nonce?: string
 ): NextResponse {
   try {
     // Content Security Policy
     if (config.enableCSP) {
+      // If nonce provided, include it in script-src
+      if (nonce) {
+        const scripts = config.cspDirectives['script-src'] ?? [];
+        const nonceToken = `'nonce-${nonce}'`;
+        if (!scripts.includes(nonceToken)) {
+          config.cspDirectives['script-src'] = [...scripts, nonceToken];
+        }
+      }
       const cspValue = generateCSPHeader(config.cspDirectives);
       response.headers.set('Content-Security-Policy', cspValue);
     }
