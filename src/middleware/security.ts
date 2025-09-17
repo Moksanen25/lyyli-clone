@@ -321,8 +321,7 @@ export function createSecurityConfig(environment: 'development' | 'staging' | 'p
       baseConfig.cspDirectives['script-src'] = baseConfig.cspDirectives['script-src'].filter(
         (src) => !['https://vercel.live', 'https://va.vercel-scripts.com'].includes(src)
       );
-      // TEMP: Allow inline scripts for Next.js hydration until nonce-based CSP is implemented
-      baseConfig.cspDirectives['script-src'].push("'unsafe-inline'");
+      // With nonce-based CSP in place, do not allow unsafe-inline in production
       break;
   }
 
