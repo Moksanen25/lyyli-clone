@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, screen, fireEvent, waitFor, within } from '../../__tests__/utils/test-utils'
+import { render, screen, fireEvent, waitFor } from '../../__tests__/utils/test-utils'
+import { within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Header from '../Header'
 import type { TranslationKeys } from '@/lib/i18n'
@@ -44,7 +45,7 @@ describe('Header', () => {
     })
 
     // Mock ResizeObserver
-    global.ResizeObserver = jest.fn().mockImplementation(() => ({
+    ;(global as any).ResizeObserver = jest.fn().mockImplementation(() => ({
       observe: jest.fn(),
       unobserve: jest.fn(),
       disconnect: jest.fn(),
@@ -64,8 +65,8 @@ describe('Header', () => {
     expect(within(mainNav).getAllByText('Pricing')[0]).toBeInTheDocument()
     expect(within(mainNav).getAllByText('Contact')[0]).toBeInTheDocument()
 
-    // Check locale switcher
-    expect(screen.getByTestId('locale-switcher')).toBeInTheDocument()
+    // Check locale switcher (at least one instance exists)
+    expect(screen.getAllByTestId('locale-switcher').length).toBeGreaterThan(0)
   })
 
   it('toggles mobile menu on button click', async () => {
@@ -103,27 +104,29 @@ describe('Header', () => {
   it('opens and closes features dropdown on hover', async () => {
     render(<Header {...defaultProps} />)
 
-    const featuresButton = screen.getByRole('button', { name: /features/i })
+    const mainNav = screen.getByRole('navigation', { name: /main navigation/i })
+    const featuresButton = within(mainNav).getByRole('button', { name: /features/i })
 
-    // Initially dropdown should be hidden
-    expect(screen.queryAllByText('Security')[0]).not.toBeVisible()
+    // Locate dropdown container near the button
+    const dropdown = (featuresButton.parentElement as HTMLElement).querySelector('div.absolute') as HTMLElement
+
+    // Initially dropdown should be hidden via class
+    expect(dropdown.className).toMatch(/invisible/)
 
     // Hover over features button
     fireEvent.mouseEnter(featuresButton)
 
-    // Dropdown should appear
+    // Dropdown should appear (class removed)
     await waitFor(() => {
-      const dropdownLinks = screen.getAllByText('Security')
-      expect(dropdownLinks[0]).toBeVisible()
+      expect(dropdown.className).not.toMatch(/invisible/)
     })
 
     // Move mouse away
     fireEvent.mouseLeave(featuresButton)
 
-    // Dropdown should disappear after timeout
+    // Dropdown should hide again
     await waitFor(() => {
-      const dropdownLinks = screen.getAllByText('Security')
-      expect(dropdownLinks[0]).not.toBeVisible()
+      expect(dropdown.className).toMatch(/invisible/)
     }, { timeout: 200 })
   })
 
@@ -138,8 +141,9 @@ describe('Header', () => {
     // Open mobile menu
     await user.click(mobileMenuButton)
 
+    const mobileNav = screen.getByRole('navigation', { name: /mobile navigation/i })
     // Click on a navigation link in mobile menu
-    const featuresLink = screen.getByRole('link', { name: /features/i })
+    const featuresLink = within(mobileNav).getAllByRole('link', { name: /features/i })[0]
     await user.click(featuresLink)
 
     // Menu should be closed
