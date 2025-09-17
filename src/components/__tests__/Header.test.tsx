@@ -120,6 +120,8 @@ describe('Header', () => {
 
     // Move mouse away
     fireEvent.mouseLeave(featuresButton)
+    // Simulate document-level mouse move outside the dropdown bounding box
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: -1000, clientY: -1000 }))
 
     // Dropdown should hide again
     await waitFor(() => {
