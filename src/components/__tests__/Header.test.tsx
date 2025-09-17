@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen, fireEvent, waitFor } from '../../__tests__/utils/test-utils'
 import userEvent from '@testing-library/user-event'
 import Header from '../Header'
+import type { TranslationKeys } from '@/lib/i18n'
 
 // Mock next/navigation
 jest.mock('next/navigation', () => ({
@@ -27,7 +28,7 @@ const mockTranslations = {
   "nav.pricing": "Pricing",
   "nav.contact": "Contact",
   "nav.security": "Security"
-}
+} as unknown as TranslationKeys
 
 const defaultProps = {
   locale: 'en',
@@ -148,7 +149,7 @@ describe('Header', () => {
         "nav.features": "Ominaisuudet",
         "nav.pricing": "Hinnoittelu",
         "nav.contact": "Yhteys"
-      }
+      } as unknown as TranslationKeys
     }
 
     render(<Header {...fiProps} />)

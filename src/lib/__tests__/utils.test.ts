@@ -287,21 +287,21 @@ describe('utils', () => {
     })
 
     it('detects mobile devices', () => {
-      window.navigator.userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X)'
+      Object.defineProperty(window.navigator, 'userAgent', { value: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X)', configurable: true })
       expect(isMobile()).toBe(true)
 
-      window.navigator.userAgent = 'Mozilla/5.0 (Android 11; Mobile)'
+      Object.defineProperty(window.navigator, 'userAgent', { value: 'Mozilla/5.0 (Android 11; Mobile)', configurable: true })
       expect(isMobile()).toBe(true)
 
-      window.navigator.userAgent = 'Mozilla/5.0 (Linux; Android 10)'
+      Object.defineProperty(window.navigator, 'userAgent', { value: 'Mozilla/5.0 (Linux; Android 10)', configurable: true })
       expect(isMobile()).toBe(true)
     })
 
     it('returns false for desktop browsers', () => {
-      window.navigator.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      Object.defineProperty(window.navigator, 'userAgent', { value: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36', configurable: true })
       expect(isMobile()).toBe(false)
 
-      window.navigator.userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'
+      Object.defineProperty(window.navigator, 'userAgent', { value: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)', configurable: true })
       expect(isMobile()).toBe(false)
     })
   })
@@ -331,13 +331,13 @@ describe('utils', () => {
     })
 
     it('detects touch devices by maxTouchPoints', () => {
-      window.navigator.maxTouchPoints = 2
+      Object.defineProperty(window.navigator, 'maxTouchPoints', { value: 2, configurable: true })
       expect(isTouchDevice()).toBe(true)
     })
 
     it('returns false for non-touch devices', () => {
       window.ontouchstart = undefined
-      window.navigator.maxTouchPoints = 0
+      Object.defineProperty(window.navigator, 'maxTouchPoints', { value: 0, configurable: true })
       expect(isTouchDevice()).toBe(false)
     })
   })
