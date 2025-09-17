@@ -123,7 +123,8 @@ export default async function LocaleLayout({
 
   // Read CSP nonce from headers or cookie (middleware provides both)
   const nonceHeader = headersList.get('x-csp-nonce') || undefined;
-  const nonceCookie = cookies().get('csp-nonce')?.value;
+  const cookieStore = await cookies();
+  const nonceCookie = cookieStore.get('csp-nonce')?.value;
   const nonce = nonceHeader || nonceCookie;
 
   return (
