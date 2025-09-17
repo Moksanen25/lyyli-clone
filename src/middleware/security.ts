@@ -31,12 +31,9 @@ export const DEFAULT_SECURITY_CONFIG: SecurityConfig = {
   referrerPolicy: 'strict-origin-when-cross-origin',
   cspDirectives: {
     'default-src': ["'self'"],
+    // Default production-safe script-src; dev/staging may extend this below
     'script-src': [
-      "'self'",
-      "'unsafe-inline'", // Required for Next.js
-      "'unsafe-eval'",   // Required for Next.js development
-      'https://vercel.live',
-      'https://va.vercel-scripts.com'
+      "'self'"
     ],
     'style-src': [
       "'self'",
@@ -285,12 +282,17 @@ export function createSecurityConfig(environment: 'development' | 'staging' | 'p
       baseConfig.enableHSTS = false;
       baseConfig.cspDirectives['script-src'].push("'unsafe-eval'");
       baseConfig.cspDirectives['script-src'].push("'unsafe-inline'");
+      baseConfig.cspDirectives['script-src'].push('https://vercel.live');
+      baseConfig.cspDirectives['script-src'].push('https://va.vercel-scripts.com');
       break;
 
     case 'staging':
       // Moderate security for staging
       baseConfig.enableHSTS = true;
       baseConfig.hstsMaxAge = 300; // 5 minutes
+      // Allow Vercel live reload in staging if needed
+      baseConfig.cspDirectives['script-src'].push('https://vercel.live');
+      baseConfig.cspDirectives['script-src'].push('https://va.vercel-scripts.com');
       break;
 
     case 'production':
@@ -302,6 +304,14 @@ export function createSecurityConfig(environment: 'development' | 'staging' | 'p
       baseConfig.enableFrameOptions = true;
       baseConfig.enableReferrerPolicy = true;
       baseConfig.enablePermissionsPolicy = true;
+      // Ensure no unsafe-eval/inline remain in production
+      baseConfig.cspDirectives['script-src'] = baseConfig.cspDirectives['script-src'].filter(
+        (src) => src !== "'unsafe-eval'" && src !== "'unsafe-inline'"
+      );
+      // Remove Vercel live sources in production
+      baseConfig.cspDirectives['script-src'] = baseConfig.cspDirectives['script-src'].filter(
+        (src) => !['https://vercel.live', 'https://va.vercel-scripts.com'].includes(src)
+      );
       break;
   }
 

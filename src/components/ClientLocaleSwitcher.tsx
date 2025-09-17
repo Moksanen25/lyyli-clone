@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface ClientLocaleSwitcherProps {
   currentLocale: string;
@@ -11,9 +11,14 @@ export default function ClientLocaleSwitcher({
   currentLocale,
 }: ClientLocaleSwitcherProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   // Extract the path without locale
   const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "") || "/";
+
+  // Preserve the current query string
+  const queryString = searchParams?.toString();
+  const qs = queryString ? `?${queryString}` : "";
 
   return (
     <div
@@ -22,7 +27,7 @@ export default function ClientLocaleSwitcher({
       aria-label="Language selection"
     >
       <Link
-        href={`/en${pathWithoutLocale}`}
+        href={`/en${pathWithoutLocale}${qs}`}
         className={`px-3 py-1 rounded transition-colors ${
           currentLocale === "en"
             ? "bg-forest text-white"
@@ -37,7 +42,7 @@ export default function ClientLocaleSwitcher({
         |
       </span>
       <Link
-        href={`/fi${pathWithoutLocale}`}
+        href={`/fi${pathWithoutLocale}${qs}`}
         className={`px-3 py-1 rounded transition-colors ${
           currentLocale === "fi"
             ? "bg-forest text-white"

@@ -1,4 +1,5 @@
 import { getTranslations } from "../../lib/i18n";
+import type { Metadata } from "next";
 import ProcessSteps from "../../components/ProcessSteps";
 import FeatureGrid from "../../components/FeatureGrid";
 import DemoVideo from "../../components/DemoVideo";
@@ -8,6 +9,16 @@ import PricingCards from "../../components/PricingCards";
 // Note: using static imports for client components inside a Server Component
 interface HomeProps {
   params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: HomeProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations(locale);
+
+  return {
+    title: t["home.page.title"] ?? "Lyyli.ai",
+    description: t["home.page.description"] ?? "AI Communication Assistant for Professional Service Organizations",
+  };
 }
 
 export default async function Home({ params }: HomeProps) {
