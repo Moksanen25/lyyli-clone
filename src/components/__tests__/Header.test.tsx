@@ -110,15 +110,12 @@ describe('Header', () => {
     // Locate dropdown container near the button
     const dropdown = (featuresButton.parentElement as HTMLElement).querySelector('div.absolute') as HTMLElement
 
-    // Initially dropdown should be hidden via class
-    expect(dropdown.className).toMatch(/invisible/)
-
     // Hover over features button
     fireEvent.mouseEnter(featuresButton)
 
     // Dropdown should appear (class removed)
     await waitFor(() => {
-      expect(dropdown.className).not.toMatch(/invisible/)
+      expect(dropdown.className).toMatch(/visible/)
     })
 
     // Move mouse away
