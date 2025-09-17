@@ -18,6 +18,13 @@ export async function generateMetadata({ params }: HomeProps): Promise<Metadata>
   return {
     title: t["home.page.title"] ?? "Lyyli.ai",
     description: t["home.page.description"] ?? "AI Communication Assistant for Professional Service Organizations",
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: '/en',
+        fi: '/fi',
+      },
+    },
   };
 }
 
