@@ -35,6 +35,23 @@ export const helpArticles: HelpArticle[] = [
     contentFi: 'Luo ensimmäinen tekoälyavustajasi. Tämä oppaat opastaa sinua luomaan ensimmäisen tekoälyavustajasi vain muutamassa minuutissa. Mitä saavutat: Luotu ensimmäinen tekoälyavustajasi, Asetettu peruspersoonallisuusominaisuudet, Lisätty alustava tietopohja, Testattu ensimmäiset keskustelut. Edellytykset: Aktiivinen Lyyli.ai-tili, Pääsy yrityksesi viestintäohjeisiin, Perustietoa kohderyhmästäsi. Vaiheittainen oppaat: Pääsy AI-avustajan luontisivulle, Perusasetusten määrittäminen, Persoonallisuuden ja äänen määrittäminen, Alustavan tietopohjan lisääminen, Avustajasi testaaminen.'
   },
   {
+    id: 'legal-library',
+    title: 'Legal & agreements',
+    titleFi: 'Sopimukset ja ehdot',
+    summary: 'Order confirmation, DPA, SLA, terms, and annex templates',
+    summaryFi: 'Tilausvahvistus, DPA, SLA, ehdot ja liitteet',
+    url: '/help/legal',
+    category: 'Support',
+    categoryFi: 'Tuki',
+    tags: ['legal','agreements','dpa','gdpr','sla','toms','subprocessors','retention','deletion','it2022','terms'],
+    tagsFi: ['juridiikka','sopimukset','dpa','gdpr','sla','toms','alihankkijat','säilytys','poisto','it2022','ehdot'],
+    difficulty: 'beginner',
+    timeToComplete: '2 min',
+    timeToCompleteFi: '2 min',
+    content: 'Browse legal templates for Lyyli AI Oy including order confirmation, DPA, SLA, TOMs, subprocessors, and retention policy.',
+    contentFi: 'Selaa Lyyli AI Oy:n malleja: tilausvahvistus, DPA, SLA, TOMit, alikäsittelijät ja säilytyskäytäntö.'
+  },
+  {
     id: 'ai-assistants',
     title: 'Managing and training AI assistants',
     titleFi: 'Tekoälyavustajien hallinta ja koulutus',

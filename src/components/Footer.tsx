@@ -187,6 +187,14 @@ export default function Footer({
                   <ul className="space-y-2">
                     <li>
                       <a
+                        href={`/${locale}/help/legal`}
+                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                      >
+                        {locale === "fi" ? "Sopimukset ja ehdot" : "Legal & agreements"}
+                      </a>
+                    </li>
+                    <li>
+                      <a
                         href={`/${locale}/privacy`}
                         className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
                       >

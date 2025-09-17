@@ -1,0 +1,33 @@
+---
+title: "LIITE 4 – Tietoturvatoimenpiteet (TOMs)"
+lang: fi
+version: "v1.0"
+date: "2025-09-17"
+---
+
+# LIITE 4 – Tietoturvatoimenpiteet (TOMs)
+
+**Yleistä:** riskiperusteinen hallinta, vähimmän oikeuden periaate, EU/ETA-tietosijainti.
+
+## Organisatoriset toimet
+- Turvallisuuden hallintamalli ja vuosikatselmointi; DPO-prosessit; DPIA tarvittaessa.  
+- Henkilöstön NDA, perehdytys, roolipohjainen pääsy; koulutus.  
+- Toimittaja- ja alihankkijahallinta (DPA:t, auditointioikeudet).
+
+## Tekniset toimet
+- **Salaus:** TLS 1.2+ siirrossa; **AES-256** levyllä.  
+- **Pääsynhallinta:** SSO/IdP (Clerk), MFA, vähimmän oikeuden periaate; katselmoinnit.  
+- **Lokitus & valvonta:** sovellus- ja audit-lokit; hälytykset; säilytys **≥ 180 pv**.  
+- **Haavoittuvuudet:** säännölliset skannaukset; riskipohjainen korjaus; riippuvuusskannaukset.  
+- **Varmuuskopiot:** päivittäin salattuna; palautustestit.  
+- **DR/BCP:** RPO ≤ 24 h, RTO ≤ 24 h.  
+- **Verkko:** WAF/DDoS, palomuurit, segmentointi.  
+- **Kehitys:** koodikatselmukset, CI/CD-tarkistukset, dev/test/prod-erottelu.
+
+## Ylläpito ja testaus
+- Vuotuinen penetraatiotestaus tai vastaava kolmannen osapuolen arvio.
+
+## Huoltokatkot
+- Ilmoitus vähintään **3 arkipäivää** etukäteen.
+
+Lisätiedot: https://lyyli.ai/fi/security

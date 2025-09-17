@@ -114,6 +114,25 @@ export default async function HelpPage({
                 </div>
               </Link>
 
+              <Link href={`/${locale}/help/legal`} className="group" aria-label={locale === "fi" ? "Avaa sopimukset ja ehdot -kirjasto" : "Open Legal & agreements library"}>
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16h8M8 12h8m-7 8h6a2 2 0 002-2V6a2 2 0 00-2-2H9l-3 3v13a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Sopimukset ja ehdot" : "Legal & agreements"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" 
+                      ? "Tilausvahvistus, DPA, SLA, ehdot ja liitteet"
+                      : "Order confirmation, DPA, SLA, terms, and annexes"
+                    }
+                  </p>
+                </div>
+              </Link>
+
               <Link href={`/${locale}/help/analytics`} className="group">
                 <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
