@@ -8,7 +8,8 @@ import { logger } from '@/lib/logger';
 const intlMiddleware = createMiddleware({
   locales: ['en', 'fi'],
   defaultLocale: 'en',
-  localePrefix: 'as-needed'
+  // Always prefix locales so our [locale] routes match (both en and fi)
+  localePrefix: 'always'
 });
 
 export default function middleware(request: NextRequest) {
