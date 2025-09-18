@@ -54,6 +54,7 @@ export default function Footer({
                     alt="Lyyli.ai logo - AI Communication Assistant"
                     width={96}
                     height={32}
+                    sizes="96px"
                     className="h-8 w-auto"
                   />
                 </div>

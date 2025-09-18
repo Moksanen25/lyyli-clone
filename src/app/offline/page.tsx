@@ -83,6 +83,7 @@ export default function OfflinePage() {
             alt="Lyyli.ai logo"
             width={120}
             height={40}
+            sizes="120px"
             className="mx-auto opacity-60"
           />
         </div>

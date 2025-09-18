@@ -12,6 +12,31 @@ export async function generateMetadata({ params }: CookiesPageProps): Promise<Me
   return {
     title: t["cookies.page.title"],
     description: t["cookies.page.description"],
+    openGraph: {
+      title: t["cookies.page.title"],
+      description: t["cookies.page.description"],
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(t["cookies.page.title"])}`,
+          width: 1200,
+          height: 630,
+          alt: t["cookies.page.title"],
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t["cookies.page.title"],
+      description: t["cookies.page.description"],
+    },
+    alternates: {
+      canonical: `/${locale}/cookies`,
+      languages: {
+        en: '/en/cookies',
+        fi: '/fi/cookies',
+      },
+    },
   };
 }
 

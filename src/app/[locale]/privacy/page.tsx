@@ -12,6 +12,31 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
   return {
     title: t["privacy.page.title"],
     description: t["privacy.page.description"],
+    openGraph: {
+      title: t["privacy.page.title"],
+      description: t["privacy.page.description"],
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(t["privacy.page.title"])}`,
+          width: 1200,
+          height: 630,
+          alt: t["privacy.page.title"],
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t["privacy.page.title"],
+      description: t["privacy.page.description"],
+    },
+    alternates: {
+      canonical: `/${locale}/privacy`,
+      languages: {
+        en: '/en/privacy',
+        fi: '/fi/privacy',
+      },
+    },
   };
 }
 
