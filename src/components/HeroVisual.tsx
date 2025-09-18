@@ -1,6 +1,9 @@
 "use client";
 
-export default function HeroVisual() {
+import dynamic from 'next/dynamic';
+import Deferred from './Deferred';
+
+function HeroVisualInner() {
   return (
     <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
 
@@ -646,5 +649,14 @@ export default function HeroVisual() {
       </div>
 
     </div>
+  );
+}
+
+export default function HeroVisual() {
+  const Visual = dynamic(async () => ({ default: HeroVisualInner }), { ssr: false, loading: () => <div /> });
+  return (
+    <Deferred when="idle">
+      <Visual />
+    </Deferred>
   );
 }

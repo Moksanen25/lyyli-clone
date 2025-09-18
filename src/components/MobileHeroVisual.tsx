@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+import Deferred from './Deferred';
 
-export default function MobileHeroVisual() {
+function MobileHeroVisualInner() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -216,5 +218,14 @@ export default function MobileHeroVisual() {
         }}
       />
     </div>
+  );
+}
+
+export default function MobileHeroVisual() {
+  const Visual = dynamic(async () => ({ default: MobileHeroVisualInner }), { ssr: false, loading: () => <div /> });
+  return (
+    <Deferred when="idle">
+      <Visual />
+    </Deferred>
   );
 }
