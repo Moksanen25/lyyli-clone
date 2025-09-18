@@ -1,10 +1,13 @@
 import { getTranslations } from "../../lib/i18n";
 import type { Metadata } from "next";
-import ProcessSteps from "../../components/ProcessSteps";
-import FeatureGrid from "../../components/FeatureGrid";
+import dynamic from "next/dynamic";
 import DemoVideo from "../../components/DemoVideo";
 import ROICalculator from "../../components/ROICalculator";
 import PricingCards from "../../components/PricingCards";
+import Deferred from "../../components/Deferred";
+
+const ProcessSteps = dynamic(() => import("../../components/ProcessSteps"), { ssr: true, loading: () => <div /> });
+const FeatureGrid = dynamic(() => import("../../components/FeatureGrid"), { ssr: true, loading: () => <div /> });
 
 // Note: using static imports for client components inside a Server Component
 interface HomeProps {
@@ -142,11 +145,15 @@ export default async function Home({ params }: HomeProps) {
         </div>
       </section>
 
-      {/* Process Steps Section */}
-      <ProcessSteps translations={t} />
+      {/* Process Steps Section (mount on visible) */}
+      <Deferred when="visible">
+        <ProcessSteps translations={t} />
+      </Deferred>
 
-      {/* Feature Grid Section */}
-      <FeatureGrid translations={t} />
+      {/* Feature Grid Section (idle) */}
+      <Deferred when="idle">
+        <FeatureGrid translations={t} />
+      </Deferred>
 
       {/* Demo Video Section */}
       <DemoVideo translations={t} />

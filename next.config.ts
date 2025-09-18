@@ -1,5 +1,13 @@
 import type { NextConfig } from "next";
 import createMDX from '@next/mdx';
+let withBundleAnalyzer: (cfg: NextConfig) => NextConfig = (cfg) => cfg;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const analyzer = require('@next/bundle-analyzer');
+  withBundleAnalyzer = analyzer({ enabled: process.env.ANALYZE === 'true' });
+} catch {
+  // Analyzer not installed; proceed without it unless ANALYZE=true and package is present
+}
 
 const withMDX = createMDX({
   options: {
@@ -72,4 +80,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withMDX(nextConfig);
+export default withBundleAnalyzer(withMDX(nextConfig));

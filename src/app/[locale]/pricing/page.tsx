@@ -2,7 +2,8 @@ import { getTranslations } from '@/lib/i18n';
 import { Metadata } from 'next';
 import PricingCards from '@/components/PricingCards';
 import BenefitsSection from '@/components/pricing/BenefitsSection';
-import PricingFAQ from '@/components/pricing/PricingFAQ';
+import dynamic from 'next/dynamic';
+const PricingFAQ = dynamic(() => import('@/components/pricing/PricingFAQ'), { ssr: true, loading: () => <div /> });
 import ROICalculator from '@/components/ROICalculator';
 
 interface PricingPageProps {
