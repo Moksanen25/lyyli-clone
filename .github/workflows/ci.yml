@@ -38,8 +38,23 @@ jobs:
         env:
           JEST_JUNIT_OUTPUT: junit.xml
 
-      - name: Build
-        run: npm run build
+      - name: Build (capture log)
+        run: npm run build | tee build.log
+
+      - name: Enforce bundle budget (First Load JS shared by all)
+        run: |
+          THRESHOLD_KB=150
+          LINE=$(grep -E 'First Load JS shared by all' build.log | tail -1 || true)
+          if [ -z "$LINE" ]; then
+            echo "Could not find First Load JS line in build output; skipping budget check"
+            exit 0
+          fi
+          SIZE_KB=$(echo "$LINE" | awk '{print $(NF-1)}')
+          echo "First Load JS shared by all: ${SIZE_KB} kB (threshold ${THRESHOLD_KB} kB)"
+          if [ "${SIZE_KB%.*}" -gt "$THRESHOLD_KB" ]; then
+            echo "Bundle size regression detected: ${SIZE_KB} kB > ${THRESHOLD_KB} kB"
+            exit 1
+          fi
 
 name: CI/CD Pipeline
 
