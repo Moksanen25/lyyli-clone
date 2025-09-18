@@ -2,8 +2,10 @@
 
 import dynamic from 'next/dynamic';
 import Deferred from './Deferred';
+import { useNonce } from '@/hooks/useNonce';
 
 function HeroVisualInner() {
+  const nonce = useNonce();
   return (
     <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
 
@@ -381,7 +383,7 @@ function HeroVisualInner() {
         </div>
 
         {/* CSS Animations using style tag */}
-        <style dangerouslySetInnerHTML={{
+        <style nonce={nonce ?? undefined} dangerouslySetInnerHTML={{
           __html: `
             @keyframes dataFlow1 {
               0%, 100% { opacity: 0.6; }

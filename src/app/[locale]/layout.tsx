@@ -131,6 +131,7 @@ export default async function LocaleLayout({
     <html lang={currentLocale} dir="ltr" className={`${fontVars} h-full`}>
       <head>
         <link rel="canonical" href={canonicalUrl} />
+        {nonce && <meta name="csp-nonce" content={nonce} />}
         <link rel="alternate" hrefLang="en" href={`${protocol}://${host}/en`} />
         <link rel="alternate" hrefLang="fi" href={`${protocol}://${host}/fi`} />
         <link

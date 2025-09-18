@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Deferred from './Deferred';
+import { useNonce } from '@/hooks/useNonce';
 
 function AccessibleHeroVisualInner() {
+  const nonce = useNonce();
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -129,7 +131,7 @@ function AccessibleHeroVisualInner() {
       </div>
 
       {/* CSS Animations */}
-      <style dangerouslySetInnerHTML={{
+      <style nonce={nonce ?? undefined} dangerouslySetInnerHTML={{
         __html: `
           @keyframes hubPulse {
             0%, 100% { 
