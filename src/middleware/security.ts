@@ -139,6 +139,10 @@ export function addSecurityHeaders(
       }
       const cspValue = generateCSPHeader(config.cspDirectives);
       response.headers.set('Content-Security-Policy', cspValue);
+      // Modern reporting API (optional): point to /api/csp-report
+      response.headers.set('Reporting-Endpoints', 'csp-endpoint="/api/csp-report"');
+      // Backwards-compatible Report-To (older spec)
+      response.headers.set('Report-To', JSON.stringify({ group: 'csp-endpoint', max_age: 10886400, endpoints: [{ url: '/api/csp-report' }] }));
     }
 
     // HTTP Strict Transport Security
