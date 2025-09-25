@@ -185,18 +185,14 @@ export default function DemoVideo({ translations }: { translations?: any }) {
                   </svg>
                 </button>
 
-                {/* Video Player Placeholder */}
-                <div className="w-full h-full bg-gradient-to-br from-forest to-turquoise flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                    <h3 className="text-2xl font-semibold mb-2">Demo video</h3>
-                    <p className="text-white/80">Video player would be integrated here</p>
-                  </div>
-                </div>
+                {/* Video Player */}
+                <video
+                  className="w-full h-full"
+                  src="/images/general/HowLyyliWorks_FI.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                />
               </motion.motion.div>
             </motion.motion.div>
           </motion.AnimatePresence>
