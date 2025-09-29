@@ -23,7 +23,7 @@ export default function HeroFactBox({ translations, teamSize = 10, currentTimeHo
   return (
     <div className="max-w-5xl mx-auto">
       <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <div className="p-6 text-center border-b sm:border-b-0 sm:border-r border-gray-200">
             <div className="text-3xl md:text-4xl font-bold text-forest font-sans">
               {Math.round(metrics.timeSavedPercent)}%
@@ -40,14 +40,6 @@ export default function HeroFactBox({ translations, teamSize = 10, currentTimeHo
               {translations["hero.facts.productivityBoost"] || "Faster production with your current team"}
             </div>
           </div>
-          <div className="p-6 text-center border-b sm:border-b-0 sm:border-r lg:border-r border-gray-200">
-            <div className="text-3xl md:text-4xl font-bold text-forest font-sans">
-              {metrics.fteEquivalent.toFixed(1)} FTE
-            </div>
-            <div className="text-mediumGray text-sm mt-1 font-sans">
-              {translations["hero.facts.fteReplacement"] || "Equivalent capacity unlocked"}
-            </div>
-          </div>
           <div className="p-6 text-center">
             <div className="text-3xl md:text-4xl font-bold text-forest font-sans">
               {formattedMonthlyNet}
@@ -58,7 +50,7 @@ export default function HeroFactBox({ translations, teamSize = 10, currentTimeHo
           </div>
         </div>
         <div className="px-6 py-3 text-center text-xs text-mediumGray border-t border-gray-200 font-sans">
-          {translations["hero.facts.caption"] || "Based on typical teams and €199/month plan"}
+          {translations["hero.facts.caption"] || "Based on an estimate of five (5) hours of dedicated communication work per week across the organization and a €199/month plan"}
         </div>
       </div>
     </div>
