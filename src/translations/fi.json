@@ -270,6 +270,11 @@
   "hero.description": "Tekoälyavusteinen viestintäassistentti asiantuntijaorganisaatioille – viestit pikaviestikanavissa kuin ammattilainen ja varmistat, etteivät tärkeät asiat jaa ikinä viestimättä.",
   "hero.headline": "Tärkeät viestit jäävät viestimättä, koska oikeita työkaluja ei ole",
   "hero.trustBadge": "Konsultointi-, teknologia- ja asiantuntijaorganisaatioille",
+  "hero.facts.timeSaved": "Säästä viestintään kuluvaa aikaa",
+  "hero.facts.productivityBoost": "Nopeampi tuotanto nykyisellä tiimilläsi",
+  "hero.facts.fteReplacement": "Vapautettu kapasiteetti (htv)",
+  "hero.facts.netSavings": "Nettosäästö kuukaudessa",
+  "hero.facts.caption": "Perustuu tyypilliseen tiimiin ja 199€/kk -suunnitelmaan",
   "nav.contact": "Yhteystiedot",
   "nav.features": "Ominaisuudet",
   "nav.pricing": "Hinnoittelu",
@@ -530,5 +535,15 @@
   "roi.charts.current": "Nykyinen",
   "roi.charts.withLyyli": "Lyylin kanssa",
   "roi.assumptions.note": "Laskelmamme perustuvat alan vertailuihin ja todellisiin asiakastuloksiin",
-  "roi.cta.startSaving": "Aloita säästäminen Lyylin avulla"
+  "roi.cta.startSaving": "Aloita säästäminen Lyylin avulla",
+  "home.page.title": "Lyyli.ai - Tekoälyavusteinen viestintäassistentti asiantuntijaorganisaatioille",
+  "home.page.description": "Tehosta sisäistä viestintää tekoälyavusteisilla työnkuluilla, hallinnolla ja yritystason tietoturvalla asiantuntijaorganisaatioille.",
+  "roi.impact.title": "Mitattava liiketoimintavaikutus",
+  "roi.impact.description": "Ajan ja kustannusten säästöjen lisäksi Lyyli.ai parantaa viestinnän laatua, tiimiyhteistyötä ja asiakastyytyväisyyttä.",
+  "roi.impact.card1.title": "Nopeammat vasteajat",
+  "roi.impact.card1.description": "Vähennä viestintäviiveitä jopa 80 % tekoälyavustuksen avulla",
+  "roi.impact.card2.title": "Parempi johdonmukaisuus",
+  "roi.impact.card2.description": "Säilytä brändiääni ja viestinnän johdonmukaisuus kaikissa kanavissa",
+  "roi.impact.card3.title": "Korkeampi tyytyväisyys",
+  "roi.impact.card3.description": "Paranna asiakkaiden ja tiimin tyytyväisyyttä tehokkaammalla viestinnällä"
 }

@@ -203,7 +203,9 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
                 >
                   {isComingSoon && (
                     <div className="absolute top-4 right-4">
-                      <div className="px-2 py-1 text-xs rounded-full font-semibold bg-forest/90 text-white shadow-md">Coming soon</div>
+                      <div className="px-2 py-1 text-xs rounded-full font-semibold bg-forest/90 text-white shadow-md">
+                        {translations?.["common.comingSoon"] || "Coming soon"}
+                      </div>
                     </div>
                   )}
                   {/* Icon */}

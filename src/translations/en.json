@@ -270,6 +270,11 @@
   "hero.description": "AI communication assistant for expert organizations – communicate in messaging channels like a professional and ensure important matters are never left uncommunicated.",
   "hero.headline": "Important communication goes undone because there are no proper tools",
   "hero.trustBadge": "Trusted by leaders in consulting, technology, and professional services organizations",
+  "hero.facts.timeSaved": "Save time on communication",
+  "hero.facts.productivityBoost": "Faster production with your current team",
+  "hero.facts.fteReplacement": "Equivalent capacity unlocked",
+  "hero.facts.netSavings": "Net savings per month",
+  "hero.facts.caption": "Based on typical teams and €199/month plan",
   "nav.contact": "Contact",
   "nav.features": "Features",
   "nav.pricing": "Pricing",
@@ -532,5 +537,15 @@
   "roi.charts.current": "Current",
   "roi.charts.withLyyli": "With Lyyli",
   "roi.assumptions.note": "Our calculations are based on industry benchmarks and real customer data",
-  "roi.cta.startSaving": "Start saving with Lyyli.ai"
+  "roi.cta.startSaving": "Start saving with Lyyli.ai",
+  "home.page.title": "Lyyli.ai - AI communication assistant for professional services",
+  "home.page.description": "Transform internal communication with AI-assisted workflows, governance, and enterprise security for professional service organizations.",
+  "roi.impact.title": "Measurable business impact",
+  "roi.impact.description": "Beyond time and cost savings, Lyyli.ai delivers measurable improvements in communication quality, team collaboration, and customer satisfaction",
+  "roi.impact.card1.title": "Faster response times",
+  "roi.impact.card1.description": "Reduce communication delays by up to 80% with AI-powered assistance",
+  "roi.impact.card2.title": "Improved consistency",
+  "roi.impact.card2.description": "Maintain brand voice and messaging consistency across all communications",
+  "roi.impact.card3.title": "Higher satisfaction",
+  "roi.impact.card3.description": "Boost customer and team satisfaction with more effective communication"
 }

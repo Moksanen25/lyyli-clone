@@ -5,6 +5,7 @@ import DemoVideo from "../../components/DemoVideo";
 import ROICalculator from "../../components/ROICalculator";
 import PricingCards from "../../components/PricingCards";
 import Deferred from "../../components/Deferred";
+import HeroFactBox from "../../components/HeroFactBox";
 
 const ProcessSteps = dynamic(() => import("../../components/ProcessSteps"), { ssr: true, loading: () => <div /> });
 const FeatureGrid = dynamic(() => import("../../components/FeatureGrid"), { ssr: true, loading: () => <div /> });
@@ -56,6 +57,9 @@ export default async function Home({ params }: HomeProps) {
           <p className="text-lg hero-description text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
             {t["hero.description"]}
           </p>
+          <div className="mt-8 mb-10 relative z-10">
+            <HeroFactBox translations={t} />
+          </div>
           <div className="flex justify-center gap-4 mb-12 relative z-10">
             <a href="#cta" className="btn-primary">
               {t["hero.ctaPrimary"]}

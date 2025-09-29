@@ -13,8 +13,11 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.4.0",
     "@next/mdx": "^15.5.2",
     "@tailwindcss/postcss": "^4.1.12",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
     "framer-motion": "^12.23.12",
     "gray-matter": "^4.0.3",
     "next": "15.5.2",
@@ -24,6 +27,7 @@
     "react-dom": "^19",
     "react-intersection-observer": "^9.16.0",
     "recharts": "^3.1.2",
+    "styled-jsx": "^5.1.7",
     "tailwindcss": "^4.0.0-alpha.25",
     "web-vitals": "^3.5.2"
   },

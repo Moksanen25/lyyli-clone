@@ -39,6 +39,16 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
+  webpack: (config) => {
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      "victory-vendor/d3-shape": "d3-shape",
+      "victory-vendor/d3-scale": "d3-scale",
+    };
+    return config;
+  },
+
   // Optimize bundles (disabled custom splitChunks to avoid Webpack runtime conflicts)
   // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
   //   if (!dev && !isServer) {

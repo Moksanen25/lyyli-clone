@@ -150,7 +150,7 @@ export default async function LocaleLayout({
 
         {/* Vibrant Mesh Gradient Background for all pages */}
         <MeshGradientBackground />
-        <div className="flex flex-col min-h-screen relative">
+        <div className="flex flex-col min-h-screen relative z-10">
           <Header locale={currentLocale} translations={t} />
           <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />
           <main className="flex-1 relative">{children}</main>

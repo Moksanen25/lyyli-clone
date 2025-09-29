@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { TranslationKeys } from "../lib/i18n";
+import { computeRoiMetrics } from "../lib/roi";
 
 // Dynamic import for the charts to avoid SSR issues with Recharts
 const DynamicCharts = dynamic(() => import("./ROICharts"), { 
@@ -22,11 +23,11 @@ const DynamicCharts = dynamic(() => import("./ROICharts"), {
 const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
 
 interface CalculationResult {
-  timeSaved: number;
-  moneySaved: number;
-  efficiencyGain: number;
-  monthlySavings: number;
-  yearlySavings: number;
+  timeSaved: number; // hours saved per person per week
+  moneySaved: number; // € saved per person per week
+  efficiencyGain: number; // % time saved per person
+  monthlySavings: number; // € team net per month
+  yearlySavings: number; // € team net per year
 }
 
 interface ROICalculatorProps {
@@ -45,25 +46,23 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
     yearlySavings: 0
   });
 
-  // Calculate ROI based on inputs
+  // Calculate ROI based on inputs (pricing-aware)
   useEffect(() => {
-    const hourlyRate = 75; // Average hourly rate for professional services
-    const workingHoursPerWeek = 40;
-    const weeksPerMonth = 4.33;
-    const monthsPerYear = 12;
-
-    const timeSaved = (currentTime * 0.6); // 60% time reduction
-    const moneySaved = timeSaved * hourlyRate;
-    const efficiencyGain = ((currentTime - timeSaved) / currentTime) * 100;
-    const monthlySavings = moneySaved * workingHoursPerWeek * weeksPerMonth;
-    const yearlySavings = monthlySavings * monthsPerYear;
+    const hourlyRate = 60; // Align with pricing assumption translations
+    const metrics = computeRoiMetrics({
+      teamSize,
+      currentTimeHoursPerWeek: currentTime,
+      hourlyRate,
+      planMonthlyCost: 199,
+      productivityMultiplier: 1.5,
+    });
 
     setResults({
-      timeSaved: Math.round(timeSaved * 100) / 100,
-      moneySaved: Math.round(moneySaved * 100) / 100,
-      efficiencyGain: Math.round(efficiencyGain * 100) / 100,
-      monthlySavings: Math.round(monthlySavings * 100) / 100,
-      yearlySavings: Math.round(yearlySavings * 100) / 100
+      timeSaved: Math.round(metrics.timeSavedPerPersonHoursPerWeek * 100) / 100,
+      moneySaved: Math.round(metrics.weeklySavingsPerPerson * 100) / 100,
+      efficiencyGain: Math.round(metrics.timeSavedPercent * 100) / 100 / 100 * 100, // ensure proper rounding
+      monthlySavings: Math.round(metrics.monthlyNetSavings * 100) / 100,
+      yearlySavings: Math.round(metrics.yearlyNetSavings * 100) / 100,
     });
   }, [teamSize, currentTime]);
 
@@ -368,10 +367,10 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
             viewport={{ once: true }}
           >
             <h3 className="text-3xl font-semibold text-forest mb-6 font-playfair font-bold leading-tight">
-              Measurable business impact
+              {translations?.["roi.impact.title"] || "Measurable business impact"}
             </h3>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto mb-8 font-sans leading-relaxed">
-              Beyond time and cost savings, Lyyli.ai delivers measurable improvements in communication quality, team collaboration, and customer satisfaction
+              {translations?.["roi.impact.description"] || "Beyond time and cost savings, Lyyli.ai delivers measurable improvements in communication quality, team collaboration, and customer satisfaction"}
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -381,9 +380,9 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">Faster response times</h4>
+                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">{translations?.["roi.impact.card1.title"] || "Faster response times"}</h4>
                 <p className="text-mediumGray text-sm font-sans leading-relaxed">
-                  Reduce communication delays by up to 80% with AI-powered assistance
+                  {translations?.["roi.impact.card1.description"] || "Reduce communication delays by up to 80% with AI-powered assistance"}
                 </p>
               </div>
               
@@ -393,9 +392,9 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">Improved consistency</h4>
+                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">{translations?.["roi.impact.card2.title"] || "Improved consistency"}</h4>
                 <p className="text-mediumGray text-sm font-sans leading-relaxed">
-                  Maintain brand voice and messaging consistency across all communications
+                  {translations?.["roi.impact.card2.description"] || "Maintain brand voice and messaging consistency across all communications"}
                 </p>
               </div>
               
@@ -405,9 +404,9 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">Higher satisfaction</h4>
+                <h4 className="text-lg font-semibold text-forest mb-2 font-sans">{translations?.["roi.impact.card3.title"] || "Higher satisfaction"}</h4>
                 <p className="text-mediumGray text-sm font-sans leading-relaxed">
-                  Boost customer and team satisfaction with more effective communication
+                  {translations?.["roi.impact.card3.description"] || "Boost customer and team satisfaction with more effective communication"}
                 </p>
               </div>
             </div>
