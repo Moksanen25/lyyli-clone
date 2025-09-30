@@ -3,7 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
-import { TranslationKeys } from "../lib/i18n";
+import { TranslationKeys } from "@/lib/i18n";
 
 interface PricingPlan {
   name: string;
@@ -114,31 +114,30 @@ export default function PricingCards({ fullWidth = false, locale, translations }
     const featureMap: { [key: string]: string } = {
       "Max 1 user": "pricing.features.maxOneUser",
       "Basic AI generation with limited tone of voice and brand settings": "pricing.features.basicAILimited",
-      "Max 20 AI conversations a week": "pricing.features.maxTwentyConversationsWeek",
+      "Max 20 AI conversations a week": "pricing.features.maxTwentyConversations",
       "No integrations": "pricing.features.noIntegrations",
       "Help & Support library": "pricing.features.helpSupportLibrary",
       "Everything in Free": "pricing.features.everythingInFree",
-      "Advanced AI content generation with personal suggestions based on your communication": "pricing.features.advancedAIPersonal",
-      "Max 50 AI conversations a week": "pricing.features.maxFiftyConversationsWeek",
-      "Limited tone of voice and brand settings": "pricing.features.limitedToneBrand",
-      "Everything in Starter": "pricing.features.everythingInStarter",
-      "User management: max 3 users": "pricing.features.userManagement3",
-      "Premium AI content generation with personal suggestions": "pricing.features.premiumAIPersonal",
-      "Slack and/or Teams native app": "pricing.features.slackTeamsNative",
-      "Unlimited conversations": "pricing.features.unlimitedConversations",
-      "Organisation management and advanced tone of voice and brand settings": "pricing.features.orgManagementAdvanced",
+      "Basic tone of voice settings": "pricing.features.basicTone",
+      "Max 300 messages per month": "pricing.features.maxThreeHundredMessages",
+      "Up to 3 integrations": "pricing.features.maxThreeIntegrations",
+      "Everything in Launch": "pricing.features.everythingInLaunch",
+      "Organization management and user roles": "pricing.features.orgManagementRoles",
+      "Slack and/or Teams native app": "pricing.features.slackOrTeams",
+      "Advanced tone of voice settings": "pricing.features.advancedTone",
+      "Up to 1000 messages per month": "pricing.features.upToThousandMessages",
       "Priority support (email)": "pricing.features.prioritySupportEmail",
       "Everything in Growth": "pricing.features.everythingInGrowth",
       "Advanced AI-analytics to optimize your content and publishing": "pricing.features.advancedAIAnalytics",
-      "AI-enhanced Campaign mode to create and manage communication campaigns": "pricing.features.aiCampaignMode",
+      "AI-enhanced Campaign mode to create and manage communication campaigns": "pricing.features.campaignMode",
       "Editor mode": "pricing.features.editorMode",
-      "AI-enhanced media library with intelligent media suggestions": "pricing.features.aiMediaLibrary",
-      "C-level and management automated KPI-reports": "pricing.features.automatedKPIReports",
+      "AI-enhanced media library with intelligent media suggestions": "pricing.features.mediaLibrary",
+      "C-level and management automated KPI-reports": "pricing.features.kpiReports",
       "Branded templates for different content: communications plan, management report, weekly report, personnel info": "pricing.features.brandedTemplates",
       "Priority support (email and phone)": "pricing.features.prioritySupportEmailPhone",
       "Local entity in customer's own environment": "pricing.features.localEntity",
       "Premium support": "pricing.features.premiumSupport",
-      "APIs": "pricing.features.apis",
+      "APIs": "pricing.features.apiAccess",
       "Named account manager": "pricing.features.namedAccountManager"
     };
 
