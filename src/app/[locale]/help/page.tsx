@@ -266,6 +266,142 @@ export default async function HelpPage({
                   </p>
                 </div>
               </Link>
+
+              {/* New: Accounts & sign-in */}
+              <Link href={`/${locale}/help/accounts-auth`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A4 4 0 018 17h8a4 4 0 013.879 2.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Tilit ja kirjautuminen" : "Accounts & sign-in"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" ? "SSO/MFA, salasanat ja profiiliasetukset" : "SSO/MFA, passwords and profile"}
+                  </p>
+                </div>
+              </Link>
+
+              {/* New: Organizations & users */}
+              <Link href={`/${locale}/help/organizations-users`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 1.87a4 4 0 10-8 0 4 4 0 008 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Organisaatiot ja käyttäjähallinta" : "Organizations & users"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" ? "Kutsut, roolit ja audit trail" : "Invites, roles and audit trail"}
+                  </p>
+                </div>
+              </Link>
+
+              {/* New: UI basics */}
+              <Link href={`/${locale}/help/ui-basics`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h18M3 12h18M3 17h18" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Käyttöliittymän perusteet" : "UI basics"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" ? "Navigointi, haku ja ilmoitukset" : "Navigation, search and notifications"}
+                  </p>
+                </div>
+              </Link>
+
+              {/* New: Brand & content */}
+              <Link href={`/${locale}/help/brand-content`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 1.343-3 3v7h6v-7c0-1.657-1.343-3-3-3z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Brändi ja sisältöasetukset" : "Brand & content"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" ? "Värit, typografia, kielet ja hyväksynnät" : "Colors, typography, languages and approvals"}
+                  </p>
+                </div>
+              </Link>
+
+              {/* New: Publishing */}
+              <Link href={`/${locale}/help/publishing`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Julkaisu ja kanavat" : "Publishing & channels"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" ? "Versiointi, A/B ja virheet" : "Versioning, A/B and errors"}
+                  </p>
+                </div>
+              </Link>
+
+              {/* New: Service Description */}
+              <Link href={`/${locale}/help/service-description`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Palvelun kuvaus" : "Service Description"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" ? "Mikä on Lyyli.ai ja miten se toimii" : "What is Lyyli.ai and how it works"}
+                  </p>
+                </div>
+              </Link>
+
+              {/* New: Target Audience */}
+              <Link href={`/${locale}/help/target-audience`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 1.87a4 4 0 10-8 0 4 4 0 008 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Kenelle palvelu on tarkoitettu" : "Target Audience"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" ? "Kohderyhmät ja käyttötarkoitukset" : "Target groups and use cases"}
+                  </p>
+                </div>
+              </Link>
+
+              {/* New: Registration & Subscription */}
+              <Link href={`/${locale}/help/registration-subscription`} className="group">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
+                    <svg className="w-6 h-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
+                    {locale === "fi" ? "Rekisteröityminen ja tilauksen valinta" : "Registration & Subscription"}
+                  </h3>
+                  <p className="text-mediumGray font-sans leading-relaxed">
+                    {locale === "fi" ? "Aloita käyttäminen ja valitse tilaus" : "Start using and choose subscription"}
+                  </p>
+                </div>
+              </Link>
             </div>
           </div>
 
