@@ -70,8 +70,8 @@ export default async function HelpPage({
                   </h3>
                   <p className="text-mediumGray font-sans leading-relaxed">
                     {locale === "fi" 
-                      ? "Mikä on Lyyli.ai ja miten se toimii"
-                      : "What is Lyyli.ai and how it works"
+                      ? "Mikä palvelu on ja kenelle se on"
+                      : "What the service is and who it's for"
                     }
                   </p>
                 </div>
@@ -86,7 +86,7 @@ export default async function HelpPage({
                     </svg>
                   </div>
                   <h3 className="text-lg text-forest mb-2 group-hover:text-forest transition-colors font-playfair font-normal">
-                    {locale === "fi" ? "Kenelle palvelu on tarkoitettu" : "Target Audience"}
+                    {locale === "fi" ? "Kenelle" : "Target Audience"}
                   </h3>
                   <p className="text-mediumGray font-sans leading-relaxed">
                     {locale === "fi" 

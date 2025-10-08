@@ -60,8 +60,8 @@ export default async function RegistrationSubscriptionPage({
             </h1>
             <p className="text-xl text-gray-600">
               {locale === "fi" 
-                ? "Opas rekisteröitymiseen ja sopivan tilauksen valintaan Lyyli.ai:ssä"
-                : "Guide to registering and choosing the right subscription for Lyyli.ai"
+                ? "Tilin luonti, aktivointi ja vahvistus, SSO/MFA: miten otetaan käyttöön, Salasanan nollaus ja lukituksen avaus, Profiiliasetukset ja ilmoitukset"
+                : "Account creation, activation and verification, SSO/MFA: how to enable, Password reset and unlock, Profile settings and notifications"
               }
             </p>
           </div>

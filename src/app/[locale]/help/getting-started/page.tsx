@@ -63,8 +63,8 @@ export default async function GettingStartedPage({
             </h1>
             <p className="text-xl text-gray-600">
               {locale === "fi" 
-                ? "Luo ensimmäinen tekoälyavustajasi alle 10 minuutissa vaiheittaisen oppaan avulla"
-                : "Create your first AI assistant in under 10 minutes with this step-by-step guide"
+                ? "Mikä palvelu on ja kenelle se on, Vaatimukset ja tuetut ympäristöt, Pika-aloitus 10 minuutissa, Käsitteet ja termit, Roolit ja käyttöoikeudet lyhyesti"
+                : "What the service is and who it's for, Requirements and supported environments, Quick start in 10 minutes, Concepts and terms, Roles and permissions briefly"
               }
             </p>
           </div>

@@ -52,8 +52,8 @@ export default async function PublishingPage({
                 {locale === "fi" ? "10 min" : "10 min"}
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">{locale === "fi" ? "Julkaisu ja kanavakohtaiset ohjeet" : "Publishing and channel guidelines"}</h1>
-            <p className="text-lg text-gray-600">{locale === "fi" ? "Kanavan valinta ja julkaisuvirta, versiointi ja muutosten hallinta, esikatselu ja A/B, palautteen keruu, virhetilanteet julkaisussa." : "Channel selection and publishing flow, versioning and change management, preview and A/B, feedback collection, publishing error handling."}</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">{locale === "fi" ? "Julkaisu ja kanavakohtaiset ohjeet" : "Publishing and Channel-Specific Guidelines"}</h1>
+            <p className="text-lg text-gray-600">{locale === "fi" ? "Kanavan valinta ja julkaisuvirta, Versiointi ja muutosten hallinta, Esikatselu, A/B ja palautteen keruu, Virhetilanteet julkaisussa" : "Channel selection and publishing flow, Versioning and change management, Preview, A/B and feedback collection, Error situations in publishing"}</p>
           </div>
 
           <div className="p-8">

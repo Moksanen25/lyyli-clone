@@ -52,8 +52,8 @@ export default async function UIBasicsPage({
                 {locale === "fi" ? "8 min" : "8 min"}
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">{locale === "fi" ? "Käyttöliittymän perusteet" : "UI basics"}</h1>
-            <p className="text-lg text-gray-600">{locale === "fi" ? "Navigointi, näkymät, haku ja suodattimet, ilmoitukset ja näppäinoikotiet." : "Navigation, views, search and filters, notifications, and keyboard shortcuts."}</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">{locale === "fi" ? "Käyttöliittymän perusteet" : "UI Basics"}</h1>
+            <p className="text-lg text-gray-600">{locale === "fi" ? "Navigointi ja näkymien rakenne, Haku, suodattimet ja tallennetut näkymät, Ilmoituspaneeli ja tehtäväjono, Näppäinoikotiet" : "Navigation and view structure, Search, filters and saved views, Notification panel and task queue, Keyboard shortcuts"}</p>
           </div>
 
           <div className="p-8">

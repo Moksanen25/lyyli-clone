@@ -60,8 +60,8 @@ export default async function ServiceDescriptionPage({
             </h1>
             <p className="text-xl text-gray-600">
               {locale === "fi" 
-                ? "Tutustu Lyyli.ai:n tekoälypohjaiseen viestintäpalveluun ja sen keskeisiin ominaisuuksiin"
-                : "Learn about Lyyli.ai's AI-powered communication service and its key features"
+                ? "Mikä palvelu on ja kenelle se on"
+                : "What the service is and who it's for"
               }
             </p>
           </div>

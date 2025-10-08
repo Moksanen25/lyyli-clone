@@ -140,8 +140,8 @@ export const helpArticles: HelpArticle[] = [
     id: 'service-description',
     title: 'Service Description',
     titleFi: 'Palvelun kuvaus',
-    summary: 'Learn about Lyyli.ai\'s AI-powered communication service and its key features',
-    summaryFi: 'Tutustu Lyyli.ai:n tekoälypohjaiseen viestintäpalveluun ja sen keskeisiin ominaisuuksiin',
+    summary: 'What the service is and who it\'s for',
+    summaryFi: 'Mikä palvelu on ja kenelle se on',
     url: '/help/service-description',
     category: 'Getting Started',
     categoryFi: 'Aloitus',
@@ -150,15 +150,15 @@ export const helpArticles: HelpArticle[] = [
     difficulty: 'beginner',
     timeToComplete: '5 min',
     timeToCompleteFi: '5 min',
-    content: 'Service Description. Learn about Lyyli.ai\'s AI-powered communication service and its key features. What is Lyyli.ai, service architecture, technology stack, security, use cases, benefits, next steps.',
-    contentFi: 'Palvelun kuvaus. Tutustu Lyyli.ai:n tekoälypohjaiseen viestintäpalveluun ja sen keskeisiin ominaisuuksiin. Mikä on Lyyli.ai, palvelun arkkitehtuuri, tekninen pino, turvallisuus, käyttöalueet, hyödyt, seuraavat vaiheet.'
+    content: 'Service Description. What the service is and who it\'s for. What is Lyyli.ai, service architecture, technology stack, security, use cases, benefits, next steps.',
+    contentFi: 'Palvelun kuvaus. Mikä palvelu on ja kenelle se on. Mikä on Lyyli.ai, palvelun arkkitehtuuri, tekninen pino, turvallisuus, käyttöalueet, hyödyt, seuraavat vaiheet.'
   },
   {
     id: 'target-audience',
     title: 'Target Audience',
-    titleFi: 'Kenelle palvelu on tarkoitettu',
-    summary: 'Learn about Lyyli.ai\'s target audiences and different use cases in companies',
-    summaryFi: 'Tutustu Lyyli.ai:n kohderyhmiin ja eri käyttötarkoituksiin yrityksissä',
+    titleFi: 'Kenelle',
+    summary: 'Target groups and use cases',
+    summaryFi: 'Kohderyhmät ja käyttötarkoitukset',
     url: '/help/target-audience',
     category: 'Getting Started',
     categoryFi: 'Aloitus',
@@ -167,8 +167,8 @@ export const helpArticles: HelpArticle[] = [
     difficulty: 'beginner',
     timeToComplete: '3 min',
     timeToCompleteFi: '3 min',
-    content: 'Target Audience. Learn about Lyyli.ai\'s target audiences and different use cases in companies. Target groups, use cases, suitable industries, implementation requirements, next steps.',
-    contentFi: 'Kenelle palvelu on tarkoitettu. Tutustu Lyyli.ai:n kohderyhmiin ja eri käyttötarkoituksiin yrityksissä. Kohderyhmät, käyttötarkoitukset, sopivat toimialat, käyttöönottovaatimukset, seuraavat vaiheet.'
+    content: 'Target Audience. Target groups and use cases. Target groups, use cases, suitable industries, implementation requirements, next steps.',
+    contentFi: 'Kenelle. Kohderyhmät ja käyttötarkoitukset. Kohderyhmät, käyttötarkoitukset, sopivat toimialat, käyttöönottovaatimukset, seuraavat vaiheet.'
   },
   {
     id: 'registration-subscription',

@@ -56,12 +56,12 @@ export default async function TargetAudiencePage({
               </span>
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              {locale === "fi" ? "Kenelle palvelu on tarkoitettu" : "Who the service is for"}
+              {locale === "fi" ? "Kenelle" : "Target Audience"}
             </h1>
             <p className="text-xl text-gray-600">
               {locale === "fi" 
-                ? "Tutustu Lyyli.ai:n kohderyhmiin ja eri käyttötarkoituksiin yrityksissä"
-                : "Learn about Lyyli.ai's target audiences and different use cases in companies"
+                ? "Kohderyhmät ja käyttötarkoitukset"
+                : "Target groups and use cases"
               }
             </p>
           </div>

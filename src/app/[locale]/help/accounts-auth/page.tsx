@@ -56,12 +56,12 @@ export default async function AccountsAuthPage({
               </span>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              {locale === "fi" ? "Tilit ja kirjautuminen" : "Accounts and authentication"}
+              {locale === "fi" ? "Tilit ja kirjautuminen" : "Accounts and Login"}
             </h1>
             <p className="text-lg text-gray-600">
               {locale === "fi"
-                ? "Hallinnoi tilin luontia, SSO/MFA-asetuksia, salasanan nollausta ja profiiliasetuksia."
-                : "Manage account creation, SSO/MFA, password reset, and profile settings."}
+                ? "Tilin luonti, aktivointi ja vahvistus, SSO/MFA: miten otetaan käyttöön, Salasanan nollaus ja lukituksen avaus, Profiiliasetukset ja ilmoitukset"
+                : "Account creation, activation and verification, SSO/MFA: how to enable, Password reset and unlock, Profile settings and notifications"}
             </p>
           </div>
 

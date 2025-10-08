@@ -52,8 +52,8 @@ export default async function BrandContentPage({
                 {locale === "fi" ? "12 min" : "12 min"}
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">{locale === "fi" ? "Brändi ja sisältöasetukset" : "Brand and content settings"}</h1>
-            <p className="text-lg text-gray-600">{locale === "fi" ? "Brändivärit, typografia, logot, tyyliohje ja sävy, kieliasetukset ja käännöslogiikka, sisältöpolitiikat ja hyväksyntäketjut." : "Brand colors, typography, logos, style guide and tone, language settings and translation logic, content policies and approval chains."}</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">{locale === "fi" ? "Brändi ja sisältöasetukset" : "Brand and Content Settings"}</h1>
+            <p className="text-lg text-gray-600">{locale === "fi" ? "Brändivärit, typografia, logot, Tyyliohje ja sävy, Kieliasetukset ja käännöslogiikka, Sisältöpolitiikat ja hyväksyntäketjut" : "Brand colors, typography, logos, Style guide and tone, Language settings and translation logic, Content policies and approval chains"}</p>
           </div>
 
         <div className="p-8">

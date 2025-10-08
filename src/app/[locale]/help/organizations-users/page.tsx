@@ -53,12 +53,12 @@ export default async function OrganizationsUsersPage({
               </span>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              {locale === "fi" ? "Organisaatiot ja käyttäjähallinta" : "Organizations and user management"}
+              {locale === "fi" ? "Organisaatiot ja käyttäjähallinta" : "Organizations and User Management"}
             </h1>
             <p className="text-lg text-gray-600">
               {locale === "fi"
-                ? "Luo organisaatio, hallitse kutsuja, rooleja ja käyttöoikeuksia, määritä tiimit sekä tarkastele audit trail -tapahtumia."
-                : "Create organizations, manage invites, roles, permissions, configure teams, and review audit trails."}
+                ? "Organisaation luominen ja omistajuus, Kutsut, roolit, käyttöoikeusmalli, Tiimit/ryhmät ja käyttöoikeuksien periytyminen, Audit trail: kuka teki mitä ja milloin"
+                : "Organization creation and ownership, Invites, roles, permission model, Teams/groups and permission inheritance, Audit trail: who did what and when"}
             </p>
           </div>
 
