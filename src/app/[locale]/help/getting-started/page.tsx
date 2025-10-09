@@ -16,23 +16,23 @@ export default async function GettingStartedPage({
   const t = await getTranslations(locale);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F5F5F4]">
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-white border-b border-[#E5E5E4]">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <nav className="flex" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-4">
               <li>
-                <Link href={`/${locale}/help`} className="text-gray-500 hover:text-gray-700">
+                <Link href={`/${locale}/help`} className="text-[#666666] hover:text-[#2F5D50] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#2F5D50] focus:ring-offset-2 rounded">
                   {locale === "fi" ? "Apu ja tuki" : "Help & Support"}
                 </Link>
               </li>
               <li>
                 <div className="flex items-center">
-                  <svg className="flex-shrink-0 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 h-5 w-5 text-[#666666]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="ml-4 text-sm font-medium text-gray-500">
+                  <span className="ml-4 text-sm font-medium text-[#666666]">
                     {locale === "fi" ? "Aloittaminen" : "Getting Started"}
                   </span>
                 </div>
@@ -44,24 +44,24 @@ export default async function GettingStartedPage({
 
       {/* Article Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <article className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <article className="bg-white rounded-xl shadow-sm border border-[#E5E5E4] overflow-hidden">
           {/* Article Header */}
-          <div className="p-8 border-b border-gray-200">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+          <div className="p-8 border-b border-[#E5E5E4]">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#F7EBEB] text-[#2F5D50]">
                 {locale === "fi" ? "Aloittelija" : "Beginner"}
               </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#A7D6D1] text-[#2F5D50]">
                 {locale === "fi" ? "10 min" : "10 min"}
               </span>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-[#2F5D50] mb-4 font-playfair leading-tight">
               {locale === "fi" 
                 ? "Aloitus ja käyttöönotto"
                 : "Getting Started and Onboarding"
               }
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-[#333333] font-inter leading-relaxed">
               {locale === "fi" 
                 ? "Mikä palvelu on ja kenelle se on, Vaatimukset ja tuetut ympäristöt, Pika-aloitus 10 minuutissa, Käsitteet ja termit, Roolit ja käyttöoikeudet lyhyesti"
                 : "What the service is and who it's for, Requirements and supported environments, Quick start in 10 minutes, Concepts and terms, Roles and permissions briefly"
@@ -73,21 +73,21 @@ export default async function GettingStartedPage({
           <div className="p-8">
             {/* What you'll accomplish */}
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2F5D50] mb-4 font-playfair leading-tight">
                 {locale === "fi" ? "Mitä saavutat" : "What you'll accomplish"}
               </h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-[#333333] mb-6 font-inter leading-relaxed">
                 {locale === "fi" 
                   ? "Tämän oppaan jälkeen sinulla on:"
                   : "By the end of this guide, you'll have:"
                 }
               </p>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 <li className="flex items-start">
-                  <svg className="flex-shrink-0 h-5 w-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 h-5 w-5 text-[#2F5D50] mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-[#333333] font-inter">
                     {locale === "fi" 
                       ? "Luotu ensimmäinen tekoälyavustajasi"
                       : "Created your first AI assistant"
@@ -95,10 +95,10 @@ export default async function GettingStartedPage({
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="flex-shrink-0 h-5 w-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 h-5 w-5 text-[#2F5D50] mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-[#333333] font-inter">
                     {locale === "fi" 
                       ? "Asetettu peruspersoonallisuusominaisuudet"
                       : "Set basic personality traits"
@@ -106,10 +106,10 @@ export default async function GettingStartedPage({
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="flex-shrink-0 h-5 w-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 h-5 w-5 text-[#2F5D50] mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-[#333333] font-inter">
                     {locale === "fi" 
                       ? "Lisätty alustava tietopohja"
                       : "Added initial knowledge base"
@@ -117,10 +117,10 @@ export default async function GettingStartedPage({
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="flex-shrink-0 h-5 w-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 h-5 w-5 text-[#2F5D50] mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-[#333333] font-inter">
                     {locale === "fi" 
                       ? "Testattu ensimmäiset keskustelut"
                       : "Tested your first conversations"
@@ -132,21 +132,21 @@ export default async function GettingStartedPage({
 
             {/* Prerequisites */}
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2F5D50] mb-4 font-playfair leading-tight">
                 {locale === "fi" ? "Edellytykset" : "Prerequisites"}
               </h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-[#333333] mb-6 font-inter leading-relaxed">
                 {locale === "fi" 
                   ? "Ennen aloittamista varmista, että sinulla on:"
                   : "Before you begin, ensure you have:"
                 }
               </p>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 <li className="flex items-start">
                   <svg className="flex-shrink-0 h-5 w-5 text-blue-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-[#333333] font-inter">
                     {locale === "fi" 
                       ? "Aktiivinen Lyyli.ai-tili"
                       : "An active Lyyli.ai account"
@@ -157,7 +157,7 @@ export default async function GettingStartedPage({
                   <svg className="flex-shrink-0 h-5 w-5 text-blue-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-[#333333] font-inter">
                     {locale === "fi" 
                       ? "Pääsy yrityksesi viestintäohjeisiin"
                       : "Access to your company's communication guidelines"
@@ -168,7 +168,7 @@ export default async function GettingStartedPage({
                   <svg className="flex-shrink-0 h-5 w-5 text-blue-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-[#333333] font-inter">
                     {locale === "fi" 
                       ? "Perustietoa kohderyhmästäsi"
                       : "Basic understanding of your target audience"
@@ -434,10 +434,10 @@ export default async function GettingStartedPage({
 
             {/* What's next */}
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2F5D50] mb-4 font-playfair leading-tight">
                 {locale === "fi" ? "Mitä seuraavaksi?" : "What's next?"}
               </h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-[#333333] mb-6 font-inter leading-relaxed">
                 {locale === "fi" 
                   ? "Nyt kun olet luonut ensimmäisen tekoälyavustajasi, harkitse:"
                   : "Now that you've created your first AI assistant, consider:"
@@ -445,11 +445,11 @@ export default async function GettingStartedPage({
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link href={`/${locale}/help/team-setup`} className="group">
-                  <div className="p-4 border border-gray-200 rounded-lg hover:border-forest hover:bg-gray-50 transition-colors">
-                    <h3 className="font-semibold text-gray-900 group-hover:text-forest">
+                  <div className="p-6 border border-[#E5E5E4] rounded-xl hover:border-[#2F5D50] hover:bg-[#F7EBEB] transition-all duration-200">
+                    <h3 className="font-bold text-[#333333] group-hover:text-[#2F5D50] mb-2 font-playfair">
                       {locale === "fi" ? "Tiimin asetukset ja käyttöoikeudet" : "Team setup and permissions"}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-[#666666] font-inter">
                       {locale === "fi" 
                         ? "Hallitse tiimisi pääsyä ja oikeuksia"
                         : "Manage your team's access and permissions"
@@ -458,11 +458,11 @@ export default async function GettingStartedPage({
                   </div>
                 </Link>
                 <Link href={`/${locale}/help/advanced-training`} className="group">
-                  <div className="p-4 border border-gray-200 rounded-lg hover:border-forest hover:bg-gray-50 transition-colors">
-                    <h3 className="font-semibold text-gray-900 group-hover:text-forest">
+                  <div className="p-6 border border-[#E5E5E4] rounded-xl hover:border-[#2F5D50] hover:bg-[#F7EBEB] transition-all duration-200">
+                    <h3 className="font-bold text-[#333333] group-hover:text-[#2F5D50] mb-2 font-playfair">
                       {locale === "fi" ? "Edistyneet koulutustekniikat" : "Advanced training techniques"}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-[#666666] font-inter">
                       {locale === "fi" 
                         ? "Paranna avustajasi suorituskykyä"
                         : "Improve your assistant's performance"
@@ -471,11 +471,11 @@ export default async function GettingStartedPage({
                   </div>
                 </Link>
                 <Link href={`/${locale}/help/website-integration`} className="group">
-                  <div className="p-4 border border-gray-200 rounded-lg hover:border-forest hover:bg-gray-50 transition-colors">
-                    <h3 className="font-semibold text-gray-900 group-hover:text-forest">
+                  <div className="p-6 border border-[#E5E5E4] rounded-xl hover:border-[#2F5D50] hover:bg-[#F7EBEB] transition-all duration-200">
+                    <h3 className="font-bold text-[#333333] group-hover:text-[#2F5D50] mb-2 font-playfair">
                       {locale === "fi" ? "Integrointi verkkosivustollesi" : "Integration with your website"}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-[#666666] font-inter">
                       {locale === "fi" 
                         ? "Lisää avustajasi verkkosivustollesi"
                         : "Add your assistant to your website"
@@ -488,7 +488,7 @@ export default async function GettingStartedPage({
 
             {/* Troubleshooting */}
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2F5D50] mb-4 font-playfair leading-tight">
                 {locale === "fi" ? "Vianmääritys" : "Troubleshooting"}
               </h2>
               <div className="space-y-4">
@@ -525,10 +525,10 @@ export default async function GettingStartedPage({
 
             {/* Need help */}
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2F5D50] mb-4 font-playfair leading-tight">
                 {locale === "fi" ? "Tarvitsetko apua?" : "Need help?"}
               </h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-[#333333] mb-6 font-inter leading-relaxed">
                 {locale === "fi" 
                   ? "Jos kohtaat ongelmia, joita ei käsitellä täällä:"
                   : "If you encounter issues not covered here:"
@@ -558,8 +558,8 @@ export default async function GettingStartedPage({
           </div>
 
           {/* Article Footer */}
-          <div className="px-8 py-6 bg-gray-50 border-t border-gray-200">
-            <div className="flex items-center justify-between text-sm text-gray-500">
+          <div className="px-8 py-6 bg-[#F5F5F4] border-t border-[#E5E5E4]">
+            <div className="flex items-center justify-between text-sm text-[#666666] font-inter">
               <span>
                 {locale === "fi" 
                   ? "Viimeksi päivitetty: 15. tammikuuta 2024"
