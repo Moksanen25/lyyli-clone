@@ -57,7 +57,7 @@ export default function ROICharts({ timeSavingsData, efficiencyData, translation
               <YAxis stroke="#6B7280" />
               <Tooltip 
                 formatter={(value: number) => [
-                  `€${(value as number).toLocaleString()}`,
+                  `${(value as number).toLocaleString()}€`,
                   translations?.["roi.charts.savings"] || "Savings"
                 ]}
                 labelFormatter={(label) => {

@@ -173,7 +173,7 @@ export default async function RegistrationSubscriptionPage({
                     {locale === "fi" ? "Professional" : "Professional"}
                   </h3>
                   <div className="text-2xl font-bold text-blue-900 mb-2">
-                    €29<span className="text-sm font-normal">/kk</span>
+                    29€<span className="text-sm font-normal">/kk</span>
                   </div>
                   <ul className="space-y-2 text-blue-800 text-sm">
                     <li>• {locale === "fi" ? "5 käyttäjää" : "5 users"}</li>

@@ -18,7 +18,7 @@ export default function HeroFactBox({ translations, teamSize = 10, currentTimeHo
     productivityMultiplier: 1.5,
   });
 
-  const formattedMonthlyNet = `€${Math.round(metrics.monthlyNetSavings).toLocaleString()}`;
+  const formattedMonthlyNet = `${Math.round(metrics.monthlyNetSavings).toLocaleString()}€`;
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -50,7 +50,7 @@ export default function HeroFactBox({ translations, teamSize = 10, currentTimeHo
           </div>
         </div>
         <div className="px-6 py-3 text-center text-xs text-mediumGray border-t border-gray-200 font-sans">
-          {translations["hero.facts.caption"] || "Based on an estimate of five (5) hours of dedicated communication work per week across the organization and a €199/month plan"}
+          {translations["hero.facts.caption"] || "Based on an estimate of five (5) hours of dedicated communication work per week across the organization and a 199€/month plan"}
         </div>
       </div>
     </div>

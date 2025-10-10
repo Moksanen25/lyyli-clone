@@ -266,7 +266,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-forest rounded-2xl p-6 shadow-lg border border-forest text-center">
                   <div className="text-3xl font-bold text-white mb-2 font-sans">
-                    €{results.monthlySavings.toLocaleString()}
+                    {results.monthlySavings.toLocaleString()}€
                   </div>
                   <div className="text-turquoise font-sans">
                     {translations?.["roi.calculator.monthlySavings"] || "Monthly savings"}
@@ -275,7 +275,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                 
                 <div className="bg-forest rounded-2xl p-6 shadow-lg border border-forest text-center">
                   <div className="text-3xl font-bold text-white mb-2 font-sans">
-                    €{results.yearlySavings.toLocaleString()}
+                    {results.yearlySavings.toLocaleString()}€
                   </div>
                   <div className="text-turquoise font-sans">
                     {translations?.["roi.calculator.yearlySavings"] || "Yearly savings"}
@@ -324,7 +324,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span className="text-base text-white font-sans leading-relaxed">
-                    {translations?.["pricing.assumptions.cost"] || "Based on €60/hour average professional service costs"}
+                    {translations?.["pricing.assumptions.cost"] || "Based on 60€/hour average professional service costs"}
                   </span>
                 </div>
               </div>

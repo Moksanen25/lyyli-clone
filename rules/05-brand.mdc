@@ -100,6 +100,7 @@
 - **Contractions**: Use contractions (you're, we'll, it's) for conversational tone
 - **Sentence case**: Use sentence case for headings and titles (first word capitalized only)
 - **Numbers**: Spell out one through nine, use numerals for 10 and above
+- **Currency formatting**: Always place the € symbol AFTER the number (e.g., "199€", "60€/hour", "2 400€/month"), never before. This follows European convention and maintains consistency across all content.
 
 ## Logo Usage - EXACT SPECIFICATIONS
 

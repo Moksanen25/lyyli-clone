@@ -26,10 +26,10 @@ export default function ComparisonTable({
     // Limits
     {
       feature: t["pricing.features.price"],
-      free: "€0",
-      launch: "€39",
-      growth: "€69",
-      professional: "€199",
+      free: "0€",
+      launch: "39€",
+      growth: "69€",
+      professional: "199€",
       enterprise: t["pricing.custom"],
     },
     {
@@ -62,7 +62,7 @@ export default function ComparisonTable({
     { feature: t["pricing.features.mediaLibrary"], free: false, launch: false, growth: false, professional: true, enterprise: true },
     { feature: t["pricing.features.kpiReports"], free: false, launch: false, growth: false, professional: true, enterprise: true },
     { feature: t["pricing.features.brandedTemplates"], free: false, launch: false, growth: false, professional: true, enterprise: true },
-    { feature: t["pricing.features.guidedOnboarding"], free: "€199", launch: "€199", growth: t["pricing.features.guidedOnboardingFreeAnnual"], professional: t["pricing.features.included"], enterprise: t["pricing.custom"] },
+    { feature: t["pricing.features.guidedOnboarding"], free: "199€", launch: "199€", growth: t["pricing.features.guidedOnboardingFreeAnnual"], professional: t["pricing.features.included"], enterprise: t["pricing.custom"] },
     { feature: t["pricing.features.formalSLA"], free: false, launch: false, growth: false, professional: true, enterprise: true },
     { feature: t["pricing.features.namedAccountManager"], free: false, launch: false, growth: false, professional: false, enterprise: true },
     { feature: t["pricing.features.localEntity"], free: false, launch: false, growth: false, professional: false, enterprise: true },

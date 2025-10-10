@@ -104,7 +104,7 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
               <div>
                 <h4 className="font-medium text-forest">Annual savings</h4>
                 <span className="text-2xl font-bold text-forest">
-                  €{annualSavings.toLocaleString()}
+                  {annualSavings.toLocaleString()}€
                 </span>
               </div>
               <div>
@@ -134,7 +134,7 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
             </div>
             <div className="bg-white rounded-2xl border border-gray-200 p-4 text-center shadow-sm">
               <div className="text-2xl font-bold text-forest mb-1">
-                €{monthlySavings.toLocaleString()}
+                {monthlySavings.toLocaleString()}€
               </div>
               <div className="text-sm text-mediumGray">Monthly savings</div>
             </div>

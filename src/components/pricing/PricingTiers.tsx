@@ -110,11 +110,11 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
 
   const getPrice = (tier: PricingTier) => {
     if (tier.id === "enterprise") return t["pricing.custom"];
-    if (tier.monthlyPrice === 0) return "€0";
+    if (tier.monthlyPrice === 0) return "0€";
 
     const price =
       billingPeriod === "monthly" ? tier.monthlyPrice : tier.yearlyPrice;
-    return `€${price}`;
+    return `${price}€`;
   };
 
   const getSavings = (tier: PricingTier) => {

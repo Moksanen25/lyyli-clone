@@ -25,7 +25,7 @@ const stats: ROIStat[] = [
   },
   {
     value: 39852,
-    prefix: "€",
+    suffix: "€",
     label: "Annual savings",
     description: "Per team member"
   },

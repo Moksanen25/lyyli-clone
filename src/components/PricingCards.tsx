@@ -363,7 +363,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                   </div>
                   {billingPeriod === "yearly" && getSavings(plan) && (
                     <p className="text-sm text-forest font-medium mb-2">
-                      Save €{getSavings(plan)} per year
+                      Save {getSavings(plan)}€ per year
                     </p>
                   )}
                   <p className="text-sm text-mediumGray font-sans">
