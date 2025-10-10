@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useId } from "react";
 
 // Enhanced icon components with brand colors and visual effects
 export const IconSet = {
@@ -559,15 +559,15 @@ export const IconSet = {
     </svg>
   ),
 
-  Instagram: ({
+  Instagram: function InstagramIcon({
     className = "",
     size = 24,
   }: {
     className?: string;
     size?: number;
-  }) => {
+  }) {
     // Generate unique ID to avoid conflicts when multiple instances are rendered
-    const gradientId = `instagram-gradient-${Math.random().toString(36).substr(2, 9)}`;
+    const gradientId = useId();
     return (
       <svg
         className={className}

@@ -132,6 +132,7 @@ Branded icons look great with subtle backgrounds:
 3. **Type Safety** - TypeScript support for all icon props
 4. **Performance** - No icon library overhead, only what you use
 5. **Brand Compliance** - Official brand colors preserved
+6. **SSR Safe** - Works correctly with Next.js server-side rendering (no hydration issues)
 
 ## Adding New Icons
 
@@ -177,6 +178,14 @@ After:
 ```tsx
 <IconSet.Slack size={32} />
 ```
+
+## Technical Notes
+
+### Instagram Icon with Gradient
+The Instagram icon uses a radial gradient for its iconic multi-color appearance. To prevent conflicts when multiple Instagram icons are rendered on the same page, it uses React's `useId()` hook to generate unique gradient IDs. This also ensures proper server-side rendering without hydration mismatches.
+
+### Server-Side Rendering (SSR)
+All icons are marked with `"use client"` and are safe to use in Next.js applications with SSR enabled. The Instagram icon specifically uses `useId()` instead of random ID generation to ensure stable IDs across server and client renders.
 
 ## Related Files
 
