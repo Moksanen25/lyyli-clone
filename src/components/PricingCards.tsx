@@ -281,20 +281,6 @@ export default function PricingCards({ fullWidth = false, locale, translations }
               className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
               variants={cardVariants}
             >
-              {/* Popular Badge - Enhanced positioning and styling */}
-              {plan.popular && (
-                <div className="absolute -top-4 -right-3 z-50">
-                  <div 
-                    className="px-4 py-2 text-xs font-bold text-white shadow-2xl border-2 border-white rounded-full whitespace-nowrap transform rotate-12"
-                    style={{
-                      background: 'linear-gradient(135deg, #2F5D50 0%, #A7D6D1 100%)',
-                      boxShadow: '0 25px 50px -12px rgba(47, 93, 80, 0.25), 0 0 0 1px rgba(167, 214, 209, 0.1)',
-                    }}
-                  >
-                    ⭐ Most Popular
-                  </div>
-                </div>
-              )}
 
               {/* Plan Card */}
               <MotionDiv 

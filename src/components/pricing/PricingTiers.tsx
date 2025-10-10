@@ -167,20 +167,6 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
             key={tier.id}
             className={`relative ${index >= 3 ? "md:col-span-2 lg:col-span-3 xl:col-span-1" : ""}`}
           >
-            {/* Popular Badge - Positioned to align middle of tag with card's outer line */}
-            {tier.popular && (
-              <div className="absolute -top-6 -right-2 z-50">
-                <div 
-                  className="px-6 py-2 text-sm font-bold text-white shadow-xl border-2 border-white rounded-full whitespace-nowrap"
-                  style={{
-                    background: 'linear-gradient(to right, #2F5D50, #0F766E)',
-                    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                  }}
-                >
-                  Most Popular
-                </div>
-              </div>
-            )}
 
             {/* Plan Card */}
             <div 
