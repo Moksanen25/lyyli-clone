@@ -17,6 +17,7 @@ export default function DemoVideo({ translations }: { translations?: any }) {
 
   const MotionDiv = motion?.motion?.div || (('div' as unknown) as any);
   const AnimatePresence = motion?.AnimatePresence || (({ children }: any) => children);
+  const hoverProps = motion ? { whileHover: { scale: 1.02, transition: { duration: 0.2 } } } : {};
 
   return (
     <>
@@ -35,10 +36,7 @@ export default function DemoVideo({ translations }: { translations?: any }) {
             {/* Video Preview Card */}
             <MotionDiv 
               className="relative bg-white  rounded-2xl shadow-2xl  overflow-hidden cursor-pointer group"
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.2 }
-              }}
+              {...hoverProps}
               onClick={openModal}
             >
               {/* Video Thumbnail */}

@@ -33,7 +33,9 @@ export const DEFAULT_SECURITY_CONFIG: SecurityConfig = {
     'default-src': ["'self'"],
     // Default production-safe script-src; dev/staging may extend this below
     'script-src': [
-      "'self'"
+      "'self'",
+      'https://*.hsforms.net',
+      'https://static.hsappstatic.net'
     ],
     'style-src': [
       "'self'",
@@ -49,18 +51,30 @@ export const DEFAULT_SECURITY_CONFIG: SecurityConfig = {
       "'self'",
       'data:',
       'https:',
-      'blob:'
+      'blob:',
+      'https://*.hsforms.com',
+      'https://*.hsforms.net'
     ],
     'connect-src': [
       "'self'",
       'https://vercel.live',
       'https://va.vercel-scripts.com',
-      'https://api.vercel.com'
+      'https://api.vercel.com',
+      'https://*.hsforms.com',
+      'https://*.hsforms.net'
     ],
-    'frame-src': ["'none'"],
+    'frame-src': [
+      "'self'",
+      'https://*.hsforms.com',
+      'https://*.hsforms.net'
+    ],
     'object-src': ["'none'"],
     'base-uri': ["'self'"],
-    'form-action': ["'self'"],
+    'form-action': [
+      "'self'",
+      'https://*.hsforms.com',
+      'https://*.hsforms.net'
+    ],
     'frame-ancestors': ["'none'"],
     'upgrade-insecure-requests': [],
     'report-uri': ['/api/csp-report'],
