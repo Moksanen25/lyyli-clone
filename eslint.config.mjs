@@ -11,6 +11,7 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.plugins("testing-library"),
   {
     rules: {
       // Next.js specific rules
@@ -26,7 +27,6 @@ const eslintConfig = [
       // TypeScript rules
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-      "@typescript-eslint/prefer-const": "error",
       "@typescript-eslint/no-var-requires": "error",
 
       // General code quality
@@ -38,12 +38,6 @@ const eslintConfig = [
       // Accessibility
       "jsx-a11y/alt-text": "error",
       "jsx-a11y/anchor-has-content": "error",
-
-      // Testing library
-      "testing-library/await-async-query": "error",
-      "testing-library/no-await-sync-query": "error",
-      "testing-library/no-debugging-utils": "warn",
-      "testing-library/no-dom-import": "error",
     },
   },
 ];
