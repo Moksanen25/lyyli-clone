@@ -1,3 +1,5 @@
+import { logger } from './logger';
+
 // Translation type definitions
 export interface TranslationKeys {
   // Allow additional keys to support incremental translation additions
@@ -649,14 +651,14 @@ export async function getTranslations(
     const translations = await import(`../translations/${locale}.json`);
     return translations.default || translations;
   } catch {
-    console.warn(
+    logger.warn(
       `Translation file for locale "${locale}" not found, falling back to English`,
     );
     try {
       const fallbackTranslations = await import("../translations/en.json");
       return fallbackTranslations.default || fallbackTranslations;
     } catch (fallbackError) {
-      console.error("Failed to load fallback translations:", fallbackError);
+      logger.error("Failed to load fallback translations", { fallbackError });
       // Return empty object as last resort
       return {};
     }

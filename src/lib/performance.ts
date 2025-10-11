@@ -651,27 +651,27 @@ export function getTTFBSuggestions(ttfb: number): string[] {
 export function reportWebVitals(metric: any) {
   if (metric.label === 'web-vital') {
     // Send to analytics
-    console.log('Web Vital:', metric.name, metric.value);
+    logger.debug('Web Vital', { name: metric.name, value: metric.value });
     
     // Check against budgets
     if (metric.name === 'LCP' && metric.value > performanceBudgets.lcp) {
-      console.warn('LCP budget exceeded:', metric.value, 'ms (budget:', performanceBudgets.lcp, 'ms)');
+      logger.warn('LCP budget exceeded', { value: metric.value, budget: performanceBudgets.lcp });
     }
     
     if (metric.name === 'CLS' && metric.value > performanceBudgets.cls) {
-      console.warn('CLS budget exceeded:', metric.value, '(budget:', performanceBudgets.cls, ')');
+      logger.warn('CLS budget exceeded', { value: metric.value, budget: performanceBudgets.cls });
     }
 
     if (metric.name === 'FID' && metric.value > performanceBudgets.fid) {
-      console.warn('FID budget exceeded:', metric.value, 'ms (budget:', performanceBudgets.fid, 'ms)');
+      logger.warn('FID budget exceeded', { value: metric.value, budget: performanceBudgets.fid });
     }
 
     if (metric.name === 'FCP' && metric.value > performanceBudgets.fcp) {
-      console.warn('FCP budget exceeded:', metric.value, 'ms (budget:', performanceBudgets.fcp, 'ms)');
+      logger.warn('FCP budget exceeded', { value: metric.value, budget: performanceBudgets.fcp });
     }
 
     if (metric.name === 'TTFB' && metric.value > performanceBudgets.ttfb) {
-      console.warn('TTFB budget exceeded:', metric.value, 'ms (budget:', performanceBudgets.ttfb, 'ms)');
+      logger.warn('TTFB budget exceeded', { value: metric.value, budget: performanceBudgets.ttfb });
     }
   }
 }

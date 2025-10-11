@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { searchHelpArticles, type HelpArticle } from "../lib/helpSearchData";
 import Link from "next/link";
+import { logger } from "../lib/logger";
 
 interface HelpSearchProps {
   locale: string;
@@ -30,7 +31,7 @@ export default function HelpSearch({ locale, placeholder, className = "" }: Help
       try {
         setRecentSearches(JSON.parse(saved));
       } catch (e) {
-        console.error("Failed to parse recent searches:", e);
+        logger.error("Failed to parse recent searches", { error: e });
       }
     }
   }, []);

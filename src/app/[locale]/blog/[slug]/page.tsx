@@ -9,6 +9,7 @@ import {
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { logger } from "../../../../lib/logger";
 
 export const revalidate = 3600; // ISR: revalidate blog posts hourly
 
@@ -23,8 +24,8 @@ export async function generateStaticParams() {
       locale: item.locale,
       slug: item.slug,
     }));
-  } catch {
-    console.warn("Blog system not fully loaded, using fallback");
+  } catch (error) {
+    logger.warn("Blog system not fully loaded, using fallback", { error });
     return [
       { locale: 'en', slug: 'sample' },
       { locale: 'fi', slug: 'sample' }
@@ -45,8 +46,8 @@ export async function generateMetadata({
     if (post) {
       return generateBlogMetadata(post, locale);
     }
-  } catch {
-    console.warn("Blog metadata generation failed, using fallback");
+  } catch (error) {
+    logger.warn("Blog metadata generation failed, using fallback", { error });
   }
 
   return {
@@ -251,8 +252,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     if (!post) {
       alternativePosts = getAlternativeBlogPosts(currentLocale, slug);
     }
-  } catch {
-    console.warn("Blog content loading failed");
+  } catch (error) {
+    logger.warn("Blog content loading failed", { error });
   }
 
   if (!post) {

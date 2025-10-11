@@ -288,7 +288,7 @@ export default async function RegistrationSubscriptionPage({
               </h2>
               <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
                 <h3 className="text-lg font-semibold text-yellow-900 mb-3">
-                  {locale === "fi" ? "14 päivän ilmainen kokeilu" : "14-day free trial"}
+                  {locale === "fi" ? "30 päivän ilmainen kokeilu" : "30-day free trial"}
                 </h3>
                 <ul className="space-y-2 text-yellow-800">
                   <li>• {locale === "fi" ? "Täysi pääsy kaikkiin ominaisuuksiin" : "Full access to all features"}</li>
