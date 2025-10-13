@@ -6,6 +6,7 @@ import SecurityNotice from "@/components/contact/SecurityNotice";
 import MeshGradientBackground from "@/components/MeshGradientBackground";
 import { InteractiveCard } from "@/components/VisualElements";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
+import { buildTitleFromTranslation } from "@/lib/title";
 
 
 interface ContactPageProps {
@@ -21,7 +22,7 @@ export async function generateMetadata({
   const canonicalUrl = generatePageCanonicalUrl('contact', locale);
 
   return {
-    title: t["contact.page.title"],
+    title: buildTitleFromTranslation(t["contact.page.title"], "Contact"),
     description: t["contact.page.description"],
     openGraph: {
       title: t["contact.page.title"],

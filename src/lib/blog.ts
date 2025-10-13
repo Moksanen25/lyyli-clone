@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { generateBlogCanonicalUrl } from './canonical';
+import { buildTitle } from './title';
 
 export interface BlogPost {
   slug: string;
@@ -201,7 +202,7 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
   const allKeywords = [...primaryKeywords, ...post.keywords].join(", ");
 
   return {
-    title: `${post.title} - Lyyli.ai Blog`,
+    title: buildTitle(`${post.title} - Blog`),
     description: post.description,
     keywords: allKeywords,
     authors: [{ name: post.author }],

@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import IntegrationsFlow from "@/components/features/IntegrationsFlow";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
+import { buildTitleFromTranslation } from "@/lib/title";
 
 interface FeaturesPageProps {
   params: Promise<{ locale: string }>;
@@ -15,7 +16,7 @@ export async function generateMetadata({
   const t = await getTranslations(locale);
 
   return {
-    title: t["features.page.title"],
+    title: buildTitleFromTranslation(t["features.page.title"], "Features"),
     description: t["features.page.description"],
     openGraph: {
       title: t["features.page.title"],

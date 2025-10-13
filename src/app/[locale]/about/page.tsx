@@ -5,6 +5,7 @@ import MissionVisionValues from '../../../components/about/MissionVisionValues';
 import TeamSection from '../../../components/about/TeamSection';
 import SubPageVisual from '../../../components/SubPageVisual';
 import { generatePageCanonicalUrl, generateHreflangMetadata } from '../../../lib/canonical';
+import { buildTitleFromTranslation } from '../../../lib/title';
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
   const t = await getTranslations(locale);
   
   return {
-    title: t['about.page.title'],
+    title: buildTitleFromTranslation(t['about.page.title'], 'About'),
     description: t['about.page.description'],
     openGraph: {
       title: t['about.page.title'],

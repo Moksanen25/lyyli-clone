@@ -8,6 +8,7 @@ import MeshGradientBackground from "../../components/MeshGradientBackground";
 import DevSWCleanup from "../../components/DevSWCleanup";
 import { getTranslations } from "../../lib/i18n";
 import { fontVars } from "../../lib/fonts";
+import { createTitleTemplate } from "../../lib/title";
 import { 
   generateOrganizationSchema, 
   generateWebsiteSchema,
@@ -19,9 +20,8 @@ import "../globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default:
-      "Lyyli.ai - AI Communication Assistant for Professional Service Organizations",
-    template: "%s | Lyyli.ai",
+    default: "Lyyli.ai - AI Communication Assistant",
+    template: createTitleTemplate(),
   },
   description:
     "Transform your internal communications with enterprise-grade AI. Streamline workflows for operations leaders, PMO heads, and communications managers. SOC 2 compliant with multilingual support.",

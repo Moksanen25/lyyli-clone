@@ -3,6 +3,7 @@ import { getAllBlogPosts } from "@/lib/blog";
 import { Metadata } from "next";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
+import { buildTitleFromTranslation } from "@/lib/title";
 
 export const revalidate = 3600; // ISR: revalidate blog listing hourly
 
@@ -32,7 +33,7 @@ export async function generateMetadata({
   ].join(", ");
 
   return {
-    title: t["blog.page.title"],
+    title: buildTitleFromTranslation(t["blog.page.title"], "Blog"),
     description: t["blog.page.description"],
     keywords,
     openGraph: {

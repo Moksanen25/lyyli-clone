@@ -1,6 +1,7 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
+import { buildTitleFromTranslation } from "@/lib/title";
 
 interface PrivacyPageProps {
   params: Promise<{ locale: string }>;
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
   const t = await getTranslations(locale);
 
   return {
-    title: t["privacy.page.title"],
+    title: buildTitleFromTranslation(t["privacy.page.title"], "Privacy Policy"),
     description: t["privacy.page.description"],
     openGraph: {
       title: t["privacy.page.title"],

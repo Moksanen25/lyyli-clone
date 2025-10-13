@@ -1,6 +1,7 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
+import { buildTitleFromTranslation } from "@/lib/title";
 
 interface CookiesPageProps {
   params: Promise<{ locale: string }>;
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: CookiesPageProps): Promise<Me
   const t = await getTranslations(locale);
 
   return {
-    title: t["cookies.page.title"],
+    title: buildTitleFromTranslation(t["cookies.page.title"], "Cookie Policy"),
     description: t["cookies.page.description"],
     openGraph: {
       title: t["cookies.page.title"],

@@ -15,7 +15,9 @@
     "optimize:compress": "node scripts/compress-images.mjs",
     "lcp:check": "node scripts/check-lcp.mjs",
     "schema:validate": "node scripts/validate-schema.mjs",
-    "schema:test": "npm test -- --testPathPatterns=structured-data"
+    "schema:test": "npm test -- --testPathPatterns=structured-data",
+    "title:verify": "node scripts/verify-titles.mjs",
+    "title:test": "npm test -- --testPathPatterns=title"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",

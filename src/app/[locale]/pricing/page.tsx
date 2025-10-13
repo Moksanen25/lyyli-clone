@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 const PricingFAQ = dynamic(() => import('@/components/pricing/PricingFAQ'), { ssr: true, loading: () => <div /> });
 import ROICalculator from '@/components/ROICalculator';
 import { generatePageCanonicalUrl, generateHreflangMetadata } from '@/lib/canonical';
+import { buildTitleFromTranslation } from '@/lib/title';
 
 interface PricingPageProps {
   params: Promise<{ locale: string }>;
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: PricingPageProps): Promise<Me
   const t = await getTranslations(locale);
   
   return {
-    title: t['pricing.page.title'],
+    title: buildTitleFromTranslation(t['pricing.page.title'], 'Pricing'),
     description: t['pricing.page.description'],
     openGraph: {
       title: t['pricing.page.title'],

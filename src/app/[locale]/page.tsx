@@ -7,6 +7,7 @@ import PricingCards from "../../components/PricingCards";
 import Deferred from "../../components/Deferred";
 import HeroFactBox from "../../components/HeroFactBox";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "../../lib/canonical";
+import { buildTitleFromTranslation } from "../../lib/title";
 
 const ProcessSteps = dynamic(() => import("../../components/ProcessSteps"), { ssr: true, loading: () => <div /> });
 const FeatureGrid = dynamic(() => import("../../components/FeatureGrid"), { ssr: true, loading: () => <div /> });
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: HomeProps): Promise<Metadata>
   const t = await getTranslations(locale);
 
   return {
-    title: t["home.page.title"] ?? "Lyyli.ai",
+    title: buildTitleFromTranslation(t["home.page.title"], "AI Communication Assistant"),
     description: t["home.page.description"] ?? "AI Communication Assistant for Professional Service Organizations",
     alternates: {
       canonical: generatePageCanonicalUrl('', locale),

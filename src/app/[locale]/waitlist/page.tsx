@@ -2,6 +2,7 @@ import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
+import { buildTitleFromTranslation } from "@/lib/title";
 
 interface WaitlistPageProps {
   params: Promise<{ locale: string }>;
@@ -16,7 +17,7 @@ export async function generateMetadata({
   const canonicalUrl = generatePageCanonicalUrl('waitlist', locale);
 
   return {
-    title: t["waitlist.page.title"],
+    title: buildTitleFromTranslation(t["waitlist.page.title"], "Join the Waitlist"),
     description: t["waitlist.page.description"],
     openGraph: {
       title: t["waitlist.page.title"],
