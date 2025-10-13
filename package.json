@@ -17,7 +17,9 @@
     "schema:validate": "node scripts/validate-schema.mjs",
     "schema:test": "npm test -- --testPathPatterns=structured-data",
     "title:verify": "node scripts/verify-titles.mjs",
-    "title:test": "npm test -- --testPathPatterns=title"
+    "title:test": "npm test -- --testPathPatterns=title",
+    "description:check": "node scripts/check-descriptions.mjs",
+    "description:test": "npm test -- --testPathPatterns=meta-description"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",
