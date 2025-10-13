@@ -1,0 +1,51 @@
+name: Schema.org Validation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  validate-schemas:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run schema validation script
+        run: npm run schema:validate
+
+      - name: Run structured data tests
+        run: npm run schema:test
+
+      - name: Build application
+        run: npm run build
+
+      - name: Check for schema in build output
+        run: |
+          if grep -r "application/ld+json" .next/server/app/\[locale\]/*.html 2>/dev/null; then
+            echo "✅ JSON-LD schemas found in build output"
+          else
+            echo "⚠️ No JSON-LD schemas found in build output"
+          fi
+
+      - name: Validate schema URLs use production domain
+        run: |
+          if grep -r "vercel.app\|localhost" .next/server/app/ 2>/dev/null; then
+            echo "❌ Found non-production URLs in schemas"
+            exit 1
+          else
+            echo "✅ All schema URLs use production domain"
+          fi
+

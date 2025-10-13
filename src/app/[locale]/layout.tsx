@@ -8,6 +8,12 @@ import MeshGradientBackground from "../../components/MeshGradientBackground";
 import DevSWCleanup from "../../components/DevSWCleanup";
 import { getTranslations } from "../../lib/i18n";
 import { fontVars } from "../../lib/fonts";
+import { 
+  generateOrganizationSchema, 
+  generateWebsiteSchema,
+  generateBreadcrumbSchema,
+  combineSchemas 
+} from "../../lib/structured-data";
 
 import "../globals.css";
 
@@ -155,40 +161,18 @@ export default async function LocaleLayout({
           <DevSWCleanup />
         </div>
 
-        {/* Schema.org structured data */}
+        {/* Schema.org structured data - Organization, Website, and BreadcrumbList */}
         <script
           type="application/ld+json"
           nonce={nonce}
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              name: "Lyyli.ai",
-              description:
-                "AI Communication Assistant for Professional Service Organizations",
-              url: "https://lyyli.ai",
-              applicationCategory: "BusinessApplication",
-              operatingSystem: "Web",
-              offers: {
-                "@type": "Offer",
-                price: "0",
-                priceCurrency: "USD",
-                description: "Free trial available",
-              },
-              provider: {
-                "@type": "Organization",
-                name: "Lyyli.ai",
-                url: "https://lyyli.ai",
-              },
-              inLanguage: ["en", "fi"],
-              featureList: [
-                "AI-powered message routing",
-                "Multilingual communication support",
-                "Enterprise-grade security",
-                "Compliance reporting",
-                "Real-time communication analytics",
-              ],
-            }),
+            __html: JSON.stringify(
+              combineSchemas(
+                generateOrganizationSchema(currentLocale),
+                generateWebsiteSchema(currentLocale),
+                generateBreadcrumbSchema(pathname, currentLocale)
+              )
+            ),
           }}
         />
       </body>

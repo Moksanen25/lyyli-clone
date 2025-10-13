@@ -13,7 +13,9 @@
     "test:coverage": "jest --coverage",
     "optimize:check": "node scripts/optimize-images.mjs",
     "optimize:compress": "node scripts/compress-images.mjs",
-    "lcp:check": "node scripts/check-lcp.mjs"
+    "lcp:check": "node scripts/check-lcp.mjs",
+    "schema:validate": "node scripts/validate-schema.mjs",
+    "schema:test": "npm test -- --testPathPatterns=structured-data"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",

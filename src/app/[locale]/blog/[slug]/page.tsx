@@ -10,6 +10,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { logger } from "../../../../lib/logger";
+import { generateArticleSchema } from "../../../../lib/structured-data";
 
 export const revalidate = 3600; // ISR: revalidate blog posts hourly
 
@@ -323,8 +324,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
   );
 
+  // Generate Article schema for blog post
+  const articleSchema = generateArticleSchema({
+    headline: post.title,
+    description: post.description,
+    image: post.image,
+    datePublished: post.date,
+    author: post.author,
+    slug: post.slug,
+    locale: currentLocale,
+    keywords: post.keywords
+  });
+
   return (
     <article>
+      {/* Article JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+
       {/* Header */}
       <header className="relative bg-gradient-to-br from-white/95 via-rose/95 to-grayLight/95 backdrop-blur-sm overflow-hidden">
         {/* Background elements - Matching other page gradients */}
