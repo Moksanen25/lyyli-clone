@@ -5,7 +5,7 @@ import TeamContacts from "@/components/contact/TeamContacts";
 import SecurityNotice from "@/components/contact/SecurityNotice";
 import MeshGradientBackground from "@/components/MeshGradientBackground";
 import { InteractiveCard } from "@/components/VisualElements";
-import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
+import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 
 
 interface ContactPageProps {
@@ -46,7 +46,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: generateAlternateUrls('/contact', ['en', 'fi']),
+      languages: generateHreflangMetadata('/contact', ['en', 'fi']),
     },
   };
 }

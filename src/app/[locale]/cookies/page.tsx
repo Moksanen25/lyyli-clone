@@ -1,6 +1,6 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
-import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
+import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 
 interface CookiesPageProps {
   params: Promise<{ locale: string }>;
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: CookiesPageProps): Promise<Me
     },
     alternates: {
       canonical: generatePageCanonicalUrl('cookies', locale),
-      languages: generateAlternateUrls('/cookies', ['en', 'fi']),
+      languages: generateHreflangMetadata('/cookies', ['en', 'fi']),
     },
   };
 }

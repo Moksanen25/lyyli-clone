@@ -130,13 +130,7 @@ export default async function LocaleLayout({
     <html lang={currentLocale} dir="ltr" className={`${fontVars} h-full`}>
       <head>
         {nonce && <meta name="csp-nonce" content={nonce} />}
-        <link rel="alternate" hrefLang="en" href={`${protocol}://${host}/en`} />
-        <link rel="alternate" hrefLang="fi" href={`${protocol}://${host}/fi`} />
-        <link
-          rel="alternate"
-          hrefLang="x-default"
-          href={`${protocol}://${host}/en`}
-        />
+        {/* hreflang tags are generated per-page via metadata.alternates.languages */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />

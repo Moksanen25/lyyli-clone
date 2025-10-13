@@ -2,7 +2,7 @@ import { getTranslations } from "@/lib/i18n";
 import { getAllBlogPosts } from "@/lib/blog";
 import { Metadata } from "next";
 import BlogPostCard from "@/components/blog/BlogPostCard";
-import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
+import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 
 export const revalidate = 3600; // ISR: revalidate blog listing hourly
 
@@ -58,7 +58,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: generateAlternateUrls('/blog', ['en', 'fi']),
+      languages: generateHreflangMetadata('/blog', ['en', 'fi']),
     },
   };
 }

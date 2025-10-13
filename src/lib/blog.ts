@@ -181,7 +181,13 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
   alternates[locale] = canonicalUrl;
   if (translatedSlug) {
     alternates[otherLocale] = generateBlogCanonicalUrl(translatedSlug, otherLocale);
+  } else {
+    // If no translation exists, still provide the same content for other locale
+    alternates[otherLocale] = generateBlogCanonicalUrl(post.slug, otherLocale);
   }
+  // Add x-default pointing to English version
+  const defaultSlug = locale === 'en' ? post.slug : (translatedSlug || post.slug);
+  alternates['x-default'] = generateBlogCanonicalUrl(defaultSlug, 'en');
 
   // Primary and secondary keywords for SEO
   const primaryKeywords = [

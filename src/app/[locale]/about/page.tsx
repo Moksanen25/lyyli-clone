@@ -4,7 +4,7 @@ import OriginStory from '../../../components/about/OriginStory';
 import MissionVisionValues from '../../../components/about/MissionVisionValues';
 import TeamSection from '../../../components/about/TeamSection';
 import SubPageVisual from '../../../components/SubPageVisual';
-import { generatePageCanonicalUrl, generateAlternateUrls } from '../../../lib/canonical';
+import { generatePageCanonicalUrl, generateHreflangMetadata } from '../../../lib/canonical';
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
     },
     alternates: {
       canonical: generatePageCanonicalUrl('about', locale),
-      languages: generateAlternateUrls('/about', ['en', 'fi']),
+      languages: generateHreflangMetadata('/about', ['en', 'fi']),
     },
   };
 }

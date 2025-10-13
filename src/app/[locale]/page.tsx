@@ -6,7 +6,7 @@ import ROICalculator from "../../components/ROICalculator";
 import PricingCards from "../../components/PricingCards";
 import Deferred from "../../components/Deferred";
 import HeroFactBox from "../../components/HeroFactBox";
-import { generatePageCanonicalUrl, generateAlternateUrls } from "../../lib/canonical";
+import { generatePageCanonicalUrl, generateHreflangMetadata } from "../../lib/canonical";
 
 const ProcessSteps = dynamic(() => import("../../components/ProcessSteps"), { ssr: true, loading: () => <div /> });
 const FeatureGrid = dynamic(() => import("../../components/FeatureGrid"), { ssr: true, loading: () => <div /> });
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: HomeProps): Promise<Metadata>
     description: t["home.page.description"] ?? "AI Communication Assistant for Professional Service Organizations",
     alternates: {
       canonical: generatePageCanonicalUrl('', locale),
-      languages: generateAlternateUrls('/', ['en', 'fi']),
+      languages: generateHreflangMetadata('/', ['en', 'fi']),
     },
   };
 }

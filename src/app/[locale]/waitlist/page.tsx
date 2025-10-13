@@ -1,7 +1,7 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
-import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
+import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 
 interface WaitlistPageProps {
   params: Promise<{ locale: string }>;
@@ -28,7 +28,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: generateAlternateUrls('/waitlist', ['en', 'fi']),
+      languages: generateHreflangMetadata('/waitlist', ['en', 'fi']),
     },
   };
 }
