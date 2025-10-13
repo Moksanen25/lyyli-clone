@@ -5,6 +5,7 @@ import BenefitsSection from '@/components/pricing/BenefitsSection';
 import dynamic from 'next/dynamic';
 const PricingFAQ = dynamic(() => import('@/components/pricing/PricingFAQ'), { ssr: true, loading: () => <div /> });
 import ROICalculator from '@/components/ROICalculator';
+import { generatePageCanonicalUrl, generateAlternateUrls } from '@/lib/canonical';
 
 interface PricingPageProps {
   params: Promise<{ locale: string }>;
@@ -31,11 +32,8 @@ export async function generateMetadata({ params }: PricingPageProps): Promise<Me
       ]
     },
     alternates: {
-      canonical: `/${locale}/pricing`,
-      languages: {
-        en: '/en/pricing',
-        fi: '/fi/pricing',
-      },
+      canonical: generatePageCanonicalUrl('pricing', locale),
+      languages: generateAlternateUrls('/pricing', ['en', 'fi']),
     },
   };
 }

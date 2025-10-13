@@ -6,6 +6,7 @@ import ROICalculator from "../../components/ROICalculator";
 import PricingCards from "../../components/PricingCards";
 import Deferred from "../../components/Deferred";
 import HeroFactBox from "../../components/HeroFactBox";
+import { generatePageCanonicalUrl, generateAlternateUrls } from "../../lib/canonical";
 
 const ProcessSteps = dynamic(() => import("../../components/ProcessSteps"), { ssr: true, loading: () => <div /> });
 const FeatureGrid = dynamic(() => import("../../components/FeatureGrid"), { ssr: true, loading: () => <div /> });
@@ -23,11 +24,8 @@ export async function generateMetadata({ params }: HomeProps): Promise<Metadata>
     title: t["home.page.title"] ?? "Lyyli.ai",
     description: t["home.page.description"] ?? "AI Communication Assistant for Professional Service Organizations",
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        en: '/en',
-        fi: '/fi',
-      },
+      canonical: generatePageCanonicalUrl('', locale),
+      languages: generateAlternateUrls('/', ['en', 'fi']),
     },
   };
 }

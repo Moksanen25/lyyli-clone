@@ -1,5 +1,6 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
+import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
 
 interface CookiesPageProps {
   params: Promise<{ locale: string }>;
@@ -31,11 +32,8 @@ export async function generateMetadata({ params }: CookiesPageProps): Promise<Me
       description: t["cookies.page.description"],
     },
     alternates: {
-      canonical: `/${locale}/cookies`,
-      languages: {
-        en: '/en/cookies',
-        fi: '/fi/cookies',
-      },
+      canonical: generatePageCanonicalUrl('cookies', locale),
+      languages: generateAlternateUrls('/cookies', ['en', 'fi']),
     },
   };
 }

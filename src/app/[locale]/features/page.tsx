@@ -2,6 +2,7 @@ import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import IntegrationsFlow from "@/components/features/IntegrationsFlow";
+import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
 
 interface FeaturesPageProps {
   params: Promise<{ locale: string }>;
@@ -30,11 +31,8 @@ export async function generateMetadata({
       type: 'website',
     },
     alternates: {
-      canonical: `/${locale}/features`,
-      languages: {
-        en: '/en/features',
-        fi: '/fi/features',
-      },
+      canonical: generatePageCanonicalUrl('features', locale),
+      languages: generateAlternateUrls('/features', ['en', 'fi']),
     },
   };
 }

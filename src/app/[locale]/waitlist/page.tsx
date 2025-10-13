@@ -1,6 +1,7 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
+import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
 
 interface WaitlistPageProps {
   params: Promise<{ locale: string }>;
@@ -12,8 +13,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations(locale);
 
-  const baseUrl = "https://lyyli.ai";
-  const canonicalUrl = `${baseUrl}/${locale}/waitlist`;
+  const canonicalUrl = generatePageCanonicalUrl('waitlist', locale);
 
   return {
     title: t["waitlist.page.title"],
@@ -28,10 +28,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        "en": `${baseUrl}/en/waitlist`,
-        "fi": `${baseUrl}/fi/waitlist`,
-      },
+      languages: generateAlternateUrls('/waitlist', ['en', 'fi']),
     },
   };
 }

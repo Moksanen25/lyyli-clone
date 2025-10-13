@@ -1,5 +1,6 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
+import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
 
 interface PrivacyPageProps {
   params: Promise<{ locale: string }>;
@@ -31,11 +32,8 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
       description: t["privacy.page.description"],
     },
     alternates: {
-      canonical: `/${locale}/privacy`,
-      languages: {
-        en: '/en/privacy',
-        fi: '/fi/privacy',
-      },
+      canonical: generatePageCanonicalUrl('privacy', locale),
+      languages: generateAlternateUrls('/privacy', ['en', 'fi']),
     },
   };
 }

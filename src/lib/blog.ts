@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { generateBlogCanonicalUrl } from './canonical';
 
 export interface BlogPost {
   slug: string;
@@ -171,8 +172,7 @@ export function hasTranslation(slug: string): boolean {
 }
 
 export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
-  const baseUrl = "https://lyyli.ai";
-  const canonicalUrl = `${baseUrl}/${locale}/blog/${post.slug}`;
+  const canonicalUrl = generateBlogCanonicalUrl(post.slug, locale);
 
   // Determine translated slug if available for hreflang alternates
   const otherLocale = locale === 'fi' ? 'en' : 'fi';
@@ -180,7 +180,7 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
   const alternates: Record<string, string> = {};
   alternates[locale] = canonicalUrl;
   if (translatedSlug) {
-    alternates[otherLocale] = `${baseUrl}/${otherLocale}/blog/${translatedSlug}`;
+    alternates[otherLocale] = generateBlogCanonicalUrl(translatedSlug, otherLocale);
   }
 
   // Primary and secondary keywords for SEO

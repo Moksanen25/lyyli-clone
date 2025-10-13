@@ -5,6 +5,7 @@ import TeamContacts from "@/components/contact/TeamContacts";
 import SecurityNotice from "@/components/contact/SecurityNotice";
 import MeshGradientBackground from "@/components/MeshGradientBackground";
 import { InteractiveCard } from "@/components/VisualElements";
+import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
 
 
 interface ContactPageProps {
@@ -17,8 +18,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations(locale);
 
-  const baseUrl = "https://lyyli.ai";
-  const canonicalUrl = `${baseUrl}/${locale}/contact`;
+  const canonicalUrl = generatePageCanonicalUrl('contact', locale);
 
   return {
     title: t["contact.page.title"],
@@ -46,10 +46,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${baseUrl}/en/contact`,
-        fi: `${baseUrl}/fi/contact`,
-      },
+      languages: generateAlternateUrls('/contact', ['en', 'fi']),
     },
   };
 }

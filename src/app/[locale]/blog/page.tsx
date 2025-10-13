@@ -2,6 +2,7 @@ import { getTranslations } from "@/lib/i18n";
 import { getAllBlogPosts } from "@/lib/blog";
 import { Metadata } from "next";
 import BlogPostCard from "@/components/blog/BlogPostCard";
+import { generatePageCanonicalUrl, generateAlternateUrls } from "@/lib/canonical";
 
 export const revalidate = 3600; // ISR: revalidate blog listing hourly
 
@@ -15,8 +16,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations(locale);
 
-  const baseUrl = "https://lyyli.ai";
-  const canonicalUrl = `${baseUrl}/${locale}/blog`;
+  const canonicalUrl = generatePageCanonicalUrl('blog', locale);
 
   // Primary and secondary keywords for SEO
   const keywords = [
@@ -58,10 +58,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${baseUrl}/en/blog`,
-        fi: `${baseUrl}/fi/blog`,
-      },
+      languages: generateAlternateUrls('/blog', ['en', 'fi']),
     },
   };
 }

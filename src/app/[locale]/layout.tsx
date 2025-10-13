@@ -44,7 +44,6 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://lyyli.ai"),
   alternates: {
-    canonical: "/",
     languages: {
       en: "/en",
       fi: "/fi",
@@ -114,12 +113,12 @@ export default async function LocaleLayout({
   // Get translations
   const t = await getTranslations(currentLocale);
 
-  // Get canonical URL and pathname
+  // Get pathname for breadcrumbs and footer (not for canonical URL)
   const headersList = await headers();
   const host = headersList.get("host") || "lyyli.ai";
   const protocol = headersList.get("x-forwarded-proto") || "https";
   const pathname = headersList.get("x-pathname") || "/";
-  const canonicalUrl = `${protocol}://${host}${pathname}`;
+  const canonicalUrl = `${protocol}://${host}${pathname}`; // Only for footer display
 
   // Read CSP nonce from headers or cookie (middleware provides both)
   const nonceHeader = headersList.get('x-csp-nonce') || undefined;
@@ -130,7 +129,6 @@ export default async function LocaleLayout({
   return (
     <html lang={currentLocale} dir="ltr" className={`${fontVars} h-full`}>
       <head>
-        <link rel="canonical" href={canonicalUrl} />
         {nonce && <meta name="csp-nonce" content={nonce} />}
         <link rel="alternate" hrefLang="en" href={`${protocol}://${host}/en`} />
         <link rel="alternate" hrefLang="fi" href={`${protocol}://${host}/fi`} />
