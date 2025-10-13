@@ -21,9 +21,15 @@ export default function RootLayout({
   return (
     <html className={fontVars}>
       <head>
+        {/* Preload critical fonts for LCP - Next.js handles this automatically */}
+        {/* next/font/google self-hosts and preloads fonts, sets font-display: swap */}
+        
         {/* Preload critical images in modern formats */}
         <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.webp" as="image" type="image/webp" />
         <link rel="preload" href="/images/general/Desktop_UI_for_web.webp" as="image" type="image/webp" />
+
+        {/* DNS Prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
         {/* Prefetch likely navigation targets */}
         <link rel="prefetch" href="/en/features" />
