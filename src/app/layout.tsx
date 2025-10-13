@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html className={fontVars}>
       <head>
-        {/* Preload critical images */}
-        <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.png" as="image" type="image/png" />
-        <link rel="preload" href="/images/general/Desktop_UI_for_web.png" as="image" type="image/png" />
+        {/* Preload critical images in modern formats */}
+        <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/images/general/Desktop_UI_for_web.webp" as="image" type="image/webp" />
 
         {/* Prefetch likely navigation targets */}
         <link rel="prefetch" href="/en/features" />

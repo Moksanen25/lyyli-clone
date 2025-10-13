@@ -1,4 +1,5 @@
 import { TranslationKeys } from "@/lib/i18n";
+import Image from "next/image";
 
 interface TeamSectionProps {
   translations: TranslationKeys;
@@ -87,9 +88,11 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
             aria-label="Redstone.vc website"
             className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity"
           >
-            <img
+            <Image
               src="/images/logos/redstone.svg"
               alt="Redstone.vc logo"
+              width={120}
+              height={32}
               className="h-8 w-auto"
               loading="lazy"
             />
@@ -101,9 +104,11 @@ export default function TeamSection({ translations: t }: TeamSectionProps) {
             aria-label="Expion.fi website"
             className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity"
           >
-            <img
+            <Image
               src="/images/logos/expion.svg"
               alt="Expion.fi logo"
+              width={120}
+              height={32}
               className="h-8 w-auto"
               loading="lazy"
             />

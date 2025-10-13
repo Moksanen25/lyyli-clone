@@ -10,7 +10,9 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "optimize:check": "node scripts/optimize-images.mjs",
+    "optimize:compress": "node scripts/compress-images.mjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",
