@@ -19,7 +19,11 @@
     "title:verify": "node scripts/verify-titles.mjs",
     "title:test": "npm test -- --testPathPatterns=title",
     "description:check": "node scripts/check-descriptions.mjs",
-    "description:test": "npm test -- --testPathPatterns=meta-description"
+    "description:test": "npm test -- --testPathPatterns=meta-description",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:404": "playwright test e2e/404",
+    "e2e:headed": "playwright test --headed"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",
@@ -42,6 +46,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.5.3",
+    "@playwright/test": "^1.56.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
