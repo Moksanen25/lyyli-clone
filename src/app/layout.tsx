@@ -7,10 +7,16 @@ export const metadata: Metadata = {
   title: "Lyyli.ai - AI Communication Assistant",
   description: "Redirecting to localized version...",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icons/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest",
+  themeColor: "#2F5D50",
 };
 
 export default function RootLayout({
@@ -37,7 +43,21 @@ export default function RootLayout({
         <link rel="prefetch" href="/en/about" />
         <link rel="prefetch" href="/en/contact" />
 
-        <link rel="manifest" href="/manifest.json" />
+        {/* Favicon and app icons */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png" />
+        
+        {/* Web App Manifest */}
+        <link rel="manifest" href="/site.webmanifest" />
+        
+        {/* Theme color for mobile browsers */}
+        <meta name="theme-color" content="#2F5D50" />
+        <meta name="msapplication-TileColor" content="#2F5D50" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
       <body className="font-sans">
         {children}

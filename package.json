@@ -20,6 +20,8 @@
     "title:test": "npm test -- --testPathPatterns=title",
     "description:check": "node scripts/check-descriptions.mjs",
     "description:test": "npm test -- --testPathPatterns=meta-description",
+    "favicon:verify": "node scripts/verify-favicons.mjs",
+    "favicon:test": "npm test -- --testPathPatterns=favicon",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
     "e2e:404": "playwright test e2e/404",
