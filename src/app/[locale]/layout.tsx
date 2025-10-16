@@ -8,6 +8,7 @@ import MeshGradientBackground from "../../components/MeshGradientBackground";
 import DevSWCleanup from "../../components/DevSWCleanup";
 import { getTranslations } from "../../lib/i18n";
 import { fontVars } from "../../lib/fonts";
+import WebVitals from "../../components/WebVitals";
 import { createTitleTemplate } from "../../lib/title";
 import { 
   generateOrganizationSchema, 
@@ -159,6 +160,7 @@ export default async function LocaleLayout({
           />
           <ConsentBanner locale={currentLocale} translations={t} />
           <DevSWCleanup />
+          <WebVitals />
         </div>
 
         {/* Schema.org structured data - Organization, Website, and BreadcrumbList */}

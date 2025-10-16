@@ -27,6 +27,8 @@
     "hreflang:validate": "node scripts/validate-hreflang.mjs",
     "faq:validate": "node scripts/validate-faq-schema.mjs",
     "blog:validate": "node scripts/validate-blog-links.mjs",
+    "web-vitals:budget": "node scripts/web-vitals-budget.mjs",
+    "web-vitals:test": "npm test -- --testPathPatterns=web-vitals",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
     "e2e:404": "playwright test e2e/404",
@@ -48,8 +50,7 @@
     "react-intersection-observer": "^9.16.0",
     "recharts": "^3.1.2",
     "styled-jsx": "^5.1.7",
-    "tailwindcss": "^4.0.0-alpha.25",
-    "web-vitals": "^5.1.0"
+    "tailwindcss": "^4.0.0-alpha.25"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.5.3",
@@ -66,6 +67,9 @@
     "eslint-plugin-testing-library": "^7.13.1",
     "jest": "^30.2.0",
     "jest-environment-jsdom": "^30.2.0",
-    "typescript": "^5.9.3"
+    "playwright": "^1.56.0",
+    "typescript": "^5.9.3",
+    "wait-on": "^9.0.1",
+    "web-vitals": "^5.1.0"
   }
 }

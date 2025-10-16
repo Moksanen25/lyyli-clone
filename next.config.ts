@@ -53,34 +53,68 @@ const nextConfig: NextConfig = {
     return config;
   },
 
-  // Optimize bundles (disabled custom splitChunks to avoid Webpack runtime conflicts)
-  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-  //   if (!dev && !isServer) {
-  //     config.optimization.splitChunks.chunks = 'all';
-  //     config.optimization.splitChunks.cacheGroups = {
-  //       ...config.optimization.splitChunks.cacheGroups,
-  //       vendor: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         name: 'vendors',
-  //         chunks: 'all',
-  //         priority: 10,
-  //       },
-  //       framermotion: {
-  //         test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-  //         name: 'framer-motion',
-  //         chunks: 'all',
-  //         priority: 20,
-  //       },
-  //       recharts: {
-  //         test: /[\\/]node_modules[\\/]recharts[\\/]/,
-  //         name: 'recharts',
-  //         chunks: 'all',
-  //         priority: 20,
-  //       },
-  //     };
-  //   }
-  //   return config;
-  // },
+  // Optimize bundles with proper code splitting
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Tree shaking optimization
+    config.optimization.usedExports = true;
+    config.optimization.sideEffects = false;
+
+    if (!dev && !isServer) {
+      // Enhanced code splitting
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          // Vendor chunks
+          vendor: {
+            name: 'vendor',
+            test: /[\\/]node_modules[\\/]/,
+            chunks: 'all',
+            priority: 20,
+            reuseExistingChunk: true,
+          },
+          // Framework chunks
+          framework: {
+            name: 'framework',
+            test: /[\\/]node_modules[\\/](react|react-dom|next)[\\/]/,
+            chunks: 'all',
+            priority: 30,
+            reuseExistingChunk: true,
+          },
+          // UI library chunks
+          ui: {
+            name: 'ui',
+            test: /[\\/]node_modules[\\/](@headlessui|@heroicons|framer-motion)[\\/]/,
+            chunks: 'all',
+            priority: 25,
+            reuseExistingChunk: true,
+          },
+          // Chart libraries
+          charts: {
+            name: 'charts',
+            test: /[\\/]node_modules[\\/](recharts|d3|victory)[\\/]/,
+            chunks: 'all',
+            priority: 25,
+            reuseExistingChunk: true,
+          },
+          // Common chunks
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            priority: 10,
+            reuseExistingChunk: true,
+            enforce: true,
+          },
+        },
+      };
+    }
+
+    return config;
+  },
 
   // Optimize build output
   output: 'standalone',
