@@ -11,7 +11,7 @@ const projectRoot = join(__dirname, '..');
 // Web Vitals budgets
 const BUDGETS = {
   CLS: 0.1,        // Cumulative Layout Shift
-  FID: 100,        // First Input Delay (ms)
+  INP: 200,        // Interaction to Next Paint (ms)
   FCP: 1800,       // First Contentful Paint (ms)
   LCP: 2500,       // Largest Contentful Paint (ms)
   TTFB: 600,       // Time to First Byte (ms)
@@ -98,14 +98,14 @@ async function measureWebVitals(url) {
         checkComplete();
       }).observe({ type: 'largest-contentful-paint', buffered: true });
       
-      // FID
+      // INP
       new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          vitals.FID = entry.processingStart - entry.startTime;
+          vitals.INP = entry.processingStart - entry.startTime;
           checkComplete();
           break;
         }
-      }).observe({ type: 'first-input', buffered: true });
+      }).observe({ type: 'event', buffered: true });
       
       // TTFB
       const navigationEntry = performance.getEntriesByType('navigation')[0];

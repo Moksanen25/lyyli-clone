@@ -47,6 +47,7 @@ export default function DeferredComponent({
 
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [isIntersecting, delay]);
 
   return (
@@ -56,18 +57,18 @@ export default function DeferredComponent({
   );
 }
 
-// Dynamic imports for heavy components
-export const DynamicChart = dynamic(() => import('./charts/Chart'), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded" />,
-  ssr: false,
-});
+// Dynamic imports for heavy components (examples - uncomment when components exist)
+// export const DynamicChart = dynamic(() => import('./charts/Chart'), {
+//   loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded" />,
+//   ssr: false,
+// });
 
-export const DynamicMap = dynamic(() => import('./maps/Map'), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded" />,
-  ssr: false,
-});
+// export const DynamicMap = dynamic(() => import('./maps/Map'), {
+//   loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded" />,
+//   ssr: false,
+// });
 
-export const DynamicVideo = dynamic(() => import('./media/Video'), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded" />,
-  ssr: false,
-});
+// export const DynamicVideo = dynamic(() => import('./media/Video'), {
+//   loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded" />,
+//   ssr: false,
+// });

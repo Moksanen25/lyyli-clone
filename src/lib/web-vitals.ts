@@ -1,4 +1,4 @@
-import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+import { onCLS, onINP, onFCP, onLCP, onTTFB } from 'web-vitals';
 
 export interface WebVitalMetric {
   name: string;
@@ -10,7 +10,7 @@ export interface WebVitalMetric {
 
 export interface WebVitalsBudget {
   cls: number;
-  fid: number;
+  inp: number;
   fcp: number;
   lcp: number;
   ttfb: number;
@@ -19,7 +19,7 @@ export interface WebVitalsBudget {
 // Performance budgets (in milliseconds, except CLS)
 export const WEB_VITALS_BUDGETS: WebVitalsBudget = {
   cls: 0.1,        // CLS should be < 0.1
-  fid: 100,        // FID should be < 100ms
+  inp: 200,        // INP should be < 200ms
   fcp: 1800,       // FCP should be < 1.8s
   lcp: 2500,       // LCP should be < 2.5s
   ttfb: 600,       // TTFB should be < 600ms
@@ -79,11 +79,11 @@ export function reportWebVitals(metric: WebVitalMetric) {
 export function initWebVitals() {
   if (typeof window === 'undefined') return;
 
-  getCLS((metric) => reportWebVitals(metric));
-  getFID((metric) => reportWebVitals(metric));
-  getFCP((metric) => reportWebVitals(metric));
-  getLCP((metric) => reportWebVitals(metric));
-  getTTFB((metric) => reportWebVitals(metric));
+  onCLS((metric) => reportWebVitals(metric));
+  onINP((metric) => reportWebVitals(metric));
+  onFCP((metric) => reportWebVitals(metric));
+  onLCP((metric) => reportWebVitals(metric));
+  onTTFB((metric) => reportWebVitals(metric));
 }
 
 // CLS-specific utilities

@@ -43,18 +43,15 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  webpack: (config) => {
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Resolve aliases
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       "victory-vendor/d3-shape": "d3-shape",
       "victory-vendor/d3-scale": "d3-scale",
     };
-    return config;
-  },
 
-  // Optimize bundles with proper code splitting
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Tree shaking optimization
     config.optimization.usedExports = true;
     config.optimization.sideEffects = false;
