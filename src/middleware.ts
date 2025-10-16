@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { addSecurityHeaders, createSecurityConfig, securityMiddleware } from '@/middleware/security';
+import { addCacheHeaders } from '@/middleware/cache';
 import { ensureEnvValidated } from '@/lib/env';
 import { logger } from '@/lib/logger';
 import { 
@@ -111,7 +112,12 @@ export default function middleware(request: NextRequest) {
     });
 
     // Add security headers on the way out (with nonce)
-    return addSecurityHeaders(response, securityConfig, nonce);
+    response = addSecurityHeaders(response, securityConfig, nonce);
+    
+    // Add caching headers for static assets
+    response = addCacheHeaders(request, response);
+    
+    return response;
   } catch (error) {
     logger.error('Root middleware handler threw', {
       error: error instanceof Error ? error.message : 'Unknown error',
