@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import IntegrationsFlow from "@/components/features/IntegrationsFlow";
 import FAQSection from "@/components/faq/FAQSection";
+import FeatureSectionNav from "@/components/features/FeatureSectionNav";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 import { buildTitleFromTranslation } from "@/lib/title";
 
@@ -16,9 +17,36 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations(locale);
 
+  const sectionDescriptions = {
+    en: {
+      'ai-automation': 'AI-powered communication automation with seamless integration, voice learning, and proactive messaging for professional service companies.',
+      'governance-compliance': 'Complete governance and compliance features including audit trails, version control, and role-based access controls.',
+      'security-gdpr': 'Enterprise-grade security with AES-256 encryption, ISO 27001 readiness, and full GDPR compliance for data protection.',
+      'multilingual': 'Multilingual support with real-time translation, cultural adaptation, and multiple locale support for global organizations.',
+      'integrations': 'Seamless integrations with Outlook, Gmail, Slack, Microsoft Teams, and other business communication tools.',
+      'upcoming': 'Upcoming features including campaign mode, advanced AI analytics, media library, and automated KPI reporting.'
+    },
+    fi: {
+      'ai-automation': 'AI-avusteinen viestintäautomaatio saumattomalla integraatiolla, äänen oppimisella ja proaktiivisella viestinnällä asiantuntijaorganisaatioille.',
+      'governance-compliance': 'Kattavat hallinta- ja compliance-ominaisuudet mukaan lukien auditointi, versiointi ja käyttöoikeuksien hallinta.',
+      'security-gdpr': 'Yritystason tietoturva AES-256 salauksella, ISO 27001 valmius ja täysi GDPR-yhteensopivuus tietosuojaa varten.',
+      'multilingual': 'Monikielinen tuki reaaliaikaisella kääntämisellä, kulttuurisella mukautumisella ja useilla kielillä globaaleille organisaatioille.',
+      'integrations': 'Saumattomat integraatiot Outlook, Gmail, Slack, Microsoft Teams ja muihin liiketoimintaviestintätyökaluihin.',
+      'upcoming': 'Tulevat ominaisuudet mukaan lukien kampanjatila, kehittyneet AI-analytiikat, mediatietokanta ja automaattiset KPI-raportit.'
+    }
+  };
+
+  const localeKey = locale as 'en' | 'fi';
+  const descriptions = sectionDescriptions[localeKey] || sectionDescriptions.en;
+
   return {
     title: buildTitleFromTranslation(t["features.page.title"], "Features"),
     description: t["features.page.description"],
+    keywords: [
+      localeKey === 'fi' ? 'AI viestintä, automaatio, tietoturva, GDPR, integraatiot' : 'AI communication, automation, security, GDPR, integrations',
+      localeKey === 'fi' ? 'asiantuntijaorganisaatiot, viestintätyökalut' : 'professional services, communication tools',
+      localeKey === 'fi' ? 'Outlook integraatio, Slack, Teams' : 'Outlook integration, Slack, Teams'
+    ].join(', '),
     openGraph: {
       title: t["features.page.title"],
       description: t["features.page.description"],
@@ -65,6 +93,9 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
         </section>
       </div>
 
+      {/* Feature Section Navigation */}
+      <FeatureSectionNav locale={currentLocale} translations={t} />
+
       {/* Removed UI visualization section (desktop and mobile images) */}
 
       {/* Removed "How Lyyli works" and results sections */}
@@ -77,7 +108,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       </section>
 
       {/* Upcoming features */}
-      <section className="py-16 lg:py-24">
+      <section id="upcoming" className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
@@ -115,11 +146,38 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
               </article>
             ))}
           </div>
+          
+          {/* Related Sections */}
+          <div className="mt-12 text-center">
+            <p className="text-sm text-mediumGray mb-4">
+              {currentLocale === 'fi' ? 'Katso myös:' : 'See also:'}
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="#ai-automation" 
+                className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+              >
+                {currentLocale === 'fi' ? 'AI-automaatio' : 'AI Automation'}
+              </a>
+              <a 
+                href="#integrations" 
+                className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+              >
+                {currentLocale === 'fi' ? 'Integraatiot' : 'Integrations'}
+              </a>
+              <a 
+                href="#security-gdpr" 
+                className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+              >
+                {currentLocale === 'fi' ? 'Tietoturva & GDPR' : 'Security & GDPR'}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Integrations */}
-      <section className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24">
+      <section id="integrations" className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
@@ -130,6 +188,33 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
             </p>
           </div>
           <IntegrationsFlow translations={t} />
+          
+          {/* Related Sections */}
+          <div className="mt-12 text-center">
+            <p className="text-sm text-mediumGray mb-4">
+              {currentLocale === 'fi' ? 'Katso myös:' : 'See also:'}
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="#ai-automation" 
+                className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+              >
+                {currentLocale === 'fi' ? 'AI-automaatio' : 'AI Automation'}
+              </a>
+              <a 
+                href="#multilingual" 
+                className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+              >
+                {currentLocale === 'fi' ? 'Monikielisyys' : 'Multilingual'}
+              </a>
+              <a 
+                href="#upcoming" 
+                className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+              >
+                {currentLocale === 'fi' ? 'Tulevat ominaisuudet' : 'Upcoming Features'}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

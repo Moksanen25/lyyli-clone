@@ -182,6 +182,38 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     >
                       {t["nav.features"]}
                     </Link>
+                    <div className="border-t border-gray-200/50 my-1"></div>
+                    <Link
+                      href={`/${locale}/features#ai-automation`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                    >
+                      {locale === 'fi' ? 'AI-automaatio' : 'AI Automation'}
+                    </Link>
+                    <Link
+                      href={`/${locale}/features#governance-compliance`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                    >
+                      {locale === 'fi' ? 'Hallinta & Compliance' : 'Governance & Compliance'}
+                    </Link>
+                    <Link
+                      href={`/${locale}/features#security-gdpr`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                    >
+                      {locale === 'fi' ? 'Tietoturva & GDPR' : 'Security & GDPR'}
+                    </Link>
+                    <Link
+                      href={`/${locale}/features#multilingual`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                    >
+                      {locale === 'fi' ? 'Monikielisyys' : 'Multilingual'}
+                    </Link>
+                    <Link
+                      href={`/${locale}/features#integrations`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                    >
+                      {locale === 'fi' ? 'Integraatiot' : 'Integrations'}
+                    </Link>
+                    <div className="border-t border-gray-200/50 my-1"></div>
                     <Link
                       href={`/${locale}/cybersecurity`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}

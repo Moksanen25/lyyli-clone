@@ -155,7 +155,7 @@ export default function FeaturesCardLayout({
   return (
     <div className="space-y-16">
       {/* Lyyli learns from your messages */}
-      <div>
+      <div id="ai-automation">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t["features.learns.title"]}
@@ -184,10 +184,37 @@ export default function FeaturesCardLayout({
               </article>
             ))}
         </div>
+        
+        {/* Related Sections */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-mediumGray mb-4">
+            {locale === 'fi' ? 'Katso myös:' : 'See also:'}
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a 
+              href="#governance-compliance" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Hallinta & Compliance' : 'Governance & Compliance'}
+            </a>
+            <a 
+              href="#security-gdpr" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Tietoturva & GDPR' : 'Security & GDPR'}
+            </a>
+            <a 
+              href="#integrations" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Integraatiot' : 'Integrations'}
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Governance & Compliance */}
-      <div>
+      <div id="governance-compliance">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t["features.governance.title"]}
@@ -216,10 +243,37 @@ export default function FeaturesCardLayout({
               </article>
             ))}
         </div>
+        
+        {/* Related Sections */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-mediumGray mb-4">
+            {locale === 'fi' ? 'Katso myös:' : 'See also:'}
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a 
+              href="#ai-automation" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'AI-automaatio' : 'AI Automation'}
+            </a>
+            <a 
+              href="#security-gdpr" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Tietoturva & GDPR' : 'Security & GDPR'}
+            </a>
+            <a 
+              href="#multilingual" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Monikielisyys' : 'Multilingual'}
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Enterprise Security */}
-      <div>
+      <div id="security-gdpr">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t["features.security.title"]}
@@ -248,10 +302,37 @@ export default function FeaturesCardLayout({
               </article>
             ))}
         </div>
+        
+        {/* Related Sections */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-mediumGray mb-4">
+            {locale === 'fi' ? 'Katso myös:' : 'See also:'}
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a 
+              href="#governance-compliance" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Hallinta & Compliance' : 'Governance & Compliance'}
+            </a>
+            <a 
+              href="#multilingual" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Monikielisyys' : 'Multilingual'}
+            </a>
+            <a 
+              href="#integrations" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Integraatiot' : 'Integrations'}
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Multilingual Support */}
-      <div>
+      <div id="multilingual">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t["features.multilingual.title"]}
@@ -279,6 +360,33 @@ export default function FeaturesCardLayout({
                 </p>
               </article>
             ))}
+        </div>
+        
+        {/* Related Sections */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-mediumGray mb-4">
+            {locale === 'fi' ? 'Katso myös:' : 'See also:'}
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a 
+              href="#ai-automation" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'AI-automaatio' : 'AI Automation'}
+            </a>
+            <a 
+              href="#governance-compliance" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Hallinta & Compliance' : 'Governance & Compliance'}
+            </a>
+            <a 
+              href="#integrations" 
+              className="text-sm text-forest hover:text-forest/80 transition-colors underline"
+            >
+              {locale === 'fi' ? 'Integraatiot' : 'Integrations'}
+            </a>
+          </div>
         </div>
       </div>
     </div>
