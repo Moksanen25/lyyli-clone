@@ -190,7 +190,7 @@ async function validateSitemapXml() {
     isValid = false;
   }
   
-  if (content.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')) {
+  if (content.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"')) {
     logSuccess('Has proper urlset namespace');
   } else {
     logError('Missing or incorrect urlset namespace');
@@ -234,6 +234,34 @@ async function validateSitemapXml() {
       logError(`Found ${urls.length - uniqueUrls.length} duplicate URLs`);
       isValid = false;
     }
+  }
+  
+  // Check for hreflang implementation
+  if (content.includes('xmlns:xhtml="http://www.w3.org/1999/xhtml"')) {
+    logSuccess('XHTML namespace declared for hreflang');
+    
+    const hreflangLinks = content.match(/<xhtml:link[^>]*hreflang="[^"]*"[^>]*>/g);
+    if (hreflangLinks) {
+      logSuccess(`Found ${hreflangLinks.length} hreflang links`);
+      
+      // Check for required hreflang values
+      const hasEn = content.includes('hreflang="en"');
+      const hasFi = content.includes('hreflang="fi"');
+      const hasXDefault = content.includes('hreflang="x-default"');
+      
+      if (hasEn && hasFi && hasXDefault) {
+        logSuccess('All required hreflang values present (en, fi, x-default)');
+      } else {
+        logError('Missing required hreflang values');
+        isValid = false;
+      }
+    } else {
+      logError('No hreflang links found');
+      isValid = false;
+    }
+  } else {
+    logError('Missing XHTML namespace for hreflang');
+    isValid = false;
   }
   
   // Check for required elements in each URL

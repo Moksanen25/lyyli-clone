@@ -127,15 +127,64 @@ function getBlogPosts(locale) {
   return posts;
 }
 
-// Function to generate sitemap XML
+// Function to generate hreflang alternates for a given path
+function generateHreflangAlternates(path) {
+  let hreflangXml = '';
+  
+  // Skip hreflang for root path as it's language-agnostic
+  if (path === '/') {
+    return hreflangXml;
+  }
+  
+  // Determine if this is a language-specific path
+  const isLangSpecific = path.startsWith('/en') || path.startsWith('/fi');
+  
+  if (isLangSpecific) {
+    const currentLang = path.startsWith('/en') ? 'en' : 'fi';
+    const alternateLang = currentLang === 'en' ? 'fi' : 'en';
+    
+    // Generate alternate path
+    let alternatePath;
+    if (path === '/en' || path === '/fi') {
+      alternatePath = `/${alternateLang}`;
+    } else {
+      // Replace /en/ with /fi/ or vice versa
+      alternatePath = path.replace(`/${currentLang}`, `/${alternateLang}`);
+    }
+    
+    // Add hreflang links
+    hreflangXml += `    <xhtml:link rel="alternate" hreflang="${currentLang}" href="${baseUrl}${path}"/>\n`;
+    hreflangXml += `    <xhtml:link rel="alternate" hreflang="${alternateLang}" href="${baseUrl}${alternatePath}"/>\n`;
+    
+    // Generate x-default path (English version)
+    let xDefaultPath;
+    if (path === '/en' || path === '/fi') {
+      xDefaultPath = '/en';
+    } else {
+      xDefaultPath = path.replace(`/${currentLang}`, '/en');
+    }
+    hreflangXml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}${xDefaultPath}"/>\n`;
+  } else {
+    // For non-language-specific paths, add both language versions
+    hreflangXml += `    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en${path === '/' ? '' : path}"/>\n`;
+    hreflangXml += `    <xhtml:link rel="alternate" hreflang="fi" href="${baseUrl}/fi${path === '/' ? '' : path}"/>\n`;
+    hreflangXml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en${path === '/' ? '' : path}"/>\n`;
+  }
+  
+  return hreflangXml;
+}
+
+// Function to generate sitemap XML with hreflang
 function generateSitemap() {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n';
+  xml += '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n';
   
   // Add static pages
   for (const page of staticPages) {
     xml += `  <url>\n`;
     xml += `    <loc>${baseUrl}${page.path}</loc>\n`;
+    xml += generateHreflangAlternates(page.path);
     xml += `    <lastmod>${currentDate}</lastmod>\n`;
     xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
     xml += `    <priority>${page.priority}</priority>\n`;
@@ -146,6 +195,7 @@ function generateSitemap() {
   for (const page of helpPages) {
     xml += `  <url>\n`;
     xml += `    <loc>${baseUrl}${page.path}</loc>\n`;
+    xml += generateHreflangAlternates(page.path);
     xml += `    <lastmod>${currentDate}</lastmod>\n`;
     xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
     xml += `    <priority>${page.priority}</priority>\n`;
@@ -159,6 +209,7 @@ function generateSitemap() {
   for (const post of enBlogPosts) {
     xml += `  <url>\n`;
     xml += `    <loc>${baseUrl}${post.path}</loc>\n`;
+    xml += generateHreflangAlternates(post.path);
     xml += `    <lastmod>${currentDate}</lastmod>\n`;
     xml += `    <changefreq>${post.changefreq}</changefreq>\n`;
     xml += `    <priority>${post.priority}</priority>\n`;
@@ -168,6 +219,7 @@ function generateSitemap() {
   for (const post of fiBlogPosts) {
     xml += `  <url>\n`;
     xml += `    <loc>${baseUrl}${post.path}</loc>\n`;
+    xml += generateHreflangAlternates(post.path);
     xml += `    <lastmod>${currentDate}</lastmod>\n`;
     xml += `    <changefreq>${post.changefreq}</changefreq>\n`;
     xml += `    <priority>${post.priority}</priority>\n`;

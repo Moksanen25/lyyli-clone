@@ -24,6 +24,7 @@
     "favicon:test": "npm test -- --testPathPatterns=favicon",
     "sitemap:generate": "node scripts/generate-sitemap.mjs",
     "seo:validate": "node scripts/validate-seo-files.mjs",
+    "hreflang:validate": "node scripts/validate-hreflang.mjs",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
     "e2e:404": "playwright test e2e/404",
