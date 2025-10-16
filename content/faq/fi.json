@@ -1,0 +1,56 @@
+{
+  "title": "Usein Kysytyt Kysymykset",
+  "description": "Saat vastaukset yleisimpiin kysymyksiin Lyyli.ai:n tekoälyviestintäalustasta, tietoturvasta, GDPR:n mukaisuudesta ja integraatioista.",
+  "faqs": [
+    {
+      "id": "what-is-lyyli",
+      "question": "Mikä on Lyyli.ai ja miten se toimii?",
+      "answer": "Lyyli.ai on tekoälyllä toimiva viestintäalusta, joka muuttaa ammatillisten palvelujärjestöjen viestintätapoja. Se analysoi viestintätapojasi, tunnistaa parantamismahdollisuudet ja tarjoaa älykkäitä ehdotuksia asiakassuhteiden parantamiseksi. Alusta integroituu saumattomasti olemassa oleviin työkaluihisi ja tarjoaa reaaliaikaisia oivalluksia, joiden avulla tiimisi voi viestiä tehokkaammin."
+    },
+    {
+      "id": "security-measures",
+      "question": "Mitä tietoturvatoimenpiteitä Lyyli.ai toteuttaa?",
+      "answer": "Lyyli.ai toteuttaa yritysluokan tietoturvan, mukaan lukien päästä päähän -salausta, SOC 2 Type II -yhteensopivuuden, säännölliset tietoturvatarkastukset ja ISO 27001 -sertifikaatin. Kaikki tiedot salataan kuljetuksen ja säilytyksen aikana, roolipohjaisilla käyttöoikeuksilla ja monitekijätodennuksella. Suoritamme säännöllisiä tunkeutumistestejä ja ylläpidämme tiukkoja tietojen hallintaperiaatteita."
+    },
+    {
+      "id": "gdpr-compliance",
+      "question": "Onko Lyyli.ai GDPR:n mukainen?",
+      "answer": "Kyllä, Lyyli.ai on täysin GDPR:n mukainen. Tarjoamme tietojen käsittelysopimuksia, tuemme tietojen siirrettävyyttä, toteutamme yksityisyyden suojaa suunnittelussa ja tarjoamme helpon tietojen poiston pyynnöstä. Alustamme sisältää suostumusten hallintatyökalut, tietojen minimointikäytännöt ja säännölliset yhteensopivuustarkastukset. Toimimme sekä tietojen rekisterinpitäjänä että käsittelijänä tarpeen mukaan."
+    },
+    {
+      "id": "data-storage",
+      "question": "Missä tietoni tallennetaan ja käsitellään?",
+      "answer": "Tietosi tallennetaan turvallisiin, GDPR:n mukaisiin tietokeskustoihin, jotka sijaitsevat Euroopan unionin alueella. Käytämme AWS:n ja Microsoft Azuren infrastruktuuria palvelimilla Irlannissa, Saksassa ja Suomessa. Kaikki tietojen käsittely tapahtuu EU:n rajojen sisällä, ellei toisin erityisesti pyydetä, mikä varmistaa paikallisten tietosuoja-asetusten noudattamisen."
+    },
+    {
+      "id": "integration-options",
+      "question": "Mitä integraatioita Lyyli.ai tukee?",
+      "answer": "Lyyli.ai integroituu suosittujen liiketoimintatyökalujen kanssa, mukaan lukien Microsoft Teams, Slack, Salesforce, HubSpot, Zendesk ja Google Workspace. Tarjoamme REST API:ita, webhookkeja ja valmiita liittimiä saumattomaan tiedonsiirtoon. Mukautettuja integraatioita voidaan kehittää erityistarpeisiin, ja alustamme tukee kertakirjautumista (SSO) useimpien identiteettipalveluiden kanssa."
+    },
+    {
+      "id": "implementation-timeline",
+      "question": "Kuinka kauan toteutus kestää?",
+      "answer": "Tyypillinen toteutus kestää 2-4 viikkoa organisaatiosi koon ja monimutkaisuuden mukaan. Prosessi sisältää tietojen siirron, käyttäjäkoulutuksen, integraatioasetusten ja testauksen. Tarjoamme omistautunutta käyttöönottoapua, kattavaa dokumentaatiota ja koulutussessioita tiimillesi. Useimmat organisaatiot näkevät arvoa ensimmäisen kuukauden sisällä käyttöönotosta."
+    },
+    {
+      "id": "pricing-model",
+      "question": "Miten Lyyli.ai:n hinnoittelu toimii?",
+      "answer": "Lyyli.ai tarjoaa joustavaa hinnoittelua käyttäjien määrän ja tarvittavien ominaisuuksien perusteella. Tarjoamme läpinäkyvää, käyttäjäkohtaista hinnoittelua ilman piilotettuja maksuja. Yrityspaketit sisältävät mukautettuja ominaisuuksia, omistautunutta tukea ja volyymialennuksia. Kaikki paketit sisältävät ydinominaisuudet, tietoturvaominaisuudet ja säännölliset päivitykset. Ota yhteyttä myyntitiimiimme räätälöityä tarjousta varten."
+    },
+    {
+      "id": "support-availability",
+      "question": "Mitä tukea on saatavilla?",
+      "answer": "Tarjoamme kattavaa tukea, mukaan lukien 24/7 tekninen tuki, omistautuneet asiakasasiantuntijat yritysasiakkaille, laaja dokumentaatio, video-oppaat ja säännölliset verkkoseminaarit. Tukitiimimme on saatavilla sähköpostitse, chatissa ja puhelimessa. Yritysasiakkaat saavat prioriteettitukea nopeammilla vastausajoilla ja omistautuneella asiakashallinnalla."
+    },
+    {
+      "id": "customization-options",
+      "question": "Voidaanko Lyyli.ai:a mukauttaa tarpeisiimme?",
+      "answer": "Kyllä, Lyyli.ai tarjoaa laajoja mukautusmahdollisuuksia, mukaan lukien mukautetut työnkulut, brändätyt käyttöliittymät, räätälöidyt raportointipaneelit ja alakohtaiset mallit. Yrityspakettimme sisältävät valkolaattausvaihtoehtoja, mukautettuja integraatioita ja omistautuneita kehitysresursseja. Työskentelemme läheisesti tiimisi kanssa varmistaaksemme, että alusta täyttää erityiset liiketoimintavaatimuksesi."
+    },
+    {
+      "id": "roi-expectations",
+      "question": "Mitä ROI:ta voimme odottaa Lyyli.ai:sta?",
+      "answer": "Organisaatiot näkevät tyypillisesti 25-40% parannuksen viestinnän tehokkuudessa, 30% lyhentyneet vastausajat ja 20% kasvun asiakastyytyväisyydessä 6 kuukauden sisällä. ROI-laskurimme auttaa arvioimaan erityiset hyödyt organisaatiosi kannalta. Tarjoamme yksityiskohtaisia analyysejä ja raportointia edistymisesi seurantaan ja arvon realisoitumisen osoittamiseen."
+    }
+  ]
+}

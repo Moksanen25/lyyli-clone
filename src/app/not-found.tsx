@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-// import MeshGradientBackground from "../components/MeshGradientBackground";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import MeshGradientBackground from "../components/MeshGradientBackground";
 
 export default function GlobalNotFound() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -61,125 +62,139 @@ export default function GlobalNotFound() {
   ];
 
   return (
-    <main className="min-h-screen">
-      {/* Mesh Gradient Background */}
-      {/* <MeshGradientBackground /> */}
-      
-      {/* Hero Section */}
-      <div className="relative z-30 pt-32">
-        <section 
-          className="container mx-auto px-4 py-20 relative"
-          aria-label="404 Error"
-        >
-          {/* 404 Visual */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-32 h-32 bg-rose/20 rounded-2xl mb-8">
-              <svg className="w-16 h-16 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div className="text-8xl md:text-9xl font-bold text-forest font-playfair mb-6" aria-label="Error 404">
-              404
-            </div>
-          </div>
-
-          <h1 className="text-4xl md:text-5xl text-forest text-center mb-8 font-playfair font-bold leading-tight relative z-10">
-            Page not found
-          </h1>
-
-          <p className="text-lg text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
-            Sorry, we couldn't find the page you're looking for. It may have been moved, deleted, or the URL might be incorrect.
-          </p>
-
-          {/* Search Box */}
-          <div className="mb-16 max-w-lg mx-auto relative z-10">
-            <form onSubmit={handleSearch} className="relative">
-              <label htmlFor="search-404" className="sr-only">Search our help center</label>
-              <input
-                id="search-404"
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search our help center..."
-                className="w-full px-6 py-4 pr-12 border-2 border-gray-300 rounded-lg focus:border-forest focus:outline-none focus:ring-2 focus:ring-forest/20 text-forest font-sans bg-white"
-                aria-label="Search our help center"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-forest hover:text-turquoise transition-colors"
-                aria-label="Submit search"
+    <html lang="en" dir="ltr" className="h-full">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>404 - Page Not Found | Lyyli.ai</title>
+        <meta name="description" content="The page you're looking for doesn't exist. Return to our homepage or explore our features." />
+      </head>
+      <body className="antialiased font-sans min-h-screen">
+        {/* Vibrant Mesh Gradient Background */}
+        <MeshGradientBackground />
+        
+        <div className="flex flex-col min-h-screen relative z-10">
+          <Header locale="en" translations={{}} />
+          
+          <main className="flex-1 relative">
+            <div className="relative z-30 pt-32">
+              <section 
+                className="container mx-auto px-4 py-20 relative"
+                aria-label="404 Error"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
-            </form>
-          </div>
-
-          {/* Popular Pages */}
-          <div className="mb-16 relative z-10">
-            <h2 className="text-2xl md:text-3xl text-forest text-center mb-12 font-playfair font-bold leading-tight">
-              Popular pages
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {popularPages.map((page) => (
-                <Link
-                  key={page.href}
-                  href={page.href}
-                  className="group bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  data-testid={`404-link-${page.title.toLowerCase()}`}
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 bg-rose/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-turquoise/20 transition-colors">
-                      <div className="text-turquoise group-hover:text-forest transition-colors">
-                        {page.icon}
-                      </div>
-                    </div>
-                    <h3 className="text-xl text-forest mb-3 font-playfair font-bold">
-                      {page.title}
-                    </h3>
-                    <p className="text-mediumGray font-sans leading-relaxed">
-                      {page.description}
-                    </p>
+                {/* 404 Visual */}
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-rose/20 rounded-2xl mb-8">
+                    <svg className="w-10 h-10 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+                  <div className="text-6xl md:text-7xl font-bold text-forest font-playfair mb-6" aria-label="Error 404">
+                    404
+                  </div>
+                </div>
 
-          {/* Additional Help */}
-          <div className="text-center relative z-10">
-            <p className="text-mediumGray mb-6 font-sans">
-              Need more help? Try these resources:
-            </p>
-            <div className="flex flex-wrap gap-6 justify-center">
-              <Link
-                href="/en/help"
-                className="text-forest hover:text-turquoise font-medium font-sans transition-colors"
-                data-testid="404-link-help"
-              >
-                Help center
-              </Link>
-              <span className="text-mediumGray">•</span>
-              <Link
-                href="/en/contact"
-                className="text-forest hover:text-turquoise font-medium font-sans transition-colors"
-                data-testid="404-link-contact"
-              >
-                Contact support
-              </Link>
-              <span className="text-mediumGray">•</span>
-              <Link
-                href="/en/about"
-                className="text-forest hover:text-turquoise font-medium font-sans transition-colors"
-                data-testid="404-link-about"
-              >
-                About us
-              </Link>
+                <h1 className="text-3xl md:text-4xl text-forest text-center mb-8 font-playfair font-bold leading-tight relative z-10">
+                  Page not found
+                </h1>
+
+                <p className="text-lg text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
+                  Sorry, we couldn't find the page you're looking for. It may have been moved, deleted, or the URL might be incorrect.
+                </p>
+
+                {/* Search Box */}
+                <div className="mb-16 max-w-lg mx-auto relative z-10">
+                  <form onSubmit={handleSearch} className="relative">
+                    <label htmlFor="search-404" className="sr-only">Search our help center</label>
+                    <input
+                      id="search-404"
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search our help center..."
+                      className="w-full px-6 py-4 pr-12 border-2 border-gray-300 rounded-lg focus:border-forest focus:outline-none focus:ring-2 focus:ring-forest/20 text-forest font-sans bg-white"
+                      aria-label="Search our help center"
+                    />
+                    <button
+                      type="submit"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-forest hover:text-turquoise transition-colors"
+                      aria-label="Submit search"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                    </button>
+                  </form>
+                </div>
+
+                {/* Popular Pages */}
+                <div className="mb-16 relative z-10">
+                  <h2 className="text-2xl md:text-3xl text-forest text-center mb-12 font-playfair font-bold leading-tight">
+                    Popular pages
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {popularPages.map((page) => (
+                      <Link
+                        key={page.href}
+                        href={page.href}
+                        className="group bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                        data-testid={`404-link-${page.title.toLowerCase()}`}
+                      >
+                        <div className="flex flex-col items-center text-center">
+                          <div className="w-16 h-16 bg-rose/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-turquoise/20 transition-colors">
+                            <div className="text-turquoise group-hover:text-forest transition-colors">
+                              {page.icon}
+                            </div>
+                          </div>
+                          <h3 className="text-xl text-forest mb-3 font-playfair font-bold">
+                            {page.title}
+                          </h3>
+                          <p className="text-mediumGray font-sans leading-relaxed">
+                            {page.description}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Additional Help */}
+                <div className="text-center relative z-10">
+                  <p className="text-mediumGray mb-6 font-sans">
+                    Need more help? Try these resources:
+                  </p>
+                  <div className="flex flex-wrap gap-6 justify-center">
+                    <Link
+                      href="/en/help"
+                      className="text-forest hover:text-turquoise font-medium font-sans transition-colors"
+                      data-testid="404-link-help"
+                    >
+                      Help center
+                    </Link>
+                    <span className="text-mediumGray">•</span>
+                    <Link
+                      href="/en/contact"
+                      className="text-forest hover:text-turquoise font-medium font-sans transition-colors"
+                      data-testid="404-link-contact"
+                    >
+                      Contact support
+                    </Link>
+                    <span className="text-mediumGray">•</span>
+                    <Link
+                      href="/en/about"
+                      className="text-forest hover:text-turquoise font-medium font-sans transition-colors"
+                      data-testid="404-link-about"
+                    >
+                      About us
+                    </Link>
+                  </div>
+                </div>
+              </section>
             </div>
-          </div>
-        </section>
-      </div>
-    </main>
+          </main>
+          
+          <Footer locale="en" translations={{}} canonicalUrl="https://lyyli.ai/404" />
+        </div>
+      </body>
+    </html>
   );
 }
