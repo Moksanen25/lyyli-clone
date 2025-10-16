@@ -58,7 +58,7 @@ export default function FAQSection({ faqs, title, description, className = "" }:
   };
 
   return (
-    <div className={`bg-white ${className}`}>
+    <div className={`bg-transparent ${className}`}>
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-16">
           {title && (
