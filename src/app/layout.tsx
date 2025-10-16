@@ -35,7 +35,6 @@ export default function RootLayout({
         
         {/* Preload critical images in available formats */}
         <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.png" as="image" type="image/png" />
-        <link rel="preload" href="/images/general/Desktop_UI_for_web.webp" as="image" type="image/webp" />
 
         {/* DNS Prefetch for external resources */}
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
