@@ -29,11 +29,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'faq' });
+  const t = await getTranslations(locale);
   const data = faqData[locale] || faqData.en;
   
   return {
-    title: buildTitleFromTranslation('faq.title', data.title),
+    title: buildTitleFromTranslation(t('faq.title'), data.title),
     description: data.description,
     alternates: {
       canonical: generatePageCanonicalUrl('/faq', locale),
