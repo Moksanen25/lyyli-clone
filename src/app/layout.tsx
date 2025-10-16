@@ -33,8 +33,8 @@ export default function RootLayout({
         {/* Preload critical fonts for LCP - Next.js handles this automatically */}
         {/* next/font/google self-hosts and preloads fonts, sets font-display: swap */}
         
-        {/* Preload critical images in modern formats */}
-        <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.webp" as="image" type="image/webp" />
+        {/* Preload critical images in available formats */}
+        <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.png" as="image" type="image/png" />
         <link rel="preload" href="/images/general/Desktop_UI_for_web.webp" as="image" type="image/webp" />
 
         {/* DNS Prefetch for external resources */}
