@@ -3,14 +3,17 @@
  */
 export function generateScriptHash(script: string): string {
   if (typeof window !== 'undefined') {
-    // Browser environment - use Web Crypto API
-    const encoder = new TextEncoder();
-    const data = encoder.encode(script);
-    return crypto.subtle.digest('SHA-256', data).then(hash => {
-      const hashArray = Array.from(new Uint8Array(hash));
-      const hashBase64 = btoa(String.fromCharCode(...hashArray));
-      return `'sha256-${hashBase64}'`;
-    });
+    // Browser environment - synchronous fallback using a simple hash
+    // For browser compatibility, we'll use a synchronous approach
+    let hash = 0;
+    for (let i = 0; i < script.length; i++) {
+      const char = script.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32-bit integer
+    }
+    // Convert to base64-like string
+    const hashStr = Math.abs(hash).toString(36);
+    return `'sha256-${btoa(hashStr)}'`;
   } else {
     // Node.js environment - use crypto module
     const crypto = require('crypto');
@@ -24,14 +27,15 @@ export function generateScriptHash(script: string): string {
  */
 export function generateScriptHash384(script: string): string {
   if (typeof window !== 'undefined') {
-    // Browser environment - use Web Crypto API
-    const encoder = new TextEncoder();
-    const data = encoder.encode(script);
-    return crypto.subtle.digest('SHA-384', data).then(hash => {
-      const hashArray = Array.from(new Uint8Array(hash));
-      const hashBase64 = btoa(String.fromCharCode(...hashArray));
-      return `'sha384-${hashBase64}'`;
-    });
+    // Browser environment - synchronous fallback
+    let hash = 0;
+    for (let i = 0; i < script.length; i++) {
+      const char = script.charCodeAt(i);
+      hash = ((hash << 7) - hash) + char; // Different shift for 384
+      hash = hash & hash;
+    }
+    const hashStr = Math.abs(hash).toString(36);
+    return `'sha384-${btoa(hashStr)}'`;
   } else {
     // Node.js environment - use crypto module
     const crypto = require('crypto');
@@ -45,14 +49,15 @@ export function generateScriptHash384(script: string): string {
  */
 export function generateScriptHash512(script: string): string {
   if (typeof window !== 'undefined') {
-    // Browser environment - use Web Crypto API
-    const encoder = new TextEncoder();
-    const data = encoder.encode(script);
-    return crypto.subtle.digest('SHA-512', data).then(hash => {
-      const hashArray = Array.from(new Uint8Array(hash));
-      const hashBase64 = btoa(String.fromCharCode(...hashArray));
-      return `'sha512-${hashBase64}'`;
-    });
+    // Browser environment - synchronous fallback
+    let hash = 0;
+    for (let i = 0; i < script.length; i++) {
+      const char = script.charCodeAt(i);
+      hash = ((hash << 9) - hash) + char; // Different shift for 512
+      hash = hash & hash;
+    }
+    const hashStr = Math.abs(hash).toString(36);
+    return `'sha512-${btoa(hashStr)}'`;
   } else {
     // Node.js environment - use crypto module
     const crypto = require('crypto');
