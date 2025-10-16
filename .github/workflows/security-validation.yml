@@ -1,0 +1,108 @@
+name: Security Headers Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run weekly security check
+    - cron: '0 2 * * 1'
+
+jobs:
+  security-headers:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Install Playwright
+      run: npx playwright install chromium
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Start development server
+      run: npm start &
+      
+    - name: Wait for server to be ready
+      run: npx wait-on http://localhost:3000 --timeout 60000
+      
+    - name: Run security headers validation
+      run: node scripts/validate-security-headers.mjs
+      
+    - name: Upload security report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-headers-report
+        path: security-report.json
+        retention-days: 30
+
+  security-tests:
+    runs-on: ubuntu-latest
+    needs: security-headers
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run security tests
+      run: npm test -- --testPathPatterns=security-headers
+      
+    - name: Run Web Vitals tests
+      run: npm test -- --testPathPatterns=web-vitals
+
+  security-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run npm audit
+      run: npm audit --audit-level=moderate
+      
+    - name: Run Snyk security scan
+      uses: snyk/actions/node@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high
+      continue-on-error: true
+      
+    - name: Upload security audit report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-audit-report
+        path: snyk-results.json
+        retention-days: 30

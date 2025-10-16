@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
 import { getClientIP } from '@/lib/security';
+import { getEnhancedCSPDirectives, generateNonce } from '@/lib/security-hashes';
 
 export interface SecurityConfig {
   enableCSP: boolean;
@@ -29,56 +30,7 @@ export const DEFAULT_SECURITY_CONFIG: SecurityConfig = {
   enablePermissionsPolicy: true,
   hstsMaxAge: 31536000, // 1 year
   referrerPolicy: 'strict-origin-when-cross-origin',
-  cspDirectives: {
-    'default-src': ["'self'"],
-    // Default production-safe script-src; dev/staging may extend this below
-    'script-src': [
-      "'self'",
-      'https://*.hsforms.net',
-      'https://static.hsappstatic.net'
-    ],
-    'style-src': [
-      "'self'",
-      "'unsafe-inline'", // Required for Tailwind CSS
-      'https://fonts.googleapis.com'
-    ],
-    'font-src': [
-      "'self'",
-      'https://fonts.gstatic.com',
-      'data:'
-    ],
-    'img-src': [
-      "'self'",
-      'data:',
-      'https:',
-      'blob:',
-      'https://*.hsforms.com',
-      'https://*.hsforms.net'
-    ],
-    'connect-src': [
-      "'self'",
-      'https://vercel.live',
-      'https://va.vercel-scripts.com',
-      'https://api.vercel.com',
-      'https://*.hsforms.com',
-      'https://*.hsforms.net'
-    ],
-    'frame-src': [
-      "'self'",
-      'https://*.hsforms.com',
-      'https://*.hsforms.net'
-    ],
-    'object-src': ["'none'"],
-    'base-uri': ["'self'"],
-    'form-action': [
-      "'self'",
-      'https://*.hsforms.com',
-      'https://*.hsforms.net'
-    ],
-    'frame-ancestors': ["'none'"],
-    'upgrade-insecure-requests': [],
-    'report-uri': ['/api/csp-report'],
-  },
+  cspDirectives: getEnhancedCSPDirectives(),
   permissionsPolicy: {
     'camera': ['()'],
     'microphone': ['()'],
@@ -141,18 +93,24 @@ export function addSecurityHeaders(
   nonce?: string
 ): NextResponse {
   try {
+    // Generate nonce if not provided
+    const scriptNonce = nonce || generateNonce();
+    
     // Content Security Policy
     if (config.enableCSP) {
-      // If nonce provided, include it in script-src
-      if (nonce) {
-        const scripts = config.cspDirectives['script-src'] ?? [];
-        const nonceToken = `'nonce-${nonce}'`;
-        if (!scripts.includes(nonceToken)) {
-          config.cspDirectives['script-src'] = [...scripts, nonceToken];
-        }
+      // Always include nonce in script-src for dynamic scripts
+      const scripts = config.cspDirectives['script-src'] ?? [];
+      const nonceToken = `'nonce-${scriptNonce}'`;
+      if (!scripts.includes(nonceToken)) {
+        config.cspDirectives['script-src'] = [...scripts, nonceToken];
       }
+      
       const cspValue = generateCSPHeader(config.cspDirectives);
       response.headers.set('Content-Security-Policy', cspValue);
+      
+      // Set nonce header for client-side use
+      response.headers.set('X-Script-Nonce', scriptNonce);
+      
       // Modern reporting API (optional): point to /api/csp-report
       response.headers.set('Reporting-Endpoints', 'csp-endpoint="/api/csp-report"');
       // Backwards-compatible Report-To (older spec)
