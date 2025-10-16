@@ -2,8 +2,7 @@ import { getTranslations } from '@/lib/i18n';
 import { Metadata } from 'next';
 import PricingCards from '@/components/PricingCards';
 import BenefitsSection from '@/components/pricing/BenefitsSection';
-import dynamic from 'next/dynamic';
-const PricingFAQ = dynamic(() => import('@/components/pricing/PricingFAQ'), { ssr: true, loading: () => <div /> });
+import FAQSection from '@/components/faq/FAQSection';
 import ROICalculator from '@/components/ROICalculator';
 import { generatePageCanonicalUrl, generateHreflangMetadata } from '@/lib/canonical';
 import { buildTitleFromTranslation } from '@/lib/title';
@@ -90,11 +89,43 @@ export default async function PricingPage({ params }: PricingPageProps) {
       </div>
 
       {/* FAQ Section */}
-      <div className="bg-white py-16 lg:py-24">
-        <section className="max-w-4xl mx-auto px-6">
-          <PricingFAQ locale={currentLocale} translations={t} />
-        </section>
-      </div>
+      <FAQSection 
+        faqs={[
+          {
+            id: "pricing-plans",
+            question: currentLocale === "fi" ? "Mitkä ovat Lyylin hinnoittelusuunnitelmat?" : "What are Lyyli's pricing plans?",
+            answer: currentLocale === "fi"
+              ? "Lyyli tarjoaa joustavan hinnoittelun, joka skaalautuu yrityksesi tarpeiden mukaan. Aloita ilmaisella kokeilulla ja päivitä tarvittaessa. Kaikki suunnitelmat sisältävät perusominaisuudet ja tukea."
+              : "Lyyli offers flexible pricing that scales with your business needs. Start with a free trial and upgrade as needed. All plans include core features and support."
+          },
+          {
+            id: "pricing-billing",
+            question: currentLocale === "fi" ? "Kuinka laskutus toimii?" : "How does billing work?",
+            answer: currentLocale === "fi"
+              ? "Voit maksaa kuukausittain tai vuosittain. Vuosimaksu sisältää 20% alennuksen. Voit peruuttaa tilauksen milloin tahansa ilman sakkoja."
+              : "You can pay monthly or annually. Annual billing includes a 20% discount. You can cancel your subscription anytime without penalties."
+          },
+          {
+            id: "pricing-support",
+            question: currentLocale === "fi" ? "Mitä tukea saan?" : "What support do I get?",
+            answer: currentLocale === "fi"
+              ? "Kaikki suunnitelmat sisältävät sähköpostituen ja dokumentaation. Premium-suunnitelmat sisältävät prioriteettitukea ja henkilökohtaista asiakkuusjohtajaa."
+              : "All plans include email support and documentation. Premium plans include priority support and a dedicated customer success manager."
+          },
+          {
+            id: "pricing-trial",
+            question: currentLocale === "fi" ? "Voinko kokeilla ilmaiseksi?" : "Can I try it for free?",
+            answer: currentLocale === "fi"
+              ? "Kyllä! Tarjoamme 14 päivän ilmaisen kokeilun ilman luottokorttia. Voit kokeilla kaikkia ominaisuuksia ja päätellä, sopiiko Lyyli yrityksellesi."
+              : "Yes! We offer a 14-day free trial with no credit card required. You can try all features and decide if Lyyli is right for your business."
+          }
+        ]}
+        title={currentLocale === "fi" ? "Hinnoittelukysymykset" : "Pricing Questions"}
+        description={currentLocale === "fi" 
+          ? "Vastauksia yleisimpiin hinnoittelukysymyksiin."
+          : "Answers to the most common pricing questions."
+        }
+      />
 
       {/* CTA Section */}
       <div className="bg-gradient-to-br from-forest to-turquoise py-16 lg:py-24">

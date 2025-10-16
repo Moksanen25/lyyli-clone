@@ -230,12 +230,6 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                       {locale === "fi" ? "Tietoja meistä" : "About"}
                     </Link>
                     <Link
-                      href={`/${locale}/faq`}
-                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
-                    >
-                      {locale === "fi" ? "UKK" : "FAQ"}
-                    </Link>
-                    <Link
                       href={`/${locale}/blog`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
                     >
@@ -407,13 +401,6 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   onClick={closeMobileMenu}
                 >
                   {t["nav.security"]}
-                </Link>
-                <Link
-                  href={`/${locale}/faq`}
-                  className={`flex-1 text-center text-sm ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-2 px-3 rounded-lg`}
-                  onClick={closeMobileMenu}
-                >
-                  {locale === "fi" ? "UKK" : "FAQ"}
                 </Link>
                 <Link
                   href={`/${locale}/blog`}

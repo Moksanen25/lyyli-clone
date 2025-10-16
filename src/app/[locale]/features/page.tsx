@@ -2,6 +2,7 @@ import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import IntegrationsFlow from "@/components/features/IntegrationsFlow";
+import FAQSection from "@/components/faq/FAQSection";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 import { buildTitleFromTranslation } from "@/lib/title";
 
@@ -131,6 +132,45 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           <IntegrationsFlow translations={t} />
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection 
+        faqs={[
+          {
+            id: "features-security",
+            question: currentLocale === "fi" ? "Kuinka turvallinen Lyyli on?" : "How secure is Lyyli?",
+            answer: currentLocale === "fi" 
+              ? "Lyyli noudattaa tiukkoja tietoturvastandardeja, mukaan lukien GDPR-vaatimukset ja end-to-end-salausta. Kaikki tiedot käsitellään EU-alueella ja noudatamme vähimmäisaksesioperiaatiota."
+              : "Lyyli follows strict security standards including GDPR compliance and end-to-end encryption. All data is processed within the EU and we follow the principle of least privilege access."
+          },
+          {
+            id: "features-integrations",
+            question: currentLocale === "fi" ? "Mitä integraatioita Lyyli tukee?" : "What integrations does Lyyli support?",
+            answer: currentLocale === "fi"
+              ? "Lyyli integroituu sujuvasti olemassa oleviin CRM-järjestelmiin, sähköpostimarkkinointialustoihin ja viestintäkanaviin. API-mme mahdollistaa mukautetut integraatiot."
+              : "Lyyli integrates seamlessly with existing CRM systems, email marketing platforms, and communication channels. Our API enables custom integrations."
+          },
+          {
+            id: "features-ai",
+            question: currentLocale === "fi" ? "Kuinka älykäs on Lyylin AI?" : "How intelligent is Lyyli's AI?",
+            answer: currentLocale === "fi"
+              ? "Lyyli käyttää kehittynyttä kielimallia, joka oppii yrityksesi tyylistä ja asiakkaista. Se mukautuu jatkuvasti parantaen viestintänsä tehokkuutta ja henkilökohtaisuutta."
+              : "Lyyli uses advanced language models that learn from your company's style and customers. It continuously adapts to improve the effectiveness and personalization of communication."
+          },
+          {
+            id: "features-rollout",
+            question: currentLocale === "fi" ? "Kuinka helppo Lyylin käyttöönotto on?" : "How easy is Lyyli to implement?",
+            answer: currentLocale === "fi"
+              ? "Lyyli on suunniteltu helppokäyttöiseksi. Käyttöönotto tapahtuu vaiheittain ja meidän tiimimme tukee sinua koko prosessin ajan. Ei vaadi teknistä osaamista."
+              : "Lyyli is designed for ease of use. Implementation happens in stages and our team supports you throughout the process. No technical expertise required."
+          }
+        ]}
+        title={currentLocale === "fi" ? "Usein kysytyt kysymykset" : "Frequently Asked Questions"}
+        description={currentLocale === "fi" 
+          ? "Vastauksia yleisimpiin kysymyksiin Lyylin ominaisuuksista ja käytöstä."
+          : "Answers to the most common questions about Lyyli's features and usage."
+        }
+      />
 
       {/* CTA Section */}
       <section className="bg-gradient-to-br from-forest to-turquoise py-16 lg:py-24">

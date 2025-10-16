@@ -40,7 +40,6 @@ const staticPages = [
   { path: '/en/waitlist', priority: 0.5, changefreq: 'monthly' },
   { path: '/en/privacy', priority: 0.3, changefreq: 'yearly' },
   { path: '/en/cookies', priority: 0.3, changefreq: 'yearly' },
-  { path: '/en/faq', priority: 0.6, changefreq: 'monthly' },
   
   // Finnish pages
   { path: '/fi', priority: 0.9, changefreq: 'weekly' },
@@ -53,7 +52,6 @@ const staticPages = [
   { path: '/fi/waitlist', priority: 0.5, changefreq: 'monthly' },
   { path: '/fi/privacy', priority: 0.3, changefreq: 'yearly' },
   { path: '/fi/cookies', priority: 0.3, changefreq: 'yearly' },
-  { path: '/fi/faq', priority: 0.6, changefreq: 'monthly' },
 ];
 
 // Help pages

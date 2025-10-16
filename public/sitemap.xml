@@ -98,15 +98,6 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://lyyli.ai/en/faq</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://lyyli.ai/en/faq"/>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://lyyli.ai/fi/faq"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://lyyli.ai/en/faq"/>
-    <lastmod>2025-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://lyyli.ai/fi</loc>
     <xhtml:link rel="alternate" hreflang="fi" href="https://lyyli.ai/fi"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lyyli.ai/en"/>
@@ -195,15 +186,6 @@
     <lastmod>2025-10-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://lyyli.ai/fi/faq</loc>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://lyyli.ai/fi/faq"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://lyyli.ai/en/faq"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://lyyli.ai/en/faq"/>
-    <lastmod>2025-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://lyyli.ai/en/help</loc>
