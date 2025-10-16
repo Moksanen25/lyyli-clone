@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { addSecurityHeaders, createSecurityConfig, securityMiddleware } from '@/middleware/security';
 import { addCacheHeaders } from '@/middleware/cache';
+import { logErrorMetric } from '@/lib/monitoring';
 import { ensureEnvValidated } from '@/lib/env';
 import { logger } from '@/lib/logger';
 import { 
@@ -116,6 +117,11 @@ export default function middleware(request: NextRequest) {
     
     // Add caching headers for static assets
     response = addCacheHeaders(request, response);
+    
+    // Log error metrics for 4xx and 5xx responses
+    if (response.status >= 400) {
+      logErrorMetric(request, response);
+    }
     
     return response;
   } catch (error) {

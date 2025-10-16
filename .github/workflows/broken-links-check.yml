@@ -1,0 +1,130 @@
+name: Broken Links Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  broken-links-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build application
+      run: npm run build
+      env:
+        NODE_ENV: production
+        
+    - name: Start application
+      run: npm start &
+      env:
+        PORT: 3000
+        NODE_ENV: production
+        
+    - name: Wait for application
+      run: |
+        timeout 60 bash -c 'until curl -f http://localhost:3000/en; do sleep 2; done'
+        
+    - name: Check internal broken links
+      run: |
+        echo "🔍 Checking internal links..."
+        chmod +x scripts/check-broken-links.mjs
+        node scripts/check-broken-links.mjs http://localhost:3000 --internal-only
+      continue-on-error: false
+      
+    - name: Check external links (non-blocking)
+      run: |
+        echo "🔍 Checking external links..."
+        node scripts/check-broken-links.mjs http://localhost:3000
+      continue-on-error: true
+      
+    - name: Generate broken links report
+      if: failure()
+      run: |
+        echo "## Broken Links Report" >> $GITHUB_STEP_SUMMARY
+        echo "❌ **Broken links detected!**" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Please fix the broken links before merging." >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Common fixes:" >> $GITHUB_STEP_SUMMARY
+        echo "- Check for typos in URLs" >> $GITHUB_STEP_SUMMARY
+        echo "- Ensure all internal pages exist" >> $GITHUB_STEP_SUMMARY
+        echo "- Verify external links are still valid" >> $GITHUB_STEP_SUMMARY
+        echo "- Check for missing pages or redirects" >> $GITHUB_STEP_SUMMARY
+        
+    - name: Upload broken links report
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: broken-links-report
+        path: |
+          scripts/check-broken-links.mjs
+        retention-days: 30
+        
+    - name: Comment on PR (if applicable)
+      if: failure() && github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { data: comments } = await github.rest.issues.listComments({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+          });
+          
+          const botComment = comments.find(comment => 
+            comment.user.type === 'Bot' && 
+            comment.body.includes('🔍 Broken Links Check')
+          );
+          
+          const body = `
+          ## 🔍 Broken Links Check Failed
+          
+          ❌ **Broken links detected in this PR!**
+          
+          Please fix the broken links before merging. The CI will continue to fail until all links are resolved.
+          
+          ### Next Steps:
+          1. Review the build logs for specific broken links
+          2. Fix the broken URLs in your code
+          3. Push your changes to re-run the check
+          4. Ensure all internal links point to existing pages
+          
+          ### Common Issues:
+          - Typos in URLs
+          - Missing pages or redirects
+          - Incorrect relative paths
+          - External links that are no longer valid
+          `;
+          
+          if (botComment) {
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: botComment.id,
+              body: body,
+            });
+          } else {
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body,
+            });
+          }
