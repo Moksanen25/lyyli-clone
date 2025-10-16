@@ -90,12 +90,16 @@ describe('Canonical Host Utilities', () => {
       process.env.NODE_ENV = originalEnv;
     });
 
-    it('should redirect other lyyli.ai variants in production', () => {
+    it('should redirect only specific variants in production', () => {
       const originalEnv = process.env.NODE_ENV;
       process.env.NODE_ENV = 'production';
       
-      expect(shouldRedirectToCanonical('api.lyyli.ai')).toBe(true);
-      expect(shouldRedirectToCanonical('staging.lyyli.ai')).toBe(true);
+      // Only www.lyyli.ai should redirect
+      expect(shouldRedirectToCanonical('www.lyyli.ai')).toBe(true);
+      
+      // Other variants should NOT redirect to prevent loops
+      expect(shouldRedirectToCanonical('api.lyyli.ai')).toBe(false);
+      expect(shouldRedirectToCanonical('staging.lyyli.ai')).toBe(false);
       expect(shouldRedirectToCanonical('example.com')).toBe(false);
       
       process.env.NODE_ENV = originalEnv;
@@ -155,9 +159,9 @@ describe('Canonical Host Utilities', () => {
       const originalEnv = process.env.NODE_ENV;
       process.env.NODE_ENV = 'production';
       
-      // Should redirect subdomains
-      expect(shouldRedirectToCanonical('api.lyyli.ai')).toBe(true);
-      expect(shouldRedirectToCanonical('blog.lyyli.ai')).toBe(true);
+      // Should NOT redirect subdomains to prevent loops (only www redirects)
+      expect(shouldRedirectToCanonical('api.lyyli.ai')).toBe(false);
+      expect(shouldRedirectToCanonical('blog.lyyli.ai')).toBe(false);
       
       // Should not redirect if not lyyli.ai domain
       expect(shouldRedirectToCanonical('api.example.com')).toBe(false);

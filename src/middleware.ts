@@ -30,9 +30,21 @@ export default function middleware(request: NextRequest) {
   // Handle canonical host redirects (301 redirects)
   const hostname = request.headers.get('host') || '';
   
+  // Log redirect decisions for debugging
+  logger.debug('Canonical host check', {
+    hostname,
+    shouldRedirect: shouldRedirectToCanonical(hostname),
+    environment: process.env.NODE_ENV
+  });
+  
   // Check if we should redirect to canonical host
   if (shouldRedirectToCanonical(hostname)) {
     const canonicalUrl = getCanonicalRedirectUrl(request);
+    logger.info('Redirecting to canonical host', {
+      from: request.url,
+      to: canonicalUrl.toString(),
+      hostname
+    });
     return NextResponse.redirect(canonicalUrl, 301);
   }
 

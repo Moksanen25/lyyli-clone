@@ -45,13 +45,23 @@ export function isCanonicalHost(hostname: string): boolean {
  * Check if a hostname should redirect to canonical
  */
 export function shouldRedirectToCanonical(hostname: string): boolean {
-  // In production, redirect any lyyli.ai variant to canonical
-  if (process.env.NODE_ENV === 'production') {
-    return hostname.includes('lyyli.ai') && hostname !== CANONICAL_HOST;
+  // Only redirect in production
+  if (process.env.NODE_ENV !== 'production') {
+    return false;
   }
   
-  // In development, don't redirect
-  return false;
+  // Don't redirect if already on canonical host
+  if (hostname === CANONICAL_HOST) {
+    return false;
+  }
+  
+  // Only redirect specific variants to prevent loops
+  const redirectVariants = [
+    'www.lyyli.ai',
+    // Add other specific variants that should redirect
+  ];
+  
+  return redirectVariants.includes(hostname);
 }
 
 /**
