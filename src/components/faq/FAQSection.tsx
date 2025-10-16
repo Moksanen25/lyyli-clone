@@ -60,49 +60,63 @@ export default function FAQSection({ faqs, title, description, className = "" }:
   return (
     <div className={`bg-white ${className}`}>
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          {title && <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">{title}</h2>}
-          {description && <p className="mt-6 text-base leading-7 text-gray-600">{description}</p>}
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          {title && (
+            <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
+              {title}
+            </h2>
+          )}
+          {description && (
+            <p className="text-lg text-mediumGray max-w-2xl mx-auto font-sans leading-relaxed">
+              {description}
+            </p>
+          )}
         </div>
-        <div className="mx-auto mt-10 max-w-2xl divide-y divide-gray-900/10">
-          <dl className="mt-10 space-y-8 divide-y divide-gray-900/10">
+        <div className="mx-auto max-w-4xl">
+          <div className="space-y-6">
             {faqs.map((faq) => {
               const isOpen = openItems.has(faq.id);
               return (
-                <div key={faq.id} className="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
-                  <dt className="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">
-                    <button
-                      type="button"
-                      className="flex w-full items-start justify-between text-left"
-                      onClick={() => toggleItem(faq.id)}
-                      aria-expanded={isOpen}
-                      aria-controls={`faq-answer-${faq.id}`}
-                      id={`faq-question-${faq.id}`}
-                    >
-                      <span>{faq.question}</span>
-                      <span className="ml-6 flex h-7 items-center">
-                        {isOpen ? (
-                          <ChevronUpIcon className="h-6 w-6" aria-hidden="true" />
-                        ) : (
-                          <ChevronDownIcon className="h-6 w-6" aria-hidden="true" />
-                        )}
-                      </span>
-                    </button>
-                  </dt>
-                  <dd className="mt-4 lg:col-span-7 lg:mt-0">
-                    <div
-                      id={`faq-answer-${faq.id}`}
-                      role="region"
-                      aria-labelledby={`faq-question-${faq.id}`}
-                      className={`text-base leading-7 text-gray-600 ${isOpen ? 'block' : 'hidden'}`}
-                    >
-                      <p>{faq.answer}</p>
+                <div key={faq.id} className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+                  <button
+                    type="button"
+                    className="flex w-full items-start justify-between text-left p-6 focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2 rounded-t-2xl"
+                    onClick={() => toggleItem(faq.id)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${faq.id}`}
+                    id={`faq-question-${faq.id}`}
+                  >
+                    <span className="text-xl font-playfair font-bold text-forest leading-normal pr-6">
+                      {faq.question}
+                    </span>
+                    <span className="flex-shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-forest/10 transition-colors duration-200">
+                      {isOpen ? (
+                        <ChevronUpIcon className="h-5 w-5 text-forest" aria-hidden="true" />
+                      ) : (
+                        <ChevronDownIcon className="h-5 w-5 text-forest" aria-hidden="true" />
+                      )}
+                    </span>
+                  </button>
+                  <div
+                    id={`faq-answer-${faq.id}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${faq.id}`}
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="px-6 pb-6 pt-0">
+                      <div className="border-t border-gray-100 pt-6">
+                        <p className="text-base text-darkGray font-sans leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
                     </div>
-                  </dd>
+                  </div>
                 </div>
               );
             })}
-          </dl>
+          </div>
         </div>
       </div>
       <script
