@@ -127,6 +127,32 @@ function getBlogPosts(locale) {
   return posts;
 }
 
+// Function to get paginated blog pages
+function getPaginatedBlogPages(locale) {
+  const blogDir = path.join(contentDir, 'blog', locale);
+  if (!fs.existsSync(blogDir)) {
+    return [];
+  }
+  
+  const files = fs.readdirSync(blogDir);
+  const postCount = files.filter(file => file.endsWith('.mdx')).length;
+  const postsPerPage = 6; // Same as POSTS_PER_PAGE in pagination.ts
+  const totalPages = Math.ceil(postCount / postsPerPage);
+  
+  const pages = [];
+  
+  // Add paginated pages (page 2 and beyond)
+  for (let page = 2; page <= totalPages; page++) {
+    pages.push({
+      path: `/${locale}/blog/page/${page}`,
+      priority: 0.6,
+      changefreq: 'weekly'
+    });
+  }
+  
+  return pages;
+}
+
 // Function to generate hreflang alternates for a given path
 function generateHreflangAlternates(path) {
   let hreflangXml = '';
@@ -223,6 +249,30 @@ function generateSitemap() {
     xml += `    <lastmod>${currentDate}</lastmod>\n`;
     xml += `    <changefreq>${post.changefreq}</changefreq>\n`;
     xml += `    <priority>${post.priority}</priority>\n`;
+    xml += `  </url>\n`;
+  }
+  
+  // Add paginated blog pages
+  const enPaginatedPages = getPaginatedBlogPages('en');
+  const fiPaginatedPages = getPaginatedBlogPages('fi');
+  
+  for (const page of enPaginatedPages) {
+    xml += `  <url>\n`;
+    xml += `    <loc>${baseUrl}${page.path}</loc>\n`;
+    xml += generateHreflangAlternates(page.path);
+    xml += `    <lastmod>${currentDate}</lastmod>\n`;
+    xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
+    xml += `    <priority>${page.priority}</priority>\n`;
+    xml += `  </url>\n`;
+  }
+  
+  for (const page of fiPaginatedPages) {
+    xml += `  <url>\n`;
+    xml += `    <loc>${baseUrl}${page.path}</loc>\n`;
+    xml += generateHreflangAlternates(page.path);
+    xml += `    <lastmod>${currentDate}</lastmod>\n`;
+    xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
+    xml += `    <priority>${page.priority}</priority>\n`;
     xml += `  </url>\n`;
   }
   

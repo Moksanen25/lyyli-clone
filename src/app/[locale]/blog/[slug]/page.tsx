@@ -1,6 +1,7 @@
 import {
   getBlogPost,
   getAllBlogSlugs,
+  getAllBlogPosts,
   generateBlogMetadata,
   hasTranslation,
   getTranslatedBlogPost,
@@ -12,6 +13,7 @@ import Image from "next/image";
 import { logger } from "../../../../lib/logger";
 import { generateArticleSchema } from "../../../../lib/structured-data";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
+import RelatedPosts from "../../../../components/blog/RelatedPosts";
 import { generateBlogBreadcrumbs, generateBreadcrumbSchema } from "../../../../lib/breadcrumb-schema";
 
 export const revalidate = 3600; // ISR: revalidate blog posts hourly
@@ -482,6 +484,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           />
         </div>
       </div>
+
+      {/* Related Posts */}
+      <RelatedPosts
+        posts={getAllBlogPosts(currentLocale)}
+        currentPostSlug={post.slug}
+        locale={currentLocale}
+        maxPosts={3}
+        className="mt-0"
+      />
 
       {/* Related CTA */}
       <section className="bg-gradient-to-br from-grayLight via-white to-rose/20 py-20 relative overflow-hidden">

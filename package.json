@@ -36,6 +36,8 @@
     "canonical:test": "npm test -- --testPathPatterns=canonical-host",
     "cache:test": "node scripts/test-cache-headers.mjs",
     "cache:test:prod": "node scripts/test-cache-headers.mjs https://lyyli.ai",
+    "pagination:test": "node scripts/test-pagination.mjs",
+    "pagination:test:prod": "node scripts/test-pagination.mjs https://lyyli.ai",
     "lighthouse:test": "lighthouse-ci autorun",
     "lighthouse:install": "npm install -g @lhci/cli@0.12.x",
     "e2e": "playwright test",

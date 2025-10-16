@@ -2,25 +2,62 @@ import { getTranslations } from "@/lib/i18n";
 import { getAllBlogPosts } from "@/lib/blog";
 import { getPaginatedPosts, POSTS_PER_PAGE } from "@/lib/pagination";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 import Pagination from "@/components/blog/Pagination";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 import { buildTitleFromTranslation } from "@/lib/title";
 import { generatePaginationStructuredData } from "@/lib/pagination";
+import { generatePageBreadcrumbs, generateBreadcrumbSchema } from "@/lib/breadcrumb-schema";
 
 export const revalidate = 3600; // ISR: revalidate blog listing hourly
 
-interface BlogPageProps {
-  params: Promise<{ locale: string }>;
+interface PaginatedBlogPageProps {
+  params: Promise<{ locale: string; page: string }>;
+}
+
+export async function generateStaticParams() {
+  const supportedLocales = ["en", "fi"];
+  const params: Array<{ locale: string; page: string }> = [];
+
+  for (const locale of supportedLocales) {
+    const posts = getAllBlogPosts(locale);
+    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+    
+    // Generate params for pages 2 and beyond (page 1 is handled by /blog)
+    for (let page = 2; page <= totalPages; page++) {
+      params.push({
+        locale,
+        page: page.toString(),
+      });
+    }
+  }
+
+  return params;
 }
 
 export async function generateMetadata({
   params,
-}: BlogPageProps): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations(locale);
+}: PaginatedBlogPageProps): Promise<Metadata> {
+  const { locale, page } = await params;
+  const pageNumber = parseInt(page, 10);
+  
+  const supportedLocales = ["en", "fi"];
+  const currentLocale = supportedLocales.includes(locale) ? locale : "en";
 
-  const canonicalUrl = generatePageCanonicalUrl('blog', locale);
+  const t = await getTranslations(currentLocale);
+  const allPosts = getAllBlogPosts(currentLocale);
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+  // Return 404 if page doesn't exist
+  if (pageNumber < 2 || pageNumber > totalPages) {
+    return {
+      title: "404 - Page Not Found",
+    };
+  }
+
+  const canonicalUrl = generatePageCanonicalUrl(`blog/page/${pageNumber}`, locale);
 
   // Primary and secondary keywords for SEO
   const keywords = [
@@ -35,51 +72,84 @@ export async function generateMetadata({
     "secure team messaging",
   ].join(", ");
 
+  const pageTitle = currentLocale === 'fi' 
+    ? `Blog - Sivu ${pageNumber}` 
+    : `Blog - Page ${pageNumber}`;
+  const pageDescription = currentLocale === 'fi'
+    ? `Blogikirjoitukset sivulla ${pageNumber}. Tutustu Lyyli.ai:n uusimpiin artikkeleihin AI-viestinnästä ja yritysviestinnästä.`
+    : `Blog posts on page ${pageNumber}. Explore Lyyli.ai's latest articles on AI communication and enterprise messaging.`;
+
   return {
-    title: buildTitleFromTranslation(t["blog.page.title"], "Blog"),
-    description: t["blog.page.description"],
+    title: buildTitleFromTranslation(pageTitle, "Blog"),
+    description: pageDescription,
     keywords,
     openGraph: {
-      title: t["blog.page.title"],
-      description: t["blog.page.description"],
+      title: pageTitle,
+      description: pageDescription,
       url: canonicalUrl,
       siteName: "Lyyli.ai",
       locale: locale === "fi" ? "fi_FI" : "en_US",
       type: "website",
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(t['blog.page.title'])}&description=${encodeURIComponent(t['blog.page.description'])}`,
+          url: `/api/og?title=${encodeURIComponent(pageTitle)}&description=${encodeURIComponent(pageDescription)}`,
           width: 1200,
           height: 630,
-          alt: t['blog.page.title']
+          alt: pageTitle
         }
       ]
     },
     twitter: {
       card: "summary_large_image",
-      title: t["blog.page.title"],
-      description: t["blog.page.description"],
+      title: pageTitle,
+      description: pageDescription,
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: generateHreflangMetadata('/blog', ['en', 'fi']),
+      languages: generateHreflangMetadata(`/blog/page/${pageNumber}`, ['en', 'fi']),
     },
   };
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
-  const { locale } = await params;
+export default async function PaginatedBlogPage({ params }: PaginatedBlogPageProps) {
+  const { locale, page } = await params;
+  const pageNumber = parseInt(page, 10);
+  
   const supportedLocales = ["en", "fi"];
   const currentLocale = supportedLocales.includes(locale) ? locale : "en";
 
   const t = await getTranslations(currentLocale);
   const allPosts = getAllBlogPosts(currentLocale);
-  
-  // Get paginated posts for page 1
-  const { posts, pagination } = getPaginatedPosts(allPosts, 1, POSTS_PER_PAGE);
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+  // Return 404 if page doesn't exist
+  if (pageNumber < 2 || pageNumber > totalPages) {
+    notFound();
+  }
+
+  // Get paginated posts for this page
+  const { posts, pagination } = getPaginatedPosts(allPosts, pageNumber, POSTS_PER_PAGE);
+
+  // Generate breadcrumbs
+  const breadcrumbItems = generatePageBreadcrumbs(
+    currentLocale === 'fi' ? `Blog - Sivu ${pageNumber}` : `Blog - Page ${pageNumber}`,
+    currentLocale,
+    [
+      { title: currentLocale === 'fi' ? 'Blog' : 'Blog', href: `/${currentLocale}/blog` }
+    ]
+  );
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
 
   return (
     <div className="min-h-screen">
+      {/* Breadcrumb JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      
       {/* Hero Section */}
       <div className="relative z-10 pt-32">
         <section 
@@ -89,6 +159,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
           {/* Animated Hero Visual */}
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
+            {/* Breadcrumbs */}
+            <div className="mb-8">
+              <Breadcrumbs items={breadcrumbItems} />
+            </div>
+            
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 border border-forest/20 mb-6 backdrop-blur-sm">
               <span className="text-sm font-medium text-forest">
@@ -97,10 +172,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
             </div>
 
             <h1 className="text-4xl md:text-5xl mb-6 font-playfair font-normal leading-[1.2] text-forest">
-              {t["blog.title"]}
+              {currentLocale === 'fi' ? `Blog - Sivu ${pageNumber}` : `Blog - Page ${pageNumber}`}
             </h1>
             <p className="text-lg mb-12 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
-              {t["blog.hero.subtitle"]}
+              {currentLocale === 'fi' 
+                ? `Blogikirjoitukset sivulla ${pageNumber}. Tutustu Lyyli.ai:n artikkeleihin AI-viestinnästä ja yritysviestinnästä.`
+                : `Blog posts on page ${pageNumber}. Explore Lyyli.ai's articles on AI communication and enterprise messaging.`
+              }
             </p>
           </div>
         </section>
