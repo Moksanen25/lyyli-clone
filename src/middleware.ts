@@ -47,12 +47,12 @@ export default function middleware(request: NextRequest) {
   logger.debug('Canonical host check', {
     hostname,
     pathname,
-    shouldRedirect: shouldRedirectToCanonical(hostname),
+    shouldRedirect: shouldRedirectToCanonical(hostname, pathname),
     environment: process.env.NODE_ENV
   });
   
   // Check if we should redirect to canonical host
-  if (shouldRedirectToCanonical(hostname)) {
+  if (shouldRedirectToCanonical(hostname, pathname)) {
     const canonicalUrl = getCanonicalRedirectUrl(request);
     logger.info('Redirecting to canonical host', {
       from: request.url,

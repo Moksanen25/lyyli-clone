@@ -44,7 +44,12 @@ export function isCanonicalHost(hostname: string): boolean {
 /**
  * Check if a hostname should redirect to canonical
  */
-export function shouldRedirectToCanonical(hostname: string): boolean {
+export function shouldRedirectToCanonical(hostname: string, pathname: string = ''): boolean {
+  // TEMPORARILY DISABLED - investigating persistent redirect loop
+  // The issue persists even after removing root page redirect
+  // Need to investigate middleware execution order further
+  return false;
+  
   // Only redirect in production
   if (process.env.NODE_ENV !== 'production') {
     return false;
@@ -61,7 +66,18 @@ export function shouldRedirectToCanonical(hostname: string): boolean {
     // Add other specific variants that should redirect
   ];
   
-  return redirectVariants.includes(hostname);
+  const shouldRedirect = redirectVariants.includes(hostname);
+  
+  // Additional safety check: don't redirect if we're already on a localized path
+  // This prevents redirects on paths like /en, /fi, etc.
+  if (shouldRedirect && pathname) {
+    const isLocalizedPath = pathname.startsWith('/en') || pathname.startsWith('/fi');
+    if (isLocalizedPath) {
+      return false;
+    }
+  }
+  
+  return shouldRedirect;
 }
 
 /**
