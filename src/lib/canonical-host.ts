@@ -45,10 +45,6 @@ export function isCanonicalHost(hostname: string): boolean {
  * Check if a hostname should redirect to canonical
  */
 export function shouldRedirectToCanonical(hostname: string): boolean {
-  // TEMPORARILY DISABLED - investigating redirect loop issue
-  // TODO: Re-enable after fixing the redirect loop
-  return false;
-  
   // Only redirect in production
   if (process.env.NODE_ENV !== 'production') {
     return false;

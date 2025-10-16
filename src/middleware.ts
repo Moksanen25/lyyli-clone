@@ -13,8 +13,8 @@ import {
 const intlMiddleware = createMiddleware({
   locales: ['en', 'fi'],
   defaultLocale: 'en',
-  // Always prefix locales so our [locale] routes match (both en and fi)
-  localePrefix: 'always'
+  // Handle root routing automatically - no need for always prefix
+  localePrefix: 'as-needed'
 });
 
 export default function middleware(request: NextRequest) {
