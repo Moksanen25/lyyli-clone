@@ -24,10 +24,11 @@ const faqData: Record<string, FAQData> = {
 };
 
 export async function generateMetadata({
-  params: { locale }
+  params
 }: {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'faq' });
   const data = faqData[locale] || faqData.en;
   
@@ -42,10 +43,11 @@ export async function generateMetadata({
 }
 
 export default async function FAQPage({
-  params: { locale }
+  params
 }: {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) {
+  const { locale } = await params;
   const data = faqData[locale] || faqData.en;
 
   return (
