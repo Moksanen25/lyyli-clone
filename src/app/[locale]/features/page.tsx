@@ -137,32 +137,60 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       <FAQSection 
         faqs={[
           {
-            id: "features-security",
-            question: currentLocale === "fi" ? "Kuinka turvallinen Lyyli on?" : "How secure is Lyyli?",
+            id: "what-is-lyyli",
+            question: currentLocale === "fi" ? "Mikä Lyyli.ai on?" : "What is Lyyli.ai?",
             answer: currentLocale === "fi" 
-              ? "Lyyli noudattaa tiukkoja tietoturvastandardeja, mukaan lukien GDPR-vaatimukset ja end-to-end-salausta. Kaikki tiedot käsitellään EU-alueella ja noudatamme vähimmäisaksesioperiaatiota."
-              : "Lyyli follows strict security standards including GDPR compliance and end-to-end encryption. All data is processed within the EU and we follow the principle of least privilege access."
+              ? "Lyyli.ai on tekoälyavusteinen viestintäassistentti, joka auttaa sinua ja tiimiäsi kirjoittamaan paremmin ja nopeammin. Lyyli oppii organisaatiosi brändiäänen ja yhdistää sen henkilökohtaiseen kirjoitustyylisi, joten viestisi kuulostavat aina sinulta – vain paremmalta versiolta."
+              : "Lyyli.ai is an AI-assisted communication assistant that helps you and your team write better and faster. Lyyli learns your organization's brand voice and combines it with your personal writing style, so your messages always sound like you – just a better version."
           },
           {
-            id: "features-integrations",
-            question: currentLocale === "fi" ? "Mitä integraatioita Lyyli tukee?" : "What integrations does Lyyli support?",
+            id: "who-is-it-for",
+            question: currentLocale === "fi" ? "Kenelle Lyyli.ai on tarkoitettu?" : "Who is Lyyli.ai for?",
             answer: currentLocale === "fi"
-              ? "Lyyli integroituu sujuvasti olemassa oleviin CRM-järjestelmiin, sähköpostimarkkinointialustoihin ja viestintäkanaviin. API-mme mahdollistaa mukautetut integraatiot."
-              : "Lyyli integrates seamlessly with existing CRM systems, email marketing platforms, and communication channels. Our API enables custom integrations."
+              ? "Lyyli sopii erityisesti asiantuntija- ja projektiorganisaatioille, joissa viestintä on tärkeä osa päivittäistä työtä. Palvelu on suunniteltu viestintäammattilaisille, projektijohtajille, myyntitiimeille ja kaikille, jotka haluavat viestiä selkeämmin ja tehokkaammin."
+              : "Lyyli is especially suited for professional service and project organizations where communication is an important part of daily work. The service is designed for communication professionals, project managers, sales teams, and anyone who wants to communicate more clearly and effectively."
           },
           {
-            id: "features-ai",
-            question: currentLocale === "fi" ? "Kuinka älykäs on Lyylin AI?" : "How intelligent is Lyyli's AI?",
+            id: "difference-from-chatgpt",
+            question: currentLocale === "fi" ? "Miten Lyyli.ai eroaa ChatGPT:stä tai muista tekoälytyökaluista?" : "How does Lyyli.ai differ from ChatGPT or other AI tools?",
             answer: currentLocale === "fi"
-              ? "Lyyli käyttää kehittynyttä kielimallia, joka oppii yrityksesi tyylistä ja asiakkaista. Se mukautuu jatkuvasti parantaen viestintänsä tehokkuutta ja henkilökohtaisuutta."
-              : "Lyyli uses advanced language models that learn from your company's style and customers. It continuously adapts to improve the effectiveness and personalization of communication."
+              ? "ChatGPT tuottaa geneeristä tekstiä, joka kuulostaa usein koneelta ja vaatii paljon muokkausta. Lyyli.ai sen sijaan oppii juuri sinun organisaatiosi tavan viestiä ja yhdistää sen henkilökohtaiseen ääneesi. Tulos on aitoa, suuhun sopivaa tekstiä, joka ei vaadi tuntien hiomista. Lisäksi Lyyli integroituu suoraan työkaluihisi kuten Outlookiin, Gmailiin, Teamsiin ja Slackiin."
+              : "ChatGPT produces generic text that often sounds robotic and requires a lot of editing. Lyyli.ai, on the other hand, learns your organization's specific way of communicating and combines it with your personal voice. The result is authentic, natural-sounding text that doesn't require hours of refinement. Additionally, Lyyli integrates directly with your tools like Outlook, Gmail, Teams, and Slack."
           },
           {
-            id: "features-rollout",
-            question: currentLocale === "fi" ? "Kuinka helppo Lyylin käyttöönotto on?" : "How easy is Lyyli to implement?",
+            id: "how-learns-brand",
+            question: currentLocale === "fi" ? "Miten Lyyli.ai oppii meidän brändiäänen?" : "How does Lyyli.ai learn our brand voice?",
             answer: currentLocale === "fi"
-              ? "Lyyli on suunniteltu helppokäyttöiseksi. Käyttöönotto tapahtuu vaiheittain ja meidän tiimimme tukee sinua koko prosessin ajan. Ei vaadi teknistä osaamista."
-              : "Lyyli is designed for ease of use. Implementation happens in stages and our team supports you throughout the process. No technical expertise required."
+              ? "Lyyli analysoi organisaatiosi olemassa olevaa viestintää – verkkosivuja, uutiskirjeitä, LinkedIn-päivityksiä ja muuta materiaalia. Tämän pohjalta se rakentaa ymmärryksen siitä, miten organisaatiosi viestii. Lisäksi voit antaa Lyylin käyttöön brändiohjeistuksia ja muita dokumentteja, jotka täsmentävät sävyä ja tyyliä entisestään."
+              : "Lyyli analyzes your organization's existing communication – websites, newsletters, LinkedIn updates, and other materials. Based on this, it builds an understanding of how your organization communicates. You can also provide Lyyli with brand guidelines and other documents that further refine the tone and style."
+          },
+          {
+            id: "can-write-completely",
+            question: currentLocale === "fi" ? "Voiko Lyyli.ai kirjoittaa viestit kokonaan puolestani?" : "Can Lyyli.ai write messages completely for me?",
+            answer: currentLocale === "fi"
+              ? "Lyyli ei ole tarkoitettu korvaamaan ihmistä, vaan tukemaan häntä. Ajattelemme, että tekoäly on loistava tuottamaan aihioita ja ideoita, mutta viimeisen sanan pitää aina olla ihmisellä. Näin varmistat, että viestisi on aito ja kuulostaa juuri sinulta."
+              : "Lyyli is not meant to replace humans, but to support them. We believe AI is excellent at generating drafts and ideas, but the final word should always be human. This ensures your message is authentic and sounds exactly like you."
+          },
+          {
+            id: "which-channels",
+            question: currentLocale === "fi" ? "Mihin kanaviin Lyyli.ai sopii?" : "Which channels does Lyyli.ai work with?",
+            answer: currentLocale === "fi"
+              ? "Lyyli tukee sekä sisäistä että ulkoista viestintää. Voit käyttää sitä sähköposteihin, LinkedIn-päivityksiin, Slack- ja Teams-viesteihin, uutiskirjeisiin, verkkosivuteksteihin ja moneen muuhun. Lyyli mukautuu automaattisesti kanavan vaatimuksiin ja yleisöön."
+              : "Lyyli supports both internal and external communication. You can use it for emails, LinkedIn updates, Slack and Teams messages, newsletters, website content, and many others. Lyyli automatically adapts to channel requirements and audiences."
+          },
+          {
+            id: "how-integrates",
+            question: currentLocale === "fi" ? "Miten Lyyli.ai integroituu työkaluihimme?" : "How does Lyyli.ai integrate with our tools?",
+            answer: currentLocale === "fi"
+              ? "Lyyli integroituu suoraan käyttämiisi työkaluihin, kuten Outlookiin, Gmailiin, Microsoft Teamsiin ja Slackiin. Näin saat Lyylin avun käyttöösi juuri siellä, missä sitä tarvitset – ilman että sinun tarvitsee hyppiä eri sovellusten välillä."
+              : "Lyyli integrates directly with your tools like Outlook, Gmail, Microsoft Teams, and Slack. This way you get Lyyli's help right where you need it – without having to jump between different applications."
+          },
+          {
+            id: "data-security",
+            question: currentLocale === "fi" ? "Onko tietomme turvassa?" : "Is our data secure?",
+            answer: currentLocale === "fi"
+              ? "Kyllä. Tietoturvasi on meille ensiarvoisen tärkeää. Lyyli.ai noudattaa EU:n tietosuoja-asetusta (GDPR) ja kaikki data käsitellään turvallisesti. Emme jaa tietojasi kolmansille osapuolille, emmekä käytä niitä kielimallien kouluttamiseen."
+              : "Yes. Your data security is our top priority. Lyyli.ai complies with EU data protection regulations (GDPR) and all data is processed securely. We don't share your data with third parties, nor do we use it to train language models."
           }
         ]}
         title={currentLocale === "fi" ? "Usein kysytyt kysymykset" : "Frequently Asked Questions"}

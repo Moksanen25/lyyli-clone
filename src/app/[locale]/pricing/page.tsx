@@ -92,38 +92,38 @@ export default async function PricingPage({ params }: PricingPageProps) {
       <FAQSection 
         faqs={[
           {
-            id: "pricing-plans",
-            question: currentLocale === "fi" ? "Mitkä ovat Lyylin hinnoittelusuunnitelmat?" : "What are Lyyli's pricing plans?",
+            id: "pricing-cost",
+            question: currentLocale === "fi" ? "Kuinka paljon Lyyli.ai maksaa?" : "How much does Lyyli.ai cost?",
             answer: currentLocale === "fi"
-              ? "Lyyli tarjoaa joustavan hinnoittelun, joka skaalautuu yrityksesi tarpeiden mukaan. Aloita ilmaisella kokeilulla ja päivitä tarvittaessa. Kaikki suunnitelmat sisältävät perusominaisuudet ja tukea."
-              : "Lyyli offers flexible pricing that scales with your business needs. Start with a free trial and upgrade as needed. All plans include core features and support."
+              ? "Palvelumme on hinnoiteltu käyttäjäpohjaisesti. Voit käyttää palvelua ilmaiseksi rajoitetuin ominaisuuksin, maksulliset kk-tilaukset alkavat 39€/kk. Tarkemmat hinnat ja sisällöt löydät 'Hinnoittelu'-sivultamme."
+              : "Our service is priced per user. You can use the service for free with limited features, paid monthly subscriptions start at 39€/month. You can find detailed prices and contents on our 'Pricing' page."
           },
           {
-            id: "pricing-billing",
-            question: currentLocale === "fi" ? "Kuinka laskutus toimii?" : "How does billing work?",
+            id: "getting-started",
+            question: currentLocale === "fi" ? "Miten pääsen alkuun?" : "How do I get started?",
             answer: currentLocale === "fi"
-              ? "Voit maksaa kuukausittain tai vuosittain. Vuosimaksu sisältää 20% alennuksen. Voit peruuttaa tilauksen milloin tahansa ilman sakkoja."
-              : "You can pay monthly or annually. Annual billing includes a 20% discount. You can cancel your subscription anytime without penalties."
+              ? "Aloittaminen on helppoa! Ota yhteyttä meihin, niin sovimme yhdessä käyttöönotosta. Autamme sinua ja tiimisi pääsemään alkuun, jotta saatte Lyylista täyden hyödyn irti heti ensimmäisestä päivästä lähtien."
+              : "Getting started is easy! Contact us and we'll arrange the implementation together. We'll help you and your team get started so you get the full benefit from Lyyli right from day one."
           },
           {
-            id: "pricing-support",
-            question: currentLocale === "fi" ? "Mitä tukea saan?" : "What support do I get?",
+            id: "support-questions",
+            question: currentLocale === "fi" ? "Entä jos minulla on kysymyksiä käytön aikana?" : "What if I have questions during use?",
             answer: currentLocale === "fi"
-              ? "Kaikki suunnitelmat sisältävät sähköpostituen ja dokumentaation. Premium-suunnitelmat sisältävät prioriteettitukea ja henkilökohtaista asiakkuusjohtajaa."
-              : "All plans include email support and documentation. Premium plans include priority support and a dedicated customer success manager."
+              ? "Olemme täällä sinua varten! Asiakastukemme auttaa mielellään kaikissa kysymyksissä. Lisäksi tarjoamme koulutusta ja ohjeistusta, jotta tiimisi osaa hyödyntää Lyyliä parhaalla mahdollisella tavalla."
+              : "We're here for you! Our customer support is happy to help with any questions. We also provide training and guidance so your team can make the best possible use of Lyyli."
           },
           {
-            id: "pricing-trial",
-            question: currentLocale === "fi" ? "Voinko kokeilla ilmaiseksi?" : "Can I try it for free?",
+            id: "contact-for-questions",
+            question: currentLocale === "fi" ? "Eikö kysymyksesi löytynyt listalta?" : "Can't find your question in the list?",
             answer: currentLocale === "fi"
-              ? "Kyllä! Tarjoamme 14 päivän ilmaisen kokeilun ilman luottokorttia. Voit kokeilla kaikkia ominaisuuksia ja päätellä, sopiiko Lyyli yrityksellesi."
-              : "Yes! We offer a 14-day free trial with no credit card required. You can try all features and decide if Lyyli is right for your business."
+              ? "Ota rohkeasti yhteyttä – autamme mielellään! 💙"
+              : "Don't hesitate to contact us – we're happy to help! 💙"
           }
         ]}
-        title={currentLocale === "fi" ? "Hinnoittelukysymykset" : "Pricing Questions"}
+        title={currentLocale === "fi" ? "Usein kysytyt kysymykset" : "Frequently Asked Questions"}
         description={currentLocale === "fi" 
-          ? "Vastauksia yleisimpiin hinnoittelukysymyksiin."
-          : "Answers to the most common pricing questions."
+          ? "Vastauksia yleisimpiin kysymyksiin hinnoittelusta ja käytöstä."
+          : "Answers to the most common questions about pricing and usage."
         }
       />
 
