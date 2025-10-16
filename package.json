@@ -32,6 +32,8 @@
     "security:validate": "node scripts/validate-security-headers.mjs",
     "security:test": "npm test -- --testPathPatterns=security",
     "blog:verify": "node scripts/check-blog-separation.mjs",
+    "canonical:verify": "node scripts/verify-canonical-host.mjs",
+    "canonical:test": "npm test -- --testPathPatterns=canonical-host",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
     "e2e:404": "playwright test e2e/404",

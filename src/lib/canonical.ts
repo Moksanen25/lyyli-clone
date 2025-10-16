@@ -3,7 +3,9 @@
  * Ensures all canonical URLs point to the production lyyli.ai domain
  */
 
-const PRODUCTION_DOMAIN = "https://lyyli.ai";
+import { CANONICAL_URL } from './canonical-host';
+
+const PRODUCTION_DOMAIN = CANONICAL_URL;
 
 /**
  * Generate a canonical URL for the given path

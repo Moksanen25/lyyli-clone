@@ -3,6 +3,11 @@ import createMiddleware from 'next-intl/middleware';
 import { addSecurityHeaders, createSecurityConfig, securityMiddleware } from '@/middleware/security';
 import { ensureEnvValidated } from '@/lib/env';
 import { logger } from '@/lib/logger';
+import { 
+  CANONICAL_HOST, 
+  shouldRedirectToCanonical, 
+  getCanonicalRedirectUrl 
+} from '@/lib/canonical-host';
 
 // next-intl locale routing
 const intlMiddleware = createMiddleware({
@@ -20,6 +25,15 @@ export default function middleware(request: NextRequest) {
     logger.warn('Env validation failed in middleware (continuing)', {
       error: error instanceof Error ? error.message : 'Unknown error'
     });
+  }
+
+  // Handle canonical host redirects (301 redirects)
+  const hostname = request.headers.get('host') || '';
+  
+  // Check if we should redirect to canonical host
+  if (shouldRedirectToCanonical(hostname)) {
+    const canonicalUrl = getCanonicalRedirectUrl(request);
+    return NextResponse.redirect(canonicalUrl, 301);
   }
 
   try {
