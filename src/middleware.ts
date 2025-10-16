@@ -27,12 +27,26 @@ export default function middleware(request: NextRequest) {
     });
   }
 
-  // Handle canonical host redirects (301 redirects)
+  // Check for redirect loops by counting redirect headers
+  const redirectCount = request.headers.get('x-redirect-count') || '0';
+  const redirectCountNum = parseInt(redirectCount, 10);
+  
+  if (redirectCountNum >= 3) {
+    logger.error('Too many redirects detected, stopping redirect chain', {
+      url: request.url,
+      redirectCount: redirectCountNum
+    });
+    return NextResponse.next();
+  }
+
+  // Handle canonical host redirects FIRST (301 redirects)
   const hostname = request.headers.get('host') || '';
+  const pathname = request.nextUrl.pathname;
   
   // Log redirect decisions for debugging
   logger.debug('Canonical host check', {
     hostname,
+    pathname,
     shouldRedirect: shouldRedirectToCanonical(hostname),
     environment: process.env.NODE_ENV
   });
@@ -43,9 +57,14 @@ export default function middleware(request: NextRequest) {
     logger.info('Redirecting to canonical host', {
       from: request.url,
       to: canonicalUrl.toString(),
-      hostname
+      hostname,
+      pathname,
+      redirectCount: redirectCountNum + 1
     });
-    return NextResponse.redirect(canonicalUrl, 301);
+    
+    const response = NextResponse.redirect(canonicalUrl, 301);
+    response.headers.set('x-redirect-count', (redirectCountNum + 1).toString());
+    return response;
   }
 
   try {
