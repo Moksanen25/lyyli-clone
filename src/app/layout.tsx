@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { fontVars } from "@/lib/fonts";
 import { reportWebVitals } from "@/lib/performance";
 import "./critical.css";
@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     apple: "/icons/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
   themeColor: "#2F5D50",
 };
 
