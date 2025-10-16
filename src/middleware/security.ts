@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
 import { getClientIP } from '@/lib/security';
-import { getEnhancedCSPDirectives, generateNonce } from '@/lib/security-hashes';
 
 export interface SecurityConfig {
   enableCSP: boolean;
@@ -30,7 +29,56 @@ export const DEFAULT_SECURITY_CONFIG: SecurityConfig = {
   enablePermissionsPolicy: true,
   hstsMaxAge: 31536000, // 1 year
   referrerPolicy: 'strict-origin-when-cross-origin',
-  cspDirectives: getEnhancedCSPDirectives(),
+  cspDirectives: {
+    'default-src': ["'self'"],
+    'script-src': [
+      "'self'",
+      'https://*.hsforms.net',
+      'https://static.hsappstatic.net',
+      'https://unpkg.com/web-vitals@3/dist/web-vitals.attribution.js',
+    ],
+    'style-src': [
+      "'self'",
+      "'unsafe-inline'", // Required for Tailwind CSS
+      'https://fonts.googleapis.com'
+    ],
+    'font-src': [
+      "'self'",
+      'https://fonts.gstatic.com',
+      'data:'
+    ],
+    'img-src': [
+      "'self'",
+      'data:',
+      'https:',
+      'blob:',
+      'https://*.hsforms.com',
+      'https://*.hsforms.net'
+    ],
+    'connect-src': [
+      "'self'",
+      'https://vercel.live',
+      'https://va.vercel-scripts.com',
+      'https://api.vercel.com',
+      'https://*.hsforms.com',
+      'https://*.hsforms.net'
+    ],
+    'frame-src': [
+      "'self'",
+      'https://*.hsforms.com',
+      'https://*.hsforms.net'
+    ],
+    'object-src': ["'none'"],
+    'base-uri': ["'self'"],
+    'form-action': [
+      "'self'",
+      'https://*.hsforms.com',
+      'https://*.hsforms.net'
+    ],
+    'frame-ancestors': ["'none'"],
+    'upgrade-insecure-requests': [],
+    'report-uri': ['/api/csp-report'],
+  },
   permissionsPolicy: {
     'camera': ['()'],
     'microphone': ['()'],
@@ -93,8 +141,8 @@ export function addSecurityHeaders(
   nonce?: string
 ): NextResponse {
   try {
-    // Generate nonce if not provided
-    const scriptNonce = nonce || generateNonce();
+    // Generate nonce if not provided (Edge Runtime compatible)
+    const scriptNonce = nonce || globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
     
     // Content Security Policy
     if (config.enableCSP) {

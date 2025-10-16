@@ -52,9 +52,11 @@ const nextConfig: NextConfig = {
       "victory-vendor/d3-scale": "d3-scale",
     };
 
-    // Tree shaking optimization
-    config.optimization.usedExports = true;
-    config.optimization.sideEffects = false;
+    // Tree shaking optimization (only in production)
+    if (!dev) {
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = false;
+    }
 
     if (!dev && !isServer) {
       // Enhanced code splitting

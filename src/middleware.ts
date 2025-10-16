@@ -39,8 +39,8 @@ export default function middleware(request: NextRequest) {
       // continue
     }
 
-    // Nonce for CSP (use Web Crypto to avoid Node-specific imports in middleware)
-    const nonce = (globalThis.crypto?.randomUUID?.() as string) || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    // Nonce for CSP (Edge Runtime compatible)
+    const nonce = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
     // Locale routing via next-intl
     let response: NextResponse;
