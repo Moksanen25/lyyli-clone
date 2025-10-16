@@ -3,7 +3,6 @@ import { headers, cookies } from "next/headers";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ConsentBanner from "../../components/ConsentBanner";
-import Breadcrumbs from "../../components/Breadcrumbs";
 import MeshGradientBackground from "../../components/MeshGradientBackground";
 import DevSWCleanup from "../../components/DevSWCleanup";
 import { getTranslations } from "../../lib/i18n";
@@ -151,7 +150,6 @@ export default async function LocaleLayout({
         <MeshGradientBackground />
         <div className="flex flex-col min-h-screen relative z-10">
           <Header locale={currentLocale} translations={t} />
-          <Breadcrumbs locale={currentLocale} translations={t} pathname={pathname} />
           <main className="flex-1 relative">{children}</main>
           <Footer
             locale={currentLocale}

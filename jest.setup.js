@@ -6,10 +6,22 @@ global.Response = global.Response || class Response {};
 global.Headers = global.Headers || class Headers {};
 global.fetch = global.fetch || jest.fn();
 
+// Mock next/link
+jest.mock('next/link', () => {
+  return ({ children, href, ...props }) => {
+    return (
+      <a href={href} {...props}>
+        {children}
+      </a>
+    );
+  };
+});
+
 // Mock next-intl
 jest.mock('next-intl', () => ({
   useTranslations: () => (key) => {
     const translations = {
+      'breadcrumbs.navigation': 'Breadcrumb navigation',
       'features.automatic.slack.title': 'Smart Slack messages',
       'features.automatic.slack.description': 'Generate contextually appropriate Slack messages with proper formatting, mentions, and channel-specific tone.',
       'features.automatic.teams.title': 'Teams integration',

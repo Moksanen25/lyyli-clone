@@ -11,6 +11,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { logger } from "../../../../lib/logger";
 import { generateArticleSchema } from "../../../../lib/structured-data";
+import Breadcrumbs from "../../../../components/Breadcrumbs";
+import { generateBlogBreadcrumbs, generateBreadcrumbSchema } from "../../../../lib/breadcrumb-schema";
 
 export const revalidate = 3600; // ISR: revalidate blog posts hourly
 
@@ -324,6 +326,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
   );
 
+  // Generate breadcrumbs for the blog post
+  const breadcrumbItems = generateBlogBreadcrumbs(post.title, currentLocale, post.category);
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
+
   // Generate Article schema for blog post
   const articleSchema = generateArticleSchema({
     headline: post.title,
@@ -338,6 +344,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article>
+      {/* Breadcrumb JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      
       {/* Article JSON-LD structured data */}
       <script
         type="application/ld+json"
@@ -358,13 +372,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         <div className="max-w-4xl mx-auto px-6 py-16 lg:py-24 relative z-10">
+        {/* Breadcrumbs */}
         <div className="mb-8">
-          <Link
-            href={`/${currentLocale}/blog`}
-            className="inline-flex items-center text-forest hover:text-turquoise transition-colors"
-          >
-            ← {currentLocale === "fi" ? "Takaisin blogiin" : "Back to Blog"}
-          </Link>
+          <Breadcrumbs items={breadcrumbItems} />
         </div>
 
         {/* Language switching notice */}

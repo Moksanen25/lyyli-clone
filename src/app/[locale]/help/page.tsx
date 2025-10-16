@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { getTranslations } from "../../../lib/i18n";
 import Link from "next/link";
 import HelpSearch from "../../../components/HelpSearch";
+import Breadcrumbs from "../../../components/Breadcrumbs";
+import { generatePageBreadcrumbs, generateBreadcrumbSchema } from "../../../lib/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Help & Support Center",
@@ -16,10 +18,31 @@ export default async function HelpPage({
   const { locale } = await params;
   const t = await getTranslations(locale);
 
+  // Generate breadcrumbs for the help page
+  const breadcrumbItems = generatePageBreadcrumbs(
+    locale === "fi" ? "Apu ja tuki" : "Help & Support Center",
+    locale,
+    [{ title: "Help", href: `/${locale}/help` }]
+  );
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
+
   return (
     <div className="min-h-screen">
+      {/* Breadcrumb JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      
+      {/* Breadcrumbs */}
+      <div className="container mx-auto px-4 pt-32 pb-4">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
+      
       {/* Hero Section with Search */}
-      <div className="relative z-10 pt-32">
+      <div className="relative z-10">
         <section 
           className="container mx-auto px-4 py-20 relative overflow-hidden"
           aria-label="Hero"
