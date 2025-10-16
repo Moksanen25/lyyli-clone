@@ -1,5 +1,4 @@
 User-agent: *
-Allow: /
 
 # Sitemap
 Sitemap: https://lyyli.ai/sitemap.xml
@@ -8,13 +7,37 @@ Sitemap: https://lyyli.ai/sitemap.xml
 Disallow: /_next/
 Disallow: /api/
 Disallow: /admin/
+Disallow: /coverage/
+Disallow: /test-results/
+Disallow: /playwright-report/
+Disallow: /playwright/
 
-# Allow important pages
-Allow: /
+# Disallow development and build files
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /*.tmp$
+Disallow: /*.cache$
+
+# Allow all public pages (explicit allows are not needed when Allow: / is set)
+# But we can be specific about important sections
 Allow: /en/
 Allow: /fi/
-Allow: /features/
-Allow: /pricing/
-Allow: /about/
-Allow: /blog/
-Allow: /contact/
+Allow: /en/features
+Allow: /en/pricing
+Allow: /en/about
+Allow: /en/blog
+Allow: /en/contact
+Allow: /en/security
+Allow: /en/waitlist
+Allow: /en/help
+Allow: /fi/features
+Allow: /fi/pricing
+Allow: /fi/about
+Allow: /fi/blog
+Allow: /fi/contact
+Allow: /fi/security
+Allow: /fi/waitlist
+Allow: /fi/help
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1

@@ -1,0 +1,76 @@
+name: SEO Files Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'public/robots.txt'
+      - 'public/sitemap.xml'
+      - 'scripts/validate-seo-files.mjs'
+      - 'scripts/generate-sitemap.mjs'
+      - 'src/__tests__/seo-files.test.ts'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'public/robots.txt'
+      - 'public/sitemap.xml'
+      - 'scripts/validate-seo-files.mjs'
+      - 'scripts/generate-sitemap.mjs'
+      - 'src/__tests__/seo-files.test.ts'
+  schedule:
+    # Run daily at 2 AM UTC to check production files
+    - cron: '0 2 * * *'
+
+jobs:
+  validate-seo-files:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Generate sitemap
+      run: npm run sitemap:generate
+      
+    - name: Validate SEO files
+      run: npm run seo:validate
+      
+    - name: Run SEO tests
+      run: npm test -- --testPathPatterns=seo-files
+      
+    - name: Check for changes
+      id: check-changes
+      run: |
+        if git diff --exit-code public/sitemap.xml; then
+          echo "sitemap-changed=false" >> $GITHUB_OUTPUT
+        else
+          echo "sitemap-changed=true" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit sitemap changes
+      if: steps.check-changes.outputs.sitemap-changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add public/sitemap.xml
+        git commit -m "chore: update sitemap.xml with latest content [skip ci]" || exit 0
+        git push
+        
+    - name: Upload validation results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: seo-validation-results
+        path: |
+          public/robots.txt
+          public/sitemap.xml
+        retention-days: 30
