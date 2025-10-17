@@ -68,8 +68,8 @@ export default function HelpSearch({ locale, placeholder, className = "" }: Help
     if (query.trim()) {
       saveRecentSearch(query);
       setShowResults(false);
-      // You could redirect to a search results page here
-      // router.push(`/${locale}/help/search?q=${encodeURIComponent(query)}`);
+      // Redirect to search results page
+      router.push(`/${locale}/help/search?q=${encodeURIComponent(query)}`);
     }
   };
 

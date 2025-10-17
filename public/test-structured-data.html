@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyyli.ai - Test Structured Data</title>
+    <meta name="description" content="Test page for WebSite structured data with SearchAction">
+</head>
+<body>
+    <h1>Lyyli.ai - AI Communication Assistant</h1>
+    <p>This is a test page to validate the WebSite structured data with SearchAction for Google's sitelinks search box.</p>
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://lyyli.ai/#organization",
+        "name": "Lyyli.ai",
+        "legalName": "Content AI Oy",
+        "url": "https://lyyli.ai",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://lyyli.ai/images/logos/Lyyli.ai_no_BG.png",
+            "width": 1500,
+            "height": 500,
+            "contentUrl": "https://lyyli.ai/images/logos/Lyyli.ai_no_BG.png"
+        },
+        "description": "AI Communication Assistant for Professional Service Organizations",
+        "foundingDate": "2024",
+        "founders": [
+            {
+                "@type": "Person",
+                "name": "Mikko Oksanen",
+                "jobTitle": "CEO and Co-founder"
+            },
+            {
+                "@type": "Person",
+                "name": "Veikko Luoma-aho",
+                "jobTitle": "Co-founder"
+            }
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FI",
+            "addressLocality": "Jyväskylä"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "mikko@lyyli.ai",
+            "contactType": "Customer Service",
+            "availableLanguage": ["en", "fi"]
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/lyyli-ai",
+            "https://twitter.com/lyyli_ai"
+        ]
+    }
+    </script>
+    
+    <!-- WebSite Schema with SearchAction -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://lyyli.ai/#website",
+        "name": "Lyyli.ai",
+        "url": "https://lyyli.ai/en",
+        "description": "Transform your internal communications with enterprise-grade AI assistant",
+        "inLanguage": ["en"],
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://lyyli.ai/en/help/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+            "@id": "https://lyyli.ai/#organization"
+        }
+    }
+    </script>
+    
+    <h2>Test Links</h2>
+    <ul>
+        <li><a href="/en/help/search?q=getting-started">Test Search: getting-started</a></li>
+        <li><a href="/en/help/search?q=integrations">Test Search: integrations</a></li>
+        <li><a href="/en/help/search?q=troubleshooting">Test Search: troubleshooting</a></li>
+    </ul>
+    
+    <h2>Validation Instructions</h2>
+    <ol>
+        <li>Copy this page URL</li>
+        <li>Go to <a href="https://search.google.com/test/rich-results" target="_blank">Google Rich Results Test</a></li>
+        <li>Paste the URL and test</li>
+        <li>Verify that the WebSite schema with SearchAction is detected</li>
+        <li>Check that Google can understand the search functionality</li>
+    </ol>
+</body>
+</html>

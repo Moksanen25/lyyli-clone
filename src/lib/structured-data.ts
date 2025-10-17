@@ -79,7 +79,7 @@ export function generateWebsiteSchema(locale: string = 'en') {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${PRODUCTION_URL}/${locale}/help?q={search_term_string}`
+        urlTemplate: `${PRODUCTION_URL}/${locale}/help/search?q={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     },
