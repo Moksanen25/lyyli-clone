@@ -21,6 +21,7 @@ const withMDX = createMDX({
 const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
+    optimizePackageImports: ['@headlessui/react', 'framer-motion', 'recharts'],
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -42,7 +43,9 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-
+  
+  // Optimize server-side rendering (swcMinify is enabled by default in Next.js 13+)
+  
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Resolve aliases
     config.resolve = config.resolve || {};
@@ -56,6 +59,10 @@ const nextConfig: NextConfig = {
     if (!dev) {
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
+      
+      // Enhanced tree shaking for better bundle optimization
+      config.optimization.providedExports = true;
+      config.optimization.concatenateModules = true;
     }
 
     if (!dev && !isServer) {

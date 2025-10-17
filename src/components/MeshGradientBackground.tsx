@@ -4,19 +4,35 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function MeshGradientBackground() {
   const [scrollY, setScrollY] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Defer background rendering to improve LCP
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Simplified opacity - always visible for now
   const currentOpacity = 1;
+
+  if (!isLoaded) {
+    // Return minimal background during initial load for better LCP
+    return (
+      <div className="fixed inset-0 -z-10 pointer-events-none bg-gradient-to-br from-rose/5 to-turquoise/5" />
+    );
+  }
 
   return (
     <div 

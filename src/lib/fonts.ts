@@ -7,6 +7,7 @@ export const inter = Inter({
   weight: ["400", "500", "600", "700"],
   preload: true,
   fallback: ['system-ui', 'arial'],
+  adjustFontFallback: false, // Disable font fallback adjustment for faster rendering
 });
 
 export const playfair = Playfair_Display({
@@ -16,6 +17,7 @@ export const playfair = Playfair_Display({
   weight: ["400", "700"],
   preload: true,
   fallback: ['serif'],
+  adjustFontFallback: false, // Disable font fallback adjustment for faster rendering
 });
 
 export const fontVars = `${inter.variable} ${playfair.variable}`;

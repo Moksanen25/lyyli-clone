@@ -139,6 +139,38 @@ export default async function LocaleLayout({
         {/* hreflang tags are generated per-page via metadata.alternates.languages */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        {/* Critical font preloading for LCP optimization */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+          as="style"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        />
+        
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Critical CSS for LCP optimization */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .font-playfair { font-family: var(--font-playfair), Georgia, serif; }
+            .font-sans { font-family: var(--font-inter), system-ui, Arial, sans-serif; }
+            .text-4xl { font-size: 2.25rem; line-height: 1.2; }
+            .text-5xl { font-size: 3rem; line-height: 1.2; }
+            @media (min-width: 768px) { .md\\:text-5xl { font-size: 3.75rem; line-height: 1.2; } }
+            .font-loading .text-4xl, .font-loading .md\\:text-5xl { visibility: hidden; }
+            .font-loaded .text-4xl, .font-loaded .md\\:text-5xl { visibility: visible; }
+          `
+        }} />
+
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

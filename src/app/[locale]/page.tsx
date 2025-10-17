@@ -50,6 +50,7 @@ export default async function Home({ params }: HomeProps) {
           className="container mx-auto px-4 py-20 relative"
           aria-label="Hero"
         >
+          {/* Critical LCP element with optimized font loading */}
           <h1 className="text-4xl md:text-5xl text-forest text-center mb-8 font-playfair font-bold leading-tight relative z-10">
             {t["hero.headline"]}
           </h1>
