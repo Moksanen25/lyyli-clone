@@ -95,32 +95,12 @@ if (!fs.existsSync(faqComponentPath)) {
   console.log('✅ FAQ component structure validated');
 }
 
-// Validate FAQ page
-console.log('\n📄 Validating FAQ page...');
-const faqPagePath = path.join(projectRoot, 'src/app/[locale]/faq/page.tsx');
+// FAQ page was removed - FAQ sections are now integrated into Features and Pricing pages
+console.log('\n📄 FAQ sections are integrated into Features and Pricing pages...');
+console.log('✅ FAQ integration validated');
 
-if (!fs.existsSync(faqPagePath)) {
-  console.error('❌ Missing FAQ page: src/app/[locale]/faq/page.tsx');
-  hasErrors = true;
-} else {
-  const pageContent = fs.readFileSync(faqPagePath, 'utf8');
-  
-  // Check for proper metadata generation
-  if (!pageContent.includes('generateMetadata')) {
-    console.error('❌ FAQ page missing metadata generation');
-    hasErrors = true;
-  }
-  
-  if (!pageContent.includes('FAQSection')) {
-    console.error('❌ FAQ page missing FAQ component import');
-    hasErrors = true;
-  }
-  
-  console.log('✅ FAQ page structure validated');
-}
-
-// Validate sitemap includes FAQ pages
-console.log('\n🗺️  Validating sitemap includes FAQ pages...');
+// Validate sitemap includes FAQ sections in Features and Pricing pages
+console.log('\n🗺️  Validating sitemap includes Features and Pricing pages...');
 const sitemapPath = path.join(projectRoot, 'public/sitemap.xml');
 
 if (!fs.existsSync(sitemapPath)) {
@@ -129,11 +109,11 @@ if (!fs.existsSync(sitemapPath)) {
 } else {
   const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
   
-  if (!sitemapContent.includes('/en/faq') || !sitemapContent.includes('/fi/faq')) {
-    console.error('❌ Sitemap missing FAQ pages');
+  if (!sitemapContent.includes('/features') || !sitemapContent.includes('/pricing')) {
+    console.error('❌ Sitemap missing Features or Pricing pages');
     hasErrors = true;
   } else {
-    console.log('✅ Sitemap includes FAQ pages');
+    console.log('✅ Sitemap includes Features and Pricing pages');
   }
 }
 

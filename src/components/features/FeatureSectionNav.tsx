@@ -1,3 +1,5 @@
+"use client";
+
 import { TranslationKeys } from "../../lib/i18n";
 
 interface FeatureSectionNavProps {
