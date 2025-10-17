@@ -144,7 +144,7 @@ export default function PricingFAQ({
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <MotionA
-            href="/faq"
+            href="/help"
             className="inline-flex items-center justify-center px-6 py-3 border-2 border-forest text-forest rounded-2xl hover:bg-forest hover:text-white transition-all duration-300 font-medium hover:shadow-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

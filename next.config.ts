@@ -63,6 +63,9 @@ const nextConfig: NextConfig = {
       // Enhanced tree shaking for better bundle optimization
       config.optimization.providedExports = true;
       config.optimization.concatenateModules = true;
+      
+      // Fix webpack optimization conflict
+      config.optimization.cacheUnaffected = false;
     }
 
     if (!dev && !isServer) {
