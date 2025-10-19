@@ -296,7 +296,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href={`/${currentLocale}/waitlist`}
+              href={t["cta.startTrial"]}
               className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
             >
               {t["cta.startTrial"]}
@@ -305,7 +305,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
               </svg>
             </a>
             <a 
-              href={`/${currentLocale}/contact`}
+              href={t["cta.demo"]}
               className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
             >
               {t["cta.demo"]}

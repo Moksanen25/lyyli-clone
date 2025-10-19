@@ -375,17 +375,18 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                 <div className="mt-auto">
                   {(plan.name === "Professional" || plan.name === "Enterprise") ? (
                     <a
-                      href={`/${locale || 'en'}/waitlist`}
+                      href="https://app.lyyli.ai"
                       className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
                     </a>
                   ) : (
-                    <button 
+                    <a 
+                      href="https://app.lyyli.ai"
                       className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
-                    </button>
+                    </a>
                   )}
                 </div>
               </MotionDiv>
@@ -431,7 +432,7 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                 </svg>
               </a>
               <a 
-                href="/contact" 
+                href="https://app.lyyli.ai" 
                 className="inline-flex items-center px-6 py-3 border-2 border-forest text-forest font-semibold rounded-2xl hover:bg-forest hover:text-white transition-all duration-300 font-sans hover:shadow-lg hover:-translate-y-1"
               >
                 {translations?.["pricing.moreInfo.contactSales" as keyof typeof translations] || "Contact sales team"}

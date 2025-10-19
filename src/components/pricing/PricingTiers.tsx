@@ -33,7 +33,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: 0,
       description: t["pricing.free.description"],
       cta: t["pricing.free.cta"],
-      ctaHref: "/waitlist",
+      ctaHref: "https://app.lyyli.ai",
       features: [
         t["pricing.features.maxOneUser"],
         t["pricing.features.maxTwentyConversations"],
@@ -49,7 +49,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: Math.round(39 * 12 * 0.8), // 12 months - 20% discount
       description: t["pricing.launch.description"],
       cta: t["pricing.launch.cta"],
-      ctaHref: "/waitlist",
+      ctaHref: "https://app.lyyli.ai",
       features: [
         t["pricing.features.maxOneUser"],
         t["pricing.features.maxThreeHundredMessages"],
@@ -64,7 +64,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: Math.round(199 * 12 * 0.8), // 12 months - 20% discount
       description: t["pricing.growth.description"],
       cta: t["pricing.growth.cta"],
-      ctaHref: "/waitlist",
+      ctaHref: "https://app.lyyli.ai",
       features: [
         t["pricing.features.userManagement3"],
         t["pricing.features.maxHundredConversations"],
@@ -80,7 +80,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: Math.round(599 * 12 * 0.8), // 12 months - 20% discount
       description: t["pricing.professional.description"],
       cta: t["pricing.professional.cta"],
-      ctaHref: "/waitlist",
+      ctaHref: "https://app.lyyli.ai",
       popular: true,
       features: [
         t["pricing.features.userManagement10"],
@@ -97,7 +97,7 @@ export default function PricingTiers({ translations }: PricingTiersProps) {
       yearlyPrice: 0,
       description: t["pricing.enterprise.description"],
       cta: t["pricing.enterprise.cta"],
-      ctaHref: "/waitlist",
+      ctaHref: "https://app.lyyli.ai",
       features: [
         t["pricing.features.customInstallation"],
         t["pricing.features.allIntegrationsWithAPI"],

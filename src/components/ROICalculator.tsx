@@ -421,7 +421,7 @@ export default function ROICalculator({ locale, translations }: ROICalculatorPro
             viewport={{ once: true }}
           >
             <a 
-              href="#cta" 
+              href={translations?.["roi.cta.startSaving"] || "https://app.lyyli.ai"} 
               className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans hover:bg-turquoise"
             >
               {translations?.["roi.cta.startSaving"] || "Start saving with Lyyli.ai"}

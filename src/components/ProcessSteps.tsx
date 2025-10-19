@@ -283,7 +283,7 @@ const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsPr
             transition={{ delay: 2, duration: 0.8, ease: "easeOut" }}
           >
             <MotionA 
-              href="#cta" 
+              href={translations?.["howItWorks.cta"] || "https://app.lyyli.ai"} 
               className="inline-flex items-center px-8 py-4 bg-forest text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-sans"
               whileHover={{ 
                 y: -2,

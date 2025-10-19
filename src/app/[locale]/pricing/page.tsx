@@ -138,7 +138,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href={`/${currentLocale}/waitlist`}
+              href="https://app.lyyli.ai"
               className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
               aria-label="Join the waitlist for Lyyli.ai"
             >
@@ -148,7 +148,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
               </svg>
             </a>
             <a 
-              href={`/${currentLocale}/contact`}
+              href="https://app.lyyli.ai"
               className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
               aria-label="Contact us for more information"
             >
