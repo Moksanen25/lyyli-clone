@@ -319,9 +319,9 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                 <Link
                   href="https://app.lyyli.ai"
                   className="bg-forest text-white px-6 py-3 rounded-xl hover:bg-forest/90 hover:shadow-lg transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans shadow-md"
-                  aria-label="Join the waitlist for Lyyli.ai"
+                  aria-label="Sign in to Lyyli.ai"
                 >
-                  {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
+                  {locale === "fi" ? "Kirjaudu" : "Sign in"}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -455,10 +455,10 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                 <Link
                   href="https://app.lyyli.ai"
                   className="block w-full bg-forest text-white px-4 py-3 rounded-xl hover:bg-forest/90 transition-all duration-200 font-semibold text-base text-center font-sans shadow-md"
-                  aria-label="Join the waitlist for Lyyli.ai"
+                  aria-label="Sign in to Lyyli.ai"
                   onClick={closeMobileMenu}
                 >
-                  {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
+                  {locale === "fi" ? "Kirjaudu" : "Sign in"}
                 </Link>
               </div>
 
