@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { fontVars } from "@/lib/fonts";
 import { reportWebVitals } from "@/lib/performance";
 import "./critical.css";
@@ -32,7 +33,7 @@ export default function RootLayout({
       <head>
         {/* Preload critical fonts for LCP - Next.js handles this automatically */}
         {/* next/font/google self-hosts and preloads fonts, sets font-display: swap */}
-        
+
         {/* Preload critical images in available formats */}
         <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.png" as="image" type="image/png" />
 
@@ -52,10 +53,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png" />
-        
+
         {/* Web App Manifest */}
         <link rel="manifest" href="/site.webmanifest" />
-        
+
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#2F5D50" />
         <meta name="msapplication-TileColor" content="#2F5D50" />
@@ -63,6 +64,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         {children}
+        <Analytics />
       </body>
     </html>
   );
