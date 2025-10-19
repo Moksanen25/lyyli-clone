@@ -65,10 +65,10 @@ export default async function AboutPage({ params }: AboutPageProps) {
             </p>
             {/* Hero CTA buttons following layout rule */}
             <div className="flex justify-center gap-4 mb-0">
-              <a href={t['about.cta.demo']} className="btn-primary" aria-label="Book a demo of Lyyli.ai">
+              <a href="https://app.lyyli.ai" className="btn-primary" aria-label="Book a demo of Lyyli.ai">
                 {t['about.cta.demo']}
               </a>
-              <a href={t['about.cta.trial']} className="btn-secondary" aria-label="Start free trial of Lyyli.ai">
+              <a href="https://app.lyyli.ai" className="btn-secondary" aria-label="Start free trial of Lyyli.ai">
                 {t['about.cta.trial']}
               </a>
             </div>
@@ -107,10 +107,10 @@ export default async function AboutPage({ params }: AboutPageProps) {
             {t['about.cta.description']}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={t['about.cta.demo']} className="btn-secondary" aria-label="Book a demo of Lyyli.ai">
+            <a href="https://app.lyyli.ai" className="btn-secondary" aria-label="Book a demo of Lyyli.ai">
               {t['about.cta.demo']}
             </a>
-            <a href={t['about.cta.trial']} className="btn-primary" aria-label="Start free trial of Lyyli.ai">
+            <a href="https://app.lyyli.ai" className="btn-primary" aria-label="Start free trial of Lyyli.ai">
               {t['about.cta.trial']}
             </a>
           </div>
