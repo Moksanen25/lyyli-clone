@@ -4,6 +4,7 @@ import OriginStory from '../../../components/about/OriginStory';
 import MissionVisionValues from '../../../components/about/MissionVisionValues';
 import TeamSection from '../../../components/about/TeamSection';
 import SubPageVisual from '../../../components/SubPageVisual';
+import CalendarPopup from '../../../components/CalendarPopup';
 import { generatePageCanonicalUrl, generateHreflangMetadata } from '../../../lib/canonical';
 import { buildTitleFromTranslation } from '../../../lib/title';
 
@@ -107,9 +108,9 @@ export default async function AboutPage({ params }: AboutPageProps) {
             {t['about.cta.description']}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://app.lyyli.ai" className="btn-secondary" aria-label="Book a demo of Lyyli.ai">
+            <CalendarPopup className="btn-secondary" aria-label="Book a demo of Lyyli.ai">
               {t['about.cta.demo']}
-            </a>
+            </CalendarPopup>
             <a href="https://app.lyyli.ai" className="btn-primary" aria-label="Start free trial of Lyyli.ai">
               {t['about.cta.trial']}
             </a>

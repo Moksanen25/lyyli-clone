@@ -7,6 +7,7 @@ import GDPRCompliance from '@/components/cybersecurity/GDPRCompliance';
 import AccessControl from '@/components/cybersecurity/AccessControl';
 import ContinuousDevelopment from '@/components/cybersecurity/ContinuousDevelopment';
 import SecuritySupport from '@/components/cybersecurity/SecuritySupport';
+import CalendarPopup from '@/components/CalendarPopup';
 
 interface PageProps {
   params: Promise<{
@@ -192,15 +193,12 @@ export default async function CybersecurityPage({ params }: PageProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
-            <a 
-              href="https://app.lyyli.ai"
-              className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
-            >
+            <CalendarPopup className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans">
               {t["cta.demo"]}
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-            </a>
+            </CalendarPopup>
           </div>
         </div>
       </section>

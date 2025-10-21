@@ -13,6 +13,7 @@ import Image from "next/image";
 import { logger } from "../../../../lib/logger";
 import { generateArticleSchema } from "../../../../lib/structured-data";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
+import CalendarPopup from "../../../../components/CalendarPopup";
 import RelatedPosts from "../../../../components/blog/RelatedPosts";
 import { generateBlogBreadcrumbs, generateBreadcrumbSchema } from "../../../../lib/breadcrumb-schema";
 
@@ -515,8 +516,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/demo"
+            <CalendarPopup
               className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-all duration-300 font-medium inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               aria-label={currentLocale === "fi" ? "Varaa Lyyli.ain demo" : "Book a demo of Lyyli.ai"}
             >
@@ -535,7 +535,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
-            </Link>
+            </CalendarPopup>
             <Link
               href="/contact"
               className="border-2 border-forest text-forest px-8 py-4 rounded-lg hover:bg-forest hover:text-white transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1"
