@@ -98,27 +98,30 @@ export default function CalendarPopup({ children, className = "" }: CalendarPopu
                       sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
                       onError={() => {
                         // Fallback if iframe fails to load
-                        const fallback = document.createElement('div');
-                        fallback.className = 'bg-gray-50 rounded-lg p-8 text-center';
-                        fallback.innerHTML = `
-                          <div class="mb-4">
-                            <svg class="w-16 h-16 text-forest mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <h3 class="text-xl font-playfair font-bold text-forest mb-2">Schedule Your Demo</h3>
-                            <p class="text-mediumGray mb-6">Click the button below to open our calendar in a new tab</p>
-                            <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1j18PuMAigFvdUkM4oSy3ZFfmONEVd63nTQyfxO4RT6qvlclpkTvip5oipFN0h5YnC5fY3Hiup?gv=true" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-lg hover:bg-forest/90 transition-colors">
-                              Open Calendar
-                              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        const iframe = document.querySelector('.relative iframe') as HTMLIFrameElement;
+                        if (iframe && iframe.parentNode) {
+                          const fallback = document.createElement('div');
+                          fallback.className = 'bg-gray-50 rounded-lg p-8 text-center';
+                          fallback.innerHTML = `
+                            <div class="mb-4">
+                              <svg class="w-16 h-16 text-forest mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                               </svg>
-                            </a>
-                          </div>
-                        `;
-                        document.querySelector('.relative iframe')?.parentNode?.replaceChild(fallback, document.querySelector('.relative iframe'));
+                              <h3 class="text-xl font-playfair font-bold text-forest mb-2">Schedule Your Demo</h3>
+                              <p class="text-mediumGray mb-6">Click the button below to open our calendar in a new tab</p>
+                              <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1j18PuMAigFvdUkM4oSy3ZFfmONEVd63nTQyfxO4RT6qvlclpkTvip5oipFN0h5YnC5fY3Hiup?gv=true" 
+                                 target="_blank" 
+                                 rel="noopener noreferrer"
+                                 class="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-lg hover:bg-forest/90 transition-colors">
+                                Open Calendar
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                              </a>
+                            </div>
+                          `;
+                          iframe.parentNode.replaceChild(fallback, iframe);
+                        }
                       }}
                     />
                   </div>
