@@ -10,6 +10,8 @@ interface CalendarPopupProps {
 export default function CalendarPopup({ children, className = "" }: CalendarPopupProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [motion, setMotion] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   const openModal = async () => {
     if (!motion) {
@@ -17,9 +19,24 @@ export default function CalendarPopup({ children, className = "" }: CalendarPopu
       setMotion({ motion: mod.motion, AnimatePresence: mod.AnimatePresence });
     }
     setIsModalOpen(true);
+    setIsLoading(true);
+    setHasError(false);
   };
 
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsLoading(true);
+    setHasError(false);
+  };
+
+  const handleIframeLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleIframeError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
 
   const MotionDiv = motion?.motion?.div || (('div' as unknown) as any);
   const AnimatePresence = motion?.AnimatePresence || (({ children }: any) => children);
@@ -86,44 +103,56 @@ export default function CalendarPopup({ children, className = "" }: CalendarPopu
                   
                   {/* Google Calendar Embed */}
                   <div className="relative">
-                    <iframe 
-                      src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1j18PuMAigFvdUkM4oSy3ZFfmONEVd63nTQyfxO4RT6qvlclpkTvip5oipFN0h5YnC5fY3Hiup?gv=true" 
-                      style={{ border: 0 }} 
-                      width="100%" 
-                      height="600" 
-                      frameBorder="0"
-                      className="rounded-lg"
-                      title="Book a demo - Calendar"
-                      loading="lazy"
-                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-                      onError={() => {
-                        // Fallback if iframe fails to load
-                        const iframe = document.querySelector('.relative iframe') as HTMLIFrameElement;
-                        if (iframe && iframe.parentNode) {
-                          const fallback = document.createElement('div');
-                          fallback.className = 'bg-gray-50 rounded-lg p-8 text-center';
-                          fallback.innerHTML = `
-                            <div class="mb-4">
-                              <svg class="w-16 h-16 text-forest mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                              </svg>
-                              <h3 class="text-xl font-playfair font-bold text-forest mb-2">Schedule Your Demo</h3>
-                              <p class="text-mediumGray mb-6">Click the button below to open our calendar in a new tab</p>
-                              <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1j18PuMAigFvdUkM4oSy3ZFfmONEVd63nTQyfxO4RT6qvlclpkTvip5oipFN0h5YnC5fY3Hiup?gv=true" 
-                                 target="_blank" 
-                                 rel="noopener noreferrer"
-                                 class="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-lg hover:bg-forest/90 transition-colors">
-                                Open Calendar
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                </svg>
-                              </a>
-                            </div>
-                          `;
-                          iframe.parentNode.replaceChild(fallback, iframe);
-                        }
-                      }}
-                    />
+                    {/* Loading State */}
+                    {isLoading && (
+                      <div className="bg-gray-50 rounded-lg p-8 text-center min-h-[600px] flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-forest mx-auto mb-4"></div>
+                          <p className="text-mediumGray font-sans">Loading calendar...</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Error State */}
+                    {hasError && (
+                      <div className="bg-gray-50 rounded-lg p-8 text-center min-h-[600px] flex items-center justify-center">
+                        <div className="text-center">
+                          <svg className="w-16 h-16 text-forest mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                          </svg>
+                          <h3 className="text-xl font-playfair font-bold text-forest mb-2">Schedule Your Demo</h3>
+                          <p className="text-mediumGray mb-6 font-sans">Click the button below to open our calendar in a new tab</p>
+                          <a 
+                            href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1j18PuMAigFvdUkM4oSy3ZFfmONEVd63nTQyfxO4RT6qvlclpkTvip5oipFN0h5YnC5fY3Hiup?gv=true" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-6 py-3 bg-forest text-white font-semibold rounded-lg hover:bg-forest/90 transition-colors"
+                          >
+                            Open Calendar
+                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Calendar Iframe */}
+                    {!hasError && (
+                      <iframe 
+                        src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1j18PuMAigFvdUkM4oSy3ZFfmONEVd63nTQyfxO4RT6qvlclpkTvip5oipFN0h5YnC5fY3Hiup?gv=true" 
+                        style={{ border: 0, display: isLoading ? 'none' : 'block' }} 
+                        width="100%" 
+                        height="600" 
+                        frameBorder="0"
+                        className="rounded-lg"
+                        title="Book a demo - Calendar"
+                        loading="eager"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                        onLoad={handleIframeLoad}
+                        onError={handleIframeError}
+                      />
+                    )}
                   </div>
                 </div>
 

@@ -66,7 +66,8 @@ export const DEFAULT_SECURITY_CONFIG: SecurityConfig = {
     'frame-src': [
       "'self'",
       'https://*.hsforms.com',
-      'https://*.hsforms.net'
+      'https://*.hsforms.net',
+      'https://calendar.google.com'
     ],
     'object-src': ["'none'"],
     'base-uri': ["'self'"],
