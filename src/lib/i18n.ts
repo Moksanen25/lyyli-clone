@@ -19,6 +19,17 @@ export interface TranslationKeys {
   "hero.ctaPrimary": string;
   "hero.ctaSecondary": string;
 
+  // Calendar Popup
+  "calendar.title": string;
+  "calendar.subtitle": string;
+  "calendar.description": string;
+  "calendar.loading": string;
+  "calendar.error.title": string;
+  "calendar.error.description": string;
+  "calendar.error.button": string;
+  "calendar.footer.secure": string;
+  "calendar.footer.contact": string;
+
   // Problems Section
   "problems.title": string;
   "problems.missedCommunications.title": string;

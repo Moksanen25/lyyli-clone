@@ -519,6 +519,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <CalendarPopup
               className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-all duration-300 font-medium inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               aria-label={currentLocale === "fi" ? "Varaa Lyyli.ain demo" : "Book a demo of Lyyli.ai"}
+              translations={{
+                title: currentLocale === "fi" ? "Varaa demo" : "Book a Demo",
+                subtitle: currentLocale === "fi" ? "Ajoita henkilökohtainen demo tiimimme kanssa" : "Schedule a personalized demo with our team",
+                description: currentLocale === "fi" ? "Valitse sopiva aika henkilökohtaiselle demollesi. Tiimimme näyttää, kuinka Lyyli voi muuttaa organisaatiosi viestintää." : "Choose a convenient time for your personalized demo. Our team will show you how Lyyli can transform your organization's communication.",
+                loading: currentLocale === "fi" ? "Ladataan kalenteria..." : "Loading calendar...",
+                errorTitle: currentLocale === "fi" ? "Ajoita demosi" : "Schedule Your Demo",
+                errorDescription: currentLocale === "fi" ? "Klikkaa alla olevaa painiketta avataksesi kalenterimme uudessa välilehdessä" : "Click the button below to open our calendar in a new tab",
+                errorButton: currentLocale === "fi" ? "Avaa kalenteri" : "Open Calendar",
+                footerSecure: currentLocale === "fi" ? "Turvallinen varaus • GDPR-yhteensopiva" : "Secure booking • GDPR compliant",
+                footerContact: currentLocale === "fi" ? "Kysymyksiä? Ota yhteyttä" : "Questions? Contact us"
+              }}
             >
               {currentLocale === "fi" ? "Varaa Demo" : "Book a Demo"}
               <svg

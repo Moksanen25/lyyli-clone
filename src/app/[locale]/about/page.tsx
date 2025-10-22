@@ -108,7 +108,21 @@ export default async function AboutPage({ params }: AboutPageProps) {
             {t['about.cta.description']}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CalendarPopup className="btn-secondary" aria-label="Book a demo of Lyyli.ai">
+            <CalendarPopup 
+              className="btn-secondary" 
+              aria-label="Book a demo of Lyyli.ai"
+              translations={{
+                title: t["calendar.title"],
+                subtitle: t["calendar.subtitle"],
+                description: t["calendar.description"],
+                loading: t["calendar.loading"],
+                errorTitle: t["calendar.error.title"],
+                errorDescription: t["calendar.error.description"],
+                errorButton: t["calendar.error.button"],
+                footerSecure: t["calendar.footer.secure"],
+                footerContact: t["calendar.footer.contact"]
+              }}
+            >
               {t['about.cta.demo']}
             </CalendarPopup>
             <a href="https://app.lyyli.ai" className="btn-primary" aria-label="Start free trial of Lyyli.ai">
