@@ -69,9 +69,6 @@ export default async function Home({ params }: HomeProps) {
               {t["hero.ctaSecondary"]}
             </CalendarPopup>
           </div>
-          <div className="text-center text-mediumGray text-sm font-sans relative z-10 mb-8">
-            {t["hero.trustBadge"]}
-          </div>
         </section>
       </div>
 

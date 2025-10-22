@@ -18,7 +18,6 @@ export interface TranslationKeys {
   "hero.description": string;
   "hero.ctaPrimary": string;
   "hero.ctaSecondary": string;
-  "hero.trustBadge": string;
 
   // Problems Section
   "problems.title": string;
