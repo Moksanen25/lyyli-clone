@@ -1,6 +1,5 @@
 import { getTranslations } from "@/lib/i18n";
 import { Metadata } from "next";
-import HubSpotFormSection from "@/components/contact/HubSpotFormSection";
 import TeamContacts from "@/components/contact/TeamContacts";
 import SecurityNotice from "@/components/contact/SecurityNotice";
 import MeshGradientBackground from "@/components/MeshGradientBackground";
@@ -92,12 +91,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="bg-gradient-to-br from-grayLight to-white py-24 relative z-20 border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-6">
-          <HubSpotFormSection locale={currentLocale} />
-        </div>
-      </section>
 
       {/* Security Notice */}
       <section className="py-24 relative z-20">
