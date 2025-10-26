@@ -14,7 +14,7 @@ export default function FeaturesCardLayout({
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
           <path d="M6 4h12v2H6V4zm0 14h12v2H6v-2zm0-6h8v2H6v-2z" />
           <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zM14 14h8v8h-8v-8zm2 2v4h4v-4h-4z" />
         </svg>
@@ -26,7 +26,7 @@ export default function FeaturesCardLayout({
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
           <circle cx="12" cy="9" r="2.5" />
         </svg>
@@ -38,7 +38,7 @@ export default function FeaturesCardLayout({
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
           <path d="M12.5 7.5h-1v3h-3v1h3v3h1v-3h3v-1h-3v-3z" />
         </svg>
@@ -50,7 +50,7 @@ export default function FeaturesCardLayout({
     {
       category: "automatic",
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="#2F5D50" viewBox="0 0 24 24">
           <path fillRule="evenodd" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" clipRule="evenodd" />
         </svg>
       ),
@@ -185,7 +185,7 @@ export default function FeaturesCardLayout({
                 key={index}
                 className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group"
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white`}>
+                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border-2 border-forest shadow-md">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
