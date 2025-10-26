@@ -513,6 +513,8 @@
   "features.grid.campaignMode.description": "Plan and manage multi‑channel communication campaigns with guidance.",
   "features.grid.mediaLibrary.title": "AI‑enhanced media library",
   "features.grid.mediaLibrary.description": "Smart media suggestions and organized assets ready for publishing.",
+  "features.grid.aiImage.title": "AI image generation",
+  "features.grid.aiImage.description": "Create custom images that match your brand guidelines. Generate visuals for presentations, reports, and communications with consistent brand style.",
   "features.grid.kpiReports.title": "Automated KPI‑reports",
   "features.grid.kpiReports.description": "C‑level and management dashboards with automated KPI reporting.",
   "features.grid.brandedTemplates.title": "Branded templates",

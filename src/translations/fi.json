@@ -511,6 +511,8 @@
   "features.grid.campaignMode.description": "Suunnittele ja hallitse monikanavaisia viestintäkampanjoita ohjatusti.",
   "features.grid.mediaLibrary.title": "Tekoälyllä tehostettu mediakirjasto",
   "features.grid.mediaLibrary.description": "Älykkäät mediasuositukset ja jäsennellyt assetit valmiina julkaisuun.",
+  "features.grid.aiImage.title": "Tekoälykuvantuotto",
+  "features.grid.aiImage.description": "Luo brändiohjeidesi mukaisia kuvia. Generoi visuaalisia materiaaleja esityksiin, raportteihin ja viestintään yhdenmukaisella brändityylillä.",
   "features.grid.kpiReports.title": "Automaattiset KPI-raportit",
   "features.grid.kpiReports.description": "Näe vaikutus numeroina. Automaattiset raportit johdolle ja esihenkilöille. Ei tarvitse kaivaa dataa käsin.",
   "features.grid.brandedTemplates.title": "Brändätyt mallipohjat",
