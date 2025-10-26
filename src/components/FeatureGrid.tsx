@@ -16,7 +16,6 @@ interface Feature {
 const comingSoonFeatureTitles = new Set<string>([
   "Advanced AI‑analytics",
   "AI‑enhanced Campaign mode",
-  "AI image generation",
   "AI‑enhanced media library",
   "Automated KPI‑reports",
   "Branded templates",
