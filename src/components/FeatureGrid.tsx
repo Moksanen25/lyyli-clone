@@ -16,6 +16,7 @@ interface Feature {
 const comingSoonFeatureTitles = new Set<string>([
   "Advanced AI‑analytics",
   "AI‑enhanced Campaign mode",
+  "AI image generation",
   "AI‑enhanced media library",
   "Automated KPI‑reports",
   "Branded templates",
@@ -74,6 +75,12 @@ const features: Feature[] = [
     icon: <IconSet.MediaLibrary className="w-8 h-8" />,
     title: "AI‑enhanced media library",
     description: "Smart media suggestions and organized assets ready for publishing.",
+    category: "ai"
+  },
+  {
+    icon: <IconSet.AIImage className="w-8 h-8" />,
+    title: "AI image generation",
+    description: "Create custom images that match your brand guidelines. Generate visuals for presentations, reports, and communications with consistent brand style.",
     category: "ai"
   },
   {
@@ -151,6 +158,7 @@ const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps
       "Slack and/or Teams native app": "slackTeams",
       "Advanced AI‑analytics": "advancedAIAnalytics",
       "AI‑enhanced Campaign mode": "campaignMode",
+      "AI image generation": "aiImage",
       "AI‑enhanced media library": "mediaLibrary",
       "Automated KPI‑reports": "kpiReports",
       "Branded templates": "brandedTemplates",
