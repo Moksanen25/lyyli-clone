@@ -73,7 +73,15 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const currentLocale = supportedLocales.includes(locale) ? locale : "en";
 
   const t = await getTranslations(currentLocale);
-  const allPosts = getAllBlogPosts(currentLocale);
+  
+  // Safely get blog posts with error handling
+  let allPosts: ReturnType<typeof getAllBlogPosts> = [];
+  try {
+    allPosts = getAllBlogPosts(currentLocale);
+  } catch (error) {
+    console.error("Error loading blog posts:", error);
+    allPosts = [];
+  }
   
   // Get paginated posts for page 1
   const { posts, pagination } = getPaginatedPosts(allPosts, 1, POSTS_PER_PAGE);

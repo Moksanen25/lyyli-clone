@@ -145,24 +145,33 @@ export function getBlogPost(slug: string, locale: string): BlogPost | null {
 }
 
 export function getAllBlogSlugs(): { slug: string; locale: string }[] {
-  const slugs: { slug: string; locale: string }[] = [];
-  const locales = ["en", "fi"];
+  try {
+    const slugs: { slug: string; locale: string }[] = [];
+    const locales = ["en", "fi"];
 
-  locales.forEach((locale) => {
-    const localeDir = path.join(contentDirectory, locale);
+    locales.forEach((locale) => {
+      const localeDir = path.join(contentDirectory, locale);
 
-    if (fs.existsSync(localeDir)) {
-      const fileNames = fs.readdirSync(localeDir);
-      fileNames
-        .filter((name) => name.endsWith(".mdx"))
-        .forEach((name) => {
-          const slug = name.replace(/\.mdx$/, "");
-          slugs.push({ slug, locale });
-        });
-    }
-  });
+      if (fs.existsSync(localeDir)) {
+        try {
+          const fileNames = fs.readdirSync(localeDir);
+          fileNames
+            .filter((name) => name.endsWith(".mdx"))
+            .forEach((name) => {
+              const slug = name.replace(/\.mdx$/, "");
+              slugs.push({ slug, locale });
+            });
+        } catch (error) {
+          console.error(`Error reading directory ${localeDir}:`, error);
+        }
+      }
+    });
 
-  return slugs;
+    return slugs;
+  } catch (error) {
+    console.error("Error in getAllBlogSlugs:", error);
+    return [];
+  }
 }
 
 /**
