@@ -66,9 +66,23 @@ export default async function AboutPage({ params }: AboutPageProps) {
             </p>
             {/* Hero CTA buttons following layout rule */}
             <div className="flex justify-center gap-4 mb-0">
-              <a href="https://app.lyyli.ai" className="btn-primary" aria-label="Book a demo of Lyyli.ai">
+              <CalendarPopup 
+                className="btn-primary" 
+                aria-label="Book a demo of Lyyli.ai"
+                translations={{
+                  title: t["calendar.title"],
+                  subtitle: t["calendar.subtitle"],
+                  description: t["calendar.description"],
+                  loading: t["calendar.loading"],
+                  errorTitle: t["calendar.error.title"],
+                  errorDescription: t["calendar.error.description"],
+                  errorButton: t["calendar.error.button"],
+                  footerSecure: t["calendar.footer.secure"],
+                  footerContact: t["calendar.footer.contact"]
+                }}
+              >
                 {t['about.cta.demo']}
-              </a>
+              </CalendarPopup>
               <a href="https://app.lyyli.ai" className="btn-secondary" aria-label="Start free trial of Lyyli.ai">
                 {t['about.cta.trial']}
               </a>
@@ -109,7 +123,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CalendarPopup 
-              className="btn-secondary" 
+              className="btn-primary" 
               aria-label="Book a demo of Lyyli.ai"
               translations={{
                 title: t["calendar.title"],
@@ -125,7 +139,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
             >
               {t['about.cta.demo']}
             </CalendarPopup>
-            <a href="https://app.lyyli.ai" className="btn-primary" aria-label="Start free trial of Lyyli.ai">
+            <a href="https://app.lyyli.ai" className="btn-secondary" aria-label="Start free trial of Lyyli.ai">
               {t['about.cta.trial']}
             </a>
           </div>
