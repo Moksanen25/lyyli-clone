@@ -101,7 +101,7 @@ const plans: PricingPlan[] = [
 
 const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
 
-export default function PricingCards({ fullWidth = false, locale, translations }: PricingCardsProps) {
+export default function PricingCards({ fullWidth = false, locale = "en", translations }: PricingCardsProps) {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
   const [ref, inView] = useInView({
@@ -375,14 +375,14 @@ export default function PricingCards({ fullWidth = false, locale, translations }
                 <div className="mt-auto">
                   {(plan.name === "Professional" || plan.name === "Enterprise") ? (
                     <a
-                      href="https://app.lyyli.ai"
+                      href={`/${locale}/pricing`}
                       className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
                     </a>
                   ) : (
                     <a 
-                      href="https://app.lyyli.ai"
+                      href={`/${locale}/pricing`}
                       className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
