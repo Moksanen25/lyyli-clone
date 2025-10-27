@@ -323,15 +323,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     );
   }
 
-  // Format date
-  const publishedDate = new Date(post.date).toLocaleDateString(
-    currentLocale === "fi" ? "fi-FI" : "en-US",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    },
-  );
+  // Format date with validation
+  let publishedDate = "";
+  try {
+    const dateObj = new Date(post.date);
+    if (!isNaN(dateObj.getTime())) {
+      publishedDate = dateObj.toLocaleDateString(
+        currentLocale === "fi" ? "fi-FI" : "en-US",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        },
+      );
+    }
+  } catch {}
+
+  // Encode image path safely
+  const imageSrc = post.image ? encodeURI(post.image) : undefined;
 
   // Generate breadcrumbs for the blog post
   const breadcrumbItems = generateBlogBreadcrumbs(post.title, currentLocale, post.category);
@@ -455,11 +464,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
 
-        {post.image && (
+        {imageSrc && (
           <div className="mb-8">
             <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden">
               <Image
-                src={post.image}
+                src={imageSrc}
                 alt={post.imageAlt || post.title}
                 fill
                 className="object-cover"

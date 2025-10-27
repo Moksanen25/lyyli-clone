@@ -80,17 +80,22 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
           console.warn(`Invalid date in ${name}: ${dateValue}`);
         }
 
+        const rawImage = typeof data.image === 'string' ? data.image : '';
+        const safeImage = rawImage && rawImage.startsWith('/') ? encodeURI(rawImage) : undefined;
+        const rawDate = typeof data.date === 'string' ? data.date : '';
+        const safeDate = !rawDate || isNaN(new Date(rawDate).getTime()) ? '' : rawDate;
+
         return {
           slug,
           locale,
           title: data.title || "",
           description: data.description || "",
-          date: dateValue,
-          readTime: data.readTime || 5,
+          date: safeDate,
+          readTime: typeof data.readTime === 'number' ? data.readTime : 5,
           category: data.category || "Communication",
-          keywords: data.keywords || [],
+          keywords: Array.isArray(data.keywords) ? data.keywords : [],
           author: data.author || "Lyyli Team",
-          image: data.image,
+          image: safeImage,
           imageAlt: data.imageAlt,
         } as BlogPostMetadata;
       } catch (error) {
@@ -125,17 +130,23 @@ export function getBlogPost(slug: string, locale: string): BlogPost | null {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
 
+    // Sanitize image and critical fields
+    const rawImage = typeof data.image === 'string' ? data.image : '';
+    const safeImage = rawImage && rawImage.startsWith('/') ? encodeURI(rawImage) : undefined;
+    const rawDate = typeof data.date === 'string' ? data.date : '';
+    const safeDate = !rawDate || isNaN(new Date(rawDate).getTime()) ? '' : rawDate;
+
     return {
       slug,
       locale,
       title: data.title || "",
       description: data.description || "",
-      date: data.date || "",
-      readTime: data.readTime || 5,
+      date: safeDate,
+      readTime: typeof data.readTime === 'number' ? data.readTime : 5,
       category: data.category || "Communication",
-      keywords: data.keywords || [],
+      keywords: Array.isArray(data.keywords) ? data.keywords : [],
       author: data.author || "Lyyli Team",
-      image: data.image,
+      image: safeImage,
       imageAlt: data.imageAlt,
       content,
     } as BlogPost;
