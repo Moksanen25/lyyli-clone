@@ -29,11 +29,14 @@ const plans: PricingPlan[] = [
     yearlyPrice: 0,
     description: "Perfect for individuals and small teams getting started",
     features: [
-      "Max 1 user",
-      "Basic AI generation with limited tone of voice and brand settings",
-      "Max 20 AI conversations a week",
-      "No integrations",
-      "Help & Support library"
+      "Guided AI onboarding in less than 5 minutes",
+      "Proactive communication ideas",
+      "Broad tone of voice and brand settings for internal and external communications",
+      "End-to-end encryption",
+      "GDPR compliant",
+      "ISO 27001 readiness",
+      "Real-time translations",
+      "FI and EN user interface"
     ],
     cta: "Get started free"
   },
@@ -44,9 +47,9 @@ const plans: PricingPlan[] = [
     description: "Everything in Free with added capacity for early growth",
     features: [
       "Everything in Free",
-      "Basic tone of voice settings",
-      "Max 300 messages per month",
-      "Up to 3 integrations"
+      "AI image generation with brand references",
+      "All available integrations",
+      "Priority support"
     ],
     cta: "Start free trial"
   },
@@ -57,10 +60,7 @@ const plans: PricingPlan[] = [
     description: "Everything in Starter plus team collaboration",
     features: [
       "Everything in Launch",
-      "Organization management and user roles",
-      "Slack and/or Teams native app",
-      "Advanced tone of voice settings",
-      "Up to 1000 messages per month",
+      "Up to 1000 messages a month",
       "Priority support (email)"
     ],
     cta: "Start free trial",
@@ -112,20 +112,20 @@ export default function PricingCards({ fullWidth = false, locale = "en", transla
   // Feature translation mapping
   const translateFeature = (feature: string): string => {
     const featureMap: { [key: string]: string } = {
-      "Max 1 user": "pricing.features.maxOneUser",
-      "Basic AI generation with limited tone of voice and brand settings": "pricing.features.basicAILimited",
-      "Max 20 AI conversations a week": "pricing.features.maxTwentyConversations",
-      "No integrations": "pricing.features.noIntegrations",
-      "Help & Support library": "pricing.features.helpSupportLibrary",
+      "Guided AI onboarding in less than 5 minutes": "pricing.features.guidedOnboarding5Min",
+      "Proactive communication ideas": "pricing.features.proactiveIdeas",
+      "Broad tone of voice and brand settings for internal and external communications": "pricing.features.broadToneBrand",
+      "End-to-end encryption": "pricing.features.endToEndEncryption",
+      "GDPR compliant": "pricing.features.gdprCompliant",
+      "ISO 27001 readiness": "pricing.features.iso27001Ready",
+      "Real-time translations": "pricing.features.realTimeTranslations",
+      "FI and EN user interface": "pricing.features.fiEnInterface",
       "Everything in Free": "pricing.features.everythingInFree",
-      "Basic tone of voice settings": "pricing.features.basicTone",
-      "Max 300 messages per month": "pricing.features.maxThreeHundredMessages",
-      "Up to 3 integrations": "pricing.features.maxThreeIntegrations",
+      "AI image generation with brand references": "pricing.features.aiImageGeneration",
+      "All available integrations": "pricing.features.allAvailableIntegrations",
+      "Priority support": "pricing.features.prioritySupport",
       "Everything in Launch": "pricing.features.everythingInLaunch",
-      "Organization management and user roles": "pricing.features.orgManagementRoles",
-      "Slack and/or Teams native app": "pricing.features.slackOrTeams",
-      "Advanced tone of voice settings": "pricing.features.advancedTone",
-      "Up to 1000 messages per month": "pricing.features.upToThousandMessages",
+      "Up to 1000 messages a month": "pricing.features.upToThousandMessagesPerMonth",
       "Priority support (email)": "pricing.features.prioritySupportEmail",
       "Everything in Growth": "pricing.features.everythingInGrowth",
       "Advanced AI-analytics to optimize your content and publishing": "pricing.features.advancedAIAnalytics",
