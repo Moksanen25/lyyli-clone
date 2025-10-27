@@ -112,7 +112,7 @@ export default async function WaitlistPage({ params }: WaitlistPageProps) {
             </div>
 
             {/* Waitlist Form */}
-            <WaitlistForm />
+            <WaitlistForm translations={{ "cta.demo": t["cta.demo"] }} />
           </div>
         </div>
       </section>
