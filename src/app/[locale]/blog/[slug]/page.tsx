@@ -222,6 +222,10 @@ function markdownToHtml(markdown: string): string {
   // Convert line breaks
   html = html.replace(/\n\n/g, '<br><br>');
   
+  // Strip any inline SVGs from content to prevent malformed SVG from breaking render
+  // Blog content should not include raw SVG elements
+  html = html.replace(/<svg[\s\S]*?<\/svg>/gi, '');
+  
   return html;
 }
 
