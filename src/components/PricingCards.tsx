@@ -375,14 +375,14 @@ export default function PricingCards({ fullWidth = false, locale = "en", transla
                 <div className="mt-auto">
                   {(plan.name === "Professional" || plan.name === "Enterprise") ? (
                     <a
-                      href={`/${locale}/pricing`}
+                      href={`/${locale}/waitlist`}
                       className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
                     </a>
                   ) : (
                     <a 
-                      href={`/${locale}/pricing`}
+                      href="https://app.lyyli.ai"
                       className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
                     >
                       {plan.cta}
