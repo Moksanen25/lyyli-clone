@@ -23,15 +23,23 @@ export default function BlogPostCard({
   locale,
   translations: t,
 }: BlogPostCardProps) {
-  // Format date
-  const publishedDate = new Date(post.date).toLocaleDateString(
-    locale === "fi" ? "fi-FI" : "en-US",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    },
-  );
+  // Format date with error handling
+  let publishedDate = '';
+  try {
+    const dateObj = new Date(post.date);
+    if (!isNaN(dateObj.getTime())) {
+      publishedDate = dateObj.toLocaleDateString(
+        locale === "fi" ? "fi-FI" : "en-US",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        },
+      );
+    }
+  } catch (error) {
+    console.error("Error formatting date:", error);
+  }
 
   return (
     <article className="bg-white rounded-2xl shadow-soft hover:shadow-xl transition-all duration-300 ease-out overflow-hidden group border border-gray-200">

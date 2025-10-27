@@ -68,26 +68,53 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
   const posts = fileNames
     .filter((name) => name.endsWith(".mdx"))
     .map((name) => {
-      const slug = name.replace(/\.mdx$/, "");
-      const fullPath = path.join(localeDir, name);
-      const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(fileContents);
+      try {
+        const slug = name.replace(/\.mdx$/, "");
+        const fullPath = path.join(localeDir, name);
+        const fileContents = fs.readFileSync(fullPath, "utf8");
+        const { data } = matter(fileContents);
 
-      return {
-        slug,
-        locale,
-        title: data.title || "",
-        description: data.description || "",
-        date: data.date || "",
-        readTime: data.readTime || 5,
-        category: data.category || "Communication",
-        keywords: data.keywords || [],
-        author: data.author || "Lyyli Team",
-        image: data.image,
-        imageAlt: data.imageAlt,
-      } as BlogPostMetadata;
+        // Validate date
+        const dateValue = data.date || "";
+        if (dateValue && isNaN(new Date(dateValue).getTime())) {
+          console.warn(`Invalid date in ${name}: ${dateValue}`);
+        }
+
+        return {
+          slug,
+          locale,
+          title: data.title || "",
+          description: data.description || "",
+          date: dateValue,
+          readTime: data.readTime || 5,
+          category: data.category || "Communication",
+          keywords: data.keywords || [],
+          author: data.author || "Lyyli Team",
+          image: data.image,
+          imageAlt: data.imageAlt,
+        } as BlogPostMetadata;
+      } catch (error) {
+        console.error(`Error processing blog post ${name}:`, error);
+        return null;
+      }
     })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .filter((post): post is BlogPostMetadata => post !== null)
+    .sort((a, b) => {
+      try {
+        const dateA = new Date(a.date).getTime();
+        const dateB = new Date(b.date).getTime();
+        
+        // Handle invalid dates
+        if (isNaN(dateA) && isNaN(dateB)) return 0;
+        if (isNaN(dateA)) return 1;
+        if (isNaN(dateB)) return -1;
+        
+        return dateB - dateA;
+      } catch (error) {
+        console.error("Error sorting blog posts:", error);
+        return 0;
+      }
+    });
 
   return posts;
 }
