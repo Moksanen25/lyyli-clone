@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 import { BlogPostMetadata } from '@/lib/blog';
 
 interface RelatedPostsProps {
@@ -17,7 +16,11 @@ export default function RelatedPosts({
   maxPosts = 3,
   className = '' 
 }: RelatedPostsProps) {
-  const t = useTranslations('blog.related');
+  // Translations moved to inline text to avoid client-side hook in server component
+  const title = locale === 'fi' ? 'Lue myös' : 'Related Articles';
+  const subtitle = locale === 'fi' ? 'Tutustu myös näihin artikkeleihin' : 'Explore more insights from our blog';
+  const readMore = locale === 'fi' ? 'Lue artikkeli' : 'Read article';
+  const readTime = locale === 'fi' ? 'min luku' : 'min read';
   
   // Filter out current post and get related posts
   const relatedPosts = posts
@@ -33,10 +36,10 @@ export default function RelatedPosts({
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-playfair font-bold text-forest mb-4">
-            {t('title')}
+            {title}
           </h2>
           <p className="text-mediumGray max-w-2xl mx-auto">
-            {t('subtitle')}
+            {subtitle}
           </p>
         </div>
         

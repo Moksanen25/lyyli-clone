@@ -16,6 +16,8 @@ import Breadcrumbs from "../../../../components/Breadcrumbs";
 import CalendarPopup from "../../../../components/CalendarPopup";
 import RelatedPosts from "../../../../components/blog/RelatedPosts";
 import { generateBlogBreadcrumbs, generateBreadcrumbSchema } from "../../../../lib/breadcrumb-schema";
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import { BlogMDXComponents } from "../../../../components/mdx/BlogMDXComponents";
 
 export const revalidate = 3600; // ISR: revalidate blog posts hourly
 
@@ -62,172 +64,8 @@ export async function generateMetadata({
   };
 }
 
-// Function to convert markdown to HTML
-function markdownToHtml(markdown: string): string {
-  let html = markdown;
-  
-  // Convert headers - Following brand rules: H2 and H3 use Playfair, H4+ use Inter
-  html = html.replace(/^# (.*$)/gim, '<h1 class="text-4xl font-playfair font-bold text-forest mb-6 mt-0">$1</h1>');
-  html = html.replace(/^## (.*$)/gim, '<h2 class="text-3xl font-playfair font-bold text-forest mb-4 mt-12">$1</h2>');
-  html = html.replace(/^### (.*$)/gim, '<h3 class="text-2xl font-playfair font-bold text-forest mb-3 mt-8">$1</h3>');
-  html = html.replace(/^#### (.*$)/gim, '<h4 class="text-xl font-inter font-bold text-forest mb-2 mt-6">$1</h4>');
-  html = html.replace(/^##### (.*$)/gim, '<h5 class="text-lg font-inter font-bold text-forest mb-2 mt-4">$1</h5>');
-  html = html.replace(/^###### (.*$)/gim, '<h6 class="text-base font-inter font-bold text-forest mb-2 mt-4">$1</h6>');
-  
-  // Convert bold and italic
-  html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-forest">$1</strong>');
-  html = html.replace(/\*(.*?)\*/g, '<em class="italic">$1</em>');
-  
-  // Process chapter breaks - Convert double line breaks to proper spacing
-  html = html.replace(/\n\n\n+/g, '\n\n<div class="chapter-break my-12"></div>\n\n');
-  
-  // Process blockquotes
-  html = html.replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>');
-  
-  // Process inline code
-  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-  
-  // Process code blocks
-  html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
-  
-  // Process tables (basic support)
-  html = html.replace(/\|(.+)\|/g, function(match) {
-    const cells = match.split('|').slice(1, -1);
-    const row = cells.map(cell => `<td>${cell.trim()}</td>`).join('');
-    return `<tr>${row}</tr>`;
-  });
-  
-  // Process "Ask Mikko more" section - Complete restructure
-  html = html.replace(
-    /## Ask Mikko more([\s\S]*?)<\/div>\s*<\/div>/g,
-    function() {
-      // Extract the content and restructure it completely
-      return `<div class="ask-mikko-section">
-        <h3>Have questions about building data-driven communication?</h3>
-        
-        <div class="profile-section">
-          <div class="profile-info">
-            <h4>Mikko Oksanen</h4>
-            <p class="title">CEO and co-founder of Lyyli.ai</p>
-            <p class="description">I'm passionate about helping organizations transform their communication from intuition-based to data-driven, improving effectiveness and demonstrating measurable business value.</p>
-          </div>
-        </div>
-        
-        <div class="discussion-topics">
-          <h4>Feel free to reach out if you'd like to discuss:</h4>
-          <ul>
-            <li>How to build your data foundation for communication</li>
-            <li>Measuring communication performance and impact</li>
-            <li>Creating audience insights and segmentation</li>
-            <li>Implementing data-driven practices in your organization</li>
-          </ul>
-        </div>
-        
-        <div class="contact-section">
-          <div class="cta-buttons">
-            <a href="mailto:mikko@lyyli.ai" class="cta-button">
-              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
-              Contact me directly
-            </a>
-            <a href="https://lyyli.ai/demo" target="_blank" rel="noopener noreferrer" class="cta-button">
-              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-              </svg>
-              Book a personalized demo
-            </a>
-          </div>
-        </div>
-      </div>`;
-    }
-  );
-  
-  // Process inline CTA buttons and links
-  html = html.replace(
-    /<a href="https:\/\/lyyli\.ai\/demo"[^>]*class="[^"]*bg-forest[^"]*"[^>]*>([^<]*)<\/a>/g,
-    '<a href="https://lyyli.ai/demo" class="cta-button-primary" target="_blank" rel="noopener noreferrer">$1</a>'
-  );
-  
-  html = html.replace(
-    /<a href="mailto:mikko@lyyli\.ai"[^>]*>([^<]*)<\/a>/g,
-    '<a href="mailto:mikko@lyyli.ai" class="cta-link-email">$1</a>'
-  );
-  
-  // Process any remaining inline bg-forest divs
-  html = html.replace(
-    /<div class="bg-forest[^"]*">/g,
-    '<div class="enhanced-cta-section">'
-  );
-  
-  // Process lists more carefully
-  // First, split content into lines
-  const lines = html.split('\n');
-  const processedLines = [];
-  let inUnorderedList = false;
-  let inOrderedList = false;
-  
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    
-    if (line.trim().startsWith('- ')) {
-      // Unordered list item
-      if (!inUnorderedList) {
-        if (inOrderedList) {
-          // Close previous ordered list
-          processedLines.push('</ol>');
-          inOrderedList = false;
-        }
-        inUnorderedList = true;
-        processedLines.push('<ul class="list-disc list-inside mb-4 space-y-2">');
-      }
-      const content = line.replace(/^- (.*)/, '$1');
-      processedLines.push(`<li class="mb-2">${content}</li>`);
-    } else if (/^\d+\. .*/.test(line.trim())) {
-      // Ordered list item
-      if (!inOrderedList) {
-        if (inUnorderedList) {
-          // Close previous unordered list
-          processedLines.push('</ul>');
-          inUnorderedList = false;
-        }
-        inOrderedList = true;
-        processedLines.push('<ol class="list-decimal list-inside mb-4 space-y-2">');
-      }
-      const content = line.replace(/^\d+\. (.*)/, '$1');
-      processedLines.push(`<li class="mb-2">${content}</li>`);
-    } else {
-      // Not a list item
-      if (inUnorderedList) {
-        processedLines.push('</ul>');
-        inUnorderedList = false;
-      } else if (inOrderedList) {
-        processedLines.push('</ol>');
-        inOrderedList = false;
-      }
-      processedLines.push(line);
-    }
-  }
-  
-  // Close any open lists
-  if (inUnorderedList) {
-    processedLines.push('</ul>');
-  } else if (inOrderedList) {
-    processedLines.push('</ol>');
-  }
-  
-  html = processedLines.join('\n');
-  
-  // Convert line breaks
-  html = html.replace(/\n\n/g, '<br><br>');
-  
-  // Strip any inline SVGs from content to prevent malformed SVG from breaking render
-  // Blog content should not include raw SVG elements
-  html = html.replace(/<svg[\s\S]*?<\/svg>/gi, '');
-  
-  return html;
-}
+// Modern MDX rendering replaces the old regex-based markdownToHtml function
+// All styling is now handled through MDX components in BlogMDXComponents.tsx
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { locale, slug } = await params;
@@ -243,15 +81,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     post = getBlogPost(slug, currentLocale);
     
     // If post exists, check if it has a translation
-    if (post && hasTranslation(slug)) {
+    if (post && hasTranslation(slug, currentLocale)) {
       const targetLocale = currentLocale === "en" ? "fi" : "en";
-      translatedPost = getTranslatedBlogPost(slug, targetLocale);
+      translatedPost = getTranslatedBlogPost(slug, currentLocale, targetLocale);
     }
     
     // If no post in current locale, try to get the translated version
-    if (!post && hasTranslation(slug)) {
+    if (!post && hasTranslation(slug, currentLocale)) {
       const targetLocale = currentLocale === "en" ? "fi" : "en";
-      post = getTranslatedBlogPost(slug, targetLocale);
+      post = getTranslatedBlogPost(slug, currentLocale, targetLocale);
       if (post) {
         // This means we're showing content in a different language
         translatedPost = null; // No need to show translation option
@@ -488,13 +326,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 pb-16 lg:pb-24">
-        <div className="prose prose-lg max-w-none prose-headings:text-forest prose-a:text-forest prose-a:no-underline hover:prose-a:text-turquoise prose-strong:text-forest prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700">
-          {/* Process markdown content manually for now */}
-          <div 
-            className="markdown-content blog p-8 rounded-2xl"
-            dangerouslySetInnerHTML={{ 
-              __html: markdownToHtml(post.content) 
-            }} 
+        <div className="markdown-content blog p-8 rounded-2xl">
+          <MDXRemote 
+            source={post.content} 
+            components={BlogMDXComponents}
           />
         </div>
       </div>

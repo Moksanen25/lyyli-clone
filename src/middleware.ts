@@ -45,13 +45,15 @@ export default function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || '';
   const pathname = request.nextUrl.pathname;
   
-  // Log redirect decisions for debugging
-  logger.debug('Canonical host check', {
-    hostname,
-    pathname,
-    shouldRedirect: shouldRedirectToCanonical(hostname, pathname),
-    environment: process.env.NODE_ENV
-  });
+  // Log redirect decisions for debugging (only in production)
+  if (process.env.NODE_ENV === 'production') {
+    logger.debug('Canonical host check', {
+      hostname,
+      pathname,
+      shouldRedirect: shouldRedirectToCanonical(hostname, pathname),
+      environment: process.env.NODE_ENV
+    });
+  }
   
   // Check if we should redirect to canonical host
   if (shouldRedirectToCanonical(hostname, pathname)) {

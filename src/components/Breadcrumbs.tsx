@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 
 interface BreadcrumbItem {
   label: string;
@@ -10,14 +9,13 @@ interface BreadcrumbItem {
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
   className?: string;
+  ariaLabel?: string;
 }
 
-export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
-  const t = useTranslations('breadcrumbs');
-
+export default function Breadcrumbs({ items, className = '', ariaLabel = 'Breadcrumb navigation' }: BreadcrumbsProps) {
   return (
     <nav 
-      aria-label={t('navigation')} 
+      aria-label={ariaLabel} 
       className={`flex items-center space-x-1 text-sm text-gray-600 ${className}`}
     >
       {items.map((item, index) => (

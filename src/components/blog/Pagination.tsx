@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 import { PaginationInfo, generatePaginationUrls, generatePaginationNumbers } from '@/lib/pagination';
 
 interface PaginationProps {
@@ -15,7 +14,13 @@ export default function Pagination({
   locale, 
   className = '' 
 }: PaginationProps) {
-  const t = useTranslations('blog.pagination');
+  // Translations moved to inline text to avoid client-side hook in server component
+  const navigationLabel = locale === 'fi' ? 'Sivunumerointi' : 'Pagination';
+  const previous = locale === 'fi' ? 'Edellinen' : 'Previous';
+  const next = locale === 'fi' ? 'Seuraava' : 'Next';
+  const page = locale === 'fi' ? 'Sivu' : 'Page';
+  const of = locale === 'fi' ? '/' : 'of';
+  
   const urls = generatePaginationUrls(basePath, pagination);
   const pageNumbers = generatePaginationNumbers(pagination.currentPage, pagination.totalPages);
 
@@ -26,7 +31,7 @@ export default function Pagination({
 
   return (
     <nav 
-      aria-label={t('navigation')}
+      aria-label={navigationLabel}
       className={`flex items-center justify-center space-x-2 ${className}`}
     >
       {/* Previous Page */}
@@ -34,12 +39,12 @@ export default function Pagination({
         <Link
           href={urls.previous}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-colors duration-200"
-          aria-label={t('previousPage')}
+          aria-label={previous}
         >
           <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          {t('previous')}
+          {previous}
         </Link>
       )}
 
@@ -64,7 +69,7 @@ export default function Pagination({
                 key={pageInfo.page}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-forest border border-forest rounded-lg"
                 aria-current="page"
-                aria-label={`${t('page')} ${pageInfo.page}`}
+                aria-label={`${page} ${pageInfo.page}`}
               >
                 {pageInfo.label}
               </span>
@@ -78,7 +83,7 @@ export default function Pagination({
               key={pageInfo.page}
               href={href}
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-colors duration-200"
-              aria-label={`${t('page')} ${pageInfo.page}`}
+              aria-label={`${page} ${pageInfo.page}`}
             >
               {pageInfo.label}
             </Link>
@@ -91,9 +96,9 @@ export default function Pagination({
         <Link
           href={urls.next}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-colors duration-200"
-          aria-label={t('nextPage')}
+          aria-label={next}
         >
-          {t('next')}
+          {next}
           <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
@@ -102,11 +107,10 @@ export default function Pagination({
 
       {/* Page Info */}
       <div className="hidden sm:block ml-4 text-sm text-gray-500">
-        {t('showing', {
-          start: pagination.startIndex + 1,
-          end: pagination.endIndex,
-          total: pagination.totalPosts
-        })}
+        {locale === 'fi' 
+          ? `Näytetään ${pagination.startIndex + 1}-${pagination.endIndex} / ${pagination.totalPosts}`
+          : `Showing ${pagination.startIndex + 1}-${pagination.endIndex} of ${pagination.totalPosts}`
+        }
       </div>
     </nav>
   );

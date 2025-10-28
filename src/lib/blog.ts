@@ -16,6 +16,7 @@ export interface BlogPost {
   author: string;
   image?: string;
   imageAlt?: string;
+  translationSlug?: string;
   content: string;
 }
 
@@ -31,31 +32,10 @@ export interface BlogPostMetadata {
   author: string;
   image?: string;
   imageAlt?: string;
+  translationSlug?: string;
 }
 
 const contentDirectory = path.join(process.cwd(), "content/blog");
-
-// Translation mapping between English and Finnish blog posts
-const TRANSLATION_MAP: Record<string, string> = {
-  // English -> Finnish
-  "communication-roi-leadership": "viestinnan-roi-johdolle",
-  "turning-communication-into-profit-center": "viestinnasta-tuottava-funktio",
-  "internal-communication-pitfalls": "sisaisen-viestinnan-sudenkuopat",
-  "enterprise-security-gdpr-compliance": "yritysturvallisuus-gdpr-vaatimustenmukaisuus",
-  "ai-communication-expert-teams": "ai-viestinta-asiantuntijatiimit",
-  "ai-spots-communication-opportunities": "tekoaly-tunnistaa-viestinnan-mahdollisuudet",
-  "consistent-brand-voice": "yhtenainen-brandi-aanen",
-  "lyyli-funding-announcement": "lyyli-funding-announcement", // Same slug in both
-  
-  // Finnish -> English (reverse mapping)
-  "viestinnan-roi-johdolle": "communication-roi-leadership",
-  "viestinnasta-tuottava-funktio": "turning-communication-into-profit-center",
-  "sisaisen-viestinnan-sudenkuopat": "internal-communication-pitfalls",
-  "yritysturvallisuus-gdpr-vaatimustenmukaisuus": "enterprise-security-gdpr-compliance",
-  "ai-viestinta-asiantuntijatiimit": "ai-communication-expert-teams",
-  "tekoaly-tunnistaa-viestinnan-mahdollisuudet": "ai-spots-communication-opportunities",
-  "yhtenainen-brandi-aanen": "consistent-brand-voice",
-};
 
 export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
   const localeDir = path.join(contentDirectory, locale);
@@ -97,6 +77,7 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
           author: data.author || "Lyyli Team",
           image: safeImage,
           imageAlt: data.imageAlt,
+          translationSlug: data.translationSlug,
         } as BlogPostMetadata;
       } catch (error) {
         console.error(`Error processing blog post ${name}:`, error);
@@ -148,6 +129,7 @@ export function getBlogPost(slug: string, locale: string): BlogPost | null {
       author: data.author || "Lyyli Team",
       image: safeImage,
       imageAlt: data.imageAlt,
+      translationSlug: data.translationSlug,
       content,
     } as BlogPost;
   } catch {
@@ -186,17 +168,18 @@ export function getAllBlogSlugs(): { slug: string; locale: string }[] {
 }
 
 /**
- * Get the translated slug for a blog post
+ * Get the translated slug for a blog post by reading from the post's front matter
  */
-export function getTranslationSlug(slug: string): string | null {
-  return TRANSLATION_MAP[slug] || null;
+export function getTranslationSlug(slug: string, locale: string): string | null {
+  const post = getBlogPost(slug, locale);
+  return post?.translationSlug || null;
 }
 
 /**
  * Get the translated blog post if it exists
  */
-export function getTranslatedBlogPost(slug: string, targetLocale: string): BlogPost | null {
-  const translationSlug = getTranslationSlug(slug);
+export function getTranslatedBlogPost(slug: string, currentLocale: string, targetLocale: string): BlogPost | null {
+  const translationSlug = getTranslationSlug(slug, currentLocale);
   if (!translationSlug) return null;
   
   return getBlogPost(translationSlug, targetLocale);
@@ -215,8 +198,8 @@ export function getAlternativeBlogPosts(targetLocale: string, excludeSlug?: stri
 /**
  * Check if a blog post has a translation
  */
-export function hasTranslation(slug: string): boolean {
-  return !!getTranslationSlug(slug);
+export function hasTranslation(slug: string, locale: string): boolean {
+  return !!getTranslationSlug(slug, locale);
 }
 
 export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
@@ -224,7 +207,7 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
 
   // Determine translated slug if available for hreflang alternates
   const otherLocale = locale === 'fi' ? 'en' : 'fi';
-  const translatedSlug = getTranslationSlug(post.slug);
+  const translatedSlug = post.translationSlug;
   const alternates: Record<string, string> = {};
   alternates[locale] = canonicalUrl;
   if (translatedSlug) {

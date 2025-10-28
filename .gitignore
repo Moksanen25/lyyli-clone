@@ -2,6 +2,8 @@ See https://help.github.com/articles/ignoring-files/ for more about ignoring fil
 
 # dependencies
 /node_modules
+# in case of nested packages or examples (none currently, but safe)
+**/node_modules
 /.pnp
 .pnp.js
 
@@ -10,26 +12,48 @@ See https://help.github.com/articles/ignoring-files/ for more about ignoring fil
 /test-results/
 /playwright-report/
 /playwright/.cache/
+# playwright traces and artifacts
+/playwright/.reporter/
+**/test-results/
+**/playwright-report/
+**/playwright/.cache/
 
 # next.js
 /.next/
 /out/
+# next standalone output if used
+/.next/standalone/
 
 # production
 /build
+# vercel output cache if export used
+/.vercel/output/
 
 # misc
 .DS_Store
+**/.DS_Store
+__MACOSX
 *.pem
+*.log
+*.log.*
+*.pid
+*.pid.lock
+.cache
+.parcel-cache
+.turbo
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # local env files
 .env*.local
 .env
+.env.development.local
+.env.test.local
+.env.production.local
 
 # vercel
 .vercel
@@ -44,10 +68,21 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+.history/
+.fleet/
+.cursor/
 
 # OS
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+._*
 
 # Lyyli-specific
 /exports/
 /archive/old-project-structure/
+/lyyli-clone/
+# lighthouse reports
+lighthouse-*.html
+lighthouse-*.json
+*-lighthouse-report.html

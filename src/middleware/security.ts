@@ -209,11 +209,14 @@ export function addSecurityHeaders(
     response.headers.delete('Server');
     response.headers.delete('X-Powered-By');
 
-    logger.debug('Security headers added successfully', {
-      csp: config.enableCSP,
-      hsts: config.enableHSTS,
-      xss: config.enableXSSProtection,
-    });
+    // Only log in production to reduce noise in development
+    if (process.env.NODE_ENV === 'production') {
+      logger.debug('Security headers added successfully', {
+        csp: config.enableCSP,
+        hsts: config.enableHSTS,
+        xss: config.enableXSSProtection,
+      });
+    }
 
   } catch (error) {
     logger.error('Failed to add security headers', {
@@ -226,14 +229,18 @@ export function addSecurityHeaders(
 
 /**
  * Security middleware for Next.js
+ * Only performs strict security checks in production
  */
 export function securityMiddleware(
   request: NextRequest,
   config: SecurityConfig = DEFAULT_SECURITY_CONFIG
 ): NextResponse | null {
+  // Skip most security checks in development for better performance
+  const isProduction = process.env.NODE_ENV === 'production';
+  
   try {
-    // Log security-related requests
-    if (request.method !== 'GET' && request.method !== 'HEAD') {
+    // Log security-related requests (only in production to reduce noise)
+    if (isProduction && request.method !== 'GET' && request.method !== 'HEAD') {
       logger.info('Security middleware processing request', {
         method: request.method,
         url: request.url,
@@ -242,7 +249,7 @@ export function securityMiddleware(
       });
     }
 
-    // Check for suspicious patterns
+    // Check for suspicious patterns (always, but less logging in dev)
     const url = request.url.toLowerCase();
     const userAgent = request.headers.get('user-agent')?.toLowerCase() || '';
 
@@ -259,34 +266,39 @@ export function securityMiddleware(
 
     for (const pattern of suspiciousPatterns) {
       if (pattern.test(url) || pattern.test(userAgent)) {
-        logger.warn('Suspicious request blocked', {
-          url: request.url,
-          userAgent: request.headers.get('user-agent'),
-          ip: getClientIP(request),
-          pattern: pattern.source,
-        });
+        if (isProduction) {
+          logger.warn('Suspicious request blocked', {
+            url: request.url,
+            userAgent: request.headers.get('user-agent'),
+            ip: getClientIP(request),
+            pattern: pattern.source,
+          });
+        }
 
         return new NextResponse('Forbidden', { status: 403 });
       }
     }
 
-    // Block requests with suspicious headers
-    const suspiciousHeaders = [
-      'x-forwarded-for',
-      'x-real-ip',
-      'x-forwarded-proto',
-      'x-forwarded-host',
-      'x-forwarded-port',
-    ];
+    // Check for suspicious headers ONLY in production
+    // In development, Next.js and proxies legitimately add these headers
+    if (isProduction) {
+      const suspiciousHeaders = [
+        'x-forwarded-for',
+        'x-real-ip',
+        'x-forwarded-proto',
+        'x-forwarded-host',
+        'x-forwarded-port',
+      ];
 
-    for (const header of suspiciousHeaders) {
-      if (request.headers.get(header)) {
-        logger.warn('Suspicious header detected', {
-          header,
-          value: request.headers.get(header),
-          url: request.url,
-          ip: getClientIP(request),
-        });
+      for (const header of suspiciousHeaders) {
+        if (request.headers.get(header)) {
+          logger.warn('Suspicious header detected', {
+            header,
+            value: request.headers.get(header),
+            url: request.url,
+            ip: getClientIP(request),
+          });
+        }
       }
     }
 

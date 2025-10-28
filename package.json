@@ -61,6 +61,7 @@
     "gray-matter": "^4.0.3",
     "next": "15.5.2",
     "next-intl": "^4.3.12",
+    "next-mdx-remote": "^5.0.0",
     "react": "^19.2.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.2.0",
