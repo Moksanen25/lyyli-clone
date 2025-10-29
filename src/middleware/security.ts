@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
 import { getClientIP } from '@/lib/security';
 
@@ -40,20 +40,16 @@ export const DEFAULT_SECURITY_CONFIG: SecurityConfig = {
     'style-src': [
       "'self'",
       "'unsafe-inline'", // Required for Tailwind CSS
-      'https://fonts.googleapis.com'
+      'https://fonts.googleapis.com',
     ],
-    'font-src': [
-      "'self'",
-      'https://fonts.gstatic.com',
-      'data:'
-    ],
+    'font-src': ["'self'", 'https://fonts.gstatic.com', 'data:'],
     'img-src': [
       "'self'",
       'data:',
       'https:',
       'blob:',
       'https://*.hsforms.com',
-      'https://*.hsforms.net'
+      'https://*.hsforms.net',
     ],
     'connect-src': [
       "'self'",
@@ -61,44 +57,40 @@ export const DEFAULT_SECURITY_CONFIG: SecurityConfig = {
       'https://va.vercel-scripts.com',
       'https://api.vercel.com',
       'https://*.hsforms.com',
-      'https://*.hsforms.net'
+      'https://*.hsforms.net',
     ],
     'frame-src': [
       "'self'",
       'https://*.hsforms.com',
       'https://*.hsforms.net',
-      'https://calendar.google.com'
+      'https://*.pipedrive.com',
     ],
     'object-src': ["'none'"],
     'base-uri': ["'self'"],
-    'form-action': [
-      "'self'",
-      'https://*.hsforms.com',
-      'https://*.hsforms.net'
-    ],
+    'form-action': ["'self'", 'https://*.hsforms.com', 'https://*.hsforms.net'],
     'frame-ancestors': ["'none'"],
     'upgrade-insecure-requests': [],
     'report-uri': ['/api/csp-report'],
   },
   permissionsPolicy: {
-    'camera': ['()'],
-    'microphone': ['()'],
-    'geolocation': ['()'],
-    'payment': ['()'],
-    'usb': ['()'],
-    'magnetometer': ['()'],
-    'gyroscope': ['()'],
-    'accelerometer': ['()'],
+    camera: ['()'],
+    microphone: ['()'],
+    geolocation: ['()'],
+    payment: ['()'],
+    usb: ['()'],
+    magnetometer: ['()'],
+    gyroscope: ['()'],
+    accelerometer: ['()'],
     'ambient-light-sensor': ['()'],
     'autoplay-policy': ['()'],
-    'battery': ['()'],
+    battery: ['()'],
     'cross-origin-isolated': ['()'],
     'display-capture': ['()'],
     'document-domain': ['()'],
     'encrypted-media': ['()'],
     'execution-while-not-rendered': ['()'],
     'execution-while-out-of-viewport': ['()'],
-    'fullscreen': ['()'],
+    fullscreen: ['()'],
     'keyboard-map': ['()'],
     'picture-in-picture': ['()'],
     'publickey-credentials-get': ['()'],
@@ -127,7 +119,9 @@ function generateCSPHeader(directives: Record<string, string[]>): string {
 /**
  * Generate Permissions Policy header value
  */
-function generatePermissionsPolicyHeader(policies: Record<string, string[]>): string {
+function generatePermissionsPolicyHeader(
+  policies: Record<string, string[]>
+): string {
   return Object.entries(policies)
     .map(([feature, origins]) => `${feature}=${origins.join(', ')}`)
     .join(', ');
@@ -143,8 +137,11 @@ export function addSecurityHeaders(
 ): NextResponse {
   try {
     // Generate nonce if not provided (Edge Runtime compatible)
-    const scriptNonce = nonce || globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-    
+    const scriptNonce =
+      nonce ??
+      globalThis.crypto?.randomUUID?.() ??
+      `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
     // Content Security Policy
     if (config.enableCSP) {
       // Always include nonce in script-src for dynamic scripts
@@ -153,17 +150,27 @@ export function addSecurityHeaders(
       if (!scripts.includes(nonceToken)) {
         config.cspDirectives['script-src'] = [...scripts, nonceToken];
       }
-      
+
       const cspValue = generateCSPHeader(config.cspDirectives);
       response.headers.set('Content-Security-Policy', cspValue);
-      
+
       // Set nonce header for client-side use
       response.headers.set('X-Script-Nonce', scriptNonce);
-      
+
       // Modern reporting API (optional): point to /api/csp-report
-      response.headers.set('Reporting-Endpoints', 'csp-endpoint="/api/csp-report"');
+      response.headers.set(
+        'Reporting-Endpoints',
+        'csp-endpoint="/api/csp-report"'
+      );
       // Backwards-compatible Report-To (older spec)
-      response.headers.set('Report-To', JSON.stringify({ group: 'csp-endpoint', max_age: 10886400, endpoints: [{ url: '/api/csp-report' }] }));
+      response.headers.set(
+        'Report-To',
+        JSON.stringify({
+          group: 'csp-endpoint',
+          max_age: 10886400,
+          endpoints: [{ url: '/api/csp-report' }],
+        })
+      );
     }
 
     // HTTP Strict Transport Security
@@ -196,7 +203,9 @@ export function addSecurityHeaders(
 
     // Permissions Policy
     if (config.enablePermissionsPolicy) {
-      const permissionsValue = generatePermissionsPolicyHeader(config.permissionsPolicy);
+      const permissionsValue = generatePermissionsPolicyHeader(
+        config.permissionsPolicy
+      );
       response.headers.set('Permissions-Policy', permissionsValue);
     }
 
@@ -217,7 +226,6 @@ export function addSecurityHeaders(
         xss: config.enableXSSProtection,
       });
     }
-
   } catch (error) {
     logger.error('Failed to add security headers', {
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -233,11 +241,11 @@ export function addSecurityHeaders(
  */
 export function securityMiddleware(
   request: NextRequest,
-  config: SecurityConfig = DEFAULT_SECURITY_CONFIG
+  _config: SecurityConfig = DEFAULT_SECURITY_CONFIG
 ): NextResponse | null {
   // Skip most security checks in development for better performance
   const isProduction = process.env.NODE_ENV === 'production';
-  
+
   try {
     // Log security-related requests (only in production to reduce noise)
     if (isProduction && request.method !== 'GET' && request.method !== 'HEAD') {
@@ -251,16 +259,16 @@ export function securityMiddleware(
 
     // Check for suspicious patterns (always, but less logging in dev)
     const url = request.url.toLowerCase();
-    const userAgent = request.headers.get('user-agent')?.toLowerCase() || '';
+    const userAgent = request.headers.get('user-agent')?.toLowerCase() ?? '';
 
     // Block common attack patterns
     const suspiciousPatterns = [
-      /\.\.\//,           // Directory traversal
-      /<script/i,         // XSS attempts
-      /javascript:/i,     // JavaScript protocol
-      /vbscript:/i,       // VBScript protocol
-      /on\w+\s*=/i,       // Event handlers
-      /eval\s*\(/i,       // eval() calls
+      /\.\.\//, // Directory traversal
+      /<script/i, // XSS attempts
+      /javascript:/i, // JavaScript protocol
+      /vbscript:/i, // VBScript protocol
+      /on\w+\s*=/i, // Event handlers
+      /eval\s*\(/i, // eval() calls
       /expression\s*\(/i, // CSS expressions
     ];
 
@@ -304,7 +312,6 @@ export function securityMiddleware(
 
     // Continue with normal processing
     return null;
-
   } catch (error) {
     logger.error('Security middleware error', {
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -320,7 +327,9 @@ export function securityMiddleware(
 /**
  * Create a security configuration for specific environments
  */
-export function createSecurityConfig(environment: 'development' | 'staging' | 'production'): SecurityConfig {
+export function createSecurityConfig(
+  environment: 'development' | 'staging' | 'production'
+): SecurityConfig {
   const baseConfig = { ...DEFAULT_SECURITY_CONFIG };
 
   switch (environment) {
@@ -330,7 +339,9 @@ export function createSecurityConfig(environment: 'development' | 'staging' | 'p
       baseConfig.cspDirectives['script-src'].push("'unsafe-eval'");
       baseConfig.cspDirectives['script-src'].push("'unsafe-inline'");
       baseConfig.cspDirectives['script-src'].push('https://vercel.live');
-      baseConfig.cspDirectives['script-src'].push('https://va.vercel-scripts.com');
+      baseConfig.cspDirectives['script-src'].push(
+        'https://va.vercel-scripts.com'
+      );
       break;
 
     case 'staging':
@@ -339,7 +350,9 @@ export function createSecurityConfig(environment: 'development' | 'staging' | 'p
       baseConfig.hstsMaxAge = 300; // 5 minutes
       // Allow Vercel live reload in staging if needed
       baseConfig.cspDirectives['script-src'].push('https://vercel.live');
-      baseConfig.cspDirectives['script-src'].push('https://va.vercel-scripts.com');
+      baseConfig.cspDirectives['script-src'].push(
+        'https://va.vercel-scripts.com'
+      );
       break;
 
     case 'production':
@@ -352,12 +365,17 @@ export function createSecurityConfig(environment: 'development' | 'staging' | 'p
       baseConfig.enableReferrerPolicy = true;
       baseConfig.enablePermissionsPolicy = true;
       // Ensure no unsafe-eval/inline remain in production
-      baseConfig.cspDirectives['script-src'] = baseConfig.cspDirectives['script-src'].filter(
-        (src) => src !== "'unsafe-eval'" && src !== "'unsafe-inline'"
-      );
+      baseConfig.cspDirectives['script-src'] = baseConfig.cspDirectives[
+        'script-src'
+      ].filter(src => src !== "'unsafe-eval'" && src !== "'unsafe-inline'");
       // Remove Vercel live sources in production
-      baseConfig.cspDirectives['script-src'] = baseConfig.cspDirectives['script-src'].filter(
-        (src) => !['https://vercel.live', 'https://va.vercel-scripts.com'].includes(src)
+      baseConfig.cspDirectives['script-src'] = baseConfig.cspDirectives[
+        'script-src'
+      ].filter(
+        src =>
+          !['https://vercel.live', 'https://va.vercel-scripts.com'].includes(
+            src
+          )
       );
       // With nonce-based CSP in place, do not allow unsafe-inline in production
       break;
@@ -380,7 +398,18 @@ export function validateSecurityConfig(config: SecurityConfig): string[] {
     errors.push('HSTS max age should not exceed 1 year');
   }
 
-  if (!['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'].includes(config.referrerPolicy)) {
+  if (
+    ![
+      'no-referrer',
+      'no-referrer-when-downgrade',
+      'origin',
+      'origin-when-cross-origin',
+      'same-origin',
+      'strict-origin',
+      'strict-origin-when-cross-origin',
+      'unsafe-url',
+    ].includes(config.referrerPolicy)
+  ) {
     errors.push('Invalid referrer policy');
   }
 
