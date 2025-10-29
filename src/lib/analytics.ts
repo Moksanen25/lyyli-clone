@@ -4,7 +4,7 @@ export interface AnalyticsEvent {
   properties: Record<string, unknown>;
 }
 
-export const trackEvent = (eventName: string, properties: Record<string, unknown> = {}) => {
+export const trackEvent = (eventName: string, properties: Record<string, unknown> = {}): void => {
   // Track page view events
   if (eventName === 'page_view') {
     if (window.gtag) {
@@ -63,7 +63,7 @@ export const trackEvent = (eventName: string, properties: Record<string, unknown
 };
 
 // Utility functions for common tracking scenarios
-export const trackPageView = (language: string, route: string) => {
+export const trackPageView = (language: string, route: string): void => {
   trackEvent('page_view', { language, route });
 };
 
@@ -73,7 +73,7 @@ export const trackCTAClick = (
   ctaLocation: string,
   language: string,
   route: string
-) => {
+): void => {
   trackEvent('cta_click', {
     cta_variant: ctaVariant,
     cta_text: ctaText,
@@ -88,7 +88,7 @@ export const trackFormSubmit = (
   formType: string,
   language: string,
   route: string
-) => {
+): void => {
   trackEvent('form_submit', {
     form_name: formName,
     form_type: formType,
@@ -98,7 +98,7 @@ export const trackFormSubmit = (
 };
 
 // Initialize analytics when consent is given
-export const initializeAnalytics = () => {
+export const initializeAnalytics = (): void => {
   if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
     // Track initial page view
     trackPageView(

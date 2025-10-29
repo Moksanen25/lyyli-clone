@@ -1,4 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Run lint-staged for code quality
 npx lint-staged
+
+# Run type checking on staged TypeScript files
+echo "🔍 Running type check..."
+npm run typecheck || {
+  echo "❌ Type check failed. Please fix the errors before committing."
+  exit 1
+}
+
+echo "✅ Pre-commit checks passed!"
