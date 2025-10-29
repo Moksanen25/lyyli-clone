@@ -80,9 +80,14 @@ Desktop.ini
 
 # Lyyli-specific
 /exports/
-/archive/old-project-structure/
+/archive/
 /lyyli-clone/
 # lighthouse reports
 lighthouse-*.html
 lighthouse-*.json
 *-lighthouse-report.html
+# Development summary files
+CLEANUP_PLAN.md
+COMPLETE_SESSION_SUMMARY.md
+FINAL_IMPROVEMENTS_SUMMARY.md
+IMPROVEMENTS_SUMMARY.md
