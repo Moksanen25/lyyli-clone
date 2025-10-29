@@ -4,9 +4,9 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createRateLimiterWithPreset, RATE_LIMIT_PRESETS } from '@/lib/rateLimiter';
+import { createRateLimiterWithPreset, RATE_LIMIT_CONFIGS } from '@/lib/rateLimiter';
 
-type RateLimitPreset = keyof typeof RATE_LIMIT_PRESETS;
+type RateLimitPreset = keyof typeof RATE_LIMIT_CONFIGS;
 import { getClientIP } from '@/lib/security';
 import { addSecurityHeaders, createSecurityConfig } from '@/middleware/security';
 import { logger } from '@/lib/logger';
