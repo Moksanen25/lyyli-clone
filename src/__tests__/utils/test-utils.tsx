@@ -59,9 +59,28 @@ export const mockTranslations: Partial<TranslationKeys> = {
 };
 
 /**
+ * Type definition for mock router
+ */
+type MockRouterType = {
+  push: jest.Mock;
+  replace: jest.Mock;
+  prefetch: jest.Mock;
+  back: jest.Mock;
+  forward: jest.Mock;
+  refresh: jest.Mock;
+  pathname: string;
+  query: Record<string, unknown>;
+  asPath: string;
+  route: string;
+  basePath: string;
+  isReady: boolean;
+  isPreview: boolean;
+};
+
+/**
  * Mock router for Next.js navigation
  */
-export const createMockRouter = (overrides?: Partial<ReturnType<typeof useRouter>>) => ({
+export const createMockRouter = (overrides?: Partial<MockRouterType>): MockRouterType => ({
   push: jest.fn(),
   replace: jest.fn(),
   prefetch: jest.fn(),
@@ -91,7 +110,7 @@ export function TestProviders({
   children,
   locale = 'en',
   translations = mockTranslations,
-}: TestProvidersProps): JSX.Element {
+}: TestProvidersProps): ReactElement {
   return <div data-testid="test-provider" data-locale={locale}>{children}</div>;
 }
 
@@ -109,7 +128,7 @@ export function renderWithProviders(
 ): ReturnType<typeof render> {
   const { locale = 'en', translations = mockTranslations, ...renderOptions } = options || {};
 
-  function Wrapper({ children }: { children: ReactNode }): JSX.Element {
+  function Wrapper({ children }: { children: ReactNode }): ReactElement {
     return (
       <TestProviders locale={locale} translations={translations}>
         {children}
@@ -196,20 +215,3 @@ export function createMockImage(): Partial<HTMLImageElement> {
     onerror: null,
   };
 }
-
-// Type import for router (not used in runtime, only for type definition)
-type useRouter = () => {
-  push: jest.Mock;
-  replace: jest.Mock;
-  prefetch: jest.Mock;
-  back: jest.Mock;
-  forward: jest.Mock;
-  refresh: jest.Mock;
-  pathname: string;
-  query: Record<string, unknown>;
-  asPath: string;
-  route: string;
-  basePath: string;
-  isReady: boolean;
-  isPreview: boolean;
-};

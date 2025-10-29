@@ -99,8 +99,9 @@ describe('Structured Data Integration Tests', () => {
 
       const org = generateOrganizationSchema('en');
       const website = generateWebsiteSchema('en');
-      const combined = combineSchemas(org, website);
+      const combined = combineSchemas(org, website) as any;
 
+      expect(combined).not.toBeNull();
       expect(combined['@context']).toBe('https://schema.org');
       expect(combined['@graph']).toBeDefined();
       expect(combined['@graph'].length).toBe(2);
@@ -115,9 +116,10 @@ describe('Structured Data Integration Tests', () => {
 
       const org = generateOrganizationSchema('en');
       const breadcrumb = generateBreadcrumbSchema('/en', 'en'); // Returns null
-      const combined = combineSchemas(org, breadcrumb);
+      const combined = combineSchemas(org, breadcrumb) as any;
 
       // Should only include non-null schemas
+      expect(combined).not.toBeNull();
       expect(combined['@type']).toBe('Organization');
       expect(combined['@graph']).toBeUndefined();
     });
@@ -169,9 +171,11 @@ describe('Structured Data Integration Tests', () => {
       const combined = combineSchemas(
         generateOrganizationSchema('en'),
         generateWebsiteSchema('en')
-      );
+      ) as any;
 
-      if (combined['@graph']) {
+      expect(combined).not.toBeNull();
+      
+      if (combined && combined['@graph']) {
         const types = combined['@graph'].map((s: any) => s['@type']);
         const uniqueTypes = new Set(types);
         

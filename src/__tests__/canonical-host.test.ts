@@ -22,41 +22,37 @@ describe('Canonical Host Utilities', () => {
 
   describe('getCanonicalHost', () => {
     it('should return canonical host in production', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'production';
+      const spy = jest.spyOn(process.env, 'NODE_ENV', 'get').mockReturnValue('production');
       
       expect(getCanonicalHost()).toBe('lyyli.ai');
       
-      process.env.NODE_ENV = originalEnv;
+      spy.mockRestore();
     });
 
     it('should return localhost in development', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'development';
+      const spy = jest.spyOn(process.env, 'NODE_ENV', 'get').mockReturnValue('development');
       
       expect(getCanonicalHost()).toBe('localhost:3000');
       
-      process.env.NODE_ENV = originalEnv;
+      spy.mockRestore();
     });
   });
 
   describe('getCanonicalBaseUrl', () => {
     it('should return canonical URL in production', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'production';
+      const spy = jest.spyOn(process.env, 'NODE_ENV', 'get').mockReturnValue('production');
       
       expect(getCanonicalBaseUrl()).toBe('https://lyyli.ai');
       
-      process.env.NODE_ENV = originalEnv;
+      spy.mockRestore();
     });
 
     it('should return localhost URL in development', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'development';
+      const spy = jest.spyOn(process.env, 'NODE_ENV', 'get').mockReturnValue('development');
       
       expect(getCanonicalBaseUrl()).toBe('http://localhost:3000');
       
-      process.env.NODE_ENV = originalEnv;
+      spy.mockRestore();
     });
   });
 
@@ -71,29 +67,26 @@ describe('Canonical Host Utilities', () => {
 
   describe('shouldRedirectToCanonical', () => {
     it('should redirect www.lyyli.ai in production (temporarily disabled)', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'production';
+      const spy = jest.spyOn(process.env, 'NODE_ENV', 'get').mockReturnValue('production');
       
       // Temporarily disabled due to persistent redirect loop
       expect(shouldRedirectToCanonical('www.lyyli.ai')).toBe(false);
       expect(shouldRedirectToCanonical('lyyli.ai')).toBe(false);
       
-      process.env.NODE_ENV = originalEnv;
+      spy.mockRestore();
     });
 
     it('should not redirect in development', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'development';
+      const spy = jest.spyOn(process.env, 'NODE_ENV', 'get').mockReturnValue('development');
       
       expect(shouldRedirectToCanonical('www.lyyli.ai')).toBe(false);
       expect(shouldRedirectToCanonical('localhost:3000')).toBe(false);
       
-      process.env.NODE_ENV = originalEnv;
+      spy.mockRestore();
     });
 
     it('should redirect only specific variants in production (temporarily disabled)', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'production';
+      const spy = jest.spyOn(process.env, 'NODE_ENV', 'get').mockReturnValue('production');
       
       // Temporarily disabled due to persistent redirect loop
       expect(shouldRedirectToCanonical('www.lyyli.ai')).toBe(false);
@@ -101,7 +94,7 @@ describe('Canonical Host Utilities', () => {
       expect(shouldRedirectToCanonical('staging.lyyli.ai')).toBe(false);
       expect(shouldRedirectToCanonical('example.com')).toBe(false);
       
-      process.env.NODE_ENV = originalEnv;
+      spy.mockRestore();
     });
   });
 
@@ -155,8 +148,7 @@ describe('Canonical Host Utilities', () => {
     });
 
     it('should handle subdomain edge cases', () => {
-      const originalEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'production';
+      const spy = jest.spyOn(process.env, 'NODE_ENV', 'get').mockReturnValue('production');
       
       // Should NOT redirect subdomains to prevent loops (only www redirects)
       expect(shouldRedirectToCanonical('api.lyyli.ai')).toBe(false);
@@ -165,7 +157,7 @@ describe('Canonical Host Utilities', () => {
       // Should not redirect if not lyyli.ai domain
       expect(shouldRedirectToCanonical('api.example.com')).toBe(false);
       
-      process.env.NODE_ENV = originalEnv;
+      spy.mockRestore();
     });
   });
 });

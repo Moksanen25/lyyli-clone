@@ -1,9 +1,22 @@
 import { BreadcrumbItem } from '@/types/breadcrumbs';
 
+export interface BreadcrumbListItem {
+  '@type': 'ListItem';
+  position: number;
+  name: string;
+  item?: string;
+}
+
+export interface BreadcrumbListSchema {
+  '@context': string;
+  '@type': 'BreadcrumbList';
+  itemListElement: BreadcrumbListItem[];
+}
+
 /**
  * Generate BreadcrumbList JSON-LD schema
  */
-export function generateBreadcrumbSchema(items: BreadcrumbItem[]): object {
+export function generateBreadcrumbSchema(items: BreadcrumbItem[]): BreadcrumbListSchema {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

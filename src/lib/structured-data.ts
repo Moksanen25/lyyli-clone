@@ -89,6 +89,19 @@ export function generateWebsiteSchema(locale: string = 'en') {
   };
 }
 
+export interface BreadcrumbListItem {
+  '@type': 'ListItem';
+  position: number;
+  name: string;
+  item?: string;
+}
+
+export interface BreadcrumbListSchema {
+  '@context': string;
+  '@type': 'BreadcrumbList';
+  itemListElement: BreadcrumbListItem[];
+}
+
 /**
  * BreadcrumbList schema
  * Helps search engines understand page hierarchy
@@ -96,7 +109,7 @@ export function generateWebsiteSchema(locale: string = 'en') {
 export function generateBreadcrumbSchema(
   pathname: string,
   locale: string = 'en'
-): object | null {
+): BreadcrumbListSchema | null {
   const pathSegments = pathname.split('/').filter(Boolean);
   
   // Only generate breadcrumbs for pages deeper than locale level
@@ -162,7 +175,7 @@ export function generateBreadcrumbSchema(
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: breadcrumbItems
+    itemListElement: breadcrumbItems as BreadcrumbListItem[]
   };
 }
 
@@ -307,7 +320,12 @@ export function generateWebPageSchema(
  * Combine multiple schemas into a single JSON-LD block
  * Use when multiple schema types are needed on a page
  */
-export function combineSchemas(...schemas: (object | null | undefined)[]) {
+export interface CombinedSchema {
+  '@context': string;
+  '@graph': unknown[];
+}
+
+export function combineSchemas(...schemas: (object | null | undefined)[]): CombinedSchema | object | null {
   const validSchemas = schemas.filter(s => s !== null && s !== undefined) as object[];
   
   if (validSchemas.length === 0) {

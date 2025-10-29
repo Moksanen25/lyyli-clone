@@ -308,8 +308,9 @@ describe('Structured Data Generation', () => {
       const org = generateOrganizationSchema('en');
       const website = generateWebsiteSchema('en');
       
-      const combined = combineSchemas(org, website);
+      const combined = combineSchemas(org, website) as any;
       
+      expect(combined).not.toBeNull();
       expect(combined['@context']).toBe('https://schema.org');
       expect(combined['@graph']).toBeDefined();
       expect(Array.isArray(combined['@graph'])).toBe(true);
@@ -320,24 +321,27 @@ describe('Structured Data Generation', () => {
       const org = generateOrganizationSchema('en');
       const breadcrumb = generateBreadcrumbSchema('/en', 'en'); // Returns null
       
-      const combined = combineSchemas(org, breadcrumb);
+      const combined = combineSchemas(org, breadcrumb) as any;
       
       // Should only include the non-null schema
+      expect(combined).not.toBeNull();
       expect(combined['@type']).toBe('Organization');
     });
 
     it('should return single schema when only one provided', () => {
       const org = generateOrganizationSchema('en');
-      const combined = combineSchemas(org);
+      const combined = combineSchemas(org) as any;
       
+      expect(combined).not.toBeNull();
       expect(combined['@type']).toBe('Organization');
       expect(combined['@graph']).toBeUndefined();
     });
 
     it('should filter out null/undefined schemas', () => {
       const org = generateOrganizationSchema('en');
-      const combined = combineSchemas(org, null, undefined);
+      const combined = combineSchemas(org, null, undefined) as any;
       
+      expect(combined).not.toBeNull();
       expect(combined['@type']).toBe('Organization');
     });
   });
@@ -456,8 +460,9 @@ describe('Structured Data Generation', () => {
       // When combining Organization + Website, should use @graph
       const org = generateOrganizationSchema('en');
       const website = generateWebsiteSchema('en');
-      const combined = combineSchemas(org, website);
+      const combined = combineSchemas(org, website) as any;
       
+      expect(combined).not.toBeNull();
       expect(combined['@graph']).toBeDefined();
       expect(combined['@graph'].length).toBe(2);
       

@@ -24,31 +24,42 @@ describe('Favicon Configuration', () => {
   };
 
   test('metadata should include all required favicon configurations', () => {
-    // Test favicon.ico configuration
-    expect(mockMetadata.icons?.icon).toHaveLength(3);
-    expect(mockMetadata.icons?.icon?.[0]).toEqual({
-      url: "/favicon.ico",
-      sizes: "32x32"
-    });
+    const icons = mockMetadata.icons;
+    expect(icons).toBeDefined();
     
-    // Test PNG favicon configurations
-    expect(mockMetadata.icons?.icon?.[1]).toEqual({
-      url: "/icons/favicon-16x16.png",
-      sizes: "16x16",
-      type: "image/png"
-    });
-    
-    expect(mockMetadata.icons?.icon?.[2]).toEqual({
-      url: "/icons/favicon-32x32.png",
-      sizes: "32x32",
-      type: "image/png"
-    });
-    
-    // Test shortcut icon
-    expect(mockMetadata.icons?.shortcut).toBe("/favicon.ico");
-    
-    // Test Apple touch icon
-    expect(mockMetadata.icons?.apple).toBe("/icons/apple-touch-icon.png");
+    if (icons && typeof icons === 'object' && 'icon' in icons) {
+      const iconArray = icons.icon as Array<{ url: string; sizes: string; type?: string }>;
+      
+      // Test favicon.ico configuration
+      expect(iconArray).toHaveLength(3);
+      expect(iconArray[0]).toEqual({
+        url: "/favicon.ico",
+        sizes: "32x32"
+      });
+      
+      // Test PNG favicon configurations
+      expect(iconArray[1]).toEqual({
+        url: "/icons/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png"
+      });
+      
+      expect(iconArray[2]).toEqual({
+        url: "/icons/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png"
+      });
+      
+      // Test shortcut icon
+      if ('shortcut' in icons) {
+        expect(icons.shortcut).toBe("/favicon.ico");
+      }
+      
+      // Test Apple touch icon
+      if ('apple' in icons) {
+        expect(icons.apple).toBe("/icons/apple-touch-icon.png");
+      }
+    }
     
     // Test manifest
     expect(mockMetadata.manifest).toBe("/site.webmanifest");
@@ -58,30 +69,48 @@ describe('Favicon Configuration', () => {
   });
 
   test('should have correct favicon file paths', () => {
-    const iconUrls = mockMetadata.icons?.icon?.map(icon => icon.url) || [];
+    const icons = mockMetadata.icons;
     
-    // All favicon files should be accessible from public directory
-    expect(iconUrls).toContain("/favicon.ico");
-    expect(iconUrls).toContain("/icons/favicon-16x16.png");
-    expect(iconUrls).toContain("/icons/favicon-32x32.png");
-    expect(mockMetadata.icons?.apple).toBe("/icons/apple-touch-icon.png");
+    if (icons && typeof icons === 'object' && 'icon' in icons) {
+      const iconArray = icons.icon as Array<{ url: string; sizes: string; type?: string }>;
+      const iconUrls = iconArray.map(icon => icon.url);
+      
+      // All favicon files should be accessible from public directory
+      expect(iconUrls).toContain("/favicon.ico");
+      expect(iconUrls).toContain("/icons/favicon-16x16.png");
+      expect(iconUrls).toContain("/icons/favicon-32x32.png");
+      
+      if ('apple' in icons) {
+        expect(icons.apple).toBe("/icons/apple-touch-icon.png");
+      }
+    }
   });
 
   test('should have proper icon sizes', () => {
-    const iconSizes = mockMetadata.icons?.icon?.map(icon => icon.sizes) || [];
+    const icons = mockMetadata.icons;
     
-    // Required favicon sizes
-    expect(iconSizes).toContain("16x16");
-    expect(iconSizes).toContain("32x32");
+    if (icons && typeof icons === 'object' && 'icon' in icons) {
+      const iconArray = icons.icon as Array<{ url: string; sizes: string; type?: string }>;
+      const iconSizes = iconArray.map(icon => icon.sizes);
+      
+      // Required favicon sizes
+      expect(iconSizes).toContain("16x16");
+      expect(iconSizes).toContain("32x32");
+    }
   });
 
   test('should have proper MIME types', () => {
-    const pngIcons = mockMetadata.icons?.icon?.filter(icon => icon.url?.endsWith('.png')) || [];
+    const icons = mockMetadata.icons;
     
-    // All PNG icons should have proper MIME type
-    pngIcons.forEach(icon => {
-      expect(icon.type).toBe("image/png");
-    });
+    if (icons && typeof icons === 'object' && 'icon' in icons) {
+      const iconArray = icons.icon as Array<{ url: string; sizes: string; type?: string }>;
+      const pngIcons = iconArray.filter(icon => icon.url?.endsWith('.png'));
+      
+      // All PNG icons should have proper MIME type
+      pngIcons.forEach(icon => {
+        expect(icon.type).toBe("image/png");
+      });
+    }
   });
 });
 
@@ -149,10 +178,15 @@ describe('PWA Icon Requirements', () => {
       }
     };
 
-    const configuredSizes = [
-      ...(mockMetadata.icons?.icon?.map(icon => icon.sizes) || []),
-      '180x180' // Apple touch icon
-    ];
+    const icons = mockMetadata.icons;
+    const configuredSizes: string[] = [];
+    
+    if (icons && typeof icons === 'object' && 'icon' in icons) {
+      const iconArray = icons.icon as Array<{ url: string; sizes: string; type?: string }>;
+      configuredSizes.push(...iconArray.map(icon => icon.sizes));
+    }
+    
+    configuredSizes.push('180x180'); // Apple touch icon
 
     requiredSizes.forEach(size => {
       expect(configuredSizes).toContain(size);

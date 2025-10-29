@@ -6,7 +6,7 @@ describe('Logo Component', () => {
   it('renders the logo image with correct attributes', () => {
     render(<Logo />);
 
-    const logo = screen.getByAlt(/Lyyli.ai logo/i);
+    const logo = screen.getByRole('img', { name: /Lyyli.ai logo/i });
     expect(logo).toBeInTheDocument();
     expect(logo).toHaveAttribute('src');
   });
@@ -34,7 +34,7 @@ describe('Logo Component', () => {
   it('has priority loading for LCP optimization', () => {
     render(<Logo />);
 
-    const logo = screen.getByAlt(/Lyyli.ai logo/i);
+    const logo = screen.getByRole('img', { name: /Lyyli.ai logo/i });
     // The priority prop is passed to Next.js Image component
     expect(logo).toBeInTheDocument();
   });
