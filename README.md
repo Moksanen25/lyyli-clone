@@ -32,20 +32,43 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## 📚 Project Documentation
 
-- **[PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md)** - Complete project organization guide
-- **[CLEANUP_SUMMARY.md](./CLEANUP_SUMMARY.md)** - Summary of recent cleanup work
-- **[TESTING.md](./TESTING.md)** - Testing setup and guidelines
-- **[rules/](./rules/)** - Brand and development rules
+### Quick Links
+- **[Architecture](./docs/architecture/)** - Project structure and organization
+- **[Guides](./docs/guides/)** - Setup and testing guides
+- **[Features](./docs/features/)** - Feature documentation and implementation details
+- **[Compliance](./docs/compliance/)** - GDPR and security documentation
+- **[Implementation Summaries](./docs/implementation-summaries/)** - Historical implementation records
+- **[Rules](./rules/)** - Brand and development rules
+
+### Key Documents
+- [Project Structure](./docs/architecture/PROJECT_STRUCTURE.md) - Complete project organization
+- [Testing Guide](./docs/guides/TESTING.md) - Testing setup and best practices
+- [Monitoring Setup](./docs/guides/MONITORING_SETUP.md) - Observability configuration
+- [GDPR Compliance](./docs/compliance/GDPR_COMPLIANCE.md) - Privacy and compliance info
+- [Cleanup Plan](./CLEANUP_PLAN.md) - Current cleanup and optimization efforts
 
 ## 🏗️ Project Structure
 
 ```
 lyyli-clone-fresh/           # ← MAIN PROJECT DIRECTORY
 ├── src/                     # Source code
+│   ├── app/                 # Next.js app directory (routes)
+│   ├── components/          # React components
+│   ├── lib/                 # Utility functions and libraries
+│   ├── hooks/               # React hooks
+│   ├── middleware/          # Server middleware
+│   └── types/               # TypeScript type definitions
 ├── public/                  # Static assets
+├── content/                 # MDX content (blog, legal)
+├── docs/                    # Documentation
+│   ├── architecture/        # System design and structure
+│   ├── guides/              # Setup and how-to guides
+│   ├── features/            # Feature documentation
+│   ├── compliance/          # Legal and compliance docs
+│   └── implementation-summaries/  # Historical records
 ├── rules/                   # Brand and development rules
-├── content/                 # Content files
-├── messages/                # Internationalization
+├── scripts/                 # Build and utility scripts
+├── e2e/                     # End-to-end tests
 ├── archive/                 # Archived old files
 └── [configuration files]
 ```
