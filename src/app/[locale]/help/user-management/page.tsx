@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getTranslations } from "../../../../lib/i18n";
+import { getTranslations } from "@/lib/i18n";
 import Link from "next/link";
 
 export const metadata: Metadata = {

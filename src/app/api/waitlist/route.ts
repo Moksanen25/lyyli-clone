@@ -18,24 +18,7 @@ import { createRateLimiterWithPreset, RATE_LIMIT_CONFIGS } from '@/lib/rateLimit
 import { addSecurityHeaders, createSecurityConfig } from '@/middleware/security';
 import { logger } from '@/lib/logger';
 import { CONSENT_CONFIG, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/lib/constants';
-
-// Types
-interface WaitlistSubmission {
-  id: string;
-  email: string;
-  company: string;
-  role: string;
-  phone?: string;
-  countryCode: string;
-  organizationSize: string;
-  gdprConsent: boolean;
-  securityConsent: boolean;
-  timestamp: string;
-  source: string;
-  ipAddress: string;
-  userAgent: string;
-  csrfToken: string;
-}
+import type { WaitlistSubmission } from '@/types';
 
 // In-memory storage (replace with database in production)
 const submissions: WaitlistSubmission[] = [];

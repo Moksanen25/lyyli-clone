@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Script from 'next/script';
-import { TranslationKeys } from '../lib/i18n';
-import { trackPageView } from '../lib/analytics';
+import { TranslationKeys } from '@/lib/i18n';
+import { trackPageView } from '@/lib/analytics';
 
 interface ConsentBannerProps {
   locale: string;

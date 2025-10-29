@@ -1,5 +1,5 @@
-import { TranslationKeys } from "../lib/i18n";
-import { computeRoiMetrics } from "../lib/roi";
+import { TranslationKeys } from "@/lib/i18n";
+import { computeRoiMetrics } from "@/lib/roi";
 
 interface HeroFactBoxProps {
   translations: TranslationKeys;

@@ -18,24 +18,7 @@ import { createRateLimiterWithPreset, RATE_LIMIT_CONFIGS } from '@/lib/rateLimit
 import { addSecurityHeaders, createSecurityConfig } from '@/middleware/security';
 import { logger } from '@/lib/logger';
 import { CONSENT_CONFIG, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/lib/constants';
-
-// Types
-interface ContactSubmission {
-  id: string;
-  name: string;
-  email: string;
-  company: string;
-  role: string;
-  organizationSize: string;
-  message?: string;
-  timestamp: string;
-  source: string;
-  gdprConsent: boolean;
-  securityConsent: boolean;
-  ipAddress: string;
-  userAgent: string;
-  csrfToken: string;
-}
+import type { ContactSubmission } from '@/types';
 
 // In-memory storage (replace with database in production)
 const submissions: ContactSubmission[] = [];

@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import { headers, cookies } from "next/headers";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import ConsentBanner from "../../components/ConsentBanner";
-import MeshGradientBackground from "../../components/MeshGradientBackground";
-import DevSWCleanup from "../../components/DevSWCleanup";
-import { getTranslations } from "../../lib/i18n";
-import { fontVars } from "../../lib/fonts";
-import WebVitals from "../../components/WebVitals";
-import { createTitleTemplate } from "../../lib/title";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ConsentBanner from "@/components/ConsentBanner";
+import MeshGradientBackground from "@/components/MeshGradientBackground";
+import DevSWCleanup from "@/components/DevSWCleanup";
+import { getTranslations } from "@/lib/i18n";
+import { fontVars } from "@/lib/fonts";
+import WebVitals from "@/components/WebVitals";
+import { createTitleTemplate } from "@/lib/title";
 import { 
   generateOrganizationSchema, 
   generateWebsiteSchema,
   generateBreadcrumbSchema,
   combineSchemas 
-} from "../../lib/structured-data";
+} from "@/lib/structured-data";
 
-import "../globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: {

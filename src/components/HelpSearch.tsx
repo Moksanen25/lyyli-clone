@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { searchHelpArticles, type HelpArticle } from "../lib/helpSearchData";
+import { searchHelpArticles, type HelpArticle } from "@/lib/helpSearchData";
 import Link from "next/link";
-import { logger } from "../lib/logger";
+import { logger } from "@/lib/logger";
 
 interface HelpSearchProps {
   locale: string;

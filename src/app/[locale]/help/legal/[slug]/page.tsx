@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getAllLegalSlugs, getLegalDoc } from "../../../../../lib/legal";
+import { getAllLegalSlugs, getLegalDoc } from "@/lib/legal";
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { LegalMDXComponents } from "../../../../../components/mdx/LegalMDXComponents";
+import { LegalMDXComponents } from "@/components/mdx/LegalMDXComponents";
 
 export async function generateStaticParams() {
   const slugs = getAllLegalSlugs();
@@ -35,6 +35,8 @@ export default async function LegalTemplatePage({
       back: fi ? "Takaisin kirjastoon" : "Back to library",
       updated: fi ? "Päivitetty" : "Last updated",
       version: fi ? "Versio" : "Version",
+      notFoundTitle: fi ? "Ei löytynyt" : "Not found",
+      notFoundMessage: fi ? "Pyydettyä mallipohjaa ei löytynyt." : "The requested template was not found.",
     };
     return map[key] || key;
   };
@@ -44,8 +46,8 @@ export default async function LegalTemplatePage({
       <div className="min-h-screen bg-white py-16">
         <div className="max-w-3xl mx-auto px-6">
           <Link href={`/${locale}/help/legal`} className="text-forest underline">{t("back")}</Link>
-          <h1 className="text-3xl text-forest mt-6 font-playfair font-bold">Not found</h1>
-          <p className="text-mediumGray mt-2 font-sans">The requested template was not found.</p>
+          <h1 className="text-3xl text-forest mt-6 font-playfair font-bold">{t("notFoundTitle")}</h1>
+          <p className="text-mediumGray mt-2 font-sans">{t("notFoundMessage")}</p>
         </div>
       </div>
     );

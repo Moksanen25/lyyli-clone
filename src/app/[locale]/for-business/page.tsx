@@ -383,15 +383,15 @@ export default async function ForBusinessPage({ params }: ForBusinessPageProps) 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-2">80%</div>
-              <div className="text-white/80 font-sans">Faster communication</div>
+              <div className="text-white/80 font-sans">{t['forBusiness.finalCta.stats.fasterCommunication']}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-2">2,400€</div>
-              <div className="text-white/80 font-sans">Monthly savings</div>
+              <div className="text-white/80 font-sans">{t['forBusiness.finalCta.stats.monthlySavings']}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-2">340%</div>
-              <div className="text-white/80 font-sans">ROI in 12 months</div>
+              <div className="text-white/80 font-sans">{t['forBusiness.finalCta.stats.roiInMonths']}</div>
             </div>
           </div>
           

@@ -1,17 +1,17 @@
-import { getTranslations } from "../../lib/i18n";
+import { getTranslations } from "@/lib/i18n";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import DemoVideo from "../../components/DemoVideo";
-import ROICalculator from "../../components/ROICalculator";
-import PricingCards from "../../components/PricingCards";
-import Deferred from "../../components/Deferred";
-import HeroFactBox from "../../components/HeroFactBox";
-import CalendarPopup from "../../components/CalendarPopup";
-import { generatePageCanonicalUrl, generateHreflangMetadata } from "../../lib/canonical";
-import { buildTitleFromTranslation } from "../../lib/title";
+import DemoVideo from "@/components/DemoVideo";
+import ROICalculator from "@/components/ROICalculator";
+import PricingCards from "@/components/PricingCards";
+import Deferred from "@/components/Deferred";
+import HeroFactBox from "@/components/HeroFactBox";
+import CalendarPopup from "@/components/CalendarPopup";
+import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
+import { buildTitleFromTranslation } from "@/lib/title";
 
-const ProcessSteps = dynamic(() => import("../../components/ProcessSteps"), { ssr: true, loading: () => <div /> });
-const FeatureGrid = dynamic(() => import("../../components/FeatureGrid"), { ssr: true, loading: () => <div /> });
+const ProcessSteps = dynamic(() => import("@/components/ProcessSteps"), { ssr: true, loading: () => <div /> });
+const FeatureGrid = dynamic(() => import("@/components/FeatureGrid"), { ssr: true, loading: () => <div /> });
 
 // Note: using static imports for client components inside a Server Component
 interface HomeProps {

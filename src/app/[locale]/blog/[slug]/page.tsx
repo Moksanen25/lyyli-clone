@@ -6,18 +6,18 @@ import {
   hasTranslation,
   getTranslatedBlogPost,
   getAlternativeBlogPosts,
-} from "../../../../lib/blog";
+} from "@/lib/blog";
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { logger } from "../../../../lib/logger";
-import { generateArticleSchema } from "../../../../lib/structured-data";
-import Breadcrumbs from "../../../../components/Breadcrumbs";
-import CalendarPopup from "../../../../components/CalendarPopup";
-import RelatedPosts from "../../../../components/blog/RelatedPosts";
-import { generateBlogBreadcrumbs, generateBreadcrumbSchema } from "../../../../lib/breadcrumb-schema";
+import { logger } from "@/lib/logger";
+import { generateArticleSchema } from "@/lib/structured-data";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import CalendarPopup from "@/components/CalendarPopup";
+import RelatedPosts from "@/components/blog/RelatedPosts";
+import { generateBlogBreadcrumbs, generateBreadcrumbSchema } from "@/lib/breadcrumb-schema";
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { BlogMDXComponents } from "../../../../components/mdx/BlogMDXComponents";
+import { BlogMDXComponents } from "@/components/mdx/BlogMDXComponents";
 
 export const revalidate = 3600; // ISR: revalidate blog posts hourly
 

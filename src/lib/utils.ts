@@ -6,10 +6,17 @@
 /**
  * Safely access nested object properties
  */
-export function getNestedValue(obj: any, path: string, defaultValue: any = undefined): any {
-  return path.split('.').reduce((current, key) => {
-    return current && current[key] !== undefined ? current[key] : defaultValue;
-  }, obj);
+export function getNestedValue<T = unknown>(
+  obj: Record<string, unknown>, 
+  path: string, 
+  defaultValue?: T
+): T | undefined {
+  return path.split('.').reduce((current: unknown, key: string) => {
+    if (current && typeof current === 'object' && key in current) {
+      return (current as Record<string, unknown>)[key];
+    }
+    return defaultValue;
+  }, obj) as T | undefined;
 }
 
 /**
@@ -28,7 +35,7 @@ export function formatDate(date: Date | string, locale: string = 'en'): string {
 /**
  * Debounce function for performance optimization
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -43,7 +50,7 @@ export function debounce<T extends (...args: any[]) => any>(
 /**
  * Throttle function for performance optimization
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): (...args: Parameters<T>) => void {
@@ -69,7 +76,7 @@ export function generateId(): string {
 /**
  * Check if value is empty (null, undefined, empty string, empty array, empty object)
  */
-export function isEmpty(value: any): boolean {
+export function isEmpty(value: unknown): boolean {
   if (value === null || value === undefined) return true;
   if (typeof value === 'string') return value.trim().length === 0;
   if (Array.isArray(value)) return value.length === 0;
@@ -128,7 +135,8 @@ export function isMobile(): boolean {
  */
 export function isTouchDevice(): boolean {
   if (typeof window === 'undefined') return false;
-  const hasOnTouchStart = Object.prototype.hasOwnProperty.call(window, 'ontouchstart') && (window as any).ontouchstart !== undefined;
+  const windowWithTouch = window as Window & { ontouchstart?: unknown };
+  const hasOnTouchStart = Object.prototype.hasOwnProperty.call(window, 'ontouchstart') && windowWithTouch.ontouchstart !== undefined;
   return hasOnTouchStart || navigator.maxTouchPoints > 0;
 }
 

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getAllLegalDocs } from "../../../../lib/legal";
+import { getAllLegalDocs } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Legal & agreements",

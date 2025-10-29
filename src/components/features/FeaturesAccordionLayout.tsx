@@ -1,6 +1,6 @@
 "use client";
 
-import { TranslationKeys } from "../../lib/i18n";
+import { TranslationKeys } from "@/lib/i18n";
 import { useState } from "react";
 
 interface FeaturesAccordionLayoutProps {

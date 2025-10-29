@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { TranslationKeys } from "../lib/i18n";
-import { computeRoiMetrics } from "../lib/roi";
+import { TranslationKeys } from "@/lib/i18n";
+import { computeRoiMetrics } from "@/lib/roi";
 
 // Dynamic import for the charts to avoid SSR issues with Recharts
-const DynamicCharts = dynamic(() => import("./ROICharts"), { 
+const DynamicCharts = dynamic(() => import("@/components/ROICharts"), { 
   ssr: false,
   loading: () => (
     <div className="space-y-8">

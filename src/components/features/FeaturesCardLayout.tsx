@@ -1,4 +1,4 @@
-import { TranslationKeys } from "../../lib/i18n";
+import { TranslationKeys } from "@/lib/i18n";
 
 interface FeaturesCardLayoutProps {
   locale: string;

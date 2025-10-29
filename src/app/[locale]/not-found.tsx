@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function NotFound() {
   const params = useParams();
   const locale = (params?.locale as string) || 'en';
+  const t = useTranslations(locale);
 
   const popularPages = [
     {
-      title: locale === 'fi' ? "Koti" : "Home",
-      description: locale === 'fi' ? "Palaa etusivulle" : "Return to our homepage",
+      title: t['notFound.popularPages.home.title'],
+      description: t['notFound.popularPages.home.description'],
       href: `/${locale}`,
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -19,8 +21,8 @@ export default function NotFound() {
       )
     },
     {
-      title: locale === 'fi' ? "Ominaisuudet" : "Features",
-      description: locale === 'fi' ? "Tutustu AI-ominaisuuksiin" : "Explore AI-powered features",
+      title: t['notFound.popularPages.features.title'],
+      description: t['notFound.popularPages.features.description'],
       href: `/${locale}/features`,
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,8 +31,8 @@ export default function NotFound() {
       )
     },
     {
-      title: locale === 'fi' ? "Turvallisuus" : "Security",
-      description: locale === 'fi' ? "Lue turvallisuudestamme" : "Learn about our security",
+      title: t['notFound.popularPages.security.title'],
+      description: t['notFound.popularPages.security.description'],
       href: `/${locale}/cybersecurity`,
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,8 +41,8 @@ export default function NotFound() {
       )
     },
     {
-      title: locale === 'fi' ? "Blogi" : "Blog",
-      description: locale === 'fi' ? "Lue uusimmat artikkelimme" : "Read our latest insights",
+      title: t['notFound.popularPages.blog.title'],
+      description: t['notFound.popularPages.blog.description'],
       href: `/${locale}/blog`,
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,20 +68,17 @@ export default function NotFound() {
         </div>
 
         <h1 className="text-3xl md:text-4xl text-gray-900 text-center mb-8 font-bold leading-tight">
-          {locale === 'fi' ? 'Sivua ei löytynyt' : 'Page not found'}
+          {t['404.heading'] || 'Page not found'}
         </h1>
 
         <p className="text-lg text-center max-w-3xl mx-auto mb-12 leading-relaxed text-gray-600">
-          {locale === 'fi' 
-            ? 'Valitettavasti emme löytäneet hakemaasi sivua. Sivu on ehkä siirretty, poistettu tai URL-osoite on virheellinen.'
-            : 'Sorry, we couldn\'t find the page you\'re looking for. It may have been moved, deleted, or the URL might be incorrect.'
-          }
+          {t['notFound.longMessage'] || 'Sorry, we couldn\'t find the page you\'re looking for. It may have been moved, deleted, or the URL might be incorrect.'}
         </p>
 
         {/* Popular Pages */}
         <div className="mb-16">
           <h2 className="text-2xl md:text-3xl text-gray-900 text-center mb-12 font-bold leading-tight">
-            {locale === 'fi' ? 'Suositut sivut' : 'Popular pages'}
+            {t['notFound.popularPages.title'] || 'Popular pages'}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {popularPages.map((page) => (
@@ -109,28 +108,28 @@ export default function NotFound() {
         {/* Additional Help */}
         <div className="text-center">
           <p className="text-gray-600 mb-6">
-            {locale === 'fi' ? 'Tarvitsetko lisää apua? Kokeile näitä resursseja:' : 'Need more help? Try these resources:'}
+            {t['notFound.additionalHelp.title'] || 'Need more help? Try these resources:'}
           </p>
           <div className="flex flex-wrap gap-6 justify-center">
             <Link
               href={`/${locale}/help`}
               className="text-gray-900 hover:text-green-600 font-medium transition-colors"
             >
-              {locale === 'fi' ? 'Apukeskus' : 'Help center'}
+              {t['notFound.additionalHelp.helpCenter'] || 'Help center'}
             </Link>
             <span className="text-gray-400">•</span>
             <Link
               href={`/${locale}/contact`}
               className="text-gray-900 hover:text-green-600 font-medium transition-colors"
             >
-              {locale === 'fi' ? 'Ota yhteyttä' : 'Contact support'}
+              {t['notFound.additionalHelp.contactSupport'] || 'Contact support'}
             </Link>
             <span className="text-gray-400">•</span>
             <Link
               href={`/${locale}/about`}
               className="text-gray-900 hover:text-green-600 font-medium transition-colors"
             >
-              {locale === 'fi' ? 'Tietoa meistä' : 'About us'}
+              {t['notFound.additionalHelp.about'] || 'About us'}
             </Link>
           </div>
         </div>

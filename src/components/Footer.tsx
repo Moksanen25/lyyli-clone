@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { TranslationKeys } from "../lib/i18n";
+import { TranslationKeys } from "@/lib/i18n";
 import Image from "next/image";
 
 interface FooterProps {

@@ -1,7 +1,8 @@
 "use client";
 
+import { memo } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
-import { TranslationKeys } from "../lib/i18n";
+import { TranslationKeys } from "@/lib/i18n";
 
 interface ROIChartsProps {
   timeSavingsData: Array<{
@@ -17,7 +18,7 @@ interface ROIChartsProps {
   translations?: TranslationKeys;
 }
 
-export default function ROICharts({ timeSavingsData, efficiencyData, translations }: ROIChartsProps) {
+const ROICharts = memo(function ROICharts({ timeSavingsData, efficiencyData, translations }: ROIChartsProps) {
   return (
     <>
       {/* Efficiency Comparison Chart */}
@@ -80,4 +81,6 @@ export default function ROICharts({ timeSavingsData, efficiencyData, translation
       </div>
     </>
   );
-}
+});
+
+export default ROICharts;

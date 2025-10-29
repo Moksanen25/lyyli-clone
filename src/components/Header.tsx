@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { TranslationKeys } from "../lib/i18n";
-import ClientLocaleSwitcher from "./ClientLocaleSwitcher";
+import { TranslationKeys } from "@/lib/i18n";
+import ClientLocaleSwitcher from "@/components/ClientLocaleSwitcher";
 import Image from "next/image";
 
 interface HeaderProps {

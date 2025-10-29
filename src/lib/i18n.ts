@@ -653,24 +653,23 @@ export interface TranslationKeys {
 }
 
 // Utility function for server-side translations
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getTranslations(
   locale: string = "en",
-): Promise<any> {
+): Promise<TranslationKeys> {
   try {
     const translations = await import(`../translations/${locale}.json`);
-    return translations.default || translations;
+    return (translations.default || translations) as unknown as TranslationKeys;
   } catch {
     logger.warn(
       `Translation file for locale "${locale}" not found, falling back to English`,
     );
     try {
       const fallbackTranslations = await import("../translations/en.json");
-      return fallbackTranslations.default || fallbackTranslations;
+      return (fallbackTranslations.default || fallbackTranslations) as unknown as TranslationKeys;
     } catch (fallbackError) {
       logger.error("Failed to load fallback translations", { fallbackError });
       // Return empty object as last resort
-      return {};
+      return {} as TranslationKeys;
     }
   }
 }

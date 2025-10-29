@@ -1,6 +1,6 @@
 "use client";
 
-import { TranslationKeys } from "../../lib/i18n";
+import { TranslationKeys } from "@/lib/i18n";
 import { IconSet } from "../IconSet";
 
 interface Props {

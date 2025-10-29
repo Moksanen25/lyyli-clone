@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import { getTranslations } from "../../../lib/i18n";
+import { getTranslations } from "@/lib/i18n";
 import Link from "next/link";
-import HelpSearch from "../../../components/HelpSearch";
-import Breadcrumbs from "../../../components/Breadcrumbs";
-import { generatePageBreadcrumbs, generateBreadcrumbSchema } from "../../../lib/breadcrumb-schema";
+import HelpSearch from "@/components/HelpSearch";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { generatePageBreadcrumbs, generateBreadcrumbSchema } from "@/lib/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Help & Support Center",

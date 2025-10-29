@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { logger } from './logger';
 
 export interface ErrorMetrics {
   timestamp: string;
@@ -89,7 +90,7 @@ export function logErrorMetric(
 
   // Log error if enabled
   if (config.logErrors) {
-    console.error('Error Metric:', {
+    logger.error('Error Metric', {
       statusCode,
       url: request.url,
       method: request.method,
@@ -208,7 +209,9 @@ async function sendErrorAlert(alertData: {
         body: JSON.stringify(alertMessage),
       });
     } catch (error) {
-      console.error('Failed to send webhook alert:', error);
+      logger.error('Failed to send webhook alert', {
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
     }
   }
 
@@ -257,7 +260,9 @@ async function sendErrorAlert(alertData: {
         body: JSON.stringify(slackMessage),
       });
     } catch (error) {
-      console.error('Failed to send Slack alert:', error);
+      logger.error('Failed to send Slack alert', {
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
     }
   }
 }
@@ -324,6 +329,6 @@ export function clearOldMetrics(maxAgeHours: number = 24): void {
   
   const removedCount = initialLength - metricsStore.length;
   if (removedCount > 0) {
-    console.log(`Cleared ${removedCount} old error metrics`);
+    logger.info('Cleared old error metrics', { removedCount });
   }
 }

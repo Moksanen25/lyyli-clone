@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { generateBlogCanonicalUrl } from './canonical';
 import { buildTitle } from './title';
+import { logger } from './logger';
 
 export interface BlogPost {
   slug: string;
@@ -57,7 +58,7 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
         // Validate date
         const dateValue = data.date || "";
         if (dateValue && isNaN(new Date(dateValue).getTime())) {
-          console.warn(`Invalid date in ${name}: ${dateValue}`);
+          logger.warn(`Invalid date in blog post`, { fileName: name, dateValue });
         }
 
         const rawImage = typeof data.image === 'string' ? data.image : '';
@@ -80,7 +81,10 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
           translationSlug: data.translationSlug,
         } as BlogPostMetadata;
       } catch (error) {
-        console.error(`Error processing blog post ${name}:`, error);
+        logger.error(`Error processing blog post`, {
+          fileName: name,
+          error: error instanceof Error ? error.message : 'Unknown error'
+        });
         return null;
       }
     })
@@ -97,7 +101,9 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
         
         return dateB - dateA;
       } catch (error) {
-        console.error("Error sorting blog posts:", error);
+        logger.error("Error sorting blog posts", {
+          error: error instanceof Error ? error.message : 'Unknown error'
+        });
         return 0;
       }
     });
@@ -155,14 +161,19 @@ export function getAllBlogSlugs(): { slug: string; locale: string }[] {
               slugs.push({ slug, locale });
             });
         } catch (error) {
-          console.error(`Error reading directory ${localeDir}:`, error);
+          logger.error(`Error reading directory`, {
+            directory: localeDir,
+            error: error instanceof Error ? error.message : 'Unknown error'
+          });
         }
       }
     });
 
     return slugs;
   } catch (error) {
-    console.error("Error in getAllBlogSlugs:", error);
+    logger.error("Error in getAllBlogSlugs", {
+      error: error instanceof Error ? error.message : 'Unknown error'
+    });
     return [];
   }
 }

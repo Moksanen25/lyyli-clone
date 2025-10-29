@@ -1,4 +1,5 @@
 import { onCLS, onINP, onFCP, onLCP, onTTFB } from 'web-vitals';
+import { logger } from './logger';
 
 export interface WebVitalMetric {
   name: string;
@@ -37,14 +38,14 @@ export function reportWebVitals(metric: WebVitalMetric) {
     const budget = WEB_VITALS_BUDGETS[metric.name as keyof WebVitalsBudget];
     const rating = budget ? getRating(metric.value, budget) : 'good';
     
-    console.group(`🚀 Web Vital: ${metric.name.toUpperCase()}`);
-    console.log(`Value: ${metric.value.toFixed(2)}${metric.name === 'CLS' ? '' : 'ms'}`);
-    console.log(`Rating: ${rating}`);
-    if (budget) {
-      console.log(`Budget: ${budget}${metric.name === 'CLS' ? '' : 'ms'}`);
-      console.log(`Status: ${metric.value <= budget ? '✅ Within budget' : '❌ Over budget'}`);
-    }
-    console.groupEnd();
+    logger.info(`Web Vital: ${metric.name.toUpperCase()}`, {
+      metric: metric.name,
+      value: metric.value.toFixed(2),
+      unit: metric.name === 'CLS' ? '' : 'ms',
+      rating,
+      budget,
+      withinBudget: budget ? metric.value <= budget : true
+    });
   }
 
   // Analytics reporting (you can integrate with your analytics provider)
