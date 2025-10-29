@@ -8,18 +8,16 @@ import {
   generateWebsiteSchema,
   generateBreadcrumbSchema,
   generateArticleSchema,
-  generateSoftwareApplicationSchema,
-  generateWebPageSchema,
   combineSchemas,
   validateSchema,
-  ArticleSchemaProps
+  type ArticleSchemaProps,
 } from '../lib/structured-data';
 
 describe('Structured Data Generation', () => {
   describe('Organization Schema', () => {
     it('should generate valid Organization schema', () => {
       const schema = generateOrganizationSchema('en');
-      
+
       expect(schema['@context']).toBe('https://schema.org');
       expect(schema['@type']).toBe('Organization');
       expect(schema.name).toBe('Lyyli.ai');
@@ -29,44 +27,48 @@ describe('Structured Data Generation', () => {
 
     it('should include logo with proper structure', () => {
       const schema = generateOrganizationSchema('en');
-      
-      expect(schema.logo).toBeDefined();
-      expect(schema.logo['@type']).toBe('ImageObject');
-      expect(schema.logo.url).toMatch(/https:\/\/lyyli\.ai/);
-      expect(schema.logo.width).toBeDefined();
-      expect(schema.logo.height).toBeDefined();
+      const logo = schema.logo as Record<string, unknown>;
+
+      expect(logo).toBeDefined();
+      expect(logo['@type']).toBe('ImageObject');
+      expect(logo.url).toMatch(/https:\/\/lyyli\.ai/);
+      expect(logo.width).toBeDefined();
+      expect(logo.height).toBeDefined();
     });
 
     it('should include sameAs links', () => {
       const schema = generateOrganizationSchema('en');
-      
-      expect(schema.sameAs).toBeDefined();
-      expect(Array.isArray(schema.sameAs)).toBe(true);
-      expect(schema.sameAs.length).toBeGreaterThan(0);
-      expect(schema.sameAs).toContain('https://www.linkedin.com/company/lyyli-ai');
+      const sameAs = schema.sameAs as string[];
+
+      expect(sameAs).toBeDefined();
+      expect(Array.isArray(sameAs)).toBe(true);
+      expect(sameAs.length).toBeGreaterThan(0);
+      expect(sameAs).toContain('https://www.linkedin.com/company/lyyli-ai');
     });
 
     it('should include founders information', () => {
       const schema = generateOrganizationSchema('en');
-      
-      expect(schema.founders).toBeDefined();
-      expect(Array.isArray(schema.founders)).toBe(true);
-      expect(schema.founders.length).toBeGreaterThan(0);
-      expect(schema.founders[0]['@type']).toBe('Person');
+      const founders = schema.founders as Record<string, unknown>[];
+
+      expect(founders).toBeDefined();
+      expect(Array.isArray(founders)).toBe(true);
+      expect(founders.length).toBeGreaterThan(0);
+      expect(founders[0]['@type']).toBe('Person');
     });
 
     it('should include contact point', () => {
       const schema = generateOrganizationSchema('en');
-      
-      expect(schema.contactPoint).toBeDefined();
-      expect(schema.contactPoint['@type']).toBe('ContactPoint');
-      expect(schema.contactPoint.email).toBe('mikko@lyyli.ai');
+      const contactPoint = schema.contactPoint as Record<string, unknown>;
+
+      expect(contactPoint).toBeDefined();
+      expect(contactPoint['@type']).toBe('ContactPoint');
+      expect(contactPoint.email).toBe('mikko@lyyli.ai');
     });
 
     it('should localize description', () => {
       const enSchema = generateOrganizationSchema('en');
       const fiSchema = generateOrganizationSchema('fi');
-      
+
       expect(enSchema.description).not.toBe(fiSchema.description);
       expect(fiSchema.description).toMatch(/ammattilaisorganisaatioille/i);
     });
@@ -75,7 +77,7 @@ describe('Structured Data Generation', () => {
   describe('Website Schema', () => {
     it('should generate valid Website schema', () => {
       const schema = generateWebsiteSchema('en');
-      
+
       expect(schema['@context']).toBe('https://schema.org');
       expect(schema['@type']).toBe('WebSite');
       expect(schema.name).toBe('Lyyli.ai');
@@ -85,24 +87,27 @@ describe('Structured Data Generation', () => {
 
     it('should include search action', () => {
       const schema = generateWebsiteSchema('en');
-      
-      expect(schema.potentialAction).toBeDefined();
-      expect(schema.potentialAction['@type']).toBe('SearchAction');
-      expect(schema.potentialAction.target).toBeDefined();
-      expect(schema.potentialAction.target.urlTemplate).toMatch(/\{search_term_string\}/);
+      const potentialAction = schema.potentialAction as Record<string, unknown>;
+      const target = potentialAction.target as Record<string, unknown>;
+
+      expect(potentialAction).toBeDefined();
+      expect(potentialAction['@type']).toBe('SearchAction');
+      expect(target).toBeDefined();
+      expect(target.urlTemplate).toMatch(/\{search_term_string\}/);
     });
 
     it('should reference Organization as publisher', () => {
       const schema = generateWebsiteSchema('en');
-      
-      expect(schema.publisher).toBeDefined();
-      expect(schema.publisher['@id']).toBe('https://lyyli.ai/#organization');
+      const publisher = schema.publisher as Record<string, unknown>;
+
+      expect(publisher).toBeDefined();
+      expect(publisher['@id']).toBe('https://lyyli.ai/#organization');
     });
 
     it('should include language', () => {
       const enSchema = generateWebsiteSchema('en');
       const fiSchema = generateWebsiteSchema('fi');
-      
+
       expect(enSchema.inLanguage).toEqual(['en']);
       expect(fiSchema.inLanguage).toEqual(['fi']);
     });
@@ -111,7 +116,7 @@ describe('Structured Data Generation', () => {
   describe('BreadcrumbList Schema', () => {
     it('should generate breadcrumbs for multi-level paths', () => {
       const schema = generateBreadcrumbSchema('/en/help/getting-started', 'en');
-      
+
       expect(schema).not.toBeNull();
       expect(schema!['@type']).toBe('BreadcrumbList');
       expect(schema!.itemListElement).toBeDefined();
@@ -120,13 +125,13 @@ describe('Structured Data Generation', () => {
 
     it('should return null for shallow paths', () => {
       const schema = generateBreadcrumbSchema('/en', 'en');
-      
+
       expect(schema).toBeNull();
     });
 
     it('should include Home as first breadcrumb', () => {
       const schema = generateBreadcrumbSchema('/en/features', 'en');
-      
+
       expect(schema).not.toBeNull();
       const items = schema!.itemListElement;
       expect(items[0].position).toBe(1);
@@ -136,9 +141,11 @@ describe('Structured Data Generation', () => {
 
     it('should have sequential positions', () => {
       const schema = generateBreadcrumbSchema('/en/help/getting-started', 'en');
-      
-      const items = schema!.itemListElement;
-      items.forEach((item: any, index: number) => {
+
+      const items = schema!.itemListElement as unknown as Array<
+        Record<string, unknown>
+      >;
+      items.forEach((item, index) => {
         expect(item.position).toBe(index + 1);
       });
     });
@@ -146,17 +153,19 @@ describe('Structured Data Generation', () => {
     it('should localize breadcrumb names', () => {
       const enSchema = generateBreadcrumbSchema('/en/features', 'en');
       const fiSchema = generateBreadcrumbSchema('/fi/features', 'fi');
-      
+
       expect(enSchema!.itemListElement[0].name).toBe('Home');
       expect(fiSchema!.itemListElement[0].name).toBe('Etusivu');
     });
 
     it('should handle nested paths correctly', () => {
       const schema = generateBreadcrumbSchema('/en/help/getting-started', 'en');
-      
+
       const items = schema!.itemListElement;
       expect(items.length).toBeGreaterThanOrEqual(2); // Home + at least one level
-      expect(items[items.length - 1].item).toBe('https://lyyli.ai/en/help/getting-started');
+      expect(items[items.length - 1].item).toBe(
+        'https://lyyli.ai/en/help/getting-started'
+      );
     });
   });
 
@@ -169,12 +178,12 @@ describe('Structured Data Generation', () => {
       author: 'Mikko Oksanen',
       slug: 'test-post',
       locale: 'en',
-      keywords: ['AI', 'communication', 'test']
+      keywords: ['AI', 'communication', 'test'],
     };
 
     it('should generate valid Article schema', () => {
       const schema = generateArticleSchema(mockArticleProps);
-      
+
       expect(schema['@context']).toBe('https://schema.org');
       expect(schema['@type']).toBe('Article');
       expect(schema.headline).toBe(mockArticleProps.headline);
@@ -183,60 +192,65 @@ describe('Structured Data Generation', () => {
 
     it('should include author information', () => {
       const schema = generateArticleSchema(mockArticleProps);
-      
-      expect(schema.author).toBeDefined();
-      expect(schema.author['@type']).toBe('Person');
-      expect(schema.author.name).toBe('Mikko Oksanen');
-      expect(schema.author.url).toBeDefined();
+      const author = schema.author as Record<string, unknown>;
+
+      expect(author).toBeDefined();
+      expect(author['@type']).toBe('Person');
+      expect(author.name).toBe('Mikko Oksanen');
+      expect(author.url).toBeDefined();
     });
 
     it('should reference Organization as publisher', () => {
       const schema = generateArticleSchema(mockArticleProps);
-      
-      expect(schema.publisher).toBeDefined();
-      expect(schema.publisher['@id']).toBe('https://lyyli.ai/#organization');
+      const publisher = schema.publisher as Record<string, unknown>;
+
+      expect(publisher).toBeDefined();
+      expect(publisher['@id']).toBe('https://lyyli.ai/#organization');
     });
 
     it('should include image with proper structure', () => {
       const schema = generateArticleSchema(mockArticleProps);
-      
-      expect(schema.image).toBeDefined();
-      expect(schema.image['@type']).toBe('ImageObject');
-      expect(schema.image.url).toBeDefined();
-      expect(schema.image.width).toBe(1200);
-      expect(schema.image.height).toBe(630);
+      const image = schema.image as Record<string, unknown>;
+
+      expect(image).toBeDefined();
+      expect(image['@type']).toBe('ImageObject');
+      expect(image.url).toBeDefined();
+      expect(image.width).toBe(1200);
+      expect(image.height).toBe(630);
     });
 
     it('should handle external image URLs', () => {
       const propsWithExternalImage = {
         ...mockArticleProps,
-        image: 'https://example.com/image.png'
+        image: 'https://example.com/image.png',
       };
       const schema = generateArticleSchema(propsWithExternalImage);
-      
-      expect(schema.image.url).toBe('https://example.com/image.png');
+      const image = schema.image as Record<string, unknown>;
+
+      expect(image.url).toBe('https://example.com/image.png');
     });
 
     it('should fallback to OG image if no image provided', () => {
       const propsWithoutImage = {
         ...mockArticleProps,
-        image: undefined
+        image: undefined,
       };
       const schema = generateArticleSchema(propsWithoutImage);
-      
-      expect(schema.image.url).toMatch(/\/api\/og\?title=/);
+      const image = schema.image as Record<string, unknown>;
+
+      expect(image.url).toMatch(/\/api\/og\?title=/);
     });
 
     it('should include keywords', () => {
       const schema = generateArticleSchema(mockArticleProps);
-      
+
       expect(schema.keywords).toBeDefined();
       expect(schema.keywords).toContain('AI');
     });
 
     it('should mark as accessible for free', () => {
       const schema = generateArticleSchema(mockArticleProps);
-      
+
       expect(schema.isAccessibleForFree).toBe(true);
     });
   });
@@ -245,7 +259,7 @@ describe('Structured Data Generation', () => {
     it('should validate correct Organization schema', () => {
       const schema = generateOrganizationSchema('en');
       const result = validateSchema(schema);
-      
+
       expect(result.valid).toBe(true);
       expect(result.errors).toHaveLength(0);
     });
@@ -257,34 +271,34 @@ describe('Structured Data Generation', () => {
         datePublished: '2025-01-01',
         author: 'Test Author',
         slug: 'test',
-        locale: 'en'
+        locale: 'en',
       });
       const result = validateSchema(schema);
-      
+
       expect(result.valid).toBe(true);
       expect(result.errors).toHaveLength(0);
     });
 
     it('should detect missing @context', () => {
       const invalidSchema = {
-        "@type": "Organization",
-        name: "Test"
+        '@type': 'Organization',
+        name: 'Test',
       };
       const result = validateSchema(invalidSchema);
-      
+
       expect(result.valid).toBe(false);
       expect(result.errors).toContain('Missing @context');
     });
 
     it('should detect missing required Article fields', () => {
       const invalidArticle = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: "Test"
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: 'Test',
         // Missing datePublished and author
       };
       const result = validateSchema(invalidArticle);
-      
+
       expect(result.valid).toBe(false);
       expect(result.errors).toContain('Article missing datePublished');
       expect(result.errors).toContain('Article missing author');
@@ -292,12 +306,12 @@ describe('Structured Data Generation', () => {
 
     it('should detect missing Organization name', () => {
       const invalidOrg = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        url: "https://example.com"
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        url: 'https://example.com',
       };
       const result = validateSchema(invalidOrg);
-      
+
       expect(result.valid).toBe(false);
       expect(result.errors).toContain('Organization missing name');
     });
@@ -307,22 +321,25 @@ describe('Structured Data Generation', () => {
     it('should combine multiple schemas with @graph', () => {
       const org = generateOrganizationSchema('en');
       const website = generateWebsiteSchema('en');
-      
-      const combined = combineSchemas(org, website) as any;
-      
+
+      const combined = combineSchemas(org, website) as Record<string, unknown>;
+
       expect(combined).not.toBeNull();
       expect(combined['@context']).toBe('https://schema.org');
       expect(combined['@graph']).toBeDefined();
       expect(Array.isArray(combined['@graph'])).toBe(true);
-      expect(combined['@graph'].length).toBe(2);
+      expect((combined['@graph'] as unknown[]).length).toBe(2);
     });
 
     it('should handle null schemas gracefully', () => {
       const org = generateOrganizationSchema('en');
       const breadcrumb = generateBreadcrumbSchema('/en', 'en'); // Returns null
-      
-      const combined = combineSchemas(org, breadcrumb) as any;
-      
+
+      const combined = combineSchemas(org, breadcrumb) as Record<
+        string,
+        unknown
+      >;
+
       // Should only include the non-null schema
       expect(combined).not.toBeNull();
       expect(combined['@type']).toBe('Organization');
@@ -330,8 +347,8 @@ describe('Structured Data Generation', () => {
 
     it('should return single schema when only one provided', () => {
       const org = generateOrganizationSchema('en');
-      const combined = combineSchemas(org) as any;
-      
+      const combined = combineSchemas(org) as Record<string, unknown>;
+
       expect(combined).not.toBeNull();
       expect(combined['@type']).toBe('Organization');
       expect(combined['@graph']).toBeUndefined();
@@ -339,8 +356,11 @@ describe('Structured Data Generation', () => {
 
     it('should filter out null/undefined schemas', () => {
       const org = generateOrganizationSchema('en');
-      const combined = combineSchemas(org, null, undefined) as any;
-      
+      const combined = combineSchemas(org, null, undefined) as Record<
+        string,
+        unknown
+      >;
+
       expect(combined).not.toBeNull();
       expect(combined['@type']).toBe('Organization');
     });
@@ -358,8 +378,8 @@ describe('Structured Data Generation', () => {
           datePublished: '2025-01-01',
           author: 'Test',
           slug: 'test',
-          locale: 'en'
-        })
+          locale: 'en',
+        }),
       ];
 
       schemas.forEach(schema => {
@@ -375,10 +395,11 @@ describe('Structured Data Generation', () => {
     it('should use consistent @id patterns', () => {
       const org = generateOrganizationSchema('en');
       const website = generateWebsiteSchema('en');
-      
+      const publisher = website.publisher as Record<string, unknown>;
+
       expect(org['@id']).toBe('https://lyyli.ai/#organization');
       expect(website['@id']).toBe('https://lyyli.ai/#website');
-      expect(website.publisher['@id']).toBe('https://lyyli.ai/#organization');
+      expect(publisher['@id']).toBe('https://lyyli.ai/#organization');
     });
   });
 
@@ -390,14 +411,14 @@ describe('Structured Data Generation', () => {
 
     it('should handle single-level paths', () => {
       const schema = generateBreadcrumbSchema('/en/about', 'en');
-      
+
       expect(schema).not.toBeNull();
       expect(schema!.itemListElement.length).toBe(2); // Home + About
     });
 
     it('should handle multi-level paths', () => {
       const schema = generateBreadcrumbSchema('/en/help/getting-started', 'en');
-      
+
       expect(schema).not.toBeNull();
       expect(schema!.itemListElement.length).toBe(3); // Home + Help + Getting Started
     });
@@ -405,7 +426,7 @@ describe('Structured Data Generation', () => {
     it('should handle paths with locale variations', () => {
       const enSchema = generateBreadcrumbSchema('/en/features', 'en');
       const fiSchema = generateBreadcrumbSchema('/fi/features', 'fi');
-      
+
       expect(enSchema!.itemListElement[1].name).toBe('Features');
       expect(fiSchema!.itemListElement[1].name).toBe('Ominaisuudet');
     });
@@ -420,7 +441,7 @@ describe('Structured Data Generation', () => {
         dateModified: '2025-01-15',
         author: 'Test',
         slug: 'test',
-        locale: 'en'
+        locale: 'en',
       });
 
       expect(schema.dateModified).toBe('2025-01-15');
@@ -433,7 +454,7 @@ describe('Structured Data Generation', () => {
         datePublished: '2025-01-01',
         author: 'Test',
         slug: 'test',
-        locale: 'en'
+        locale: 'en',
       });
 
       expect(schema.dateModified).toBe('2025-01-01');
@@ -446,12 +467,18 @@ describe('Structured Data Generation', () => {
         datePublished: '2025-01-01',
         author: 'Test',
         slug: 'test-article',
-        locale: 'en'
+        locale: 'en',
       });
+      const mainEntityOfPage = schema.mainEntityOfPage as Record<
+        string,
+        unknown
+      >;
 
-      expect(schema.mainEntityOfPage).toBeDefined();
-      expect(schema.mainEntityOfPage['@type']).toBe('WebPage');
-      expect(schema.mainEntityOfPage['@id']).toBe('https://lyyli.ai/en/blog/test-article');
+      expect(mainEntityOfPage).toBeDefined();
+      expect(mainEntityOfPage['@type']).toBe('WebPage');
+      expect(mainEntityOfPage['@id']).toBe(
+        'https://lyyli.ai/en/blog/test-article'
+      );
     });
   });
 
@@ -460,14 +487,16 @@ describe('Structured Data Generation', () => {
       // When combining Organization + Website, should use @graph
       const org = generateOrganizationSchema('en');
       const website = generateWebsiteSchema('en');
-      const combined = combineSchemas(org, website) as any;
-      
+      const combined = combineSchemas(org, website) as Record<string, unknown>;
+
       expect(combined).not.toBeNull();
       expect(combined['@graph']).toBeDefined();
-      expect(combined['@graph'].length).toBe(2);
-      
+
+      const graph = combined['@graph'] as Array<Record<string, unknown>>;
+      expect(graph.length).toBe(2);
+
       // Each type should appear only once
-      const types = combined['@graph'].map((s: any) => s['@type']);
+      const types = graph.map(s => s['@type']);
       const uniqueTypes = new Set(types);
       expect(types.length).toBe(uniqueTypes.size);
     });
@@ -479,15 +508,16 @@ describe('Structured Data Generation', () => {
         datePublished: '2025-01-01',
         author: 'Test',
         slug: 'test',
-        locale: 'en'
+        locale: 'en',
       });
 
       // Article should have its own schema block, not combined with org
       expect(article['@type']).toBe('Article');
       expect(article['@context']).toBe('https://schema.org');
-      
+
       // It references Organization but doesn't include it
-      expect(article.publisher['@id']).toBe('https://lyyli.ai/#organization');
+      const publisher = article.publisher as Record<string, unknown>;
+      expect(publisher['@id']).toBe('https://lyyli.ai/#organization');
     });
   });
 });

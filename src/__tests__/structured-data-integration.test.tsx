@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-import { render } from '@testing-library/react';
 
 // Mock modules
 jest.mock('next/headers', () => ({
@@ -39,7 +38,9 @@ jest.mock('../lib/blog', () => ({
 describe('Structured Data Integration Tests', () => {
   describe('Schema Generation in Pages', () => {
     it('should generate Organization schema', async () => {
-      const { generateOrganizationSchema } = await import('../lib/structured-data');
+      const { generateOrganizationSchema } = await import(
+        '../lib/structured-data'
+      );
       const schema = generateOrganizationSchema('en');
 
       expect(schema['@type']).toBe('Organization');
@@ -52,15 +53,19 @@ describe('Structured Data Integration Tests', () => {
     it('should generate Website schema with search action', async () => {
       const { generateWebsiteSchema } = await import('../lib/structured-data');
       const schema = generateWebsiteSchema('en');
+      const potentialAction = schema.potentialAction as Record<string, unknown>;
+      const target = potentialAction.target as Record<string, unknown>;
 
       expect(schema['@type']).toBe('WebSite');
-      expect(schema.potentialAction).toBeDefined();
-      expect(schema.potentialAction['@type']).toBe('SearchAction');
-      expect(schema.potentialAction.target.urlTemplate).toContain('{search_term_string}');
+      expect(potentialAction).toBeDefined();
+      expect(potentialAction['@type']).toBe('SearchAction');
+      expect(target.urlTemplate).toContain('{search_term_string}');
     });
 
     it('should generate BreadcrumbList for multi-level paths', async () => {
-      const { generateBreadcrumbSchema } = await import('../lib/structured-data');
+      const { generateBreadcrumbSchema } = await import(
+        '../lib/structured-data'
+      );
       const schema = generateBreadcrumbSchema('/en/help/getting-started', 'en');
 
       expect(schema).not.toBeNull();
@@ -78,45 +83,49 @@ describe('Structured Data Integration Tests', () => {
         author: 'Mikko Oksanen',
         slug: 'test-article',
         locale: 'en',
-        keywords: ['AI', 'communication']
+        keywords: ['AI', 'communication'],
       });
+      const author = schema.author as Record<string, unknown>;
 
       expect(schema['@type']).toBe('Article');
       expect(schema.headline).toBe('Test Article');
-      expect(schema.author).toBeDefined();
-      expect(schema.author['@type']).toBe('Person');
+      expect(author).toBeDefined();
+      expect(author['@type']).toBe('Person');
       expect(schema.publisher).toBeDefined();
     });
   });
 
   describe('Schema Combination', () => {
     it('should combine multiple schemas correctly', async () => {
-      const { 
-        generateOrganizationSchema, 
+      const {
+        generateOrganizationSchema,
         generateWebsiteSchema,
-        combineSchemas 
+        combineSchemas,
       } = await import('../lib/structured-data');
 
       const org = generateOrganizationSchema('en');
       const website = generateWebsiteSchema('en');
-      const combined = combineSchemas(org, website) as any;
+      const combined = combineSchemas(org, website) as Record<string, unknown>;
 
       expect(combined).not.toBeNull();
       expect(combined['@context']).toBe('https://schema.org');
       expect(combined['@graph']).toBeDefined();
-      expect(combined['@graph'].length).toBe(2);
+      expect((combined['@graph'] as unknown[]).length).toBe(2);
     });
 
     it('should handle null breadcrumb gracefully', async () => {
-      const { 
+      const {
         generateOrganizationSchema,
         generateBreadcrumbSchema,
-        combineSchemas 
+        combineSchemas,
       } = await import('../lib/structured-data');
 
       const org = generateOrganizationSchema('en');
       const breadcrumb = generateBreadcrumbSchema('/en', 'en'); // Returns null
-      const combined = combineSchemas(org, breadcrumb) as any;
+      const combined = combineSchemas(org, breadcrumb) as Record<
+        string,
+        unknown
+      >;
 
       // Should only include non-null schemas
       expect(combined).not.toBeNull();
@@ -127,11 +136,11 @@ describe('Structured Data Integration Tests', () => {
 
   describe('Schema URL Validation', () => {
     it('should use production domain in all schemas', async () => {
-      const { 
-        generateOrganizationSchema, 
+      const {
+        generateOrganizationSchema,
         generateWebsiteSchema,
         generateBreadcrumbSchema,
-        generateArticleSchema
+        generateArticleSchema,
       } = await import('../lib/structured-data');
 
       const schemas = [
@@ -144,8 +153,8 @@ describe('Structured Data Integration Tests', () => {
           datePublished: '2025-01-01',
           author: 'Test',
           slug: 'test',
-          locale: 'en'
-        })
+          locale: 'en',
+        }),
       ];
 
       schemas.forEach(schema => {
@@ -154,7 +163,7 @@ describe('Structured Data Integration Tests', () => {
           expect(schemaStr).toMatch(/https:\/\/lyyli\.ai/);
           expect(schemaStr).not.toMatch(/localhost/);
           expect(schemaStr).not.toMatch(/vercel\.app/);
-          expect(schemaStr).not.toMatch(/staging/);
+          expect(schemaStr).not.toMatch(/staging/i);
         }
       });
     });
@@ -162,33 +171,34 @@ describe('Structured Data Integration Tests', () => {
 
   describe('Schema Type Uniqueness', () => {
     it('should ensure one schema type per page', async () => {
-      const { 
+      const {
         generateOrganizationSchema,
         generateWebsiteSchema,
-        combineSchemas 
+        combineSchemas,
       } = await import('../lib/structured-data');
 
       const combined = combineSchemas(
         generateOrganizationSchema('en'),
         generateWebsiteSchema('en')
-      ) as any;
+      ) as Record<string, unknown>;
 
       expect(combined).not.toBeNull();
-      
-      if (combined && combined['@graph']) {
-        const types = combined['@graph'].map((s: any) => s['@type']);
+
+      if (combined?.['@graph']) {
+        const graph = combined['@graph'] as Array<Record<string, unknown>>;
+        const types = graph.map(s => s['@type']);
         const uniqueTypes = new Set(types);
-        
+
         // Each type should appear only once
         expect(types.length).toBe(uniqueTypes.size);
       }
     });
 
     it('should not duplicate Organization schema', async () => {
-      const { 
+      const {
         generateOrganizationSchema,
         generateWebsiteSchema,
-        combineSchemas 
+        combineSchemas,
       } = await import('../lib/structured-data');
 
       const combined = combineSchemas(
@@ -197,7 +207,8 @@ describe('Structured Data Integration Tests', () => {
       );
 
       const schemaStr = JSON.stringify(combined);
-      const orgMatches = (schemaStr.match(/"@type":\s*"Organization"/g) || []).length;
+      const orgMatches = (schemaStr.match(/"@type":\s*"Organization"/g) || [])
+        .length;
 
       expect(orgMatches).toBe(1);
     });
@@ -205,7 +216,9 @@ describe('Structured Data Integration Tests', () => {
 
   describe('Required Fields Validation', () => {
     it('should include all required Organization fields', async () => {
-      const { generateOrganizationSchema } = await import('../lib/structured-data');
+      const { generateOrganizationSchema } = await import(
+        '../lib/structured-data'
+      );
       const schema = generateOrganizationSchema('en');
 
       const requiredFields = ['@context', '@type', '@id', 'name', 'url'];
@@ -232,17 +245,26 @@ describe('Structured Data Integration Tests', () => {
         datePublished: '2025-01-01',
         author: 'Test Author',
         slug: 'test',
-        locale: 'en'
+        locale: 'en',
       });
 
-      const requiredFields = ['@context', '@type', 'headline', 'datePublished', 'author', 'publisher'];
+      const requiredFields = [
+        '@context',
+        '@type',
+        'headline',
+        'datePublished',
+        'author',
+        'publisher',
+      ];
       requiredFields.forEach(field => {
         expect(schema).toHaveProperty(field);
       });
     });
 
     it('should include all required BreadcrumbList fields', async () => {
-      const { generateBreadcrumbSchema } = await import('../lib/structured-data');
+      const { generateBreadcrumbSchema } = await import(
+        '../lib/structured-data'
+      );
       const schema = generateBreadcrumbSchema('/en/features', 'en');
 
       expect(schema).not.toBeNull();
@@ -255,19 +277,25 @@ describe('Structured Data Integration Tests', () => {
 
   describe('Localization', () => {
     it('should localize Organization description', async () => {
-      const { generateOrganizationSchema } = await import('../lib/structured-data');
-      
+      const { generateOrganizationSchema } = await import(
+        '../lib/structured-data'
+      );
+
       const enSchema = generateOrganizationSchema('en');
       const fiSchema = generateOrganizationSchema('fi');
 
       expect(enSchema.description).not.toBe(fiSchema.description);
-      expect(enSchema.description).toMatch(/Professional Service Organizations/i);
+      expect(enSchema.description).toMatch(
+        /Professional Service Organizations/i
+      );
       expect(fiSchema.description).toMatch(/ammattilaisorganisaatioille/i);
     });
 
     it('should localize breadcrumb names', async () => {
-      const { generateBreadcrumbSchema } = await import('../lib/structured-data');
-      
+      const { generateBreadcrumbSchema } = await import(
+        '../lib/structured-data'
+      );
+
       const enSchema = generateBreadcrumbSchema('/en/features', 'en');
       const fiSchema = generateBreadcrumbSchema('/fi/features', 'fi');
 

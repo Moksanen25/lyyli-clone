@@ -11,51 +11,54 @@ const PRODUCTION_URL = getProductionDomain();
  * Organization schema
  * Used on all pages to establish company identity
  */
-export function generateOrganizationSchema(locale: string = 'en') {
+export function generateOrganizationSchema(
+  locale: string = 'en'
+): Record<string, unknown> {
   return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${PRODUCTION_URL}/#organization`,
-    name: "Lyyli.ai",
-    legalName: "Content AI Oy",
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${PRODUCTION_URL}/#organization`,
+    name: 'Lyyli.ai',
+    legalName: 'Content AI Oy',
     url: PRODUCTION_URL,
     logo: {
-      "@type": "ImageObject",
+      '@type': 'ImageObject',
       url: `${PRODUCTION_URL}/images/logos/Lyyli.ai_no_BG.png`,
       width: 1500,
       height: 500,
       contentUrl: `${PRODUCTION_URL}/images/logos/Lyyli.ai_no_BG.png`,
     },
-    description: locale === 'fi' 
-      ? "AI-viestintäassistentti ammattilaisorganisaatioille"
-      : "AI Communication Assistant for Professional Service Organizations",
-    foundingDate: "2024",
+    description:
+      locale === 'fi'
+        ? 'AI-viestintäassistentti ammattilaisorganisaatioille'
+        : 'AI Communication Assistant for Professional Service Organizations',
+    foundingDate: '2024',
     founders: [
       {
-        "@type": "Person",
-        name: "Mikko Oksanen",
-        jobTitle: "CEO and Co-founder"
+        '@type': 'Person',
+        name: 'Mikko Oksanen',
+        jobTitle: 'CEO and Co-founder',
       },
       {
-        "@type": "Person",
-        name: "Veikko Luoma-aho",
-        jobTitle: "Co-founder"
-      }
+        '@type': 'Person',
+        name: 'Veikko Luoma-aho',
+        jobTitle: 'Co-founder',
+      },
     ],
     address: {
-      "@type": "PostalAddress",
-      addressCountry: "FI",
-      addressLocality: "Jyväskylä",
+      '@type': 'PostalAddress',
+      addressCountry: 'FI',
+      addressLocality: 'Jyväskylä',
     },
     contactPoint: {
-      "@type": "ContactPoint",
-      email: "mikko@lyyli.ai",
-      contactType: "Customer Service",
-      availableLanguage: ["en", "fi"]
+      '@type': 'ContactPoint',
+      email: 'mikko@lyyli.ai',
+      contactType: 'Customer Service',
+      availableLanguage: ['en', 'fi'],
     },
     sameAs: [
-      "https://www.linkedin.com/company/lyyli-ai",
-      "https://twitter.com/lyyli_ai",
+      'https://www.linkedin.com/company/lyyli-ai',
+      'https://twitter.com/lyyli_ai',
     ],
   };
 }
@@ -64,28 +67,31 @@ export function generateOrganizationSchema(locale: string = 'en') {
  * Website schema with search action
  * Helps search engines understand site search capability
  */
-export function generateWebsiteSchema(locale: string = 'en') {
+export function generateWebsiteSchema(
+  locale: string = 'en'
+): Record<string, unknown> {
   return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${PRODUCTION_URL}/#website`,
-    name: "Lyyli.ai",
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${PRODUCTION_URL}/#website`,
+    name: 'Lyyli.ai',
     url: `${PRODUCTION_URL}/${locale}`,
-    description: locale === 'fi'
-      ? "Tehosta sisäistä viestintääsi yritysluokan tekoälyavustajalla"
-      : "Transform your internal communications with enterprise-grade AI assistant",
+    description:
+      locale === 'fi'
+        ? 'Tehosta sisäistä viestintääsi yritysluokan tekoälyavustajalla'
+        : 'Transform your internal communications with enterprise-grade AI assistant',
     inLanguage: [locale],
     potentialAction: {
-      "@type": "SearchAction",
+      '@type': 'SearchAction',
       target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${PRODUCTION_URL}/${locale}/help/search?q={search_term_string}`
+        '@type': 'EntryPoint',
+        urlTemplate: `${PRODUCTION_URL}/${locale}/help/search?q={search_term_string}`,
       },
-      "query-input": "required name=search_term_string"
+      'query-input': 'required name=search_term_string',
     },
     publisher: {
-      "@id": `${PRODUCTION_URL}/#organization`
-    }
+      '@id': `${PRODUCTION_URL}/#organization`,
+    },
   };
 }
 
@@ -111,7 +117,7 @@ export function generateBreadcrumbSchema(
   locale: string = 'en'
 ): BreadcrumbListSchema | null {
   const pathSegments = pathname.split('/').filter(Boolean);
-  
+
   // Only generate breadcrumbs for pages deeper than locale level
   if (pathSegments.length <= 1) {
     return null;
@@ -122,10 +128,10 @@ export function generateBreadcrumbSchema(
 
   // Add home
   breadcrumbItems.push({
-    "@type": "ListItem",
+    '@type': 'ListItem',
     position: 1,
     name: locale === 'fi' ? 'Etusivu' : 'Home',
-    item: `${PRODUCTION_URL}/${locale}`
+    item: `${PRODUCTION_URL}/${locale}`,
   });
 
   // Map route segments to readable names
@@ -151,7 +157,9 @@ export function generateBreadcrumbSchema(
     }
 
     // Capitalize first letter for unknown segments
-    return segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+    return (
+      segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ')
+    );
   };
 
   let position = 2;
@@ -165,17 +173,17 @@ export function generateBreadcrumbSchema(
     }
 
     breadcrumbItems.push({
-      "@type": "ListItem",
+      '@type': 'ListItem',
       position: position++,
       name: getSegmentLabel(segment),
-      item: `${PRODUCTION_URL}${currentPath}`
+      item: `${PRODUCTION_URL}${currentPath}`,
     });
   }
 
   return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: breadcrumbItems as BreadcrumbListItem[]
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems as BreadcrumbListItem[],
   };
 }
 
@@ -195,7 +203,9 @@ export interface ArticleSchemaProps {
   keywords?: string[];
 }
 
-export function generateArticleSchema(props: ArticleSchemaProps) {
+export function generateArticleSchema(
+  props: ArticleSchemaProps
+): Record<string, unknown> {
   const {
     headline,
     description,
@@ -205,41 +215,41 @@ export function generateArticleSchema(props: ArticleSchemaProps) {
     author,
     slug,
     locale,
-    keywords = []
+    keywords = [],
   } = props;
 
   const articleUrl = `${PRODUCTION_URL}/${locale}/blog/${slug}`;
-  const imageUrl = image?.startsWith('http') 
-    ? image 
-    : image 
-      ? `${PRODUCTION_URL}${image}` 
+  const imageUrl = image?.startsWith('http')
+    ? image
+    : image
+      ? `${PRODUCTION_URL}${image}`
       : `${PRODUCTION_URL}/api/og?title=${encodeURIComponent(headline)}`;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "@id": `${articleUrl}#article`,
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${articleUrl}#article`,
     headline,
     description,
     image: {
-      "@type": "ImageObject",
+      '@type': 'ImageObject',
       url: imageUrl,
       width: 1200,
-      height: 630
+      height: 630,
     },
     datePublished,
     dateModified: dateModified || datePublished,
     author: {
-      "@type": "Person",
+      '@type': 'Person',
       name: author,
-      url: author === "Mikko Oksanen" ? `${PRODUCTION_URL}/about` : undefined
+      url: author === 'Mikko Oksanen' ? `${PRODUCTION_URL}/about` : undefined,
     },
     publisher: {
-      "@id": `${PRODUCTION_URL}/#organization`
+      '@id': `${PRODUCTION_URL}/#organization`,
     },
     mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": articleUrl
+      '@type': 'WebPage',
+      '@id': articleUrl,
     },
     keywords: keywords.join(', '),
     inLanguage: locale,
@@ -253,32 +263,44 @@ export function generateArticleSchema(props: ArticleSchemaProps) {
  */
 export function generateSoftwareApplicationSchema(locale: string = 'en') {
   return {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "@id": `${PRODUCTION_URL}/#software`,
-    name: "Lyyli.ai",
-    description: locale === 'fi'
-      ? "AI-viestintäassistentti ammattilaisorganisaatioille"
-      : "AI Communication Assistant for Professional Service Organizations",
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': `${PRODUCTION_URL}/#software`,
+    name: 'Lyyli.ai',
+    description:
+      locale === 'fi'
+        ? 'AI-viestintäassistentti ammattilaisorganisaatioille'
+        : 'AI Communication Assistant for Professional Service Organizations',
     url: PRODUCTION_URL,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
     offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "EUR",
-      description: locale === 'fi' ? "Ilmainen kokeilu saatavilla" : "Free trial available",
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR',
+      description:
+        locale === 'fi'
+          ? 'Ilmainen kokeilu saatavilla'
+          : 'Free trial available',
     },
     provider: {
-      "@id": `${PRODUCTION_URL}/#organization`
+      '@id': `${PRODUCTION_URL}/#organization`,
     },
-    inLanguage: ["en", "fi"],
+    inLanguage: ['en', 'fi'],
     featureList: [
-      locale === 'fi' ? "Tekoäly-pohjainen viestien reititys" : "AI-powered message routing",
-      locale === 'fi' ? "Monikielinen viestintätuki" : "Multilingual communication support",
-      locale === 'fi' ? "Yritystason tietoturva" : "Enterprise-grade security",
-      locale === 'fi' ? "Vaatimustenmukainen raportointi" : "Compliance reporting",
-      locale === 'fi' ? "Reaaliaikainen viestintäanalytiikka" : "Real-time communication analytics",
+      locale === 'fi'
+        ? 'Tekoäly-pohjainen viestien reititys'
+        : 'AI-powered message routing',
+      locale === 'fi'
+        ? 'Monikielinen viestintätuki'
+        : 'Multilingual communication support',
+      locale === 'fi' ? 'Yritystason tietoturva' : 'Enterprise-grade security',
+      locale === 'fi'
+        ? 'Vaatimustenmukainen raportointi'
+        : 'Compliance reporting',
+      locale === 'fi'
+        ? 'Reaaliaikainen viestintäanalytiikka'
+        : 'Real-time communication analytics',
     ],
   };
 }
@@ -294,25 +316,25 @@ export function generateWebPageSchema(
   locale: string = 'en'
 ) {
   return {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${url}#webpage`,
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
     name,
     description,
     url,
     inLanguage: locale,
     isPartOf: {
-      "@id": `${PRODUCTION_URL}/#website`
+      '@id': `${PRODUCTION_URL}/#website`,
     },
     about: {
-      "@id": `${PRODUCTION_URL}/#organization`
+      '@id': `${PRODUCTION_URL}/#organization`,
     },
     primaryImageOfPage: {
-      "@type": "ImageObject",
+      '@type': 'ImageObject',
       url: `${PRODUCTION_URL}/api/og?title=${encodeURIComponent(name)}&description=${encodeURIComponent(description)}`,
       width: 1200,
-      height: 630
-    }
+      height: 630,
+    },
   };
 }
 
@@ -325,24 +347,28 @@ export interface CombinedSchema {
   '@graph': unknown[];
 }
 
-export function combineSchemas(...schemas: (object | null | undefined)[]): CombinedSchema | object | null {
-  const validSchemas = schemas.filter(s => s !== null && s !== undefined) as object[];
-  
+export function combineSchemas(
+  ...schemas: (object | null | undefined)[]
+): CombinedSchema | object | null {
+  const validSchemas = schemas.filter(
+    s => s !== null && s !== undefined
+  ) as object[];
+
   if (validSchemas.length === 0) {
     return null;
   }
-  
+
   if (validSchemas.length === 1) {
     return validSchemas[0];
   }
-  
+
   return {
-    "@context": "https://schema.org",
-    "@graph": validSchemas.map(schema => {
+    '@context': 'https://schema.org',
+    '@graph': validSchemas.map(schema => {
       // Remove @context from individual schemas when combining
-      const { "@context": _, ...rest } = schema as any;
+      const { '@context': _, ...rest } = schema as Record<string, unknown>;
       return rest;
-    })
+    }),
   };
 }
 
@@ -350,50 +376,59 @@ export function combineSchemas(...schemas: (object | null | undefined)[]): Combi
  * Validate JSON-LD schema
  * Basic validation to ensure required fields are present
  */
-export function validateSchema(schema: any): { valid: boolean; errors: string[] } {
+export function validateSchema(schema: unknown): {
+  valid: boolean;
+  errors: string[];
+} {
   const errors: string[] = [];
 
-  if (!schema) {
+  if (!schema || typeof schema !== 'object') {
     errors.push('Schema is null or undefined');
     return { valid: false, errors };
   }
 
-  if (!schema['@context']) {
+  const schemaObj = schema as Record<string, unknown>;
+
+  if (!schemaObj['@context']) {
     errors.push('Missing @context');
   }
 
-  if (!schema['@type'] && !schema['@graph']) {
+  if (!schemaObj['@type'] && !schemaObj['@graph']) {
     errors.push('Missing @type or @graph');
   }
 
-  if (schema['@type']) {
+  if (schemaObj['@type']) {
     // Type-specific validation
-    switch (schema['@type']) {
+    switch (schemaObj['@type']) {
       case 'Organization':
-        if (!schema.name) errors.push('Organization missing name');
-        if (!schema.url) errors.push('Organization missing url');
+        if (!schemaObj.name) errors.push('Organization missing name');
+        if (!schemaObj.url) errors.push('Organization missing url');
         break;
-      
+
       case 'Article':
-        if (!schema.headline) errors.push('Article missing headline');
-        if (!schema.datePublished) errors.push('Article missing datePublished');
-        if (!schema.author) errors.push('Article missing author');
+        if (!schemaObj.headline) errors.push('Article missing headline');
+        if (!schemaObj.datePublished)
+          errors.push('Article missing datePublished');
+        if (!schemaObj.author) errors.push('Article missing author');
         break;
-      
+
       case 'BreadcrumbList':
-        if (!schema.itemListElement || !Array.isArray(schema.itemListElement)) {
+        if (
+          !schemaObj.itemListElement ||
+          !Array.isArray(schemaObj.itemListElement)
+        ) {
           errors.push('BreadcrumbList missing itemListElement array');
         }
         break;
-      
+
       case 'WebSite':
-        if (!schema.url) errors.push('WebSite missing url');
+        if (!schemaObj.url) errors.push('WebSite missing url');
         break;
     }
   }
 
   return {
     valid: errors.length === 0,
-    errors
+    errors,
   };
 }

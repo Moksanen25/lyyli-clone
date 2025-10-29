@@ -1,5 +1,5 @@
-import React, { ReactElement, ReactNode } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import type { ReactElement, ReactNode } from 'react';
+import { render, type RenderOptions } from '@testing-library/react';
 import type { TranslationKeys } from '@/lib/i18n';
 
 /**
@@ -8,7 +8,13 @@ import type { TranslationKeys } from '@/lib/i18n';
  */
 
 // Re-export everything from React Testing Library
-export * from '@testing-library/react';
+export {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  within,
+} from '@testing-library/react';
 
 /**
  * Mock translations object with commonly used keys
@@ -42,20 +48,26 @@ export const mockTranslations: Partial<TranslationKeys> = {
   'features.governance.access.description':
     'Role-based access control for content management.',
   'features.security.encryption.title': 'End-to-end encryption',
-  'features.security.encryption.description': 'Bank-level security with SOC 2 compliance.',
+  'features.security.encryption.description':
+    'Bank-level security with SOC 2 compliance.',
   'features.security.iso.title': 'ISO 27001 certified',
   'features.security.iso.description':
     'International standard for information security management.',
   'features.security.gdpr.title': 'GDPR compliant',
-  'features.security.gdpr.description': 'Full compliance with European data protection regulations.',
+  'features.security.gdpr.description':
+    'Full compliance with European data protection regulations.',
   'features.multilingual.translation.title': 'AI translation',
-  'features.multilingual.translation.description': 'Automatic translation across multiple languages.',
+  'features.multilingual.translation.description':
+    'Automatic translation across multiple languages.',
   'features.multilingual.locales.title': 'Multi-locale support',
-  'features.multilingual.locales.description': 'Support for multiple regional variations.',
+  'features.multilingual.locales.description':
+    'Support for multiple regional variations.',
   'features.multilingual.cultural.title': 'Cultural adaptation',
-  'features.multilingual.cultural.description': 'Content adapted to local cultural contexts.',
+  'features.multilingual.cultural.description':
+    'Content adapted to local cultural contexts.',
   'features.integrations.email.title': 'Email integration',
-  'features.integrations.email.description': 'Seamless integration with email platforms.',
+  'features.integrations.email.description':
+    'Seamless integration with email platforms.',
 };
 
 /**
@@ -80,7 +92,9 @@ type MockRouterType = {
 /**
  * Mock router for Next.js navigation
  */
-export const createMockRouter = (overrides?: Partial<MockRouterType>): MockRouterType => ({
+export const createMockRouter = (
+  overrides?: Partial<MockRouterType>
+): MockRouterType => ({
   push: jest.fn(),
   replace: jest.fn(),
   prefetch: jest.fn(),
@@ -109,9 +123,12 @@ interface TestProvidersProps {
 export function TestProviders({
   children,
   locale = 'en',
-  translations = mockTranslations,
 }: TestProvidersProps): ReactElement {
-  return <div data-testid="test-provider" data-locale={locale}>{children}</div>;
+  return (
+    <div data-testid="test-provider" data-locale={locale}>
+      {children}
+    </div>
+  );
 }
 
 /**
@@ -126,7 +143,11 @@ export function renderWithProviders(
   ui: ReactElement,
   options?: CustomRenderOptions
 ): ReturnType<typeof render> {
-  const { locale = 'en', translations = mockTranslations, ...renderOptions } = options || {};
+  const {
+    locale = 'en',
+    translations = mockTranslations,
+    ...renderOptions
+  } = options ?? {};
 
   function Wrapper({ children }: { children: ReactNode }): ReactElement {
     return (
@@ -145,10 +166,11 @@ export function renderWithProviders(
 export function createMockComponentProps(overrides?: {
   locale?: string;
   translations?: Partial<TranslationKeys>;
-}) {
+}): { locale: string; translations: TranslationKeys } {
   return {
-    locale: overrides?.locale || 'en',
-    translations: (overrides?.translations || mockTranslations) as TranslationKeys,
+    locale: overrides?.locale ?? 'en',
+    translations: (overrides?.translations ??
+      mockTranslations) as TranslationKeys,
   };
 }
 
@@ -158,7 +180,7 @@ export function createMockComponentProps(overrides?: {
 export function mockMatchMedia(matches: boolean = false): void {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
-    value: jest.fn().mockImplementation((query) => ({
+    value: jest.fn().mockImplementation(query => ({
       matches,
       media: query,
       onchange: null,
@@ -201,7 +223,7 @@ export function mockResizeObserver(): void {
  * Wait for async operations in tests
  */
 export function wait(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 /**
