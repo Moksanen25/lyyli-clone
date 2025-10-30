@@ -43,6 +43,9 @@ pnpm-lock.yaml
 # Archives
 archive/
 
+# GitHub workflows to skip (contains multiple docs)
+.github/workflows/ci.yml
+
 # Other
 .DS_Store
 *.pem
