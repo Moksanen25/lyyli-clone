@@ -1,4 +1,4 @@
-import { MDXComponents } from 'mdx/types';
+import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -41,27 +41,19 @@ export const BlogMDXComponents: MDXComponents = {
 
   // Paragraphs
   p: ({ children }) => (
-    <p className="text-gray-700 leading-relaxed mb-6">
-      {children}
-    </p>
+    <p className="text-gray-700 leading-relaxed mb-6">{children}</p>
   ),
 
   // Text formatting
   strong: ({ children }) => (
-    <strong className="font-semibold text-forest">
-      {children}
-    </strong>
+    <strong className="font-semibold text-forest">{children}</strong>
   ),
-  em: ({ children }) => (
-    <em className="italic">
-      {children}
-    </em>
-  ),
+  em: ({ children }) => <em className="italic">{children}</em>,
 
   // Links
   a: ({ href, children }) => {
     const isExternal = href?.startsWith('http');
-    
+
     if (isExternal) {
       return (
         <a
@@ -74,10 +66,10 @@ export const BlogMDXComponents: MDXComponents = {
         </a>
       );
     }
-    
+
     return (
       <Link
-        href={href || '#'}
+        href={href ?? '#'}
         className="text-forest hover:text-turquoise transition-colors underline"
       >
         {children}
@@ -96,11 +88,7 @@ export const BlogMDXComponents: MDXComponents = {
       {children}
     </ol>
   ),
-  li: ({ children }) => (
-    <li className="mb-2">
-      {children}
-    </li>
-  ),
+  li: ({ children }) => <li className="mb-2">{children}</li>,
 
   // Blockquotes
   blockquote: ({ children }) => (
@@ -112,7 +100,7 @@ export const BlogMDXComponents: MDXComponents = {
   // Code
   code: ({ children, className }) => {
     const isInline = !className;
-    
+
     if (isInline) {
       return (
         <code className="bg-gray-100 text-forest px-2 py-1 rounded text-sm font-mono">
@@ -120,12 +108,8 @@ export const BlogMDXComponents: MDXComponents = {
         </code>
       );
     }
-    
-    return (
-      <code className={className}>
-        {children}
-      </code>
-    );
+
+    return <code className={className}>{children}</code>;
   },
   pre: ({ children }) => (
     <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-6">
@@ -136,26 +120,14 @@ export const BlogMDXComponents: MDXComponents = {
   // Tables
   table: ({ children }) => (
     <div className="overflow-x-auto my-6">
-      <table className="min-w-full divide-y divide-gray-200">
-        {children}
-      </table>
+      <table className="min-w-full divide-y divide-gray-200">{children}</table>
     </div>
   ),
-  thead: ({ children }) => (
-    <thead className="bg-cream">
-      {children}
-    </thead>
-  ),
+  thead: ({ children }) => <thead className="bg-cream">{children}</thead>,
   tbody: ({ children }) => (
-    <tbody className="bg-white divide-y divide-gray-200">
-      {children}
-    </tbody>
+    <tbody className="bg-white divide-y divide-gray-200">{children}</tbody>
   ),
-  tr: ({ children }) => (
-    <tr>
-      {children}
-    </tr>
-  ),
+  tr: ({ children }) => <tr>{children}</tr>,
   th: ({ children }) => (
     <th className="px-6 py-3 text-left text-xs font-medium text-forest uppercase tracking-wider">
       {children}
@@ -168,31 +140,24 @@ export const BlogMDXComponents: MDXComponents = {
   ),
 
   // Horizontal rule
-  hr: () => (
-    <div className="chapter-break my-12 border-t-2 border-cream"></div>
-  ),
+  hr: () => <div className="chapter-break my-12 border-t-2 border-cream" />,
 
   // Images
   img: ({ src, alt }) => {
     if (!src) return null;
-    
+
     return (
       <div className="my-8">
         <Image
           src={src}
-          alt={alt || ''}
+          alt={alt ?? ''}
           width={1200}
           height={675}
           className="rounded-lg"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
         />
-        {alt && (
-          <p className="text-sm text-gray-500 mt-2 text-center">
-            {alt}
-          </p>
-        )}
+        {alt && <p className="text-sm text-gray-500 mt-2 text-center">{alt}</p>}
       </div>
     );
   },
 };
-
