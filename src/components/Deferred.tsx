@@ -1,64 +1,163 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef, type ReactNode } from "react";
 
 interface DeferredProps {
-  children: React.ReactNode;
+  children: ReactNode;
+  /**
+   * Loading strategy:
+   * - "idle": Load when browser is idle (requestIdleCallback)
+   * - "visible": Load when element becomes visible (IntersectionObserver)
+   */
   when?: "idle" | "visible";
+  /**
+   * Delay in milliseconds before rendering after trigger condition is met
+   * @default 0
+   */
+  delay?: number;
+  /**
+   * Content to show before the component is loaded
+   * @default null
+   */
+  fallback?: ReactNode;
+  /**
+   * IntersectionObserver threshold (0-1)
+   * Only applies when when="visible"
+   * @default 0.1
+   */
+  threshold?: number;
+  /**
+   * IntersectionObserver rootMargin
+   * Only applies when when="visible"
+   * @default "200px"
+   */
+  rootMargin?: string;
+  /**
+   * Optional className for the wrapper element
+   * If not provided, no wrapper div is used (fragment mode)
+   */
+  className?: string;
 }
 
-export default function Deferred({ children, when = "idle" }: DeferredProps) {
+export default function Deferred({
+  children,
+  when = "idle",
+  delay = 0,
+  fallback = null,
+  threshold = 0.1,
+  rootMargin = "200px",
+  className,
+}: DeferredProps): ReactNode {
   const [shouldRender, setShouldRender] = useState(false);
-  const sentinelId = useMemo(() => `deferred-${Math.random().toString(36).slice(2)}`, []);
+  const [isTriggered, setIsTriggered] = useState(false);
+  const sentinelId = useMemo(
+    () => `deferred-${Math.random().toString(36).slice(2)}`,
+    []
+  );
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
+  // Handle the delay timer after trigger
   useEffect(() => {
-    // Idle: render after idle callback or short timeout; provide cleanup
-    if (when === "idle") {
-      let timeoutId: number | undefined;
-      let idleId: number | undefined;
-      if (typeof (window as any).requestIdleCallback === "function") {
-        idleId = (window as any).requestIdleCallback(() => setShouldRender(true), { timeout: 1500 });
-      } else {
-        timeoutId = window.setTimeout(() => setShouldRender(true), 300);
+    if (!isTriggered || delay === 0) {
+      if (isTriggered) {
+        setShouldRender(true);
       }
-      return () => {
-        if (idleId && typeof (window as any).cancelIdleCallback === "function") {
-          (window as any).cancelIdleCallback(idleId);
-        }
-        if (timeoutId) {
-          clearTimeout(timeoutId);
-        }
-      };
+      return undefined;
     }
 
-    // Visible: render when sentinel enters viewport; provide cleanup
-    if (when === "visible") {
-      const el = document.getElementById(sentinelId);
-      if (!el) {
-        return undefined;
+    const timer = setTimeout(() => {
+      setShouldRender(true);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [isTriggered, delay]);
+
+  // Handle idle loading
+  useEffect(() => {
+    if (when !== "idle") return undefined;
+
+    let timeoutId: number | undefined;
+    let idleId: number | undefined;
+
+    interface WindowWithIdleCallback extends Window {
+      requestIdleCallback?: (
+        callback: () => void,
+        options?: { timeout: number }
+      ) => number;
+      cancelIdleCallback?: (id: number) => void;
+    }
+
+    const win = window as unknown as WindowWithIdleCallback;
+
+    if (typeof win.requestIdleCallback === "function") {
+      idleId = win.requestIdleCallback(() => setIsTriggered(true), {
+        timeout: 1500,
+      });
+    } else {
+      timeoutId = window.setTimeout(() => setIsTriggered(true), 300);
+    }
+
+    return () => {
+      if (idleId && typeof win.cancelIdleCallback === "function") {
+        win.cancelIdleCallback(idleId);
       }
-      const observer = new IntersectionObserver((entries) => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [when]);
+
+  // Handle visible loading with IntersectionObserver
+  useEffect(() => {
+    if (when !== "visible") return undefined;
+
+    // Use wrapper ref if className is provided, otherwise use sentinel element
+    const targetElement = className
+      ? wrapperRef.current
+      : document.getElementById(sentinelId);
+
+    if (!targetElement) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
-          setShouldRender(true);
+          setIsTriggered(true);
           observer.disconnect();
         }
-      }, { rootMargin: "200px" });
-      observer.observe(el);
-      return () => observer.disconnect();
-    }
+      },
+      { rootMargin, threshold }
+    );
 
-    return undefined;
-  }, [when, sentinelId]);
+    observer.observe(targetElement);
 
+    return () => observer.disconnect();
+  }, [when, sentinelId, rootMargin, threshold, className]);
+
+  // Render logic
   if (when === "visible" && !shouldRender) {
-    return <div id={sentinelId} aria-hidden />;
+    if (className) {
+      return (
+        <div ref={wrapperRef} className={className}>
+          {fallback}
+        </div>
+      );
+    }
+    return <div id={sentinelId} aria-hidden="true" />;
   }
 
-  if (!shouldRender && when === "idle") {
-    return null;
+  if (!shouldRender) {
+    if (className) {
+      return <div className={className}>{fallback}</div>;
+    }
+    return fallback ?? null;
   }
 
-  return <>{children}</>;
+  // Render children
+  if (className) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return children;
 }
-
-
