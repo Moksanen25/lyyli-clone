@@ -1,8 +1,6 @@
 "use client";
 
 import { memo } from "react";
-import type {
-  ChartOptions} from "chart.js";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,8 +11,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  Bar as BarController,
-  Line as LineController,
+  type ChartOptions,
 } from "chart.js";
 import { Bar, Line } from "react-chartjs-2";
 import type { TranslationKeys } from "@/lib/i18n";
@@ -45,11 +42,11 @@ interface ROIChartsProps {
   translations?: TranslationKeys;
 }
 
-const ROICharts = memo(({ 
+const ROICharts = memo(function ROICharts({ 
   timeSavingsData, 
   efficiencyData, 
   translations 
-}: ROIChartsProps) => {
+}: ROIChartsProps) {
   // Bar chart data for efficiency comparison
   const efficiencyChartData = {
     labels: efficiencyData.map(d => d.metric),
