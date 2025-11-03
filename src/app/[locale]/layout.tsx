@@ -184,9 +184,6 @@ export default async function LocaleLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-
-        {/* Analytics Scripts - Load after consent */}
-        <AnalyticsHead />
       </head>
       <body
         className="antialiased font-sans min-h-screen"
@@ -206,6 +203,9 @@ export default async function LocaleLayout({
           <DevSWCleanup />
           <WebVitals />
         </div>
+
+        {/* Analytics Scripts - Load after consent */}
+        <AnalyticsHead />
 
         {/* Schema.org structured data - Organization, Website, and BreadcrumbList */}
         <script
