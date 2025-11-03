@@ -185,7 +185,7 @@ export default function HelpSearch({ locale, placeholder, className = "" }: Help
         <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
           {isSearching ? (
             <div className="p-4 text-center text-gray-500">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-forest mx-auto mb-2"></div>
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-forest mx-auto mb-2" />
               {locale === "fi" ? "Etsitään..." : "Searching..."}
             </div>
           ) : query.trim() ? (

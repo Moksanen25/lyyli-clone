@@ -9,10 +9,10 @@ interface MobileMenuButtonProps {
  * Mobile Menu Toggle Button
  * Hamburger menu icon that toggles mobile navigation
  */
-const MobileMenuButton = memo(function MobileMenuButton({
+const MobileMenuButton = memo(({
   isOpen,
   onClick,
-}: MobileMenuButtonProps) {
+}: MobileMenuButtonProps) => {
   return (
     <button
       className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"

@@ -1,7 +1,7 @@
 import { getTranslations } from "@/lib/i18n";
 import { getAllBlogPosts } from "@/lib/blog";
 import { getPaginatedPosts, POSTS_PER_PAGE } from "@/lib/pagination";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 import Pagination from "@/components/blog/Pagination";

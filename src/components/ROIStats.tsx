@@ -1,8 +1,9 @@
 "use client";
 
 import { useInView } from "react-intersection-observer";
-import { memo, useCallback } from "react";
-import CountUp from "react-countup";
+import { memo } from "react";
+import AnimatedNumber from "./AnimatedNumber";
+import type { TranslationKeys } from "@/lib/i18n";
 
 interface ROIStat {
   value: number;
@@ -13,7 +14,7 @@ interface ROIStat {
 }
 
 interface ROIStatsProps {
-  translations?: any;
+  translations?: TranslationKeys;
 }
 
 const stats: ROIStat[] = [
@@ -43,7 +44,7 @@ const stats: ROIStat[] = [
   }
 ];
 
-const ROIStats = memo(function ROIStats({ translations }: ROIStatsProps) {
+const ROIStats = memo(({ translations }: ROIStatsProps) => {
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true
@@ -73,22 +74,19 @@ const ROIStats = memo(function ROIStats({ translations }: ROIStatsProps) {
               <div className="text-center">
                 <div className="text-xl md:text-2xl lg:text-3xl font-bold text-forest mb-4 font-playfair">
                     {inView ? (
-                      <CountUp
-                        start={0}
-                        end={stat.value}
-                        duration={2.5}
-                        delay={index * 0.2}
-                        separator=","
+                      <AnimatedNumber
+                        value={stat.value}
+                        duration={2500 + index * 200}
+                        suffix={stat.suffix}
+                        prefix={stat.prefix}
                         decimals={stat.value % 1 !== 0 ? 1 : 0}
-                        useEasing={true}
-                        useGrouping={true}
-                        preserveValue={true}
+                        separator=","
                       />
                     ) : (
-                      "0"
+                      <>
+                        {stat.prefix}0{stat.suffix}
+                      </>
                     )}
-                    {stat.suffix}
-                    {stat.prefix}
                   </div>
                 <h3 className="text-lg md:text-xl text-forest mb-3 font-playfair font-normal">
                   {translations?.[`roiStats.metrics.${stat.label.toLowerCase().replace(/\s+/g, '')}.title`] || stat.label}

@@ -1,5 +1,5 @@
 import { getTranslations } from "@/lib/i18n";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import TeamContacts from "@/components/contact/TeamContacts";
 import SecurityNotice from "@/components/contact/SecurityNotice";
 import MeshGradientBackground from "@/components/MeshGradientBackground";

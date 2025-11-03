@@ -1,10 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import type {
+  AnimatePresence as AnimatePresenceType,
+  motion as MotionType,
+} from 'framer-motion';
+import type { TranslationKeys } from "@/lib/i18n";
 
-export default function DemoVideo({ translations }: { translations?: any }) {
+interface MotionModule {
+  motion: typeof MotionType;
+  AnimatePresence: typeof AnimatePresenceType;
+}
+
+interface DemoVideoProps {
+  translations?: TranslationKeys;
+}
+
+export default function DemoVideo({ translations }: DemoVideoProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [motion, setMotion] = useState<any>(null);
+  const [motion, setMotion] = useState<MotionModule | null>(null);
 
   const openModal = async () => {
     if (!motion) {
@@ -15,8 +29,8 @@ export default function DemoVideo({ translations }: { translations?: any }) {
   };
   const closeModal = () => setIsModalOpen(false);
 
-  const MotionDiv = motion?.motion?.div || (('div' as unknown) as any);
-  const AnimatePresence = motion?.AnimatePresence || (({ children }: any) => children);
+  const MotionDiv = motion?.motion?.div || 'div';
+  const AnimatePresence = motion?.AnimatePresence || (({ children }: { children: React.ReactNode }) => <>{children}</>);
   const hoverProps = motion ? { whileHover: { scale: 1.02, transition: { duration: 0.2 } } } : {};
 
   return (
@@ -171,7 +185,7 @@ export default function DemoVideo({ translations }: { translations?: any }) {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                onClick={(e: any) => e.stopPropagation()}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
               >
                 {/* Close Button */}
                 <button

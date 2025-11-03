@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { memo, useMemo, useEffect, useState } from "react";
+import type { TranslationKeys } from "@/lib/i18n";
 
 interface ProcessStep {
   number: number;
@@ -13,7 +14,7 @@ interface ProcessStep {
 }
 
 interface ProcessStepsProps {
-  translations?: any;
+  translations?: TranslationKeys;
 }
 
 const steps: ProcessStep[] = [
@@ -61,8 +62,8 @@ const steps: ProcessStep[] = [
 
 // Dynamically import framer-motion's motion to avoid bundling it into the initial chunk
 const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
-const MotionA = dynamic(() => import("framer-motion").then(m => m.motion.a), { ssr: false, loading: () => <a /> });
-const ProcessSteps = memo(function ProcessSteps({ translations }: ProcessStepsProps) {
+const MotionA = dynamic(() => import("framer-motion").then(m => m.motion.a), { ssr: false, loading: () => <button /> });
+const ProcessSteps = memo(({ translations }: ProcessStepsProps) => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true

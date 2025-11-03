@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllLegalSlugs, getLegalDoc } from "@/lib/legal";
 import { MDXRemote } from 'next-mdx-remote/rsc';

@@ -118,13 +118,13 @@ export function truncateDescription(
     const result = truncated.substring(0, lastSpace).trim();
     // Ensure we have room for ellipsis
     if (result.length + 3 <= maxLength) {
-      return result + '...';
+      return `${result  }...`;
     }
-    return result.substring(0, maxLength - 3).trim() + '...';
+    return `${result.substring(0, maxLength - 3).trim()  }...`;
   }
 
   // Force truncate with ellipsis
-  return truncated.substring(0, maxLength - 3).trim() + '...';
+  return `${truncated.substring(0, maxLength - 3).trim()  }...`;
 }
 
 /**

@@ -119,6 +119,10 @@ export function preventCLS() {
 // Declare gtag for TypeScript
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (
+      command: 'event' | 'config' | 'set',
+      targetId: string,
+      config?: Record<string, unknown>
+    ) => void;
   }
 }

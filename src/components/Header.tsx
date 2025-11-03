@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 import ClientLocaleSwitcher from "@/components/ClientLocaleSwitcher";
 import Image from "next/image";
 
@@ -182,7 +182,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     >
                       {t["nav.features"]}
                     </Link>
-                    <div className="border-t border-gray-200/50 my-1"></div>
+                    <div className="border-t border-gray-200/50 my-1" />
                     <Link
                       href={`/${locale}/features#ai-automation`}
                       className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
@@ -213,7 +213,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     >
                       {locale === 'fi' ? 'Integraatiot' : 'Integrations'}
                     </Link>
-                    <div className="border-t border-gray-200/50 my-1"></div>
+                    <div className="border-t border-gray-200/50 my-1" />
                     <Link
                       href={`/${locale}/cybersecurity`}
                       className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}

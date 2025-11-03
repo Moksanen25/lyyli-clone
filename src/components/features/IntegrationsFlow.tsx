@@ -1,6 +1,6 @@
 "use client";
 
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 import { IconSet } from "../IconSet";
 
 interface Props {
@@ -22,7 +22,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">Slack</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full" />
                 <span className="text-sm text-green-600 font-medium">{t?.["integrations.status.connected"] || "Connected"}</span>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="relative">
               <input type="checkbox" className="sr-only" checked readOnly />
               <div className="w-10 h-6 bg-forest rounded-full relative cursor-pointer">
-                <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full transition-transform" />
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">Teams</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full" />
                 <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="relative">
               <input type="checkbox" className="sr-only" />
               <div className="w-10 h-6 bg-gray-300 rounded-full relative cursor-pointer">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform" />
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">Gmail</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full" />
                 <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
@@ -160,7 +160,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="relative">
               <input type="checkbox" className="sr-only" />
               <div className="w-10 h-6 bg-gray-300 rounded-full relative cursor-pointer">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform" />
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">Outlook</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full" />
                 <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="relative">
               <input type="checkbox" className="sr-only" />
               <div className="w-10 h-6 bg-gray-300 rounded-full relative cursor-pointer">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform" />
               </div>
             </div>
           </div>
@@ -223,7 +223,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">LinkedIn</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full" />
                 <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
@@ -256,7 +256,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="relative">
               <input type="checkbox" className="sr-only" />
               <div className="w-10 h-6 bg-gray-300 rounded-full relative cursor-pointer">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform" />
               </div>
             </div>
           </div>
@@ -271,7 +271,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">Threads</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full" />
                 <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
@@ -304,7 +304,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="relative">
               <input type="checkbox" className="sr-only" />
               <div className="w-10 h-6 bg-gray-300 rounded-full relative cursor-pointer">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform" />
               </div>
             </div>
           </div>
@@ -319,7 +319,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">Facebook</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full" />
                 <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
@@ -352,7 +352,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="relative">
               <input type="checkbox" className="sr-only" />
               <div className="w-10 h-6 bg-gray-300 rounded-full relative cursor-pointer">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform" />
               </div>
             </div>
           </div>
@@ -367,7 +367,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-forest">Instagram</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full" />
                 <span className="text-sm text-mediumGray font-medium">{t?.["integrations.status.notConnected"] || "Not connected"}</span>
               </div>
             </div>
@@ -400,7 +400,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             <div className="relative">
               <input type="checkbox" className="sr-only" />
               <div className="w-10 h-6 bg-gray-300 rounded-full relative cursor-pointer">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform" />
               </div>
             </div>
           </div>
@@ -445,7 +445,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             </div>
             <div className="relative opacity-50 pointer-events-none">
               <div className="w-10 h-6 bg-gray-300 rounded-full relative">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full" />
               </div>
             </div>
           </div>
@@ -484,7 +484,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             </div>
             <div className="relative opacity-50 pointer-events-none">
               <div className="w-10 h-6 bg-gray-300 rounded-full relative">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full" />
               </div>
             </div>
           </div>
@@ -526,7 +526,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             </div>
             <div className="relative opacity-50 pointer-events-none">
               <div className="w-10 h-6 bg-gray-300 rounded-full relative">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full" />
               </div>
             </div>
           </div>
@@ -568,7 +568,7 @@ export default function IntegrationsFlow({ translations: t }: Props) {
             </div>
             <div className="relative opacity-50 pointer-events-none">
               <div className="w-10 h-6 bg-gray-300 rounded-full relative">
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full" />
               </div>
             </div>
           </div>

@@ -3,7 +3,8 @@
  * Provides consistent input validation and error handling
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 import { VALIDATION_PATTERNS, sanitizeInput } from '@/lib/security';
 import { logger } from '@/lib/logger';
 import { ERROR_MESSAGES, FORM_CONFIG } from '@/lib/constants';

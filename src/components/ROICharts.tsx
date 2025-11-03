@@ -1,8 +1,35 @@
 "use client";
 
 import { memo } from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
-import { TranslationKeys } from "@/lib/i18n";
+import type {
+  ChartOptions} from "chart.js";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend,
+  Bar as BarController,
+  Line as LineController,
+} from "chart.js";
+import { Bar, Line } from "react-chartjs-2";
+import type { TranslationKeys } from "@/lib/i18n";
+
+// Register Chart.js components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 interface ROIChartsProps {
   timeSavingsData: Array<{
@@ -18,7 +45,121 @@ interface ROIChartsProps {
   translations?: TranslationKeys;
 }
 
-const ROICharts = memo(function ROICharts({ timeSavingsData, efficiencyData, translations }: ROIChartsProps) {
+const ROICharts = memo(({ 
+  timeSavingsData, 
+  efficiencyData, 
+  translations 
+}: ROIChartsProps) => {
+  // Bar chart data for efficiency comparison
+  const efficiencyChartData = {
+    labels: efficiencyData.map(d => d.metric),
+    datasets: [
+      {
+        label: translations?.["roi.charts.timeSpent"] || "Time spent",
+        data: efficiencyData.map(d => d.value),
+        backgroundColor: "#2F5D50",
+        borderRadius: 4,
+        barThickness: 40,
+      },
+    ],
+  };
+
+  const efficiencyChartOptions: ChartOptions<"bar"> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const value = context.parsed.y;
+            return `${value} ${translations?.["roi.charts.hoursPerWeek"] || "hours/week"}`;
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: "#6B7280",
+        },
+      },
+      y: {
+        grid: {
+          color: "#E5E7EB",
+        },
+        ticks: {
+          color: "#6B7280",
+        },
+      },
+    },
+  };
+
+  // Line chart data for cumulative savings
+  const savingsChartData = {
+    labels: timeSavingsData.map(d => d.month.toString()),
+    datasets: [
+      {
+        label: translations?.["roi.charts.savings"] || "Savings",
+        data: timeSavingsData.map(d => d.moneySaved),
+        borderColor: "#2F5D50",
+        backgroundColor: "rgba(47, 93, 80, 0.1)",
+        borderWidth: 3,
+        pointRadius: 4,
+        pointBackgroundColor: "#2F5D50",
+        pointBorderColor: "#fff",
+        pointBorderWidth: 2,
+        tension: 0.4,
+      },
+    ],
+  };
+
+  const savingsChartOptions: ChartOptions<"line"> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const value = context.parsed.y || 0;
+            return `${value.toLocaleString()}€`;
+          },
+          title: (context) => {
+            const month = context[0].label;
+            const template = translations?.["roi.charts.monthLabel"] || "Month {month}";
+            return template.replace("{month}", month);
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: "#6B7280",
+        },
+      },
+      y: {
+        grid: {
+          color: "#E5E7EB",
+        },
+        ticks: {
+          color: "#6B7280",
+        },
+      },
+    },
+  };
+
   return (
     <>
       {/* Efficiency Comparison Chart */}
@@ -27,21 +168,7 @@ const ROICharts = memo(function ROICharts({ timeSavingsData, efficiencyData, tra
           {translations?.["roi.charts.efficiencyComparison"] || "Time efficiency comparison"}
         </h4>
         <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={efficiencyData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-              <XAxis dataKey="metric" stroke="#6B7280" />
-              <YAxis stroke="#6B7280" />
-              <Tooltip 
-                formatter={(value: number) => [
-                  `${value} ${translations?.["roi.charts.hoursPerWeek"] || "hours/week"}`,
-                  translations?.["roi.charts.timeSpent"] || "Time spent"
-                ]}
-                labelStyle={{ color: '#374151' }}
-              />
-              <Bar dataKey="value" fill="#2F5D50" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+          <Bar data={efficiencyChartData} options={efficiencyChartOptions} />
         </div>
       </div>
 
@@ -51,32 +178,7 @@ const ROICharts = memo(function ROICharts({ timeSavingsData, efficiencyData, tra
           {translations?.["roi.charts.cumulativeSavings"] || "Cumulative savings over time"}
         </h4>
         <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={timeSavingsData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-              <XAxis dataKey="month" stroke="#6B7280" />
-              <YAxis stroke="#6B7280" />
-              <Tooltip 
-                formatter={(value: number) => [
-                  `${(value as number).toLocaleString()}€`,
-                  translations?.["roi.charts.savings"] || "Savings"
-                ]}
-                labelFormatter={(label) => {
-                  const month = String(label);
-                  const template = translations?.["roi.charts.monthLabel"] || "Month {month}";
-                  return template.replace("{month}", month);
-                }}
-                labelStyle={{ color: '#374151' }}
-              />
-              <Line 
-                type="monotone" 
-                dataKey="moneySaved" 
-                stroke="#2F5D50" 
-                strokeWidth={3}
-                dot={{ fill: '#2F5D50', strokeWidth: 2, r: 4 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <Line data={savingsChartData} options={savingsChartOptions} />
         </div>
       </div>
     </>

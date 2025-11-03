@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import IconSet from "./IconSet";
 import { useInView } from "react-intersection-observer";
 import { memo, useMemo, useCallback } from "react";
+import type { TranslationKeys } from "@/lib/i18n";
 
 interface Feature {
   icon: React.ReactNode;
@@ -110,12 +111,12 @@ const categoryColors = {
 };
 
 interface FeatureGridProps {
-  translations?: any;
+  translations?: TranslationKeys;
 }
 
 const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });
 
-const FeatureGrid = memo(function FeatureGrid({ translations }: FeatureGridProps) {
+const FeatureGrid = memo(({ translations }: FeatureGridProps) => {
   const [ref, inView] = useInView({
     threshold: 0.05,
     triggerOnce: true

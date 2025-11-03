@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations } from "@/lib/i18n";
 import Link from "next/link";
 
@@ -230,7 +230,7 @@ export default async function ContactSupportPage({
                   ? "Kuvaa ongelmasi yksityiskohtaisesti. Sisällytä mahdolliset virheilmoitukset, näytöt ja vaiheet toistamiseen."
                   : "Describe your issue in detail. Include any error messages, screenshots, and steps to reproduce."
                 }
-              ></textarea>
+               />
             </div>
 
             <div className="flex items-start">

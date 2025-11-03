@@ -62,7 +62,7 @@ describe('Hreflang Integration Tests', () => {
       expectedPath: string
     ) => {
       try {
-        const pageModule = await import(`../app/[locale]/${pageName === 'home' ? '' : pageName + '/'}page`);
+        const pageModule = await import(`../app/[locale]/${pageName === 'home' ? '' : `${pageName  }/`}page`);
         const generateMetadata = pageModule.generateMetadata;
 
         if (generateMetadata) {

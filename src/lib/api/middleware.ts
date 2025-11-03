@@ -3,8 +3,10 @@
  * Composes common middleware functions for API routes
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { createRateLimiterWithPreset, RATE_LIMIT_CONFIGS } from '@/lib/rateLimiter';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
+import type { RATE_LIMIT_CONFIGS } from '@/lib/rateLimiter';
+import { createRateLimiterWithPreset } from '@/lib/rateLimiter';
 
 type RateLimitPreset = keyof typeof RATE_LIMIT_CONFIGS;
 import { getClientIP } from '@/lib/security';

@@ -6,8 +6,9 @@ import {
   hasTranslation,
   getTranslatedBlogPost,
   getAlternativeBlogPosts,
+  type BlogPostMetadata,
 } from "@/lib/blog";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { logger } from "@/lib/logger";
@@ -74,7 +75,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   let post = null;
   let translatedPost = null;
-  let alternativePosts: any[] = [];
+  let alternativePosts: BlogPostMetadata[] = [];
   
   try {
     // First try to get the post in the current locale
@@ -219,10 +220,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Background elements - Matching other page gradients */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-rose/95 to-grayLight/95 backdrop-blur-sm" />
         <div className="absolute top-8 right-8 opacity-10 z-0">
-          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-forest to-turquoise blur-xl"></div>
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-forest to-turquoise blur-xl" />
         </div>
         <div className="absolute bottom-8 left-8 opacity-10 z-0">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-turquoise to-rose blur-xl"></div>
+          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-turquoise to-rose blur-xl" />
         </div>
 
         <div className="max-w-4xl mx-auto px-6 py-16 lg:py-24 relative z-10">
@@ -347,10 +348,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <section className="bg-gradient-to-br from-grayLight via-white to-rose/20 py-20 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-8 right-8 opacity-10">
-          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-forest to-turquoise blur-xl"></div>
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-forest to-turquoise blur-xl" />
         </div>
         <div className="absolute bottom-8 left-8 opacity-10">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-turquoise to-rose blur-xl"></div>
+          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-turquoise to-rose blur-xl" />
         </div>
         
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">

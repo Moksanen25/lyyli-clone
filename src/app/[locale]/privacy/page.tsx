@@ -1,5 +1,5 @@
 import { getTranslations } from "@/lib/i18n";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 import { buildTitleFromTranslation } from "@/lib/title";
 

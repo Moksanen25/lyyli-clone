@@ -176,7 +176,7 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="antialiased font-sans min-h-screen" suppressHydrationWarning={true}>
+      <body className="antialiased font-sans min-h-screen" suppressHydrationWarning>
 
         {/* Vibrant Mesh Gradient Background for all pages */}
         <MeshGradientBackground />

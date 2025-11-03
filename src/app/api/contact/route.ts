@@ -1,6 +1,7 @@
 // Updated 2024-12-19: Enhanced security with input validation, sanitization, rate limiting, and CSRF protection
 
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 import { 
   validateRequestBody, 
   VALIDATION_CONFIGS, 

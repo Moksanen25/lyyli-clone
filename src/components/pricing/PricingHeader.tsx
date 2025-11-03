@@ -1,4 +1,4 @@
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 
 interface PricingHeaderProps {
   translations: TranslationKeys;
@@ -11,7 +11,7 @@ export default function PricingHeader({ translations }: PricingHeaderProps) {
     <header className="relative overflow-hidden bg-gradient-to-br from-white/95 via-rose/95 to-grayLight/95 backdrop-blur-sm">
       {/* Header badge/hero accent */}
       <div className="absolute top-8 right-8 opacity-10 z-0">
-        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-forest to-turquoise blur-xl"></div>
+        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-forest to-turquoise blur-xl" />
       </div>
 
       <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24 relative z-10">

@@ -1,6 +1,7 @@
 // Updated 2024-12-19: Created authentication middleware for admin route protection
 
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 
 // Simple admin authentication (in production, use proper JWT or session-based auth)
 const ADMIN_CREDENTIALS = {
@@ -17,7 +18,7 @@ export interface AuthenticatedRequest extends NextRequest {
 export function requireAuth(request: NextRequest): NextResponse | null {
   const authHeader = request.headers.get('authorization');
   
-  if (!authHeader || !authHeader.startsWith('Basic ')) {
+  if (!authHeader?.startsWith('Basic ')) {
     return NextResponse.json(
       { error: 'Authentication required' },
       { 

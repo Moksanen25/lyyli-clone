@@ -14,12 +14,12 @@ export function generateScriptHash(script: string): string {
     // Convert to base64-like string
     const hashStr = Math.abs(hash).toString(36);
     return `'sha256-${btoa(hashStr)}'`;
-  } else {
+  } 
     // Node.js environment - use crypto module
     const crypto = require('crypto');
     const hash = crypto.createHash('sha256').update(script).digest('base64');
     return `'sha256-${hash}'`;
-  }
+  
 }
 
 /**
@@ -36,12 +36,12 @@ export function generateScriptHash384(script: string): string {
     }
     const hashStr = Math.abs(hash).toString(36);
     return `'sha384-${btoa(hashStr)}'`;
-  } else {
+  } 
     // Node.js environment - use crypto module
     const crypto = require('crypto');
     const hash = crypto.createHash('sha384').update(script).digest('base64');
     return `'sha384-${hash}'`;
-  }
+  
 }
 
 /**
@@ -58,12 +58,12 @@ export function generateScriptHash512(script: string): string {
     }
     const hashStr = Math.abs(hash).toString(36);
     return `'sha512-${btoa(hashStr)}'`;
-  } else {
+  } 
     // Node.js environment - use crypto module
     const crypto = require('crypto');
     const hash = crypto.createHash('sha512').update(script).digest('base64');
     return `'sha512-${hash}'`;
-  }
+  
 }
 
 /**

@@ -120,7 +120,7 @@ describe('Canonical URL Integration Tests', () => {
   ) => {
     try {
       // Import the page component dynamically
-      const pageModule = await import(`../app/[locale]/${pageName === 'home' ? '' : pageName + '/'}page`);
+      const pageModule = await import(`../app/[locale]/${pageName === 'home' ? '' : `${pageName  }/`}page`);
       const generateMetadata = pageModule.generateMetadata;
 
       if (generateMetadata) {

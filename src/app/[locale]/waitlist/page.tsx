@@ -1,5 +1,5 @@
 import { getTranslations } from "@/lib/i18n";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 import { buildTitleFromTranslation } from "@/lib/title";
@@ -24,7 +24,7 @@ export async function generateMetadata({
       description: t["waitlist.page.description"],
       url: canonicalUrl,
       siteName: "Lyyli.ai",
-      locale: locale,
+      locale,
       type: "website",
     },
     alternates: {

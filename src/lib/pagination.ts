@@ -1,4 +1,4 @@
-import { BlogPostMetadata } from './blog';
+import type { BlogPostMetadata } from './blog';
 
 export interface PaginationInfo {
   currentPage: number;

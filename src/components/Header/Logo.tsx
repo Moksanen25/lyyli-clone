@@ -10,7 +10,7 @@ interface LogoProps {
  * Header Logo Component
  * Displays the Lyyli.ai logo with proper accessibility attributes
  */
-const Logo = memo(function Logo({ onLogoClick }: LogoProps) {
+const Logo = memo(({ onLogoClick }: LogoProps) => {
   return (
     <Link
       href="/"

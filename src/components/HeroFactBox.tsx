@@ -1,4 +1,4 @@
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 import { computeRoiMetrics } from "@/lib/roi";
 
 interface HeroFactBoxProps {

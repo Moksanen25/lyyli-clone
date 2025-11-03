@@ -27,7 +27,7 @@ interface NavigationDropdownProps {
  * Navigation Dropdown Component
  * Reusable dropdown menu for navigation items
  */
-const NavigationDropdown = memo(function NavigationDropdown({
+const NavigationDropdown = memo(({
   label,
   links,
   isOpen,
@@ -41,7 +41,7 @@ const NavigationDropdown = memo(function NavigationDropdown({
   dropdownBg,
   dropdownBorder,
   hoverBg,
-}: NavigationDropdownProps) {
+}: NavigationDropdownProps) => {
   return (
     <div className="relative">
       <button

@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 // Enhanced icon components with brand colors and visual effects
 export const IconSet = {

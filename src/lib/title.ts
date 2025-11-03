@@ -63,7 +63,7 @@ export function buildTitle(
   // If we don't want to include brand, return title only
   if (!includeBrand && !forceBrand) {
     return title.length > maxLength 
-      ? title.substring(0, maxLength - 3).trim() + '...'
+      ? `${title.substring(0, maxLength - 3).trim()  }...`
       : title;
   }
 
@@ -73,7 +73,7 @@ export function buildTitle(
 
   // Truncate page title if needed
   if (title.length > availableLength) {
-    title = title.substring(0, availableLength - 3).trim() + '...';
+    title = `${title.substring(0, availableLength - 3).trim()  }...`;
   }
 
   // Append brand name

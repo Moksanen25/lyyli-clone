@@ -1,5 +1,5 @@
 import { getTranslations } from '@/lib/i18n';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import PricingCards from '@/components/PricingCards';
 import BenefitsSection from '@/components/pricing/BenefitsSection';
 import FAQSection from '@/components/faq/FAQSection';
@@ -55,9 +55,9 @@ export default async function PricingPage({ params }: PricingPageProps) {
         >
           {/* Animated Hero Visual Background */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-turquoise/10 to-rose/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
-            <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-rose/15 to-forest/10 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-turquoise/10 to-rose/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}} />
+            <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-rose/15 to-forest/10 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}} />
           </div>
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
@@ -73,7 +73,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
 
       {/* Pricing Cards - Using front page pricing section */}
       <section className="py-16 lg:py-24">
-        <PricingCards fullWidth={true} locale={currentLocale} translations={t} />
+        <PricingCards fullWidth locale={currentLocale} translations={t} />
       </section>
 
       {/* ROI Calculator Section */}

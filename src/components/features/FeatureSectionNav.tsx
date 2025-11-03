@@ -1,6 +1,6 @@
 "use client";
 
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 
 interface FeatureSectionNavProps {
   locale: string;
@@ -81,7 +81,7 @@ export default function FeatureSectionNav({
                 <span className="block group-hover:scale-105 transition-transform duration-200">
                   {section.title}
                 </span>
-                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-forest group-hover:w-full transition-all duration-200 rounded-full"></div>
+                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-forest group-hover:w-full transition-all duration-200 rounded-full" />
               </button>
             ))}
           </div>

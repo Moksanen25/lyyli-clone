@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 import dynamic from "next/dynamic";
 
 const MotionDiv = dynamic(() => import("framer-motion").then(m => m.motion.div), { ssr: false, loading: () => <div /> });

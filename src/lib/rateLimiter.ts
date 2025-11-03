@@ -135,7 +135,7 @@ class RedisStorage implements RateLimitStorage {
 
   async clear(): Promise<void> {
     try {
-      const keys = await this.redis.keys(this.prefix + '*');
+      const keys = await this.redis.keys(`${this.prefix  }*`);
       if (keys.length > 0) {
         await this.redis.del(...keys);
       }

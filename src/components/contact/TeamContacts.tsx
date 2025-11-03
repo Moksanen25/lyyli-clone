@@ -1,6 +1,6 @@
 'use client';
 
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 import { InteractiveCard } from "@/components/VisualElements";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import type { ReactNode } from "react";
@@ -170,7 +170,7 @@ export default function TeamContacts({
                     {contact.name === t["contact.team.mikko.name"] && (
                       <div className="flex gap-2">
                         <a
-                          href={`https://wa.me/358409619224`}
+                          href="https://wa.me/358409619224"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex-1 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ease-out flex items-center justify-center gap-2"

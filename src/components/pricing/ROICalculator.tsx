@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 
 interface ROICalculatorProps {
   translations: TranslationKeys;

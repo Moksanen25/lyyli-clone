@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { PaginationInfo, generatePaginationUrls, generatePaginationNumbers } from '@/lib/pagination';
+import type { PaginationInfo} from '@/lib/pagination';
+import { generatePaginationUrls, generatePaginationNumbers } from '@/lib/pagination';
 
 interface PaginationProps {
   pagination: PaginationInfo;

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations } from "../../../../lib/i18n";
 import Link from "next/link";
 

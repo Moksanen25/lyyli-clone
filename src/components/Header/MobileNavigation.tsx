@@ -17,7 +17,7 @@ interface MobileNavigationProps {
  * Mobile Navigation Menu
  * Full mobile navigation with links and locale switcher
  */
-const MobileNavigation = memo(function MobileNavigation({
+const MobileNavigation = memo(({
   isOpen,
   locale,
   translations: t,
@@ -25,7 +25,7 @@ const MobileNavigation = memo(function MobileNavigation({
   mobileBorder,
   mobileHoverBg,
   textColor,
-}: MobileNavigationProps) {
+}: MobileNavigationProps) => {
   return (
     <div
       id="mobile-menu"

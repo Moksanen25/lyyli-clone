@@ -12,7 +12,7 @@ describe('MobileMenuButton Component', () => {
   });
 
   it('renders open menu button when isOpen is true', () => {
-    render(<MobileMenuButton isOpen={true} onClick={jest.fn()} />);
+    render(<MobileMenuButton isOpen onClick={jest.fn()} />);
 
     const button = screen.getByRole('button', { name: /close mobile navigation menu/i });
     expect(button).toBeInTheDocument();
@@ -44,7 +44,7 @@ describe('MobileMenuButton Component', () => {
 
     expect(screen.getByRole('button', { name: /open/i })).toBeInTheDocument();
 
-    rerender(<MobileMenuButton isOpen={true} onClick={jest.fn()} />);
+    rerender(<MobileMenuButton isOpen onClick={jest.fn()} />);
 
     expect(screen.getByRole('button', { name: /close/i })).toBeInTheDocument();
   });

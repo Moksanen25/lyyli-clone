@@ -24,7 +24,7 @@ interface DesktopNavigationProps {
  * Desktop Navigation Component
  * Main navigation for desktop screens with dropdowns
  */
-const DesktopNavigation = memo(function DesktopNavigation({
+const DesktopNavigation = memo(({
   locale,
   translations: t,
   activeDropdown,
@@ -38,7 +38,7 @@ const DesktopNavigation = memo(function DesktopNavigation({
   dropdownBg,
   dropdownBorder,
   hoverBg,
-}: DesktopNavigationProps) {
+}: DesktopNavigationProps) => {
   // Features dropdown links
   const featuresLinks: DropdownLink[] = [
     { href: `/${locale}/features`, label: t["nav.features"] },

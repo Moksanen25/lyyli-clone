@@ -3,6 +3,11 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { loadExternalScriptOnce } from '@/lib/loadExternalScript';
 
+interface HubSpotForm {
+  // Add HubSpot form instance methods if needed
+  [key: string]: unknown;
+}
+
 declare global {
   interface Window {
     hbspt?: {
@@ -12,7 +17,7 @@ declare global {
           portalId: string;
           formId: string;
           target: string;
-          onFormReady?: (form: any) => void;
+          onFormReady?: (form: HubSpotForm) => void;
         }) => void;
       };
     };

@@ -1,6 +1,7 @@
 // Updated 2024-12-19: Created admin login API endpoint with secure authentication
 
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 import { handleAdminLogin } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
@@ -34,12 +35,12 @@ export async function POST(request: NextRequest) {
       });
 
       return response;
-    } else {
+    } 
       return NextResponse.json(
         { error: result.error || 'Invalid credentials' },
         { status: 401 }
       );
-    }
+    
 
   } catch (error) {
     console.error('Admin login error:', error);

@@ -172,7 +172,7 @@ describe('utils', () => {
 
     it('returns true for empty arrays', () => {
       expect(isEmpty([])).toBe(true)
-      expect(isEmpty(new Array())).toBe(true)
+      expect(isEmpty([])).toBe(true)
     })
 
     it('returns true for empty objects', () => {

@@ -1,5 +1,5 @@
 import { getTranslations } from '../../../lib/i18n';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import OriginStory from '../../../components/about/OriginStory';
 import MissionVisionValues from '../../../components/about/MissionVisionValues';
 import TeamSection from '../../../components/about/TeamSection';

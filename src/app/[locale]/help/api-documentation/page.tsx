@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations } from "@/lib/i18n";
 import Link from "next/link";
 
@@ -391,8 +391,7 @@ export default async function APIDocumentationPage({
                   <div className="bg-gray-900 p-4 rounded-md text-green-400 font-mono text-sm">
                     <div className="mb-2">
                       <span className="text-blue-400">import</span> <span className="text-yellow-400">requests</span></div>
-                    <div className="mb-2">
-                      </div>
+                    <div className="mb-2" />
                     <div className="mb-2">
                       <span className="text-yellow-400">headers</span> = {'{'}</div>
                     <div className="ml-4 mb-2">
@@ -401,8 +400,7 @@ export default async function APIDocumentationPage({
                       <span className="text-orange-400">'Content-Type'</span>: <span className="text-orange-400">'application/json'</span></div>
                     <div className="mb-2">
                       {'}'}</div>
-                    <div className="mb-2">
-                      </div>
+                    <div className="mb-2" />
                     <div className="mb-2">
                       <span className="text-yellow-400">response</span> = requests.<span className="text-green-400">get</span>(</div>
                     <div className="ml-4 mb-2">

@@ -1,5 +1,5 @@
 import { getTranslations } from "@/lib/i18n";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import FeaturesCardLayout from "@/components/features/FeaturesCardLayout";
 import IntegrationsFlow from "@/components/features/IntegrationsFlow";
 import FAQSection from "@/components/faq/FAQSection";

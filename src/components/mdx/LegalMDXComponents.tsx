@@ -1,4 +1,4 @@
-import { MDXComponents } from 'mdx/types';
+import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 
 /**

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BlogPostMetadata } from '@/lib/blog';
+import type { BlogPostMetadata } from '@/lib/blog';
 
 interface RelatedPostsProps {
   posts: BlogPostMetadata[];

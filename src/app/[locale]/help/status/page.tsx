@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations } from "../../../../lib/i18n";
 import Link from "next/link";
 
@@ -63,7 +63,7 @@ export default async function StatusPage({
               {locale === "fi" ? "Yleinen tila" : "Overall Status"}
             </h2>
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
               <span className="text-green-600  font-medium">
                 Operational
               </span>
@@ -93,7 +93,7 @@ export default async function StatusPage({
               <h3 className="text-lg font-semibold text-gray-900">
                 {locale === "fi" ? "Ydinpalvelin" : "Core Platform"}
               </h3>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full" />
             </div>
             <p className="text-gray-600 text-sm mb-3">
               {locale === "fi" 
@@ -112,7 +112,7 @@ export default async function StatusPage({
               <h3 className="text-lg font-semibold text-gray-900">
                 {locale === "fi" ? "API-palvelut" : "API Services"}
               </h3>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full" />
             </div>
             <p className="text-gray-600 text-sm mb-3">
               {locale === "fi" 
@@ -131,7 +131,7 @@ export default async function StatusPage({
               <h3 className="text-lg font-semibold text-gray-900">
                 {locale === "fi" ? "Analytiikka" : "Analytics"}
               </h3>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full" />
             </div>
             <p className="text-gray-600 text-sm mb-3">
               {locale === "fi" 
@@ -150,7 +150,7 @@ export default async function StatusPage({
               <h3 className="text-lg font-semibold text-gray-900">
                 {locale === "fi" ? "Integraatiot" : "Integrations"}
               </h3>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full" />
             </div>
             <p className="text-gray-600 text-sm mb-3">
               {locale === "fi" 
@@ -169,7 +169,7 @@ export default async function StatusPage({
               <h3 className="text-lg font-semibold text-gray-900">
                 {locale === "fi" ? "Mobiilisovellus" : "Mobile App"}
               </h3>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full" />
             </div>
             <p className="text-gray-600 text-sm mb-3">
               {locale === "fi" 
@@ -188,7 +188,7 @@ export default async function StatusPage({
               <h3 className="text-lg font-semibold text-gray-900">
                 {locale === "fi" ? "Tukijärjestelmä" : "Support System"}
               </h3>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full" />
             </div>
             <p className="text-gray-600 text-sm mb-3">
               {locale === "fi" 

@@ -1,4 +1,4 @@
-import { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from "@/lib/i18n";
 import { InteractiveCard } from "@/components/VisualElements";
 
 interface SecurityNoticeProps {

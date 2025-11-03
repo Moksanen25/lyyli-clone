@@ -9,7 +9,7 @@ export const VisualElementsDynamic = dynamic(
   {
     loading: () => (
       <div className="animate-pulse">
-        <div className="h-64 bg-gray-200 rounded-lg"></div>
+        <div className="h-64 bg-gray-200 rounded-lg" />
       </div>
     ),
     ssr: false,
@@ -20,7 +20,7 @@ export const VisualElementsDynamic = dynamic(
 export function VisualElementsLoading() {
   return (
     <div className="animate-pulse">
-      <div className="h-64 bg-gray-200 rounded-lg"></div>
+      <div className="h-64 bg-gray-200 rounded-lg" />
     </div>
   );
 }

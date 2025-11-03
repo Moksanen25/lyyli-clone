@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest} from 'next/server';
+import { NextResponse } from 'next/server';
 import { addSecurityHeaders, createSecurityConfig } from '@/middleware/security';
 import { logger } from '@/lib/logger';
 

@@ -1,4 +1,4 @@
-import { BreadcrumbItem } from '@/types/breadcrumbs';
+import type { BreadcrumbItem } from '@/types/breadcrumbs';
 
 export interface BreadcrumbListItem {
   '@type': 'ListItem';
