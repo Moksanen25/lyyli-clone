@@ -3,6 +3,7 @@ import { headers, cookies } from 'next/headers';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ConsentBanner from '@/components/ConsentBanner';
+import AnalyticsHead from '@/components/AnalyticsHead';
 import MeshGradientBackground from '@/components/MeshGradientBackground';
 import DevSWCleanup from '@/components/DevSWCleanup';
 import { getTranslations } from '@/lib/i18n';
@@ -183,6 +184,9 @@ export default async function LocaleLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+
+        {/* Analytics Scripts - Load after consent */}
+        <AnalyticsHead />
       </head>
       <body
         className="antialiased font-sans min-h-screen"
