@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState, useRef, type ReactNode } from "react";
+import { useEffect, useMemo, useState, useRef, type ReactNode } from 'react';
 
 interface DeferredProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface DeferredProps {
    * - "idle": Load when browser is idle (requestIdleCallback)
    * - "visible": Load when element becomes visible (IntersectionObserver)
    */
-  when?: "idle" | "visible";
+  when?: 'idle' | 'visible';
   /**
    * Delay in milliseconds before rendering after trigger condition is met
    * @default 0
@@ -41,11 +41,11 @@ interface DeferredProps {
 
 export default function Deferred({
   children,
-  when = "idle",
+  when = 'idle',
   delay = 0,
   fallback = null,
   threshold = 0.1,
-  rootMargin = "200px",
+  rootMargin = '200px',
   className,
 }: DeferredProps): ReactNode {
   const [shouldRender, setShouldRender] = useState(false);
@@ -74,22 +74,25 @@ export default function Deferred({
 
   // Handle idle loading
   useEffect(() => {
-    if (when !== "idle") return undefined;
+    if (when !== 'idle') return undefined;
 
     let timeoutId: number | undefined;
     let idleId: number | undefined;
 
-    interface WindowWithIdleCallback extends Window {
+    type IdleRequestCallback = () => void;
+    type IdleRequestOptions = { timeout: number };
+
+    interface WindowWithIdle {
       requestIdleCallback?: (
-        callback: () => void,
-        options?: { timeout: number }
+        callback: IdleRequestCallback,
+        options?: IdleRequestOptions
       ) => number;
       cancelIdleCallback?: (id: number) => void;
     }
 
-    const win = window as unknown as WindowWithIdleCallback;
+    const win = window as typeof window & WindowWithIdle;
 
-    if (typeof win.requestIdleCallback === "function") {
+    if (typeof win.requestIdleCallback === 'function') {
       idleId = win.requestIdleCallback(() => setIsTriggered(true), {
         timeout: 1500,
       });
@@ -98,7 +101,7 @@ export default function Deferred({
     }
 
     return () => {
-      if (idleId && typeof win.cancelIdleCallback === "function") {
+      if (idleId && typeof win.cancelIdleCallback === 'function') {
         win.cancelIdleCallback(idleId);
       }
       if (timeoutId) {
@@ -109,7 +112,7 @@ export default function Deferred({
 
   // Handle visible loading with IntersectionObserver
   useEffect(() => {
-    if (when !== "visible") return undefined;
+    if (when !== 'visible') return undefined;
 
     // Use wrapper ref if className is provided, otherwise use sentinel element
     const targetElement = className
@@ -121,8 +124,8 @@ export default function Deferred({
     }
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
+      entries => {
+        if (entries.some(e => e.isIntersecting)) {
           setIsTriggered(true);
           observer.disconnect();
         }
@@ -136,7 +139,7 @@ export default function Deferred({
   }, [when, sentinelId, rootMargin, threshold, className]);
 
   // Render logic
-  if (when === "visible" && !shouldRender) {
+  if (when === 'visible' && !shouldRender) {
     if (className) {
       return (
         <div ref={wrapperRef} className={className}>
