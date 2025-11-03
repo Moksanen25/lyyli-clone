@@ -1,85 +1,85 @@
-import type { Metadata } from "next";
-import { headers, cookies } from "next/headers";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ConsentBanner from "@/components/ConsentBanner";
-import MeshGradientBackground from "@/components/MeshGradientBackground";
-import DevSWCleanup from "@/components/DevSWCleanup";
-import { getTranslations } from "@/lib/i18n";
-import { fontVars } from "@/lib/fonts";
-import WebVitals from "@/components/WebVitals";
-import { createTitleTemplate } from "@/lib/title";
-import { 
-  generateOrganizationSchema, 
+import type { Metadata } from 'next';
+import { headers, cookies } from 'next/headers';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import ConsentBanner from '@/components/ConsentBanner';
+import MeshGradientBackground from '@/components/MeshGradientBackground';
+import DevSWCleanup from '@/components/DevSWCleanup';
+import { getTranslations } from '@/lib/i18n';
+import { fontVars } from '@/lib/fonts';
+import WebVitals from '@/components/WebVitals';
+import { createTitleTemplate } from '@/lib/title';
+import {
+  generateOrganizationSchema,
   generateWebsiteSchema,
   generateBreadcrumbSchema,
-  combineSchemas 
-} from "@/lib/structured-data";
+  combineSchemas,
+} from '@/lib/structured-data';
 
-import "@/app/globals.css";
+import '@/app/globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: "Lyyli.ai - AI Communication Assistant",
+    default: 'Lyyli.ai - AI Communication Assistant',
     template: createTitleTemplate(),
   },
   description:
-    "Transform your internal communications with enterprise-grade AI. Streamline workflows for operations leaders, PMO heads, and communications managers. SOC 2 compliant with multilingual support.",
+    'Transform your internal communications with enterprise-grade AI. Streamline workflows for operations leaders, PMO heads, and communications managers. SOC 2 compliant with multilingual support.',
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
   keywords: [
-    "AI communication assistant",
-    "professional service organizations",
-    "internal communications",
-    "enterprise communication",
-    "operations management",
-    "PMO tools",
-    "multilingual communication",
-    "compliance communication",
+    'AI communication assistant',
+    'professional service organizations',
+    'internal communications',
+    'enterprise communication',
+    'operations management',
+    'PMO tools',
+    'multilingual communication',
+    'compliance communication',
   ],
-  authors: [{ name: "Lyyli.ai" }],
-  creator: "Lyyli.ai",
-  publisher: "Lyyli.ai",
+  authors: [{ name: 'Lyyli.ai' }],
+  creator: 'Lyyli.ai',
+  publisher: 'Lyyli.ai',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://lyyli.ai"),
+  metadataBase: new URL('https://lyyli.ai'),
   alternates: {
     languages: {
-      en: "/en",
-      fi: "/fi",
+      en: '/en',
+      fi: '/fi',
     },
   },
   openGraph: {
     title:
-      "Lyyli.ai - AI Communication Assistant for Professional Service Organizations",
+      'Lyyli.ai - AI Communication Assistant for Professional Service Organizations',
     description:
-      "Transform your internal communications with enterprise-grade AI. Streamline workflows for operations leaders and communications managers.",
-    url: "https://lyyli.ai",
-    siteName: "Lyyli.ai",
+      'Transform your internal communications with enterprise-grade AI. Streamline workflows for operations leaders and communications managers.',
+    url: 'https://lyyli.ai',
+    siteName: 'Lyyli.ai',
     images: [
       {
-        url: "/api/og?title=Lyyli.ai - AI Communication Assistant&description=Transform your internal communications with enterprise-grade AI",
+        url: '/api/og?title=Lyyli.ai - AI Communication Assistant&description=Transform your internal communications with enterprise-grade AI',
         width: 1200,
         height: 630,
-        alt: "Lyyli.ai - AI Communication Assistant",
+        alt: 'Lyyli.ai - AI Communication Assistant',
       },
     ],
-    locale: "en_US",
-    type: "website",
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Lyyli.ai - AI Communication Assistant",
+    card: 'summary_large_image',
+    title: 'Lyyli.ai - AI Communication Assistant',
     description:
-      "Transform your internal communications with enterprise-grade AI",
-    images: ["/twitter-image.png"],
-    creator: "@lyyli_ai",
+      'Transform your internal communications with enterprise-grade AI',
+    images: ['/twitter-image.png'],
+    creator: '@lyyli_ai',
   },
   robots: {
     index: true,
@@ -87,13 +87,13 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   verification: {
-    google: "google-site-verification-code",
+    google: 'google-site-verification-code',
   },
 };
 
@@ -103,7 +103,7 @@ interface LocaleLayoutProps {
 }
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "fi" }];
+  return [{ locale: 'en' }, { locale: 'fi' }];
 }
 
 export default async function LocaleLayout({
@@ -113,17 +113,17 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure locale is supported
-  const supportedLocales = ["en", "fi"];
-  const currentLocale = supportedLocales.includes(locale) ? locale : "en";
+  const supportedLocales = ['en', 'fi'];
+  const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
 
   // Get translations
   const t = await getTranslations(currentLocale);
 
   // Get pathname for breadcrumbs and footer (not for canonical URL)
   const headersList = await headers();
-  const host = headersList.get("host") || "lyyli.ai";
-  const protocol = headersList.get("x-forwarded-proto") || "https";
-  const pathname = headersList.get("x-pathname") || "/";
+  const host = headersList.get('host') || 'lyyli.ai';
+  const protocol = headersList.get('x-forwarded-proto') || 'https';
+  const pathname = headersList.get('x-pathname') || '/';
   const canonicalUrl = `${protocol}://${host}${pathname}`; // Only for footer display
 
   // Read CSP nonce from headers or cookie (middleware provides both)
@@ -149,18 +149,25 @@ export default async function LocaleLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
         />
-        
+
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-        
+        <link rel="dns-prefetch" href="//cdn.matomo.cloud" />
+        <link rel="dns-prefetch" href="//lyyliai.matomo.cloud" />
+
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         {/* Critical CSS for LCP optimization */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
             .font-playfair { font-family: var(--font-playfair), Georgia, serif; }
             .font-sans { font-family: var(--font-inter), system-ui, Arial, sans-serif; }
             .text-4xl { font-size: 2.25rem; line-height: 1.2; }
@@ -168,16 +175,19 @@ export default async function LocaleLayout({
             @media (min-width: 768px) { .md\\:text-5xl { font-size: 3.75rem; line-height: 1.2; } }
             .font-loading .text-4xl, .font-loading .md\\:text-5xl { visibility: hidden; }
             .font-loaded .text-4xl, .font-loaded .md\\:text-5xl { visibility: visible; }
-          `
-        }} />
+          `,
+          }}
+        />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="antialiased font-sans min-h-screen" suppressHydrationWarning>
-
+      <body
+        className="antialiased font-sans min-h-screen"
+        suppressHydrationWarning
+      >
         {/* Vibrant Mesh Gradient Background for all pages */}
         <MeshGradientBackground />
         <div className="flex flex-col min-h-screen relative z-10">

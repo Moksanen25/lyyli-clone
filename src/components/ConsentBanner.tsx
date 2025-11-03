@@ -64,18 +64,44 @@ export default function ConsentBanner({ locale }: ConsentBannerProps) {
         </>
       ) : null}
 
+      {allowAnalytics ? (
+        <>
+          {/* Matomo */}
+          <Script id="matomo" strategy="afterInteractive">
+            {`
+              var _paq = window._paq = window._paq || [];
+              /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+              _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+              _paq.push(["setCookieDomain", "*.www.lyyli.ai"]);
+              _paq.push(["setDomains", ["*.www.lyyli.ai"]]);
+              _paq.push(["setDoNotTrack", true]);
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u="https://lyyliai.matomo.cloud/";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', '1']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.async=true; g.src='https://cdn.matomo.cloud/lyyliai.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+              })();
+            `}
+          </Script>
+        </>
+      ) : null}
+
       {showBanner ? (
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-grayLight shadow-medium z-50 p-4">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex-1">
               <h3 className="text-xl text-forest mb-2 font-playfair font-bold leading-normal">
-                {locale === 'fi' ? 'Evästeet ja analytiikka' : 'Cookies & Analytics'}
+                {locale === 'fi'
+                  ? 'Evästeet ja analytiikka'
+                  : 'Cookies & Analytics'}
               </h3>
               <p className="text-sm text-mediumGray font-sans">
-                {locale === 'fi' 
+                {locale === 'fi'
                   ? 'Käytämme evästeitä ja analytiikkaa parantaaksemme sivuston toimintaa. Hyväksymällä sallit evästeiden käytön.'
-                  : 'We use cookies and analytics to improve our website. By accepting, you allow the use of cookies.'
-                }
+                  : 'We use cookies and analytics to improve our website. By accepting, you allow the use of cookies.'}
               </p>
             </div>
             <div className="flex gap-3">
@@ -98,4 +124,3 @@ export default function ConsentBanner({ locale }: ConsentBannerProps) {
     </>
   );
 }
-
