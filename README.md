@@ -4,15 +4,41 @@ This is a [Next.js](https://nextjs.org) project for the Lyyli AI communication p
 
 ## 🚀 Getting Started
 
-**IMPORTANT**: Always run commands from the main project directory!
+### Prerequisites
 
-First, ensure you're in the correct directory:
+- Node.js 18+ installed
+- npm, yarn, pnpm, or bun package manager
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-cd /Users/mikko.oksanen/Desktop/Content\ AI\ Oy/Cursor/lyyli-clone-fresh
+git clone <repository-url>
+cd lyyli-clone-fresh
 ```
 
-Then run the development server:
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Set up environment variables:
+
+Create a `.env.local` file in the root directory and add your environment variables:
+
+```bash
+# Example environment variables
+NEXT_PUBLIC_API_URL=your-api-url
+# Add other required environment variables
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
@@ -24,7 +50,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `src/app/[locale]/page.tsx`. The page auto-updates as you edit the file.
 
@@ -33,6 +59,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## 📚 Project Documentation
 
 ### Quick Links
+
 - **[Architecture](./docs/architecture/)** - Project structure and organization
 - **[Guides](./docs/guides/)** - Setup and testing guides
 - **[Features](./docs/features/)** - Feature documentation and implementation details
@@ -41,16 +68,16 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - **[Rules](./rules/)** - Brand and development rules
 
 ### Key Documents
+
 - [Project Structure](./docs/architecture/PROJECT_STRUCTURE.md) - Complete project organization
 - [Testing Guide](./docs/guides/TESTING.md) - Testing setup and best practices
 - [Monitoring Setup](./docs/guides/MONITORING_SETUP.md) - Observability configuration
 - [GDPR Compliance](./docs/compliance/GDPR_COMPLIANCE.md) - Privacy and compliance info
-- [Cleanup Plan](./CLEANUP_PLAN.md) - Current cleanup and optimization efforts
 
 ## 🏗️ Project Structure
 
 ```
-lyyli-clone-fresh/           # ← MAIN PROJECT DIRECTORY
+lyyli-clone-fresh/
 ├── src/                     # Source code
 │   ├── app/                 # Next.js app directory (routes)
 │   ├── components/          # React components
@@ -69,18 +96,10 @@ lyyli-clone-fresh/           # ← MAIN PROJECT DIRECTORY
 ├── rules/                   # Brand and development rules
 ├── scripts/                 # Build and utility scripts
 ├── e2e/                     # End-to-end tests
-├── archive/                 # Archived old files
-└── [configuration files]
+└── [configuration files]    # Config files (.env, next.config, etc.)
 ```
 
-## ⚠️ Important Notes
-
-- **Always work from the main directory**: `/lyyli-clone-fresh/`
-- **Never work from subdirectories** like `/lyyli-clone-fresh/lyyli-clone/`
-- **Check `pwd`** if you're unsure about your location
-- **All source files are in `src/`**
-
-## 🚀 Development Commands
+## 🛠️ Development Commands
 
 ```bash
 # Start development server
@@ -89,24 +108,117 @@ npm run dev
 # Build for production
 npm run build
 
+# Start production server
+npm start
+
 # Run tests
 npm test
 
+# Run tests in watch mode
+npm run test:watch
+
+# Run test coverage
+npm run test:coverage
+
 # Type checking
-npm run type-check
+npm run typecheck
+
+# Linting
+npm run lint
+
+# Lint and fix issues
+npm run lint:fix
+
+# Run end-to-end tests
+npm run e2e
+
+# Run end-to-end tests with UI
+npm run e2e:ui
 ```
 
-## Learn More
+## 🧪 Testing
 
-To learn more about Next.js, take a look at the following resources:
+This project includes comprehensive testing:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Unit Tests**: Jest + React Testing Library
+- **Integration Tests**: API and component integration tests
+- **E2E Tests**: Playwright for end-to-end testing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Run all tests:
 
-## Deploy on Vercel
+```bash
+npm test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For more details, see the [Testing Guide](./docs/guides/TESTING.md).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌍 Internationalization
+
+This project supports multiple languages using `next-intl`. Translation files are located in `src/translations/`.
+
+Supported languages:
+
+- English (`en`)
+- Finnish (`fi`)
+
+## 📦 Built With
+
+- **[Next.js 15](https://nextjs.org/)** - React framework
+- **[React 19](https://react.dev/)** - UI library
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Tailwind CSS](https://tailwindcss.com/)** - Styling
+- **[next-intl](https://next-intl-docs.vercel.app/)** - Internationalization
+- **[MDX](https://mdxjs.com/)** - Markdown for content
+- **[Jest](https://jestjs.io/)** - Testing framework
+- **[Playwright](https://playwright.dev/)** - E2E testing
+
+## 🔒 Security & Compliance
+
+This project implements:
+
+- GDPR compliance measures
+- Security headers and CSP
+- Rate limiting
+- Input validation and sanitization
+
+See [GDPR Compliance](./docs/compliance/GDPR_COMPLIANCE.md) for details.
+
+## 📝 Learn More
+
+To learn more about Next.js, check out the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial
+- [Next.js GitHub repository](https://github.com/vercel/next.js)
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+The easiest way to deploy this Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+1. Push your code to a Git repository
+2. Import your project to Vercel
+3. Add environment variables in the Vercel dashboard
+4. Deploy!
+
+See the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### Environment Variables
+
+Make sure to set up the following environment variables in your deployment:
+
+- `NEXT_PUBLIC_API_URL` - API endpoint URL
+- Other required variables (see `.env.example` if available)
+
+## 📄 License
+
+[Add your license information here]
+
+## 🤝 Contributing
+
+[Add contributing guidelines here]
+
+## 📧 Contact
+
+For questions or support, please contact [your contact information].
