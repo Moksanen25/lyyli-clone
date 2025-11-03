@@ -64,24 +64,28 @@ export default function AnalyticsHead(): React.JSX.Element | null {
 
       {allowAnalytics ? (
         <>
-          {/* Matomo Analytics */}
+          {/* Matomo Analytics - Consent-based tracking */}
           <Script id="matomo" strategy="afterInteractive">
             {`
               var _paq = window._paq = window._paq || [];
               /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-              _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-              _paq.push(["setCookieDomain", "*.www.lyyli.ai"]);
-              _paq.push(["setDomains", ["*.www.lyyli.ai"]]);
-              _paq.push(["setDoNotTrack", true]);
+              _paq.push(['setDocumentTitle', document.domain + '/' + document.title]);
+              _paq.push(['setCookieDomain', '*.lyyli.ai']);
+              _paq.push(['setDomains', ['*.lyyli.ai','*.www.lyyli.ai']]);
               _paq.push(['trackPageView']);
               _paq.push(['enableLinkTracking']);
               (function() {
-                var u="https://lyyliai.matomo.cloud/";
+                var u='https://lyyliai.matomo.cloud/';
                 _paq.push(['setTrackerUrl', u+'matomo.php']);
                 _paq.push(['setSiteId', '1']);
                 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
                 g.async=true; g.src='https://cdn.matomo.cloud/lyyliai.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
               })();
+              
+              // Debug: Log when Matomo initializes (remove in production)
+              if (typeof console !== 'undefined') {
+                console.log('Matomo tracking initialized for lyyli.ai');
+              }
             `}
           </Script>
         </>
