@@ -10,8 +10,11 @@ declare global {
     ) => void;
     dataLayer?: Array<unknown>;
 
-    // Matomo Analytics
+    // Matomo Analytics (legacy tracking)
     _paq?: Array<Array<string | number | boolean>>;
+
+    // Matomo Tag Manager
+    _mtm?: Array<Record<string, unknown>>;
 
     // Other analytics tools (for future use)
     hj?: (...args: unknown[]) => void;
