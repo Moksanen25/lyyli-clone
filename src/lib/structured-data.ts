@@ -219,11 +219,10 @@ export function generateArticleSchema(
   } = props;
 
   const articleUrl = `${PRODUCTION_URL}/${locale}/blog/${slug}`;
-  const imageUrl = image?.startsWith('http')
-    ? image
-    : image
-      ? `${PRODUCTION_URL}${image}`
-      : `${PRODUCTION_URL}/api/og?title=${encodeURIComponent(headline)}`;
+  let imageUrl = `${PRODUCTION_URL}/api/og?title=${encodeURIComponent(headline)}`;
+  if (image) {
+    imageUrl = image.startsWith('http') ? image : `${PRODUCTION_URL}${image}`;
+  }
 
   return {
     '@context': 'https://schema.org',
@@ -238,7 +237,7 @@ export function generateArticleSchema(
       height: 630,
     },
     datePublished,
-    dateModified: dateModified || datePublished,
+    dateModified: dateModified ?? datePublished,
     author: {
       '@type': 'Person',
       name: author,
@@ -261,7 +260,9 @@ export function generateArticleSchema(
  * SoftwareApplication schema
  * Describes the Lyyli.ai application
  */
-export function generateSoftwareApplicationSchema(locale: string = 'en') {
+export function generateSoftwareApplicationSchema(
+  locale: string = 'en'
+): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -314,7 +315,7 @@ export function generateWebPageSchema(
   description: string,
   url: string,
   locale: string = 'en'
-) {
+): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -373,6 +374,142 @@ export function combineSchemas(
 }
 
 /**
+ * FAQPage schema
+ * For pages with frequently asked questions
+ */
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export function generateFAQPageSchema(
+  faqs: FAQItem[],
+  locale: string = 'en'
+): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale,
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * Product schema for pricing tiers
+ * Describes a product/service offering
+ */
+export interface ProductSchemaProps {
+  name: string;
+  description: string;
+  price: string;
+  priceCurrency: string;
+  locale: string;
+  features?: string[];
+}
+
+export function generateProductSchema(
+  props: ProductSchemaProps
+): Record<string, unknown> {
+  const { name, description, price, priceCurrency, features = [] } = props;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    description,
+    offers: {
+      '@type': 'Offer',
+      price,
+      priceCurrency,
+      availability: 'https://schema.org/InStock',
+      seller: {
+        '@id': `${PRODUCTION_URL}/#organization`,
+      },
+    },
+    provider: {
+      '@id': `${PRODUCTION_URL}/#organization`,
+    },
+    ...(features.length > 0 && {
+      additionalProperty: features.map(feature => ({
+        '@type': 'PropertyValue',
+        name: 'Feature',
+        value: feature,
+      })),
+    }),
+  };
+}
+
+/**
+ * ContactPage schema
+ * For contact pages with organization contact information
+ */
+export function generateContactPageSchema(
+  locale: string = 'en'
+): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${PRODUCTION_URL}/${locale}/contact#webpage`,
+    name: locale === 'fi' ? 'Ota yhteyttä' : 'Contact Us',
+    description:
+      locale === 'fi'
+        ? 'Ota yhteyttä Lyyli.ai-tiimiin'
+        : 'Get in touch with the Lyyli.ai team',
+    url: `${PRODUCTION_URL}/${locale}/contact`,
+    inLanguage: locale,
+    isPartOf: {
+      '@id': `${PRODUCTION_URL}/#website`,
+    },
+    about: {
+      '@id': `${PRODUCTION_URL}/#organization`,
+    },
+  };
+}
+
+/**
+ * HowTo schema for tutorial/guide pages
+ * Provides step-by-step instructions
+ */
+export interface HowToStep {
+  name: string;
+  text: string;
+  image?: string;
+}
+
+export function generateHowToSchema(
+  name: string,
+  description: string,
+  steps: HowToStep[],
+  locale: string = 'en'
+): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    description,
+    inLanguage: locale,
+    step: steps.map((step, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+      ...(step.image && {
+        image: step.image.startsWith('http')
+          ? step.image
+          : `${PRODUCTION_URL}${step.image}`,
+      }),
+    })),
+  };
+}
+
+/**
  * Validate JSON-LD schema
  * Basic validation to ensure required fields are present
  */
@@ -423,6 +560,21 @@ export function validateSchema(schema: unknown): {
 
       case 'WebSite':
         if (!schemaObj.url) errors.push('WebSite missing url');
+        break;
+
+      case 'FAQPage':
+        if (!schemaObj.mainEntity || !Array.isArray(schemaObj.mainEntity)) {
+          errors.push('FAQPage missing mainEntity array');
+        }
+        break;
+
+      case 'ContactPage':
+        if (!schemaObj.url) errors.push('ContactPage missing url');
+        break;
+
+      case 'Product':
+        if (!schemaObj.name) errors.push('Product missing name');
+        if (!schemaObj.offers) errors.push('Product missing offers');
         break;
     }
   }

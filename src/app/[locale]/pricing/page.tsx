@@ -4,17 +4,27 @@ import PricingCards from '@/components/PricingCards';
 import BenefitsSection from '@/components/pricing/BenefitsSection';
 import FAQSection from '@/components/faq/FAQSection';
 import ROICalculator from '@/components/ROICalculator';
-import { generatePageCanonicalUrl, generateHreflangMetadata } from '@/lib/canonical';
+import {
+  generatePageCanonicalUrl,
+  generateHreflangMetadata,
+} from '@/lib/canonical';
 import { buildTitleFromTranslation } from '@/lib/title';
+import {
+  generateProductSchema,
+  generateFAQPageSchema,
+  combineSchemas,
+} from '@/lib/structured-data';
 
 interface PricingPageProps {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params }: PricingPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PricingPageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations(locale);
-  
+
   return {
     title: buildTitleFromTranslation(t['pricing.page.title'], 'Pricing'),
     description: t['pricing.page.description'],
@@ -27,9 +37,9 @@ export async function generateMetadata({ params }: PricingPageProps): Promise<Me
           url: `/api/og?title=${encodeURIComponent(t['pricing.page.title'])}&description=${encodeURIComponent(t['pricing.page.description'])}`,
           width: 1200,
           height: 630,
-          alt: t['pricing.page.title']
-        }
-      ]
+          alt: t['pricing.page.title'],
+        },
+      ],
     },
     alternates: {
       canonical: generatePageCanonicalUrl('pricing', locale),
@@ -38,31 +48,154 @@ export async function generateMetadata({ params }: PricingPageProps): Promise<Me
   };
 }
 
-export default async function PricingPage({ params }: PricingPageProps) {
+export default async function PricingPage({
+  params,
+}: PricingPageProps): Promise<JSX.Element> {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
-  
+
   const t = await getTranslations(currentLocale);
+
+  // Generate Product schemas for each pricing tier
+  const starterProduct = generateProductSchema({
+    name: currentLocale === 'fi' ? 'Starter' : 'Starter',
+    description:
+      currentLocale === 'fi'
+        ? 'Täydellinen pienille tiimeille ja aloittelijoille'
+        : 'Perfect for small teams and beginners',
+    price: '39',
+    priceCurrency: 'EUR',
+    locale: currentLocale,
+    features: [
+      currentLocale === 'fi'
+        ? 'Perustason AI-generointi'
+        : 'Basic AI generation',
+      currentLocale === 'fi' ? '5 käyttäjää' : '5 users',
+      currentLocale === 'fi' ? 'Perustuki' : 'Basic support',
+    ],
+  });
+
+  const professionalProduct = generateProductSchema({
+    name: currentLocale === 'fi' ? 'Professional' : 'Professional',
+    description:
+      currentLocale === 'fi'
+        ? 'Kasvavat tiimit tarvitsevat tehokkaampia työkaluja'
+        : 'Growing teams need more powerful tools',
+    price: '99',
+    priceCurrency: 'EUR',
+    locale: currentLocale,
+    features: [
+      currentLocale === 'fi'
+        ? 'Kehittynyt AI-analytiikka'
+        : 'Advanced AI analytics',
+      currentLocale === 'fi' ? '20 käyttäjää' : '20 users',
+      currentLocale === 'fi' ? 'Prioriteettituki' : 'Priority support',
+    ],
+  });
+
+  const enterpriseProduct = generateProductSchema({
+    name: currentLocale === 'fi' ? 'Enterprise' : 'Enterprise',
+    description:
+      currentLocale === 'fi'
+        ? 'Täydet ominaisuudet suurille organisaatioille'
+        : 'Full features for large organizations',
+    price: 'Custom',
+    priceCurrency: 'EUR',
+    locale: currentLocale,
+    features: [
+      currentLocale === 'fi' ? 'Kaikki ominaisuudet' : 'All features',
+      currentLocale === 'fi' ? 'Rajaton käyttäjämäärä' : 'Unlimited users',
+      currentLocale === 'fi' ? 'Omistetussa tuki' : 'Dedicated support',
+    ],
+  });
+
+  // Generate FAQ schema
+  const faqSchema = generateFAQPageSchema(
+    [
+      {
+        question:
+          currentLocale === 'fi'
+            ? 'Kuinka paljon Lyyli.ai maksaa?'
+            : 'How much does Lyyli.ai cost?',
+        answer:
+          currentLocale === 'fi'
+            ? 'Palvelumme on hinnoiteltu käyttäjäpohjaisesti. Voit käyttää palvelua ilmaiseksi rajoitetuin ominaisuuksin, maksulliset kk-tilaukset alkavat 39€/kk. Tarkemmat hinnat ja sisällöt löydät Hinnoittelu-sivultamme.'
+            : 'Our service is priced per user. You can use the service for free with limited features, paid monthly subscriptions start at 39€/month. You can find detailed prices and contents on our Pricing page.',
+      },
+      {
+        question:
+          currentLocale === 'fi'
+            ? 'Miten pääsen alkuun?'
+            : 'How do I get started?',
+        answer:
+          currentLocale === 'fi'
+            ? 'Aloittaminen on helppoa! Ota yhteyttä meihin, niin sovimme yhdessä käyttöönotosta. Autamme sinua ja tiimisi pääsemään alkuun, jotta saatte Lyylista täyden hyödyn irti heti ensimmäisestä päivästä lähtien.'
+            : "Getting started is easy! Contact us and we'll arrange the implementation together. We'll help you and your team get started so you get the full benefit from Lyyli right from day one.",
+      },
+      {
+        question:
+          currentLocale === 'fi'
+            ? 'Entä jos minulla on kysymyksiä käytön aikana?'
+            : 'What if I have questions during use?',
+        answer:
+          currentLocale === 'fi'
+            ? 'Olemme täällä sinua varten! Asiakastukemme auttaa mielellään kaikissa kysymyksissä. Lisäksi tarjoamme koulutusta ja ohjeistusta, jotta tiimisi osaa hyödyntää Lyyliä parhaalla mahdollisella tavalla.'
+            : "We're here for you! Our customer support is happy to help with any questions. We also provide training and guidance so your team can make the best possible use of Lyyli.",
+      },
+      {
+        question:
+          currentLocale === 'fi'
+            ? 'Eikö kysymyksesi löytynyt listalta?'
+            : "Can't find your question in the list?",
+        answer:
+          currentLocale === 'fi'
+            ? 'Ota rohkeasti yhteyttä – autamme mielellään! 💙'
+            : "Don't hesitate to contact us – we're happy to help! 💙",
+      },
+    ],
+    currentLocale
+  );
+
+  // Combine all schemas
+  const combinedSchema = combineSchemas(
+    starterProduct,
+    professionalProduct,
+    enterpriseProduct,
+    faqSchema
+  );
 
   return (
     <div className="min-h-screen">
+      {/* Structured Data Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(combinedSchema),
+        }}
+      />
       {/* Hero Section */}
       <div className="relative z-10 pt-32">
-        <section 
+        <section
           className="container mx-auto px-4 py-20 relative overflow-hidden"
           aria-label="Hero"
         >
           {/* Animated Hero Visual Background */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-turquoise/10 to-rose/10 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}} />
-            <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-rose/15 to-forest/10 rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}} />
+            <div
+              className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-full blur-2xl animate-pulse"
+              style={{ animationDelay: '1s' }}
+            />
+            <div
+              className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-rose/15 to-forest/10 rounded-full blur-xl animate-pulse"
+              style={{ animationDelay: '2s' }}
+            />
           </div>
-          
+
           <div className="text-center max-w-4xl mx-auto relative z-10">
             <h1 className="text-4xl md:text-5xl text-forest mb-8 font-playfair font-bold leading-tight">
-              {t["pricing.title"]}
+              {t['pricing.title']}
             </h1>
             <p className="text-lg text-mediumGray max-w-3xl mx-auto mb-12 font-sans leading-relaxed">
               {t['pricing.pricingHeader.subtitle']}
@@ -89,41 +222,62 @@ export default async function PricingPage({ params }: PricingPageProps) {
       </div>
 
       {/* FAQ Section */}
-      <FAQSection 
+      <FAQSection
         faqs={[
           {
-            id: "pricing-cost",
-            question: currentLocale === "fi" ? "Kuinka paljon Lyyli.ai maksaa?" : "How much does Lyyli.ai cost?",
-            answer: currentLocale === "fi"
-              ? "Palvelumme on hinnoiteltu käyttäjäpohjaisesti. Voit käyttää palvelua ilmaiseksi rajoitetuin ominaisuuksin, maksulliset kk-tilaukset alkavat 39€/kk. Tarkemmat hinnat ja sisällöt löydät 'Hinnoittelu'-sivultamme."
-              : "Our service is priced per user. You can use the service for free with limited features, paid monthly subscriptions start at 39€/month. You can find detailed prices and contents on our 'Pricing' page."
+            id: 'pricing-cost',
+            question:
+              currentLocale === 'fi'
+                ? 'Kuinka paljon Lyyli.ai maksaa?'
+                : 'How much does Lyyli.ai cost?',
+            answer:
+              currentLocale === 'fi'
+                ? "Palvelumme on hinnoiteltu käyttäjäpohjaisesti. Voit käyttää palvelua ilmaiseksi rajoitetuin ominaisuuksin, maksulliset kk-tilaukset alkavat 39€/kk. Tarkemmat hinnat ja sisällöt löydät 'Hinnoittelu'-sivultamme."
+                : "Our service is priced per user. You can use the service for free with limited features, paid monthly subscriptions start at 39€/month. You can find detailed prices and contents on our 'Pricing' page.",
           },
           {
-            id: "getting-started",
-            question: currentLocale === "fi" ? "Miten pääsen alkuun?" : "How do I get started?",
-            answer: currentLocale === "fi"
-              ? "Aloittaminen on helppoa! Ota yhteyttä meihin, niin sovimme yhdessä käyttöönotosta. Autamme sinua ja tiimisi pääsemään alkuun, jotta saatte Lyylista täyden hyödyn irti heti ensimmäisestä päivästä lähtien."
-              : "Getting started is easy! Contact us and we'll arrange the implementation together. We'll help you and your team get started so you get the full benefit from Lyyli right from day one."
+            id: 'getting-started',
+            question:
+              currentLocale === 'fi'
+                ? 'Miten pääsen alkuun?'
+                : 'How do I get started?',
+            answer:
+              currentLocale === 'fi'
+                ? 'Aloittaminen on helppoa! Ota yhteyttä meihin, niin sovimme yhdessä käyttöönotosta. Autamme sinua ja tiimisi pääsemään alkuun, jotta saatte Lyylista täyden hyödyn irti heti ensimmäisestä päivästä lähtien.'
+                : "Getting started is easy! Contact us and we'll arrange the implementation together. We'll help you and your team get started so you get the full benefit from Lyyli right from day one.",
           },
           {
-            id: "support-questions",
-            question: currentLocale === "fi" ? "Entä jos minulla on kysymyksiä käytön aikana?" : "What if I have questions during use?",
-            answer: currentLocale === "fi"
-              ? "Olemme täällä sinua varten! Asiakastukemme auttaa mielellään kaikissa kysymyksissä. Lisäksi tarjoamme koulutusta ja ohjeistusta, jotta tiimisi osaa hyödyntää Lyyliä parhaalla mahdollisella tavalla."
-              : "We're here for you! Our customer support is happy to help with any questions. We also provide training and guidance so your team can make the best possible use of Lyyli."
+            id: 'support-questions',
+            question:
+              currentLocale === 'fi'
+                ? 'Entä jos minulla on kysymyksiä käytön aikana?'
+                : 'What if I have questions during use?',
+            answer:
+              currentLocale === 'fi'
+                ? 'Olemme täällä sinua varten! Asiakastukemme auttaa mielellään kaikissa kysymyksissä. Lisäksi tarjoamme koulutusta ja ohjeistusta, jotta tiimisi osaa hyödyntää Lyyliä parhaalla mahdollisella tavalla.'
+                : "We're here for you! Our customer support is happy to help with any questions. We also provide training and guidance so your team can make the best possible use of Lyyli.",
           },
           {
-            id: "contact-for-questions",
-            question: currentLocale === "fi" ? "Eikö kysymyksesi löytynyt listalta?" : "Can't find your question in the list?",
-            answer: currentLocale === "fi"
-              ? "Ota rohkeasti yhteyttä – autamme mielellään! 💙"
-              : "Don't hesitate to contact us – we're happy to help! 💙"
-          }
+            id: 'contact-for-questions',
+            question:
+              currentLocale === 'fi'
+                ? 'Eikö kysymyksesi löytynyt listalta?'
+                : "Can't find your question in the list?",
+            answer:
+              currentLocale === 'fi'
+                ? 'Ota rohkeasti yhteyttä – autamme mielellään! 💙'
+                : "Don't hesitate to contact us – we're happy to help! 💙",
+          },
         ]}
-        title={currentLocale === "fi" ? "Usein kysytyt kysymykset" : "Frequently Asked Questions"}
-        description={currentLocale === "fi" 
-          ? "Vastauksia yleisimpiin kysymyksiin hinnoittelusta ja käytöstä."
-          : "Answers to the most common questions about pricing and usage."
+        title={
+          currentLocale === 'fi'
+            ? 'Usein kysytyt kysymykset'
+            : 'Frequently Asked Questions'
+        }
+        description={
+          currentLocale === 'fi'
+            ? 'Vastauksia yleisimpiin kysymyksiin hinnoittelusta ja käytöstä.'
+            : 'Answers to the most common questions about pricing and usage.'
         }
       />
 
@@ -137,24 +291,46 @@ export default async function PricingPage({ params }: PricingPageProps) {
             {t['cta.description']}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <a
               href="https://app.lyyli.ai"
               className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
               aria-label="Join the waitlist for Lyyli.ai"
             >
-              {locale === "fi" ? "Liity odotuslistalle" : "Join Waitlist"}
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              {locale === 'fi' ? 'Liity odotuslistalle' : 'Join Waitlist'}
+              <svg
+                className="w-5 h-5 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
               </svg>
             </a>
-            <a 
+            <a
               href="https://app.lyyli.ai"
               className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
               aria-label="Contact us for more information"
             >
-              {locale === "fi" ? "Ota yhteyttä" : "Contact us"}
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 0 1-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              {locale === 'fi' ? 'Ota yhteyttä' : 'Contact us'}
+              <svg
+                className="w-5 h-5 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 0 1-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                />
               </svg>
             </a>
           </div>

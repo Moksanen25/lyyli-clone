@@ -5,17 +5,23 @@ import MissionVisionValues from '../../../components/about/MissionVisionValues';
 import TeamSection from '../../../components/about/TeamSection';
 import SubPageVisual from '../../../components/SubPageVisual';
 import CalendarPopup from '../../../components/CalendarPopup';
-import { generatePageCanonicalUrl, generateHreflangMetadata } from '../../../lib/canonical';
+import {
+  generatePageCanonicalUrl,
+  generateHreflangMetadata,
+} from '../../../lib/canonical';
 import { buildTitleFromTranslation } from '../../../lib/title';
+import { generateWebPageSchema } from '../../../lib/structured-data';
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: AboutPageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations(locale);
-  
+
   return {
     title: buildTitleFromTranslation(t['about.page.title'], 'About'),
     description: t['about.page.description'],
@@ -27,10 +33,10 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
           url: `/api/og?title=${encodeURIComponent(t['about.page.title'])}&description=${encodeURIComponent(t['about.page.description'])}`,
           width: 1200,
           height: 630,
-          alt: t['about.page.title']
-        }
+          alt: t['about.page.title'],
+        },
       ],
-      type: 'website'
+      type: 'website',
     },
     alternates: {
       canonical: generatePageCanonicalUrl('about', locale),
@@ -39,21 +45,39 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
   };
 }
 
-export default async function AboutPage({ params }: AboutPageProps) {
+export default async function AboutPage({
+  params,
+}: AboutPageProps): Promise<JSX.Element> {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
-  
+
   const t = await getTranslations(currentLocale);
+
+  // Generate WebPage schema
+  const pageSchema = generateWebPageSchema(
+    t['about.page.title'],
+    t['about.page.description'],
+    `https://lyyli.ai/${currentLocale}/about`,
+    currentLocale
+  );
 
   return (
     <div className="min-h-screen">
+      {/* WebPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pageSchema),
+        }}
+      />
+
       {/* Hero Visual Background */}
       <SubPageVisual />
-      
+
       {/* Hero Section */}
       <div className="relative z-10 pt-32">
-        <section 
+        <section
           className="container mx-auto px-4 py-20 relative overflow-hidden"
           aria-label="Hero"
         >
@@ -66,24 +90,28 @@ export default async function AboutPage({ params }: AboutPageProps) {
             </p>
             {/* Hero CTA buttons following layout rule */}
             <div className="flex justify-center gap-4 mb-0">
-              <CalendarPopup 
-                className="btn-primary" 
+              <CalendarPopup
+                className="btn-primary"
                 aria-label="Book a demo of Lyyli.ai"
                 translations={{
-                  title: t["calendar.title"],
-                  subtitle: t["calendar.subtitle"],
-                  description: t["calendar.description"],
-                  loading: t["calendar.loading"],
-                  errorTitle: t["calendar.error.title"],
-                  errorDescription: t["calendar.error.description"],
-                  errorButton: t["calendar.error.button"],
-                  footerSecure: t["calendar.footer.secure"],
-                  footerContact: t["calendar.footer.contact"]
+                  title: t['calendar.title'],
+                  subtitle: t['calendar.subtitle'],
+                  description: t['calendar.description'],
+                  loading: t['calendar.loading'],
+                  errorTitle: t['calendar.error.title'],
+                  errorDescription: t['calendar.error.description'],
+                  errorButton: t['calendar.error.button'],
+                  footerSecure: t['calendar.footer.secure'],
+                  footerContact: t['calendar.footer.contact'],
                 }}
               >
                 {t['about.cta.demo']}
               </CalendarPopup>
-              <a href="https://app.lyyli.ai" className="btn-secondary" aria-label="Start free trial of Lyyli.ai">
+              <a
+                href="https://app.lyyli.ai"
+                className="btn-secondary"
+                aria-label="Start free trial of Lyyli.ai"
+              >
                 {t['about.cta.trial']}
               </a>
             </div>
@@ -122,24 +150,28 @@ export default async function AboutPage({ params }: AboutPageProps) {
             {t['about.cta.description']}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CalendarPopup 
-              className="btn-primary" 
+            <CalendarPopup
+              className="btn-primary"
               aria-label="Book a demo of Lyyli.ai"
               translations={{
-                title: t["calendar.title"],
-                subtitle: t["calendar.subtitle"],
-                description: t["calendar.description"],
-                loading: t["calendar.loading"],
-                errorTitle: t["calendar.error.title"],
-                errorDescription: t["calendar.error.description"],
-                errorButton: t["calendar.error.button"],
-                footerSecure: t["calendar.footer.secure"],
-                footerContact: t["calendar.footer.contact"]
+                title: t['calendar.title'],
+                subtitle: t['calendar.subtitle'],
+                description: t['calendar.description'],
+                loading: t['calendar.loading'],
+                errorTitle: t['calendar.error.title'],
+                errorDescription: t['calendar.error.description'],
+                errorButton: t['calendar.error.button'],
+                footerSecure: t['calendar.footer.secure'],
+                footerContact: t['calendar.footer.contact'],
               }}
             >
               {t['about.cta.demo']}
             </CalendarPopup>
-            <a href="https://app.lyyli.ai" className="btn-secondary" aria-label="Start free trial of Lyyli.ai">
+            <a
+              href="https://app.lyyli.ai"
+              className="btn-secondary"
+              aria-label="Start free trial of Lyyli.ai"
+            >
               {t['about.cta.trial']}
             </a>
           </div>

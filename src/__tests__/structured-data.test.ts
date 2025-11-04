@@ -8,9 +8,16 @@ import {
   generateWebsiteSchema,
   generateBreadcrumbSchema,
   generateArticleSchema,
+  generateFAQPageSchema,
+  generateProductSchema,
+  generateContactPageSchema,
+  generateHowToSchema,
   combineSchemas,
   validateSchema,
   type ArticleSchemaProps,
+  type FAQItem,
+  type ProductSchemaProps,
+  type HowToStep,
 } from '../lib/structured-data';
 
 describe('Structured Data Generation', () => {
@@ -518,6 +525,214 @@ describe('Structured Data Generation', () => {
       // It references Organization but doesn't include it
       const publisher = article.publisher as Record<string, unknown>;
       expect(publisher['@id']).toBe('https://lyyli.ai/#organization');
+    });
+  });
+
+  describe('FAQPage Schema', () => {
+    const mockFAQs: FAQItem[] = [
+      {
+        question: 'What is Lyyli.ai?',
+        answer: 'An AI communication assistant',
+      },
+      { question: 'How much does it cost?', answer: 'Starting from 39€/month' },
+    ];
+
+    it('should generate valid FAQPage schema', () => {
+      const schema = generateFAQPageSchema(mockFAQs, 'en');
+
+      expect(schema['@context']).toBe('https://schema.org');
+      expect(schema['@type']).toBe('FAQPage');
+      expect(schema.inLanguage).toBe('en');
+    });
+
+    it('should include all FAQ items', () => {
+      const schema = generateFAQPageSchema(mockFAQs, 'en');
+      const mainEntity = schema.mainEntity as Array<Record<string, unknown>>;
+
+      expect(mainEntity).toBeDefined();
+      expect(mainEntity.length).toBe(2);
+    });
+
+    it('should structure each FAQ correctly', () => {
+      const schema = generateFAQPageSchema(mockFAQs, 'en');
+      const mainEntity = schema.mainEntity as Array<Record<string, unknown>>;
+      const firstQuestion = mainEntity[0];
+
+      expect(firstQuestion['@type']).toBe('Question');
+      expect(firstQuestion.name).toBe('What is Lyyli.ai?');
+
+      const answer = firstQuestion.acceptedAnswer as Record<string, unknown>;
+      expect(answer['@type']).toBe('Answer');
+      expect(answer.text).toBe('An AI communication assistant');
+    });
+
+    it('should localize for Finnish', () => {
+      const fiFAQs: FAQItem[] = [
+        { question: 'Mikä on Lyyli.ai?', answer: 'AI-viestintäassistentti' },
+      ];
+      const schema = generateFAQPageSchema(fiFAQs, 'fi');
+
+      expect(schema.inLanguage).toBe('fi');
+      const mainEntity = schema.mainEntity as Array<Record<string, unknown>>;
+      expect(mainEntity[0].name).toBe('Mikä on Lyyli.ai?');
+    });
+  });
+
+  describe('Product Schema', () => {
+    const mockProductProps: ProductSchemaProps = {
+      name: 'Professional Plan',
+      description: 'Full features for growing teams',
+      price: '99',
+      priceCurrency: 'EUR',
+      locale: 'en',
+      features: ['Advanced AI', 'Priority support'],
+    };
+
+    it('should generate valid Product schema', () => {
+      const schema = generateProductSchema(mockProductProps);
+
+      expect(schema['@context']).toBe('https://schema.org');
+      expect(schema['@type']).toBe('Product');
+      expect(schema.name).toBe('Professional Plan');
+    });
+
+    it('should include offer with pricing', () => {
+      const schema = generateProductSchema(mockProductProps);
+      const offers = schema.offers as Record<string, unknown>;
+
+      expect(offers['@type']).toBe('Offer');
+      expect(offers.price).toBe('99');
+      expect(offers.priceCurrency).toBe('EUR');
+    });
+
+    it('should reference Organization as seller', () => {
+      const schema = generateProductSchema(mockProductProps);
+      const offers = schema.offers as Record<string, unknown>;
+      const seller = offers.seller as Record<string, unknown>;
+
+      expect(seller['@id']).toBe('https://lyyli.ai/#organization');
+    });
+
+    it('should include features when provided', () => {
+      const schema = generateProductSchema(mockProductProps);
+      const additionalProperty = schema.additionalProperty as Array<
+        Record<string, unknown>
+      >;
+
+      expect(additionalProperty).toBeDefined();
+      expect(additionalProperty.length).toBe(2);
+      expect(additionalProperty[0]['@type']).toBe('PropertyValue');
+    });
+  });
+
+  describe('ContactPage Schema', () => {
+    it('should generate valid ContactPage schema', () => {
+      const schema = generateContactPageSchema('en');
+
+      expect(schema['@context']).toBe('https://schema.org');
+      expect(schema['@type']).toBe('ContactPage');
+      expect(schema.name).toBe('Contact Us');
+    });
+
+    it('should include proper URL', () => {
+      const schema = generateContactPageSchema('en');
+
+      expect(schema.url).toBe('https://lyyli.ai/en/contact');
+      expect(schema['@id']).toBe('https://lyyli.ai/en/contact#webpage');
+    });
+
+    it('should localize for Finnish', () => {
+      const schema = generateContactPageSchema('fi');
+
+      expect(schema.name).toBe('Ota yhteyttä');
+      expect(schema.url).toBe('https://lyyli.ai/fi/contact');
+      expect(schema.inLanguage).toBe('fi');
+    });
+
+    it('should reference Organization', () => {
+      const schema = generateContactPageSchema('en');
+      const about = schema.about as Record<string, unknown>;
+
+      expect(about['@id']).toBe('https://lyyli.ai/#organization');
+    });
+  });
+
+  describe('HowTo Schema', () => {
+    const mockSteps: HowToStep[] = [
+      { name: 'Sign up', text: 'Create an account with your email' },
+      { name: 'Set up', text: 'Configure your organization' },
+      { name: 'Launch', text: 'Start using the assistant' },
+    ];
+
+    it('should generate valid HowTo schema', () => {
+      const schema = generateHowToSchema(
+        'Getting Started',
+        'Learn how to get started with Lyyli.ai',
+        mockSteps,
+        'en'
+      );
+
+      expect(schema['@context']).toBe('https://schema.org');
+      expect(schema['@type']).toBe('HowTo');
+      expect(schema.name).toBe('Getting Started');
+    });
+
+    it('should include all steps with proper structure', () => {
+      const schema = generateHowToSchema(
+        'Getting Started',
+        'Learn how to get started',
+        mockSteps,
+        'en'
+      );
+      const steps = schema.step as Array<Record<string, unknown>>;
+
+      expect(steps).toBeDefined();
+      expect(steps.length).toBe(3);
+      expect(steps[0]['@type']).toBe('HowToStep');
+    });
+
+    it('should number steps sequentially', () => {
+      const schema = generateHowToSchema(
+        'Getting Started',
+        'Learn how to get started',
+        mockSteps,
+        'en'
+      );
+      const steps = schema.step as Array<Record<string, unknown>>;
+
+      expect(steps[0].position).toBe(1);
+      expect(steps[1].position).toBe(2);
+      expect(steps[2].position).toBe(3);
+    });
+
+    it('should handle steps with images', () => {
+      const stepsWithImage: HowToStep[] = [
+        { name: 'Step 1', text: 'Description', image: '/images/step1.png' },
+      ];
+      const schema = generateHowToSchema(
+        'Tutorial',
+        'Description',
+        stepsWithImage,
+        'en'
+      );
+      const steps = schema.step as Array<Record<string, unknown>>;
+
+      expect(steps[0].image).toBe('https://lyyli.ai/images/step1.png');
+    });
+
+    it('should localize content', () => {
+      const fiSteps: HowToStep[] = [
+        { name: 'Rekisteröidy', text: 'Luo tili sähköpostillasi' },
+      ];
+      const schema = generateHowToSchema(
+        'Aloittaminen',
+        'Opi käyttämään Lyyli.ai:ta',
+        fiSteps,
+        'fi'
+      );
+
+      expect(schema.name).toBe('Aloittaminen');
+      expect(schema.inLanguage).toBe('fi');
     });
   });
 });

@@ -12,6 +12,7 @@ import {
   generateHreflangMetadata,
 } from '@/lib/canonical';
 import { buildTitleFromTranslation } from '@/lib/title';
+import { generateSoftwareApplicationSchema } from '@/lib/structured-data';
 
 const ProcessSteps = dynamic(() => import('@/components/ProcessSteps'), {
   ssr: true,
@@ -48,7 +49,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function Home({ params }: HomeProps) {
+export default async function Home({
+  params,
+}: HomeProps): Promise<JSX.Element> {
   const { locale: resolvedLocale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(resolvedLocale)
@@ -57,8 +60,19 @@ export default async function Home({ params }: HomeProps) {
 
   const t = await getTranslations(currentLocale);
 
+  // Generate SoftwareApplication schema for home page
+  const softwareSchema = generateSoftwareApplicationSchema(currentLocale);
+
   return (
     <main className="min-h-screen">
+      {/* SoftwareApplication Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareSchema),
+        }}
+      />
+
       {/* Mesh Gradient Background */}
 
       {/* Hero Section */}
