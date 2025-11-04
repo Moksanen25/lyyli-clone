@@ -45,9 +45,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function AboutPage({
-  params,
-}: AboutPageProps): Promise<JSX.Element> {
+export default async function AboutPage({ params }: AboutPageProps) {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';

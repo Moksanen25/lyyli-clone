@@ -28,13 +28,13 @@ export async function generateMetadata({
     title: buildTitleFromTranslation(t['features.page.title'], 'Features'),
     description: t['features.page.description'],
     keywords: [
-      localeKey === 'fi'
+      locale === 'fi'
         ? 'AI viestintä, automaatio, tietoturva, GDPR, integraatiot'
         : 'AI communication, automation, security, GDPR, integrations',
-      localeKey === 'fi'
+      locale === 'fi'
         ? 'asiantuntijaorganisaatiot, viestintätyökalut'
         : 'professional services, communication tools',
-      localeKey === 'fi'
+      locale === 'fi'
         ? 'Outlook integraatio, Slack, Teams'
         : 'Outlook integration, Slack, Teams',
     ].join(', '),
@@ -58,9 +58,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function FeaturesPage({
-  params,
-}: FeaturesPageProps): Promise<JSX.Element> {
+export default async function FeaturesPage({ params }: FeaturesPageProps) {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';

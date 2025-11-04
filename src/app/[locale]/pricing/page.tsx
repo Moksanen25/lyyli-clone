@@ -48,9 +48,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PricingPage({
-  params,
-}: PricingPageProps): Promise<JSX.Element> {
+export default async function PricingPage({ params }: PricingPageProps) {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';

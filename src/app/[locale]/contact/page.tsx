@@ -54,9 +54,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ContactPage({
-  params,
-}: ContactPageProps): Promise<JSX.Element> {
+export default async function ContactPage({ params }: ContactPageProps) {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';

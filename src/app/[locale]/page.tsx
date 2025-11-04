@@ -49,9 +49,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Home({
-  params,
-}: HomeProps): Promise<JSX.Element> {
+export default async function Home({ params }: HomeProps) {
   const { locale: resolvedLocale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(resolvedLocale)
