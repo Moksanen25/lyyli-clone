@@ -734,7 +734,7 @@ Text in image: Title with clear font`,
                 description:
                   locale === 'fi'
                     ? 'Valitse sopiva aika henkilökohtaiselle demollesi. Tiimimme näyttää, kuinka Lyyli voi muuttaa organisaatiosi viestintää.'
-                    : "Choose a convenient time for your personalized demo. Our team will show you how Lyyli can transform your organization's communication.",
+                    : "Choose a convenient time for your personalized demo. Our team will show you how Lyyli can transform your organization\'s communication.",
                 loading:
                   locale === 'fi'
                     ? 'Ladataan kalenteria...'

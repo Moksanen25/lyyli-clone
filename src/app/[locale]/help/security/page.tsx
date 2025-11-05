@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "../../../../lib/i18n";
-import Link from "next/link";
+// import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Security & Compliance - Protect Your Data with Lyyli.ai",
@@ -10,10 +9,9 @@ export const metadata: Metadata = {
 export default async function SecurityPage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>;\n}): Promise<React.JSX.Element> {
 }) {
   const { locale } = await params;
-  const t = await getTranslations(locale);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -41,6 +39,33 @@ export default async function SecurityPage({
           </nav>
         </div>
       </div>
+
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-[#F7EBEB] to-[#A7D6D1]/20 border-b border-[#E5E5E4]">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#2F5D50] text-white">
+                {locale === 'fi' ? 'Keskitaso' : 'Intermediate'}
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#A7D6D1] text-[#2F5D50]">
+                {locale === 'fi' ? '10 min' : '10 min'}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-[#2F5D50] mb-6 font-playfair leading-tight">
+              {locale === 'fi'
+                ? 'Tietoturva'
+                : 'Security'}
+            </h1>
+            <p className="text-xl text-[#333333] font-inter leading-relaxed">
+              {locale === 'fi'
+                ? 'Tutustu Lyylin tietoturvakäytäntöihin, tietosuojaan ja vaatimustenmukaisuuteen. Ymmärrä, miten suojaamme datasi ja yksityisyytesi.'
+                : 'Learn about Lyyli\'s security practices, data privacy, and compliance. Understand how we protect your data and privacy.'}
+            </p>
+          </div>
+        </div>
+      </div>
+
 
       {/* Article Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">

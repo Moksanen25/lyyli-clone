@@ -12,7 +12,7 @@ export default async function GettingStartedPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<React.JSX.Element> {
   const { locale } = await params;
   // Translations not used in this component currently
   // const t = await getTranslations(locale);
@@ -49,7 +49,7 @@ export default async function GettingStartedPage({
         text:
           locale === 'fi'
             ? 'Valitse avustajan tyyppi, määritä sävy ja brändiohjeistus. Tekoälyavustaja oppii organisaatiosi viestintätyylin.'
-            : "Choose assistant type, set tone and brand guidelines. The AI assistant learns your organization's communication style.",
+            : "Choose assistant type, set tone and brand guidelines. The AI assistant learns your organization\'s communication style.",
       },
       {
         name: locale === 'fi' ? 'Testaa ja julkaise' : 'Test and publish',
@@ -108,31 +108,35 @@ export default async function GettingStartedPage({
         </div>
       </div>
 
-      {/* Article Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <article className="bg-white rounded-xl shadow-sm border border-[#E5E5E4] overflow-hidden">
-          {/* Article Header */}
-          <div className="p-8 border-b border-[#E5E5E4]">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-[#F7EBEB] to-[#A7D6D1]/20 border-b border-[#E5E5E4]">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#F7EBEB] text-[#2F5D50]">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#2F5D50] text-white">
                 {locale === 'fi' ? 'Aloittelija' : 'Beginner'}
               </span>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#A7D6D1] text-[#2F5D50]">
                 {locale === 'fi' ? '10 min' : '10 min'}
               </span>
             </div>
-            <h1 className="text-4xl font-bold text-[#2F5D50] mb-4 font-playfair leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#2F5D50] mb-6 font-playfair leading-tight">
               {locale === 'fi'
                 ? 'Aloitus ja käyttöönotto'
-                : 'Getting Started and Onboarding'}
+                : 'Getting started and onboarding'}
             </h1>
             <p className="text-xl text-[#333333] font-inter leading-relaxed">
               {locale === 'fi'
-                ? 'Mikä palvelu on ja kenelle se on, Vaatimukset ja tuetut ympäristöt, Pika-aloitus 10 minuutissa, Käsitteet ja termit, Roolit ja käyttöoikeudet lyhyesti'
-                : "What the service is and who it's for, Requirements and supported environments, Quick start in 10 minutes, Concepts and terms, Roles and permissions briefly"}
+                ? 'Luo ensimmäinen tekoälyavustajasi ja aloita käyttö alle 10 minuutissa. Tämä opas vie sinut läpi kaikki oleelliset vaiheet onnistuneeseen käyttöönottoon.'
+                : 'Create your first AI assistant and get started in under 10 minutes. This guide walks you through all the essential steps for successful onboarding.'}
             </p>
           </div>
+        </div>
+      </div>
 
+      {/* Article Content */}
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <article className="bg-white rounded-xl shadow-sm border border-[#E5E5E4] overflow-hidden">
           {/* Article Body */}
           <div className="p-8">
             {/* What you'll accomplish */}
