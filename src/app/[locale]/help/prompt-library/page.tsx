@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PromptCategory from '@/components/PromptCategory';
+import CalendarPopup from '@/components/CalendarPopup';
 
 export const metadata: Metadata = {
   title: 'Prompt-kirjasto - Lyyli.ai',
@@ -483,8 +484,8 @@ Text in image: Title with clear font`,
         <PromptCategory
           title={
             locale === 'fi'
-              ? '⚡ Pikakäskyt arkeen'
-              : '⚡ Quick commands for everyday'
+              ? 'Pikakäskyt arkeen'
+              : 'Quick commands for everyday'
           }
           description={
             locale === 'fi'
@@ -497,7 +498,7 @@ Text in image: Title with clear font`,
 
         {/* Email Messages */}
         <PromptCategory
-          title={locale === 'fi' ? '📧 Sähköpostiviestit' : '📧 Email messages'}
+          title={locale === 'fi' ? 'Sähköpostiviestit' : 'Email messages'}
           description={
             locale === 'fi'
               ? 'Ammattimaisia sähköpostiviestejä erilaisiin tilanteisiin:'
@@ -509,9 +510,7 @@ Text in image: Title with clear font`,
 
         {/* LinkedIn Posts */}
         <PromptCategory
-          title={
-            locale === 'fi' ? '💼 LinkedIn-julkaisut' : '💼 LinkedIn posts'
-          }
+          title={locale === 'fi' ? 'LinkedIn-julkaisut' : 'LinkedIn posts'}
           description={
             locale === 'fi'
               ? 'Vaikuttavia LinkedIn-postauksia, jotka rakentavat asiantuntijabrändiä:'
@@ -525,8 +524,8 @@ Text in image: Title with clear font`,
         <PromptCategory
           title={
             locale === 'fi'
-              ? '📱 Sosiaalisen median päivitykset'
-              : '📱 Social media updates'
+              ? 'Sosiaalisen median päivitykset'
+              : 'Social media updates'
           }
           description={
             locale === 'fi'
@@ -540,9 +539,7 @@ Text in image: Title with clear font`,
         {/* Internal Communication */}
         <PromptCategory
           title={
-            locale === 'fi'
-              ? '🏢 Sisäinen viestintä'
-              : '🏢 Internal communication'
+            locale === 'fi' ? 'Sisäinen viestintä' : 'Internal communication'
           }
           description={
             locale === 'fi'
@@ -555,7 +552,7 @@ Text in image: Title with clear font`,
 
         {/* Image Requests */}
         <PromptCategory
-          title={locale === 'fi' ? '🎨 Kuvapyynnöt' : '🎨 Image requests'}
+          title={locale === 'fi' ? 'Kuvapyynnöt' : 'Image requests'}
           description={
             locale === 'fi'
               ? 'Visuaalisia elementtejä sisältöön:'
@@ -578,7 +575,7 @@ Text in image: Title with clear font`,
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[#A7D6D1] rounded-lg flex items-center justify-center">
-                  <span className="text-[#2F5D50] font-bold text-lg">📍</span>
+                  <span className="text-[#2F5D50] font-bold text-lg">1</span>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2F5D50] mb-2 font-inter">
@@ -594,7 +591,7 @@ Text in image: Title with clear font`,
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[#A7D6D1] rounded-lg flex items-center justify-center">
-                  <span className="text-[#2F5D50] font-bold text-lg">🎯</span>
+                  <span className="text-[#2F5D50] font-bold text-lg">2</span>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2F5D50] mb-2 font-inter">
@@ -610,7 +607,7 @@ Text in image: Title with clear font`,
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[#A7D6D1] rounded-lg flex items-center justify-center">
-                  <span className="text-[#2F5D50] font-bold text-lg">🎪</span>
+                  <span className="text-[#2F5D50] font-bold text-lg">3</span>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2F5D50] mb-2 font-inter">
@@ -626,7 +623,7 @@ Text in image: Title with clear font`,
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[#A7D6D1] rounded-lg flex items-center justify-center">
-                  <span className="text-[#2F5D50] font-bold text-lg">📏</span>
+                  <span className="text-[#2F5D50] font-bold text-lg">4</span>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2F5D50] mb-2 font-inter">
@@ -642,7 +639,7 @@ Text in image: Title with clear font`,
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[#A7D6D1] rounded-lg flex items-center justify-center">
-                  <span className="text-[#2F5D50] font-bold text-lg">🎭</span>
+                  <span className="text-[#2F5D50] font-bold text-lg">5</span>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2F5D50] mb-2 font-inter">
@@ -658,7 +655,7 @@ Text in image: Title with clear font`,
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[#A7D6D1] rounded-lg flex items-center justify-center">
-                  <span className="text-[#2F5D50] font-bold text-lg">📝</span>
+                  <span className="text-[#2F5D50] font-bold text-lg">6</span>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2F5D50] mb-2 font-inter">
@@ -674,7 +671,7 @@ Text in image: Title with clear font`,
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[#A7D6D1] rounded-lg flex items-center justify-center">
-                  <span className="text-[#2F5D50] font-bold text-lg">🔄</span>
+                  <span className="text-[#2F5D50] font-bold text-lg">7</span>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2F5D50] mb-2 font-inter">
@@ -690,7 +687,7 @@ Text in image: Title with clear font`,
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[#A7D6D1] rounded-lg flex items-center justify-center">
-                  <span className="text-[#2F5D50] font-bold text-lg">⚡</span>
+                  <span className="text-[#2F5D50] font-bold text-lg">8</span>
                 </div>
                 <div>
                   <h3 className="font-bold text-[#2F5D50] mb-2 font-inter">
@@ -720,18 +717,48 @@ Text in image: Title with clear font`,
               : 'Start using Lyyli and see how you speed up your communication without losing authenticity.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href={`/${locale}/waitlist`}
+            <a
+              href="https://app.lyyli.ai"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-lg font-semibold rounded-lg text-white hover:bg-white hover:text-[#2F5D50] transition-all duration-200"
             >
-              {locale === 'fi' ? 'Liity jonoon' : 'Join waitlist'}
-            </Link>
-            <Link
-              href={`/${locale}/help`}
+              {locale === 'fi' ? 'Aloita käyttö' : 'Start using'}
+            </a>
+            <CalendarPopup
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg text-white hover:bg-white/10 transition-all duration-200"
+              translations={{
+                title: locale === 'fi' ? 'Varaa demo' : 'Book a Demo',
+                subtitle:
+                  locale === 'fi'
+                    ? 'Ajoita henkilökohtainen demo tiimimme kanssa'
+                    : 'Schedule a personalized demo with our team',
+                description:
+                  locale === 'fi'
+                    ? 'Valitse sopiva aika henkilökohtaiselle demollesi. Tiimimme näyttää, kuinka Lyyli voi muuttaa organisaatiosi viestintää.'
+                    : "Choose a convenient time for your personalized demo. Our team will show you how Lyyli can transform your organization's communication.",
+                loading:
+                  locale === 'fi'
+                    ? 'Ladataan kalenteria...'
+                    : 'Loading calendar...',
+                errorTitle:
+                  locale === 'fi' ? 'Ajoita demosi' : 'Schedule Your Demo',
+                errorDescription:
+                  locale === 'fi'
+                    ? 'Klikkaa alla olevaa painiketta avataksesi kalenterimme uudessa välilehdessä'
+                    : 'Click the button below to open our calendar in a new tab',
+                errorButton:
+                  locale === 'fi' ? 'Avaa kalenteri' : 'Open Calendar',
+                footerSecure:
+                  locale === 'fi'
+                    ? 'Turvallinen varaus • GDPR-yhteensopiva'
+                    : 'Secure booking • GDPR compliant',
+                footerContact:
+                  locale === 'fi'
+                    ? 'Kysymyksiä? Ota yhteyttä'
+                    : 'Questions? Contact us',
+              }}
             >
-              {locale === 'fi' ? 'Lue lisää' : 'Learn more'}
-            </Link>
+              {locale === 'fi' ? 'Varaa demo' : 'Book a demo'}
+            </CalendarPopup>
           </div>
         </div>
       </div>
