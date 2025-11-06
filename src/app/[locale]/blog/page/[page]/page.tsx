@@ -1,6 +1,6 @@
 import { getTranslations } from "@/lib/i18n";
 import { getAllBlogPosts } from "@/lib/blog";
-import { getPaginatedPosts, POSTS_PER_PAGE } from "@/lib/pagination";
+import { getPaginatedPosts, POSTS_PER_PAGE, generatePaginationStructuredData } from "@/lib/pagination";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogPostCard from "@/components/blog/BlogPostCard";
@@ -8,7 +8,6 @@ import Pagination from "@/components/blog/Pagination";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { generatePageCanonicalUrl, generateHreflangMetadata } from "@/lib/canonical";
 import { buildTitleFromTranslation } from "@/lib/title";
-import { generatePaginationStructuredData } from "@/lib/pagination";
 import { generatePageBreadcrumbs, generateBreadcrumbSchema } from "@/lib/breadcrumb-schema";
 
 export const revalidate = 3600; // ISR: revalidate blog listing hourly
@@ -160,7 +159,7 @@ export default async function PaginatedBlogPage({ params }: PaginatedBlogPagePro
           
           <div className="text-center max-w-4xl mx-auto relative z-10">
             {/* Breadcrumbs */}
-            <div className="mb-8">
+            <div className="hidden mb-8">
               <Breadcrumbs items={breadcrumbItems} />
             </div>
             

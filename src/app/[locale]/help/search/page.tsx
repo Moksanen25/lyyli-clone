@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "@/lib/i18n";
-import { searchHelpArticles, type HelpArticle } from "@/lib/helpSearchData";
+import { searchHelpArticles } from "@/lib/helpSearchData";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { generatePageBreadcrumbs, generateBreadcrumbSchema } from "@/lib/breadcrumb-schema";
@@ -14,7 +14,7 @@ export async function generateMetadata({
   params,
   searchParams,
 }: SearchPageProps): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: _locale } = await params;
   const { q } = await searchParams;
   const query = Array.isArray(q) ? q[0] : q || '';
   
@@ -44,7 +44,7 @@ export default async function SearchPage({
   const { q } = await searchParams;
   const query = Array.isArray(q) ? q[0] : q || '';
   
-  const t = await getTranslations(locale);
+  const _t = await getTranslations(locale);
   
   // Search for articles
   const results = query ? searchHelpArticles(query, locale) : [];
@@ -92,7 +92,7 @@ export default async function SearchPage({
       />
       
       {/* Breadcrumbs */}
-      <div className="container mx-auto px-4 pt-32 pb-4">
+      <div className="hidden container mx-auto px-4 pt-32 pb-4">
         <Breadcrumbs items={breadcrumbItems} />
       </div>
       

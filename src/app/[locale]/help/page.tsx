@@ -39,7 +39,7 @@ export default async function HelpPage({
       />
 
       {/* Breadcrumbs */}
-      <div className="container mx-auto px-4 pt-32 pb-4">
+      <div className="hidden container mx-auto px-4 pt-32 pb-4">
         <Breadcrumbs items={breadcrumbItems} />
       </div>
 

@@ -228,7 +228,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <div className="max-w-4xl mx-auto px-6 py-16 lg:py-24 relative z-10">
         {/* Breadcrumbs */}
-        <div className="mb-8">
+        <div className="hidden mb-8">
           <Breadcrumbs items={breadcrumbItems} />
         </div>
 
