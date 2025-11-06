@@ -17,8 +17,8 @@ export default async function AIAssistantsPage({
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="bg-white border-b border-gray-200 pt-24">
+        <div className="max-w-7xl mx-auto px-6 pb-4">
           <nav className="flex" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-4">
               <li>
