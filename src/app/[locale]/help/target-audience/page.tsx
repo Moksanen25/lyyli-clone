@@ -17,7 +17,7 @@ export default async function TargetAudiencePage({
   return (
     <div className="min-h-screen bg-[#F5F5F4]">
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-[#E5E5E4] pt-24">
+      <div className="hidden bg-white border-b border-[#E5E5E4] pt-24">
         <div className="max-w-7xl mx-auto px-6 pb-4">
           <nav className="flex" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-4">
