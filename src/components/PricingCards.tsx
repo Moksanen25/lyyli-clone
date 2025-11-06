@@ -456,6 +456,9 @@ const PricingCards = memo(
                 ] || (billingPeriod === 'monthly' ? 'Monthly' : 'Yearly')
               )}
             </span>
+            <span className="text-sm text-mediumGray font-sans block mt-2">
+              {translations?.['pricing.vatNote'] || 'All prices exclude VAT'}
+            </span>
           </div>
 
           {/* Additional Information */}

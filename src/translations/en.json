@@ -447,6 +447,7 @@
   "pricing.pricingHeader.subtitle": "Choose the plan that works best for your business needs. All plans include our core AI functionality.",
   "pricing.pricingHeader.title": "Simple, transparent pricing",
   "pricing.pricingNote": "All prices shown are per user per month, billed {period}.",
+  "pricing.vatNote": "All prices exclude VAT",
   "pricing.professional.cta": "Start free 30-day trial",
   "pricing.professional.description": "Advanced AI-powered features for content optimization and campaign management",
   "pricing.professional.name": "Professional",

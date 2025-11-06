@@ -444,6 +444,7 @@
   "pricing.pricingHeader.subtitle": "Valitse yrityksesi tarpeisiin sopiva paketti. Kaikki paketit sisältävät keskeisen tekoälytoiminnallisuuden.",
   "pricing.pricingHeader.title": "Selkeä, läpinäkyvä hinnoittelu",
   "pricing.pricingNote": "Kaikki hinnat ovat per käyttäjä per kuukausi, laskutus: {period}.",
+  "pricing.vatNote": "Kaikki hinnat alv. 0%",
   "pricing.professional.cta": "Aloita 30 päivän ilmainen kokeilu",
   "pricing.professional.description": "24/7 viestintäpäällikkö kaikenkokoisille organisaatioille",
   "pricing.professional.name": "Professional",
