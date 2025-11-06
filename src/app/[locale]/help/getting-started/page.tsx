@@ -598,7 +598,10 @@ export default async function GettingStartedPage({
                   : "Now that you've created your first AI assistant, consider:"}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Link href={`/${locale}/help/team-setup`} className="group">
+                <Link
+                  href={`/${locale}/help/organizations-users`}
+                  className="group"
+                >
                   <div className="p-6 border border-[#E5E5E4] rounded-xl hover:border-[#2F5D50] hover:bg-[#F7EBEB] transition-all duration-200">
                     <h3 className="font-bold text-[#333333] group-hover:text-[#2F5D50] mb-2 font-playfair">
                       {locale === 'fi'
@@ -612,10 +615,7 @@ export default async function GettingStartedPage({
                     </p>
                   </div>
                 </Link>
-                <Link
-                  href={`/${locale}/help/advanced-training`}
-                  className="group"
-                >
+                <Link href={`/${locale}/help/ai-assistants`} className="group">
                   <div className="p-6 border border-[#E5E5E4] rounded-xl hover:border-[#2F5D50] hover:bg-[#F7EBEB] transition-all duration-200">
                     <h3 className="font-bold text-[#333333] group-hover:text-[#2F5D50] mb-2 font-playfair">
                       {locale === 'fi'
@@ -629,10 +629,7 @@ export default async function GettingStartedPage({
                     </p>
                   </div>
                 </Link>
-                <Link
-                  href={`/${locale}/help/website-integration`}
-                  className="group"
-                >
+                <Link href={`/${locale}/help/integrations`} className="group">
                   <div className="p-6 border border-[#E5E5E4] rounded-xl hover:border-[#2F5D50] hover:bg-[#F7EBEB] transition-all duration-200">
                     <h3 className="font-bold text-[#333333] group-hover:text-[#2F5D50] mb-2 font-playfair">
                       {locale === 'fi'

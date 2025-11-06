@@ -449,7 +449,7 @@ export default async function ContactSupportPage({
               </div>
             </Link>
 
-            <Link href={`/${locale}/help/community`} className="group">
+            <Link href={`/${locale}/about`} className="group">
               <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
                 <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                   <svg
@@ -467,7 +467,7 @@ export default async function ContactSupportPage({
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-forest transition-colors">
-                  {locale === 'fi' ? 'Yhteisö' : 'Community'}
+                  {locale === 'fi' ? 'Tietoja meistä' : 'About Us'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fi'
