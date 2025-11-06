@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-11-06T07:10:55.495Z",
+  "totalBrokenLinks": 4,
+  "uniqueMissingPages": [
+    "/help/advanced-training",
+    "/help/community",
+    "/help/team-setup",
+    "/help/website-integration"
+  ],
+  "details": [
+    {
+      "path": "/help/community",
+      "file": "src/app/[locale]/help/contact-support/page.tsx",
+      "line": 452,
+      "exists": false
+    },
+    {
+      "path": "/help/team-setup",
+      "file": "src/app/[locale]/help/getting-started/page.tsx",
+      "line": 601,
+      "exists": false
+    },
+    {
+      "path": "/help/advanced-training",
+      "file": "src/app/[locale]/help/getting-started/page.tsx",
+      "line": 616,
+      "exists": false
+    },
+    {
+      "path": "/help/website-integration",
+      "file": "src/app/[locale]/help/getting-started/page.tsx",
+      "line": 633,
+      "exists": false
+    }
+  ]
+}
