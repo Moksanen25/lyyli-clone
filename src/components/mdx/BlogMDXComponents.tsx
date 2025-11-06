@@ -79,14 +79,10 @@ export const BlogMDXComponents: MDXComponents = {
 
   // Lists
   ul: ({ children }) => (
-    <ul className="list-disc list-inside mb-4 space-y-2 text-gray-700">
-      {children}
-    </ul>
+    <ul className="mb-4 space-y-2 text-gray-700">{children}</ul>
   ),
   ol: ({ children }) => (
-    <ol className="list-decimal list-inside mb-4 space-y-2 text-gray-700">
-      {children}
-    </ol>
+    <ol className="mb-4 space-y-2 text-gray-700">{children}</ol>
   ),
   li: ({ children }) => <li className="mb-2">{children}</li>,
 
