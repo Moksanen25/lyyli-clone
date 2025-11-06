@@ -456,8 +456,8 @@ Text in image: Title with clear font`,
       </div>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-[#F7EBEB] to-[#A7D6D1]/20 border-b border-[#E5E5E4]">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="bg-gradient-to-br from-[#F7EBEB] to-[#A7D6D1]/20 border-b border-[#E5E5E4] pt-24">
+        <div className="max-w-7xl mx-auto px-6 pb-16">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-[#2F5D50] mb-6 font-playfair leading-tight">
               {locale === 'fi'
