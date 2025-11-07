@@ -109,7 +109,7 @@ export default function ProductShowcase({
 
             {/* Floating feature badges */}
             <div
-              className={`hidden lg:block absolute -left-8 top-1/4 transition-all duration-1000 ease-out delay-400 ${
+              className={`hidden lg:block absolute -left-8 top-1/4 z-30 transition-all duration-1000 ease-out delay-400 ${
                 isVisible
                   ? 'opacity-100 translate-x-0'
                   : 'opacity-0 -translate-x-12'
@@ -146,7 +146,7 @@ export default function ProductShowcase({
             </div>
 
             <div
-              className={`hidden lg:block absolute -right-8 bottom-1/4 transition-all duration-1000 ease-out delay-600 ${
+              className={`hidden lg:block absolute -right-8 bottom-1/4 z-30 transition-all duration-1000 ease-out delay-600 ${
                 isVisible
                   ? 'opacity-100 translate-x-0'
                   : 'opacity-0 translate-x-12'
