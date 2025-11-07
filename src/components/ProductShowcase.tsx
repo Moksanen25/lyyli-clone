@@ -71,11 +71,12 @@ export default function ProductShowcase({
         <div className="relative max-w-7xl mx-auto">
           {/* Desktop View - Main focal point */}
           <div
-            className={`relative z-10 transition-all duration-1000 ease-out delay-200 ${
+            className={`relative transition-all duration-1000 ease-out delay-200 ${
               isVisible
                 ? 'opacity-100 translate-y-0 scale-100'
                 : 'opacity-0 translate-y-12 scale-95'
             }`}
+            style={{ zIndex: 10 }}
           >
             <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(47,93,80,0.3)] border border-forest/10">
               {/* Browser chrome effect */}
@@ -106,78 +107,77 @@ export default function ProductShowcase({
                 />
               </div>
             </div>
+          </div>
 
-            {/* Floating feature badges */}
-            <div
-              className={`hidden lg:block absolute -left-8 top-1/4 z-50 transition-all duration-1000 ease-out delay-400 ${
-                isVisible
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 -translate-x-12'
-              }`}
-            >
-              <div className="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-5 py-3.5 border border-turquoise/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-turquoise/20 to-turquoise/5 rounded-xl flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-forest"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-forest">
-                      {translations['showcase.feature1'] || 'AI-powered'}
-                    </p>
-                    <p className="text-xs text-mediumGray">
-                      {translations['showcase.feature1.desc'] ||
-                        'Smart suggestions'}
-                    </p>
-                  </div>
+          {/* Floating feature badges - moved outside desktop container to be siblings */}
+          <div
+            className={`hidden lg:block absolute -left-8 top-1/4 z-50 transition-all duration-1000 ease-out delay-400 ${
+              isVisible
+                ? 'opacity-100 translate-x-0'
+                : 'opacity-0 -translate-x-12'
+            }`}
+          >
+            <div className="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-5 py-3.5 border border-turquoise/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-turquoise/20 to-turquoise/5 rounded-xl flex items-center justify-center">
+                  <svg
+                    className="w-6 h-6 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-forest">
+                    {translations['showcase.feature1'] || 'AI-powered'}
+                  </p>
+                  <p className="text-xs text-mediumGray">
+                    {translations['showcase.feature1.desc'] ||
+                      'Smart suggestions'}
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div
-              className={`hidden lg:block absolute -right-8 bottom-1/4 z-50 transition-all duration-1000 ease-out delay-600 ${
-                isVisible
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 translate-x-12'
-              }`}
-            >
-              <div className="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-5 py-3.5 border border-rose/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose/30 to-rose/10 rounded-xl flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-forest"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-forest">
-                      {translations['showcase.feature2'] || 'Secure & Private'}
-                    </p>
-                    <p className="text-xs text-mediumGray">
-                      {translations['showcase.feature2.desc'] ||
-                        'GDPR compliant'}
-                    </p>
-                  </div>
+          <div
+            className={`hidden lg:block absolute -right-8 bottom-1/4 z-50 transition-all duration-1000 ease-out delay-600 ${
+              isVisible
+                ? 'opacity-100 translate-x-0'
+                : 'opacity-0 translate-x-12'
+            }`}
+          >
+            <div className="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-5 py-3.5 border border-rose/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-rose/30 to-rose/10 rounded-xl flex items-center justify-center">
+                  <svg
+                    className="w-6 h-6 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-forest">
+                    {translations['showcase.feature2'] || 'Secure & Private'}
+                  </p>
+                  <p className="text-xs text-mediumGray">
+                    {translations['showcase.feature2.desc'] || 'GDPR compliant'}
+                  </p>
                 </div>
               </div>
             </div>
