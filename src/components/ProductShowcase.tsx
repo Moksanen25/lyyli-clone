@@ -95,15 +95,14 @@ export default function ProductShowcase({
               {/* Desktop screenshot */}
               <div className="relative">
                 <Image
-                  src="/images/general/Lyyli_dashboard_desktop.png"
+                  src="/images/general/Lyyli_dashboard_desktop.webp"
                   alt="Lyyli desktop interface showing AI communication assistant dashboard"
                   width={1920}
                   height={1080}
                   className="w-full h-auto"
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1400px"
-                  quality={95}
-                  unoptimized
+                  quality={90}
                 />
               </div>
             </div>
@@ -206,14 +205,13 @@ export default function ProductShowcase({
                     {/* Mobile screenshot */}
                     <div className="relative w-full h-full">
                       <Image
-                        src="/images/general/Lyyli_dashboard_mobile.png"
+                        src="/images/general/Lyyli_dashboard_mobile.webp"
                         alt="Lyyli mobile interface for on-the-go communication"
                         width={390}
                         height={844}
                         className="w-full h-full object-cover object-top"
                         sizes="(max-width: 768px) 192px, 224px"
-                        quality={95}
-                        unoptimized
+                        quality={90}
                       />
                     </div>
                   </div>
