@@ -71,7 +71,7 @@ export default function ProductShowcase({
         <div className="relative max-w-7xl mx-auto">
           {/* Desktop View - Main focal point */}
           <div
-            className={`relative z-30 transition-all duration-1000 ease-out delay-200 ${
+            className={`relative z-10 transition-all duration-1000 ease-out delay-200 ${
               isVisible
                 ? 'opacity-100 translate-y-0 scale-100'
                 : 'opacity-0 translate-y-12 scale-95'
@@ -109,7 +109,7 @@ export default function ProductShowcase({
 
             {/* Floating feature badges */}
             <div
-              className={`hidden lg:block absolute -left-8 top-1/4 z-40 transition-all duration-1000 ease-out delay-400 ${
+              className={`hidden lg:block absolute -left-8 top-1/4 z-50 transition-all duration-1000 ease-out delay-400 ${
                 isVisible
                   ? 'opacity-100 translate-x-0'
                   : 'opacity-0 -translate-x-12'
@@ -146,7 +146,7 @@ export default function ProductShowcase({
             </div>
 
             <div
-              className={`hidden lg:block absolute -right-8 bottom-1/4 z-40 transition-all duration-1000 ease-out delay-600 ${
+              className={`hidden lg:block absolute -right-8 bottom-1/4 z-50 transition-all duration-1000 ease-out delay-600 ${
                 isVisible
                   ? 'opacity-100 translate-x-0'
                   : 'opacity-0 translate-x-12'
