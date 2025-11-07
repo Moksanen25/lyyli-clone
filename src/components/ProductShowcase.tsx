@@ -71,7 +71,7 @@ export default function ProductShowcase({
         <div className="relative max-w-7xl mx-auto">
           {/* Desktop View - Main focal point */}
           <div
-            className={`relative transition-all duration-1000 ease-out delay-200 ${
+            className={`relative z-20 transition-all duration-1000 ease-out delay-200 ${
               isVisible
                 ? 'opacity-100 translate-y-0 scale-100'
                 : 'opacity-0 translate-y-12 scale-95'
@@ -185,7 +185,7 @@ export default function ProductShowcase({
 
           {/* Mobile View - Floating element with proper 9:16 aspect ratio */}
           <div
-            className={`absolute -bottom-12 -right-6 lg:-right-12 w-48 lg:w-56 transition-all duration-1200 ease-out delay-800 ${
+            className={`absolute -bottom-12 -right-6 lg:-right-12 w-48 lg:w-56 z-10 transition-all duration-1200 ease-out delay-800 ${
               isVisible
                 ? 'opacity-100 translate-y-0 rotate-0'
                 : 'opacity-0 translate-y-16 rotate-3'
@@ -193,7 +193,7 @@ export default function ProductShowcase({
           >
             <div className="relative">
               {/* Mobile device frame with 9:16 aspect ratio */}
-              <div className="relative bg-gradient-to-br from-forest via-forest to-turquoise/80 p-[3px] rounded-[2rem] shadow-[0_25px_50px_-12px_rgba(47,93,80,0.5)] z-10">
+              <div className="relative bg-gradient-to-br from-forest via-forest to-turquoise/80 p-[3px] rounded-[2rem] shadow-[0_25px_50px_-12px_rgba(47,93,80,0.5)]">
                 <div className="bg-[#1a1a1a] rounded-[1.85rem] p-[2px]">
                   <div
                     className="relative bg-white rounded-[1.75rem] overflow-hidden"
