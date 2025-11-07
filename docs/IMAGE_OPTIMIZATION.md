@@ -7,6 +7,7 @@ All images on the Lyyli.ai website are optimized for performance using Next.js I
 ## Compression Results
 
 After optimization (October 2025):
+
 - **10 images processed**
 - **Original total size**: 14.89 MB
 - **Optimized PNG/JPEG size**: ~2.8 MB (81% reduction)
@@ -15,15 +16,16 @@ After optimization (October 2025):
 
 ### Largest Images Optimized
 
-| Original File | Original Size | WebP Size | AVIF Size | Reduction |
-|--------------|---------------|-----------|-----------|-----------|
-| Desktop_UI_for_web.png | 2.47 MB | 110 KB | 100 KB | 96% |
-| cybersecurity_hero.png | 2.24 MB | 73 KB | 88 KB | 97% |
-| Features_hero.png | 1.92 MB | 54 KB | 57 KB | 97% |
+| Original File          | Original Size | WebP Size | AVIF Size | Reduction |
+| ---------------------- | ------------- | --------- | --------- | --------- |
+| Desktop_UI_for_web.png | 2.47 MB       | 110 KB    | 100 KB    | 96%       |
+| cybersecurity_hero.png | 2.24 MB       | 73 KB     | 88 KB     | 97%       |
+| Features_hero.png      | 1.92 MB       | 54 KB     | 57 KB     | 97%       |
 
 ## Next.js Image Configuration
 
 ### Format Support
+
 ```typescript
 images: {
   formats: ['image/avif', 'image/webp'],
@@ -44,11 +46,11 @@ For images visible on initial page load (logo, hero images):
 
 ```tsx
 <Image
-  src="/images/hero.png"
+  src="/images/hero.webp"
   alt="Hero image"
   width={1920}
   height={1080}
-  priority  // Critical for LCP
+  priority // Critical for LCP
   sizes="100vw"
 />
 ```
@@ -59,11 +61,11 @@ For images below the initial viewport:
 
 ```tsx
 <Image
-  src="/images/feature.png"
+  src="/images/feature.webp"
   alt="Feature"
   width={800}
   height={600}
-  loading="lazy"  // Defers loading
+  loading="lazy" // Defers loading
   sizes="(max-width: 768px) 100vw, 50vw"
 />
 ```
@@ -75,7 +77,7 @@ For images that need to fill a container:
 ```tsx
 <div className="relative w-full h-64">
   <Image
-    src="/images/card.png"
+    src="/images/card.webp"
     alt="Card image"
     fill
     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -110,6 +112,7 @@ node scripts/optimize-images.mjs
 ```
 
 Reports:
+
 - Images > 1 MB (urgent)
 - Images > 500 KB (warning)
 - Total image inventory
@@ -124,6 +127,7 @@ node scripts/compress-images.mjs
 ```
 
 Automatically:
+
 - Generates WebP versions (85% quality)
 - Generates AVIF versions (80% quality)
 - Optimizes original PNG/JPEG in-place
@@ -133,12 +137,15 @@ Automatically:
 ## Performance Metrics
 
 ### Target Metrics (Mobile)
+
 - **LCP**: ≤ 2.0s (Good: < 2.5s)
 - **FID**: ≤ 100ms
 - **CLS**: ≤ 0.1
 
 ### Actual Results
+
 Run Lighthouse audit:
+
 ```bash
 npm run lighthouse
 ```
@@ -146,6 +153,7 @@ npm run lighthouse
 ## Best Practices
 
 ### DO ✅
+
 - Use Next.js `<Image>` component for all images
 - Add `priority` to above-the-fold images
 - Add `loading="lazy"` to below-the-fold images
@@ -155,6 +163,7 @@ npm run lighthouse
 - Run compression script before committing large images
 
 ### DON'T ❌
+
 - Use `<img>` tags directly
 - Omit width/height attributes (causes CLS)
 - Use `priority` on multiple images
@@ -165,17 +174,20 @@ npm run lighthouse
 ## Troubleshooting
 
 ### Image Not Loading
+
 - Check file exists in `/public/images/`
 - Verify path starts with `/images/` not `/public/images/`
 - Check browser console for errors
 
 ### Poor Performance
+
 - Remove `priority` from below-the-fold images
 - Add `loading="lazy"` to non-critical images
 - Verify WebP/AVIF formats are generated
 - Check Network tab for image sizes
 
 ### Layout Shift (CLS)
+
 - Always specify `width` and `height` OR use `fill`
 - Use `sizes` attribute for responsive images
 - Reserve space in CSS for images

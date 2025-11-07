@@ -53,14 +53,14 @@
   ],
   "screenshots": [
     {
-      "src": "/images/general/Desktop_UI_for_web.png",
+      "src": "/images/general/Desktop_UI_for_web.webp",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Lyyli.ai Desktop Interface"
     },
     {
-      "src": "/images/general/Mobile_UI_for_web.jpeg",
+      "src": "/images/general/Mobile_UI_for_web.webp",
       "sizes": "390x844",
       "type": "image/jpeg",
       "form_factor": "narrow",

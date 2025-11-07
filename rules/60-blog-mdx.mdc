@@ -21,7 +21,7 @@ date: "2024-01-15T10:00:00Z"
 author: "Lyyli Team"
 tags: ["communication", "professional-services", "strategy", "ai"]
 locale: "en"
-heroImage: "/images/blog/communication-ecosystem-hero.jpg"
+heroImage: "/images/blog/communication-ecosystem-hero.webp"
 ---
 ```
 
@@ -131,7 +131,7 @@ export function getBlogPosts() {
 // Image component with alt text and caption
 <figure className="my-8">
   <Image
-    src="/images/blog/team-collaboration.jpg"
+    src="/images/blog/team-collaboration.webp"
     alt="Professional team collaborating on communication strategy in a modern office"
     width={800}
     height={600}
@@ -164,7 +164,7 @@ export function getBlogPosts() {
 // Inline images with proper typography
 <figure className="my-6">
   <Image
-    src="/images/blog/communication-flow.png"
+    src="/images/blog/communication-flow.webp"
     alt="Diagram showing communication flow between team members and clients"
     width={600}
     height={400}
@@ -373,7 +373,7 @@ date: "2024-01-15T10:00:00Z"
 author: "Lyyli Team"
 tags: ["tag1", "tag2", "tag3"]
 locale: "en"
-heroImage: "/images/blog/hero-image.jpg"
+heroImage: "/images/blog/hero-image.webp"
 ---
 
 # Main heading (H1)
@@ -390,7 +390,7 @@ More content...
 
 <figure className="my-8">
   <Image
-    src="/images/blog/example.jpg"
+    src="/images/blog/example.webp"
     alt="Descriptive alt text"
     width={800}
     height={600}

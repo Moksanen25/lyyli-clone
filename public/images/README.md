@@ -68,7 +68,7 @@ import logoSvg from '/public/images/logos/lyyli-logo-primary.svg';
 
 // For dynamic imports
 <Image
-  src="/images/hero/hero-background.jpg"
+  src="/images/hero/hero-background.webp"
   alt="Hero background"
   fill
   className="object-cover"
