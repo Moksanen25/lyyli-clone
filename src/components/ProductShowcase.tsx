@@ -193,7 +193,7 @@ export default function ProductShowcase({
           >
             <div className="relative">
               {/* Mobile device frame with 9:16 aspect ratio */}
-              <div className="relative bg-gradient-to-br from-forest via-forest to-turquoise/80 p-[3px] rounded-[2rem] shadow-[0_25px_50px_-12px_rgba(47,93,80,0.5)]">
+              <div className="relative bg-gradient-to-br from-forest via-forest to-turquoise/80 p-[3px] rounded-[2rem] shadow-[0_25px_50px_-12px_rgba(47,93,80,0.5)] z-10">
                 <div className="bg-[#1a1a1a] rounded-[1.85rem] p-[2px]">
                   <div
                     className="relative bg-white rounded-[1.75rem] overflow-hidden"
@@ -203,7 +203,7 @@ export default function ProductShowcase({
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-[#1a1a1a] rounded-b-2xl z-10" />
 
                     {/* Mobile screenshot */}
-                    <div className="relative w-full h-full">
+                    <div className="relative w-full h-full z-0">
                       <Image
                         src="/images/general/Lyyli_dashboard_mobile.webp"
                         alt="Lyyli mobile interface for on-the-go communication"
@@ -218,8 +218,8 @@ export default function ProductShowcase({
                 </div>
               </div>
 
-              {/* Active indicator */}
-              <div className="absolute top-3 right-3 z-20">
+              {/* Active indicator - positioned above device frame */}
+              <div className="absolute top-3 right-3 z-50">
                 <div className="relative">
                   <div className="w-3 h-3 bg-turquoise rounded-full animate-ping absolute opacity-75" />
                   <div className="w-3 h-3 bg-turquoise rounded-full relative shadow-lg" />
