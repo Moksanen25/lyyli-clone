@@ -79,7 +79,7 @@ export default function OfflinePage() {
         {/* Lyyli Logo */}
         <div className="mt-12">
           <Image
-            src="/images/logos/Lyyli.ai_no_BG.png"
+            src="/images/logos/Lyyli.ai_no_BG.webp"
             alt="Lyyli.ai logo"
             width={120}
             height={40}

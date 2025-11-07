@@ -145,7 +145,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                 onClick={closeMobileMenu}
               >
                 <Image
-                  src="/images/logos/Lyyli.ai_no_BG.png"
+                  src="/images/logos/Lyyli.ai_no_BG.webp"
                   alt="Lyyli.ai logo - AI Communication Assistant for Professional Service Organizations"
                   width={120}
                   height={40}

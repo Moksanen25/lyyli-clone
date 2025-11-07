@@ -23,10 +23,10 @@ export function generateOrganizationSchema(
     url: PRODUCTION_URL,
     logo: {
       '@type': 'ImageObject',
-      url: `${PRODUCTION_URL}/images/logos/Lyyli.ai_no_BG.png`,
+      url: `${PRODUCTION_URL}/images/logos/Lyyli.ai_no_BG.webp`,
       width: 1500,
       height: 500,
-      contentUrl: `${PRODUCTION_URL}/images/logos/Lyyli.ai_no_BG.png`,
+      contentUrl: `${PRODUCTION_URL}/images/logos/Lyyli.ai_no_BG.webp`,
     },
     description:
       locale === 'fi'

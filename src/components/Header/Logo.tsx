@@ -10,7 +10,7 @@ interface LogoProps {
  * Header Logo Component
  * Displays the Lyyli.ai logo with proper accessibility attributes
  */
-const Logo = memo(({ onLogoClick }: LogoProps) => {
+const Logo = memo(function Logo({ onLogoClick }: LogoProps) {
   return (
     <Link
       href="/"
@@ -19,7 +19,7 @@ const Logo = memo(({ onLogoClick }: LogoProps) => {
       onClick={onLogoClick}
     >
       <Image
-        src="/images/logos/Lyyli.ai_no_BG.png"
+        src="/images/logos/Lyyli.ai_no_BG.webp"
         alt="Lyyli.ai logo - AI Communication Assistant for Professional Service Organizations"
         width={120}
         height={40}
@@ -30,6 +30,8 @@ const Logo = memo(({ onLogoClick }: LogoProps) => {
     </Link>
   );
 });
+
+Logo.displayName = 'Logo';
 
 export default Logo;
 

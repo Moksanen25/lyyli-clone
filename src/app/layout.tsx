@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { fontVars } from "@/lib/fonts";
-import { reportWebVitals } from "@/lib/performance";
 import "./critical.css";
 
 export const metadata: Metadata = {
@@ -35,7 +34,7 @@ export default function RootLayout({
         {/* next/font/google self-hosts and preloads fonts, sets font-display: swap */}
 
         {/* Preload critical images in available formats */}
-        <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.png" as="image" type="image/png" />
+        <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.webp" as="image" type="image/png" />
 
         {/* DNS Prefetch for external resources */}
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />

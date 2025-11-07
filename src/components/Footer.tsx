@@ -22,8 +22,6 @@ export default function Footer({
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
       
       // Check if we've scrolled at all for header-like styling
       setIsScrolled(scrollTop > 20);
@@ -50,7 +48,7 @@ export default function Footer({
               <div className="md:col-span-1">
                 <div className="flex items-center mb-4">
                   <Image
-                    src="/images/logos/Lyyli.ai (1500 x 500 px) tumma tausta.png"
+                    src="/images/logos/Lyyli.ai (1500 x 500 px) tumma tausta.webp"
                     alt="Lyyli.ai logo - AI Communication Assistant"
                     width={96}
                     height={32}
