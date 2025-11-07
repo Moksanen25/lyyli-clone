@@ -7,6 +7,7 @@ import PricingCards from '@/components/PricingCards';
 import Deferred from '@/components/Deferred';
 import HeroFactBox from '@/components/HeroFactBox';
 import CalendarPopup from '@/components/CalendarPopup';
+import ProductShowcase from '@/components/ProductShowcase';
 import {
   generatePageCanonicalUrl,
   generateHreflangMetadata,
@@ -112,6 +113,9 @@ export default async function Home({ params }: HomeProps) {
           </div>
         </section>
       </div>
+
+      {/* Product Showcase Section */}
+      <ProductShowcase translations={t} />
 
       {/* ROI Statistics Section - temporarily hidden */}
 
