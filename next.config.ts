@@ -1,8 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 import createMDX from '@next/mdx';
-let withBundleAnalyzer: (cfg: NextConfig) => NextConfig = (cfg) => cfg;
+import remarkGfm from 'remark-gfm';
+
+let withBundleAnalyzer: (cfg: NextConfig) => NextConfig = cfg => cfg;
 try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
   const analyzer = require('@next/bundle-analyzer');
   withBundleAnalyzer = analyzer({ enabled: process.env.ANALYZE === 'true' });
 } catch {
@@ -11,7 +13,7 @@ try {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [],
   },
 });
@@ -43,23 +45,23 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  
+
   // Optimize server-side rendering (swcMinify is enabled by default in Next.js 13+)
-  
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+
+  webpack: (config, { dev, isServer }) => {
     // Resolve aliases
-    config.resolve = config.resolve || {};
+    config.resolve = config.resolve ?? {};
     config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      "victory-vendor/d3-shape": "d3-shape",
-      "victory-vendor/d3-scale": "d3-scale",
+      ...(config.resolve.alias ?? {}),
+      'victory-vendor/d3-shape': 'd3-shape',
+      'victory-vendor/d3-scale': 'd3-scale',
     };
 
     // Tree shaking optimization (only in production)
     if (!dev) {
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
-      
+
       // Enhanced tree shaking for better bundle optimization
       config.optimization.providedExports = true;
       config.optimization.concatenateModules = true;
