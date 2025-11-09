@@ -30,27 +30,19 @@ export const LegalMDXComponents: MDXComponents = {
 
   // Paragraphs
   p: ({ children }) => (
-    <p className="text-darkGray font-sans leading-relaxed mb-4">
-      {children}
-    </p>
+    <p className="text-darkGray font-sans leading-relaxed mb-4">{children}</p>
   ),
 
   // Text formatting
   strong: ({ children }) => (
-    <strong className="font-semibold">
-      {children}
-    </strong>
+    <strong className="font-semibold">{children}</strong>
   ),
-  em: ({ children }) => (
-    <em className="italic">
-      {children}
-    </em>
-  ),
+  em: ({ children }) => <em className="italic">{children}</em>,
 
   // Links
   a: ({ href, children }) => {
     const isExternal = href?.startsWith('http');
-    
+
     if (isExternal) {
       return (
         <a
@@ -63,12 +55,9 @@ export const LegalMDXComponents: MDXComponents = {
         </a>
       );
     }
-    
+
     return (
-      <Link
-        href={href || '#'}
-        className="text-forest underline"
-      >
+      <Link href={href || '#'} className="text-forest underline">
         {children}
       </Link>
     );
@@ -86,9 +75,7 @@ export const LegalMDXComponents: MDXComponents = {
     </ol>
   ),
   li: ({ children }) => (
-    <li className="text-darkGray font-sans leading-relaxed">
-      {children}
-    </li>
+    <li className="text-darkGray font-sans leading-relaxed">{children}</li>
   ),
 
   // Blockquotes
@@ -112,41 +99,34 @@ export const LegalMDXComponents: MDXComponents = {
 
   // Tables
   table: ({ children }) => (
-    <div className="overflow-x-auto my-6">
-      <table className="min-w-full divide-y divide-gray-300">
-        {children}
-      </table>
+    <div className="overflow-x-auto my-8 -mx-2 sm:mx-0">
+      <div className="inline-block min-w-full align-middle">
+        <div className="overflow-hidden shadow-sm ring-1 ring-gray-300 rounded-lg">
+          <table className="min-w-full divide-y divide-gray-300">
+            {children}
+          </table>
+        </div>
+      </div>
     </div>
   ),
-  thead: ({ children }) => (
-    <thead className="bg-cream">
-      {children}
-    </thead>
-  ),
+  thead: ({ children }) => <thead className="bg-cream">{children}</thead>,
   tbody: ({ children }) => (
-    <tbody className="bg-white divide-y divide-gray-200">
-      {children}
-    </tbody>
+    <tbody className="bg-white divide-y divide-gray-200">{children}</tbody>
   ),
   tr: ({ children }) => (
-    <tr>
-      {children}
-    </tr>
+    <tr className="hover:bg-gray-50 transition-colors">{children}</tr>
   ),
   th: ({ children }) => (
-    <th className="px-4 py-2 text-left text-sm font-semibold text-forest">
+    <th className="px-3 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-bold text-forest uppercase tracking-wider whitespace-nowrap">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="px-4 py-2 text-sm text-darkGray">
+    <td className="px-3 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm text-darkGray whitespace-normal break-words">
       {children}
     </td>
   ),
 
   // Horizontal rule
-  hr: () => (
-    <hr className="my-6 border-t border-gray-300" />
-  ),
+  hr: () => <hr className="my-6 border-t border-gray-300" />,
 };
-
