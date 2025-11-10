@@ -11,6 +11,27 @@ export const metadata: Metadata = {
   title: 'Help & Support Center',
   description:
     'Get help with Lyyli.ai - Find guides, troubleshooting, and support resources for your AI communications assistant.',
+  openGraph: {
+    title: 'Help & Support Center',
+    description:
+      'Get help with Lyyli.ai - Find guides, troubleshooting, and support resources for your AI communications assistant.',
+    type: 'website',
+    images: [
+      {
+        url: '/images/social/Social_share_hel_and_support_LyyliAI.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Help & Support Center',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Help & Support Center',
+    description:
+      'Get help with Lyyli.ai - Find guides, troubleshooting, and support resources for your AI communications assistant.',
+    images: ['/images/social/Social_share_hel_and_support_LyyliAI.webp'],
+  },
 };
 
 export default async function HelpPage({

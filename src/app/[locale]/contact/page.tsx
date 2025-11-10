@@ -35,7 +35,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(t['contact.page.title'])}&description=${encodeURIComponent(t['contact.page.description'])}`,
+          url: '/images/social/Social_share_contact_LyyliAI.webp',
           width: 1200,
           height: 630,
           alt: t['contact.page.title'],
@@ -46,6 +46,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: t['contact.page.title'],
       description: t['contact.page.description'],
+      images: ['/images/social/Social_share_contact_LyyliAI.webp'],
     },
     alternates: {
       canonical: canonicalUrl,

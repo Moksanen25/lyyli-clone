@@ -30,13 +30,19 @@ export async function generateMetadata({
       description: t['about.page.description'],
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(t['about.page.title'])}&description=${encodeURIComponent(t['about.page.description'])}`,
+          url: '/images/social/Social_share_about_us_LyyliAI.webp',
           width: 1200,
           height: 630,
           alt: t['about.page.title'],
         },
       ],
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t['about.page.title'],
+      description: t['about.page.description'],
+      images: ['/images/social/Social_share_about_us_LyyliAI.webp'],
     },
     alternates: {
       canonical: generatePageCanonicalUrl('about', locale),

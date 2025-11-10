@@ -43,6 +43,29 @@ export async function generateMetadata({
     description:
       t['home.page.description'] ??
       'AI Communication Assistant for Professional Service Organizations',
+    openGraph: {
+      title: t['home.page.title'] ?? 'Lyyli.ai - AI Communication Assistant',
+      description:
+        t['home.page.description'] ??
+        'AI Communication Assistant for Professional Service Organizations',
+      type: 'website',
+      images: [
+        {
+          url: '/images/social/Social_share_frontpage_LyyliAI.webp',
+          width: 1200,
+          height: 630,
+          alt: 'Lyyli.ai - AI Communication Assistant',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t['home.page.title'] ?? 'Lyyli.ai - AI Communication Assistant',
+      description:
+        t['home.page.description'] ??
+        'AI Communication Assistant for Professional Service Organizations',
+      images: ['/images/social/Social_share_frontpage_LyyliAI.webp'],
+    },
     alternates: {
       canonical: generatePageCanonicalUrl('', locale),
       languages: generateHreflangMetadata('/', ['en', 'fi']),

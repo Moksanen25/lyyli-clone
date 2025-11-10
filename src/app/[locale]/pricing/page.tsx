@@ -34,12 +34,18 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(t['pricing.page.title'])}&description=${encodeURIComponent(t['pricing.page.description'])}`,
+          url: '/images/social/Social_share_pricing_LyyliAI.webp',
           width: 1200,
           height: 630,
           alt: t['pricing.page.title'],
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t['pricing.page.title'],
+      description: t['pricing.page.description'],
+      images: ['/images/social/Social_share_pricing_LyyliAI.webp'],
     },
     alternates: {
       canonical: generatePageCanonicalUrl('pricing', locale),

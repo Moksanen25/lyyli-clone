@@ -43,13 +43,19 @@ export async function generateMetadata({
       description: t['features.page.description'],
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(t['features.page.title'])}&description=${encodeURIComponent(t['features.page.description'])}`,
+          url: '/images/social/Social_share_features_LyyliAI.webp',
           width: 1200,
           height: 630,
           alt: t['features.page.title'],
         },
       ],
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t['features.page.title'],
+      description: t['features.page.description'],
+      images: ['/images/social/Social_share_features_LyyliAI.webp'],
     },
     alternates: {
       canonical: generatePageCanonicalUrl('features', locale),
