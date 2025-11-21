@@ -166,7 +166,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
   const qs = searchParamString ? `?${searchParamString}` : '';
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header className="sticky top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Floating Navigation Bar */}
       <nav
         className={`mx-4 mt-6 transition-all duration-300 ${getHeaderClasses()}`}
@@ -524,15 +524,12 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           <div
             id="mobile-menu"
             className={`lg:hidden transition-all duration-300 ease-in-out ${
-              isMobileMenuOpen
-                ? 'opacity-100 mt-4'
-                : 'opacity-0 pointer-events-none -mt-2'
+              isMobileMenuOpen ? 'block mt-4' : 'hidden'
             }`}
+            aria-hidden={!isMobileMenuOpen}
           >
             <nav
-              className={`flex flex-col gap-3 pt-4 px-2 bg-white rounded-2xl border ${getMobileBorder()} shadow-md ${
-                isMobileMenuOpen ? 'p-4' : 'p-0'
-              }`}
+              className={`flex flex-col gap-3 p-4 bg-white rounded-2xl border ${getMobileBorder()} shadow-md`}
               role="navigation"
               aria-label="Mobile navigation"
             >
