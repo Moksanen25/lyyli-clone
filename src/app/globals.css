@@ -362,6 +362,46 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Flip card pattern (respects reduced motion) */
+.flip-card {
+  perspective: 1000px;
+}
+.flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+.flip-card:hover .flip-inner,
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front,
+.flip-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-front,
+.flip-back {
+  position: relative;
+}
+.flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner {
+    transition: none;
+    transform: none !important;
+  }
+  .flip-back {
+    position: static;
+    transform: none;
+    margin-top: 0.75rem; /* small separation when stacked */
+  }
+}
+
 /* H1: Main Heading - Playfair Display Bold */
 h1 {
   font-family: 'Playfair Display', serif;

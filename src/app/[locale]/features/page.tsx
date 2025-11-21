@@ -153,40 +153,66 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
                 gradient: 'from-turquoise to-rose',
                 icon: 'M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4z',
               },
-            ].map(item => (
-              <article key={item.key} className="group">
-                <div className="bg-gradient-to-br from-grayLight to-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 relative">
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <svg
-                      className="w-8 h-8"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d={item.icon}
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
-                    {t[`features.grid.${item.key}.title`]}
-                  </h3>
-                  <p className="text-mediumGray text-base font-sans leading-relaxed">
-                    {t[`features.grid.${item.key}.description`]}
-                  </p>
-                  <div className="absolute top-4 right-4">
-                    <div className="px-2 py-1 text-xs rounded-full font-semibold bg-forest/90 text-white shadow-md">
-                      {t['common.comingSoon']}
+            ].map(item => {
+              const title = t[`features.grid.${item.key}.title`];
+              const description = t[`features.grid.${item.key}.description`];
+              const benefit =
+                t[`features.grid.${item.key}.benefit`] || description;
+              const eta = t[`features.grid.${item.key}.eta`];
+              return (
+                <article key={item.key} className="group">
+                  <div className="flip-card rounded-2xl">
+                    <div className="flip-inner rounded-2xl">
+                      {/* Front */}
+                      <div className="flip-front bg-gradient-to-br from-grayLight to-white rounded-2xl p-8 shadow-lg border border-gray-200 relative">
+                        <div
+                          className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 text-white`}
+                        >
+                          <svg
+                            className="w-8 h-8"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d={item.icon}
+                            />
+                          </svg>
+                        </div>
+                        <h3 className="text-xl mb-2 text-forest font-playfair font-bold leading-normal">
+                          {title}
+                        </h3>
+                        <p className="text-mediumGray text-base font-sans leading-relaxed">
+                          {benefit}
+                        </p>
+                        <div className="absolute top-4 right-4">
+                          <div className="px-2 py-1 text-xs rounded-full font-semibold bg-forest/90 text-white shadow-md">
+                            {t['common.comingSoon']}
+                          </div>
+                        </div>
+                      </div>
+                      {/* Back */}
+                      <div className="flip-back rounded-2xl p-8 shadow-lg border border-gray-200 bg-rose/10">
+                        <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal">
+                          {title}
+                        </h3>
+                        <p className="text-darkGray text-base font-sans leading-relaxed">
+                          {description}
+                        </p>
+                        {eta ? (
+                          <div className="mt-4 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border border-turquoise text-turquoise">
+                            {eta}
+                          </div>
+                        ) : null}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
 
           {/* Related Sections */}
