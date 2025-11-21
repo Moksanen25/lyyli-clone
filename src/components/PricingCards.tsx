@@ -109,6 +109,13 @@ const MotionDiv = dynamic(
     loading: LoadingDiv,
   }
 );
+const MotionSpan = dynamic(
+  () => import('framer-motion').then(m => m.motion.span),
+  {
+    ssr: false,
+    loading: LoadingDiv,
+  }
+);
 
 const PricingCards = memo(
   ({ fullWidth = false, locale = 'en', translations }: PricingCardsProps) => {
@@ -321,9 +328,9 @@ const PricingCards = memo(
                     plan.name === 'Professional' || plan.name === 'Enterprise'
                       ? 'bg-gradient-to-br from-grayLight to-white'
                       : 'bg-white'
-                  } rounded-2xl p-6 shadow-lg border transition-all duration-300 h-full cursor-pointer ${
+                  } rounded-2xl p-6 shadow-lg border transition-all duration-300 h-full cursor-pointer tilt-hover ${
                     plan.popular
-                      ? 'border-turquoise/40 shadow-2xl scale-105 bg-gradient-to-br from-white to-turquoise/5'
+                      ? 'border-forest/40 shadow-2xl scale-105 bg-gradient-to-br from-white to-forest/5'
                       : 'border-gray-200 hover:border-turquoise/30 hover:shadow-xl'
                   } ${
                     selectedPlan === plan.name ? 'ring-2 ring-turquoise/50' : ''
@@ -335,6 +342,14 @@ const PricingCards = memo(
                   }}
                   onClick={() => setSelectedPlan(plan.name)}
                 >
+                  {plan.popular && (
+                    <div className="absolute -top-3 left-4">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-forest text-white shadow-md">
+                        {translations?.['pricing.mostPopular'] ||
+                          'Most popular'}
+                      </span>
+                    </div>
+                  )}
                   {/* Plan Header */}
                   <div className="text-center mb-6">
                     <h3
@@ -359,9 +374,18 @@ const PricingCards = memo(
                               {/* Subtle shimmer effect */}
                               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-pulse" />
                               <div className="text-center relative z-10">
-                                <span className="text-2xl font-bold text-forest font-sans">
+                                <MotionSpan
+                                  key={`${plan.name}-${billingPeriod}`}
+                                  initial={{ opacity: 0, y: 6 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{
+                                    duration: 0.25,
+                                    ease: 'easeOut',
+                                  }}
+                                  className="text-2xl font-bold text-forest font-sans inline-block"
+                                >
                                   {getPrice(plan)}
-                                </span>
+                                </MotionSpan>
                               </div>
                             </div>
                             {/* Enhanced Price Tag Corner */}

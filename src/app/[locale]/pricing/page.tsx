@@ -4,6 +4,7 @@ import PricingCards from '@/components/PricingCards';
 import BenefitsSection from '@/components/pricing/BenefitsSection';
 import FAQSection from '@/components/faq/FAQSection';
 import ROICalculator from '@/components/ROICalculator';
+import PricingRoiProof from '@/components/pricing/PricingRoiProof';
 import {
   generatePageCanonicalUrl,
   generateHreflangMetadata,
@@ -212,6 +213,11 @@ export default async function PricingPage({ params }: PricingPageProps) {
       <section className="py-16 lg:py-24">
         <PricingCards fullWidth locale={currentLocale} translations={t} />
       </section>
+
+      {/* ROI Proof Cards */}
+      <div className="bg-gradient-to-br from-white to-grayLight py-12">
+        <PricingRoiProof translations={t} />
+      </div>
 
       {/* ROI Calculator Section */}
       <div className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
