@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
 import type { TranslationKeys } from '@/lib/i18n';
-import ClientLocaleSwitcher from '@/components/ClientLocaleSwitcher';
 import Image from 'next/image';
 
 interface HeaderProps {
@@ -19,6 +19,8 @@ export default function Header({ locale, translations: t }: HeaderProps) {
   const dropdownTimeoutRefs = useRef<{ [key: string]: NodeJS.Timeout | null }>(
     {}
   );
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +30,18 @@ export default function Header({ locale, translations: t }: HeaderProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu on Escape for accessibility
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isMobileMenuOpen]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -102,9 +116,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
     return 'text-forest';
   };
 
-  const getHoverTextColor = () => {
-    return 'hover:text-forest/80';
-  };
+  // removed: hover text helper (replaced by pill styles)
 
   const getDropdownBg = () => {
     return 'bg-white';
@@ -122,9 +134,26 @@ export default function Header({ locale, translations: t }: HeaderProps) {
     return 'border-gray-200';
   };
 
-  const getMobileHoverBg = () => {
-    return 'hover:bg-gray-50';
+  // removed: mobile hover helper (replaced by pill styles)
+
+  // Helpers for nav pill styles and active state
+  const isActivePath = (segment: string) => {
+    if (!pathname) return false;
+    const normalized = pathname.replace(/^\/[a-z]{2}/, '') || '/';
+    if (segment === '/') return normalized === '/';
+    return normalized.startsWith(`/${segment}`);
   };
+
+  const navPillClass = (active: boolean) =>
+    [
+      'inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200',
+      active ? 'bg-forest text-white' : 'text-darkGray hover:bg-grayLight',
+    ].join(' ');
+
+  // Language pills (EN / FI) with current path + query preserved
+  const pathWithoutLocale = pathname?.replace(/^\/[a-z]{2}/, '') || '/';
+  const searchParamString = searchParams?.toString() ?? '';
+  const qs = searchParamString ? `?${searchParamString}` : '';
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -157,13 +186,15 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6">
               {/* Features Dropdown */}
               <div className="relative">
                 <button
-                  className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}
+                  className={`${navPillClass(isActivePath('features'))} gap-2 font-sans`}
                   onMouseEnter={() => openDropdown('features')}
                   onMouseLeave={() => handleDropdownMouseLeave('features')}
+                  aria-haspopup="menu"
+                  aria-expanded={activeDropdown === 'features'}
                 >
                   {t['nav.features']}
                   <svg
@@ -191,24 +222,31 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   }`}
                   onMouseEnter={() => keepDropdownOpen('features')}
                   onMouseLeave={() => closeDropdown('features')}
+                  role="menu"
                 >
                   <div className="py-2">
                     <Link
                       href={`/${locale}/features`}
-                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '30ms' }}
                     >
                       {t['nav.features']}
                     </Link>
                     <div className="border-t border-gray-200/50 my-1" />
                     <Link
                       href={`/${locale}/features#ai-automation`}
-                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '60ms' }}
                     >
                       {locale === 'fi' ? 'AI-automaatio' : 'AI Automation'}
                     </Link>
                     <Link
                       href={`/${locale}/features#governance-compliance`}
-                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '90ms' }}
                     >
                       {locale === 'fi'
                         ? 'Hallinta & Compliance'
@@ -216,7 +254,9 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     </Link>
                     <Link
                       href={`/${locale}/features#security-gdpr`}
-                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '120ms' }}
                     >
                       {locale === 'fi'
                         ? 'Tietoturva & GDPR'
@@ -224,20 +264,26 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     </Link>
                     <Link
                       href={`/${locale}/features#multilingual`}
-                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '150ms' }}
                     >
                       {locale === 'fi' ? 'Monikielisyys' : 'Multilingual'}
                     </Link>
                     <Link
                       href={`/${locale}/features#integrations`}
-                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-2 text-sm ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '180ms' }}
                     >
                       {locale === 'fi' ? 'Integraatiot' : 'Integrations'}
                     </Link>
                     <div className="border-t border-gray-200/50 my-1" />
                     <Link
                       href={`/${locale}/cybersecurity`}
-                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '210ms' }}
                     >
                       {t['nav.security']}
                     </Link>
@@ -248,7 +294,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               {/* Pricing */}
               <Link
                 href={`/${locale}/pricing`}
-                className={`text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans`}
+                className={navPillClass(isActivePath('pricing'))}
               >
                 {t['nav.pricing']}
               </Link>
@@ -256,9 +302,11 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               {/* About Us Dropdown */}
               <div className="relative">
                 <button
-                  className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}
+                  className={`${navPillClass(isActivePath('about'))} gap-2 font-sans`}
                   onMouseEnter={() => openDropdown('about')}
                   onMouseLeave={() => handleDropdownMouseLeave('about')}
+                  aria-haspopup="menu"
+                  aria-expanded={activeDropdown === 'about'}
                 >
                   {locale === 'fi' ? 'Tietoja meistä' : 'About'}
                   <svg
@@ -286,17 +334,22 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   }`}
                   onMouseEnter={() => keepDropdownOpen('about')}
                   onMouseLeave={() => closeDropdown('about')}
+                  role="menu"
                 >
                   <div className="py-2">
                     <Link
                       href={`/${locale}/about`}
-                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '50ms' }}
                     >
                       {locale === 'fi' ? 'Tietoja meistä' : 'About'}
                     </Link>
                     <Link
                       href={`/${locale}/blog`}
-                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '90ms' }}
                     >
                       Blog
                     </Link>
@@ -307,9 +360,11 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               {/* Contact Dropdown */}
               <div className="relative">
                 <button
-                  className={`flex items-center gap-2 text-base ${getTextColor()} ${getHoverTextColor()} transition-colors duration-200 font-sans py-2`}
+                  className={`${navPillClass(isActivePath('contact'))} gap-2 font-sans`}
                   onMouseEnter={() => openDropdown('contact')}
                   onMouseLeave={() => handleDropdownMouseLeave('contact')}
+                  aria-haspopup="menu"
+                  aria-expanded={activeDropdown === 'contact'}
                 >
                   {t['nav.contact']}
                   <svg
@@ -337,23 +392,22 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   }`}
                   onMouseEnter={() => keepDropdownOpen('contact')}
                   onMouseLeave={() => closeDropdown('contact')}
+                  role="menu"
                 >
                   <div className="py-2">
                     <Link
                       href={`/${locale}/contact`}
-                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '50ms' }}
                     >
                       {t['nav.contact']}
                     </Link>
                     <Link
-                      href={`/${locale}/faq`}
-                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
-                    >
-                      {t['nav.faq']}
-                    </Link>
-                    <Link
                       href={`/${locale}/help`}
-                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-colors duration-150`}
+                      className={`block px-4 py-3 ${getTextColor()} ${getHoverBg()} transition-all duration-200`}
+                      role="menuitem"
+                      style={{ transitionDelay: '90ms' }}
                     >
                       {locale === 'fi' ? 'Apu ja tuki' : 'Help & Support'}
                     </Link>
@@ -363,16 +417,39 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
               {/* Right side controls */}
               <div className="flex items-center gap-4 ml-4">
-                {/* Locale Switcher */}
-                <ClientLocaleSwitcher currentLocale={locale} />
+                {/* Language pills (EN / FI) */}
+                <div className="flex items-center gap-1">
+                  <Link
+                    href={`/en${pathWithoutLocale}${qs}`}
+                    className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                      locale === 'en'
+                        ? 'bg-forest text-white'
+                        : 'border-2 border-forest text-forest hover:bg-forest/10'
+                    }`}
+                    aria-current={locale === 'en' ? 'true' : undefined}
+                  >
+                    EN
+                  </Link>
+                  <Link
+                    href={`/fi${pathWithoutLocale}${qs}`}
+                    className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                      locale === 'fi'
+                        ? 'bg-forest text-white'
+                        : 'border-2 border-forest text-forest hover:bg-forest/10'
+                    }`}
+                    aria-current={locale === 'fi' ? 'true' : undefined}
+                  >
+                    FI
+                  </Link>
+                </div>
 
                 {/* CTA Button */}
                 <Link
                   href="https://app.lyyli.ai"
-                  className="bg-forest text-white px-6 py-3 rounded-xl hover:bg-forest/90 hover:shadow-lg transition-all duration-200 font-medium inline-flex items-center gap-2 font-sans shadow-md"
+                  className="bg-forest text-white px-6 py-3 rounded-full hover:bg-forest/90 hover:shadow-lg transition-all duration-200 font-semibold inline-flex items-center gap-2 font-sans shadow-md"
                   aria-label="Sign in to Lyyli.ai"
                 >
-                  {locale === 'fi' ? 'Kirjaudu' : 'Sign in'}
+                  {locale === 'fi' ? 'Liity jonoon' : 'Join waitlist'}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -384,7 +461,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
                 </Link>
@@ -433,18 +510,16 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           {/* Mobile Menu - Simplified and shorter */}
           <div
             id="mobile-menu"
-            className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+            className={`lg:hidden transition-all duration-300 ease-in-out ${
               isMobileMenuOpen
-                ? `max-h-[60vh] opacity-100 mt-4 pb-4 border-t ${getMobileBorder()}`
-                : 'max-h-0 opacity-0 mt-0 pb-0 border-t-0'
+                ? 'opacity-100 mt-4'
+                : 'opacity-0 pointer-events-none -mt-2'
             }`}
-            style={{
-              maxHeight: isMobileMenuOpen ? '60vh' : '0px',
-              overflowY: isMobileMenuOpen ? 'auto' : 'hidden',
-            }}
           >
             <nav
-              className="flex flex-col gap-2 pt-4 px-2"
+              className={`flex flex-col gap-3 pt-4 px-2 bg-white rounded-2xl border ${getMobileBorder()} shadow-md ${
+                isMobileMenuOpen ? 'p-4' : 'p-0'
+              }`}
               role="navigation"
               aria-label="Mobile navigation"
             >
@@ -452,28 +527,28 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <div className="grid grid-cols-2 gap-2">
                 <Link
                   href={`/${locale}/features`}
-                  className={`block text-base ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-3 px-4 rounded-lg text-center`}
+                  className={`block text-base ${navPillClass(isActivePath('features'))} text-center`}
                   onClick={closeMobileMenu}
                 >
                   {t['nav.features']}
                 </Link>
                 <Link
                   href={`/${locale}/pricing`}
-                  className={`block text-base ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-3 px-4 rounded-lg text-center`}
+                  className={`block text-base ${navPillClass(isActivePath('pricing'))} text-center`}
                   onClick={closeMobileMenu}
                 >
                   {t['nav.pricing']}
                 </Link>
                 <Link
                   href={`/${locale}/about`}
-                  className={`block text-base ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-3 px-4 rounded-lg text-center`}
+                  className={`block text-base ${navPillClass(isActivePath('about'))} text-center`}
                   onClick={closeMobileMenu}
                 >
                   {locale === 'fi' ? 'Tietoja meistä' : 'About'}
                 </Link>
                 <Link
                   href={`/${locale}/contact`}
-                  className={`block text-base ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-3 px-4 rounded-lg text-center`}
+                  className={`block text-base ${navPillClass(isActivePath('contact'))} text-center`}
                   onClick={closeMobileMenu}
                 >
                   {t['nav.contact']}
@@ -484,28 +559,28 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <div className="flex gap-2 pt-2">
                 <Link
                   href={`/${locale}/cybersecurity`}
-                  className={`flex-1 text-center text-sm ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-2 px-3 rounded-lg`}
+                  className={`flex-1 text-center text-sm ${navPillClass(isActivePath('cybersecurity'))}`}
                   onClick={closeMobileMenu}
                 >
                   {t['nav.security']}
                 </Link>
                 <Link
                   href={`/${locale}/blog`}
-                  className={`flex-1 text-center text-sm ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-2 px-3 rounded-lg`}
+                  className={`flex-1 text-center text-sm ${navPillClass(isActivePath('blog'))}`}
                   onClick={closeMobileMenu}
                 >
                   Blog
                 </Link>
                 <Link
                   href={`/${locale}/faq`}
-                  className={`flex-1 text-center text-sm ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-2 px-3 rounded-lg`}
+                  className={`flex-1 text-center text-sm ${navPillClass(isActivePath('faq'))}`}
                   onClick={closeMobileMenu}
                 >
                   {t['nav.faq']}
                 </Link>
                 <Link
                   href={`/${locale}/help`}
-                  className={`flex-1 text-center text-sm ${getTextColor()} ${getMobileHoverBg()} transition-colors duration-200 font-sans py-2 px-3 rounded-lg`}
+                  className={`flex-1 text-center text-sm ${navPillClass(isActivePath('help'))}`}
                   onClick={closeMobileMenu}
                 >
                   {locale === 'fi' ? 'Apu' : 'Help'}
@@ -516,18 +591,41 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <div className={`border-t ${getMobileBorder()} pt-3 mt-2`}>
                 <Link
                   href="https://app.lyyli.ai"
-                  className="block w-full bg-forest text-white px-4 py-3 rounded-xl hover:bg-forest/90 transition-all duration-200 font-semibold text-base text-center font-sans shadow-md"
+                  className="block w-full bg-forest text-white px-4 py-3 rounded-full hover:bg-forest/90 transition-all duration-200 font-semibold text-base text-center font-sans shadow-md"
                   aria-label="Sign in to Lyyli.ai"
                   onClick={closeMobileMenu}
                 >
-                  {locale === 'fi' ? 'Kirjaudu' : 'Sign in'}
+                  {locale === 'fi' ? 'Liity jonoon' : 'Join waitlist'}
                 </Link>
               </div>
 
               {/* Locale Switcher - Compact */}
               <div className={`border-t ${getMobileBorder()} pt-3 mt-2`}>
-                <div className="flex justify-center items-center">
-                  <ClientLocaleSwitcher currentLocale={locale} />
+                <div className="flex justify-center items-center gap-2">
+                  <Link
+                    href={`/en${pathWithoutLocale}${qs}`}
+                    className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                      locale === 'en'
+                        ? 'bg-forest text-white'
+                        : 'border-2 border-forest text-forest hover:bg-forest/10'
+                    }`}
+                    aria-current={locale === 'en' ? 'true' : undefined}
+                    onClick={closeMobileMenu}
+                  >
+                    EN
+                  </Link>
+                  <Link
+                    href={`/fi${pathWithoutLocale}${qs}`}
+                    className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                      locale === 'fi'
+                        ? 'bg-forest text-white'
+                        : 'border-2 border-forest text-forest hover:bg-forest/10'
+                    }`}
+                    aria-current={locale === 'fi' ? 'true' : undefined}
+                    onClick={closeMobileMenu}
+                  >
+                    FI
+                  </Link>
                 </div>
               </div>
             </nav>
