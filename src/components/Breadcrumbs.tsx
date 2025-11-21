@@ -12,10 +12,14 @@ interface BreadcrumbsProps {
   ariaLabel?: string;
 }
 
-export default function Breadcrumbs({ items, className = '', ariaLabel = 'Breadcrumb navigation' }: BreadcrumbsProps) {
+export default function Breadcrumbs({
+  items,
+  className = '',
+  ariaLabel = 'navigation',
+}: BreadcrumbsProps) {
   return (
-    <nav 
-      aria-label={ariaLabel} 
+    <nav
+      aria-label={ariaLabel}
       className={`flex items-center space-x-1 text-sm text-gray-600 ${className}`}
     >
       {items.map((item, index) => (
@@ -36,17 +40,21 @@ export default function Breadcrumbs({ items, className = '', ariaLabel = 'Breadc
               />
             </svg>
           )}
-          
+
           {item.href && !item.isCurrentPage ? (
-            <Link 
+            <Link
               href={item.href}
               className="text-forest hover:text-forest-dark transition-colors duration-200 hover:underline"
             >
               {item.label}
             </Link>
           ) : (
-            <span 
-              className={item.isCurrentPage ? 'text-gray-900 font-medium' : 'text-gray-600'}
+            <span
+              className={
+                item.isCurrentPage
+                  ? 'text-gray-900 font-medium'
+                  : 'text-gray-600'
+              }
               aria-current={item.isCurrentPage ? 'page' : undefined}
             >
               {item.label}

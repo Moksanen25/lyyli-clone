@@ -70,7 +70,7 @@ export function generateBlogCanonicalUrl(slug: string, locale: string): string {
  */
 export function generateAlternateUrls(
   path: string,
-  supportedLocales: string[] = ['en', 'fi', 'de', 'et', 'sv']
+  supportedLocales: string[] = ['en', 'fi']
 ): Record<string, string> {
   const alternates: Record<string, string> = {};
 
@@ -132,7 +132,7 @@ export function getProductionDomain(): string {
  */
 export function generateHreflangLinks(
   path: string,
-  supportedLocales: string[] = ['en', 'fi', 'de', 'et', 'sv'],
+  supportedLocales: string[] = ['en', 'fi'],
   defaultLocale: string = 'en'
 ): Record<string, string> {
   const hreflangLinks: Record<string, string> = {};
@@ -188,13 +188,13 @@ export function generateHreflangLinks(
  */
 export function generateHreflangMetadata(
   path: string,
-  supportedLocales: string[] = ['en', 'fi', 'de', 'et', 'sv']
+  supportedLocales: string[] = ['en', 'fi']
 ): Record<string, string> {
   const alternates = generateAlternateUrls(path, supportedLocales);
 
   // Add x-default
   const defaultLocale = 'en';
-  const cleanPath = path.replace(/^\/(en|fi|de|et|sv)/, '') || '/';
+  const cleanPath = path.replace(/^\/(en|fi)/, '') || '/';
   alternates['x-default'] =
     cleanPath === '/'
       ? `${PRODUCTION_DOMAIN}/${defaultLocale}`

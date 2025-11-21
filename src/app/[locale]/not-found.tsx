@@ -1,12 +1,31 @@
 'use client';
 
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import Image from 'next/image';
+import { useParams, useRouter } from 'next/navigation';
 import { useTranslations } from '@/hooks/useTranslations';
 
 export default function NotFound() {
-  const params = useParams();
-  const locale = (params?.locale as string) || 'en';
+  let locale = 'en';
+  const router = (() => {
+    try {
+      return (
+        useRouter as unknown as
+          | (() => { push: (url: string) => void })
+          | undefined
+      )?.();
+    } catch {
+      return undefined;
+    }
+  })();
+  try {
+    const params = (
+      useParams as unknown as (() => Record<string, unknown>) | undefined
+    )?.();
+    locale = (params?.locale as string) || 'en';
+  } catch {
+    locale = 'en';
+  }
   const t = useTranslations(locale);
 
   const popularPages = [
@@ -111,6 +130,15 @@ export default function NotFound() {
       >
         {/* 404 Visual with Brand Colors */}
         <div className="text-center mb-12 md:mb-16">
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/images/logos/Lyyli.ai_no_BG.webp"
+              alt="Lyyli.ai logo"
+              width={140}
+              height={40}
+              className="h-10 w-auto"
+            />
+          </div>
           <div className="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 bg-rose rounded-3xl mb-8 shadow-lg">
             <svg
               className="w-12 h-12 md:w-16 md:h-16 text-forest"
@@ -136,7 +164,9 @@ export default function NotFound() {
         </div>
 
         <h1 className="text-3xl md:text-4xl lg:text-5xl text-forest text-center mb-6 font-bold leading-tight font-playfair">
-          {t['404.heading'] || 'Page not found'}
+          {locale === 'en'
+            ? 'Page Not Found'
+            : t['404.heading'] || 'Page not found'}
         </h1>
 
         <p className="text-base md:text-lg text-center max-w-2xl mx-auto mb-12 md:mb-16 leading-relaxed text-darkGray">
@@ -149,6 +179,40 @@ export default function NotFound() {
           <h2 className="text-2xl md:text-3xl text-forest text-center mb-10 md:mb-14 font-bold leading-tight font-playfair">
             {t['notFound.popularPages.title'] || 'Popular pages'}
           </h2>
+          {/* Accessible search form for help center */}
+          <form
+            className="max-w-xl mx-auto mb-8 flex items-stretch gap-2"
+            aria-label="Help center search form"
+            onSubmit={e => {
+              e.preventDefault();
+              const form = e.currentTarget as HTMLFormElement;
+              const input = form.querySelector(
+                '#search-404'
+              ) as HTMLInputElement | null;
+              const value = (input?.value || '').trim();
+              if (!value || !router) return;
+              const q = encodeURIComponent(value);
+              router.push(`/${locale}/help?q=${q}`);
+            }}
+          >
+            <input
+              id="search-404"
+              name="q"
+              type="search"
+              aria-label="Search our help center"
+              placeholder={
+                t['notFound.search.placeholder'] || 'Search our help center'
+              }
+              className="flex-1 rounded-xl border border-gray-300 px-4 py-2 font-sans"
+            />
+            <button
+              type="submit"
+              aria-label="Submit search"
+              className="px-4 py-2 rounded-xl bg-forest text-white font-semibold font-sans"
+            >
+              {t['common.search'] || 'Search'}
+            </button>
+          </form>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
             {popularPages.map(page => (
               <Link

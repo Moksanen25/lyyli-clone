@@ -1,9 +1,10 @@
-const nextJest = require('next/jest')
+/* eslint-disable @typescript-eslint/no-require-imports */
+const nextJest = require('next/jest');
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files
   dir: './',
-})
+});
 
 // Add any custom config to be passed to Jest
 const customJestConfig = {
@@ -13,19 +14,14 @@ const customJestConfig = {
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
     '<rootDir>/archive/',
-    '<rootDir>/coverage/'
+    '<rootDir>/coverage/',
   ],
-  modulePathIgnorePatterns: [
-    '<rootDir>/archive/',
-    '<rootDir>/archive/.*'
-  ],
+  modulePathIgnorePatterns: ['<rootDir>/archive/', '<rootDir>/archive/.*'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^styled-jsx/style$': '<rootDir>/__mocks__/styled-jsx/style.js',
   },
-  modulePathIgnorePatterns: [
-    '<rootDir>/.next/',
-    '<rootDir>/.next/standalone/',
-  ],
+  modulePathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/.next/standalone/'],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
@@ -47,12 +43,7 @@ const customJestConfig = {
       statements: 70,
     },
   },
-  coverageReporters: [
-    'text',
-    'lcov',
-    'html',
-    'json-summary'
-  ],
+  coverageReporters: ['text', 'lcov', 'html', 'json-summary'],
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
     '<rootDir>/src/**/*.{test,spec}.{js,jsx,ts,tsx}',
@@ -65,7 +56,7 @@ const customJestConfig = {
   testEnvironmentOptions: {
     customExportConditions: [''],
   },
-}
+};
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-module.exports = createJestConfig(customJestConfig)
+module.exports = createJestConfig(customJestConfig);

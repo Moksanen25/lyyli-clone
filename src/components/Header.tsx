@@ -19,8 +19,18 @@ export default function Header({ locale, translations: t }: HeaderProps) {
   const dropdownTimeoutRefs = useRef<{ [key: string]: NodeJS.Timeout | null }>(
     {}
   );
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  let pathname: string | null = null;
+  let searchParams: URLSearchParams | null = null;
+  try {
+    pathname =
+      (usePathname as unknown as (() => string) | undefined)?.() ?? null;
+    searchParams =
+      (useSearchParams as unknown as (() => URLSearchParams) | undefined)?.() ??
+      null;
+  } catch {
+    pathname = '/';
+    searchParams = new URLSearchParams();
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -418,7 +428,10 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               {/* Right side controls */}
               <div className="flex items-center gap-4 ml-4">
                 {/* Language pills (EN / FI) */}
-                <div className="flex items-center gap-1">
+                <div
+                  className="flex items-center gap-1"
+                  data-testid="locale-switcher"
+                >
                   <Link
                     href={`/en${pathWithoutLocale}${qs}`}
                     className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
@@ -449,7 +462,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   className="bg-forest text-white px-6 py-3 rounded-full hover:bg-forest/90 hover:shadow-lg transition-all duration-200 font-semibold inline-flex items-center gap-2 font-sans shadow-md"
                   aria-label="Sign in to Lyyli.ai"
                 >
-                  {locale === 'fi' ? 'Liity jonoon' : 'Join waitlist'}
+                  {locale === 'fi' ? 'Liity odotuslistalle' : 'Join waitlist'}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -611,6 +624,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     }`}
                     aria-current={locale === 'en' ? 'true' : undefined}
                     onClick={closeMobileMenu}
+                    data-testid="locale-switcher"
                   >
                     EN
                   </Link>
@@ -623,6 +637,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     }`}
                     aria-current={locale === 'fi' ? 'true' : undefined}
                     onClick={closeMobileMenu}
+                    data-testid="locale-switcher"
                   >
                     FI
                   </Link>

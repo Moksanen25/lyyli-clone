@@ -39,7 +39,7 @@ export default function RootLayout({
           rel="preload"
           href="/images/logos/Lyyli.ai_no_BG.webp"
           as="image"
-          type="image/png"
+          type="image/webp"
         />
 
         {/* DNS Prefetch for external resources */}

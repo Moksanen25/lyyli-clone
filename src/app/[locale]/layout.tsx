@@ -16,6 +16,7 @@ import {
   generateBreadcrumbSchema,
   combineSchemas,
 } from '@/lib/structured-data';
+import '../globals.css';
 
 export const metadata: Metadata = {
   title: {

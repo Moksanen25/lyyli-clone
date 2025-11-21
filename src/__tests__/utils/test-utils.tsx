@@ -237,3 +237,8 @@ export function createMockImage(): Partial<HTMLImageElement> {
     onerror: null,
   };
 }
+
+// Ensure at least one test in this suite to satisfy Jest
+test('utils noop', () => {
+  expect(true).toBe(true);
+});

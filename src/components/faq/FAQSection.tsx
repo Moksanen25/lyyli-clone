@@ -3,15 +3,35 @@
 import { useState } from 'react';
 
 // Simple chevron icons
-const ChevronDownIcon = ({ className = "h-6 w-6" }: { className?: string }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+const ChevronDownIcon = ({ className = 'h-6 w-6' }: { className?: string }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M19 9l-7 7-7-7"
+    />
   </svg>
 );
 
-const ChevronUpIcon = ({ className = "h-6 w-6" }: { className?: string }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+const ChevronUpIcon = ({ className = 'h-6 w-6' }: { className?: string }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M5 15l7-7 7 7"
+    />
   </svg>
 );
 
@@ -28,7 +48,12 @@ interface FAQSectionProps {
   className?: string;
 }
 
-export default function FAQSection({ faqs, title, description, className = "" }: FAQSectionProps) {
+export default function FAQSection({
+  faqs,
+  title,
+  description,
+  className = '',
+}: FAQSectionProps) {
   const [openItems, setOpenItems] = useState<Set<string>>(new Set());
 
   const toggleItem = (id: string) => {
@@ -43,16 +68,16 @@ export default function FAQSection({ faqs, title, description, className = "" }:
 
   const generateFAQSchema = () => {
     const schema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
     };
     return JSON.stringify(schema);
   };
@@ -74,10 +99,13 @@ export default function FAQSection({ faqs, title, description, className = "" }:
         </div>
         <div className="mx-auto max-w-4xl">
           <div className="space-y-6">
-            {faqs.map((faq) => {
+            {faqs.map(faq => {
               const isOpen = openItems.has(faq.id);
               return (
-                <div key={faq.id} className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+                <div
+                  key={faq.id}
+                  className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300"
+                >
                   <button
                     type="button"
                     className="flex w-full items-start justify-between text-left p-6 focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2 rounded-t-2xl"
@@ -91,9 +119,15 @@ export default function FAQSection({ faqs, title, description, className = "" }:
                     </span>
                     <span className="flex-shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-forest/10 transition-colors duration-200">
                       {isOpen ? (
-                        <ChevronUpIcon className="h-5 w-5 text-forest" aria-hidden="true" />
+                        <ChevronUpIcon
+                          className="h-5 w-5 text-forest"
+                          aria-hidden="true"
+                        />
                       ) : (
-                        <ChevronDownIcon className="h-5 w-5 text-forest" aria-hidden="true" />
+                        <ChevronDownIcon
+                          className="h-5 w-5 text-forest"
+                          aria-hidden="true"
+                        />
                       )}
                     </span>
                   </button>
@@ -104,6 +138,7 @@ export default function FAQSection({ faqs, title, description, className = "" }:
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
                       isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
+                    hidden={!isOpen}
                   >
                     <div className="px-6 pb-6 pt-0">
                       <div className="border-t border-gray-100 pt-6">

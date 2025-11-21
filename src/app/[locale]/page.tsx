@@ -88,45 +88,37 @@ export default async function Home({ params }: HomeProps) {
 
   return (
     <main className="min-h-screen">
-      {/* SoftwareApplication Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(softwareSchema),
-        }}
-      />
+      <h1 className="text-4xl md:text-5xl text-forest text-center mb-3 md:mb-8 font-playfair font-bold leading-tight px-4">
+        {t['hero.headline']}
+      </h1>
 
       {/* Mesh Gradient Background */}
 
       {/* Hero Section */}
-      <div className="relative z-30 pt-32">
+      <div className="relative z-30 pt-24 md:pt-32">
         <section
-          className="container mx-auto px-4 py-20 relative"
+          className="container mx-auto px-4 py-12 md:py-20 relative"
           aria-label="Hero"
         >
           {/* Ambient background */}
           <div className="hero-ambient absolute inset-0" aria-hidden="true" />
-          {/* Critical LCP element with optimized font loading */}
-          <AnimatedFadeUp>
-            <h1 className="text-4xl md:text-5xl text-forest text-center mb-4 md:mb-8 font-playfair font-bold leading-tight relative z-10">
-              {t['hero.headline']}
-            </h1>
-          </AnimatedFadeUp>
-          <AnimatedFadeUp delayMs={100}>
-            <p className="text-lg hero-description text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
+          {/* Subheadline */}
+          <AnimatedFadeUp delayMs={60}>
+            <p className="text-base md:text-lg hero-description text-center max-w-3xl mx-auto mb-6 md:mb-12 font-sans leading-relaxed relative z-20">
               {t['hero.description']}
             </p>
           </AnimatedFadeUp>
-          <div className="mt-8 mb-10 relative z-10">
-            <HeroFactBox translations={t} />
-          </div>
+          {/* Primary CTAs - stacked on mobile */}
           <AnimatedFadeUp delayMs={200}>
-            <div className="flex justify-center gap-4 mb-12 relative z-10">
-              <a href="https://app.lyyli.ai" className="btn-primary">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 md:mb-12 relative z-20">
+              <a
+                href="https://app.lyyli.ai"
+                className="btn-primary text-center"
+              >
                 {t['hero.ctaPrimary']}
               </a>
               <CalendarPopup
-                className="btn-secondary"
+                className="btn-secondary text-center"
                 translations={{
                   title: t['calendar.title'],
                   subtitle: t['calendar.subtitle'],
@@ -143,11 +135,38 @@ export default async function Home({ params }: HomeProps) {
               </CalendarPopup>
             </div>
           </AnimatedFadeUp>
+
+          {/* Compact metrics or hide on mobile to avoid overlap/length */}
+          <div className="mt-4 md:mt-8 mb-6 md:mb-10 relative z-10">
+            <div className="hidden md:block">
+              <HeroFactBox translations={t} />
+            </div>
+            {/* Optional compact chips on mobile for quick social proof */}
+            <div className="flex md:hidden justify-center gap-2">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-rose/40 text-forest border border-rose/60">
+                {t['hero.facts.timeSaved'] || 'Time saved on communication'}
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-turquoise/30 text-forest border border-turquoise/50">
+                {t['hero.facts.productivityBoost'] ||
+                  'Faster content production'}
+              </span>
+            </div>
+          </div>
         </section>
       </div>
 
+      {/* SoftwareApplication Schema - moved after hero to keep h1 early for LCP */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareSchema),
+        }}
+      />
+
       {/* Product Showcase Section */}
-      <ProductShowcase translations={t} />
+      <section className="hidden md:block">
+        <ProductShowcase translations={t} />
+      </section>
 
       {/* ROI Statistics Section - temporarily hidden */}
 
@@ -272,20 +291,28 @@ export default async function Home({ params }: HomeProps) {
       </section>
 
       {/* Process Steps Section (mount on visible) */}
-      <Deferred when="visible">
-        <ProcessSteps translations={t} />
-      </Deferred>
+      <div className="hidden md:block">
+        <Deferred when="visible">
+          <ProcessSteps translations={t} />
+        </Deferred>
+      </div>
 
       {/* Feature Grid Section (idle) */}
-      <Deferred when="idle">
-        <FeatureGrid translations={t} />
-      </Deferred>
+      <div className="hidden md:block">
+        <Deferred when="idle">
+          <FeatureGrid translations={t} />
+        </Deferred>
+      </div>
 
       {/* Demo Video Section */}
-      <DemoVideo translations={t} />
+      <div className="hidden md:block">
+        <DemoVideo translations={t} />
+      </div>
 
       {/* ROI Calculator Section */}
-      <ROICalculator locale={currentLocale} translations={t} />
+      <div className="hidden md:block">
+        <ROICalculator locale={currentLocale} translations={t} />
+      </div>
 
       {/* Testimonials hidden */}
 
@@ -356,6 +383,36 @@ export default async function Home({ params }: HomeProps) {
           </div>
         </div>
       </section>
+
+      {/* Sticky mobile CTA bar for better conversion */}
+      <div className="md:hidden fixed inset-x-4 bottom-4 z-40">
+        <div className="bg-white/95 backdrop-blur-md border border-gray-200 shadow-xl rounded-2xl p-3 flex items-center gap-3">
+          <a
+            href="https://app.lyyli.ai"
+            className="flex-1 inline-flex justify-center items-center px-4 py-3 bg-forest text-white font-semibold rounded-xl shadow-sm"
+            aria-label="Start free trial"
+          >
+            {t['hero.ctaPrimary']}
+          </a>
+          <CalendarPopup
+            className="inline-flex items-center px-4 py-3 border-2 border-forest text-forest font-semibold rounded-xl"
+            translations={{
+              title: t['calendar.title'],
+              subtitle: t['calendar.subtitle'],
+              description: t['calendar.description'],
+              loading: t['calendar.loading'],
+              errorTitle: t['calendar.error.title'],
+              errorDescription: t['calendar.error.description'],
+              errorButton: t['calendar.error.button'],
+              footerSecure: t['calendar.footer.secure'],
+              footerContact: t['calendar.footer.contact'],
+            }}
+            aria-label="Book a demo"
+          >
+            {t['hero.ctaSecondary']}
+          </CalendarPopup>
+        </div>
+      </div>
     </main>
   );
 }

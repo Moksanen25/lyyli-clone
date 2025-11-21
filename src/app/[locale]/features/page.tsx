@@ -76,13 +76,9 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
 
   return (
     <div className="min-h-screen">
-      {/* SoftwareApplication Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(softwareSchema),
-        }}
-      />
+      <h1 className="text-4xl md:text-5xl mb-6 font-playfair font-bold leading-tight text-forest text-center">
+        {t['features.hero.title']}
+      </h1>
 
       {/* Hero Section */}
       <div className="relative z-10 pt-32">
@@ -91,15 +87,20 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           aria-label="Hero"
         >
           <div className="text-center max-w-4xl mx-auto relative z-10">
-            <h1 className="text-4xl md:text-5xl mb-6 font-playfair font-bold leading-tight text-forest">
-              {t['features.hero.title']}
-            </h1>
+            {/* H1 moved above for LCP */}
             <p className="text-lg mb-8 text-mediumGray max-w-3xl mx-auto font-sans leading-relaxed">
               {t['features.hero.subtitle']}
             </p>
           </div>
         </section>
       </div>
+      {/* SoftwareApplication Schema - moved after hero */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareSchema),
+        }}
+      />
 
       {/* Feature Section Navigation */}
       <FeatureSectionNav locale={currentLocale} translations={t} />
