@@ -388,14 +388,19 @@ h1, h2, h3, h4, h5, h6 {
 .flip-back {
   position: absolute;
   inset: 0;
+  height: 100%;
 }
 .flip-front {
   /* Ensure front face is treated as a 3D plane so backface-visibility works when parent rotates */
   transform: rotateY(0deg);
+  z-index: 2;
 }
 .flip-back {
   transform: rotateY(180deg);
+  z-index: 1;
 }
+.flip-card.flipped .flip-front { z-index: 1; }
+.flip-card.flipped .flip-back { z-index: 2; }
 @media (prefers-reduced-motion: reduce) {
   .flip-inner {
     transition: none;
