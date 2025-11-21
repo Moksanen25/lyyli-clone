@@ -1,6 +1,7 @@
 import type { TranslationKeys } from '@/lib/i18n';
 import { computeRoiMetrics } from '@/lib/roi';
 import MetricCard from '@/components/MetricCard';
+import FlipCard from '@/components/FlipCard';
 
 interface HeroFactBoxProps {
   translations: TranslationKeys;
@@ -26,91 +27,152 @@ export default function HeroFactBox({
   return (
     <div className="max-w-5xl mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-        <MetricCard
-          icon={
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+        <FlipCard
+          ariaLabel={
+            (translations['hero.facts.timeSaved'] as string) ||
+            'Save time on communication'
           }
-          value={Math.round(metrics.timeSavedPercent)}
-          suffix="%"
-          label={
-            translations['hero.facts.timeSaved'] || 'Save time on communication'
+          front={
+            <MetricCard
+              icon={
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              }
+              value={Math.round(metrics.timeSavedPercent)}
+              suffix="%"
+              label={
+                translations['hero.facts.timeSaved'] ||
+                'Save time on communication'
+              }
+              description={
+                translations['hero.facts.timeSaved.desc'] ||
+                'Average reduction in time spent on communication tasks.'
+              }
+              bg="turquoise"
+            />
           }
-          description={
-            translations['hero.facts.timeSaved.desc'] ||
-            'Average reduction in time spent on communication tasks.'
+          back={
+            <div className="rounded-2xl p-6 bg-rose/10 border border-gray-200 text-center">
+              <h4 className="text-forest font-playfair font-bold text-lg">
+                {translations['hero.facts.timeSaved'] ||
+                  'Save time on communication'}
+              </h4>
+              <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
+                {translations['hero.facts.timeSaved.desc'] ||
+                  'Average reduction in time spent on communication tasks.'}
+              </p>
+            </div>
           }
-          bg="turquoise"
         />
-        <MetricCard
-          icon={
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 3v18h18M7 13l3 3 7-7"
-              />
-            </svg>
-          }
-          value={1.5}
-          suffix="×"
-          decimals={1}
-          label={
-            translations['hero.facts.productivityBoost'] ||
+        <FlipCard
+          ariaLabel={
+            (translations['hero.facts.productivityBoost'] as string) ||
             'Faster production with your current team'
           }
-          description={
-            translations['hero.facts.productivityBoost.desc'] ||
-            'Accelerate content creation without increasing headcount.'
+          front={
+            <MetricCard
+              icon={
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 3v18h18M7 13l3 3 7-7"
+                  />
+                </svg>
+              }
+              value={1.5}
+              suffix="×"
+              decimals={1}
+              label={
+                translations['hero.facts.productivityBoost'] ||
+                'Faster production with your current team'
+              }
+              description={
+                translations['hero.facts.productivityBoost.desc'] ||
+                'Accelerate content creation without increasing headcount.'
+              }
+              bg="gray"
+            />
           }
-          bg="gray"
+          back={
+            <div className="rounded-2xl p-6 bg-turquoise/10 border border-gray-200 text-center">
+              <h4 className="text-forest font-playfair font-bold text-lg">
+                {translations['hero.facts.productivityBoost'] ||
+                  'Faster production with your current team'}
+              </h4>
+              <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
+                {translations['hero.facts.productivityBoost.desc'] ||
+                  'Accelerate content creation without increasing headcount.'}
+              </p>
+            </div>
+          }
         />
-        <MetricCard
-          icon={
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 8c-2.28 0-4 .94-4 2.5S9.72 13 12 13s4 .94 4 2.5S14.28 18 12 18m0-10V6m0 12v-2"
-              />
-            </svg>
+        <FlipCard
+          ariaLabel={
+            (translations['hero.facts.netSavings'] as string) ||
+            'Net savings per month'
           }
-          value={monthlyNetValue}
-          suffix="€"
-          label={
-            translations['hero.facts.netSavings'] || 'Net savings per month'
+          front={
+            <MetricCard
+              icon={
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8c-2.28 0-4 .94-4 2.5S9.72 13 12 13s4 .94 4 2.5S14.28 18 12 18m0-10V6m0 12v-2"
+                  />
+                </svg>
+              }
+              value={monthlyNetValue}
+              suffix="€"
+              label={
+                translations['hero.facts.netSavings'] || 'Net savings per month'
+              }
+              description={
+                translations['hero.facts.netSavings.desc'] ||
+                "Estimated after plan costs, based on your team's inputs."
+              }
+              bg="rose"
+            />
           }
-          description={
-            translations['hero.facts.netSavings.desc'] ||
-            "Estimated after plan costs, based on your team's inputs."
+          back={
+            <div className="rounded-2xl p-6 bg-rose/10 border border-gray-200 text-center">
+              <h4 className="text-forest font-playfair font-bold text-lg">
+                {translations['hero.facts.netSavings'] ||
+                  'Net savings per month'}
+              </h4>
+              <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
+                {translations['hero.facts.netSavings.desc'] ||
+                  "Estimated after plan costs, based on your team's inputs."}
+              </p>
+            </div>
           }
-          bg="rose"
         />
       </div>
       <div className="px-2 sm:px-0 text-center text-xs text-mediumGray mt-3 font-sans">

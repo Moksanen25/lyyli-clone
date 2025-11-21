@@ -1,5 +1,6 @@
 import type { TranslationKeys } from '@/lib/i18n';
 import AnimatedFadeUp from '@/components/AnimatedFadeUp';
+import FlipCard from '@/components/FlipCard';
 
 interface FeaturesCardLayoutProps {
   locale: string;
@@ -224,25 +225,40 @@ export default function FeaturesCardLayout({
             .filter(f => f.category === 'automatic')
             .map((feature, index) => (
               <AnimatedFadeUp key={index} delayMs={index * 120}>
-                <article className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 tilt-hover group overflow-hidden">
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background:
-                        'radial-gradient(600px 200px at 50% 0%, rgba(167,214,209,0.12), rgba(255,255,255,0))',
-                    }}
-                  />
-                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border-2 border-forest shadow-md relative z-10">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center relative z-10">
-                    {feature.title}
-                  </h3>
-                  <p className="text-mediumGray text-base font-sans leading-relaxed text-center relative z-10">
-                    {feature.description}
-                  </p>
-                </article>
+                <FlipCard
+                  ariaLabel={`${feature.title}`}
+                  front={
+                    <article className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 tilt-hover group overflow-hidden">
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          background:
+                            'radial-gradient(600px 200px at 50% 0%, rgba(167,214,209,0.12), rgba(255,255,255,0))',
+                        }}
+                      />
+                      <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border-2 border-forest shadow-md relative z-10">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center relative z-10">
+                        {feature.title}
+                      </h3>
+                      <p className="text-mediumGray text-base font-sans leading-relaxed text-center relative z-10">
+                        {feature.description}
+                      </p>
+                    </article>
+                  }
+                  back={
+                    <article className="rounded-2xl p-8 shadow-lg border border-gray-200 bg-turquoise/10">
+                      <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
+                        {feature.title}
+                      </h3>
+                      <p className="text-darkGray text-base font-sans leading-relaxed text-center">
+                        {feature.description}
+                      </p>
+                    </article>
+                  }
+                />
               </AnimatedFadeUp>
             ))}
         </div>
@@ -292,27 +308,42 @@ export default function FeaturesCardLayout({
             .filter(f => f.category === 'governance')
             .map((feature, index) => (
               <AnimatedFadeUp key={index} delayMs={index * 120}>
-                <article className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 tilt-hover group overflow-hidden">
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background:
-                        'radial-gradient(600px 200px at 50% 0%, rgba(247,235,235,0.12), rgba(255,255,255,0))',
-                    }}
-                  />
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white relative z-10`}
-                  >
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center relative z-10">
-                    {feature.title}
-                  </h3>
-                  <p className="text-mediumGray text-base font-sans leading-relaxed text-center relative z-10">
-                    {feature.description}
-                  </p>
-                </article>
+                <FlipCard
+                  ariaLabel={`${feature.title}`}
+                  front={
+                    <article className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 tilt-hover group overflow-hidden">
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          background:
+                            'radial-gradient(600px 200px at 50% 0%, rgba(247,235,235,0.12), rgba(255,255,255,0))',
+                        }}
+                      />
+                      <div
+                        className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white relative z-10`}
+                      >
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center relative z-10">
+                        {feature.title}
+                      </h3>
+                      <p className="text-mediumGray text-base font-sans leading-relaxed text-center relative z-10">
+                        {feature.description}
+                      </p>
+                    </article>
+                  }
+                  back={
+                    <article className="rounded-2xl p-8 shadow-lg border border-gray-200 bg-rose/10">
+                      <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
+                        {feature.title}
+                      </h3>
+                      <p className="text-darkGray text-base font-sans leading-relaxed text-center">
+                        {feature.description}
+                      </p>
+                    </article>
+                  }
+                />
               </AnimatedFadeUp>
             ))}
         </div>
@@ -360,27 +391,42 @@ export default function FeaturesCardLayout({
             .filter(f => f.category === 'security')
             .map((feature, index) => (
               <AnimatedFadeUp key={index} delayMs={index * 120}>
-                <article className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 tilt-hover group overflow-hidden">
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background:
-                        'radial-gradient(600px 200px at 50% 0%, rgba(167,214,209,0.12), rgba(255,255,255,0))',
-                    }}
-                  />
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white relative z-10`}
-                  >
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center relative z-10">
-                    {feature.title}
-                  </h3>
-                  <p className="text-mediumGray text-base font-sans leading-relaxed text-center relative z-10">
-                    {feature.description}
-                  </p>
-                </article>
+                <FlipCard
+                  ariaLabel={`${feature.title}`}
+                  front={
+                    <article className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 tilt-hover group overflow-hidden">
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          background:
+                            'radial-gradient(600px 200px at 50% 0%, rgba(167,214,209,0.12), rgba(255,255,255,0))',
+                        }}
+                      />
+                      <div
+                        className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white relative z-10`}
+                      >
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center relative z-10">
+                        {feature.title}
+                      </h3>
+                      <p className="text-mediumGray text-base font-sans leading-relaxed text-center relative z-10">
+                        {feature.description}
+                      </p>
+                    </article>
+                  }
+                  back={
+                    <article className="rounded-2xl p-8 shadow-lg border border-gray-200 bg-turquoise/10">
+                      <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
+                        {feature.title}
+                      </h3>
+                      <p className="text-darkGray text-base font-sans leading-relaxed text-center">
+                        {feature.description}
+                      </p>
+                    </article>
+                  }
+                />
               </AnimatedFadeUp>
             ))}
         </div>
@@ -430,27 +476,42 @@ export default function FeaturesCardLayout({
             .filter(f => f.category === 'multilingual')
             .map((feature, index) => (
               <AnimatedFadeUp key={index} delayMs={index * 120}>
-                <article className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 tilt-hover group overflow-hidden">
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background:
-                        'radial-gradient(600px 200px at 50% 0%, rgba(247,235,235,0.12), rgba(255,255,255,0))',
-                    }}
-                  />
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white relative z-10`}
-                  >
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center relative z-10">
-                    {feature.title}
-                  </h3>
-                  <p className="text-mediumGray text-base font-sans leading-relaxed text-center relative z-10">
-                    {feature.description}
-                  </p>
-                </article>
+                <FlipCard
+                  ariaLabel={`${feature.title}`}
+                  front={
+                    <article className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 tilt-hover group overflow-hidden">
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          background:
+                            'radial-gradient(600px 200px at 50% 0%, rgba(247,235,235,0.12), rgba(255,255,255,0))',
+                        }}
+                      />
+                      <div
+                        className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 text-white relative z-10`}
+                      >
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center relative z-10">
+                        {feature.title}
+                      </h3>
+                      <p className="text-mediumGray text-base font-sans leading-relaxed text-center relative z-10">
+                        {feature.description}
+                      </p>
+                    </article>
+                  }
+                  back={
+                    <article className="rounded-2xl p-8 shadow-lg border border-gray-200 bg-rose/10">
+                      <h3 className="text-xl mb-3 text-forest font-playfair font-bold leading-normal text-center">
+                        {feature.title}
+                      </h3>
+                      <p className="text-darkGray text-base font-sans leading-relaxed text-center">
+                        {feature.description}
+                      </p>
+                    </article>
+                  }
+                />
               </AnimatedFadeUp>
             ))}
         </div>

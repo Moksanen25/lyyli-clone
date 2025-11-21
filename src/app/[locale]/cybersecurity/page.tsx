@@ -8,6 +8,7 @@ import AccessControl from '@/components/cybersecurity/AccessControl';
 import ContinuousDevelopment from '@/components/cybersecurity/ContinuousDevelopment';
 import SecuritySupport from '@/components/cybersecurity/SecuritySupport';
 import CalendarPopup from '@/components/CalendarPopup';
+import Accordion from '@/components/ui/Accordion';
 
 interface PageProps {
   params: Promise<{
@@ -123,6 +124,147 @@ export default async function CybersecurityPage({ params }: PageProps) {
         </section>
       </div>
 
+      {/* Pillars row */}
+      <section className="border-t border-gray-100">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              {
+                key: 'encryption',
+                label: t['cybersecurity.pillars.encryption'] || 'Encryption',
+                icon: (
+                  <svg
+                    className="w-6 h-6 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 11c-1.657 0-3 1.343-3 3v3h6v-3c0-1.657-1.343-3-3-3zm0-7a4 4 0 00-4 4v3h8V8a4 4 0 00-4-4z"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                key: 'residency',
+                label: t['cybersecurity.pillars.residency'] || 'Data residency',
+                icon: (
+                  <svg
+                    className="w-6 h-6 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 3C7.03 3 3 7.03 3 12h0a9 9 0 0015.364 6.364A9 9 0 0012 3z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M2 12h20M12 2a15.3 15.3 0 010 20"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                key: 'access',
+                label: t['cybersecurity.pillars.access'] || 'Access control',
+                icon: (
+                  <svg
+                    className="w-6 h-6 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 11V7a4 4 0 10-8 0v4M5 11h14v10H5z"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                key: 'compliance',
+                label: t['cybersecurity.pillars.compliance'] || 'Compliance',
+                icon: (
+                  <svg
+                    className="w-6 h-6 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m2-5H7a2 2 0 00-2 2v12a2 2 0 002 2h5l5-5V4a2 2 0 00-2-2z"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                key: 'incident',
+                label:
+                  t['cybersecurity.pillars.incident'] || 'Incident response',
+                icon: (
+                  <svg
+                    className="w-6 h-6 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4m0 4h.01M4.93 4.93l14.14 14.14"
+                    />
+                  </svg>
+                ),
+              },
+            ].map(p => (
+              <div
+                key={p.key}
+                className="bg-grayLight rounded-2xl border border-gray-200 p-4 flex flex-col items-center text-center"
+              >
+                <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center mb-2">
+                  {p.icon}
+                </div>
+                <div className="text-forest font-playfair font-bold">
+                  {p.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust badges */}
+      <section>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-3">
+            <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border border-forest text-forest bg-white shadow-sm">
+              {t['cybersecurity.badges.iso'] || 'ISO 27001 ready'}
+            </span>
+            <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border border-forest text-forest bg-white shadow-sm">
+              {t['cybersecurity.badges.gdpr'] || 'GDPR compliant'}
+            </span>
+            <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border border-turquoise text-turquoise bg-white shadow-sm">
+              {t['cybersecurity.badges.eu'] || 'EU data residency'}
+            </span>
+          </div>
+        </div>
+      </section>
+
       {/* Security Highlights */}
       <section className="border-t border-gray-100 relative z-20 mt-8">
         <div className="container mx-auto px-4 py-24">
@@ -202,41 +344,55 @@ export default async function CybersecurityPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Security Features */}
-      <SecurityFeatures locale={currentLocale} />
-
-      {/* Technical Architecture */}
-      <section className="bg-gradient-to-br from-rose/5 to-turquoise/5 py-16 lg:py-24">
+      {/* Structured Accordions */}
+      <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
-          <TechnicalArchitecture locale={currentLocale} />
-        </div>
-      </section>
-
-      {/* GDPR Compliance */}
-      <section className="border-t border-gray-100 py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <GDPRCompliance locale={currentLocale} />
-        </div>
-      </section>
-
-      {/* Access Control */}
-      <section className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <AccessControl locale={currentLocale} />
-        </div>
-      </section>
-
-      {/* Continuous Development */}
-      <section className="border-t border-gray-100 py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <ContinuousDevelopment locale={currentLocale} />
-        </div>
-      </section>
-
-      {/* Security Support */}
-      <section className="border-t border-gray-100 py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <SecuritySupport locale={currentLocale} />
+          <Accordion
+            items={[
+              {
+                id: 'encryption',
+                title:
+                  t['cybersecurity.sections.encryption'] ||
+                  'Encryption & data protection',
+                content: <SecurityFeatures locale={currentLocale} />,
+                defaultOpen: true,
+              },
+              {
+                id: 'architecture',
+                title:
+                  t['cybersecurity.sections.architecture'] ||
+                  'Technical architecture',
+                content: <TechnicalArchitecture locale={currentLocale} />,
+              },
+              {
+                id: 'gdpr',
+                title:
+                  t['cybersecurity.sections.gdpr'] ||
+                  'GDPR compliance & data processing',
+                content: <GDPRCompliance locale={currentLocale} />,
+              },
+              {
+                id: 'access',
+                title:
+                  t['cybersecurity.sections.accessControl'] ||
+                  'Access control & auditing',
+                content: <AccessControl locale={currentLocale} />,
+              },
+              {
+                id: 'continuous',
+                title:
+                  t['cybersecurity.sections.continuous'] ||
+                  'Continuous development & incident response',
+                content: <ContinuousDevelopment locale={currentLocale} />,
+              },
+              {
+                id: 'support',
+                title:
+                  t['cybersecurity.sections.support'] || 'Security support',
+                content: <SecuritySupport locale={currentLocale} />,
+              },
+            ]}
+          />
         </div>
       </section>
 
