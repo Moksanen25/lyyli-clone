@@ -127,6 +127,7 @@ const PricingCards = memo(
       threshold: 0.1,
       triggerOnce: true,
     });
+    const [showAllMobile, setShowAllMobile] = useState(false);
 
     // Feature translation mapping
     const translateFeature = (feature: string): string => {
@@ -319,7 +320,13 @@ const PricingCards = memo(
             {translatedPlans.map((plan, index) => (
               <MotionDiv
                 key={plan.name}
-                className={`relative ${index >= 3 ? 'md:col-span-2 lg:col-span-3 xl:col-span-1' : ''}`}
+                className={`relative ${
+                  index >= 3 ? 'md:col-span-2 lg:col-span-3 xl:col-span-1' : ''
+                } ${
+                  plan.name !== 'Growth' && !showAllMobile
+                    ? 'hidden md:block'
+                    : 'block'
+                }`}
                 variants={cardVariants}
               >
                 {/* Plan Card */}
@@ -464,6 +471,21 @@ const PricingCards = memo(
               </MotionDiv>
             ))}
           </MotionDiv>
+
+          {/* Mobile toggle for additional plans */}
+          <div className="mt-6 text-center md:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAllMobile(prev => !prev)}
+              className="inline-flex items-center px-4 py-2 rounded-full border border-forest text-forest font-semibold hover:bg-forest hover:text-white transition-colors duration-200"
+              aria-expanded={showAllMobile}
+              aria-controls="pricing-cards"
+            >
+              {showAllMobile
+                ? translations?.['pricing.hidePlans'] || 'Show fewer plans'
+                : translations?.['pricing.showAllPlans'] || 'Show all plans'}
+            </button>
+          </div>
 
           {/* Per-user note under cards */}
           <div className="w-full text-center mt-12">
