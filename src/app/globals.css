@@ -380,10 +380,15 @@ h1, h2, h3, h4, h5, h6 {
 .flip-back {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 .flip-front,
 .flip-back {
   position: relative;
+}
+.flip-front {
+  /* Ensure front face is treated as a 3D plane so backface-visibility works when parent rotates */
+  transform: rotateY(0deg);
 }
 .flip-back {
   position: absolute;
