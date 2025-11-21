@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 
 interface AnimatedNumberProps {
   value: number;
@@ -18,14 +18,18 @@ interface AnimatedNumberProps {
 export default function AnimatedNumber({
   value,
   duration = 2000,
-  suffix = "",
-  prefix = "",
+  suffix = '',
+  prefix = '',
   decimals = 0,
-  separator = ",",
+  separator = ',',
 }: AnimatedNumberProps) {
   const [count, setCount] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
+  const reduceMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   useEffect(() => {
     if (!ref.current) return;
@@ -46,6 +50,10 @@ export default function AnimatedNumber({
 
   useEffect(() => {
     if (!isInView) return;
+    if (reduceMotion) {
+      setCount(value);
+      return;
+    }
 
     const steps = 60;
     const increment = value / steps;
@@ -64,9 +72,8 @@ export default function AnimatedNumber({
         if (current >= value) {
           setCount(value);
           return;
-        } 
-          setCount(current);
-        
+        }
+        setCount(current);
       }
 
       animationFrame = requestAnimationFrame(animate);
@@ -79,16 +86,16 @@ export default function AnimatedNumber({
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, [value, duration, isInView]);
+  }, [value, duration, isInView, reduceMotion]);
 
   const formatNumber = (num: number): string => {
     const fixed = num.toFixed(decimals);
-    const parts = fixed.split(".");
-    
+    const parts = fixed.split('.');
+
     // Add thousand separators
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
-    
-    return parts.join(".");
+
+    return parts.join('.');
   };
 
   return (
@@ -99,4 +106,3 @@ export default function AnimatedNumber({
     </span>
   );
 }
-

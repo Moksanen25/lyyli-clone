@@ -338,6 +338,30 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-sm);
 }
 
+/* Card tilt/hover utility (respect reduced motion) */
+.tilt-hover {
+  will-change: transform, box-shadow;
+  transform: translateY(0) scale(1);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.tilt-hover:hover,
+.tilt-hover:focus-visible {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-hover,
+  .tilt-hover:hover,
+  .tilt-hover:focus-visible {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* H1: Main Heading - Playfair Display Bold */
 h1 {
   font-family: 'Playfair Display', serif;
