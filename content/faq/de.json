@@ -1,0 +1,84 @@
+{
+  "categories": [
+    {
+      "id": "general",
+      "title": "General Questions",
+      "questions": [
+        {
+          "id": "what-is-lyyli",
+          "question": "What is Lyyli?",
+          "answer": "Lyyli is an AI-powered communication assistant designed for professional service organizations. We help streamline internal and external communications across multiple channels including Slack, Teams, and email."
+        },
+        {
+          "id": "who-is-lyyli-for",
+          "question": "Who is Lyyli designed for?",
+          "answer": "Lyyli is designed for professional service organizations with 50-1000 employees. We're perfect for operations managers, communications directors, and leadership teams who need to coordinate complex communication workflows."
+        }
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Features & Capabilities",
+      "questions": [
+        {
+          "id": "what-channels",
+          "question": "What communication channels does Lyyli support?",
+          "answer": "Lyyli integrates with Slack, Microsoft Teams, email (Outlook & Gmail), and provides a web interface. We're continuously adding more integrations based on customer needs."
+        },
+        {
+          "id": "ai-capabilities",
+          "question": "What can Lyyli's AI do?",
+          "answer": "Our AI can generate context-appropriate messages, suggest communication improvements, maintain brand voice consistency, provide real-time translations, and analyze communication patterns to optimize your workflows."
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security & Compliance",
+      "questions": [
+        {
+          "id": "data-security",
+          "question": "How secure is my data?",
+          "answer": "We use AES-256 encryption for all data in transit and at rest. All servers are located in EU data centers, and we're fully GDPR compliant. Your data is never shared with third parties or used to train AI models."
+        },
+        {
+          "id": "gdpr-compliance",
+          "question": "Is Lyyli GDPR compliant?",
+          "answer": "Yes, Lyyli is fully GDPR compliant. We have a dedicated Data Protection Officer, implement data minimization principles, and provide full data portability and deletion capabilities."
+        }
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Pricing & Plans",
+      "questions": [
+        {
+          "id": "pricing-model",
+          "question": "How does pricing work?",
+          "answer": "We offer transparent per-user-per-month pricing across multiple tiers: Free, Launch, Growth, Professional, and Enterprise. All plans include a 30-day free trial with no credit card required."
+        },
+        {
+          "id": "free-trial",
+          "question": "What's included in the free trial?",
+          "answer": "Our 30-day free trial includes full access to all features in your chosen plan. No credit card required, and you can cancel anytime."
+        }
+      ]
+    },
+    {
+      "id": "getting-started",
+      "title": "Getting Started",
+      "questions": [
+        {
+          "id": "how-to-start",
+          "question": "How do I get started with Lyyli?",
+          "answer": "Sign up for a free trial, connect your communication channels, and complete our 5-minute guided onboarding. Our AI will learn your brand voice and communication patterns as you use it."
+        },
+        {
+          "id": "onboarding-time",
+          "question": "How long does onboarding take?",
+          "answer": "Our AI-guided onboarding takes less than 5 minutes. However, the AI continues to learn and improve its understanding of your communication style over time."
+        }
+      ]
+    }
+  ]
+}

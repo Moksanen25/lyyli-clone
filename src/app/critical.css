@@ -103,13 +103,13 @@ body {
 }
 
 .btn-secondary {
-  border: 2px solid var(--white);
-  color: var(--white);
+  border: 2px solid var(--forest);
+  color: var(--forest);
 }
 
 .btn-secondary:hover {
-  background: var(--white);
-  color: var(--forest);
+  background: var(--forest);
+  color: var(--white);
 }
 
 /* Critical z-index for layering */

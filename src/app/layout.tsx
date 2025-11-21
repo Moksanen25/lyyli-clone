@@ -1,25 +1,26 @@
-import type { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/react";
-import { fontVars } from "@/lib/fonts";
-import "./critical.css";
+import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/react';
+import { fontVars } from '@/lib/fonts';
+import './critical.css';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Lyyli.ai - AI Communication Assistant",
-  description: "Redirecting to localized version...",
+  title: 'Lyyli.ai - AI Communication Assistant',
+  description: 'Redirecting to localized version...',
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/icons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
-    shortcut: "/favicon.ico",
-    apple: "/icons/apple-touch-icon.png",
+    shortcut: '/favicon.ico',
+    apple: '/icons/apple-touch-icon.png',
   },
-  manifest: "/site.webmanifest",
+  manifest: '/site.webmanifest',
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2F5D50",
+  themeColor: '#2F5D50',
 };
 
 export default function RootLayout({
@@ -34,7 +35,12 @@ export default function RootLayout({
         {/* next/font/google self-hosts and preloads fonts, sets font-display: swap */}
 
         {/* Preload critical images in available formats */}
-        <link rel="preload" href="/images/logos/Lyyli.ai_no_BG.webp" as="image" type="image/png" />
+        <link
+          rel="preload"
+          href="/images/logos/Lyyli.ai_no_BG.webp"
+          as="image"
+          type="image/png"
+        />
 
         {/* DNS Prefetch for external resources */}
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
@@ -47,11 +53,35 @@ export default function RootLayout({
 
         {/* Favicon and app icons */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/icons/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/icons/favicon-32x32.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/icons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="/icons/icon-192x192.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="/icons/icon-512x512.png"
+        />
 
         {/* Web App Manifest */}
         <link rel="manifest" href="/site.webmanifest" />

@@ -10,48 +10,51 @@ const PRODUCTION_DOMAIN = CANONICAL_URL;
 /**
  * Generate a canonical URL for the given path
  * Always returns a production URL regardless of current environment
- * 
+ *
  * @param path - The path (with or without leading slash)
- * @param locale - The locale (en, fi)
+ * @param locale - The locale (en, fi, de, et, sv)
  * @returns Full canonical URL pointing to lyyli.ai
  */
 export function generateCanonicalUrl(path: string, locale: string): string {
   // Ensure path starts with /
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  
+
   // If path already includes locale, use as-is
   // Otherwise, prepend locale
-  const localizedPath = normalizedPath.startsWith(`/${locale}/`) 
-    ? normalizedPath 
+  const localizedPath = normalizedPath.startsWith(`/${locale}/`)
+    ? normalizedPath
     : `/${locale}${normalizedPath === '/' ? '' : normalizedPath}`;
-    
+
   return `${PRODUCTION_DOMAIN}${localizedPath}`;
 }
 
 /**
  * Generate canonical URL for a specific page in a locale
- * 
+ *
  * @param pagePath - Page path without locale (e.g., '/about', '/blog/post-slug')
- * @param locale - The locale (en, fi)
+ * @param locale - The locale (en, fi, de, et, sv)
  * @returns Full canonical URL
  */
-export function generatePageCanonicalUrl(pagePath: string, locale: string): string {
+export function generatePageCanonicalUrl(
+  pagePath: string,
+  locale: string
+): string {
   // Remove leading slash if present, we'll add it back
   const cleanPath = pagePath.startsWith('/') ? pagePath.substring(1) : pagePath;
-  
+
   // For root page, use just the locale
   if (!cleanPath || cleanPath === '') {
     return `${PRODUCTION_DOMAIN}/${locale}`;
   }
-  
+
   return `${PRODUCTION_DOMAIN}/${locale}/${cleanPath}`;
 }
 
 /**
  * Generate canonical URL for blog posts
- * 
+ *
  * @param slug - Blog post slug
- * @param locale - The locale (en, fi)
+ * @param locale - The locale (en, fi, de, et, sv)
  * @returns Full canonical URL for blog post
  */
 export function generateBlogCanonicalUrl(slug: string, locale: string): string {
@@ -60,17 +63,17 @@ export function generateBlogCanonicalUrl(slug: string, locale: string): string {
 
 /**
  * Generate alternate URLs for different locales
- * 
+ *
  * @param path - The page path (with or without locale)
  * @param supportedLocales - Array of supported locales
  * @returns Object mapping locale to canonical URL
  */
 export function generateAlternateUrls(
-  path: string, 
-  supportedLocales: string[] = ['en', 'fi']
+  path: string,
+  supportedLocales: string[] = ['en', 'fi', 'de', 'et', 'sv']
 ): Record<string, string> {
   const alternates: Record<string, string> = {};
-  
+
   // Remove locale from path if present
   let cleanPath = path;
   for (const locale of supportedLocales) {
@@ -79,23 +82,25 @@ export function generateAlternateUrls(
       break;
     }
   }
-  
+
   // Generate URL for each locale
   supportedLocales.forEach(locale => {
     if (cleanPath === '/') {
       alternates[locale] = `${PRODUCTION_DOMAIN}/${locale}`;
     } else {
-      const normalizedPath = cleanPath.startsWith('/') ? cleanPath.substring(1) : cleanPath;
+      const normalizedPath = cleanPath.startsWith('/')
+        ? cleanPath.substring(1)
+        : cleanPath;
       alternates[locale] = `${PRODUCTION_DOMAIN}/${locale}/${normalizedPath}`;
     }
   });
-  
+
   return alternates;
 }
 
 /**
  * Validate that a URL points to the production domain
- * 
+ *
  * @param url - URL to validate
  * @returns true if URL points to lyyli.ai, false otherwise
  */
@@ -118,20 +123,20 @@ export function getProductionDomain(): string {
 
 /**
  * Generate hreflang links for a page
- * Returns an object with en, fi, and x-default URLs
- * 
+ * Returns an object with en, fi, de, et, sv, and x-default URLs
+ *
  * @param path - The page path without locale (e.g., '/about', '/blog/post-slug')
- * @param supportedLocales - Array of supported locales (default: ['en', 'fi'])
+ * @param supportedLocales - Array of supported locales (default: ['en', 'fi', 'de', 'et', 'sv'])
  * @param defaultLocale - The default locale for x-default (default: 'en')
  * @returns Object with locale codes as keys and full URLs as values
  */
 export function generateHreflangLinks(
   path: string,
-  supportedLocales: string[] = ['en', 'fi'],
+  supportedLocales: string[] = ['en', 'fi', 'de', 'et', 'sv'],
   defaultLocale: string = 'en'
 ): Record<string, string> {
   const hreflangLinks: Record<string, string> = {};
-  
+
   // Remove locale from path if present
   let cleanPath = path;
   for (const locale of supportedLocales) {
@@ -140,61 +145,68 @@ export function generateHreflangLinks(
       break;
     }
   }
-  
+
   // Ensure cleanPath starts with /
   if (!cleanPath.startsWith('/')) {
     cleanPath = `/${cleanPath}`;
   }
-  
+
   // Generate URL for each locale
   supportedLocales.forEach(locale => {
     if (cleanPath === '/') {
       hreflangLinks[locale] = `${PRODUCTION_DOMAIN}/${locale}`;
     } else {
-      const normalizedPath = cleanPath.startsWith('/') ? cleanPath.substring(1) : cleanPath;
-      hreflangLinks[locale] = `${PRODUCTION_DOMAIN}/${locale}/${normalizedPath}`;
+      const normalizedPath = cleanPath.startsWith('/')
+        ? cleanPath.substring(1)
+        : cleanPath;
+      hreflangLinks[locale] =
+        `${PRODUCTION_DOMAIN}/${locale}/${normalizedPath}`;
     }
   });
-  
+
   // Add x-default pointing to the default locale
   if (cleanPath === '/') {
     hreflangLinks['x-default'] = `${PRODUCTION_DOMAIN}/${defaultLocale}`;
   } else {
-    const normalizedPath = cleanPath.startsWith('/') ? cleanPath.substring(1) : cleanPath;
-    hreflangLinks['x-default'] = `${PRODUCTION_DOMAIN}/${defaultLocale}/${normalizedPath}`;
+    const normalizedPath = cleanPath.startsWith('/')
+      ? cleanPath.substring(1)
+      : cleanPath;
+    hreflangLinks['x-default'] =
+      `${PRODUCTION_DOMAIN}/${defaultLocale}/${normalizedPath}`;
   }
-  
+
   return hreflangLinks;
 }
 
 /**
  * Generate hreflang metadata for Next.js alternates.languages
  * This is used in page metadata generation
- * 
+ *
  * @param path - The page path without locale
- * @param supportedLocales - Array of supported locales (default: ['en', 'fi'])
+ * @param supportedLocales - Array of supported locales (default: ['en', 'fi', 'de', 'et', 'sv'])
  * @returns Object suitable for metadata.alternates.languages
  */
 export function generateHreflangMetadata(
   path: string,
-  supportedLocales: string[] = ['en', 'fi']
+  supportedLocales: string[] = ['en', 'fi', 'de', 'et', 'sv']
 ): Record<string, string> {
   const alternates = generateAlternateUrls(path, supportedLocales);
-  
+
   // Add x-default
   const defaultLocale = 'en';
-  const cleanPath = path.replace(/^\/(en|fi)/, '') || '/';
-  alternates['x-default'] = cleanPath === '/' 
-    ? `${PRODUCTION_DOMAIN}/${defaultLocale}`
-    : `${PRODUCTION_DOMAIN}/${defaultLocale}${cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`}`;
-  
+  const cleanPath = path.replace(/^\/(en|fi|de|et|sv)/, '') || '/';
+  alternates['x-default'] =
+    cleanPath === '/'
+      ? `${PRODUCTION_DOMAIN}/${defaultLocale}`
+      : `${PRODUCTION_DOMAIN}/${defaultLocale}${cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`}`;
+
   return alternates;
 }
 
 /**
  * Validate hreflang URLs
  * Ensures that each locale URL points to the correct locale path
- * 
+ *
  * @param hreflangLinks - Object with locale codes and URLs
  * @returns Object with validation results
  */
@@ -203,7 +215,7 @@ export function validateHreflangLinks(hreflangLinks: Record<string, string>): {
   errors: string[];
 } {
   const errors: string[] = [];
-  
+
   for (const [locale, url] of Object.entries(hreflangLinks)) {
     // Skip x-default from locale-specific validation
     if (locale === 'x-default') {
@@ -212,28 +224,30 @@ export function validateHreflangLinks(hreflangLinks: Record<string, string>): {
       }
       continue;
     }
-    
+
     // Validate URL format
     if (!isValidCanonicalUrl(url)) {
       errors.push(`${locale}: Invalid URL format: ${url}`);
       continue;
     }
-    
+
     // Validate that URL includes the correct locale
     try {
       const urlObj = new URL(url);
       const pathParts = urlObj.pathname.split('/').filter(Boolean);
-      
+
       if (pathParts.length === 0 || pathParts[0] !== locale) {
-        errors.push(`${locale}: URL does not include correct locale in path: ${url}`);
+        errors.push(
+          `${locale}: URL does not include correct locale in path: ${url}`
+        );
       }
-    } catch (error) {
+    } catch {
       errors.push(`${locale}: Failed to parse URL: ${url}`);
     }
   }
-  
+
   return {
     valid: errors.length === 0,
-    errors
+    errors,
   };
 }

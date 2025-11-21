@@ -1,0 +1,84 @@
+{
+  "categories": [
+    {
+      "id": "general",
+      "title": "Allmänna frågor",
+      "questions": [
+        {
+          "id": "what-is-lyyli",
+          "question": "Vad är Lyyli?",
+          "answer": "Lyyli är en AI‑driven kommunikationsassistent för expertorganisationer. Vi effektiviserar intern och extern kommunikation över flera kanaler som Slack, Teams och e‑post."
+        },
+        {
+          "id": "who-is-lyyli-for",
+          "question": "Vem är Lyyli avsedd för?",
+          "answer": "Lyyli är utformad för expertorganisationer med 50–1000 personer. Perfekt för verksamhetsledare, kommunikationschefer och ledningsgrupper som behöver koordinera komplexa kommunikationsflöden."
+        }
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Funktioner & förmågor",
+      "questions": [
+        {
+          "id": "what-channels",
+          "question": "Vilka kanaler stöder Lyyli?",
+          "answer": "Lyyli integreras med Slack, Microsoft Teams, e‑post (Outlook & Gmail) och erbjuder ett webbgränssnitt. Vi lägger kontinuerligt till fler integrationer efter behov."
+        },
+        {
+          "id": "ai-capabilities",
+          "question": "Vad kan Lyylis AI göra?",
+          "answer": "AI:n genererar kontextanpassade meddelanden, föreslår förbättringar, håller varumärkeston konsekvent, erbjuder realtidsöversättning och analyserar mönster för att optimera arbetsflöden."
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Säkerhet & compliance",
+      "questions": [
+        {
+          "id": "data-security",
+          "question": "Hur säker är min data?",
+          "answer": "Vi använder AES‑256‑kryptering för all data i överföring och i vila. Alla servrar finns inom EU och vi följer GDPR. Din data delas aldrig med tredje part eller används för att träna modeller."
+        },
+        {
+          "id": "gdpr-compliance",
+          "question": "Är Lyyli GDPR‑kompatibelt?",
+          "answer": "Ja. Vi har ett dedikerat dataskyddsombud (DPO), tillämpar dataminimering och erbjuder dataportabilitet och raderingsmöjlighet."
+        }
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Priser & planer",
+      "questions": [
+        {
+          "id": "pricing-model",
+          "question": "Hur fungerar prissättningen?",
+          "answer": "Transparent pris per användare och månad i planerna Free, Launch, Growth, Professional och Enterprise. Alla planer inkluderar 30 dagars gratis provperiod utan kreditkort."
+        },
+        {
+          "id": "free-trial",
+          "question": "Vad ingår i gratis provperioden?",
+          "answer": "30 dagars full tillgång till funktionerna i vald plan. Inget kreditkort krävs och du kan avsluta när som helst."
+        }
+      ]
+    },
+    {
+      "id": "getting-started",
+      "title": "Kom igång",
+      "questions": [
+        {
+          "id": "how-to-start",
+          "question": "Hur kommer jag igång med Lyyli?",
+          "answer": "Registrera ett gratis test, koppla era kanaler och genomför vår guidning på fem minuter. AI:n lär sig er tonalitet och era mönster när ni använder tjänsten."
+        },
+        {
+          "id": "onboarding-time",
+          "question": "Hur lång tid tar onboardingen?",
+          "answer": "Den AI‑guidad onboardingen tar mindre än fem minuter, men AI:n fortsätter lära sig och förbättras över tid."
+        }
+      ]
+    }
+  ]
+}

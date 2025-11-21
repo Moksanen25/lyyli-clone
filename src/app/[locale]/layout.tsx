@@ -17,8 +17,6 @@ import {
   combineSchemas,
 } from '@/lib/structured-data';
 
-import '@/app/globals.css';
-
 export const metadata: Metadata = {
   title: {
     default: 'Lyyli.ai - AI Communication Assistant',
@@ -54,6 +52,9 @@ export const metadata: Metadata = {
     languages: {
       en: '/en',
       fi: '/fi',
+      de: '/de',
+      et: '/et',
+      sv: '/sv',
     },
   },
   openGraph: {
@@ -104,7 +105,13 @@ interface LocaleLayoutProps {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'fi' }];
+  return [
+    { locale: 'en' },
+    { locale: 'fi' },
+    { locale: 'de' },
+    { locale: 'et' },
+    { locale: 'sv' },
+  ];
 }
 
 export default async function LocaleLayout({
@@ -114,7 +121,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure locale is supported
-  const supportedLocales = ['en', 'fi'];
+  const supportedLocales = ['en', 'fi', 'de', 'et', 'sv'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
 
   // Get translations
@@ -140,16 +147,7 @@ export default async function LocaleLayout({
         {/* hreflang tags are generated per-page via metadata.alternates.languages */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {/* Critical font preloading for LCP optimization */}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-          as="style"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-        />
+        {/* Fonts are provided via next/font in lib/fonts.ts to match brand */}
 
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />

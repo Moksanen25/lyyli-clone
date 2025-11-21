@@ -3,7 +3,7 @@
 ## ⚠️ CRITICAL: NEVER DELETE OR MODIFY WITHOUT EXPLICIT PERMISSION
 
 ### 🎯 I18N STANDARDS
-- **Languages**: Finnish (fi) and English (en)
+- **Languages**: English (en), Finnish (fi), German (de), Estonian (et), Swedish (sv)
 - **Framework**: next-intl
 - **Locale Routing**: [locale] dynamic routing
 - **Translation Management**: Centralized message files
@@ -13,6 +13,9 @@
 ### **Language Defaults**
 - **EN = oletus** (English = default)
 - **FI = /fi** (Finnish = /fi prefix)
+- **DE = /de** (German = /de prefix)
+- **ET = /et** (Estonian = /et prefix)
+- **SV = /sv** (Swedish = /sv prefix)
 
 ### **Locale Structure**
 ```
@@ -22,7 +25,22 @@
 │   ├── navigation.ts
 │   ├── forms.ts
 │   └── seo.ts
-└── fi/
+├── fi/
+│   ├── common.ts
+│   ├── navigation.ts
+│   ├── forms.ts
+│   └── seo.ts
+├── de/
+│   ├── common.ts
+│   ├── navigation.ts
+│   ├── forms.ts
+│   └── seo.ts
+├── et/
+│   ├── common.ts
+│   ├── navigation.ts
+│   ├── forms.ts
+│   └── seo.ts
+└── sv/
     ├── common.ts
     ├── navigation.ts
     ├── forms.ts
@@ -31,7 +49,7 @@
 
 ### **Language Detection**
 - **Default Language**: English (no prefix)
-- **Finnish Language**: `/fi` prefix required
+- **Other Languages**: `/fi`, `/de`, `/et`, `/sv` prefixes required
 - **Fallback**: English for missing translations
 - **Browser Language**: Respect user's browser language preference
 
@@ -72,19 +90,23 @@ export default {
 ### **Route Preservation**
 - **Säilytä reitti kieltä vaihtaessa** (Preserve route when changing language)
 - **Examples**:
-  - `/pricing` ↔ `/fi/pricing`
-  - `/features/security` ↔ `/fi/features/security`
-  - `/blog/ai-communication` ↔ `/fi/blog/ai-communication`
+  - `/pricing` ↔ `/fi/pricing` ↔ `/de/pricing` ↔ `/et/pricing` ↔ `/sv/pricing`
+  - `/features/security` ↔ `/fi/features/security` ↔ `/de/features/security`
+  - `/blog/post-slug` ↔ `/fi/blog/post-slug` ↔ `/sv/blog/post-slug`
 
 ### **URL Structure**
 ```typescript
 // Route examples
 /                    // English home
 /fi                  // Finnish home
+/de                  // German home
+/et                  // Estonian home
+/sv                  // Swedish home
 /pricing            // English pricing
 /fi/pricing         // Finnish pricing
-/features/security  // English security features
-/fi/features/security // Finnish security features
+/de/pricing         // German pricing
+/et/pricing         // Estonian pricing
+/sv/pricing         // Swedish pricing
 ```
 
 ### **Language Switcher Implementation**
@@ -104,7 +126,7 @@ export default {
 ## 🔍 SEO INTERNATIONALIZATION
 
 ### **Hreflang Implementation**
-- **Add hreflang (en, fi)**: Language alternatives for search engines
+- **Add hreflang (en, fi, de, et, sv)**: Language alternatives for search engines
 - **Alternates**: Provide language alternatives for each page
 - **Canonical URLs**: Set canonical URL for each language version
 
@@ -117,20 +139,26 @@ export default {
   canonical={`${baseUrl}/${locale}${pathname}`}
   alternates={{
     'en': `${baseUrl}/en${pathname}`,
-    'fi': `${baseUrl}/fi${pathname}`
+    'fi': `${baseUrl}/fi${pathname}`,
+    'de': `${baseUrl}/de${pathname}`,
+    'et': `${baseUrl}/et${pathname}`,
+    'sv': `${baseUrl}/sv${pathname}`
   }}
   hreflang={[
     { lang: 'en', url: `${baseUrl}/en${pathname}` },
-    { lang: 'fi', url: `${baseUrl}/fi${pathname}` }
+    { lang: 'fi', url: `${baseUrl}/fi${pathname}` },
+    { lang: 'de', url: `${baseUrl}/de${pathname}` },
+    { lang: 'et', url: `${baseUrl}/et${pathname}` },
+    { lang: 'sv', url: `${baseUrl}/sv${pathname}` }
   ]}
 />
 ```
 
 ### **SEO Requirements**
-- **Hreflang**: `<link rel="alternate" hreflang="en" href="...">`
-- **Alternates**: `<link rel="alternate" hreflang="fi" href="...">`
+- **Hreflang**: `<link rel="alternate" hreflang="en|fi|de|et|sv" href="...">`
+- **Alternates**: Provide for all supported locales (en, fi, de, et, sv)
 - **Canonical**: `<link rel="canonical" href="...">`
-- **Language Meta**: `<meta property="og:locale" content="en_US">`
+- **Language Meta**: `<meta property="og:locale" content="en_US|fi_FI|de_DE|et_EE|sv_SE">`
 
 ## 🏷️ CONTENT TRANSLATION
 
@@ -185,7 +213,7 @@ export default getRequestConfig(async ({ locale }) => ({
   messages: (await import(`../locales/${locale}/index.ts`)).default
 }));
 
-export const locales = ['en', 'fi'];
+export const locales = ['en', 'fi', 'de', 'et', 'sv'];
 export const defaultLocale = 'en';
 ```
 
@@ -195,7 +223,7 @@ export const defaultLocale = 'en';
 import createMiddleware from 'next-intl/middleware';
 
 export default createMiddleware({
-  locales: ['en', 'fi'],
+  locales: ['en', 'fi', 'de', 'et', 'sv'],
   defaultLocale: 'en',
   localePrefix: 'as-needed'
 });
@@ -245,16 +273,21 @@ export const config = {
 4. **User Permission Required**: Cannot be changed without explicit command
 
 ### 📋 IMPLEMENTATION CHECKLIST
-- [ ] Language defaults: EN = default, FI = /fi
+- [x] Language defaults: EN = default, FI/DE/ET/SV = /fi, /de, /et, /sv
 - [ ] No hardcoded texts - use translation keys
-- [ ] Locale files: /locales/en/*.ts and /locales/fi/*.ts
+- [x] Locale files: /locales/en/*.ts, /locales/fi/*.ts, /locales/de/*.ts, /locales/et/*.ts, /locales/sv/*.ts
 - [ ] Route preservation when switching languages
-- [ ] SEO: hreflang, alternates, canonical URLs
+- [x] SEO: hreflang, alternates, canonical URLs (5 languages)
 - [ ] Alt texts, placeholders, and meta tags translated
-- [ ] next-intl framework configured
-- [ ] Middleware for locale routing
-- [ ] Translation key-value structure
+- [x] next-intl framework configured for 5 languages
+- [x] Middleware for locale routing (5 languages)
+- [ ] Translation key-value structure (653 keys per language)
 - [ ] Responsive design for different text lengths
+
+### 🌐 MULTI-LANGUAGE NOTES
+- **Help & Support**: English and Finnish only (other locales redirect to English)
+- **Blog Content**: Separate directories for each locale (when content is available)
+- **Legal Documents**: Translated for each locale (when content is available)
 
 **THIS FILE IS PROTECTED - DO NOT REMOVE OR MODIFY WITHOUT EXPLICIT USER REQUEST**
 

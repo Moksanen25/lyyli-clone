@@ -52,6 +52,42 @@ const staticPages = [
   { path: '/fi/waitlist', priority: 0.5, changefreq: 'monthly' },
   { path: '/fi/privacy', priority: 0.3, changefreq: 'yearly' },
   { path: '/fi/cookies', priority: 0.3, changefreq: 'yearly' },
+
+  // German pages
+  { path: '/de', priority: 0.9, changefreq: 'weekly' },
+  { path: '/de/features', priority: 0.8, changefreq: 'monthly' },
+  { path: '/de/pricing', priority: 0.8, changefreq: 'monthly' },
+  { path: '/de/about', priority: 0.7, changefreq: 'monthly' },
+  { path: '/de/contact', priority: 0.6, changefreq: 'monthly' },
+  { path: '/de/blog', priority: 0.7, changefreq: 'weekly' },
+  { path: '/de/security', priority: 0.7, changefreq: 'monthly' },
+  { path: '/de/waitlist', priority: 0.5, changefreq: 'monthly' },
+  { path: '/de/privacy', priority: 0.3, changefreq: 'yearly' },
+  { path: '/de/cookies', priority: 0.3, changefreq: 'yearly' },
+
+  // Estonian pages
+  { path: '/et', priority: 0.9, changefreq: 'weekly' },
+  { path: '/et/features', priority: 0.8, changefreq: 'monthly' },
+  { path: '/et/pricing', priority: 0.8, changefreq: 'monthly' },
+  { path: '/et/about', priority: 0.7, changefreq: 'monthly' },
+  { path: '/et/contact', priority: 0.6, changefreq: 'monthly' },
+  { path: '/et/blog', priority: 0.7, changefreq: 'weekly' },
+  { path: '/et/security', priority: 0.7, changefreq: 'monthly' },
+  { path: '/et/waitlist', priority: 0.5, changefreq: 'monthly' },
+  { path: '/et/privacy', priority: 0.3, changefreq: 'yearly' },
+  { path: '/et/cookies', priority: 0.3, changefreq: 'yearly' },
+
+  // Swedish pages
+  { path: '/sv', priority: 0.9, changefreq: 'weekly' },
+  { path: '/sv/features', priority: 0.8, changefreq: 'monthly' },
+  { path: '/sv/pricing', priority: 0.8, changefreq: 'monthly' },
+  { path: '/sv/about', priority: 0.7, changefreq: 'monthly' },
+  { path: '/sv/contact', priority: 0.6, changefreq: 'monthly' },
+  { path: '/sv/blog', priority: 0.7, changefreq: 'weekly' },
+  { path: '/sv/security', priority: 0.7, changefreq: 'monthly' },
+  { path: '/sv/waitlist', priority: 0.5, changefreq: 'monthly' },
+  { path: '/sv/privacy', priority: 0.3, changefreq: 'yearly' },
+  { path: '/sv/cookies', priority: 0.3, changefreq: 'yearly' },
 ];
 
 // Help pages
@@ -180,38 +216,45 @@ function generateHreflangAlternates(path) {
     return hreflangXml;
   }
 
+  const supportedLocales = ['en', 'fi', 'de', 'et', 'sv'];
+
   // Determine if this is a language-specific path
-  const isLangSpecific = path.startsWith('/en') || path.startsWith('/fi');
+  const isLangSpecific = supportedLocales.some(locale =>
+    path.startsWith(`/${locale}`)
+  );
 
   if (isLangSpecific) {
-    const currentLang = path.startsWith('/en') ? 'en' : 'fi';
-    const alternateLang = currentLang === 'en' ? 'fi' : 'en';
+    // Find current language
+    const currentLang = supportedLocales.find(locale =>
+      path.startsWith(`/${locale}`)
+    );
 
-    // Generate alternate path
-    let alternatePath;
-    if (path === '/en' || path === '/fi') {
-      alternatePath = `/${alternateLang}`;
+    if (!currentLang) return hreflangXml;
+
+    // Generate path without locale prefix
+    let pathWithoutLocale;
+    if (path === `/${currentLang}`) {
+      pathWithoutLocale = '';
     } else {
-      // Replace /en/ with /fi/ or vice versa
-      alternatePath = path.replace(`/${currentLang}`, `/${alternateLang}`);
+      pathWithoutLocale = path.replace(`/${currentLang}`, '');
     }
 
-    // Add hreflang links
-    hreflangXml += `    <xhtml:link rel="alternate" hreflang="${currentLang}" href="${baseUrl}${path}"/>\n`;
-    hreflangXml += `    <xhtml:link rel="alternate" hreflang="${alternateLang}" href="${baseUrl}${alternatePath}"/>\n`;
+    // Add hreflang links for all locales
+    supportedLocales.forEach(locale => {
+      const alternatePath = pathWithoutLocale
+        ? `/${locale}${pathWithoutLocale}`
+        : `/${locale}`;
+      hreflangXml += `    <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}${alternatePath}"/>\n`;
+    });
 
-    // Generate x-default path (English version)
-    let xDefaultPath;
-    if (path === '/en' || path === '/fi') {
-      xDefaultPath = '/en';
-    } else {
-      xDefaultPath = path.replace(`/${currentLang}`, '/en');
-    }
+    // Add x-default pointing to English version
+    const xDefaultPath = pathWithoutLocale ? `/en${pathWithoutLocale}` : '/en';
     hreflangXml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}${xDefaultPath}"/>\n`;
   } else {
-    // For non-language-specific paths, add both language versions
-    hreflangXml += `    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en${path === '/' ? '' : path}"/>\n`;
-    hreflangXml += `    <xhtml:link rel="alternate" hreflang="fi" href="${baseUrl}/fi${path === '/' ? '' : path}"/>\n`;
+    // For non-language-specific paths, add all language versions
+    supportedLocales.forEach(locale => {
+      hreflangXml += `    <xhtml:link rel="alternate" hreflang="${locale}" href="${baseUrl}/${locale}${path === '/' ? '' : path}"/>\n`;
+    });
     hreflangXml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/en${path === '/' ? '' : path}"/>\n`;
   }
 
@@ -246,53 +289,35 @@ function generateSitemap() {
     xml += `  </url>\n`;
   }
 
-  // Add blog posts
-  const enBlogPosts = getBlogPosts('en');
-  const fiBlogPosts = getBlogPosts('fi');
+  // Add blog posts for all locales
+  const locales = ['en', 'fi', 'de', 'et', 'sv'];
 
-  for (const post of enBlogPosts) {
-    xml += `  <url>\n`;
-    xml += `    <loc>${baseUrl}${post.path}</loc>\n`;
-    xml += generateHreflangAlternates(post.path);
-    xml += `    <lastmod>${currentDate}</lastmod>\n`;
-    xml += `    <changefreq>${post.changefreq}</changefreq>\n`;
-    xml += `    <priority>${post.priority}</priority>\n`;
-    xml += `  </url>\n`;
-  }
+  locales.forEach(locale => {
+    const blogPosts = getBlogPosts(locale);
+    for (const post of blogPosts) {
+      xml += `  <url>\n`;
+      xml += `    <loc>${baseUrl}${post.path}</loc>\n`;
+      xml += generateHreflangAlternates(post.path);
+      xml += `    <lastmod>${currentDate}</lastmod>\n`;
+      xml += `    <changefreq>${post.changefreq}</changefreq>\n`;
+      xml += `    <priority>${post.priority}</priority>\n`;
+      xml += `  </url>\n`;
+    }
+  });
 
-  for (const post of fiBlogPosts) {
-    xml += `  <url>\n`;
-    xml += `    <loc>${baseUrl}${post.path}</loc>\n`;
-    xml += generateHreflangAlternates(post.path);
-    xml += `    <lastmod>${currentDate}</lastmod>\n`;
-    xml += `    <changefreq>${post.changefreq}</changefreq>\n`;
-    xml += `    <priority>${post.priority}</priority>\n`;
-    xml += `  </url>\n`;
-  }
-
-  // Add paginated blog pages
-  const enPaginatedPages = getPaginatedBlogPages('en');
-  const fiPaginatedPages = getPaginatedBlogPages('fi');
-
-  for (const page of enPaginatedPages) {
-    xml += `  <url>\n`;
-    xml += `    <loc>${baseUrl}${page.path}</loc>\n`;
-    xml += generateHreflangAlternates(page.path);
-    xml += `    <lastmod>${currentDate}</lastmod>\n`;
-    xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
-    xml += `    <priority>${page.priority}</priority>\n`;
-    xml += `  </url>\n`;
-  }
-
-  for (const page of fiPaginatedPages) {
-    xml += `  <url>\n`;
-    xml += `    <loc>${baseUrl}${page.path}</loc>\n`;
-    xml += generateHreflangAlternates(page.path);
-    xml += `    <lastmod>${currentDate}</lastmod>\n`;
-    xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
-    xml += `    <priority>${page.priority}</priority>\n`;
-    xml += `  </url>\n`;
-  }
+  // Add paginated blog pages for all locales
+  locales.forEach(locale => {
+    const paginatedPages = getPaginatedBlogPages(locale);
+    for (const page of paginatedPages) {
+      xml += `  <url>\n`;
+      xml += `    <loc>${baseUrl}${page.path}</loc>\n`;
+      xml += generateHreflangAlternates(page.path);
+      xml += `    <lastmod>${currentDate}</lastmod>\n`;
+      xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
+      xml += `    <priority>${page.priority}</priority>\n`;
+      xml += `  </url>\n`;
+    }
+  });
 
   xml += '</urlset>';
 
@@ -315,9 +340,14 @@ function main() {
     console.log(`📊 Total URLs: ${urlCount}`);
 
     // Count blog posts
-    const enPosts = getBlogPosts('en').length;
-    const fiPosts = getBlogPosts('fi').length;
-    console.log(`📝 Blog posts - EN: ${enPosts}, FI: ${fiPosts}`);
+    const locales = ['en', 'fi', 'de', 'et', 'sv'];
+    const postCounts = locales
+      .map(locale => {
+        const count = getBlogPosts(locale).length;
+        return `${locale.toUpperCase()}: ${count}`;
+      })
+      .join(', ');
+    console.log(`📝 Blog posts - ${postCounts}`);
   } catch (error) {
     console.error('❌ Error generating sitemap:', error.message);
     process.exit(1);

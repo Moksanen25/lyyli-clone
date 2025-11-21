@@ -1,0 +1,121 @@
+
+> lyyli-clone@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.2
+   - Local:        http://localhost:3000
+   - Network:      http://10.30.0.71:3000
+   - Environments: .env.local
+   - Experiments (use with caution):
+     ✓ mdxRs
+     · optimizePackageImports
+
+ ✓ Starting...
+ ✓ Ready in 3s
+ ✓ Compiled /middleware in 242ms (150 modules)
+[2025-11-12T06:58:01.370Z] [WARN] Missing critical env vars (development): {
+  missingCritical: [
+  'ADMIN_USERNAME',
+  'ADMIN_PASSWORD',
+  'SESSION_SECRET',
+  'NEXT_PUBLIC_APP_URL'
+]
+}
+[2025-11-12T06:58:01.372Z] [INFO] Optional env vars are missing; using defaults where applicable. {
+  missingImportant: [ 'RATE_LIMIT_MAX_REQUESTS', 'RATE_LIMIT_WINDOW_MS' ]
+}
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 4.4s (1616 modules)
+ ✓ Compiled in 805ms (711 modules)
+ ✓ Compiled in 344ms (697 modules)
+Image with src "/images/general/Lyyli_dashboard_desktop.webp" is using quality "90" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "/images/general/Lyyli_dashboard_mobile.webp" is using quality "90" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+ GET /fi 200 in 7502ms
+ GET /fi 200 in 613ms
+ ○ Compiling /api/csp-report ...
+ ✓ Compiled /_error in 5.8s (1964 modules)
+[2025-11-12T06:59:56.180Z] [WARN] CSP violation reported {
+  path: '/api/csp-report',
+  report: {
+    'csp-report': {
+      'document-uri': 'http://localhost:3000/fi',
+      referrer: '',
+      'violated-directive': 'script-src-elem',
+      'effective-directive': 'script-src-elem',
+      'original-policy': "default-src 'self'; script-src 'self' https://*.hsforms.net https://static.hsappstatic.net https://unpkg.com/web-vitals@3/dist/web-vitals.attribution.js 'unsafe-eval' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com 'nonce-8b205b65-b3ef-44ed-b2f0-35588c9217c2' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com 'nonce-0651193d-1523-49cd-a6f7-6af39f2ab05e'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob: https://*.hsforms.com https://*.hsforms.net; connect-src 'self' https://vercel.live https://va.vercel-scripts.com https://api.vercel.com https://*.hsforms.com https://*.hsforms.net; frame-src 'self' https://*.hsforms.com https://*.hsforms.net https://*.pipedrive.com; object-src 'none'; base-uri 'self'; form-action 'self' https://*.hsforms.com https://*.hsforms.net; frame-ancestors 'none'; upgrade-insecure-requests; report-uri /api/csp-report",
+      disposition: 'enforce',
+      'blocked-uri': 'https://cdn.matomo.cloud/lyyliai.matomo.cloud/container_CsuDcIFv.js',
+      'line-number': 56,
+      'column-number': 110,
+      'source-file': 'webpack-internal',
+      'status-code': 200,
+      'script-sample': ''
+    }
+  },
+  ua: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+  referrer: 'http://localhost:3000/fi'
+}
+ POST /api/csp-report 204 in 6118ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 5896ms
+ GET /de 200 in 3534ms
+ GET /de 200 in 107ms
+ ⨯ A conflicting public file and page file was found for path /favicon.ico https://nextjs.org/docs/messages/conflicting-public-file-page
+ GET /favicon.ico 500 in 271ms
+ GET /de 200 in 122ms
+[2025-11-12T06:59:57.423Z] [WARN] CSP violation reported {
+  path: '/api/csp-report',
+  report: {
+    'csp-report': {
+      'document-uri': 'http://localhost:3000/de',
+      referrer: '',
+      'violated-directive': 'script-src-elem',
+      'effective-directive': 'script-src-elem',
+      'original-policy': "default-src 'self'; script-src 'self' https://*.hsforms.net https://static.hsappstatic.net https://unpkg.com/web-vitals@3/dist/web-vitals.attribution.js 'unsafe-eval' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com 'nonce-8b205b65-b3ef-44ed-b2f0-35588c9217c2' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com 'nonce-0651193d-1523-49cd-a6f7-6af39f2ab05e'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob: https://*.hsforms.com https://*.hsforms.net; connect-src 'self' https://vercel.live https://va.vercel-scripts.com https://api.vercel.com https://*.hsforms.com https://*.hsforms.net; frame-src 'self' https://*.hsforms.com https://*.hsforms.net https://*.pipedrive.com; object-src 'none'; base-uri 'self'; form-action 'self' https://*.hsforms.com https://*.hsforms.net; frame-ancestors 'none'; upgrade-insecure-requests; report-uri /api/csp-report",
+      disposition: 'enforce',
+      'blocked-uri': 'https://cdn.matomo.cloud/lyyliai.matomo.cloud/container_CsuDcIFv.js',
+      'line-number': 56,
+      'column-number': 110,
+      'source-file': 'webpack-internal',
+      'status-code': 200,
+      'script-sample': ''
+    }
+  },
+  ua: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+  referrer: 'http://localhost:3000/de'
+}
+ POST /api/csp-report 204 in 26ms
+ ✓ Compiled in 8s (1864 modules)
+ GET /de 200 in 2421ms
+ ✓ Compiled in 2.4s (1864 modules)
+ GET /de 200 in 895ms
+ GET /fi 200 in 199ms
+ ✓ Compiled in 1052ms (1864 modules)
+ GET /fi 200 in 295ms
+ ✓ Compiled in 1158ms (1864 modules)
+ GET /fi 200 in 212ms
+ ✓ Compiled in 835ms (1864 modules)
+ GET /fi 200 in 275ms
+ ✓ Compiled in 2.3s (1864 modules)
+ GET /fi 200 in 382ms
+ ✓ Compiled in 886ms (1864 modules)
+ GET /fi 200 in 382ms
+ ✓ Compiled in 1515ms (1864 modules)
+ GET /fi 200 in 238ms
+ ✓ Compiled in 906ms (1864 modules)
+ GET /fi 200 in 285ms
+ ✓ Compiled in 1187ms (1864 modules)
+ GET /fi 200 in 329ms
+ ✓ Compiled in 1052ms (1864 modules)
+ GET /fi 200 in 280ms
+ ✓ Compiled in 407ms (863 modules)
+ GET /fi 200 in 110ms
+Image with src "/images/general/Lyyli_dashboard_desktop.webp" is using quality "90" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "/images/general/Lyyli_dashboard_mobile.webp" is using quality "90" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+ GET /sv 200 in 570ms
+ ✓ Compiled in 1126ms (1864 modules)
+ GET /fi 200 in 325ms

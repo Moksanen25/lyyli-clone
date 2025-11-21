@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 import { generateBlogCanonicalUrl } from './canonical';
 import { buildTitle } from './title';
 import { logger } from './logger';
@@ -36,7 +36,7 @@ export interface BlogPostMetadata {
   translationSlug?: string;
 }
 
-const contentDirectory = path.join(process.cwd(), "content/blog");
+const contentDirectory = path.join(process.cwd(), 'content/blog');
 
 export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
   const localeDir = path.join(contentDirectory, locale);
@@ -47,35 +47,41 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
 
   const fileNames = fs.readdirSync(localeDir);
   const posts = fileNames
-    .filter((name) => name.endsWith(".mdx"))
-    .map((name) => {
+    .filter(name => name.endsWith('.mdx'))
+    .map(name => {
       try {
-        const slug = name.replace(/\.mdx$/, "");
+        const slug = name.replace(/\.mdx$/, '');
         const fullPath = path.join(localeDir, name);
-        const fileContents = fs.readFileSync(fullPath, "utf8");
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
         const { data } = matter(fileContents);
 
         // Validate date
-        const dateValue = data.date || "";
+        const dateValue = data.date || '';
         if (dateValue && isNaN(new Date(dateValue).getTime())) {
-          logger.warn(`Invalid date in blog post`, { fileName: name, dateValue });
+          logger.warn(`Invalid date in blog post`, {
+            fileName: name,
+            dateValue,
+          });
         }
 
         const rawImage = typeof data.image === 'string' ? data.image : '';
-        const safeImage = rawImage && rawImage.startsWith('/') ? encodeURI(rawImage) : undefined;
+        const safeImage = rawImage?.startsWith('/')
+          ? encodeURI(rawImage)
+          : undefined;
         const rawDate = typeof data.date === 'string' ? data.date : '';
-        const safeDate = !rawDate || isNaN(new Date(rawDate).getTime()) ? '' : rawDate;
+        const safeDate =
+          !rawDate || isNaN(new Date(rawDate).getTime()) ? '' : rawDate;
 
         return {
           slug,
           locale,
-          title: data.title || "",
-          description: data.description || "",
+          title: data.title || '',
+          description: data.description || '',
           date: safeDate,
           readTime: typeof data.readTime === 'number' ? data.readTime : 5,
-          category: data.category || "Communication",
+          category: data.category || 'Communication',
           keywords: Array.isArray(data.keywords) ? data.keywords : [],
-          author: data.author || "Lyyli Team",
+          author: data.author || 'Lyyli Team',
           image: safeImage,
           imageAlt: data.imageAlt,
           translationSlug: data.translationSlug,
@@ -83,7 +89,7 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
       } catch (error) {
         logger.error(`Error processing blog post`, {
           fileName: name,
-          error: error instanceof Error ? error.message : 'Unknown error'
+          error: error instanceof Error ? error.message : 'Unknown error',
         });
         return null;
       }
@@ -93,16 +99,16 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
       try {
         const dateA = new Date(a.date).getTime();
         const dateB = new Date(b.date).getTime();
-        
+
         // Handle invalid dates
         if (isNaN(dateA) && isNaN(dateB)) return 0;
         if (isNaN(dateA)) return 1;
         if (isNaN(dateB)) return -1;
-        
+
         return dateB - dateA;
       } catch (error) {
-        logger.error("Error sorting blog posts", {
-          error: error instanceof Error ? error.message : 'Unknown error'
+        logger.error('Error sorting blog posts', {
+          error: error instanceof Error ? error.message : 'Unknown error',
         });
         return 0;
       }
@@ -114,25 +120,28 @@ export function getAllBlogPosts(locale: string): BlogPostMetadata[] {
 export function getBlogPost(slug: string, locale: string): BlogPost | null {
   try {
     const fullPath = path.join(contentDirectory, locale, `${slug}.mdx`);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
     // Sanitize image and critical fields
     const rawImage = typeof data.image === 'string' ? data.image : '';
-    const safeImage = rawImage && rawImage.startsWith('/') ? encodeURI(rawImage) : undefined;
+    const safeImage = rawImage?.startsWith('/')
+      ? encodeURI(rawImage)
+      : undefined;
     const rawDate = typeof data.date === 'string' ? data.date : '';
-    const safeDate = !rawDate || isNaN(new Date(rawDate).getTime()) ? '' : rawDate;
+    const safeDate =
+      !rawDate || isNaN(new Date(rawDate).getTime()) ? '' : rawDate;
 
     return {
       slug,
       locale,
-      title: data.title || "",
-      description: data.description || "",
+      title: data.title || '',
+      description: data.description || '',
       date: safeDate,
       readTime: typeof data.readTime === 'number' ? data.readTime : 5,
-      category: data.category || "Communication",
+      category: data.category || 'Communication',
       keywords: Array.isArray(data.keywords) ? data.keywords : [],
-      author: data.author || "Lyyli Team",
+      author: data.author || 'Lyyli Team',
       image: safeImage,
       imageAlt: data.imageAlt,
       translationSlug: data.translationSlug,
@@ -146,24 +155,24 @@ export function getBlogPost(slug: string, locale: string): BlogPost | null {
 export function getAllBlogSlugs(): { slug: string; locale: string }[] {
   try {
     const slugs: { slug: string; locale: string }[] = [];
-    const locales = ["en", "fi"];
+    const locales = ['en', 'fi', 'de', 'et', 'sv'];
 
-    locales.forEach((locale) => {
+    locales.forEach(locale => {
       const localeDir = path.join(contentDirectory, locale);
 
       if (fs.existsSync(localeDir)) {
         try {
           const fileNames = fs.readdirSync(localeDir);
           fileNames
-            .filter((name) => name.endsWith(".mdx"))
-            .forEach((name) => {
-              const slug = name.replace(/\.mdx$/, "");
+            .filter(name => name.endsWith('.mdx'))
+            .forEach(name => {
+              const slug = name.replace(/\.mdx$/, '');
               slugs.push({ slug, locale });
             });
         } catch (error) {
           logger.error(`Error reading directory`, {
             directory: localeDir,
-            error: error instanceof Error ? error.message : 'Unknown error'
+            error: error instanceof Error ? error.message : 'Unknown error',
           });
         }
       }
@@ -171,8 +180,8 @@ export function getAllBlogSlugs(): { slug: string; locale: string }[] {
 
     return slugs;
   } catch (error) {
-    logger.error("Error in getAllBlogSlugs", {
-      error: error instanceof Error ? error.message : 'Unknown error'
+    logger.error('Error in getAllBlogSlugs', {
+      error: error instanceof Error ? error.message : 'Unknown error',
     });
     return [];
   }
@@ -181,7 +190,10 @@ export function getAllBlogSlugs(): { slug: string; locale: string }[] {
 /**
  * Get the translated slug for a blog post by reading from the post's front matter
  */
-export function getTranslationSlug(slug: string, locale: string): string | null {
+export function getTranslationSlug(
+  slug: string,
+  locale: string
+): string | null {
   const post = getBlogPost(slug, locale);
   return post?.translationSlug || null;
 }
@@ -189,21 +201,26 @@ export function getTranslationSlug(slug: string, locale: string): string | null 
 /**
  * Get the translated blog post if it exists
  */
-export function getTranslatedBlogPost(slug: string, currentLocale: string, targetLocale: string): BlogPost | null {
+export function getTranslatedBlogPost(
+  slug: string,
+  currentLocale: string,
+  targetLocale: string
+): BlogPost | null {
   const translationSlug = getTranslationSlug(slug, currentLocale);
   if (!translationSlug) return null;
-  
+
   return getBlogPost(translationSlug, targetLocale);
 }
 
 /**
  * Get alternative blog posts in the target locale when a translation doesn't exist
  */
-export function getAlternativeBlogPosts(targetLocale: string, excludeSlug?: string): BlogPostMetadata[] {
+export function getAlternativeBlogPosts(
+  targetLocale: string,
+  excludeSlug?: string
+): BlogPostMetadata[] {
   const allPosts = getAllBlogPosts(targetLocale);
-  return allPosts
-    .filter(post => post.slug !== excludeSlug)
-    .slice(0, 3); // Return top 3 alternatives
+  return allPosts.filter(post => post.slug !== excludeSlug).slice(0, 3); // Return top 3 alternatives
 }
 
 /**
@@ -216,31 +233,41 @@ export function hasTranslation(slug: string, locale: string): boolean {
 export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
   const canonicalUrl = generateBlogCanonicalUrl(post.slug, locale);
 
-  // Determine translated slug if available for hreflang alternates
-  const otherLocale = locale === 'fi' ? 'en' : 'fi';
-  const translatedSlug = post.translationSlug;
+  // Generate hreflang alternates for all supported locales
+  const supportedLocales = ['en', 'fi', 'de', 'et', 'sv'];
   const alternates: Record<string, string> = {};
+
+  // Add current locale
   alternates[locale] = canonicalUrl;
-  if (translatedSlug) {
-    alternates[otherLocale] = generateBlogCanonicalUrl(translatedSlug, otherLocale);
-  } else {
-    // If no translation exists, still provide the same content for other locale
-    alternates[otherLocale] = generateBlogCanonicalUrl(post.slug, otherLocale);
-  }
+
+  // Add all other locales (they will point to same slug or translation if available)
+  supportedLocales.forEach(loc => {
+    if (loc !== locale) {
+      // For now, use the same slug for all locales
+      // TODO: Implement multi-locale translation slug mapping when translations are available
+      alternates[loc] = generateBlogCanonicalUrl(
+        post.translationSlug || post.slug,
+        loc
+      );
+    }
+  });
+
   // Add x-default pointing to English version
-  const defaultSlug = locale === 'en' ? post.slug : (translatedSlug || post.slug);
-  alternates['x-default'] = generateBlogCanonicalUrl(defaultSlug, 'en');
+  alternates['x-default'] = generateBlogCanonicalUrl(
+    post.translationSlug && locale !== 'en' ? post.translationSlug : post.slug,
+    'en'
+  );
 
   // Primary and secondary keywords for SEO
   const primaryKeywords = [
-    "AI communication assistant",
-    "professional service organizations",
-    "internal communication coordination",
-    "enterprise-grade security",
-    "GDPR compliant",
+    'AI communication assistant',
+    'professional service organizations',
+    'internal communication coordination',
+    'enterprise-grade security',
+    'GDPR compliant',
   ];
 
-  const allKeywords = [...primaryKeywords, ...post.keywords].join(", ");
+  const allKeywords = [...primaryKeywords, ...post.keywords].join(', ');
 
   return {
     title: buildTitle(`${post.title} - Blog`),
@@ -251,7 +278,7 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
       title: post.title,
       description: post.description,
       url: canonicalUrl,
-      siteName: "Lyyli.ai",
+      siteName: 'Lyyli.ai',
       images: post.image
         ? [
             {
@@ -269,17 +296,28 @@ export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
               alt: post.title,
             },
           ],
-      locale: locale === "fi" ? "fi_FI" : "en_US",
-      type: "article",
+      locale:
+        locale === 'fi'
+          ? 'fi_FI'
+          : locale === 'de'
+            ? 'de_DE'
+            : locale === 'et'
+              ? 'et_EE'
+              : locale === 'sv'
+                ? 'sv_SE'
+                : 'en_US',
+      type: 'article',
       publishedTime: post.date,
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: post.title,
       description: post.description,
       images: post.image
         ? [post.image]
-        : [`/api/og?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.description)}`],
+        : [
+            `/api/og?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.description)}`,
+          ],
     },
     alternates: {
       canonical: canonicalUrl,
