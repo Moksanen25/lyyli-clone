@@ -294,6 +294,50 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--forest);
 }
 
+/* Animated fade-up utility (respect reduced motion) */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-fade-up {
+  opacity: 0;
+  animation: fadeUp 500ms ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hero ambient background effect */
+.hero-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 20% 10%, rgba(167, 214, 209, 0.18) 0%, rgba(167, 214, 209, 0) 60%),
+    radial-gradient(50% 40% at 80% 0%, rgba(247, 235, 235, 0.18) 0%, rgba(247, 235, 235, 0) 60%),
+    linear-gradient(180deg, rgba(47, 93, 80, 0.03) 0%, rgba(47, 93, 80, 0) 60%);
+}
+
+/* CTA active states */
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
 /* H1: Main Heading - Playfair Display Bold */
 h1 {
   font-family: 'Playfair Display', serif;

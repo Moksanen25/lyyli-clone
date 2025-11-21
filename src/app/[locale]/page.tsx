@@ -8,6 +8,7 @@ import Deferred from '@/components/Deferred';
 import HeroFactBox from '@/components/HeroFactBox';
 import CalendarPopup from '@/components/CalendarPopup';
 import ProductShowcase from '@/components/ProductShowcase';
+import AnimatedFadeUp from '@/components/AnimatedFadeUp';
 import {
   generatePageCanonicalUrl,
   generateHreflangMetadata,
@@ -103,37 +104,45 @@ export default async function Home({ params }: HomeProps) {
           className="container mx-auto px-4 py-20 relative"
           aria-label="Hero"
         >
+          {/* Ambient background */}
+          <div className="hero-ambient" aria-hidden="true" />
           {/* Critical LCP element with optimized font loading */}
-          <h1 className="text-4xl md:text-5xl text-forest text-center mb-8 font-playfair font-bold leading-tight relative z-10">
-            {t['hero.headline']}
-          </h1>
-          <p className="text-lg hero-description text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
-            {t['hero.description']}
-          </p>
+          <AnimatedFadeUp>
+            <h1 className="text-4xl md:text-5xl text-forest text-center mb-4 md:mb-8 font-playfair font-bold leading-tight relative z-10">
+              {t['hero.headline']}
+            </h1>
+          </AnimatedFadeUp>
+          <AnimatedFadeUp delayMs={80}>
+            <p className="text-lg hero-description text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
+              {t['hero.description']}
+            </p>
+          </AnimatedFadeUp>
           <div className="mt-8 mb-10 relative z-10">
             <HeroFactBox translations={t} />
           </div>
-          <div className="flex justify-center gap-4 mb-12 relative z-10">
-            <a href="https://app.lyyli.ai" className="btn-primary">
-              {t['hero.ctaPrimary']}
-            </a>
-            <CalendarPopup
-              className="btn-secondary"
-              translations={{
-                title: t['calendar.title'],
-                subtitle: t['calendar.subtitle'],
-                description: t['calendar.description'],
-                loading: t['calendar.loading'],
-                errorTitle: t['calendar.error.title'],
-                errorDescription: t['calendar.error.description'],
-                errorButton: t['calendar.error.button'],
-                footerSecure: t['calendar.footer.secure'],
-                footerContact: t['calendar.footer.contact'],
-              }}
-            >
-              {t['hero.ctaSecondary']}
-            </CalendarPopup>
-          </div>
+          <AnimatedFadeUp delayMs={140}>
+            <div className="flex justify-center gap-4 mb-12 relative z-10">
+              <a href="https://app.lyyli.ai" className="btn-primary">
+                {t['hero.ctaPrimary']}
+              </a>
+              <CalendarPopup
+                className="btn-secondary"
+                translations={{
+                  title: t['calendar.title'],
+                  subtitle: t['calendar.subtitle'],
+                  description: t['calendar.description'],
+                  loading: t['calendar.loading'],
+                  errorTitle: t['calendar.error.title'],
+                  errorDescription: t['calendar.error.description'],
+                  errorButton: t['calendar.error.button'],
+                  footerSecure: t['calendar.footer.secure'],
+                  footerContact: t['calendar.footer.contact'],
+                }}
+              >
+                {t['hero.ctaSecondary']}
+              </CalendarPopup>
+            </div>
+          </AnimatedFadeUp>
         </section>
       </div>
 
