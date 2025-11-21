@@ -1,7 +1,7 @@
 import { getTranslations } from '@/lib/i18n';
 import type { Metadata } from 'next';
 import FeaturesCardLayout from '@/components/features/FeaturesCardLayout';
-import IntegrationsFlow from '@/components/features/IntegrationsFlow';
+import IntegrationsGrid from '@/components/features/IntegrationsGrid';
 import FAQSection from '@/components/faq/FAQSection';
 import FeatureSectionNav from '@/components/features/FeatureSectionNav';
 import CalendarPopup from '@/components/CalendarPopup';
@@ -234,7 +234,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
               {t['features.integrationsFlow.description']}
             </p>
           </div>
-          <IntegrationsFlow translations={t} />
+          <IntegrationsGrid translations={t} />
 
           {/* Related Sections */}
           <div className="mt-12 text-center">
