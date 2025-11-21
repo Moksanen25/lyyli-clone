@@ -105,14 +105,14 @@ export default async function Home({ params }: HomeProps) {
           aria-label="Hero"
         >
           {/* Ambient background */}
-          <div className="hero-ambient" aria-hidden="true" />
+          <div className="hero-ambient absolute inset-0" aria-hidden="true" />
           {/* Critical LCP element with optimized font loading */}
           <AnimatedFadeUp>
             <h1 className="text-4xl md:text-5xl text-forest text-center mb-4 md:mb-8 font-playfair font-bold leading-tight relative z-10">
               {t['hero.headline']}
             </h1>
           </AnimatedFadeUp>
-          <AnimatedFadeUp delayMs={80}>
+          <AnimatedFadeUp delayMs={100}>
             <p className="text-lg hero-description text-center max-w-3xl mx-auto mb-12 font-sans leading-relaxed relative z-10">
               {t['hero.description']}
             </p>
@@ -120,7 +120,7 @@ export default async function Home({ params }: HomeProps) {
           <div className="mt-8 mb-10 relative z-10">
             <HeroFactBox translations={t} />
           </div>
-          <AnimatedFadeUp delayMs={140}>
+          <AnimatedFadeUp delayMs={200}>
             <div className="flex justify-center gap-4 mb-12 relative z-10">
               <a href="https://app.lyyli.ai" className="btn-primary">
                 {t['hero.ctaPrimary']}
