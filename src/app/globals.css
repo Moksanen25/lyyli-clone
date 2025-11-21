@@ -364,6 +364,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Flip card pattern (respects reduced motion) */
 .flip-card {
+  position: relative;
   perspective: 1000px;
 }
 .flip-inner {
@@ -371,6 +372,7 @@ h1, h2, h3, h4, h5, h6 {
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
   will-change: transform;
+  min-height: 280px; /* ensure faces can overlap without layout collapse */
 }
 .flip-card:hover .flip-inner,
 .flip-card.flipped .flip-inner {
@@ -384,15 +386,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .flip-front,
 .flip-back {
-  position: relative;
+  position: absolute;
+  inset: 0;
 }
 .flip-front {
   /* Ensure front face is treated as a 3D plane so backface-visibility works when parent rotates */
   transform: rotateY(0deg);
 }
 .flip-back {
-  position: absolute;
-  inset: 0;
   transform: rotateY(180deg);
 }
 @media (prefers-reduced-motion: reduce) {
