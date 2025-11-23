@@ -368,45 +368,12 @@ Avoid bureaucracy – speak to the person.`,
   ];
 
   // Image prompts - updated with new Nano Banana Pro capabilities
+  const imageIntro =
+    locale === 'fi'
+      ? 'Kun luot kuvia tekoälyn avulla, voit viitata suoraan Lyylin brändi-identiteettiin. Brändivärit: Metsänvihreä (pääväri), Muted turquoise ja Soft rose tehosteiksi. Visuaalinen tyyli: moderni ja ystävällinen SaaS-estetiikka, flat design hienovaraisella syvyydellä, selkeät ja puhtaat linjat, lähestyttävä ja ammattimainen. Lyyli-hahmo: voit pyytää sisällyttämään Lyyli-hahmon lisäämällä ohjeen “Sisällytä Lyyli-hahmo (katso referenssikuva)” ja liittämällä referenssikuvan.'
+      : "When creating images with AI, you can reference Lyyli's brand identity directly. Brand colors: Forest green (primary), with muted turquoise and soft rose as accents. Visual style: modern, friendly SaaS aesthetic; flat design with subtle depth; clean, clear lines; approachable and professional. Lyyli character: you can request including the Lyyli character by adding “Include the Lyyli character (see reference image)” and attaching the reference image.";
+
   const imagePrompts = [
-    {
-      title:
-        locale === 'fi'
-          ? 'Kuvien luonti – Yleisohje'
-          : 'Image creation – General guidance',
-      prompt:
-        locale === 'fi'
-          ? `Kun luot kuvia tekoälyn avulla, voit viitata suoraan Lyylin brändi-identiteettiin.
-
-Brändivärit:
-- Pääväri: Metsänvihreä
-- Tehosteväri 1: Muted turquoise
-- Tehosteväri 2: Soft rose
-
-Visuaalinen tyyli:
-- Moderni, ystävällinen SaaS-estetiikka
-- Flat design subtililla syvyydellä
-- Selkeät, puhtaat linjat
-- Lähestyttävä ja ammattimainen
-
-Lyyli-hahmo:
-- Voit pyytää sisällyttämään Lyyli-hahmon kuviin lisäämällä: "Sisällytä Lyyli-hahmo (katso referenssikuva)" ja liittämällä referenssikuvan.`
-          : `When creating images with AI, you can reference Lyyli's brand identity directly.
-
-Brand colors:
-- Primary: Forest green
-- Accent 1: Muted turquoise
-- Accent 2: Soft rose
-
-Visual style:
-- Modern, friendly SaaS aesthetic
-- Flat design with subtle depth
-- Clean, clear lines
-- Approachable and professional
-
-Lyyli character:
-- You can request including the Lyyli character by adding: "Include the Lyyli character (see reference image)" and attaching the reference image.`,
-    },
     {
       title:
         locale === 'fi'
@@ -737,11 +704,7 @@ Avoid: Overly complex charts, too much data in one image, poor contrast`,
         {/* Image Requests */}
         <PromptCategory
           title={locale === 'fi' ? 'Kuvapyynnöt' : 'Image requests'}
-          description={
-            locale === 'fi'
-              ? 'Visuaalisia elementtejä sisältöön:'
-              : 'Visual elements for content:'
-          }
+          description={imageIntro}
           prompts={imagePrompts}
           locale={locale}
         />
