@@ -367,53 +367,237 @@ Avoid bureaucracy – speak to the person.`,
     },
   ];
 
-  // Image prompts
+  // Image prompts - updated with new Nano Banana Pro capabilities
   const imagePrompts = [
     {
       title:
         locale === 'fi'
-          ? 'Sosiaalisen median grafiikka'
-          : 'Social media graphic',
+          ? 'Kuvien luonti – Yleisohje'
+          : 'Image creation – General guidance',
       prompt:
         locale === 'fi'
-          ? `Luo kuva LinkedIn-julkaisuun aiheesta "Tekoäly viestinnän tukena".
+          ? `Kun luot kuvia tekoälyn avulla, voit viitata suoraan Lyylin brändi-identiteettiin.
 
-Tyyli: Moderni, minimalistinen, ammattimaisesti viimeisteelty
-Värimaailma: Lyylin brändivärit (sininen, valkoinen, harmaa)
-Tunnelma: Luotettava, älykäs, lähestyttävä
-Sisältö: Abstrakti visualisointi tekoälystä ja viestinnästä – esim. chat-ikoni, verkosto tai aivojen ja tekstin yhdistelmä
-Kuvasuhde: 1200x628 (LinkedIn-optimoitu)
-Teksti kuvassa: "Viestintä, joka kuulostaa sinulta"`
-          : `Create an image for LinkedIn post about "AI supporting communications".
+Brändivärit:
+- Pääväri: Metsänvihreä
+- Tehosteväri 1: Muted turquoise
+- Tehosteväri 2: Soft rose
 
-Style: Modern, minimalist, professionally finished
-Color palette: Lyyli brand colors (blue, white, gray)
-Mood: Trustworthy, intelligent, approachable
-Content: Abstract visualization of AI and communication – e.g., chat icon, network, or combination of brain and text
-Aspect ratio: 1200x628 (LinkedIn-optimized)
-Text in image: "Communication that sounds like you"`,
+Visuaalinen tyyli:
+- Moderni, ystävällinen SaaS-estetiikka
+- Flat design subtililla syvyydellä
+- Selkeät, puhtaat linjat
+- Lähestyttävä ja ammattimainen
+
+Lyyli-hahmo:
+- Voit pyytää sisällyttämään Lyyli-hahmon kuviin lisäämällä: "Sisällytä Lyyli-hahmo (katso referenssikuva)" ja liittämällä referenssikuvan.`
+          : `When creating images with AI, you can reference Lyyli's brand identity directly.
+
+Brand colors:
+- Primary: Forest green
+- Accent 1: Muted turquoise
+- Accent 2: Soft rose
+
+Visual style:
+- Modern, friendly SaaS aesthetic
+- Flat design with subtle depth
+- Clean, clear lines
+- Approachable and professional
+
+Lyyli character:
+- You can request including the Lyyli character by adding: "Include the Lyyli character (see reference image)" and attaching the reference image.`,
     },
     {
       title:
-        locale === 'fi' ? 'Blogipostauksen kansikuva' : 'Blog post cover image',
+        locale === 'fi'
+          ? 'LinkedIn-postauksen kuvitus'
+          : 'LinkedIn post illustration',
       prompt:
         locale === 'fi'
-          ? `Luo kansikuva blogipostaukseen "5 syytä, miksi viestintäsi ei toimi – ja miten korjata se".
+          ? `Käyttötilanne: Tarvitset visuaalisen elementin LinkedIn-julkaisuun
 
-Tyyli: Selkeä, informatiivinen, houkutteleva
-Värimaailma: Valoisa, energinen mutta ammattimainen
-Tunnelma: Ongelmanratkaiseva, positiivinen
-Sisältö: Visuaalinen metafora viestinnän haasteista ja ratkaisuista – esim. rikkinäinen ja korjattu viestintäketju
-Kuvasuhde: 1200x800
-Teksti kuvassa: Otsikko selkeällä fontilla`
-          : `Create a cover image for blog post "5 reasons why your communication isn't working – and how to fix it".
+Luo LinkedIn-postauksen kuvitus aiheesta [AIHE].
+Tyyli: Moderni, ammattimainen editorial-kuvitus
+Värit: Käytä metsänvihreää päävärinä, muted turquoisea ja soft rosea tehosteina, valkoinen tausta
+Tunnelma: [Inspiroiva/Opettavainen/Ajatuksia herättävä]
+Visuaalinen konsepti:
+- Pääelementti: [Kuvaa keskeisin visuaalinen elementti]
+- Tukielementit: [Listaa 2-3 tukevaa elementtiä]
+- Komposition fokus: [Vasen/Keski/Oikea]
+Lyyli-hahmo: [Kyllä/Ei, jos kyllä: Lyyli [toiminta/asento], katso referenssikuva]
+Tekniset vaatimukset:
+- Koko: 1200x675 pikseliä (16:9)
+- Flat design subtililla varjoilla
+- Korkea kontrasti mobiililukemiseen
+- Riittävästi tyhjää tilaa tekstin lisäämiselle [yläosassa/alaosassa]
+Vältä: [Liian geneerisiä elementtejä/Liian monimutkaista/etc.]`
+          : `Use case: You need a visual element for a LinkedIn post
 
-Style: Clear, informative, attractive
-Color palette: Bright, energetic but professional
-Mood: Problem-solving, positive
-Content: Visual metaphor for communication challenges and solutions – e.g., broken and fixed communication chain
-Aspect ratio: 1200x800
-Text in image: Title with clear font`,
+Create a LinkedIn post illustration on the topic [TOPIC].
+Style: Modern, professional editorial illustration
+Colors: Use forest green as the primary, muted turquoise and soft rose as accents, white background
+Mood: [Inspiring/Educational/Thought-provoking]
+Visual concept:
+- Main element: [Describe the central visual element]
+- Supporting elements: [List 2–3 supporting elements]
+- Composition focus: [Left/Center/Right]
+Lyyli character: [Yes/No; if yes: Lyyli [action/pose], see reference image]
+Technical requirements:
+- Size: 1200x675 pixels (16:9)
+- Flat design with subtle shadows
+- High contrast for mobile readability
+- Enough whitespace for text [top/bottom]
+Avoid: [Overly generic elements/Too complex/etc.]`,
+    },
+    {
+      title:
+        locale === 'fi'
+          ? 'Blogiartikkelin hero-kuva'
+          : 'Blog article hero image',
+      prompt:
+        locale === 'fi'
+          ? `Käyttötilanne: Tarvitset visuaalisesti vaikuttavan otsikkokuvan blogiartikkeliin
+
+Luo hero-kuva blogiartikkeliin aiheesta "[ARTIKKELIN OTSIKKO]".
+Tyyli: Premium editorial-kuvitus, SaaS-estetiikka
+Väripaletti: Metsänvihreä pääväri, muted turquoise ja soft rose tehosteet, vaalean harmaa (#F5F5F5) taustaelementteihin
+Tunnelma: [Asiantunteva/Luotettava/Innovatiivinen]
+Visuaalinen konsepti:
+- Keskiössä: [Päävisuaalinen metafora aiheesta]
+- Vasemmalla: [Tukeva elementti 1]
+- Oikealla: [Tukeva elementti 2]
+- Tausta: [Kuvaus taustasta ja sen elementeistä]
+Lyyli-hahmo: [Kyllä/Ei, jos kyllä: sijainti ja rooli]
+Kompositio:
+- Horisontaalinen asettelu
+- Kuvasuhde: 1200x600 pikseliä (2:1)
+- Fokuspiste vasemmassa kolmanneksessa
+- Jätä yläosan vasempaan nurkkaan tilaa otsikkoa varten
+Tekniset yksityiskohdat:
+- Flat design kevyellä syvyydellä
+- Terävät reunat pääelementeissä, pehmeämmät taustalla
+- Valonlähde vasemmalta yläviistosta
+- Ei valokuvaelementtejä – pidä kuvitus abstraktina
+Vältä: [Aihekohtaiset vältettävät asiat]`
+          : `Use case: You need a visually impactful header image for a blog article
+
+Create a hero image for a blog article titled "[ARTICLE TITLE]".
+Style: Premium editorial illustration, SaaS aesthetic
+Color palette: Forest green primary, muted turquoise and soft rose accents, light gray (#F5F5F5) for background elements
+Mood: [Expert/Trustworthy/Innovative]
+Visual concept:
+- Center: [Primary visual metaphor for the topic]
+- Left: [Supporting element 1]
+- Right: [Supporting element 2]
+- Background: [Describe background and its elements]
+Lyyli character: [Yes/No; if yes: position and role]
+Composition:
+- Horizontal layout
+- Aspect ratio: 1200x600 pixels (2:1)
+- Focal point in the left third
+- Leave space in the top-left corner for the title
+Technical details:
+- Flat design with light depth
+- Sharp edges on primary elements, softer in the background
+- Light source from top-left
+- No photo elements – keep the illustration abstract
+Avoid: [Topic-specific pitfalls]`,
+    },
+    {
+      title:
+        locale === 'fi'
+          ? 'Sosiaalisen median neliökuva'
+          : 'Square social media image',
+      prompt:
+        locale === 'fi'
+          ? `Käyttötilanne: Instagram, Facebook tai muut neliömuotoista kuvaa vaativat kanavat
+
+Luo neliömuotoinen sosiaalisen median kuva aiheesta [AIHE].
+Tyyli: Ystävällinen, moderni kuvitus
+Värit: Metsänvihreä, muted turquoise, soft rose, valkoinen tausta
+Tunnelma: [Energinen/Lämmin/Kutsuva]
+Visuaalinen konsepti:
+- Keskipiste: [Pääelementti keskellä]
+- Ympäröivät elementit: [2–4 tukielementtiä]
+- Visuaalinen hierarkia: [Miten katse ohjataan]
+Lyyli-hahmo: [Kyllä/Ei, jos kyllä: Lyyli [asento/toiminta], katso referenssikuva]
+Tekniset vaatimukset:
+- Koko: 1080x1080 pikseliä (1:1)
+- Symmetrinen tai keskitetty kompositio
+- Selkeä fokuspiste keskellä
+- Tarpeeksi kontrastia tekstin lisäämiselle
+- [Yläosassa/Alaosassa/Keskellä] tilaa tekstille
+Typografia-integraatio: [Jos tekstiä sisällytetään, määrittele tyyli]
+Vältä: [Aihekohtaiset rajoitukset]`
+          : `Use case: Instagram, Facebook, or other square-format channels
+
+Create a square social media image on the topic [TOPIC].
+Style: Friendly, modern illustration
+Colors: Forest green, muted turquoise, soft rose, white background
+Mood: [Energetic/Warm/Inviting]
+Visual concept:
+- Centerpiece: [Main element in the middle]
+- Surrounding elements: [2–4 supporting elements]
+- Visual hierarchy: [How the gaze is directed]
+Lyyli character: [Yes/No; if yes: Lyyli [pose/action], see reference image]
+Technical requirements:
+- Size: 1080x1080 pixels (1:1)
+- Symmetrical or centered composition
+- Clear focal point in the center
+- Sufficient contrast for adding text
+- Space for text [Top/Bottom/Center]
+Typography integration: [If including text, define style]
+Avoid: [Topic-specific constraints]`,
+    },
+    {
+      title:
+        locale === 'fi' ? 'Infograafinen kuvitus' : 'Infographic illustration',
+      prompt:
+        locale === 'fi'
+          ? `Käyttötilanne: Datan, prosessin tai konseptin visualisointi
+
+Luo infograafinen kuvitus aiheesta [AIHE/PROSESSI/DATA].
+Tyyli: Selkeä, informatiivinen data-visualisointi
+Värit: Metsänvihreä pääväri, käytä muted turquoisea ja soft rosea kategorioiden erottamiseen
+Tunnelma: Selkeä, helposti ymmärrettävä, luotettava
+Visuaalinen konsepti:
+- Rakenne: [Lineaarinen/Syklinen/Hierarkinen/Vertaileva]
+- Elementit: [Listaa visualisoitavat osat]
+- Datatyyppi: [Prosenttiluvut/Vaiheet/Vertailu/Timeline]
+Lyyli-hahmo: [Kyllä/Ei, jos kyllä: Lyyli selittämässä/osoittamassa, katso referenssikuva]
+Layout:
+- Suunta: [Vaaka/Pysty/Molemmat]
+- Koko: [Määrittele käyttötarkoituksen mukaan]
+- Luettavuus: Numerot ja tekstit riittävän suuria
+- Ikonit: Yksinkertaiset, tunnistettavat
+Tekniset yksityiskohdat:
+- Johdonmukainen värikoodaus läpi kuvituksen
+- Selkeät otsikot ja labelit
+- Nuolet tai viivat ohjaamassa katsetta
+- Riittävästi white spacea
+Vältä: Liian monimutkaisia kaavioita, liikaa dataa yhdessä kuvassa, huonoa kontrastia`
+          : `Use case: Visualizing data, a process, or a concept
+
+Create an infographic illustration on [TOPIC/PROCESS/DATA].
+Style: Clear, informative data visualization
+Colors: Forest green as primary; use muted turquoise and soft rose to distinguish categories
+Mood: Clear, easy to understand, trustworthy
+Visual concept:
+- Structure: [Linear/Cyclical/Hierarchical/Comparative]
+- Elements: [List the parts to visualize]
+- Data type: [Percentages/Steps/Comparison/Timeline]
+Lyyli character: [Yes/No; if yes: Lyyli explaining/pointing, see reference image]
+Layout:
+- Orientation: [Horizontal/Vertical/Both]
+- Size: [Define based on use]
+- Readability: Numbers and labels large enough
+- Icons: Simple, recognizable
+Technical details:
+- Consistent color-coding across the illustration
+- Clear headings and labels
+- Arrows or lines guiding the eye
+- Sufficient white space
+Avoid: Overly complex charts, too much data in one image, poor contrast`,
     },
   ];
 
