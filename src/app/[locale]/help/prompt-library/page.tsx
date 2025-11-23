@@ -370,8 +370,8 @@ Avoid bureaucracy – speak to the person.`,
   // Image prompts - updated with new Nano Banana Pro capabilities
   const imageIntro =
     locale === 'fi'
-      ? 'Kun luot kuvia tekoälyn avulla, voit viitata suoraan Lyylin brändi-identiteettiin. Brändivärit: Metsänvihreä (pääväri), Muted turquoise ja Soft rose tehosteiksi. Visuaalinen tyyli: moderni ja ystävällinen SaaS-estetiikka, flat design hienovaraisella syvyydellä, selkeät ja puhtaat linjat, lähestyttävä ja ammattimainen. Lyyli-hahmo: voit pyytää sisällyttämään Lyyli-hahmon lisäämällä ohjeen “Sisällytä Lyyli-hahmo (katso referenssikuva)” ja liittämällä referenssikuvan.'
-      : "When creating images with AI, you can reference Lyyli's brand identity directly. Brand colors: Forest green (primary), with muted turquoise and soft rose as accents. Visual style: modern, friendly SaaS aesthetic; flat design with subtle depth; clean, clear lines; approachable and professional. Lyyli character: you can request including the Lyyli character by adding “Include the Lyyli character (see reference image)” and attaching the reference image.";
+      ? 'Kun luot kuvia tekoälyllä, voit viitata suoraan visuaalisiin asetuksiin, kunhan ne on määritetty asetuksissa. Asetuksissa voit määrittää brändivärit sekä fontit, ladata kuvituksen käyttöön visuaalisia elementtejä, kuten ikoneita tai logoja sekä luontivaiheessa valita referenssikuvia, jotka on valmiiksi ladattu Stock-kuviin.'
+      : 'When creating images with AI, you can reference your visual settings directly, as long as they’re configured in Settings. In Settings you can define brand colors and fonts, upload visual elements for illustrations such as icons or logos, and during generation choose reference images that have been pre‑uploaded to Stock images.';
 
   const imagePrompts = [
     {
