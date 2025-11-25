@@ -206,10 +206,38 @@ export function getTranslatedBlogPost(
   currentLocale: string,
   targetLocale: string
 ): BlogPost | null {
-  const translationSlug = getTranslationSlug(slug, currentLocale);
-  if (!translationSlug) return null;
+  try {
+    // 1) If current post explicitly defines a translationSlug → use it
+    const currentPost = getBlogPost(slug, currentLocale);
+    if (currentPost?.translationSlug) {
+      const translated = getBlogPost(currentPost.translationSlug, targetLocale);
+      if (translated) return translated;
+    }
 
-  return getBlogPost(translationSlug, targetLocale);
+    // 2) If a target-locale post points back to this slug via its translationSlug
+    const targetPosts = getAllBlogPosts(targetLocale);
+    const reverseMapped = targetPosts.find(
+      p => p.translationSlug && p.translationSlug === slug
+    );
+    if (reverseMapped) {
+      const translated = getBlogPost(reverseMapped.slug, targetLocale);
+      if (translated) return translated;
+    }
+
+    // 3) Fallback: if the same slug exists in the other locale, use it
+    const sameSlug = getBlogPost(slug, targetLocale);
+    if (sameSlug) return sameSlug;
+
+    return null;
+  } catch (error) {
+    logger.warn('getTranslatedBlogPost failed', {
+      slug,
+      currentLocale,
+      targetLocale,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+    return null;
+  }
 }
 
 /**
@@ -227,14 +255,43 @@ export function getAlternativeBlogPosts(
  * Check if a blog post has a translation
  */
 export function hasTranslation(slug: string, locale: string): boolean {
-  return !!getTranslationSlug(slug, locale);
+  try {
+    const targetLocale = locale === 'en' ? 'fi' : 'en';
+
+    // Direct mapping from current post
+    const direct = getTranslationSlug(slug, locale);
+    if (direct) {
+      const exists = !!getBlogPost(direct, targetLocale);
+      if (exists) return true;
+    }
+
+    // Reverse mapping from target posts
+    const targetPosts = getAllBlogPosts(targetLocale);
+    if (targetPosts.some(p => p.translationSlug === slug)) {
+      return true;
+    }
+
+    // Same-slug fallback
+    if (getBlogPost(slug, targetLocale)) {
+      return true;
+    }
+
+    return false;
+  } catch (error) {
+    logger.warn('hasTranslation check failed', {
+      slug,
+      locale,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+    return false;
+  }
 }
 
 export function generateBlogMetadata(post: BlogPostMetadata, locale: string) {
   const canonicalUrl = generateBlogCanonicalUrl(post.slug, locale);
 
-  // Generate hreflang alternates for all supported locales
-  const supportedLocales = ['en', 'fi', 'de', 'et', 'sv'];
+  // Generate hreflang alternates for supported locales (currently en and fi)
+  const supportedLocales = ['en', 'fi'];
   const alternates: Record<string, string> = {};
 
   // Add current locale
