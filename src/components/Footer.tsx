@@ -109,7 +109,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/features`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.features"]}
                       </a>
@@ -117,7 +117,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/cybersecurity`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.security"]}
                       </a>
@@ -125,7 +125,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/pricing`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.pricing"]}
                       </a>
@@ -133,7 +133,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/contact`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.contact"]}
                       </a>
@@ -152,7 +152,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/about`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Tietoja meistä" : "About Us"}
                       </a>
@@ -160,7 +160,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/blog`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         Blog
                       </a>
@@ -168,7 +168,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/contact`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.contact"]}
                       </a>
@@ -187,7 +187,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/help/legal`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Sopimukset ja ehdot" : "Legal & agreements"}
                       </a>
@@ -195,7 +195,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/privacy`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Tietosuoja" : "Privacy Policy"}
                       </a>
@@ -203,7 +203,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/cookies`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Evästeet" : "Cookie Policy"}
                       </a>
@@ -211,7 +211,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/contact`}
-                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Ota yhteyttä" : "Contact Support"}
                       </a>
@@ -231,7 +231,7 @@ export default function Footer({
                 <li>
                   <a
                     href={`/${locale}/privacy`}
-                    className="text-sm text-white/80 hover:text-white transition-colors font-sans leading-relaxed"
+                    className="text-sm text-white hover:text-white transition-colors font-sans leading-relaxed"
                   >
                     {locale === "fi" ? "Tietosuoja" : "Privacy Policy"}
                   </a>
@@ -239,7 +239,7 @@ export default function Footer({
                 <li>
                   <a
                     href={`/${locale}/cookies`}
-                    className="text-sm text-white/80 hover:text-white transition-colors font-sans leading-relaxed"
+                    className="text-sm text-white hover:text-white transition-colors font-sans leading-relaxed"
                   >
                     {locale === "fi" ? "Evästeet" : "Cookie Policy"}
                   </a>

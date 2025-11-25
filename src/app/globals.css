@@ -283,6 +283,18 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Override link color inside dark sections (e.g., footer with forest background) */
+footer a,
+.bg-forest a {
+  color: var(--white);
+}
+
+footer a:hover,
+.bg-forest a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
 a:focus-visible {
   outline: 2px solid var(--forest);
   outline-offset: 2px;
