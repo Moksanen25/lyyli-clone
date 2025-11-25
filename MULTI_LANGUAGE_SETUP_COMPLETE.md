@@ -257,3 +257,4 @@ Jos tarvitset apua:
 **Seuraava:** ⏳ Vaihe 2 (Käännöstyö) ODOTTAA  
 **Arvioitu valmistumisaika:** 4-6 viikkoa käännöstyöstä riippuen  
 **Luotu:** 2024-11-12
+

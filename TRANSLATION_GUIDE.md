@@ -285,3 +285,4 @@ Jos tarvitset apua käännösprosessin kanssa:
 **Luotu:** 2024-11-12  
 **Versio:** 1.0  
 **Status:** Tekninen infrastruktuuri valmis, odottaa käännöksiä
+

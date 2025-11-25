@@ -40,7 +40,7 @@ export default function Footer({
 
   return (
     <footer className="relative" role="contentinfo">
-        <div className={`mx-4 mb-6 transition-all duration-300 ${getFooterClasses()}`}>
+        <div className={`mx-4 mb-6 transition-all duration-300 ${getFooterClasses()} text-white [&_a]:text-white [&_a:hover]:text-white [&_p]:text-white/90`}>
           <div className="max-w-7xl mx-auto px-6 py-12 relative">
             {/* Main Footer Content */}
             <div className="grid md:grid-cols-4 gap-8 mb-8">
@@ -56,14 +56,14 @@ export default function Footer({
                     className="h-8 w-auto"
                   />
                 </div>
-                <p className="text-base text-gray-200 mb-4 font-sans leading-relaxed">
+                <p className="text-base text-white/90 mb-4 font-sans leading-relaxed">
                   {t["footer.tagline"]}
                 </p>
                 <div className="flex gap-4">
                   <a
                     href="https://www.linkedin.com/company/lyyli-ai/"
                     aria-label="Follow Lyyli on LinkedIn"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-white/80 hover:text-white transition-colors"
                   >
                     <svg
                       className="w-5 h-5"
@@ -81,7 +81,7 @@ export default function Footer({
                   <a
                     href="https://www.instagram.com/lyyliai/"
                     aria-label="Follow Lyyli on Instagram"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-white/80 hover:text-white transition-colors"
                   >
                     <svg
                       className="w-5 h-5"
@@ -101,7 +101,7 @@ export default function Footer({
 
               {/* Product Links - Following 10-layout rule: sivupolut */}
               <div>
-                <h3 className="text-xl text-gray-100 mb-4 font-bold leading-normal font-playfair" style={{ color: '#F5F5F4' }}>
+                <h3 className="text-xl text-white mb-4 font-bold leading-normal font-playfair">
                   {t["footer.product"] || (locale === "fi" ? "Tuote" : "Product")}
                 </h3>
                 <nav>
@@ -109,7 +109,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/features`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.features"]}
                       </a>
@@ -117,7 +117,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/cybersecurity`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.security"]}
                       </a>
@@ -125,7 +125,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/pricing`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.pricing"]}
                       </a>
@@ -133,7 +133,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/contact`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.contact"]}
                       </a>
@@ -144,7 +144,7 @@ export default function Footer({
 
               {/* Company Links - Following 10-layout rule: sivupolut */}
               <div>
-                <h3 className="text-xl text-gray-100 mb-4 font-bold leading-normal font-playfair" style={{ color: '#F5F5F4' }}>
+                <h3 className="text-xl text-white mb-4 font-bold leading-normal font-playfair">
                   {locale === "fi" ? "Yritys" : "Company"}
                 </h3>
                 <nav>
@@ -152,7 +152,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/about`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Tietoja meistä" : "About Us"}
                       </a>
@@ -160,7 +160,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/blog`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         Blog
                       </a>
@@ -168,7 +168,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/contact`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {t["nav.contact"]}
                       </a>
@@ -179,7 +179,7 @@ export default function Footer({
 
               {/* Legal & Support Links */}
               <div>
-                <h3 className="text-xl text-gray-100 mb-4 font-bold leading-normal font-playfair" style={{ color: '#F5F5F4' }}>
+                <h3 className="text-xl text-white mb-4 font-bold leading-normal font-playfair">
                   {locale === "fi" ? "Tietosuoja" : "Legal & Support"}
                 </h3>
                 <nav>
@@ -187,7 +187,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/help/legal`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Sopimukset ja ehdot" : "Legal & agreements"}
                       </a>
@@ -195,7 +195,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/privacy`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Tietosuoja" : "Privacy Policy"}
                       </a>
@@ -203,7 +203,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/cookies`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Evästeet" : "Cookie Policy"}
                       </a>
@@ -211,7 +211,7 @@ export default function Footer({
                     <li>
                       <a
                         href={`/${locale}/contact`}
-                        className="text-base text-gray-200 hover:text-white transition-colors font-sans leading-relaxed"
+                        className="text-base text-white/90 hover:text-white transition-colors font-sans leading-relaxed"
                       >
                         {locale === "fi" ? "Ota yhteyttä" : "Contact Support"}
                       </a>
@@ -231,7 +231,7 @@ export default function Footer({
                 <li>
                   <a
                     href={`/${locale}/privacy`}
-                    className="text-sm text-gray-300 hover:text-white transition-colors font-sans leading-relaxed"
+                    className="text-sm text-white/80 hover:text-white transition-colors font-sans leading-relaxed"
                   >
                     {locale === "fi" ? "Tietosuoja" : "Privacy Policy"}
                   </a>
@@ -239,7 +239,7 @@ export default function Footer({
                 <li>
                   <a
                     href={`/${locale}/cookies`}
-                    className="text-sm text-gray-300 hover:text-white transition-colors font-sans leading-relaxed"
+                    className="text-sm text-white/80 hover:text-white transition-colors font-sans leading-relaxed"
                   >
                     {locale === "fi" ? "Evästeet" : "Cookie Policy"}
                   </a>
@@ -251,10 +251,10 @@ export default function Footer({
               {/* Canonical URL & Copyright */}
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div className="flex flex-col gap-1">
-                  <p className="text-xs text-gray-400 font-sans leading-relaxed">
+                  <p className="text-xs text-white/70 font-sans leading-relaxed">
                     {t["footer.rights"]}
                   </p>
-                  <p className="text-xs text-gray-500 font-sans leading-relaxed">
+                  <p className="text-xs text-white/60 font-sans leading-relaxed">
                     {locale === "fi" ? "Kanoninen URL:" : "Canonical URL:"}{" "}
                     {canonical}
                   </p>
@@ -262,13 +262,13 @@ export default function Footer({
 
                 {/* Compliance Badges */}
                 <div className="flex items-center gap-4">
-                  <div className="text-sm text-gray-300 font-sans leading-relaxed">
+                  <div className="text-sm text-white/80 font-sans leading-relaxed">
                     SOC 2 Type II
                   </div>
-                  <div className="text-sm text-gray-300 font-sans leading-relaxed">
+                  <div className="text-sm text-white/80 font-sans leading-relaxed">
                     GDPR Compliant
                   </div>
-                  <div className="text-sm text-gray-300 font-sans leading-relaxed">
+                  <div className="text-sm text-white/80 font-sans leading-relaxed">
                     ISO 27001
                   </div>
                 </div>
