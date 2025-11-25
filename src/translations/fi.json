@@ -247,7 +247,7 @@
   "features.multilingual.title": "Monikielinen tuki",
   "features.multilingual.translation.description": "Välitön käännös tuettujen kielten välillä säilyttäen teknisen terminologian ja kontekstin.",
   "features.multilingual.translation.title": "Reaaliaikainen käännös",
-  "features.page.description": "Tekoälykäyttöiset viestintäominaisuudet asiantuntijapalveluille: automaattinen sisällönluonti, työnkulkujen automatisointi, hallinta ja yritysturvallisuus.",
+  "features.page.description": "Tekoälyllä tehostetut viestintäominaisuudet asiantuntijaorganisaatioille: sisällönluonti, työnkulkujen automaatio, hallinta ja yritysturvallisuus.",
   "features.page.title": "Ominaisuudet",
   "features.security.encryption.description": "Kaikki viestintä salattu siirrossa ja levossa käyttäen AES-256-salaustandardeja.",
   "features.security.encryption.title": "Päästä päähän -salaus",
