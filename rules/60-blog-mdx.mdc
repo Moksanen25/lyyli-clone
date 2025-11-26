@@ -10,7 +10,8 @@
 
 ## 📋 FRONTMATTER REQUIREMENTS
 
-### **Frontmatter vaaditaan: title, description, date (ISO), author, tags[], locale, heroImage** (Frontmatter required: title, description, date (ISO), author, tags[], locale, heroImage)
+### **Frontmatter vaaditaan: title, description, date (ISO), author, keywords[], image** (Frontmatter required: title, description, date (ISO), author, keywords[], image)
+Optional (recommended): imageAlt, translationSlug, category, readTime
 
 ### **Required Frontmatter Structure**
 ```yaml
@@ -19,9 +20,10 @@ title: "Communication ecosystem for professional service companies"
 description: "Learn how to build a comprehensive communication strategy that transforms your professional service company's communication into a competitive advantage."
 date: "2024-01-15T10:00:00Z"
 author: "Lyyli Team"
-tags: ["communication", "professional-services", "strategy", "ai"]
-locale: "en"
-heroImage: "/images/blog/communication-ecosystem-hero.webp"
+keywords: ["communication", "professional-services", "strategy", "ai"]
+image: "/images/blog/communication-ecosystem-hero.webp"
+imageAlt: "Illustration of a professional service company communication ecosystem"
+translationSlug: "viestinnan-ekosysteemi" # counterpart slug in the other locale
 ---
 ```
 
@@ -33,13 +35,14 @@ interface BlogFrontmatter {
   description: string;
   date: string; // ISO format
   author: string;
-  tags: string[];
-  locale: 'en' | 'fi';
-  heroImage: string;
+  keywords: string[];
+  image: string;
+  imageAlt?: string;
+  translationSlug?: string;
 }
 
 export function validateFrontmatter(frontmatter: any): BlogFrontmatter {
-  const required = ['title', 'description', 'date', 'author', 'tags', 'locale', 'heroImage'];
+  const required = ['title', 'description', 'date', 'author', 'keywords', 'image'];
   const missing = required.filter(field => !frontmatter[field]);
   
   if (missing.length > 0) {
@@ -51,14 +54,9 @@ export function validateFrontmatter(frontmatter: any): BlogFrontmatter {
     throw new Error('Date must be in ISO format');
   }
   
-  // Validate locale
-  if (!['en', 'fi'].includes(frontmatter.locale)) {
-    throw new Error('Locale must be "en" or "fi"');
-  }
-  
-  // Validate tags array
-  if (!Array.isArray(frontmatter.tags) || frontmatter.tags.length === 0) {
-    throw new Error('Tags must be a non-empty array');
+  // Validate keywords array
+  if (!Array.isArray(frontmatter.keywords) || frontmatter.keywords.length === 0) {
+    throw new Error('keywords must be a non-empty array');
   }
   
   return frontmatter as BlogFrontmatter;
@@ -72,24 +70,27 @@ function isValidISOString(dateString: string): boolean {
 
 ## 🔗 SLUG GENERATION
 
-### **Slugit = tiedostonimi (pienet kirjaimet, ei välilyöntejä)** (Slugs = filename (lowercase, no spaces))
+### **Slugit = tiedostonimi per kieli (pienet kirjaimet, ei välilyöntejä)** (Slugs = filename per locale (lowercase, no spaces))
 
 ### **Slug Rules**
-- **File-based**: Slug matches the filename exactly
+- **File-based, localized**: Slug matches the filename in its locale folder
 - **Lowercase**: All characters converted to lowercase
 - **No Spaces**: Spaces replaced with hyphens
 - **No Special Characters**: Remove or replace special characters
+- **Link translations**: Use `translationSlug` in frontmatter to point to the counterpart
 
 ### **Slug Examples**
 ```typescript
-// File: communication-ecosystem.mdx
-// Slug: /blog/communication-ecosystem
+// EN File: communication-ecosystem.mdx
+// URL: /en/blog/communication-ecosystem
 
-// File: ai-communication-expert-teams.mdx
-// Slug: /blog/ai-communication-expert-teams
+// FI File: viestinnan-ekosysteemi.mdx
+// URL: /fi/blog/viestinnan-ekosysteemi
+// EN frontmatter: translationSlug: "viestinnan-ekosysteemi"
+// FI frontmatter: translationSlug: "communication-ecosystem"
 
 // File: sisaisen-viestinnan-sudenkuopat.mdx
-// Slug: /fi/blog/sisaisen-viestinnan-sudenkuopat
+// URL: /fi/blog/sisaisen-viestinnan-sudenkuopat
 ```
 
 ### **Slug Implementation**
@@ -149,7 +150,7 @@ export function getBlogPosts() {
 // Hero image with H2 heading
 <div className="hero-image-container mb-8">
   <Image
-    src={frontmatter.heroImage}
+    src={frontmatter.image}
     alt={frontmatter.title}
     width={1200}
     height={630}
@@ -192,6 +193,8 @@ export function getBlogPosts() {
 - **Finnish Version**: Finnish (FI) mirrors the English content
 - **No Machine Translation**: Human-written, culturally adapted content
 - **Content Parity**: Both versions should have equivalent information
+- **Localized Slugs**: Filename (slug) is localized per locale directory
+- **translationSlug**: Each locale version should set `translationSlug` to the counterpart’s slug (both directions recommended)
 
 ### **Content Structure**
 ```typescript
@@ -371,9 +374,10 @@ title: "Your blog post title"
 description: "Clear, compelling description under 160 characters"
 date: "2024-01-15T10:00:00Z"
 author: "Lyyli Team"
-tags: ["tag1", "tag2", "tag3"]
-locale: "en"
-heroImage: "/images/blog/hero-image.webp"
+keywords: ["tag1", "tag2", "tag3"]
+image: "/images/blog/hero-image.webp"
+imageAlt: "Describe the hero image content for accessibility"
+translationSlug: "localized-slug-in-the-other-locale"
 ---
 
 # Main heading (H1)
@@ -417,8 +421,9 @@ Content continues...
 4. **User Permission Required**: Cannot be changed without explicit command
 
 ### 📋 IMPLEMENTATION CHECKLIST
-- [ ] Frontmatter validation: title, description, date, author, tags, locale, heroImage
-- [ ] Slug generation based on filename (lowercase, no spaces)
+- [ ] Frontmatter: title, description, date, author, keywords, image (+ imageAlt, translationSlug)
+- [ ] Localized slugs per locale directory (lowercase, no spaces)
+- [ ] `translationSlug` links counterpart post (both directions recommended)
 - [ ] Image handling with alt text and captions
 - [ ] Typography hierarchy following brand guidelines
 - [ ] Localization strategy: EN primary, FI mirrors content
