@@ -165,6 +165,35 @@ export default function Header({ locale, translations: t }: HeaderProps) {
   const searchParamString = searchParams?.toString() ?? '';
   const qs = searchParamString ? `?${searchParamString}` : '';
 
+  // Supported locales for safe parsing
+  const supportedLocales = new Set(['en', 'fi', 'de', 'et', 'sv']);
+
+  // Extract path segments safely and remove locale prefix when present
+  const pathSegments = (() => {
+    try {
+      const parts = (pathname || '/').split('/').filter(Boolean);
+      if (parts.length > 0 && supportedLocales.has(parts[0])) {
+        return parts.slice(1);
+      }
+      return parts;
+    } catch {
+      return [];
+    }
+  })();
+
+  // Detect if current path is a single blog post (e.g. /blog/:slug)
+  const isBlogPostPath = pathSegments.length >= 2 && pathSegments[0] === 'blog' && !!pathSegments[1];
+
+  const buildHrefForLanguage = (langCode: string) => {
+    if (isBlogPostPath) {
+      // When switching language on a blog post, route to the blog index for the target locale
+      // to avoid broken slugs/missing translations that can cause blank screens.
+      return `/${langCode}/blog${qs}`;
+    }
+    const rebuilt = pathSegments.length ? `/${pathSegments.join('/')}` : '/';
+    return `/${langCode}${rebuilt}${qs}`;
+  };
+
   return (
     <header className="sticky top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Floating Navigation Bar */}
@@ -433,7 +462,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   data-testid="locale-switcher"
                 >
                   <Link
-                    href={`/en${pathWithoutLocale}${qs}`}
+                    href={buildHrefForLanguage('en')}
                     className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
                       locale === 'en'
                         ? 'bg-forest text-white'
@@ -444,7 +473,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     EN
                   </Link>
                   <Link
-                    href={`/fi${pathWithoutLocale}${qs}`}
+                    href={buildHrefForLanguage('fi')}
                     className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
                       locale === 'fi'
                         ? 'bg-forest text-white'
@@ -613,7 +642,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <div className={`border-t ${getMobileBorder()} pt-3 mt-2`}>
                 <div className="flex justify-center items-center gap-2">
                   <Link
-                    href={`/en${pathWithoutLocale}${qs}`}
+                    href={buildHrefForLanguage('en')}
                     className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
                       locale === 'en'
                         ? 'bg-forest text-white'
@@ -626,7 +655,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                     EN
                   </Link>
                   <Link
-                    href={`/fi${pathWithoutLocale}${qs}`}
+                    href={buildHrefForLanguage('fi')}
                     className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
                       locale === 'fi'
                         ? 'bg-forest text-white'

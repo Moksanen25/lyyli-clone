@@ -31,8 +31,21 @@ export default function ClientLocaleSwitcher({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Extract the path without locale
-  const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, '') || '/';
+  // Supported locales for safe parsing
+  const supportedLocales = new Set(['en', 'fi', 'de', 'et', 'sv']);
+
+  // Extract path segments safely and remove locale prefix when present
+  const segments = (() => {
+    try {
+      const parts = (pathname || '/').split('/').filter(Boolean);
+      if (parts.length > 0 && supportedLocales.has(parts[0])) {
+        return parts.slice(1);
+      }
+      return parts;
+    } catch {
+      return [];
+    }
+  })();
 
   // Preserve the current query string
   const queryString = searchParams?.toString();
@@ -59,6 +72,19 @@ export default function ClientLocaleSwitcher({
     }
     return undefined;
   }, [isOpen]);
+
+  // Detect if current path is a single blog post (e.g. /blog/:slug)
+  const isBlogPostPath = segments.length >= 2 && segments[0] === 'blog' && !!segments[1];
+
+  const buildHrefForLanguage = (langCode: string) => {
+    // If on a blog post, route to the blog index in the target locale to avoid missing translations
+    if (isBlogPostPath) {
+      return `/${langCode}/blog${qs}`;
+    }
+    // Rebuild path with ensured slashes
+    const rebuilt = segments.length ? `/${segments.join('/')}` : '/';
+    return `/${langCode}${rebuilt}${qs}`;
+  };
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -106,7 +132,7 @@ export default function ClientLocaleSwitcher({
           {languages.map(lang => (
             <Link
               key={lang.code}
-              href={`/${lang.code}${pathWithoutLocale}${qs}`}
+              href={buildHrefForLanguage(lang.code)}
               className={`flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors ${
                 currentLocale === lang.code ? 'bg-forest/5' : ''
               }`}
