@@ -156,8 +156,11 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
   const navPillClass = (active: boolean) =>
     [
-      'inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200',
-      active ? 'bg-forest text-white' : 'text-darkGray hover:bg-grayLight',
+      'inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 shadow-sm',
+      active
+        ? 'bg-forest text-white'
+        : 'text-darkGray hover:bg-grayLight',
+      'hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--forest)]',
     ].join(' ');
 
   // Language pills (EN / FI) with current path + query preserved
@@ -488,7 +491,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                 {/* CTA Button */}
                 <Link
                   href="https://app.lyyli.ai"
-                  className="bg-forest text-white px-6 py-3 rounded-full hover:bg-forest/90 hover:shadow-lg transition-all duration-200 font-semibold inline-flex items-center gap-2 font-sans shadow-md"
+                  className="btn-primary"
                   aria-label="Sign in to Lyyli.ai"
                 >
                   Login
@@ -630,7 +633,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
               <div className={`border-t ${getMobileBorder()} pt-3 mt-2`}>
                 <Link
                   href="https://app.lyyli.ai"
-                  className="block w-full bg-forest text-white px-4 py-3 rounded-full hover:bg-forest/90 transition-all duration-200 font-semibold text-base text-center font-sans shadow-md"
+                  className="btn-primary w-full text-center"
                   aria-label="Sign in to Lyyli.ai"
                   onClick={closeMobileMenu}
                 >

@@ -428,7 +428,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
               </svg>
             </a>
             <CalendarPopup
-              className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-forest transition-all duration-300 hover:-translate-y-1 font-sans"
+              className="btn-pill border-2 border-white text-white hover:bg-white hover:text-forest font-semibold"
               translations={{
                 title: t['calendar.title'],
                 subtitle: t['calendar.subtitle'],

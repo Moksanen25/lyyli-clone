@@ -444,7 +444,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CalendarPopup
-              className="bg-forest text-white px-8 py-4 rounded-lg hover:bg-forest/90 transition-all duration-300 font-medium inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="btn-pill bg-forest text-white font-medium"
               aria-label={
                 currentLocale === 'fi'
                   ? 'Varaa Lyyli.ain demo'
@@ -533,25 +533,44 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 mikko@lyyli.ai
               </a>
               <span className="hidden sm:inline text-mediumGray">•</span>
-              <a
-                href="https://lyyli.ai/demo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-forest hover:text-turquoise transition-colors font-medium"
+              <CalendarPopup
+                className="btn-pill border-2 border-forest text-forest font-medium bg-white"
+                translations={{
+                  title: currentLocale === 'fi' ? 'Varaa demo' : 'Book a Demo',
+                  subtitle:
+                    currentLocale === 'fi'
+                      ? 'Ajoita henkilökohtainen demo tiimimme kanssa'
+                      : 'Schedule a personalized demo with our team',
+                  description:
+                    currentLocale === 'fi'
+                      ? 'Valitse sopiva aika henkilökohtaiselle demollesi. Tiimimme näyttää, kuinka Lyyli voi muuttaa organisaatiosi viestintää.'
+                      : "Choose a convenient time for your personalized demo. Our team will show you how Lyyli can transform your organization's communication.",
+                  loading:
+                    currentLocale === 'fi'
+                      ? 'Ladataan kalenteria...'
+                      : 'Loading calendar...',
+                  errorTitle:
+                    currentLocale === 'fi'
+                      ? 'Ajoita demosi'
+                      : 'Schedule Your Demo',
+                  errorDescription:
+                    currentLocale === 'fi'
+                      ? 'Klikkaa alla olevaa painiketta avataksesi kalenterimme uudessa välilehdessä'
+                      : 'Click the button below to open our calendar in a new tab',
+                  errorButton:
+                    currentLocale === 'fi' ? 'Avaa kalenteri' : 'Open Calendar',
+                  footerSecure:
+                    currentLocale === 'fi'
+                      ? 'Turvallinen varaus • GDPR-yhteensopiva'
+                      : 'Secure booking • GDPR compliant',
+                  footerContact:
+                    currentLocale === 'fi'
+                      ? 'Kysymyksiä? Ota yhteyttä'
+                      : 'Questions? Contact us',
+                }}
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                    clipRule="evenodd"
-                  />
-                </svg>
                 {currentLocale === 'fi' ? 'Varaa demo' : 'Schedule demo'}
-              </a>
+              </CalendarPopup>
             </div>
           </div>
         </div>

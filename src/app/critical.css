@@ -82,13 +82,16 @@ body {
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 12px 24px;
-  border-radius: 0.5rem;
+  border-radius: 9999px; /* pill */
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   min-height: 44px;
   min-width: 44px;
+  box-shadow: var(--shadow-soft);
 }
 
 .btn-primary {
@@ -98,18 +101,46 @@ body {
 
 .btn-primary:hover {
   background: rgba(47, 93, 80, 0.9);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
   border: 2px solid var(--forest);
   color: var(--forest);
+  background: var(--white);
 }
 
 .btn-secondary:hover {
   background: var(--forest);
   color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Shared pill interaction utility for any button-like element */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  min-height: 40px;
+}
+.btn-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.btn-pill:active {
+  transform: translateY(0);
+}
+.btn-pill:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 2px;
 }
 
 /* Critical z-index for layering */

@@ -334,7 +334,7 @@ export default async function Home({ params }: HomeProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://app.lyyli.ai"
-              className="inline-flex items-center px-8 py-4 bg-white text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
+              className="btn-pill bg-white text-forest font-semibold"
             >
               {t['cta.startTrial']}
               <svg
@@ -352,7 +352,7 @@ export default async function Home({ params }: HomeProps) {
               </svg>
             </a>
             <CalendarPopup
-              className="inline-flex items-center px-8 py-4 bg-turquoise text-forest font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 font-sans"
+              className="btn-pill bg-turquoise text-forest font-semibold"
               translations={{
                 title: t['calendar.title'],
                 subtitle: t['calendar.subtitle'],
@@ -389,13 +389,13 @@ export default async function Home({ params }: HomeProps) {
         <div className="bg-white/95 backdrop-blur-md border border-gray-200 shadow-xl rounded-2xl p-3 flex items-center gap-3">
           <a
             href="https://app.lyyli.ai"
-            className="flex-1 inline-flex justify-center items-center px-4 py-3 bg-forest text-white font-semibold rounded-xl shadow-sm"
+            className="flex-1 btn-primary justify-center"
             aria-label="Start free trial"
           >
             {t['hero.ctaPrimary']}
           </a>
           <CalendarPopup
-            className="inline-flex items-center px-4 py-3 border-2 border-forest text-forest font-semibold rounded-xl"
+            className="btn-secondary"
             translations={{
               title: t['calendar.title'],
               subtitle: t['calendar.subtitle'],
