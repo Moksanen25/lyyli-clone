@@ -390,38 +390,43 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </header>
 
       {/* Content + TOC */}
-      <div
-        id="article-root"
-        className="max-w-7xl mx-auto px-4 md:px-6 pb-16 lg:pb-24"
-      >
-        <div className="bg-white/85 backdrop-blur-sm rounded-2xl shadow-sm ring-1 ring-forest/10 p-4 md:p-6">
-          <div className="lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
-            <div className="lg:col-start-2 lg:col-end-2">
-              <div id="article-body" className="markdown-content blog">
-                <MDXRemote
-                  source={post.content}
-                  components={BlogMDXComponents}
-                  options={{
-                    mdxOptions: {
-                      remarkPlugins: [remarkGfm],
-                      rehypePlugins: [
-                        rehypeSlug,
-                        [
-                          rehypeAutolinkHeadings,
-                          { behavior: 'append', properties: { class: 'ml-1' } },
+      <section className="relative bg-gradient-to-br from-white/90 via-rose/90 to-grayLight/90 backdrop-blur-sm">
+        <div
+          id="article-root"
+          className="max-w-7xl mx-auto px-4 md:px-6 pb-16 lg:pb-24"
+        >
+          <div className="">
+            <div className="lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
+              <div className="lg:col-start-2 lg:col-end-2">
+                <div id="article-body" className="markdown-content blog">
+                  <MDXRemote
+                    source={post.content}
+                    components={BlogMDXComponents}
+                    options={{
+                      mdxOptions: {
+                        remarkPlugins: [remarkGfm],
+                        rehypePlugins: [
+                          rehypeSlug,
+                          [
+                            rehypeAutolinkHeadings,
+                            {
+                              behavior: 'append',
+                              properties: { class: 'ml-1' },
+                            },
+                          ],
                         ],
-                      ],
-                    },
-                  }}
-                />
+                      },
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="hidden lg:block lg:col-start-3 lg:col-end-4">
-              <ArticleTOC targetId="article-body" className="mt-8 lg:mt-0" />
+              <div className="hidden lg:block lg:col-start-3 lg:col-end-4">
+                <ArticleTOC targetId="article-body" className="mt-8 lg:mt-0" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Related Posts */}
       <RelatedPosts
