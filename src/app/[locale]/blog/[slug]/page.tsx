@@ -215,7 +215,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   });
 
   return (
-    <article className="relative bg-gradient-to-br from-white/90 via-rose/90 to-grayLight/90 backdrop-blur-sm">
+    <article>
       <ReadingProgress targetId="article-root" className="reading-progress" />
       {/* Breadcrumb JSON-LD structured data */}
       <script
@@ -390,7 +390,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </header>
 
       {/* Content + TOC */}
-      <section className="relative bg-gradient-to-br from-white/90 via-rose/90 to-grayLight/90 backdrop-blur-sm">
+      <section className="relative">
         <div
           id="article-root"
           className="max-w-7xl mx-auto px-4 md:px-6 pb-16 lg:pb-24"
@@ -398,7 +398,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="">
             <div className="lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
               <div className="lg:col-start-2 lg:col-end-2">
-                <div id="article-body" className="markdown-content blog">
+                <div id="article-body" className="markdown-content blog pt-6">
                   <MDXRemote
                     source={post.content}
                     components={BlogMDXComponents}
