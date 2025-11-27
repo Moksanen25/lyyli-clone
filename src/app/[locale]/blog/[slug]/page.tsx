@@ -216,6 +216,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article>
+      {/* Full-page translucent gradient background behind everything, including the menu */}
+      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-white/90 via-rose/90 to-grayLight/90 backdrop-blur-sm pointer-events-none" />
       <ReadingProgress targetId="article-root" className="reading-progress" />
       {/* Breadcrumb JSON-LD structured data */}
       <script
@@ -234,15 +236,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       />
 
       {/* Header */}
-      <header className="relative bg-gradient-to-br from-white/95 via-rose/95 to-grayLight/95 backdrop-blur-sm overflow-hidden">
-        {/* Background elements - Matching other page gradients */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-rose/95 to-grayLight/95 backdrop-blur-sm" />
-        <div className="absolute top-8 right-8 opacity-10 z-0">
-          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-forest to-turquoise blur-xl" />
-        </div>
-        <div className="absolute bottom-8 left-8 opacity-10 z-0">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-turquoise to-rose blur-xl" />
-        </div>
+      <header className="relative bg-transparent overflow-hidden">
 
         <div className="max-w-5xl mx-auto px-4 md:px-6 py-16 lg:py-24 relative z-10">
           {/* Breadcrumbs */}
