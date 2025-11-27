@@ -215,7 +215,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   });
 
   return (
-    <article>
+    <article className="relative bg-gradient-to-br from-white/90 via-rose/90 to-grayLight/90 backdrop-blur-sm">
       <ReadingProgress targetId="article-root" className="reading-progress" />
       {/* Breadcrumb JSON-LD structured data */}
       <script
