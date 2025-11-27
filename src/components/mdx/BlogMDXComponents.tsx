@@ -147,12 +147,13 @@ export const BlogMDXComponents: MDXComponents = {
     return (
       <div className="bleed my-8">
         <Image
-          src={src}
+          src={encodeURI(src as string)}
           alt={alt ?? ''}
           width={1200}
           height={675}
           className="rounded-none md:rounded-lg"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+          unoptimized
         />
         {alt && (
           <p className="text-sm text-gray-500 mt-2 text-center px-4 md:px-0">
