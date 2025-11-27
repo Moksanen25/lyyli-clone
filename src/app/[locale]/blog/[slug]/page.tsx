@@ -27,6 +27,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import ReadingProgress from '@/components/ReadingProgress';
 import ArticleTOC from '@/components/ArticleTOC';
+import ArticleFooterBox from '@/components/blog/ArticleFooterBox';
 
 export const revalidate = 3600; // ISR: revalidate blog posts hourly
 
@@ -396,6 +397,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     }}
                   />
                 </div>
+                <ArticleFooterBox
+                  author={post.author}
+                  keywords={post.keywords}
+                  locale={currentLocale}
+                  className="mt-10"
+                />
               </div>
               <div className="hidden lg:block lg:col-start-3 lg:col-end-4">
                 <ArticleTOC targetId="article-body" className="mt-8 lg:mt-0" />

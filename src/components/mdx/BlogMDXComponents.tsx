@@ -79,12 +79,12 @@ export const BlogMDXComponents: MDXComponents = {
 
   // Lists
   ul: ({ children }) => (
-    <ul className="mb-4 space-y-2 text-gray-700">{children}</ul>
+    <ul className="mb-4 space-y-1 text-gray-700">{children}</ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-4 space-y-2 text-gray-700">{children}</ol>
+    <ol className="mb-4 space-y-1 text-gray-700">{children}</ol>
   ),
-  li: ({ children }) => <li className="mb-2">{children}</li>,
+  li: ({ children }) => <li className="mb-0">{children}</li>,
 
   // Blockquotes
   blockquote: ({ children }) => (
