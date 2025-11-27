@@ -71,11 +71,11 @@ export default function ArticleFooterBox({
 							<div className="flex items-center gap-2 flex-wrap">
 								<a
 									href={emailHref}
-									className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-forest/20 bg-white text-forest hover:bg-forest/5 hover:border-forest transition-colors"
+									className="group inline-flex items-center gap-2 px-3 py-2 rounded-full border border-forest/20 bg-white text-forest shadow-sm transition-all duration-200 hover:bg-forest/10 hover:border-forest hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-forest/40"
 									aria-label="Email"
 								>
 									<svg
-										className="w-4 h-4"
+										className="w-4 h-4 transition-colors"
 										fill="currentColor"
 										viewBox="0 0 20 20"
 										aria-hidden="true"
@@ -89,11 +89,11 @@ export default function ArticleFooterBox({
 									href={whatsappHref}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-forest/20 bg-white text-forest hover:bg-forest/5 hover:border-forest transition-colors"
+									className="group inline-flex items-center gap-2 px-3 py-2 rounded-full border border-forest/20 bg-white text-forest shadow-sm transition-all duration-200 hover:bg-forest/10 hover:border-forest hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-forest/40"
 									aria-label="WhatsApp"
 								>
 									<svg
-										className="w-4 h-4"
+										className="w-4 h-4 transition-colors"
 										fill="currentColor"
 										viewBox="0 0 24 24"
 										aria-hidden="true"
@@ -104,11 +104,11 @@ export default function ArticleFooterBox({
 								</a>
 								<a
 									href={phoneHref}
-									className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-forest/20 bg-white text-forest hover:bg-forest/5 hover:border-forest transition-colors"
+									className="group inline-flex items-center gap-2 px-3 py-2 rounded-full border border-forest/20 bg-white text-forest shadow-sm transition-all duration-200 hover:bg-forest/10 hover:border-forest hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-forest/40"
 									aria-label="Phone"
 								>
 									<svg
-										className="w-4 h-4"
+										className="w-4 h-4 transition-colors"
 										fill="none"
 										stroke="currentColor"
 										viewBox="0 0 24 24"
