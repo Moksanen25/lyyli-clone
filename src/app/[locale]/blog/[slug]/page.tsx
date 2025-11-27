@@ -246,12 +246,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Language switching notice */}
           {translatedPost && (
-            <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <div className="flex items-center gap-2 text-blue-800">
+            <div className="mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-forest/20 text-forest backdrop-blur-sm">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                   fill="currentColor"
                   viewBox="0 0 20 20"
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"
@@ -259,35 +260,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="font-medium">
+                <span className="text-sm">
                   {currentLocale === 'fi'
-                    ? 'Tämä blogikirjoitus on saatavilla myös englanniksi.'
-                    : 'This blog post is also available in Finnish.'}
+                    ? 'Saatavilla myös englanniksi.'
+                    : 'Also available in Finnish.'}
                 </span>
-              </div>
-              <div className="mt-2 text-blue-700">
+                <span className="text-mediumGray">•</span>
                 <Link
                   href={`/${currentLocale === 'en' ? 'fi' : 'en'}/blog/${translatedPost.slug}`}
-                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 underline"
+                  className="text-sm font-semibold underline decoration-turquoise underline-offset-2 hover:text-forest/80"
                 >
-                  <span>
-                    {currentLocale === 'fi'
-                      ? 'Lue englanniksi'
-                      : 'Lue suomeksi'}
-                  </span>
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
+                  {currentLocale === 'fi' ? 'Lue englanniksi' : 'Lue suomeksi'}
                 </Link>
               </div>
             </div>
