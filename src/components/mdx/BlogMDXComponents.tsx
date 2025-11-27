@@ -108,8 +108,8 @@ export const BlogMDXComponents: MDXComponents = {
     return <code className={className}>{children}</code>;
   },
   pre: ({ children }) => (
-    <div className="bleed my-6">
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-none md:rounded-lg overflow-x-auto">
+    <div className="my-6">
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
         {children}
       </pre>
     </div>
@@ -145,22 +145,21 @@ export const BlogMDXComponents: MDXComponents = {
     if (!src) return null;
 
     return (
-      <div className="bleed my-8">
+      <figure className="my-8">
         <Image
           src={encodeURI(src as string)}
           alt={alt ?? ''}
           width={1200}
           height={675}
-          className="rounded-none md:rounded-lg"
+          className="w-full h-auto rounded-lg"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-          unoptimized
         />
         {alt && (
-          <p className="text-sm text-gray-500 mt-2 text-center px-4 md:px-0">
+          <figcaption className="text-sm text-gray-500 mt-2 text-center px-4 md:px-0">
             {alt}
-          </p>
+          </figcaption>
         )}
-      </div>
+      </figure>
     );
   },
 

@@ -1579,5 +1579,11 @@ select:focus {
   padding: 0 !important;
 }
 
+/* Force images within markdown area to show despite broad hide rules above */
+.blog .markdown-content img,
+.blog figure img {
+  display: block !important;
+}
+
 
 
