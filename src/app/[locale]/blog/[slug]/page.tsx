@@ -394,8 +394,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         id="article-root"
         className="max-w-7xl mx-auto px-4 md:px-6 pb-16 lg:pb-24"
       >
-        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(640px,72ch)_minmax(240px,320px)_minmax(0,1fr)] lg:gap-10">
-          <div className="lg:col-start-2 lg:col-end-3">
+        <div className="lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
+          <div className="lg:col-start-2 lg:col-end-2">
             <div id="article-body" className="markdown-content blog">
               <MDXRemote
                 source={post.content}
@@ -415,10 +415,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               />
             </div>
           </div>
-          <ArticleTOC
-            targetId="article-body"
-            className="mt-8 lg:mt-0 lg:col-start-3 lg:col-end-4"
-          />
+          <div className="hidden lg:block lg:col-start-3 lg:col-end-4">
+            <ArticleTOC targetId="article-body" className="mt-8 lg:mt-0" />
+          </div>
         </div>
       </div>
 
