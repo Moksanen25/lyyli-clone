@@ -117,7 +117,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       </section>
 
       {/* Upcoming features */}
-      <section id="upcoming" className="py-16 lg:py-24">
+      <section id="upcoming" className="py-16 lg:py-24 scroll-mt-40">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
@@ -250,7 +250,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       {/* Integrations */}
       <section
         id="integrations"
-        className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24"
+        className="bg-gradient-to-br from-forest/5 to-turquoise/5 py-16 lg:py-24 scroll-mt-40"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">

@@ -211,7 +211,7 @@ export default function FeaturesCardLayout({
   return (
     <div className="space-y-16">
       {/* Lyyli learns from your messages */}
-      <div id="ai-automation">
+      <div id="ai-automation" className="scroll-mt-40">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t['features.learns.title']}
@@ -294,7 +294,7 @@ export default function FeaturesCardLayout({
       </div>
 
       {/* Governance & Compliance */}
-      <div id="governance-compliance">
+      <div id="governance-compliance" className="scroll-mt-40">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t['features.governance.title']}
@@ -377,7 +377,7 @@ export default function FeaturesCardLayout({
       </div>
 
       {/* Enterprise Security */}
-      <div id="security-gdpr">
+      <div id="security-gdpr" className="scroll-mt-40">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t['features.security.title']}
@@ -462,7 +462,7 @@ export default function FeaturesCardLayout({
       </div>
 
       {/* Multilingual Support */}
-      <div id="multilingual">
+      <div id="multilingual" className="scroll-mt-40">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
             {t['features.multilingual.title']}

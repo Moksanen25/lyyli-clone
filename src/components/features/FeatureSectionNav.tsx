@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { TranslationKeys } from "@/lib/i18n";
 
 interface FeatureSectionNavProps {
@@ -56,20 +57,54 @@ export default function FeatureSectionNav({
     }
   ];
 
+  const navRef = useRef<HTMLDivElement | null>(null);
+  const [headerOffsetPx, setHeaderOffsetPx] = useState<number>(0);
+  const [navHeightPx, setNavHeightPx] = useState<number>(0);
+
+  // Measure header height (sticky) and our own nav height for accurate scroll offsets
+  useEffect(() => {
+    const measure = () => {
+      const headerEl = document.querySelector<HTMLElement>("header");
+      const headerRect = headerEl?.getBoundingClientRect();
+      const headerHeight = headerRect ? headerRect.height : 0;
+      setHeaderOffsetPx(headerHeight);
+
+      const navEl = navRef.current;
+      setNavHeightPx(navEl?.offsetHeight ?? 0);
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    window.addEventListener("scroll", measure, { passive: true });
+    return () => {
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", measure);
+    };
+  }, []);
+
+  const stickyTopPx = useMemo(() => headerOffsetPx, [headerOffsetPx]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    if (!element) return;
+    const rect = element.getBoundingClientRect();
+    const absoluteY = rect.top + window.pageYOffset;
+    const safeGap = 12; // small breathing room below the bars
+    const targetY = Math.max(
+      0,
+      absoluteY - (headerOffsetPx + navHeightPx + safeGap)
+    );
+    window.scrollTo({ top: targetY, behavior: "smooth" });
   };
 
   return (
-    <div className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div
+      ref={navRef}
+      className="bg-white border-b border-gray-200 sticky z-40 shadow-sm"
+      style={{ top: stickyTopPx }}
+    >
       <div className="container mx-auto px-4">
-        <nav className="py-4" aria-label="Feature sections navigation">
+        <nav className="py-3 md:py-4" aria-label="Feature sections navigation">
           <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {sections.map((section) => (
               <button
