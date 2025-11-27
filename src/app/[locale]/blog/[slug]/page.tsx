@@ -23,6 +23,10 @@ import {
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { BlogMDXComponents } from '@/components/mdx/BlogMDXComponents';
 import remarkGfm from 'remark-gfm';
+import remarkSlug from 'remark-slug';
+import remarkAutolinkHeadings from 'remark-autolink-headings';
+import ReadingProgress from '@/components/ReadingProgress';
+import ArticleTOC from '@/components/ArticleTOC';
 
 export const revalidate = 3600; // ISR: revalidate blog posts hourly
 
@@ -212,6 +216,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article>
+      <ReadingProgress targetId="article-root" className="reading-progress" />
       {/* Breadcrumb JSON-LD structured data */}
       <script
         type="application/ld+json"
@@ -384,18 +389,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </header>
 
-      {/* Content */}
-      <div className="max-w-5xl mx-auto px-4 md:px-6 pb-16 lg:pb-24">
-        <div className="markdown-content blog p-6 md:p-8 rounded-2xl">
-          <MDXRemote
-            source={post.content}
-            components={BlogMDXComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-              },
-            }}
-          />
+      {/* Content + TOC */}
+      <div id="article-root" className="max-w-6xl mx-auto px-4 md:px-6 pb-16 lg:pb-24">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(240px,320px)] lg:gap-10">
+          <div>
+            <div id="article-body" className="markdown-content blog p-6 md:p-8 rounded-2xl">
+              <MDXRemote
+                source={post.content}
+                components={BlogMDXComponents}
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [
+                      remarkGfm,
+                      remarkSlug,
+                      [remarkAutolinkHeadings, { behavior: 'append', properties: { className: 'ml-1' } }],
+                    ],
+                  },
+                }}
+              />
+            </div>
+          </div>
+          <ArticleTOC targetId="article-body" className="mt-8 lg:mt-0" />
         </div>
       </div>
 

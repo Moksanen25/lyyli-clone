@@ -108,9 +108,11 @@ export const BlogMDXComponents: MDXComponents = {
     return <code className={className}>{children}</code>;
   },
   pre: ({ children }) => (
-    <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-6">
-      {children}
-    </pre>
+    <div className="bleed my-6">
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-none md:rounded-lg overflow-x-auto">
+        {children}
+      </pre>
+    </div>
   ),
 
   // Tables
@@ -143,17 +145,31 @@ export const BlogMDXComponents: MDXComponents = {
     if (!src) return null;
 
     return (
-      <div className="my-8">
+      <div className="bleed my-8">
         <Image
           src={src}
           alt={alt ?? ''}
           width={1200}
           height={675}
-          className="rounded-lg"
+          className="rounded-none md:rounded-lg"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
         />
-        {alt && <p className="text-sm text-gray-500 mt-2 text-center">{alt}</p>}
+        {alt && (
+          <p className="text-sm text-gray-500 mt-2 text-center px-4 md:px-0">
+            {alt}
+          </p>
+        )}
       </div>
     );
   },
+
+  // Callouts
+  KeyTakeaways: ({ children }) => (
+    <aside className="my-8 rounded-xl border-2 border-forest bg-white shadow-soft p-5">
+      <h4 className="text-forest font-playfair font-bold text-lg mb-2">
+        Key takeaways
+      </h4>
+      <div className="text-darkGray font-sans leading-relaxed">{children}</div>
+    </aside>
+  ),
 };

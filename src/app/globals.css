@@ -673,6 +673,26 @@ h5, h6 {
   hyphens: auto;
 }
 
+/* Full-bleed media inside constrained prose */
+.bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+@media (min-width: 768px) {
+  .bleed {
+    width: 100vw;
+  }
+}
+@media (min-width: 1024px) {
+  .bleed {
+    width: calc(100vw - 4rem); /* account for typical container paddings */
+  }
+}
+
 /* Slightly larger copy and relaxed leading on desktop for focus */
 @media (min-width: 1024px) {
   .blog p {
