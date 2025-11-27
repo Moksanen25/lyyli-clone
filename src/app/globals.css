@@ -664,6 +664,30 @@ h5, h6 {
   margin-bottom: 1rem;
 }
 
+/* Comfortable reading width and smooth anchor scrolling */
+.markdown-content {
+  max-width: 72ch; /* ideal line length for readability */
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+/* Slightly larger copy and relaxed leading on desktop for focus */
+@media (min-width: 1024px) {
+  .blog p {
+    font-size: 1.0625rem; /* ~17px */
+    line-height: 1.85;
+  }
+}
+
+/* Make anchored headings readable when using a sticky header */
+.blog h2,
+.blog h3,
+.blog h4 {
+  scroll-margin-top: 120px;
+}
+
 /* Enhanced paragraph spacing for better readability */
 .blog p + p {
   margin-top: 1.25rem;

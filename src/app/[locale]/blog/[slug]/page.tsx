@@ -239,7 +239,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-turquoise to-rose blur-xl" />
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 py-16 lg:py-24 relative z-10">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 py-16 lg:py-24 relative z-10">
           {/* Breadcrumbs */}
           <div className="hidden mb-8">
             <Breadcrumbs items={breadcrumbItems} />
@@ -385,8 +385,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </header>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 pb-16 lg:pb-24">
-        <div className="markdown-content blog p-8 rounded-2xl">
+      <div className="max-w-5xl mx-auto px-4 md:px-6 pb-16 lg:pb-24">
+        <div className="markdown-content blog p-6 md:p-8 rounded-2xl">
           <MDXRemote
             source={post.content}
             components={BlogMDXComponents}
