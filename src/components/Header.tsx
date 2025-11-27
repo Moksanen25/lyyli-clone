@@ -207,7 +207,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             {/* Logo */}
             <div className="flex items-center">
               <Link
-                href="/"
+                href={`/${locale}`}
                 className="flex items-center gap-3"
                 aria-label="Lyyli.ai homepage"
                 onClick={closeMobileMenu}
@@ -491,7 +491,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   className="bg-forest text-white px-6 py-3 rounded-full hover:bg-forest/90 hover:shadow-lg transition-all duration-200 font-semibold inline-flex items-center gap-2 font-sans shadow-md"
                   aria-label="Sign in to Lyyli.ai"
                 >
-                  {locale === 'fi' ? 'Liity odotuslistalle' : 'Join waitlist'}
+                  Login
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -634,7 +634,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
                   aria-label="Sign in to Lyyli.ai"
                   onClick={closeMobileMenu}
                 >
-                  {locale === 'fi' ? 'Liity jonoon' : 'Join waitlist'}
+                  Login
                 </Link>
               </div>
 
