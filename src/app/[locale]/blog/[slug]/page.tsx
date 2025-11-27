@@ -23,8 +23,8 @@ import {
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { BlogMDXComponents } from '@/components/mdx/BlogMDXComponents';
 import remarkGfm from 'remark-gfm';
-import remarkSlug from 'remark-slug';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import ReadingProgress from '@/components/ReadingProgress';
 import ArticleTOC from '@/components/ArticleTOC';
 
@@ -399,10 +399,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 components={BlogMDXComponents}
                 options={{
                   mdxOptions: {
-                    remarkPlugins: [
-                      remarkGfm,
-                      remarkSlug,
-                      [remarkAutolinkHeadings, { behavior: 'append', properties: { className: 'ml-1' } }],
+                    remarkPlugins: [remarkGfm],
+                    rehypePlugins: [
+                      rehypeSlug,
+                      [
+                        rehypeAutolinkHeadings,
+                        { behavior: 'append', properties: { class: 'ml-1' } },
+                      ],
                     ],
                   },
                 }}
