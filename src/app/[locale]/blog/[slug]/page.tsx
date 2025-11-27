@@ -390,10 +390,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </header>
 
       {/* Content + TOC */}
-      <div id="article-root" className="max-w-6xl mx-auto px-4 md:px-6 pb-16 lg:pb-24">
+      <div
+        id="article-root"
+        className="max-w-6xl mx-auto px-4 md:px-6 pb-16 lg:pb-24"
+      >
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(240px,320px)] lg:gap-10">
           <div>
-            <div id="article-body" className="markdown-content blog p-6 md:p-8 rounded-2xl">
+            <div id="article-body" className="markdown-content blog">
               <MDXRemote
                 source={post.content}
                 components={BlogMDXComponents}

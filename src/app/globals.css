@@ -1567,4 +1567,17 @@ select:focus {
 }
 
 
+/* === Blog layout fixes ===
+   Ensure .bleed media are not hidden by generic blog overrides
+   and keep article prose at intended width without extra padding. */
+.blog .bleed img,
+.blog .bleed picture img {
+  display: block !important;
+}
+
+.markdown-content.blog {
+  padding: 0 !important;
+}
+
+
 
