@@ -52,8 +52,8 @@ export default async function LegalTemplatePage({
 
   if (!doc) {
     return (
-      <div className="min-h-screen bg-white py-16">
-        <div className="max-w-3xl mx-auto px-6">
+      <div className="min-h-screen bg-gradient-to-br from-rose/5 to-turquoise/5 py-16">
+        <div className="max-w-3xl mx-auto px-6 bg-white rounded-2xl shadow-lg p-12">
           <Link
             href={`/${locale}/help/legal`}
             className="text-forest underline"
@@ -72,37 +72,48 @@ export default async function LegalTemplatePage({
   }
 
   return (
-    <div className="min-h-screen bg-white py-16">
-      <div className="max-w-3xl mx-auto px-6">
-        <Link href={`/${locale}/help/legal`} className="text-forest underline">
-          {t('back')}
+    <div className="min-h-screen bg-gradient-to-br from-rose/5 to-turquoise/5 py-16">
+      <div className="max-w-4xl mx-auto px-6">
+        <Link
+          href={`/${locale}/help/legal`}
+          className="text-forest hover:text-forest/80 transition-colors mb-8 inline-block font-medium"
+        >
+          ← {t('back')}
         </Link>
-        <h1 className="text-4xl text-forest mt-4 mb-2 font-playfair font-bold leading-tight">
-          {doc.title}
-        </h1>
-        <div className="text-sm text-mediumGray font-sans mb-8 flex gap-4">
-          {doc.version ? (
-            <span>
-              {t('version')} {doc.version}
-            </span>
-          ) : null}
-          {doc.lastUpdated ? (
-            <span>
-              {t('updated')} {doc.lastUpdated}
-            </span>
-          ) : null}
+
+        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 lg:p-16">
+          <header className="mb-10 border-b border-gray-100 pb-8">
+            <h1 className="text-3xl md:text-4xl text-forest mb-4 font-playfair font-bold leading-tight">
+              {doc.title}
+            </h1>
+            <div className="flex flex-wrap gap-6 text-sm text-mediumGray font-sans">
+              {doc.version ? (
+                <span className="flex items-center bg-gray-50 px-3 py-1 rounded-full">
+                  <span className="font-semibold mr-2">{t('version')}:</span>{' '}
+                  {doc.version}
+                </span>
+              ) : null}
+              {doc.lastUpdated ? (
+                <span className="flex items-center bg-gray-50 px-3 py-1 rounded-full">
+                  <span className="font-semibold mr-2">{t('updated')}:</span>{' '}
+                  {doc.lastUpdated}
+                </span>
+              ) : null}
+            </div>
+          </header>
+
+          <article className="max-w-none text-darkGray font-sans leading-relaxed prose prose-headings:font-playfair prose-headings:text-forest prose-p:text-mediumGray prose-strong:text-darkGray prose-li:text-mediumGray">
+            <MDXRemote
+              source={doc.content}
+              components={LegalMDXComponents}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                },
+              }}
+            />
+          </article>
         </div>
-        <article className="max-w-none text-darkGray font-sans leading-relaxed">
-          <MDXRemote
-            source={doc.content}
-            components={LegalMDXComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-              },
-            }}
-          />
-        </article>
       </div>
     </div>
   );
