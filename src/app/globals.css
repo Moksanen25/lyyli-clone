@@ -1323,45 +1323,70 @@ body, p {
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  padding: 12px 24px; /* Exact brand specification */
-  background: var(--forest); /* Forest Green #2F5D50 */
-  color: var(--white); /* White #FFFFFF */
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 12px 24px;
+  background: var(--forest);
+  color: var(--white);
   font-family: 'Inter', sans-serif;
-  font-weight: 600; /* Semi-Bold */
-  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  font-size: 1rem;
   text-decoration: none;
   border: none;
-  border-radius: 8px; /* Brand specification: 8px */
-  transition: all 0.2s ease; /* Brand timing: 150-300ms */
+  border-radius: 9999px; /* pill */
+  transition: all 0.2s ease;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
-  background: #3A6A5C; /* Slightly lighter Forest Green as per brand */
-  transform: translateY(-1px);
+  background: #3A6A5C;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  padding: 12px 24px; /* Exact brand specification */
-  background: var(--white); /* White #FFFFFF */
-  color: var(--forest); /* Forest Green #2F5D50 */
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 12px 24px;
+  background: var(--white);
+  color: var(--forest);
   font-family: 'Inter', sans-serif;
-  font-weight: 600; /* Semi-Bold */
-  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  font-size: 1rem;
   text-decoration: none;
-  border: 2px solid var(--forest); /* Forest Green border */
-  border-radius: 8px; /* Brand specification: 8px */
-  transition: all 0.2s ease; /* Brand timing: 150-300ms */
+  border: 2px solid var(--forest);
+  border-radius: 9999px; /* pill */
+  transition: all 0.2s ease;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
   background: var(--forest);
   color: var(--white);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
+
+/* Shared pill utility */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  min-height: 40px;
+}
+.btn-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn-pill:active { transform: translateY(0); }
+.btn-pill:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; }
 
 /* Color utilities */
 .text-forest {
