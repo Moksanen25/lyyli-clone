@@ -264,7 +264,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                 <p className="text-base text-mediumGray mt-4 font-sans leading-relaxed">
                   Voit käyttää oikeuksiasi, kuten pyytää tietojen poistoa,
                   ottamalla yhteyttä sähköpostitse osoitteeseen{' '}
-                  <strong>privacy@lyyli.ai</strong> tai käyttämällä sovelluksen
+                  <strong>hello@lyyli.ai</strong> tai käyttämällä sovelluksen
                   sisäisiä työkaluja (mikäli saatavilla).
                 </p>
               </section>
@@ -279,13 +279,13 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                 </p>
                 <div className="bg-grayLight p-6 rounded-lg">
                   <p className="text-base text-mediumGray font-sans leading-relaxed">
-                    <strong>Sähköposti:</strong> privacy@lyyli.ai
+                    <strong>Sähköposti:</strong> hello@lyyli.ai
                   </p>
                   <p className="text-base text-mediumGray font-sans leading-relaxed">
                     <strong>Osoite:</strong> Lyyli.ai, Helsinki, Suomi
                   </p>
                   <p className="text-base text-mediumGray font-sans leading-relaxed">
-                    <strong>Tietosuojavastaava:</strong> dpo@lyyli.ai
+                    <strong>Tietosuojavastaava:</strong> hello@lyyli.ai
                   </p>
                 </div>
               </section>
@@ -476,7 +476,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                 <p className="text-base text-mediumGray mt-4 font-sans leading-relaxed">
                   You can exercise your rights, such as requesting data
                   deletion, by contacting us via email at{' '}
-                  <strong>privacy@lyyli.ai</strong> or by using in-app tools
+                  <strong>hello@lyyli.ai</strong> or by using in-app tools
                   (where available).
                 </p>
               </section>
@@ -491,13 +491,13 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                 </p>
                 <div className="bg-grayLight p-6 rounded-lg">
                   <p className="text-base text-mediumGray font-sans leading-relaxed">
-                    <strong>Email:</strong> privacy@lyyli.ai
+                    <strong>Email:</strong> hello@lyyli.ai
                   </p>
                   <p className="text-base text-mediumGray font-sans leading-relaxed">
                     <strong>Address:</strong> Lyyli.ai, Helsinki, Finland
                   </p>
                   <p className="text-base text-mediumGray font-sans leading-relaxed">
-                    <strong>Data Protection Officer:</strong> dpo@lyyli.ai
+                    <strong>Data Protection Officer:</strong> hello@lyyli.ai
                   </p>
                 </div>
               </section>
