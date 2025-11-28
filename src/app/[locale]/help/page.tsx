@@ -200,8 +200,8 @@ export default async function HelpPage({
 
               {/* Prompt Library */}
               <Link href={`/${locale}/help/prompt-library`} className="group">
-                <div className="bg-gradient-to-br from-forest/5 to-turquoise/5 p-6 rounded-lg border-2 border-turquoise hover:border-forest hover:shadow-lg transition-all duration-200">
-                  <div className="w-12 h-12 bg-turquoise/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-turquoise/30 transition-colors">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
                       fill="none"
