@@ -569,9 +569,9 @@ Avoid: Overly complex charts, too much data in one image, poor contrast`,
   ];
 
   return (
-    <div className="min-h-screen bg-[#F5F5F4]">
+    <div className="min-h-screen bg-gradient-to-br from-rose/5 to-turquoise/5">
       {/* Breadcrumb */}
-      <div className="hidden bg-white border-b border-[#E5E5E4] pt-24">
+      <div className="hidden bg-white/50 border-b border-[#E5E5E4] pt-24 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 pb-4">
           <nav className="flex" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-4">
@@ -580,7 +580,7 @@ Avoid: Overly complex charts, too much data in one image, poor contrast`,
                   href={`/${locale}/help`}
                   className="text-[#666666] hover:text-[#2F5D50] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#2F5D50] focus:ring-offset-2 rounded"
                 >
-                  {locale === 'fi' ? 'Apu ja tuki' : 'Help & Support'}
+                  {locale === 'fi' ? 'Apu ja tuki' : 'Help & Support Center'}
                 </Link>
               </li>
               <li>
@@ -607,8 +607,8 @@ Avoid: Overly complex charts, too much data in one image, poor contrast`,
       </div>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-[#F7EBEB] to-[#A7D6D1]/20 border-b border-[#E5E5E4] pt-24">
-        <div className="max-w-7xl mx-auto px-6 pb-16">
+      <div className="pt-12 pb-12">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-[#2F5D50] mb-6 font-playfair leading-tight">
               {locale === 'fi'
@@ -630,87 +630,90 @@ Avoid: Overly complex charts, too much data in one image, poor contrast`,
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        {/* Quick Commands */}
-        <PromptCategory
-          title={
-            locale === 'fi'
-              ? 'Pikakäskyt arkeen'
-              : 'Quick commands for everyday'
-          }
-          description={
-            locale === 'fi'
-              ? 'Joskus tarvitset vain nopean viestin ilman pitkiä ohjeita. Näillä lyhyillä prompteilla hoidat päivittäisen viestinnän salamannopeasti:'
-              : 'Sometimes you just need a quick message without long instructions. Handle daily communication lightning-fast with these short prompts:'
-          }
-          prompts={quickPrompts}
-          locale={locale}
-        />
+      <div className="max-w-7xl mx-auto px-6 pb-24">
+        {/* White background container for Prompt Categories */}
+        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100">
+          {/* Quick Commands */}
+          <PromptCategory
+            title={
+              locale === 'fi'
+                ? 'Pikakäskyt arkeen'
+                : 'Quick commands for everyday'
+            }
+            description={
+              locale === 'fi'
+                ? 'Joskus tarvitset vain nopean viestin ilman pitkiä ohjeita. Näillä lyhyillä prompteilla hoidat päivittäisen viestinnän salamannopeasti:'
+                : 'Sometimes you just need a quick message without long instructions. Handle daily communication lightning-fast with these short prompts:'
+            }
+            prompts={quickPrompts}
+            locale={locale}
+          />
 
-        {/* Email Messages */}
-        <PromptCategory
-          title={locale === 'fi' ? 'Sähköpostiviestit' : 'Email messages'}
-          description={
-            locale === 'fi'
-              ? 'Ammattimaisia sähköpostiviestejä erilaisiin tilanteisiin:'
-              : 'Professional email messages for different situations:'
-          }
-          prompts={emailPrompts}
-          locale={locale}
-        />
+          {/* Email Messages */}
+          <PromptCategory
+            title={locale === 'fi' ? 'Sähköpostiviestit' : 'Email messages'}
+            description={
+              locale === 'fi'
+                ? 'Ammattimaisia sähköpostiviestejä erilaisiin tilanteisiin:'
+                : 'Professional email messages for different situations:'
+            }
+            prompts={emailPrompts}
+            locale={locale}
+          />
 
-        {/* LinkedIn Posts */}
-        <PromptCategory
-          title={locale === 'fi' ? 'LinkedIn-julkaisut' : 'LinkedIn posts'}
-          description={
-            locale === 'fi'
-              ? 'Vaikuttavia LinkedIn-postauksia, jotka rakentavat asiantuntijabrändiä:'
-              : 'Impactful LinkedIn posts that build your expert brand:'
-          }
-          prompts={linkedInPrompts}
-          locale={locale}
-        />
+          {/* LinkedIn Posts */}
+          <PromptCategory
+            title={locale === 'fi' ? 'LinkedIn-julkaisut' : 'LinkedIn posts'}
+            description={
+              locale === 'fi'
+                ? 'Vaikuttavia LinkedIn-postauksia, jotka rakentavat asiantuntijabrändiä:'
+                : 'Impactful LinkedIn posts that build your expert brand:'
+            }
+            prompts={linkedInPrompts}
+            locale={locale}
+          />
 
-        {/* Social Media Updates */}
-        <PromptCategory
-          title={
-            locale === 'fi'
-              ? 'Sosiaalisen median päivitykset'
-              : 'Social media updates'
-          }
-          description={
-            locale === 'fi'
-              ? 'Energisiä päivityksiä eri kanaviin:'
-              : 'Energetic updates for different channels:'
-          }
-          prompts={socialMediaPrompts}
-          locale={locale}
-        />
+          {/* Social Media Updates */}
+          <PromptCategory
+            title={
+              locale === 'fi'
+                ? 'Sosiaalisen median päivitykset'
+                : 'Social media updates'
+            }
+            description={
+              locale === 'fi'
+                ? 'Energisiä päivityksiä eri kanaviin:'
+                : 'Energetic updates for different channels:'
+            }
+            prompts={socialMediaPrompts}
+            locale={locale}
+          />
 
-        {/* Internal Communication */}
-        <PromptCategory
-          title={
-            locale === 'fi' ? 'Sisäinen viestintä' : 'Internal communication'
-          }
-          description={
-            locale === 'fi'
-              ? 'Selkeää ja kannustavaa tiimimiestintää:'
-              : 'Clear and encouraging team communication:'
-          }
-          prompts={internalPrompts}
-          locale={locale}
-        />
+          {/* Internal Communication */}
+          <PromptCategory
+            title={
+              locale === 'fi' ? 'Sisäinen viestintä' : 'Internal communication'
+            }
+            description={
+              locale === 'fi'
+                ? 'Selkeää ja kannustavaa tiimimiestintää:'
+                : 'Clear and encouraging team communication:'
+            }
+            prompts={internalPrompts}
+            locale={locale}
+          />
 
-        {/* Image Requests */}
-        <PromptCategory
-          title={locale === 'fi' ? 'Kuvapyynnöt' : 'Image requests'}
-          description={imageIntro}
-          prompts={imagePrompts}
-          locale={locale}
-        />
+          {/* Image Requests */}
+          <PromptCategory
+            title={locale === 'fi' ? 'Kuvapyynnöt' : 'Image requests'}
+            description={imageIntro}
+            prompts={imagePrompts}
+            locale={locale}
+          />
+        </div>
 
         {/* Tips Section */}
-        <div className="mt-16 bg-white rounded-2xl shadow-sm border border-[#E5E5E4] overflow-hidden">
+        <div className="mt-16 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
           <div className="p-8 bg-gradient-to-r from-[#2F5D50] to-[#2F5D50]/90">
             <h2 className="text-3xl font-bold text-white mb-2 font-playfair leading-tight">
               {locale === 'fi'
@@ -854,7 +857,7 @@ Avoid: Overly complex charts, too much data in one image, poor contrast`,
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 bg-gradient-to-r from-[#2F5D50] to-[#2F5D50]/90 rounded-2xl shadow-lg p-12 text-center">
+        <div className="mt-16 bg-gradient-to-r from-[#2F5D50] to-[#2F5D50]/90 rounded-2xl shadow-xl p-12 text-center">
           <h2 className="text-3xl font-bold text-white mb-4 font-playfair leading-tight">
             {locale === 'fi' ? 'Valmis kokeilemaan?' : 'Ready to try?'}
           </h2>
