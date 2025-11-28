@@ -107,9 +107,9 @@ export default async function HelpPage({
               {/* Service Description */}
               <Link
                 href={`/${locale}/help/service-description`}
-                className="group"
+                className="group block h-full"
               >
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -139,8 +139,11 @@ export default async function HelpPage({
               </Link>
 
               {/* Target Audience */}
-              <Link href={`/${locale}/help/target-audience`} className="group">
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+              <Link
+                href={`/${locale}/help/target-audience`}
+                className="group block h-full"
+              >
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -168,8 +171,11 @@ export default async function HelpPage({
               </Link>
 
               {/* Getting Started */}
-              <Link href={`/${locale}/help/getting-started`} className="group">
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+              <Link
+                href={`/${locale}/help/getting-started`}
+                className="group block h-full"
+              >
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -199,8 +205,11 @@ export default async function HelpPage({
               </Link>
 
               {/* Prompt Library */}
-              <Link href={`/${locale}/help/prompt-library`} className="group">
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+              <Link
+                href={`/${locale}/help/prompt-library`}
+                className="group block h-full"
+              >
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -235,9 +244,9 @@ export default async function HelpPage({
               {/* Registration & Subscription */}
               <Link
                 href={`/${locale}/help/registration-subscription`}
-                className="group"
+                className="group block h-full"
               >
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -267,8 +276,11 @@ export default async function HelpPage({
               </Link>
 
               {/* Accounts & Auth */}
-              <Link href={`/${locale}/help/accounts-auth`} className="group">
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+              <Link
+                href={`/${locale}/help/accounts-auth`}
+                className="group block h-full"
+              >
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -300,9 +312,9 @@ export default async function HelpPage({
               {/* Organizations & Users */}
               <Link
                 href={`/${locale}/help/organizations-users`}
-                className="group"
+                className="group block h-full"
               >
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -332,8 +344,11 @@ export default async function HelpPage({
               </Link>
 
               {/* UI Basics */}
-              <Link href={`/${locale}/help/ui-basics`} className="group">
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+              <Link
+                href={`/${locale}/help/ui-basics`}
+                className="group block h-full"
+              >
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -363,8 +378,11 @@ export default async function HelpPage({
               </Link>
 
               {/* Brand & Content */}
-              <Link href={`/${locale}/help/brand-content`} className="group">
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+              <Link
+                href={`/${locale}/help/brand-content`}
+                className="group block h-full"
+              >
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -394,8 +412,11 @@ export default async function HelpPage({
               </Link>
 
               {/* Publishing */}
-              <Link href={`/${locale}/help/publishing`} className="group">
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+              <Link
+                href={`/${locale}/help/publishing`}
+                className="group block h-full"
+              >
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
@@ -427,14 +448,14 @@ export default async function HelpPage({
               {/* Legal */}
               <Link
                 href={`/${locale}/help/legal`}
-                className="group"
+                className="group block h-full"
                 aria-label={
                   locale === 'fi'
                     ? 'Avaa sopimukset ja ehdot -kirjasto'
                     : 'Open Legal & agreements library'
                 }
               >
-                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-forest hover:shadow-md transition-all duration-200 h-full">
                   <div className="w-12 h-12 bg-forest/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-forest/20 transition-colors">
                     <svg
                       className="w-6 h-6 text-forest"
