@@ -1,9 +1,22 @@
 import { getTranslations } from '@/lib/i18n';
 import type { Metadata } from 'next';
+import type { ReactElement } from 'react';
 import PricingCards from '@/components/PricingCards';
 import ROICalculator from '@/components/ROICalculator';
 import CalendarPopup from '@/components/CalendarPopup';
-import IconSet from '@/components/IconSet';
+import {
+  Automation,
+  ToneAdvanced,
+  ROI,
+  Enterprise,
+  Team,
+  Communication,
+  ToneBasic,
+  Compliance,
+  AI,
+  Security,
+  Integration,
+} from '@/components/IconSet';
 import {
   generatePageCanonicalUrl,
   generateHreflangMetadata,
@@ -50,7 +63,7 @@ export async function generateMetadata({
 
 export default async function ForBusinessPage({
   params,
-}: ForBusinessPageProps) {
+}: ForBusinessPageProps): Promise<ReactElement> {
   const { locale } = await params;
   const supportedLocales = ['en', 'fi'];
   const currentLocale = supportedLocales.includes(locale) ? locale : 'en';
@@ -86,7 +99,7 @@ export default async function ForBusinessPage({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
                 <div className="w-12 h-12 bg-turquoise/20 rounded-xl flex items-center justify-center mx-auto mb-4 text-turquoise">
-                  <IconSet.Automation size={24} />
+                  <Automation size={24} />
                 </div>
                 <h3 className="text-lg text-forest mb-2 font-playfair font-bold">
                   {t['forBusiness.benefits.speed.title']}
@@ -98,7 +111,7 @@ export default async function ForBusinessPage({
 
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
                 <div className="w-12 h-12 bg-forest/20 rounded-xl flex items-center justify-center mx-auto mb-4 text-forest">
-                  <IconSet.ToneAdvanced size={24} />
+                  <ToneAdvanced size={24} />
                 </div>
                 <h3 className="text-lg text-forest mb-2 font-playfair font-bold">
                   {t['forBusiness.benefits.efficiency.title']}
@@ -110,7 +123,7 @@ export default async function ForBusinessPage({
 
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
                 <div className="w-12 h-12 bg-rose/20 rounded-xl flex items-center justify-center mx-auto mb-4 text-rose">
-                  <IconSet.ROI size={24} />
+                  <ROI size={24} />
                 </div>
                 <h3 className="text-lg text-forest mb-2 font-playfair font-bold">
                   {t['forBusiness.benefits.cost.title']}
@@ -192,7 +205,7 @@ export default async function ForBusinessPage({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-gray-100">
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm text-forest">
-                <IconSet.Enterprise size={32} />
+                <Enterprise size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 font-playfair font-bold">
                 {t['forBusiness.audience.partners.title']}
@@ -204,7 +217,7 @@ export default async function ForBusinessPage({
 
             <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-gray-100">
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm text-turquoise">
-                <IconSet.Team size={32} />
+                <Team size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 font-playfair font-bold">
                 {t['forBusiness.audience.ops.title']}
@@ -216,7 +229,7 @@ export default async function ForBusinessPage({
 
             <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-gray-100">
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm text-rose">
-                <IconSet.Communication size={32} />
+                <Communication size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 font-playfair font-bold">
                 {t['forBusiness.audience.comms.title']}
@@ -244,7 +257,7 @@ export default async function ForBusinessPage({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
               <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-red-600">
-                <IconSet.Communication size={32} />
+                <Communication size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 text-center font-playfair font-bold">
                 {t['forBusiness.problems.overload.title']}
@@ -256,7 +269,7 @@ export default async function ForBusinessPage({
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
               <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-orange-600">
-                <IconSet.ToneBasic size={32} />
+                <ToneBasic size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 text-center font-playfair font-bold">
                 {t['forBusiness.problems.inconsistency.title']}
@@ -268,7 +281,7 @@ export default async function ForBusinessPage({
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
               <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-yellow-600">
-                <IconSet.ToneAdvanced size={32} />
+                <ToneAdvanced size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 text-center font-playfair font-bold">
                 {t['forBusiness.problems.time.title']}
@@ -280,7 +293,7 @@ export default async function ForBusinessPage({
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
               <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-purple-600">
-                <IconSet.Compliance size={32} />
+                <Compliance size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 text-center font-playfair font-bold">
                 {t['forBusiness.problems.voice.title']}
@@ -312,7 +325,7 @@ export default async function ForBusinessPage({
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 relative overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="absolute top-0 right-0 w-32 h-32 bg-forest/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
               <div className="w-16 h-16 bg-forest/10 rounded-2xl flex items-center justify-center mb-6 text-forest relative z-10">
-                <IconSet.AI size={32} />
+                <AI size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 font-playfair font-bold relative z-10">
                 {t['forBusiness.multiModel.quality.title']}
@@ -325,7 +338,7 @@ export default async function ForBusinessPage({
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 relative overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="absolute top-0 right-0 w-32 h-32 bg-turquoise/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
               <div className="w-16 h-16 bg-turquoise/10 rounded-2xl flex items-center justify-center mb-6 text-turquoise relative z-10">
-                <IconSet.Security size={32} />
+                <Security size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 font-playfair font-bold relative z-10">
                 {t['forBusiness.multiModel.reliability.title']}
@@ -338,7 +351,7 @@ export default async function ForBusinessPage({
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 relative overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="absolute top-0 right-0 w-32 h-32 bg-rose/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
               <div className="w-16 h-16 bg-rose/10 rounded-2xl flex items-center justify-center mb-6 text-rose relative z-10">
-                <IconSet.Integration size={32} />
+                <Integration size={32} />
               </div>
               <h3 className="text-xl text-forest mb-4 font-playfair font-bold relative z-10">
                 {t['forBusiness.multiModel.simplicity.title']}

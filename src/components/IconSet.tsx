@@ -1,12 +1,10 @@
-"use client";
-
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 // Enhanced icon components with brand colors and visual effects
 export const IconSet = {
   // AI and Technology Icons
   AI: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -30,80 +28,285 @@ export const IconSet = {
   ),
 
   // New feature-specific icons
-  ToneBasic: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 8h12M6 12h8M6 16h6" />
+  ToneBasic: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M6 8h12M6 12h8M6 16h6"
+      />
     </svg>
   ),
-  ToneAdvanced: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M7 12h10M10 17h8" />
+  ToneAdvanced: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 7h16M7 12h10M10 17h8"
+      />
       <circle cx="7" cy="12" r="1.25" stroke="currentColor" />
       <circle cx="10" cy="17" r="1.25" stroke="currentColor" />
     </svg>
   ),
-  Editor: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+  Editor: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"
+      />
     </svg>
   ),
-  OrgRoles: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM4 21v-2a5 5 0 015-5h6a5 5 0 015 5v2" />
+  OrgRoles: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM4 21v-2a5 5 0 015-5h6a5 5 0 015 5v2"
+      />
     </svg>
   ),
-  SlackTeams: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 7h7v10H3zM14 7h7v10h-7z" />
+  SlackTeams: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 7h7v10H3zM14 7h7v10h-7z"
+      />
     </svg>
   ),
-  AIAnalytics: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4 19h16M6 16v-6m4 6v-4m4 4V7m4 9v-8" />
+  AIAnalytics: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 19h16M6 16v-6m4 6v-4m4 4V7m4 9v-8"
+      />
     </svg>
   ),
-  CampaignMode: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h12M4 18h8" />
+  CampaignMode: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 6h16M4 12h12M4 18h8"
+      />
     </svg>
   ),
-  MediaLibrary: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+  MediaLibrary: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
       <rect x="3" y="5" width="18" height="14" rx="2" />
       <path strokeLinecap="round" strokeLinejoin="round" d="M8 13l3-3 5 5" />
     </svg>
   ),
-  KPIReports: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+  KPIReports: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M7 15l3-3 4 4 5-7" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M7 15l3-3 4 4 5-7"
+      />
     </svg>
   ),
-  Templates: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+  Templates: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
       <rect x="4" y="5" width="7" height="6" rx="1" />
       <rect x="13" y="5" width="7" height="6" rx="1" />
       <rect x="4" y="13" width="7" height="6" rx="1" />
     </svg>
   ),
-  Onboarding: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+  Onboarding: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8m-4-4h8" />
       <circle cx="12" cy="12" r="9" />
     </svg>
   ),
-  AIImage: ({ className = "", size = 24 }: { className?: string; size?: number }) => (
-    <svg className={`text-forest ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+  AIImage: ({
+    className = '',
+    size = 24,
+  }: {
+    className?: string;
+    size?: number;
+  }) => (
+    <svg
+      className={`text-forest ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
       <rect x="3" y="3" width="18" height="18" rx="2" />
       <circle cx="8" cy="8" r="1.5" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 13l4-4 3 3 6-6 5 5v4H3v-8z" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 13l4-4 3 3 6-6 5 5v4H3v-8z"
+      />
       <path strokeLinecap="round" strokeLinejoin="round" d="M16 8h2m-1-1v2" />
     </svg>
   ),
 
   Communication: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -127,7 +330,7 @@ export const IconSet = {
   ),
 
   Security: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -151,7 +354,7 @@ export const IconSet = {
   ),
 
   Team: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -175,7 +378,7 @@ export const IconSet = {
   ),
 
   Analytics: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -200,7 +403,7 @@ export const IconSet = {
 
   // Business and Enterprise Icons
   Enterprise: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -224,7 +427,7 @@ export const IconSet = {
   ),
 
   Compliance: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -248,7 +451,7 @@ export const IconSet = {
   ),
 
   ROI: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -273,7 +476,7 @@ export const IconSet = {
 
   // Feature Icons
   Automation: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -303,7 +506,7 @@ export const IconSet = {
   ),
 
   Integration: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -327,7 +530,7 @@ export const IconSet = {
   ),
 
   Scalability: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -352,7 +555,7 @@ export const IconSet = {
 
   // Contact and Support Icons
   Email: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -376,7 +579,7 @@ export const IconSet = {
   ),
 
   Phone: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -400,7 +603,7 @@ export const IconSet = {
   ),
 
   Location: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -431,7 +634,7 @@ export const IconSet = {
 
   // Social and Network Icons
   LinkedIn: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -449,7 +652,7 @@ export const IconSet = {
   ),
 
   Twitter: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -468,7 +671,7 @@ export const IconSet = {
 
   // Branded Integration Icons
   Slack: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -481,15 +684,27 @@ export const IconSet = {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52-2.523c0-1.398 1.13-2.528 2.52-2.528s2.523 1.13 2.523 2.528c0 1.398-1.132 2.523-2.523 2.523m0-9.838a2.528 2.528 0 0 1-2.52-2.523c0-1.398 1.13-2.528 2.52-2.528s2.523 1.13 2.523 2.528c0 1.398-1.132 2.523-2.523 2.523" fill="#E01E5A"/>
-      <path d="M5.042 15.165c0-1.398 1.132-2.528 2.523-2.528s2.528 1.13 2.528 2.528v2.523c0 1.398-1.137 2.528-2.528 2.528s-2.523-1.13-2.523-2.528v-2.523z" fill="#36C5F0"/>
-      <path d="M18.958 8.835a2.528 2.528 0 0 1 2.523-2.523c1.398 0 2.528 1.13 2.528 2.523s-1.13 2.528-2.528 2.528c-1.393 0-2.523-1.13-2.523-2.528" fill="#2EB67D"/>
-      <path d="M8.835 18.958c1.398 0 2.528 1.137 2.528 2.528s-1.13 2.528-2.528 2.528-2.523-1.137-2.523-2.528c0-1.391 1.125-2.528 2.523-2.528" fill="#ECB22E"/>
+      <path
+        d="M5.042 15.165a2.528 2.528 0 0 1-2.52-2.523c0-1.398 1.13-2.528 2.52-2.528s2.523 1.13 2.523 2.528c0 1.398-1.132 2.523-2.523 2.523m0-9.838a2.528 2.528 0 0 1-2.52-2.523c0-1.398 1.13-2.528 2.52-2.528s2.523 1.13 2.523 2.528c0 1.398-1.132 2.523-2.523 2.523"
+        fill="#E01E5A"
+      />
+      <path
+        d="M5.042 15.165c0-1.398 1.132-2.528 2.523-2.528s2.528 1.13 2.528 2.528v2.523c0 1.398-1.137 2.528-2.528 2.528s-2.523-1.13-2.523-2.528v-2.523z"
+        fill="#36C5F0"
+      />
+      <path
+        d="M18.958 8.835a2.528 2.528 0 0 1 2.523-2.523c1.398 0 2.528 1.13 2.528 2.523s-1.13 2.528-2.528 2.528c-1.393 0-2.523-1.13-2.523-2.528"
+        fill="#2EB67D"
+      />
+      <path
+        d="M8.835 18.958c1.398 0 2.528 1.137 2.528 2.528s-1.13 2.528-2.528 2.528-2.523-1.137-2.523-2.528c0-1.391 1.125-2.528 2.523-2.528"
+        fill="#ECB22E"
+      />
     </svg>
   ),
 
   MicrosoftTeams: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -502,25 +717,64 @@ export const IconSet = {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <rect width="24" height="24" rx="4" fill="#6264A7"/>
-      <path d="M12.5 6.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z" fill="white"/>
-      <path d="M8 9.5c0-.828-.672-1.5-1.5-1.5S5 8.672 5 9.5s.672 1.5 1.5 1.5S8 10.328 8 9.5z" fill="white"/>
-      <path d="M19 9.5c0-.828-.672-1.5-1.5-1.5S16 8.672 16 9.5s.672 1.5 1.5 1.5S19 10.328 19 9.5z" fill="white"/>
-      <path d="M12.5 9.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z" fill="white"/>
-      <path d="M8 12.5c0-.828-.672-1.5-1.5-1.5S5 11.672 5 12.5s.672 1.5 1.5 1.5S8 13.328 8 12.5z" fill="white"/>
-      <path d="M19 12.5c0-.828-.672-1.5-1.5-1.5S16 11.672 16 12.5s.672 1.5 1.5 1.5S19 13.328 19 12.5z" fill="white"/>
-      <path d="M12.5 12.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z" fill="white"/>
-      <path d="M8 15.5c0-.828-.672-1.5-1.5-1.5S5 14.672 5 15.5s.672 1.5 1.5 1.5S8 16.328 8 15.5z" fill="white"/>
-      <path d="M19 15.5c0-.828-.672-1.5-1.5-1.5S16 14.672 16 15.5s.672 1.5 1.5 1.5S19 16.328 19 15.5z" fill="white"/>
-      <path d="M12.5 15.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z" fill="white"/>
-      <path d="M8 18.5c0-.828-.672-1.5-1.5-1.5S5 17.672 5 18.5s.672 1.5 1.5 1.5S8 19.328 8 18.5z" fill="white"/>
-      <path d="M19 18.5c0-.828-.672-1.5-1.5-1.5S16 17.672 16 18.5s.672 1.5 1.5 1.5S19 19.328 19 18.5z" fill="white"/>
-      <path d="M12.5 18.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z" fill="white"/>
+      <rect width="24" height="24" rx="4" fill="#6264A7" />
+      <path
+        d="M12.5 6.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z"
+        fill="white"
+      />
+      <path
+        d="M8 9.5c0-.828-.672-1.5-1.5-1.5S5 8.672 5 9.5s.672 1.5 1.5 1.5S8 10.328 8 9.5z"
+        fill="white"
+      />
+      <path
+        d="M19 9.5c0-.828-.672-1.5-1.5-1.5S16 8.672 16 9.5s.672 1.5 1.5 1.5S19 10.328 19 9.5z"
+        fill="white"
+      />
+      <path
+        d="M12.5 9.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z"
+        fill="white"
+      />
+      <path
+        d="M8 12.5c0-.828-.672-1.5-1.5-1.5S5 11.672 5 12.5s.672 1.5 1.5 1.5S8 13.328 8 12.5z"
+        fill="white"
+      />
+      <path
+        d="M19 12.5c0-.828-.672-1.5-1.5-1.5S16 11.672 16 12.5s.672 1.5 1.5 1.5S19 13.328 19 12.5z"
+        fill="white"
+      />
+      <path
+        d="M12.5 12.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z"
+        fill="white"
+      />
+      <path
+        d="M8 15.5c0-.828-.672-1.5-1.5-1.5S5 14.672 5 15.5s.672 1.5 1.5 1.5S8 16.328 8 15.5z"
+        fill="white"
+      />
+      <path
+        d="M19 15.5c0-.828-.672-1.5-1.5-1.5S16 14.672 16 15.5s.672 1.5 1.5 1.5S19 16.328 19 15.5z"
+        fill="white"
+      />
+      <path
+        d="M12.5 15.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z"
+        fill="white"
+      />
+      <path
+        d="M8 18.5c0-.828-.672-1.5-1.5-1.5S5 17.672 5 18.5s.672 1.5 1.5 1.5S8 19.328 8 18.5z"
+        fill="white"
+      />
+      <path
+        d="M19 18.5c0-.828-.672-1.5-1.5-1.5S16 17.672 16 18.5s.672 1.5 1.5 1.5S19 19.328 19 18.5z"
+        fill="white"
+      />
+      <path
+        d="M12.5 18.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5z"
+        fill="white"
+      />
     </svg>
   ),
 
   Gmail: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -533,15 +787,27 @@ export const IconSet = {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <path d="M22.288 21l-10.944-6.64L.344 21A1.99 1.99 0 0 0 2 22h20c.75 0 1.467-.4 1.84-1.06-.226.04-.36.06-.552.06z" fill="#4285F4"/>
-      <path d="M22.288 21L12 15l10.288-6.64A1.99 1.99 0 0 1 24 10v11c0 .75-.4 1.467-1.06 1.84-.04-.226-.06-.36-.652-.84z" fill="#34A853"/>
-      <path d="M1.712 21L12 15 1.712 8.36A1.99 1.99 0 0 0 0 10v11c0 .75.4 1.467 1.06 1.84.04-.226.06-.36.652-.84z" fill="#FBBC04"/>
-      <path d="M1.712 3L12 9l10.288-6A1.99 1.99 0 0 0 22 2H2c-.75 0-1.467.4-1.84 1.06.226-.04.36-.06.552-.06z" fill="#EA4335"/>
+      <path
+        d="M22.288 21l-10.944-6.64L.344 21A1.99 1.99 0 0 0 2 22h20c.75 0 1.467-.4 1.84-1.06-.226.04-.36.06-.552.06z"
+        fill="#4285F4"
+      />
+      <path
+        d="M22.288 21L12 15l10.288-6.64A1.99 1.99 0 0 1 24 10v11c0 .75-.4 1.467-1.06 1.84-.04-.226-.06-.36-.652-.84z"
+        fill="#34A853"
+      />
+      <path
+        d="M1.712 21L12 15 1.712 8.36A1.99 1.99 0 0 0 0 10v11c0 .75.4 1.467 1.06 1.84.04-.226.06-.36.652-.84z"
+        fill="#FBBC04"
+      />
+      <path
+        d="M1.712 3L12 9l10.288-6A1.99 1.99 0 0 0 22 2H2c-.75 0-1.467.4-1.84 1.06.226-.04.36-.06.552-.06z"
+        fill="#EA4335"
+      />
     </svg>
   ),
 
   Outlook: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -554,16 +820,22 @@ export const IconSet = {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <rect width="24" height="24" rx="2" fill="#0078D4"/>
-      <path d="M7 8h10c.55 0 1 .45 1 1v6c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1z" fill="white"/>
-      <path d="M8 10h8v4H8v-4z" fill="#0078D4"/>
-      <path d="M9 11h6v1H9v-1zm0 2h6v1H9v-1z" fill="white"/>
-      <path d="M12 6c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" fill="white"/>
+      <rect width="24" height="24" rx="2" fill="#0078D4" />
+      <path
+        d="M7 8h10c.55 0 1 .45 1 1v6c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1z"
+        fill="white"
+      />
+      <path d="M8 10h8v4H8v-4z" fill="#0078D4" />
+      <path d="M9 11h6v1H9v-1zm0 2h6v1H9v-1z" fill="white" />
+      <path
+        d="M12 6c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"
+        fill="white"
+      />
     </svg>
   ),
 
   Facebook: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -576,12 +848,15 @@ export const IconSet = {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
+      <path
+        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+        fill="#1877F2"
+      />
     </svg>
   ),
 
   Instagram: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -595,21 +870,34 @@ export const IconSet = {
       fill="none"
     >
       <defs>
-        <radialGradient id="iconset-instagram-gradient" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#FDF497"/>
-          <stop offset="5%" stopColor="#FDF497"/>
-          <stop offset="45%" stopColor="#FD5949"/>
-          <stop offset="60%" stopColor="#D6249F"/>
-          <stop offset="90%" stopColor="#285AEB"/>
+        <radialGradient
+          id="iconset-instagram-gradient"
+          cx="50%"
+          cy="50%"
+          r="50%"
+        >
+          <stop offset="0%" stopColor="#FDF497" />
+          <stop offset="5%" stopColor="#FDF497" />
+          <stop offset="45%" stopColor="#FD5949" />
+          <stop offset="60%" stopColor="#D6249F" />
+          <stop offset="90%" stopColor="#285AEB" />
         </radialGradient>
       </defs>
-      <rect width="24" height="24" rx="5.4" fill="url(#iconset-instagram-gradient)"/>
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="white"/>
+      <rect
+        width="24"
+        height="24"
+        rx="5.4"
+        fill="url(#iconset-instagram-gradient)"
+      />
+      <path
+        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+        fill="white"
+      />
     </svg>
   ),
 
   Threads: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -622,15 +910,24 @@ export const IconSet = {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" fill="black"/>
-      <path d="M12 6c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z" fill="black"/>
-      <path d="M12 8c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" fill="black"/>
-      <path d="M16 8h2v2h-2V8z" fill="black"/>
+      <path
+        d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"
+        fill="black"
+      />
+      <path
+        d="M12 6c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"
+        fill="black"
+      />
+      <path
+        d="M12 8c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+        fill="black"
+      />
+      <path d="M16 8h2v2h-2V8z" fill="black" />
     </svg>
   ),
 
   XTwitter: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -643,12 +940,15 @@ export const IconSet = {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="black"/>
+      <path
+        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+        fill="black"
+      />
     </svg>
   ),
 
   SharePoint: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -661,15 +961,18 @@ export const IconSet = {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <rect width="24" height="24" rx="2" fill="#0078D4"/>
-      <path d="M6 6h12v12H6V6zm2 2v8h8V8H8zm2 2h4v4h-4v-4z" fill="white"/>
-      <path d="M10 10h4v1h-4v-1zm0 2h4v1h-4v-1zm0 2h4v1h-4v-1z" fill="#0078D4"/>
+      <rect width="24" height="24" rx="2" fill="#0078D4" />
+      <path d="M6 6h12v12H6V6zm2 2v8h8V8H8zm2 2h4v4h-4v-4z" fill="white" />
+      <path
+        d="M10 10h4v1h-4v-1zm0 2h4v1h-4v-1zm0 2h4v1h-4v-1z"
+        fill="#0078D4"
+      />
     </svg>
   ),
 
   // Utility Icons
   ArrowRight: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -693,7 +996,7 @@ export const IconSet = {
   ),
 
   Check: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -717,7 +1020,7 @@ export const IconSet = {
   ),
 
   Plus: ({
-    className = "",
+    className = '',
     size = 24,
   }: {
     className?: string;
@@ -743,13 +1046,13 @@ export const IconSet = {
   // Animated Icon Wrapper
   AnimatedIcon: ({
     children,
-    className = "",
-    animation = "pulse",
+    className = '',
+    animation: _animation = 'pulse',
     delay = 0,
   }: {
     children: ReactNode;
     className?: string;
-    animation?: "pulse" | "bounce" | "spin" | "ping";
+    animation?: 'pulse' | 'bounce' | 'spin' | 'ping';
     delay?: number;
   }) => (
     <div
@@ -763,9 +1066,9 @@ export const IconSet = {
   // Icon with gradient background
   IconWithBackground: ({
     icon,
-    className = "",
+    className = '',
     size = 24,
-    backgroundClass = "bg-gradient-to-br from-rose to-muted-turquoise",
+    backgroundClass = 'bg-gradient-to-br from-rose to-muted-turquoise',
   }: {
     icon: ReactNode;
     className?: string;
@@ -779,5 +1082,50 @@ export const IconSet = {
     </div>
   ),
 };
+
+export const {
+  AI,
+  ToneBasic,
+  ToneAdvanced,
+  Editor,
+  OrgRoles,
+  SlackTeams,
+  AIAnalytics,
+  CampaignMode,
+  MediaLibrary,
+  KPIReports,
+  Templates,
+  Onboarding,
+  AIImage,
+  Communication,
+  Security,
+  Team,
+  Analytics,
+  Enterprise,
+  Compliance,
+  ROI,
+  Automation,
+  Integration,
+  Scalability,
+  Email,
+  Phone,
+  Location,
+  LinkedIn,
+  Twitter,
+  Slack,
+  MicrosoftTeams,
+  Gmail,
+  Outlook,
+  Facebook,
+  Instagram,
+  Threads,
+  XTwitter,
+  SharePoint,
+  ArrowRight,
+  Check,
+  Plus,
+  AnimatedIcon,
+  IconWithBackground,
+} = IconSet;
 
 export default IconSet;
