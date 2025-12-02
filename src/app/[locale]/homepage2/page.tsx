@@ -65,7 +65,7 @@ export default async function HomepageV2({
   return (
     <main className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#fdfcf7]">
+      <section className="relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-32 -right-16 w-[520px] h-[520px] bg-turquoise/15 blur-[120px]" />
           <div className="absolute -bottom-20 -left-20 w-[460px] h-[460px] bg-rose/10 blur-[100px]" />
