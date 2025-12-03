@@ -444,16 +444,8 @@ export default function ROICalculator({ translations }: ROICalculatorProps) {
 
               <div className="mt-6 p-4 bg-gradient-to-br from-turquoise/20 to-rose/20 rounded-lg border-l-4 border-turquoise">
                 <p className="text-sm text-white font-sans leading-relaxed">
-                  {translations?.['roi.calculator.note'] || (
-                    <>
-                      <strong className="text-turquoise">Note:</strong> ROI
-                      calculations are estimates based on typical customer
-                      outcomes and industry benchmarks. Actual results may vary
-                      depending on your organization&apos;s specific
-                      communication patterns, team size, and implementation
-                      approach.
-                    </>
-                  )}
+                  {translations?.['roi.calculator.note'] ||
+                    "Note: ROI calculations are estimates based on typical customer outcomes and industry benchmarks. Actual results may vary depending on your organization's specific communication patterns, team size, and implementation approach."}
                 </p>
               </div>
             </MotionDiv>
