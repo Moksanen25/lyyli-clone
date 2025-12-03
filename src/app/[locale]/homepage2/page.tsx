@@ -369,7 +369,7 @@ export default async function HomepageV2({
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="https://app.lyyli.ai"
-              className="btn-primary bg-white text-forest"
+              className="btn-primary bg-forest text-white"
             >
               {t['hero.ctaPrimary']}
             </a>
