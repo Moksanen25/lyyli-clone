@@ -600,6 +600,7 @@
   "roi.charts.current": "Nykyinen",
   "roi.charts.withLyyli": "Lyylin kanssa",
   "roi.assumptions.note": "Laskelmamme perustuvat alan vertailuihin ja todellisiin asiakastuloksiin",
+  "roi.calculator.note": "Huom: ROI-laskelmat ovat arvioita, jotka perustuvat tyypillisiin asiakastuloksiin ja alan keskiarvoihin. Todelliset tulokset vaihtelevat organisaatiosi viestintätapojen, tiimin koon ja käyttöönoton mukaan.",
   "roi.cta.startSaving": "Aloita säästäminen Lyylin kanssa",
   "home.page.title": "Viestintäassistentti",
   "home.page.description": "Tehosta sisäistä viestintää tekoälyavusteisilla työnkuluilla, hallinnolla ja yritystason tietoturvalla asiantuntijaorganisaatioille.",

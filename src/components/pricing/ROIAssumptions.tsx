@@ -1,4 +1,4 @@
-import type { TranslationKeys } from "@/lib/i18n";
+import type { TranslationKeys } from '@/lib/i18n';
 
 interface ROIAssumptionsProps {
   translations: TranslationKeys;
@@ -8,17 +8,17 @@ export default function ROIAssumptions({ translations }: ROIAssumptionsProps) {
   const t = translations;
 
   const assumptions = [
-    t["pricing.assumptions.efficiency"],
-    t["pricing.assumptions.time"],
-    t["pricing.assumptions.cost"],
-    t["pricing.assumptions.overhead"],
+    t['pricing.assumptions.efficiency'],
+    t['pricing.assumptions.time'],
+    t['pricing.assumptions.cost'],
+    t['pricing.assumptions.overhead'],
   ];
 
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl mb-4 text-forest font-playfair font-bold leading-snug">
-          {t["pricing.assumptions.title"]}
+          {t['pricing.assumptions.title']}
         </h2>
       </div>
 
@@ -40,17 +40,17 @@ export default function ROIAssumptions({ translations }: ROIAssumptionsProps) {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span className="text-base text-mediumGray font-sans leading-relaxed">{assumption}</span>
+              <span className="text-base text-mediumGray font-sans leading-relaxed">
+                {assumption}
+              </span>
             </li>
           ))}
         </ul>
 
         <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-turquoise">
           <p className="text-sm text-mediumGray font-sans leading-relaxed">
-            <strong>Note:</strong> ROI calculations are estimates based on
-            typical customer outcomes and industry benchmarks. Actual results
-            may vary depending on your organization&apos;s specific
-            communication patterns, team size, and implementation approach.
+            {t['roi.calculator.note'] ||
+              "Note: ROI calculations are estimates based on typical customer outcomes and industry benchmarks. Actual results may vary depending on your organization's specific communication patterns, team size, and implementation approach."}
           </p>
         </div>
       </div>

@@ -599,6 +599,7 @@
   "roi.charts.current": "Current",
   "roi.charts.withLyyli": "With Lyyli",
   "roi.assumptions.note": "Our calculations are based on industry benchmarks and real customer data",
+  "roi.calculator.note": "Note: ROI calculations are estimates based on typical customer outcomes and industry benchmarks. Actual results may vary depending on your organization's specific communication patterns, team size, and implementation approach.",
   "roi.cta.startSaving": "Start saving with Lyyli.ai",
   "home.page.title": "AI Communication Assistant",
   "home.page.description": "Transform internal communication with AI-assisted workflows, governance, and enterprise security for professional service organizations.",
