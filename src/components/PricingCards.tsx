@@ -128,6 +128,7 @@ const PricingCards = memo(
       triggerOnce: true,
     });
     const [showAllMobile, setShowAllMobile] = useState(false);
+    const [showAdvancedPlans, setShowAdvancedPlans] = useState(false);
 
     // Feature translation mapping
     const translateFeature = (feature: string): string => {
@@ -312,165 +313,195 @@ const PricingCards = memo(
           {/* Pricing Cards */}
           <MotionDiv
             ref={ref}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 max-w-7xl mx-auto ${fullWidth ? 'w-full' : ''}`}
+            className={`grid grid-cols-1 md:grid-cols-2 ${showAdvancedPlans ? 'lg:grid-cols-5' : 'lg:grid-cols-3'} gap-4 ${showAdvancedPlans ? 'max-w-7xl' : 'max-w-5xl'} mx-auto ${fullWidth ? 'w-full' : ''}`}
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
           >
-            {translatedPlans.map((plan, index) => (
-              <MotionDiv
-                key={plan.name}
-                className={`relative ${
-                  index >= 3 ? 'md:col-span-2 lg:col-span-3 xl:col-span-1' : ''
-                } ${
-                  plan.name !== 'Growth' && !showAllMobile
-                    ? 'hidden md:block'
-                    : 'block'
-                }`}
-                variants={cardVariants}
-              >
-                {/* Plan Card */}
+            {translatedPlans
+              .filter(plan => {
+                // Show only Free, Launch, Growth initially
+                if (!showAdvancedPlans) {
+                  return ['Free', 'Launch', 'Growth'].includes(plan.name);
+                }
+                return true;
+              })
+              .map(plan => (
                 <MotionDiv
-                  className={`${
-                    plan.name === 'Professional' || plan.name === 'Enterprise'
-                      ? 'bg-gradient-to-br from-grayLight to-white'
-                      : 'bg-white'
-                  } rounded-2xl p-6 shadow-lg border transition-all duration-300 h-full cursor-pointer tilt-hover ${
-                    plan.popular
-                      ? 'border-forest/40 shadow-2xl scale-105 bg-gradient-to-br from-white to-forest/5'
-                      : 'border-gray-200 hover:border-turquoise/30 hover:shadow-xl'
-                  } ${
-                    selectedPlan === plan.name ? 'ring-2 ring-turquoise/50' : ''
-                  }`}
-                  whileHover={{
-                    y: -8,
-                    scale: plan.highlight ? 1.08 : 1.02,
-                    transition: { duration: 0.3, ease: 'easeOut' },
-                  }}
-                  onClick={() => setSelectedPlan(plan.name)}
+                  key={plan.name}
+                  className="relative"
+                  variants={cardVariants}
                 >
-                  {plan.popular && (
-                    <div className="absolute -top-3 left-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-forest text-white shadow-md">
-                        {translations?.['pricing.mostPopular'] ||
-                          'Most popular'}
-                      </span>
-                    </div>
-                  )}
-                  {/* Plan Header */}
-                  <div className="text-center mb-6">
-                    <h3
-                      className={`text-xl mb-2 font-playfair font-normal ${
-                        plan.highlight ? 'text-forest' : 'text-forest'
-                      }`}
-                    >
-                      {plan.name}
-                    </h3>
-                    <div className="mb-4 flex flex-col items-center">
-                      {plan.name === 'Enterprise' ? (
-                        <div className="inline-flex items-center px-4 py-2 bg-forest hover:bg-[#3A6A5C] transition-colors duration-200 rounded-full">
-                          <span className="text-lg font-semibold text-white font-sans">
-                            Contact us
-                          </span>
-                        </div>
-                      ) : (
-                        <>
-                          <div className="relative mb-2">
-                            {/* Enhanced Price Tag Background */}
-                            <div className="bg-gradient-to-br from-turquoise/30 to-rose/30 rounded-2xl px-6 py-4 border-2 border-turquoise/40 shadow-xl relative overflow-hidden">
-                              {/* Subtle shimmer effect */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-pulse" />
-                              <div className="text-center relative z-10">
-                                <MotionSpan
-                                  key={`${plan.name}-${billingPeriod}`}
-                                  initial={{ opacity: 0, y: 6 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  transition={{
-                                    duration: 0.25,
-                                    ease: 'easeOut',
-                                  }}
-                                  className="text-2xl font-bold text-forest font-sans inline-block"
-                                >
-                                  {getPrice(plan)}
-                                </MotionSpan>
+                  {/* Plan Card */}
+                  <MotionDiv
+                    className={`${
+                      plan.name === 'Professional' || plan.name === 'Enterprise'
+                        ? 'bg-gradient-to-br from-grayLight to-white'
+                        : 'bg-white'
+                    } rounded-2xl p-6 shadow-lg border transition-all duration-300 h-full cursor-pointer tilt-hover ${
+                      plan.popular
+                        ? 'border-forest/40 shadow-2xl scale-105 bg-gradient-to-br from-white to-forest/5'
+                        : 'border-gray-200 hover:border-turquoise/30 hover:shadow-xl'
+                    } ${
+                      selectedPlan === plan.name
+                        ? 'ring-2 ring-turquoise/50'
+                        : ''
+                    }`}
+                    whileHover={{
+                      y: -8,
+                      scale: plan.highlight ? 1.08 : 1.02,
+                      transition: { duration: 0.3, ease: 'easeOut' },
+                    }}
+                    onClick={() => setSelectedPlan(plan.name)}
+                  >
+                    {plan.popular && (
+                      <div className="absolute -top-3 left-4">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-forest text-white shadow-md">
+                          {translations?.['pricing.mostPopular'] ||
+                            'Most popular'}
+                        </span>
+                      </div>
+                    )}
+                    {/* Plan Header */}
+                    <div className="text-center mb-6">
+                      <h3
+                        className={`text-xl mb-2 font-playfair font-normal ${
+                          plan.highlight ? 'text-forest' : 'text-forest'
+                        }`}
+                      >
+                        {plan.name}
+                      </h3>
+                      <div className="mb-4 flex flex-col items-center">
+                        {plan.name === 'Enterprise' ? (
+                          <div className="inline-flex items-center px-4 py-2 bg-forest hover:bg-[#3A6A5C] transition-colors duration-200 rounded-full">
+                            <span className="text-lg font-semibold text-white font-sans">
+                              Contact us
+                            </span>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="relative mb-2">
+                              {/* Enhanced Price Tag Background */}
+                              <div className="bg-gradient-to-br from-turquoise/30 to-rose/30 rounded-2xl px-6 py-4 border-2 border-turquoise/40 shadow-xl relative overflow-hidden">
+                                {/* Subtle shimmer effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-pulse" />
+                                <div className="text-center relative z-10">
+                                  <MotionSpan
+                                    key={`${plan.name}-${billingPeriod}`}
+                                    initial={{ opacity: 0, y: 6 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                      duration: 0.25,
+                                      ease: 'easeOut',
+                                    }}
+                                    className="text-2xl font-bold text-forest font-sans inline-block"
+                                  >
+                                    {getPrice(plan)}
+                                  </MotionSpan>
+                                </div>
                               </div>
+                              {/* Enhanced Price Tag Corner */}
+                              <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-turquoise to-forest rounded-full border-2 border-white shadow-lg" />
                             </div>
-                            {/* Enhanced Price Tag Corner */}
-                            <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-turquoise to-forest rounded-full border-2 border-white shadow-lg" />
-                          </div>
-                          {/* Period text outside the tag */}
-                          {getPricePeriod(plan) && (
-                            <span className="text-sm text-mediumGray font-sans">
-                              {getPricePeriod(plan)}
-                            </span>
-                          )}
-                          {/* Per user/month pill */}
-                          <div className="mt-2">
-                            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-rose/60 text-forest font-sans">
-                              {translations?.['pricing.perUserPerMonth'] ||
-                                'per user per month'}
-                            </span>
-                          </div>
-                        </>
+                            {/* Period text outside the tag */}
+                            {getPricePeriod(plan) && (
+                              <span className="text-sm text-mediumGray font-sans">
+                                {getPricePeriod(plan)}
+                              </span>
+                            )}
+                            {/* Per user/month pill */}
+                            <div className="mt-2">
+                              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-rose/60 text-forest font-sans">
+                                {translations?.['pricing.perUserPerMonth'] ||
+                                  'per user per month'}
+                              </span>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                      {billingPeriod === 'yearly' && getSavings(plan) && (
+                        <p className="text-sm text-forest font-medium mb-2">
+                          Save {getSavings(plan)}€ per year
+                        </p>
+                      )}
+                      <p className="text-sm text-mediumGray font-sans">
+                        {plan.description}
+                      </p>
+                    </div>
+
+                    {/* Features List */}
+                    <ul className="space-y-3 mb-8">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start">
+                          <svg
+                            className="w-5 h-5 text-forest mt-0.5 mr-3 flex-shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          <span className="text-sm text-mediumGray font-sans">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* CTA Button */}
+                    <div className="mt-auto">
+                      {plan.name === 'Professional' ||
+                      plan.name === 'Enterprise' ? (
+                        <a
+                          href={`/${locale}/waitlist`}
+                          className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
+                        >
+                          {plan.cta}
+                        </a>
+                      ) : (
+                        <a
+                          href="https://app.lyyli.ai"
+                          className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
+                        >
+                          {plan.cta}
+                        </a>
                       )}
                     </div>
-                    {billingPeriod === 'yearly' && getSavings(plan) && (
-                      <p className="text-sm text-forest font-medium mb-2">
-                        Save {getSavings(plan)}€ per year
-                      </p>
-                    )}
-                    <p className="text-sm text-mediumGray font-sans">
-                      {plan.description}
-                    </p>
-                  </div>
-
-                  {/* Features List */}
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start">
-                        <svg
-                          className="w-5 h-5 text-forest mt-0.5 mr-3 flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span className="text-sm text-mediumGray font-sans">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA Button */}
-                  <div className="mt-auto">
-                    {plan.name === 'Professional' ||
-                    plan.name === 'Enterprise' ? (
-                      <a
-                        href={`/${locale}/waitlist`}
-                        className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
-                      >
-                        {plan.cta}
-                      </a>
-                    ) : (
-                      <a
-                        href="https://app.lyyli.ai"
-                        className="block w-full px-4 py-3 rounded-2xl font-sans font-semibold text-center text-white bg-forest hover:bg-[#3A6A5C] transition-all duration-300 hover:shadow-lg"
-                      >
-                        {plan.cta}
-                      </a>
-                    )}
-                  </div>
+                  </MotionDiv>
                 </MotionDiv>
-              </MotionDiv>
-            ))}
+              ))}
           </MotionDiv>
+
+          {/* Show more plans button */}
+          {!showAdvancedPlans && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => setShowAdvancedPlans(true)}
+                className="inline-flex items-center px-6 py-3 border-2 border-forest text-forest font-semibold rounded-2xl hover:bg-forest hover:text-white transition-all duration-300 font-sans hover:shadow-lg"
+              >
+                {translations?.['pricing.showMorePlans'] ||
+                  'Need more? See Professional and Enterprise'}
+                <svg
+                  className="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
 
           {/* Mobile toggle for additional plans */}
           <div className="mt-6 text-center md:hidden">

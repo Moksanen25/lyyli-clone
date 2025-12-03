@@ -105,16 +105,9 @@ export default async function HomepageV2({
               </CalendarPopup>
             </div>
 
-            <div className="bg-white/80 border border-gray-200 rounded-2xl p-4 mb-6 shadow-sm">
-              <p className="text-forest font-semibold mb-2">
-                {t['cta.trialNote']}
-              </p>
-              <ul className="space-y-2 text-mediumGray text-sm">
-                <li>• Connect Slack, Teams & email securely</li>
-                <li>• Import existing guidelines in minutes</li>
-                <li>• Get a live onboarding session with our team</li>
-              </ul>
-            </div>
+            <p className="text-sm text-mediumGray mb-6">
+              {t['hero.trialNote']}
+            </p>
 
             <HeroFactBox translations={t} />
           </div>
@@ -214,6 +207,9 @@ export default async function HomepageV2({
         }}
       />
 
+      {/* Demo video - moved to hero area */}
+      <DemoVideo translations={t} />
+
       {/* Persona strip */}
       <section className="py-12 bg-white border-t border-gray-100">
         <div className="container mx-auto px-4">
@@ -249,41 +245,48 @@ export default async function HomepageV2({
         </div>
       </section>
 
-      {/* Mini ROI highlight */}
-      <section className="py-12 bg-gradient-to-br from-forest/5 to-turquoise/5 border-y border-gray-100">
+      {/* Measurable business impact - combined section */}
+      <section className="py-16 bg-gradient-to-br from-forest/5 to-turquoise/5 border-y border-gray-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <h2 className="text-3xl text-forest font-playfair font-bold mb-3">
               {t['pricing.benefits.title']}
             </h2>
-            <p className="text-mediumGray">{t['pricing.assumptions.title']}</p>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+
+          {/* Numbers */}
+          <div className="grid gap-6 md:grid-cols-3 mb-16">
             <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
-              <p className="text-4xl text-forest font-bold mb-2">
-                {t['pricing.benefits.cost.value']}
-              </p>
+              <p className="text-4xl text-forest font-bold mb-2">33%</p>
+              <h3 className="text-lg text-forest font-playfair font-semibold mb-2">
+                {t['hero.facts.timeSaved']}
+              </h3>
               <p className="text-mediumGray text-sm">
-                {t['pricing.benefits.cost.description']}
+                {t['hero.facts.timeSavedDesc']}
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
-              <p className="text-4xl text-forest font-bold mb-2">
-                {t['pricing.benefits.efficiency.value']}
-              </p>
+              <p className="text-4xl text-forest font-bold mb-2">1.5×</p>
+              <h3 className="text-lg text-forest font-playfair font-semibold mb-2">
+                {t['hero.facts.productivityBoost']}
+              </h3>
               <p className="text-mediumGray text-sm">
-                {t['pricing.benefits.efficiency.description']}
+                {t['hero.facts.productivityBoostDesc']}
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
-              <p className="text-4xl text-forest font-bold mb-2">
-                {t['pricing.benefits.roi.value']}
-              </p>
+              <p className="text-4xl text-forest font-bold mb-2">4,131€</p>
+              <h3 className="text-lg text-forest font-playfair font-semibold mb-2">
+                {t['hero.facts.netSavings']}
+              </h3>
               <p className="text-mediumGray text-sm">
-                {t['pricing.benefits.roi.description']}
+                {t['hero.facts.netSavingsDesc']}
               </p>
             </div>
           </div>
+
+          {/* ROI Calculator */}
+          <ROICalculator locale={currentLocale} translations={t} />
         </div>
       </section>
 
@@ -330,51 +333,13 @@ export default async function HomepageV2({
       {/* Problems */}
       <section className="border-t border-gray-100">
         <div className="container mx-auto px-4 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl text-forest font-playfair font-bold mb-4">
-              {t['problems.title']}
+          <div className="text-center mb-12 max-w-4xl mx-auto">
+            <h2 className="text-4xl text-forest font-playfair font-bold mb-6">
+              {t['problems.chaos.title']}
             </h2>
-            <p className="text-mediumGray max-w-3xl mx-auto">
-              {t['problems.subtitle']}
+            <p className="text-lg text-mediumGray leading-relaxed">
+              {t['problems.chaos.description']}
             </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
-              <p className="text-3xl text-forest font-bold mb-2">48h</p>
-              <h3 className="text-xl text-forest font-playfair font-semibold mb-3">
-                {t['problems.missedCommunications.title']}
-              </h3>
-              <p className="text-mediumGray text-sm">
-                {t['problems.missedCommunications.description']}
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
-              <p className="text-3xl text-forest font-bold mb-2">8 tools</p>
-              <h3 className="text-xl text-forest font-playfair font-semibold mb-3">
-                {t['problems.channelOverload.title']}
-              </h3>
-              <p className="text-mediumGray text-sm">
-                {t['problems.channelOverload.description']}
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
-              <p className="text-3xl text-forest font-bold mb-2">0 trail</p>
-              <h3 className="text-xl text-forest font-playfair font-semibold mb-3">
-                {t['problems.accountability.title']}
-              </h3>
-              <p className="text-mediumGray text-sm">
-                {t['problems.accountability.description']}
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
-              <p className="text-3xl text-forest font-bold mb-2">20%</p>
-              <h3 className="text-xl text-forest font-playfair font-semibold mb-3">
-                {t['problems.regulatory.title']}
-              </h3>
-              <p className="text-mediumGray text-sm">
-                {t['problems.regulatory.description']}
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -389,12 +354,6 @@ export default async function HomepageV2({
         <FeatureGrid translations={t} />
       </Deferred>
 
-      {/* Demo video */}
-      <DemoVideo translations={t} />
-
-      {/* ROI calculator */}
-      <ROICalculator locale={currentLocale} translations={t} />
-
       {/* Pricing */}
       <PricingCards locale={currentLocale} translations={t} />
 
@@ -402,17 +361,17 @@ export default async function HomepageV2({
       <section className="py-20 bg-gradient-to-br from-forest to-turquoise text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl text-white font-playfair font-bold mb-4">
-            {t['cta.title']}
+            {t['cta.title'] || t['hero.ctaPrimary']}
           </h2>
           <p className="text-white/80 max-w-3xl mx-auto mb-10">
-            {t['cta.descriptionLong']}
+            {t['cta.trialNote']}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="https://app.lyyli.ai"
               className="btn-primary bg-white text-forest"
             >
-              {t['cta.startTrial']}
+              {t['hero.ctaPrimary']}
             </a>
             <CalendarPopup
               className="btn-secondary border-white text-white hover:bg-white hover:text-forest"
@@ -428,7 +387,7 @@ export default async function HomepageV2({
                 footerContact: t['calendar.footer.contact'],
               }}
             >
-              {t['cta.demo']}
+              {t['hero.ctaSecondary']}
             </CalendarPopup>
           </div>
         </div>
