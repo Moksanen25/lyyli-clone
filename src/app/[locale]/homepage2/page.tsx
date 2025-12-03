@@ -71,8 +71,8 @@ export default async function HomepageV2({
           <div className="absolute -bottom-20 -left-20 w-[460px] h-[460px] bg-rose/10 blur-[100px]" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-24 grid grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-[minmax(0,1fr)_520px] items-center relative z-10">
-          <div className="w-full max-w-2xl mx-auto lg:mx-0">
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-24 relative z-10">
+          <div className="w-full max-w-2xl mx-auto">
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-forest mb-4 sm:mb-6 mt-4 sm:mt-8 md:mt-12 font-playfair font-bold leading-tight">
               {t['hero.headline']}
             </h1>
@@ -110,91 +110,6 @@ export default async function HomepageV2({
             </p>
 
             <HeroFactBox translations={t} />
-          </div>
-
-          <div className="w-full order-first lg:order-last">
-            {/* Desktop visual */}
-            <div className="hidden lg:block">
-              <div className="relative ml-auto max-w-xl">
-                <div className="rounded-[32px] bg-white border border-gray-100 shadow-[0_35px_90px_-45px_rgba(22,41,34,0.6)] p-4">
-                  <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-lg">
-                    <div className="bg-[#202c2a] text-white px-4 py-2 flex items-center gap-3">
-                      <div className="flex gap-1.5">
-                        <span className="w-3 h-3 rounded-full bg-rose/80" />
-                        <span className="w-3 h-3 rounded-full bg-turquoise/70" />
-                        <span className="w-3 h-3 rounded-full bg-turquoise/40" />
-                      </div>
-                      <div className="flex-1 text-center text-xs opacity-80">
-                        app.lyyli.ai
-                      </div>
-                    </div>
-                    <Image
-                      src="/images/general/Lyyli_dashboard_desktop.webp"
-                      alt="Lyyli desktop interface preview"
-                      width={1920}
-                      height={1080}
-                      className="w-full h-auto"
-                      priority
-                      sizes="(max-width: 1280px) 90vw, 520px"
-                      quality={90}
-                    />
-                  </div>
-                </div>
-
-                <div className="absolute -right-16 -bottom-14 w-48">
-                  <div className="rounded-[26px] bg-white border border-gray-100 shadow-xl p-3">
-                    <div className="rounded-[22px] overflow-hidden border border-gray-100 shadow-inner">
-                      <Image
-                        src="/images/general/Lyyli_dashboard_mobile.webp"
-                        alt="Lyyli mobile interface preview"
-                        width={390}
-                        height={844}
-                        className="w-full h-auto"
-                        sizes="192px"
-                        quality={90}
-                      />
-                    </div>
-                    <p className="text-xs text-mediumGray mt-3">
-                      {t['showcase.cta.text'] ||
-                        'Experience seamless communication across all your devices'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile visual */}
-            <div className="lg:hidden mt-0 mb-6">
-              <div className="rounded-2xl sm:rounded-3xl border border-gray-100 bg-white shadow-xl p-3 sm:p-4">
-                <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 shadow">
-                  <Image
-                    src="/images/general/Lyyli_dashboard_mobile.webp"
-                    alt="Lyyli mobile interface preview"
-                    width={390}
-                    height={844}
-                    className="w-full h-auto"
-                    sizes="100vw"
-                    quality={85}
-                  />
-                </div>
-              </div>
-              <div className="flex gap-2 sm:gap-3 mt-3 sm:mt-4 overflow-x-auto pb-2 -mx-4 px-4">
-                {[
-                  t['showcase.feature1'] || 'AI-powered',
-                  t['forBusiness.multiModel.reliability.title'] ||
-                    'Reliable by design',
-                  t['forBusiness.multiModel.simplicity.title'] ||
-                    'One secure interface',
-                ].map(chip => (
-                  <span
-                    key={chip}
-                    className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-xs font-semibold text-forest whitespace-nowrap"
-                  >
-                    {chip}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -293,6 +208,95 @@ export default async function HomepageV2({
 
           {/* ROI Calculator */}
           <ROICalculator locale={currentLocale} translations={t} />
+        </div>
+      </section>
+
+      {/* Interface Screenshot */}
+      <section className="py-10 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="w-full max-w-4xl mx-auto">
+            {/* Desktop visual */}
+            <div className="hidden lg:block">
+              <div className="relative ml-auto max-w-xl mx-auto">
+                <div className="rounded-[32px] bg-white border border-gray-100 shadow-[0_35px_90px_-45px_rgba(22,41,34,0.6)] p-4">
+                  <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-lg">
+                    <div className="bg-[#202c2a] text-white px-4 py-2 flex items-center gap-3">
+                      <div className="flex gap-1.5">
+                        <span className="w-3 h-3 rounded-full bg-rose/80" />
+                        <span className="w-3 h-3 rounded-full bg-turquoise/70" />
+                        <span className="w-3 h-3 rounded-full bg-turquoise/40" />
+                      </div>
+                      <div className="flex-1 text-center text-xs opacity-80">
+                        app.lyyli.ai
+                      </div>
+                    </div>
+                    <Image
+                      src="/images/general/Lyyli_dashboard_desktop.webp"
+                      alt="Lyyli desktop interface preview"
+                      width={1920}
+                      height={1080}
+                      className="w-full h-auto"
+                      sizes="(max-width: 1280px) 90vw, 520px"
+                      quality={90}
+                    />
+                  </div>
+                </div>
+
+                <div className="absolute -right-16 -bottom-14 w-48">
+                  <div className="rounded-[26px] bg-white border border-gray-100 shadow-xl p-3">
+                    <div className="rounded-[22px] overflow-hidden border border-gray-100 shadow-inner">
+                      <Image
+                        src="/images/general/Lyyli_dashboard_mobile.webp"
+                        alt="Lyyli mobile interface preview"
+                        width={390}
+                        height={844}
+                        className="w-full h-auto"
+                        sizes="192px"
+                        quality={90}
+                      />
+                    </div>
+                    <p className="text-xs text-mediumGray mt-3">
+                      {t['showcase.cta.text'] ||
+                        'Experience seamless communication across all your devices'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile visual */}
+            <div className="lg:hidden">
+              <div className="rounded-2xl sm:rounded-3xl border border-gray-100 bg-white shadow-xl p-3 sm:p-4">
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 shadow">
+                  <Image
+                    src="/images/general/Lyyli_dashboard_mobile.webp"
+                    alt="Lyyli mobile interface preview"
+                    width={390}
+                    height={844}
+                    className="w-full h-auto"
+                    sizes="100vw"
+                    quality={85}
+                  />
+                </div>
+              </div>
+              <div className="flex gap-2 sm:gap-3 mt-3 sm:mt-4 overflow-x-auto pb-2 -mx-4 px-4">
+                {[
+                  t['showcase.feature1'] || 'AI-powered',
+                  t['forBusiness.multiModel.reliability.title'] ||
+                    'Reliable by design',
+                  t['forBusiness.multiModel.simplicity.title'] ||
+                    'One secure interface',
+                ].map(chip => (
+                  <span
+                    key={chip}
+                    className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-xs font-semibold text-forest whitespace-nowrap"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
