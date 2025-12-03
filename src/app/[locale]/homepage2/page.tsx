@@ -71,8 +71,8 @@ export default async function HomepageV2({
           <div className="absolute -bottom-20 -left-20 w-[460px] h-[460px] bg-rose/10 blur-[100px]" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-24 grid gap-8 sm:gap-12 lg:grid-cols-[minmax(0,1fr)_520px] items-center relative z-10">
-          <div className="max-w-2xl">
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-24 grid grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-[minmax(0,1fr)_520px] items-center relative z-10">
+          <div className="w-full max-w-2xl mx-auto lg:mx-0">
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-forest mb-4 sm:mb-6 mt-4 sm:mt-8 md:mt-12 font-playfair font-bold leading-tight">
               {t['hero.headline']}
             </h1>
@@ -112,7 +112,7 @@ export default async function HomepageV2({
             <HeroFactBox translations={t} />
           </div>
 
-          <div className="w-full">
+          <div className="w-full order-first lg:order-last">
             {/* Desktop visual */}
             <div className="hidden lg:block">
               <div className="relative ml-auto max-w-xl">
@@ -164,7 +164,7 @@ export default async function HomepageV2({
             </div>
 
             {/* Mobile visual */}
-            <div className="lg:hidden mt-4">
+            <div className="lg:hidden mt-0 mb-6">
               <div className="rounded-2xl sm:rounded-3xl border border-gray-100 bg-white shadow-xl p-3 sm:p-4">
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 shadow">
                   <Image
