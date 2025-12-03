@@ -57,10 +57,10 @@ export default function HeroFactBox({
                 'Save time on communication'
               }
               description={
-                translations['hero.facts.timeSaved.desc'] ||
-                'Average reduction in time spent on communication tasks.'
+                translations['hero.facts.timeSavedDesc'] ||
+                'Average time saved on communication tasks.'
               }
-              bg="turquoise"
+              bg="gray"
             />
           }
           back={
@@ -70,8 +70,8 @@ export default function HeroFactBox({
                   'Save time on communication'}
               </h4>
               <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
-                {translations['hero.facts.timeSaved.desc'] ||
-                  'Average reduction in time spent on communication tasks.'}
+                {translations['hero.facts.timeSavedDesc'] ||
+                  'Average time saved on communication tasks.'}
               </p>
             </div>
           }
@@ -107,8 +107,8 @@ export default function HeroFactBox({
                 'Faster production with your current team'
               }
               description={
-                translations['hero.facts.productivityBoost.desc'] ||
-                'Accelerate content creation without increasing headcount.'
+                translations['hero.facts.productivityBoostDesc'] ||
+                'Produce more content without new hires.'
               }
               bg="gray"
             />
@@ -120,8 +120,8 @@ export default function HeroFactBox({
                   'Faster production with your current team'}
               </h4>
               <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
-                {translations['hero.facts.productivityBoost.desc'] ||
-                  'Accelerate content creation without increasing headcount.'}
+                {translations['hero.facts.productivityBoostDesc'] ||
+                  'Produce more content without new hires.'}
               </p>
             </div>
           }
@@ -155,10 +155,10 @@ export default function HeroFactBox({
                 translations['hero.facts.netSavings'] || 'Net savings per month'
               }
               description={
-                translations['hero.facts.netSavings.desc'] ||
-                "Estimated after plan costs, based on your team's inputs."
+                translations['hero.facts.netSavingsDesc'] ||
+                'Estimate for a 10-person team, plan costs deducted.'
               }
-              bg="rose"
+              bg="gray"
             />
           }
           back={
@@ -168,14 +168,14 @@ export default function HeroFactBox({
                   'Net savings per month'}
               </h4>
               <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
-                {translations['hero.facts.netSavings.desc'] ||
-                  "Estimated after plan costs, based on your team's inputs."}
+                {translations['hero.facts.netSavingsDesc'] ||
+                  'Estimate for a 10-person team, plan costs deducted.'}
               </p>
             </div>
           }
         />
       </div>
-      <div className="px-2 sm:px-0 text-center text-xs text-mediumGray mt-3 font-sans">
+      <div className="px-2 sm:px-0 text-center text-xs text-mediumGray mt-6 mb-4 font-sans">
         {translations['hero.facts.caption'] ||
           'Based on an estimate of five (5) hours of dedicated communication work per week across the organization and a 199€/month plan'}
       </div>
