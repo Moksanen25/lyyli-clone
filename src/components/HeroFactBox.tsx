@@ -175,7 +175,7 @@ export default function HeroFactBox({
           }
         />
       </div>
-      <div className="px-2 sm:px-0 text-center text-xs text-mediumGray mt-6 mb-4 font-sans">
+      <div className="px-2 sm:px-0 text-center text-xs text-mediumGray mt-10 mb-4 font-sans">
         {translations['hero.facts.caption'] ||
           'Based on an estimate of five (5) hours of dedicated communication work per week across the organization and a 199€/month plan'}
       </div>
