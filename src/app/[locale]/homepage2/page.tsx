@@ -122,9 +122,6 @@ export default async function HomepageV2({
         }}
       />
 
-      {/* Demo video - moved to hero area */}
-      <DemoVideo translations={t} />
-
       {/* Persona strip */}
       <section className="py-8 sm:py-12 bg-white border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6">
@@ -210,6 +207,9 @@ export default async function HomepageV2({
           <ROICalculator locale={currentLocale} translations={t} />
         </div>
       </section>
+
+      {/* Demo video - moved below Measurable Business Impact section */}
+      <DemoVideo translations={t} />
 
       {/* Interface Screenshot */}
       <section className="py-10 sm:py-16">
