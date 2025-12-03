@@ -73,7 +73,7 @@ export default async function HomepageV2({
 
         <div className="container mx-auto px-4 py-14 md:py-24 grid gap-12 lg:grid-cols-[minmax(0,1fr)_520px] items-center relative z-10">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl text-forest mb-6 font-playfair font-bold leading-tight">
+            <h1 className="text-4xl md:text-5xl text-forest mb-6 mt-8 md:mt-12 font-playfair font-bold leading-tight">
               {t['hero.headline']}
             </h1>
             <p className="text-lg text-mediumGray mb-8 font-sans leading-relaxed max-w-xl">
