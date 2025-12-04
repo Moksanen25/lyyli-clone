@@ -65,14 +65,14 @@ export default async function HomepageV2({
   return (
     <main className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden mb-0">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-32 -right-16 w-[520px] h-[520px] bg-turquoise/15 blur-[120px]" />
           <div className="absolute -bottom-20 -left-20 w-[460px] h-[460px] bg-rose/10 blur-[100px]" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-24 relative z-10">
-          <div className="w-full max-w-2xl mx-auto">
+          <div className="w-full max-w-4xl mx-auto">
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-forest mb-4 sm:mb-6 mt-4 sm:mt-8 md:mt-12 font-playfair font-bold leading-tight">
               {t['hero.headline']}
             </h1>
@@ -162,7 +162,7 @@ export default async function HomepageV2({
       />
 
       {/* Social Proof - Testimonials and Customer Logos */}
-      <TestimonialSection />
+      <TestimonialSection translations={t} />
 
       {/* Persona strip */}
       <section className="py-8 sm:py-12 bg-white border-t border-gray-100">
@@ -345,7 +345,7 @@ export default async function HomepageV2({
                   </svg>
                 </div>
                 <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
-                  GDPR Compliant
+                  {t['trustBadges.gdpr'] || 'GDPR Compliant'}
                 </p>
               </div>
               <div className="text-center">
@@ -365,7 +365,7 @@ export default async function HomepageV2({
                   </svg>
                 </div>
                 <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
-                  ISO 27001 Ready
+                  {t['trustBadges.iso'] || 'ISO 27001 Ready'}
                 </p>
               </div>
               <div className="text-center">
@@ -385,7 +385,7 @@ export default async function HomepageV2({
                   </svg>
                 </div>
                 <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
-                  Finnish Company
+                  {t['trustBadges.finnish'] || 'Finnish Company'}
                 </p>
               </div>
               <div className="text-center">
@@ -405,7 +405,7 @@ export default async function HomepageV2({
                   </svg>
                 </div>
                 <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
-                  Data Protected
+                  {t['trustBadges.dataProtected'] || 'Data Protected'}
                 </p>
               </div>
               <div className="text-center col-span-2 sm:col-span-1">
@@ -425,7 +425,7 @@ export default async function HomepageV2({
                   </svg>
                 </div>
                 <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
-                  99.9% Uptime
+                  {t['trustBadges.uptime'] || '99.9% Uptime'}
                 </p>
               </div>
             </div>

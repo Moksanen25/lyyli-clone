@@ -696,5 +696,14 @@
   "notFound.additionalHelp.about": "About us",
   "notFound.longMessage": "Sorry, we couldn't find the page you're looking for. It may have been moved, deleted, or the URL might be incorrect.",
   "legal.notFound.title": "Not found",
-  "legal.notFound.message": "The requested template was not found."
+  "legal.notFound.message": "The requested template was not found.",
+  "testimonials.trustedBy": "Trusted by leading organizations",
+  "testimonials.title": "What our customers say",
+  "testimonials.subtitle": "Real feedback from professional service organizations that have transformed their communication with Lyyli.ai",
+  "testimonials.cta": "Join our satisfied customers",
+  "trustBadges.gdpr": "GDPR Compliant",
+  "trustBadges.iso": "ISO 27001 Ready",
+  "trustBadges.finnish": "Finnish Company",
+  "trustBadges.dataProtected": "Data Protected",
+  "trustBadges.uptime": "99.9% Uptime"
 }
