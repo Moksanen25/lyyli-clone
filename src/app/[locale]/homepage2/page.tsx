@@ -7,6 +7,7 @@ import PricingCards from '@/components/PricingCards';
 import Deferred from '@/components/Deferred';
 import HeroFactBox from '@/components/HeroFactBox';
 import CalendarPopup from '@/components/CalendarPopup';
+import TestimonialSection from '@/components/TestimonialSection';
 import {
   generatePageCanonicalUrl,
   generateHreflangMetadata,
@@ -14,7 +15,6 @@ import {
 import { buildTitleFromTranslation } from '@/lib/title';
 import { generateSoftwareApplicationSchema } from '@/lib/structured-data';
 import type { ReactElement } from 'react';
-import Image from 'next/image';
 
 const ProcessSteps = dynamic(() => import('@/components/ProcessSteps'), {
   ssr: true,
@@ -109,6 +109,45 @@ export default async function HomepageV2({
               {t['hero.trialNote']}
             </p>
 
+            {/* Trial Checklist */}
+            <div className="bg-white/60 backdrop-blur-sm rounded-2xl border border-gray-200 p-4 sm:p-6 mb-6 sm:mb-8">
+              <h3 className="text-sm sm:text-base font-semibold text-forest mb-3 sm:mb-4 font-sans">
+                {t['hero.trialChecklist.title'] ||
+                  'What happens when you start a trial?'}
+              </h3>
+              <ul className="space-y-2 sm:space-y-3">
+                {[
+                  t['hero.trialChecklist.item1'] ||
+                    'Get instant access to all Launch plan features',
+                  t['hero.trialChecklist.item2'] ||
+                    'No credit card required – start immediately',
+                  t['hero.trialChecklist.item3'] ||
+                    'Full access for 30 days, cancel anytime',
+                  t['hero.trialChecklist.item4'] ||
+                    'Onboarding support to get you started',
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-2 sm:gap-3">
+                    <svg
+                      className="w-5 h-5 text-turquoise flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-xs sm:text-sm text-mediumGray font-sans leading-relaxed">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <HeroFactBox translations={t} />
           </div>
         </div>
@@ -121,6 +160,9 @@ export default async function HomepageV2({
           __html: JSON.stringify(softwareSchema),
         }}
       />
+
+      {/* Social Proof - Testimonials and Customer Logos */}
+      <TestimonialSection />
 
       {/* Persona strip */}
       <section className="py-8 sm:py-12 bg-white border-t border-gray-100">
@@ -211,95 +253,6 @@ export default async function HomepageV2({
       {/* Demo video - moved below Measurable Business Impact section */}
       <DemoVideo translations={t} />
 
-      {/* Interface Screenshot */}
-      <section className="py-10 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="w-full max-w-4xl mx-auto">
-            {/* Desktop visual */}
-            <div className="hidden lg:block">
-              <div className="relative ml-auto max-w-xl mx-auto">
-                <div className="rounded-[32px] bg-white border border-gray-100 shadow-[0_35px_90px_-45px_rgba(22,41,34,0.6)] p-4">
-                  <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-lg">
-                    <div className="bg-[#202c2a] text-white px-4 py-2 flex items-center gap-3">
-                      <div className="flex gap-1.5">
-                        <span className="w-3 h-3 rounded-full bg-rose/80" />
-                        <span className="w-3 h-3 rounded-full bg-turquoise/70" />
-                        <span className="w-3 h-3 rounded-full bg-turquoise/40" />
-                      </div>
-                      <div className="flex-1 text-center text-xs opacity-80">
-                        app.lyyli.ai
-                      </div>
-                    </div>
-                    <Image
-                      src="/images/general/Lyyli_dashboard_desktop.webp"
-                      alt="Lyyli desktop interface preview"
-                      width={1920}
-                      height={1080}
-                      className="w-full h-auto"
-                      sizes="(max-width: 1280px) 90vw, 520px"
-                      quality={90}
-                    />
-                  </div>
-                </div>
-
-                <div className="absolute -right-16 -bottom-14 w-48">
-                  <div className="rounded-[26px] bg-white border border-gray-100 shadow-xl p-3">
-                    <div className="rounded-[22px] overflow-hidden border border-gray-100 shadow-inner">
-                      <Image
-                        src="/images/general/Lyyli_dashboard_mobile.webp"
-                        alt="Lyyli mobile interface preview"
-                        width={390}
-                        height={844}
-                        className="w-full h-auto"
-                        sizes="192px"
-                        quality={90}
-                      />
-                    </div>
-                    <p className="text-xs text-mediumGray mt-3">
-                      {t['showcase.cta.text'] ||
-                        'Experience seamless communication across all your devices'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile visual */}
-            <div className="lg:hidden">
-              <div className="rounded-2xl sm:rounded-3xl border border-gray-100 bg-white shadow-xl p-3 sm:p-4">
-                <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 shadow">
-                  <Image
-                    src="/images/general/Lyyli_dashboard_mobile.webp"
-                    alt="Lyyli mobile interface preview"
-                    width={390}
-                    height={844}
-                    className="w-full h-auto"
-                    sizes="100vw"
-                    quality={85}
-                  />
-                </div>
-              </div>
-              <div className="flex gap-2 sm:gap-3 mt-3 sm:mt-4 overflow-x-auto pb-2 -mx-4 px-4">
-                {[
-                  t['showcase.feature1'] || 'AI-powered',
-                  t['forBusiness.multiModel.reliability.title'] ||
-                    'Reliable by design',
-                  t['forBusiness.multiModel.simplicity.title'] ||
-                    'One secure interface',
-                ].map(chip => (
-                  <span
-                    key={chip}
-                    className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-xs font-semibold text-forest whitespace-nowrap"
-                  >
-                    {chip}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Multi-model differentiator */}
       <section className="py-10 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6">
@@ -366,6 +319,119 @@ export default async function HomepageV2({
 
       {/* Pricing */}
       <PricingCards locale={currentLocale} translations={t} />
+
+      {/* Trust Badges */}
+      <section className="py-10 sm:py-16 bg-gradient-to-br from-forest/5 to-turquoise/5 border-y border-gray-100">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-center text-xs sm:text-sm uppercase tracking-[0.3em] text-mediumGray mb-6 sm:mb-8">
+              {t['about.values.security.title'] || 'Enterprise security'}
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                  <svg
+                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
+                  GDPR Compliant
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                  <svg
+                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
+                  ISO 27001 Ready
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                  <svg
+                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
+                  Finnish Company
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                  <svg
+                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
+                  Data Protected
+                </p>
+              </div>
+              <div className="text-center col-span-2 sm:col-span-1">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                  <svg
+                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-forest font-sans">
+                  99.9% Uptime
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-12 sm:py-20 bg-gradient-to-br from-forest to-turquoise text-center">
