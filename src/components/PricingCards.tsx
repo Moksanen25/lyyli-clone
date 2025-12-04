@@ -365,7 +365,7 @@ const PricingCards = memo(
                     {/* Plan Header */}
                     <div className="text-center mb-6">
                       <h3
-                        className={`text-xl mb-2 font-playfair font-normal ${
+                        className={`text-xl mb-2 font-playfair font-bold ${
                           plan.highlight ? 'text-forest' : 'text-forest'
                         }`}
                       >
@@ -547,13 +547,16 @@ const PricingCards = memo(
             viewport={{ once: true }}
           >
             <div className="bg-gradient-to-br from-white to-turquoise/5 rounded-2xl p-8 shadow-xl border border-turquoise/20 max-w-4xl mx-auto">
-              <h3 className="text-2xl text-forest mb-4 font-playfair font-normal">
-                Need more information?
+              <h3 className="text-2xl text-forest mb-4 font-playfair font-bold">
+                {translations?.[
+                  'pricing.moreInfo.needMoreInfo.title' as keyof typeof translations
+                ] || 'Need more information?'}
               </h3>
               <p className="text-mediumGray font-sans leading-relaxed mb-6">
-                All plans include enterprise-grade security, GDPR compliance,
-                and 99.9% uptime guarantee. Need a custom solution? Our team is
-                here to help.
+                {translations?.[
+                  'pricing.moreInfo.needMoreInfo.description' as keyof typeof translations
+                ] ||
+                  'All plans include enterprise-grade security, GDPR compliance, and 99.9% uptime guarantee. Need a custom solution? Our team is here to help.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a

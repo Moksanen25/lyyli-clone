@@ -292,20 +292,6 @@ export default async function HomepageV2({
         </div>
       </section>
 
-      {/* Problems */}
-      <section className="border-t border-gray-100">
-        <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <div className="text-center mb-8 sm:mb-12 max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl text-forest font-playfair font-bold mb-4 sm:mb-6 px-4">
-              {t['problems.chaos.title']}
-            </h2>
-            <p className="text-base sm:text-lg text-mediumGray leading-relaxed px-4">
-              {t['problems.chaos.description']}
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Process */}
       <Deferred when="visible">
         <ProcessSteps translations={t} />
