@@ -2,7 +2,7 @@ import { getTranslations } from '@/lib/i18n';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import DemoVideo from '@/components/DemoVideo';
-import ROICalculator from '@/components/ROICalculator';
+import ROICalculatorCompact from '@/components/ROICalculatorCompact';
 import PricingCards from '@/components/PricingCards';
 import Deferred from '@/components/Deferred';
 import HeroFactBox from '@/components/HeroFactBox';
@@ -244,8 +244,10 @@ export default async function HomepageV2({
             </div>
           </div>
 
-          {/* ROI Calculator */}
-          <ROICalculator locale={currentLocale} translations={t} />
+          {/* ROI Calculator - Compact Mobile Version */}
+          <div className="max-w-2xl mx-auto">
+            <ROICalculatorCompact translations={t} />
+          </div>
         </div>
       </section>
 
