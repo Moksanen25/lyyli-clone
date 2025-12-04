@@ -48,9 +48,9 @@ export default function FlipCard({
       onClick={() => setFlipped(v => !v)}
       onKeyDown={onKeyDown}
     >
-      <div className="flip-inner rounded-2xl">
-        <div className="flip-front rounded-2xl">{front}</div>
-        <div className="flip-back rounded-2xl" id={detailsId}>
+      <div className="flip-inner rounded-2xl h-full">
+        <div className="flip-front rounded-2xl h-full">{front}</div>
+        <div className="flip-back rounded-2xl h-full" id={detailsId}>
           {back}
         </div>
       </div>

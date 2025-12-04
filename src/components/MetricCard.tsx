@@ -33,7 +33,7 @@ export default function MetricCard({
 
   return (
     <div
-      className={`group relative rounded-2xl ${bgClass} border border-gray-200 p-6 shadow-sm tilt-hover transition-shadow`}
+      className={`group relative rounded-2xl ${bgClass} border border-gray-200 p-6 shadow-sm tilt-hover transition-shadow h-full flex flex-col`}
       role="group"
       tabIndex={0}
     >
@@ -64,7 +64,7 @@ export default function MetricCard({
         {label}
       </div>
       {/* Description */}
-      <p className="relative z-10 mt-2 text-sm font-sans text-mediumGray leading-relaxed">
+      <p className="relative z-10 mt-2 text-sm font-sans text-mediumGray leading-relaxed flex-grow">
         {description}
       </p>
     </div>

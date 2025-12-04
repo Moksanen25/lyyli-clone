@@ -26,8 +26,9 @@ export default function HeroFactBox({
 
   return (
     <div className="max-w-5xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 items-stretch">
         <FlipCard
+          className="h-full"
           ariaLabel={
             (translations['hero.facts.timeSaved'] as string) ||
             'Save time on communication'
@@ -64,7 +65,7 @@ export default function HeroFactBox({
             />
           }
           back={
-            <div className="rounded-2xl p-6 bg-rose/10 border border-gray-200 text-center">
+            <div className="rounded-2xl p-6 bg-rose/10 border border-gray-200 text-center h-full flex flex-col justify-center">
               <h4 className="text-forest font-playfair font-bold text-lg">
                 {translations['hero.facts.timeSaved'] ||
                   'Save time on communication'}
@@ -77,6 +78,7 @@ export default function HeroFactBox({
           }
         />
         <FlipCard
+          className="h-full"
           ariaLabel={
             (translations['hero.facts.productivityBoost'] as string) ||
             'Faster production with your current team'
@@ -114,7 +116,7 @@ export default function HeroFactBox({
             />
           }
           back={
-            <div className="rounded-2xl p-6 bg-turquoise/10 border border-gray-200 text-center">
+            <div className="rounded-2xl p-6 bg-turquoise/10 border border-gray-200 text-center h-full flex flex-col justify-center">
               <h4 className="text-forest font-playfair font-bold text-lg">
                 {translations['hero.facts.productivityBoost'] ||
                   'Faster production with your current team'}
@@ -127,6 +129,7 @@ export default function HeroFactBox({
           }
         />
         <FlipCard
+          className="h-full"
           ariaLabel={
             (translations['hero.facts.netSavings'] as string) ||
             'Net savings per month'
@@ -162,7 +165,7 @@ export default function HeroFactBox({
             />
           }
           back={
-            <div className="rounded-2xl p-6 bg-rose/10 border border-gray-200 text-center">
+            <div className="rounded-2xl p-6 bg-rose/10 border border-gray-200 text-center h-full flex flex-col justify-center">
               <h4 className="text-forest font-playfair font-bold text-lg">
                 {translations['hero.facts.netSavings'] ||
                   'Net savings per month'}
