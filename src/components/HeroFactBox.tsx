@@ -26,7 +26,7 @@ export default function HeroFactBox({
 
   return (
     <div className="max-w-5xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 items-stretch">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 items-stretch">
         <FlipCard
           className="h-full"
           ariaLabel={
@@ -65,12 +65,12 @@ export default function HeroFactBox({
             />
           }
           back={
-            <div className="rounded-2xl p-6 bg-rose/10 border border-gray-200 text-center h-full flex flex-col justify-center">
-              <h4 className="text-forest font-playfair font-bold text-lg">
+            <div className="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-rose/10 border border-gray-200 text-center h-full flex flex-col justify-center">
+              <h4 className="text-forest font-playfair font-bold text-base sm:text-lg">
                 {translations['hero.facts.timeSaved'] ||
                   'Save time on communication'}
               </h4>
-              <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
+              <p className="mt-1.5 sm:mt-2 text-darkGray font-sans text-xs sm:text-sm leading-relaxed">
                 {translations['hero.facts.timeSavedDesc'] ||
                   'Average time saved on communication tasks.'}
               </p>
@@ -116,12 +116,12 @@ export default function HeroFactBox({
             />
           }
           back={
-            <div className="rounded-2xl p-6 bg-turquoise/10 border border-gray-200 text-center h-full flex flex-col justify-center">
-              <h4 className="text-forest font-playfair font-bold text-lg">
+            <div className="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-turquoise/10 border border-gray-200 text-center h-full flex flex-col justify-center">
+              <h4 className="text-forest font-playfair font-bold text-base sm:text-lg">
                 {translations['hero.facts.productivityBoost'] ||
                   'Faster production with your current team'}
               </h4>
-              <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
+              <p className="mt-1.5 sm:mt-2 text-darkGray font-sans text-xs sm:text-sm leading-relaxed">
                 {translations['hero.facts.productivityBoostDesc'] ||
                   'Produce more content without new hires.'}
               </p>
@@ -165,12 +165,12 @@ export default function HeroFactBox({
             />
           }
           back={
-            <div className="rounded-2xl p-6 bg-rose/10 border border-gray-200 text-center h-full flex flex-col justify-center">
-              <h4 className="text-forest font-playfair font-bold text-lg">
+            <div className="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-rose/10 border border-gray-200 text-center h-full flex flex-col justify-center">
+              <h4 className="text-forest font-playfair font-bold text-base sm:text-lg">
                 {translations['hero.facts.netSavings'] ||
                   'Net savings per month'}
               </h4>
-              <p className="mt-2 text-darkGray font-sans text-sm leading-relaxed">
+              <p className="mt-1.5 sm:mt-2 text-darkGray font-sans text-xs sm:text-sm leading-relaxed">
                 {translations['hero.facts.netSavingsDesc'] ||
                   'Estimate for a 10-person team, plan costs deducted.'}
               </p>
@@ -178,7 +178,7 @@ export default function HeroFactBox({
           }
         />
       </div>
-      <div className="px-2 sm:px-0 text-center text-xs text-mediumGray mt-10 mb-4 font-sans">
+      <div className="px-2 sm:px-0 text-center text-xs text-mediumGray mt-6 sm:mt-10 mb-2 sm:mb-4 font-sans">
         {translations['hero.facts.caption'] ||
           'Based on an estimate of five (5) hours of dedicated communication work per week across the organization and a 199€/month plan'}
       </div>

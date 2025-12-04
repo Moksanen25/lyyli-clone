@@ -71,24 +71,24 @@ export default async function HomepageV2({
           <div className="absolute -bottom-20 -left-20 w-[460px] h-[460px] bg-rose/10 blur-[100px]" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-24 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-12 md:py-24 relative z-10">
           <div className="w-full max-w-6xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl text-forest mb-4 sm:mb-6 mt-4 sm:mt-8 md:mt-12 font-playfair font-bold leading-tight">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl text-forest mb-3 sm:mb-6 mt-0 sm:mt-8 md:mt-12 font-playfair font-bold leading-tight">
               {t['hero.headline']}
             </h1>
-            <p className="text-base sm:text-lg text-mediumGray mb-6 sm:mb-8 font-sans leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-mediumGray mb-4 sm:mb-8 font-sans leading-relaxed max-w-2xl">
               {t['hero.description']}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-3 sm:mb-6">
               <a
                 href="https://app.lyyli.ai"
-                className="btn-primary text-center min-h-[48px] flex items-center justify-center text-base sm:text-lg px-6 py-3"
+                className="btn-primary text-center min-h-[44px] sm:min-h-[48px] flex items-center justify-center text-sm sm:text-base md:text-lg px-5 sm:px-6 py-2.5 sm:py-3"
               >
                 {t['hero.ctaPrimary']}
               </a>
               <CalendarPopup
-                className="btn-secondary text-center min-h-[48px] flex items-center justify-center text-base sm:text-lg px-6 py-3"
+                className="btn-secondary text-center min-h-[44px] sm:min-h-[48px] flex items-center justify-center text-sm sm:text-base md:text-lg px-5 sm:px-6 py-2.5 sm:py-3"
                 translations={{
                   title: t['calendar.title'],
                   subtitle: t['calendar.subtitle'],
@@ -105,17 +105,17 @@ export default async function HomepageV2({
               </CalendarPopup>
             </div>
 
-            <p className="text-xs sm:text-sm text-mediumGray mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm text-mediumGray mb-3 sm:mb-6">
               {t['hero.trialNote']}
             </p>
 
             {/* Trial Checklist */}
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl border border-gray-200 p-4 sm:p-6 mb-6 sm:mb-8">
-              <h3 className="text-sm sm:text-base font-semibold text-forest mb-3 sm:mb-4 font-sans">
+            <div className="bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-gray-200 p-3 sm:p-6 mb-4 sm:mb-8">
+              <h3 className="text-sm sm:text-base font-semibold text-forest mb-2 sm:mb-4 font-sans">
                 {t['hero.trialChecklist.title'] ||
                   'What happens when you start a trial?'}
               </h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-1.5 sm:space-y-3">
                 {[
                   t['hero.trialChecklist.item1'] ||
                     'Get instant access to all Launch plan features',
@@ -127,7 +127,7 @@ export default async function HomepageV2({
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-2 sm:gap-3">
                     <svg
-                      className="w-5 h-5 text-turquoise flex-shrink-0 mt-0.5"
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-turquoise flex-shrink-0 mt-0.5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -164,30 +164,30 @@ export default async function HomepageV2({
       <TestimonialSection translations={t} />
 
       {/* Persona strip */}
-      <section className="py-8 sm:py-12 bg-white border-t border-gray-100">
+      <section className="py-6 sm:py-12 bg-white border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6">
-          <p className="text-center text-xs sm:text-sm uppercase tracking-[0.3em] text-mediumGray mb-4 sm:mb-6">
+          <p className="text-center text-xs sm:text-sm uppercase tracking-[0.3em] text-mediumGray mb-3 sm:mb-6">
             {t['forBusiness.audience.title']}
           </p>
-          <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-gray-200 p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl text-forest font-playfair font-semibold mb-2">
+          <div className="grid gap-3 sm:gap-4 md:gap-6 md:grid-cols-3">
+            <div className="rounded-xl sm:rounded-2xl border border-gray-200 p-3 sm:p-4 md:p-6">
+              <h3 className="text-base sm:text-lg md:text-xl text-forest font-playfair font-bold mb-1.5 sm:mb-2">
                 {t['forBusiness.audience.partners.title']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
                 {t['forBusiness.audience.partners.description']}
               </p>
             </div>
-            <div className="rounded-2xl border border-gray-200 p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl text-forest font-playfair font-semibold mb-2">
+            <div className="rounded-xl sm:rounded-2xl border border-gray-200 p-3 sm:p-4 md:p-6">
+              <h3 className="text-base sm:text-lg md:text-xl text-forest font-playfair font-bold mb-1.5 sm:mb-2">
                 {t['forBusiness.audience.ops.title']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
                 {t['forBusiness.audience.ops.description']}
               </p>
             </div>
-            <div className="rounded-2xl border border-gray-200 p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl text-forest font-playfair font-semibold mb-2">
+            <div className="rounded-xl sm:rounded-2xl border border-gray-200 p-3 sm:p-4 md:p-6">
+              <h3 className="text-base sm:text-lg md:text-xl text-forest font-playfair font-bold mb-1.5 sm:mb-2">
                 {t['forBusiness.audience.comms.title']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
@@ -199,43 +199,43 @@ export default async function HomepageV2({
       </section>
 
       {/* Measurable business impact - combined section */}
-      <section className="py-10 sm:py-16 bg-gradient-to-br from-forest/5 to-turquoise/5 border-y border-gray-100">
+      <section className="py-8 sm:py-10 md:py-16 bg-gradient-to-br from-forest/5 to-turquoise/5 border-y border-gray-100">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl text-forest font-playfair font-bold mb-3">
+          <div className="text-center mb-6 sm:mb-8 md:mb-12">
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-forest font-playfair font-bold mb-2 sm:mb-3">
               {t['pricing.benefits.title']}
             </h2>
           </div>
 
           {/* Numbers */}
-          <div className="grid gap-4 sm:gap-6 md:grid-cols-3 mb-10 sm:mb-16">
-            <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-md border border-gray-100 text-center">
-              <p className="text-3xl sm:text-4xl text-forest font-bold mb-2">
+          <div className="grid gap-3 sm:gap-4 md:gap-6 md:grid-cols-3 mb-8 sm:mb-10 md:mb-16">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-md border border-gray-100 text-center">
+              <p className="text-2xl sm:text-3xl md:text-4xl text-forest font-bold mb-1.5 sm:mb-2">
                 33%
               </p>
-              <h3 className="text-base sm:text-lg text-forest font-playfair font-semibold mb-2">
+              <h3 className="text-sm sm:text-base md:text-lg text-forest font-playfair font-bold mb-1.5 sm:mb-2">
                 {t['hero.facts.timeSaved']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
                 {t['hero.facts.timeSavedDesc']}
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-md border border-gray-100 text-center">
-              <p className="text-3xl sm:text-4xl text-forest font-bold mb-2">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-md border border-gray-100 text-center">
+              <p className="text-2xl sm:text-3xl md:text-4xl text-forest font-bold mb-1.5 sm:mb-2">
                 1.5×
               </p>
-              <h3 className="text-base sm:text-lg text-forest font-playfair font-semibold mb-2">
+              <h3 className="text-sm sm:text-base md:text-lg text-forest font-playfair font-bold mb-1.5 sm:mb-2">
                 {t['hero.facts.productivityBoost']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
                 {t['hero.facts.productivityBoostDesc']}
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-md border border-gray-100 text-center">
-              <p className="text-3xl sm:text-4xl text-forest font-bold mb-2">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-md border border-gray-100 text-center">
+              <p className="text-2xl sm:text-3xl md:text-4xl text-forest font-bold mb-1.5 sm:mb-2">
                 4,131€
               </p>
-              <h3 className="text-base sm:text-lg text-forest font-playfair font-semibold mb-2">
+              <h3 className="text-sm sm:text-base md:text-lg text-forest font-playfair font-bold mb-1.5 sm:mb-2">
                 {t['hero.facts.netSavings']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
@@ -255,35 +255,35 @@ export default async function HomepageV2({
       <DemoVideo translations={t} />
 
       {/* Multi-model differentiator */}
-      <section className="py-10 sm:py-16">
+      <section className="py-8 sm:py-10 md:py-16">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl text-forest font-playfair font-bold mb-3 sm:mb-4 px-4">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-forest font-playfair font-bold mb-2 sm:mb-3 md:mb-4 px-4">
               {t['forBusiness.multiModel.title']}
             </h2>
-            <p className="text-sm sm:text-base text-mediumGray max-w-4xl mx-auto px-4">
+            <p className="text-xs sm:text-sm md:text-base text-mediumGray max-w-4xl mx-auto px-4">
               {t['forBusiness.multiModel.subtitle']}
             </p>
           </div>
-          <div className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-3">
-            <div className="rounded-2xl border border-gray-200 p-4 sm:p-6 shadow-sm">
-              <h3 className="text-lg sm:text-xl text-forest mb-2 sm:mb-3 font-playfair font-semibold">
+          <div className="grid gap-3 sm:gap-4 md:gap-6 lg:gap-8 md:grid-cols-3">
+            <div className="rounded-xl sm:rounded-2xl border border-gray-200 p-3 sm:p-4 md:p-6 shadow-sm">
+              <h3 className="text-base sm:text-lg md:text-xl text-forest mb-1.5 sm:mb-2 md:mb-3 font-playfair font-bold">
                 {t['forBusiness.multiModel.quality.title']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
                 {t['forBusiness.multiModel.quality.description']}
               </p>
             </div>
-            <div className="rounded-2xl border border-gray-200 p-4 sm:p-6 shadow-sm">
-              <h3 className="text-lg sm:text-xl text-forest mb-2 sm:mb-3 font-playfair font-semibold">
+            <div className="rounded-xl sm:rounded-2xl border border-gray-200 p-3 sm:p-4 md:p-6 shadow-sm">
+              <h3 className="text-base sm:text-lg md:text-xl text-forest mb-1.5 sm:mb-2 md:mb-3 font-playfair font-bold">
                 {t['forBusiness.multiModel.reliability.title']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
                 {t['forBusiness.multiModel.reliability.description']}
               </p>
             </div>
-            <div className="rounded-2xl border border-gray-200 p-4 sm:p-6 shadow-sm">
-              <h3 className="text-lg sm:text-xl text-forest mb-2 sm:mb-3 font-playfair font-semibold">
+            <div className="rounded-xl sm:rounded-2xl border border-gray-200 p-3 sm:p-4 md:p-6 shadow-sm">
+              <h3 className="text-base sm:text-lg md:text-xl text-forest mb-1.5 sm:mb-2 md:mb-3 font-playfair font-bold">
                 {t['forBusiness.multiModel.simplicity.title']}
               </h3>
               <p className="text-mediumGray text-xs sm:text-sm leading-relaxed">
@@ -308,17 +308,17 @@ export default async function HomepageV2({
       <PricingCards locale={currentLocale} translations={t} />
 
       {/* Trust Badges */}
-      <section className="py-10 sm:py-16 bg-gradient-to-br from-forest/5 to-turquoise/5 border-y border-gray-100">
+      <section className="py-8 sm:py-10 md:py-16 bg-gradient-to-br from-forest/5 to-turquoise/5 border-y border-gray-100">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
-            <p className="text-center text-xs sm:text-sm uppercase tracking-[0.3em] text-mediumGray mb-6 sm:mb-8">
+            <p className="text-center text-xs sm:text-sm uppercase tracking-[0.3em] text-mediumGray mb-4 sm:mb-6 md:mb-8">
               {t['about.values.security.title'] || 'Enterprise security'}
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
               <div className="text-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3 shadow-sm border border-gray-100">
                   <svg
-                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-forest"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -336,9 +336,9 @@ export default async function HomepageV2({
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3 shadow-sm border border-gray-100">
                   <svg
-                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-forest"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -356,9 +356,9 @@ export default async function HomepageV2({
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3 shadow-sm border border-gray-100">
                   <svg
-                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-forest"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -376,9 +376,9 @@ export default async function HomepageV2({
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3 shadow-sm border border-gray-100">
                   <svg
-                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-forest"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -396,9 +396,9 @@ export default async function HomepageV2({
                 </p>
               </div>
               <div className="text-center col-span-2 sm:col-span-1">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-sm border border-gray-100">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3 shadow-sm border border-gray-100">
                   <svg
-                    className="w-6 h-6 sm:w-8 sm:h-8 text-forest"
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-forest"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -421,23 +421,23 @@ export default async function HomepageV2({
       </section>
 
       {/* CTA */}
-      <section className="py-12 sm:py-20 bg-gradient-to-br from-forest to-turquoise text-center">
+      <section className="py-8 sm:py-12 md:py-20 bg-gradient-to-br from-forest to-turquoise text-center">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-playfair font-bold mb-3 sm:mb-4 px-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white font-playfair font-bold mb-2 sm:mb-3 md:mb-4 px-4">
             {t['cta.title'] || t['hero.ctaPrimary']}
           </h2>
-          <p className="text-sm sm:text-base text-white/80 max-w-4xl mx-auto mb-6 sm:mb-10 px-4">
+          <p className="text-xs sm:text-sm md:text-base text-white/80 max-w-4xl mx-auto mb-4 sm:mb-6 md:mb-10 px-4">
             {t['cta.trialNote']}
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-2.5 sm:gap-3 md:gap-4 px-4">
             <a
               href="https://app.lyyli.ai"
-              className="btn-primary bg-forest text-white min-h-[48px] flex items-center justify-center text-base sm:text-lg px-6 py-3"
+              className="btn-primary bg-forest text-white min-h-[44px] sm:min-h-[48px] flex items-center justify-center text-sm sm:text-base md:text-lg px-5 sm:px-6 py-2.5 sm:py-3"
             >
               {t['hero.ctaPrimary']}
             </a>
             <CalendarPopup
-              className="btn-secondary border-white text-white hover:bg-white hover:text-forest min-h-[48px] flex items-center justify-center text-base sm:text-lg px-6 py-3"
+              className="btn-secondary border-white text-white hover:bg-white hover:text-forest min-h-[44px] sm:min-h-[48px] flex items-center justify-center text-sm sm:text-base md:text-lg px-5 sm:px-6 py-2.5 sm:py-3"
               translations={{
                 title: t['calendar.title'],
                 subtitle: t['calendar.subtitle'],
