@@ -119,8 +119,7 @@ export default async function HomepageV2({
                 {[
                   t['hero.trialChecklist.item1'] ||
                     'Get instant access to all Launch plan features',
-                  t['hero.trialChecklist.item2'] ||
-                    'No credit card required – start immediately',
+                  t['hero.trialChecklist.item2'] || 'Start immediately',
                   t['hero.trialChecklist.item3'] ||
                     'Full access for 30 days, cancel anytime',
                   t['hero.trialChecklist.item4'] ||
