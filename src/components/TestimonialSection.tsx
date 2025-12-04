@@ -22,53 +22,54 @@ interface TestimonialSectionProps {
   translations?: TranslationKeys;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: 'Maria Koskinen',
-    role: 'Marketing Director',
-    company: 'Nordic Consulting Group',
-    content:
-      'Lyyli.ai has transformed how we communicate with our clients. The AI-generated content is consistently on-brand and saves us hours every week. Our team can now focus on strategy instead of content creation.',
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: 'Erik Andersson',
-    role: 'CEO',
-    company: 'Tech Solutions Finland',
-    content:
-      'The multi-channel publishing feature is a game-changer. We can now maintain consistent messaging across Slack, Teams, and social media without any manual work. ROI was visible within the first month.',
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: 'Anna Lindberg',
-    role: 'Communications Manager',
-    company: 'Scandinavian Partners',
-    content:
-      'Lyyli.ai understands our brand voice perfectly. The AI suggestions are always relevant and professional, making our communications more engaging and effective. Highly recommended for any professional service company.',
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: 'Johan Bergman',
-    role: 'Operations Director',
-    company: 'Baltic Business Solutions',
-    content:
-      "We've seen a 40% reduction in time spent on internal communications. The approval workflows are seamless, and our team collaboration has improved significantly. This tool pays for itself.",
-    rating: 5,
-  },
-  {
-    id: 5,
-    name: 'Sofia Nilsson',
-    role: 'Head of Marketing',
-    company: 'Nordic Innovation Hub',
-    content:
-      'The analytics and insights have given us unprecedented visibility into our communication performance. We can now make data-driven decisions about our content strategy and see real results.',
-    rating: 5,
-  },
-];
+const getTestimonials = (t?: TranslationKeys): Testimonial[] => {
+  if (!t) {
+    return [];
+  }
+
+  return [
+    {
+      id: 1,
+      name: t['testimonials.1.name'] || 'Maria Koskinen',
+      role: t['testimonials.1.role'] || 'Marketing Director',
+      company: t['testimonials.1.company'] || 'Nordic Consulting Group',
+      content: t['testimonials.1.content'] || '',
+      rating: 5,
+    },
+    {
+      id: 2,
+      name: t['testimonials.2.name'] || 'Erik Andersson',
+      role: t['testimonials.2.role'] || 'CEO',
+      company: t['testimonials.2.company'] || 'Tech Solutions Finland',
+      content: t['testimonials.2.content'] || '',
+      rating: 5,
+    },
+    {
+      id: 3,
+      name: t['testimonials.3.name'] || 'Anna Lindberg',
+      role: t['testimonials.3.role'] || 'Communications Manager',
+      company: t['testimonials.3.company'] || 'Scandinavian Partners',
+      content: t['testimonials.3.content'] || '',
+      rating: 5,
+    },
+    {
+      id: 4,
+      name: t['testimonials.4.name'] || 'Johan Bergman',
+      role: t['testimonials.4.role'] || 'Operations Director',
+      company: t['testimonials.4.company'] || 'Baltic Business Solutions',
+      content: t['testimonials.4.content'] || '',
+      rating: 5,
+    },
+    {
+      id: 5,
+      name: t['testimonials.5.name'] || 'Sofia Nilsson',
+      role: t['testimonials.5.role'] || 'Head of Marketing',
+      company: t['testimonials.5.company'] || 'Nordic Innovation Hub',
+      content: t['testimonials.5.content'] || '',
+      rating: 5,
+    },
+  ];
+};
 
 const customerLogos = [
   { name: 'Nordic Consulting Group', logo: 'NCG' },
@@ -88,6 +89,8 @@ export default function TestimonialSection({
     threshold: 0.2,
     triggerOnce: true,
   });
+
+  const testimonials = getTestimonials(t);
 
   const containerVariants = {
     hidden: { opacity: 0 },

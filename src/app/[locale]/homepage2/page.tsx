@@ -72,11 +72,11 @@ export default async function HomepageV2({
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-24 relative z-10">
-          <div className="w-full max-w-4xl mx-auto">
+          <div className="w-full max-w-6xl mx-auto">
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-forest mb-4 sm:mb-6 mt-4 sm:mt-8 md:mt-12 font-playfair font-bold leading-tight">
               {t['hero.headline']}
             </h1>
-            <p className="text-base sm:text-lg text-mediumGray mb-6 sm:mb-8 font-sans leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-mediumGray mb-6 sm:mb-8 font-sans leading-relaxed max-w-2xl">
               {t['hero.description']}
             </p>
 
@@ -260,7 +260,7 @@ export default async function HomepageV2({
             <h2 className="text-2xl sm:text-3xl md:text-4xl text-forest font-playfair font-bold mb-3 sm:mb-4 px-4">
               {t['forBusiness.multiModel.title']}
             </h2>
-            <p className="text-sm sm:text-base text-mediumGray max-w-3xl mx-auto px-4">
+            <p className="text-sm sm:text-base text-mediumGray max-w-4xl mx-auto px-4">
               {t['forBusiness.multiModel.subtitle']}
             </p>
           </div>
@@ -296,7 +296,7 @@ export default async function HomepageV2({
       {/* Problems */}
       <section className="border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <div className="text-center mb-8 sm:mb-12 max-w-4xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12 max-w-5xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl text-forest font-playfair font-bold mb-4 sm:mb-6 px-4">
               {t['problems.chaos.title']}
             </h2>
@@ -323,7 +323,7 @@ export default async function HomepageV2({
       {/* Trust Badges */}
       <section className="py-10 sm:py-16 bg-gradient-to-br from-forest/5 to-turquoise/5 border-y border-gray-100">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <p className="text-center text-xs sm:text-sm uppercase tracking-[0.3em] text-mediumGray mb-6 sm:mb-8">
               {t['about.values.security.title'] || 'Enterprise security'}
             </p>
@@ -439,7 +439,7 @@ export default async function HomepageV2({
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-playfair font-bold mb-3 sm:mb-4 px-4">
             {t['cta.title'] || t['hero.ctaPrimary']}
           </h2>
-          <p className="text-sm sm:text-base text-white/80 max-w-3xl mx-auto mb-6 sm:mb-10 px-4">
+          <p className="text-sm sm:text-base text-white/80 max-w-4xl mx-auto mb-6 sm:mb-10 px-4">
             {t['cta.trialNote']}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
