@@ -155,6 +155,7 @@ export default function TestimonialSection({
                     height={company.height}
                     className="object-contain"
                     style={{ maxWidth: '100%', height: 'auto' }}
+                    unoptimized
                   />
                 </div>
               </MotionDiv>
