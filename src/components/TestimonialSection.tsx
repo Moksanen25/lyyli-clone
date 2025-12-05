@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import type { TranslationKeys } from '@/lib/i18n';
 const MotionDiv = dynamic(
@@ -72,14 +73,18 @@ const getTestimonials = (t?: TranslationKeys): Testimonial[] => {
 };
 
 const customerLogos = [
-  { name: 'Nordic Consulting Group', logo: 'NCG' },
-  { name: 'Tech Solutions Finland', logo: 'TSF' },
-  { name: 'Scandinavian Partners', logo: 'SP' },
-  { name: 'Baltic Business Solutions', logo: 'BBS' },
-  { name: 'Nordic Innovation Hub', logo: 'NIH' },
-  { name: 'Finnish Digital Agency', logo: 'FDA' },
-  { name: 'Baltic Tech Group', logo: 'BTG' },
-  { name: 'Scandinavian Legal', logo: 'SL' },
+  {
+    name: 'Logo 1',
+    logo: '/images/general/2.png',
+    width: 200,
+    height: 100,
+  },
+  {
+    name: 'EX BW Logo',
+    logo: '/images/general/EX BW 500 x 250 px.png',
+    width: 250,
+    height: 125,
+  },
 ];
 
 export default function TestimonialSection({
@@ -132,7 +137,7 @@ export default function TestimonialSection({
             </h3>
           </div>
 
-          <div className="flex items-center justify-center space-x-12 md:space-x-16 lg:space-x-20 overflow-hidden">
+          <div className="flex items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 overflow-hidden flex-wrap">
             {customerLogos.map((company, index) => (
               <MotionDiv
                 key={company.name}
@@ -142,10 +147,15 @@ export default function TestimonialSection({
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="w-24 h-16 bg-gradient-to-br from-forest/10 to-turquoise/10 rounded-xl flex items-center justify-center border border-forest/20">
-                  <span className="text-forest font-semibold text-lg font-sans">
-                    {company.logo}
-                  </span>
+                <div className="relative w-32 h-16 sm:w-40 sm:h-20 md:w-48 md:h-24 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                  <Image
+                    src={company.logo}
+                    alt={company.name}
+                    width={company.width}
+                    height={company.height}
+                    className="object-contain"
+                    style={{ maxWidth: '100%', height: 'auto' }}
+                  />
                 </div>
               </MotionDiv>
             ))}
