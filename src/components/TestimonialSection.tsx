@@ -85,6 +85,12 @@ const customerLogos = [
     width: 250,
     height: 125,
   },
+  {
+    name: 'Matka-Makela',
+    logo: '/images/general/matka-makela.png',
+    width: 240,
+    height: 126,
+  },
 ];
 
 export default function TestimonialSection({
